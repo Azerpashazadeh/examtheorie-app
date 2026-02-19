@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Kullanım Gereklilikleri</h2>
+    <p>Kullanım gereklilikleri, bir aracın nasıl kullanılacağını, yolcuların ve yükün nasıl taşınacağını ve yükün ne kadar dışarı çıkabileceğini düzenler.</p>
+    <h2>Çekme</h2>
+    <p>Bir arıza nedeniyle bir aracı çekmek zorundaysanız veya aracınızın çekilmesi gerekiyorsa, belirli kurallara uymanız gerekir:</p>
+
+    <ul>
+        <li>İki araç arasındaki mesafe 5 metreyi geçmemelidir.</li>
+        <li>Bir motorlu araç, birden fazla motorlu aracı çekemez, ayrıca bir araç grubunu da çekemezsiniz.</li>
+        <li>Bir araç kombinasyonu bir motorlu aracı çekemez.</li>
+        <li>Bir binek araç, iki tekerlekli bir motosiklet veya moped çekemez, ayrıca bir binek araç iki tekerlekli bir motosiklet veya moped tarafından çekilemez.</li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d688daf8776f4080bec74d849bd26c0b~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Bir aracın çekildiği durumda, iki araç arasındaki mesafe 5 metreyi geçmemelidir.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1d1279171b944d979bd57cfc41c5b990~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Bir yük taşınırken, sürücünün manevra kabiliyetini hiçbir şekilde engellememelidir. Yukarıdaki resimdeki gibi malların taşınması bu nedenle izin verilmez.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>Yük veya Yolcuların Neden Olduğu Engel</h2>
+    <p>Binek aracın sürücüsü, aracı kullanırken yolcular veya yük nedeniyle engellenmemelidir. Örneğin, yük vites koluna veya sağ yan aynanın görüşüne erişimi engelliyorsa araç sürmek yasaktır.</p>
+    <h2>Çevrenin Yeterince Görülmesi</h2>
+    <p>Binek araç sürücüsü, her zaman aracın çevresini yeterince görebilmelidir. Bu, araca bağlı bir römork taşınırken veya aracın içinde veya üzerinde yük taşınırken de geçerlidir. Ön cam ve ön yan camlar üzerinden görüş asla engellenmemelidir. Yan aynalar da aracın veya römorkun yanında ve arkasında yeterli görüş sağlamalıdır. Bu sağlanamazsa, römork veya karavan aynaları ya da bir kamera monitör sistemi kullanılmalıdır.</p>
+    <p>Bu kurallar dikiz aynası için geçerli değildir.</p>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b9caade9f98c45a5aedcedceff60b342~mv2.jpg" alt="Görsel 1">
+            <figcaption><em>Eğer normal aynalarla karavanın veya römorkun arkasını göremiyorsanız, ek aynalar gereklidir. Sarı çizgiler karavanın genişliğini gösterir. Eğer bu genişlik normal aynaların genişliğinden fazlaysa, normal aynalar yeterli değildir.</em></figcaption>
+        </figure>
+    </div>
+
+
+    <h2>Yükü Sabitleme</h2>
+    <p>Binek araçta veya römorkta taşınan yük, araçtan kayamamalı veya düşmemelidir. Bu nedenle, sürüş öncesinde tüm yükün düzgün bir şekilde sabitlenmesi zorunludur. Bu, araç içindeki sürücüyü engelleyemeyecek şekilde yük için de geçerlidir.</p>
+    <p>Yük, aşağıdaki gerekliliklere uygun olarak sabitlenmelidir:</p>
+    <ul>
+        <li>Sabitlenme yöntemi, hem sürüş yönünde hem de yana, geriye ve yukarıya doğru yeterli kuvvetlere dayanabilecek şekilde olmalıdır (örneğin, hız tümsekleri ile).</li>
+        <li>Sabitlenemeyen gevşek kargo (örneğin kum veya yapraklar), araçtan düşebilecek veya uçabilecekse bir ağ veya branda ile kaplanmalıdır.</li>
+        <li>Sabitleme cihazları, kullanıldıkları amaca uygun olmalıdır.</li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_202ce935139347659caec13fdd5492c9~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Eğer römorkta büyük bir yük taşıyorsanız, bunu örneğin bağlama kayışları veya halatlar ile iyi bir şekilde sabitlemelisiniz.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_96c96cfc36e04449886496d8617556b8~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Eğer römorkta gevşek kargo taşıyorsanız, bu bir ağ veya branda ile kaplanmalıdır. Hiçbir kargo uçup gitmemeli veya düşmemelidir.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <h2>Dışarı Taşan Yük</h2>
+    <p>Diğer araçlar gibi yük de çarpışma durumunda yaralanmaya neden olabilecek keskin nesneler içermemelidir. Çıkıntı yapan künt nesneler, üzerlerinin açık bırakılması yaralanma riskini artırıyorsa kaplanmalıdır.</p>
+    <h2>Yük Taşıyıcı</h2>
+    <p>Bir yük taşıyıcı üzerinde yük taşımak, yalnızca yük taşıyıcının bu yüke uygun olması durumunda izin verilir. Örneğin, bir bisiklet taşıyıcı yalnızca bisiklet taşımak için kullanılabilir - ve yalnızca tasarımına göre öngörülen sayıda bisiklet taşınabilir.</p>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_85a65e8e2e634d3191d4fd44d3338a9e~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Bisiklet taşıyıcıda yalnızca bisiklet taşıyabilirsiniz. Bir bavul taşımak izin verilmez.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_5b6bbf105a37447192750ca26fde3f30~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Eğer yük taşıyıcı bir binek aracın plakasını ve arka ışıklarını kapatıyorsa, entegre aydınlatma ve beyaz bir plaka bulunmalıdır.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Yük ve yük taşıyıcı ayrıca şu gerekliliklere uymalıdır:</p>
+    <ul>
+        <li>Eşyalar ve yük taşıyıcı düzgün bir şekilde sabitlenmiş olmalıdır.</li>
+        <li>Yük taşıyıcı, yükle birlikte aracın yanlarından 20 santimetreden fazla dışarı çıkmamalıdır.</li>
+        <li>Eğer binek aracın aydınlatması yük taşıyıcı tarafından kapatılıyorsa, yük taşıyıcı üzerinde şu aydınlatmalar bulunmalıdır:</li>
+        <ul class="dash-list">
+            <li>iki kırmızı arka lamba;</li>
+            <li>iki kırmızı fren lambası;</li>
+            <li>iki kırmızı reflektör;</li>
+            <li>iki turuncu sinyal lambası.</li>
+        </ul>
+        <li>Eğer binek aracın plakası yük taşıyıcı tarafından kapatılıyorsa, yük taşıyıcıya araç ile aynı kayıt numarasını taşıyan beyaz bir plaka takılmalıdır. Bu plaka bir onay işaretine sahip olmalı ve plaka aydınlatması bulunmalıdır.</li>
+    </ul>
+    <p>Eğer yük taşıyıcı çekme demirine veya römorkun ön kısmına monte edilmişse, şu gerekliliklere uymalıdır:</p>
+    <ul>
+        <li>Çekme demirine binen ağırlık (çekme topu ağırlığı olarak da adlandırılır), bu binek araç için belirtilen ağırlığı geçmemelidir. Eğer kayıtlı değilse, asla 75 kg'ı geçmemelidir.</li>
+        <li>Yük taşıyıcı veya parçaları, normal kullanım sırasında yol yüzeyine temas etmemelidir.</li>
+        <li>Yük taşıyıcı veya (kalan) parçaları, birleştirilmiş bir römorkun manevra kabiliyetini engellememelidir.</li>
+    </ul>
+    <p>Eğer eşyalar bir binek aracın tavanında taşınıyorsa, bu aşağıdaki gerekliliklere uygun olmalıdır:</p>
+    <ul>
+        <li>Taşıma, bunun için tasarlanmış bir yük taşıyıcı aracılığıyla yapılmalıdır.</li>
+        <li>Yük taşıyıcı ve eşyalar düzgün bir şekilde sabitlenmelidir.</li>
+        <li>Maksimum izin verilen tavan yükü (tavandaki ağırlık) aşılmamalıdır.</li>
+    </ul>
+    <p>Maksimum izin verilen tavan yükü ve çekme topu ağırlığı, aracın kullanım kılavuzunda (veya çekme demirinde) bulunabilir.</p>
+    <h2>Binek Araçlarda Dışarı Taşan Yük</h2>
+    <p>Araç üzerine veya içine yük yerleştirirken, bölünebilir ve bölünemez yük arasında ayrım yaparız.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Bölünebilir Yük</h3>
+        <p>Birkaç parçaya taşınabilecek yük ve bu nedenle genellikle bir araca birkaç şekilde yüklenebilen yük.</p>
+        <h3>Bölünemez Yük</h3>
+        <p>Karayolu taşımacılığı sırasında daha küçük parçalara bölünemeyen yük. Bu, merdivenler, cam plakalar veya uzun ahşap tahtalar gibi şeyleri içerebilir.</p>
+    </div>
+    <p>Yük her zaman en iyi şekilde taşınmalıdır, böylece diğer trafiğe mümkün olduğunca az rahatsızlık verir. Farklı yük türleri için maksimum dışarı taşma mesafeleri aşağıdaki gibidir:</p>
+
+    <ul>
+        <li>
+            <strong>Yanlar</strong>
+            <p>Eğer binek aracınızın tavanında geniş bir yük taşıyorsanız, bu yük her iki yandan maksimum 20 santimetre dışarı taşabilir. Bölünebilir veya bölünemez bir yük olması fark etmez.</p>
+        </li>
+        <div class="image-container1">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6b69afdbfdaa4d3988aedf6dd091b909~mv2.jpg"
+                    alt="Görsel 1">
+                <figcaption><em></em></figcaption>
+            </figure>
+        </div>
+
+        <li>
+            <strong>Ön</strong>
+            <p>Yük binek aracın önünden dışarı taşmamalıdır - uzunlamasına bölünemez yük olması durumunda bir metreye kadar dışarı taşabilir.</p>
+        </li>
+        <li>
+            <strong>Arka</strong>
+            <p>Yük binek aracın arkasından maksimum bir metre dışarı taşabilir. Arka aks ile yükün sonu arasındaki mesafe hiçbir zaman beş metreyi geçmemelidir. Bu hem bölünebilir hem de bölünemez yük için geçerlidir.</p>
+        </li>
+    </ul>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_3bb5c9f660b64067beee327806f354a3~mv2.jpg" alt="Görsel 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+
+    <div class="important-words2">
+        <p><strong>Bölünebilir</strong> ve <strong>Bölünemez</strong> yük arasındaki ana fark, bölünemez yükün bir binek aracın önünden dışarı taşabilmesi iken bölünebilir yükün taşmamasıdır.</p>
+        <p>Yük hiçbir zaman binek aracın izin verilen maksimum uzunluk, yükseklik veya genişliğini aşacak kadar dışarı taşmamalıdır. Bu nedenle yük:</p>
+        <ul>
+            <li>12 metre uzunluğunu;</li>
+            <li>4 metre yüksekliğini;</li>
+            <li>2,55 metre genişliğini aşmamalıdır.</li>
+        </ul>
+        <p>Kombinasyonlar (binek araç artı römork) 18 metreyi geçemez.</p>
+    </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+
+</html>
+

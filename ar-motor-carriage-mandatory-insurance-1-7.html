@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 0;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        .image-text-container {
+
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            /* Resim ve metin arasında boşluk bırakıyoruz */
+            margin-bottom: 20px;
+        }
+
+        .image-text-container figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-text-container img {
+            width: 120px;
+            height: 120px;
+            /* Sabit boyutta resim */
+            object-fit: cover;
+        }
+
+        .image-text-container figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            margin-top: 2px;
+            max-width: 120px;
+            /* Resim altındaki yazıyı resmin genişliğine göre ayarladık */
+            text-align: center;
+        }
+
+        .image-text-container .text-content {
+            margin-top: -24px;
+            flex: 1;
+            /* Metnin kalan alanı kaplamasını sağlıyoruz */
+            text-align: left;
+            /* Metni sola hizalıyoruz */
+        }
+
+        .text-content,
+        .text-content h2,
+        .text-content p {
+            direction: rtl !important;
+            text-align: right !important;
+            unicode-bidi: isolate-override;
+            /* RTL davranışını daha sağlam yapar */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        التأمين الإلزامي للمركبات الآلية
+    </h2>
+    <p>
+        بمجرد قيد مركبةٍ آلية باسمك في السجلّ الوطني للمركبات (تسجيل الملكية)، يتعيّن عليك إبرام وثيقة تأمين للمركبة.
+        وسواء قدت المركبة أم لا فذلك غير ذي صلة.
+    </p>
+    <h2>
+        أنواع التأمين
+    </h2>
+    <p>
+        توجد عدة خيارات عند التأمين على مركبةٍ آلية. وأكثرها شيوعًا ثلاثة:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                WA (‘Wettelijke Aansprakelijkheid’, مسؤولية تجاه الغير)
+            </strong>
+            <p>
+                الشكلُ الأكثر محدودية من التأمين؛ فهو يغطي فقط الضررَ اللاحق بمركبة الطرف الثالث. ولا يغطي الضرر
+                اللاحق بمركبتك أنت، ولا مثلًا السرقة أو أضرار العواصف. هذا التأمين إلزامي للمركبات الآلية،
+                مع توفّر تغطياتٍ أشمل أيضًا.
+            </p>
+        </li>
+        <li>
+            <strong>
+                تغطية WA المحدودة (وتُسمّى أيضًا WA Plus)
+            </strong>
+            <p>
+                نوعٌ وسيط من التأمين؛ يغطي أضرار مركبات الغير وكذلك الضررَ اللاحق بمركبتك بسبب قوةٍ قاهرة مثل أضرار
+                العواصف أو السرقة أو الحريق.
+            </p>
+        </li>
+        <li>
+            <strong>
+                تأمين WA شامل (ويُسمّى أيضًا «كاسكو»)
+            </strong>
+            <p>
+                أشملُ تأمينٍ متاح للسيارات؛ فهو لا يغطي أضرار الغير وأضرار القوة القاهرة فحسب، بل يغطي أيضًا الضرر
+                اللاحق بمركبتك نتيجة أفعالك أنت.
+            </p>
+        </li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_e9da3cbbb1104333a29d6136f90241fb~mv2.jpg" />
+            <figcaption>
+                <em>
+                    ليست كل خيارات التأمين تغطي الضرر اللاحق بمركبتك أنت.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_0b860389a2fd4f66b43eca9fc3fac62b~mv2.jpg" />
+            <figcaption>
+                <em>
+                    وغالبًا لا تُغطّى الأضرار الناتجة عن السرقة كذلك.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>
+        يختار معظمُ السائقين نوعَ التأمين بناءً على عوامل مثل سعر الوثيقة وعمر السيارة. وكلما كانت السيارة أحدث
+        وأغلى كان أَولى اختيارُ التأمين الشامل.
+    </p>
+    <h2>
+        سنوات بلا مطالبات
+    </h2>
+    <p>
+        تعمل شركاتُ تأمين المركبات وفق نظام «السنوات الخالية من المطالبات». وهو نوعٌ من نظام المكافآت يُكافَأ فيه
+        السائقون إذا لم يُقدّموا مطالبةً تأمينية بالأضرار لفترةٍ طويلة (والمطالبة هي الأضرار التي تدفعها شركة
+        التأمين).
+    </p>
+    <p>
+        عن كل سنةٍ بلا مطالبات تتلقّى نسبةَ خصمٍ على قسطك. والقسط هو المبلغ الذي تدفعه لجهة التأمين لإبقاء تغطيتك
+        سارية. وكلما زادت سنواتك الخالية من المطالبات زاد الخصم الذي تناله. ويُسمّى ذلك «بونس».
+    </p>
+    <p>
+        إذا تسبّبتَ بضرر وقدّمتَ مطالبةً به فإن الخصمَ المتراكم سينقص. ويُسمّى هذا «مالوس»، ومن هنا سُمّي النظامُ
+        أحيانًا «نظام بونس–مالوس».
+    </p>
+    <p>
+        قد تُكلّفك مطالباتُ الأضرار مالًا؛ إذ يرتفع قسطك الشهري من جديد. وإضافةً إلى ذلك قد تكون إصلاحاتُ الأضرار
+        البسيطة عبر شركة التأمين أغلى ثمنًا أحيانًا. وفي بعض الحالات قد يكون دفعُك تكلفةَ الضرر بنفسك أرخصَ من
+        المطالبة عبر التأمين.
+    </p>
+    <div class="important-words2">
+        <p>
+            بما أنّ تأمين السيارات يعمل عادةً وفق نظام بونس–مالوس، فقد يكون دفعُ الأضرار البسيطة بنفسك أقلَّ كلفةً
+            من المطالبة بها عبر التأمين.
+        </p>
+    </div>
+    <h2>
+        بطاقة التأمين (البطاقة الخضراء سابقًا)
+    </h2>
+    <p>
+        بطاقةُ التأمين هي إثباتُ تأمين مركبتك. وتحتوي هذه الورقة تفاصيلَ مركبتك ووثيقةَ التأمين. وتتسلّم بطاقةَ
+        تأمين جديدة كلَّ سنة. وبعض الشركات تزوّدك ببطاقةٍ رقمية بدلًا من الورقية.
+    </p>
+    <p>
+        لا يُلزَم الاحتفاظ بهذه الوثيقة في مركبتك داخل هولندا. لكنه قد يكون مطلوبًا في دولٍ أخرى. كما قد يكون من
+        المفيد حملُ بطاقة التأمين عند التعامل مع الأضرار لأنها تحتوي معلوماتٍ قد تحتاجها أنت والأطرافُ الأخرى.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_c2c4fa496a0e485691e230d8e7fc8fa0~mv2.png" />
+            <figcaption>
+                <em>
+                    حملُ بطاقة التأمين غير إلزامي، لكن يُستحسن حفظُها مع أوراق تسجيل المركبة.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_d40dfb5b75fd4002a4816ed190113371~mv2.jpg" />
+            <figcaption>
+                <em>
+                    تشمل وثيقةُ السيارة أيضًا الأضرارَ التي تتسبّب بها مقطورةٌ موصولة.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        مقطورة أو كارافان
+    </h2>
+    <p>
+        تُغطّي وثائقُ تأمين السيارات المقترنَ بها مقطوراتٌ أو كارافانات. أي إن الأضرارَ التي تُحدثها المقطورة (أو
+        الحمولة فيها) أو الكارافان بطرفٍ آخر تُغطّيها وثيقةُ سحب المركبة. أمّا الضررُ اللاحق بالمقطورة أو
+        الكارافان نفسه فلا تغطيه وثيقةُ السيارة. وتتوفر لهذا تأميناتٌ منفصلة للمقطورة أو الكارافان، لكنها غير
+        إلزامية.
+    </p>
+    <h2>
+        النموذج الأوروبي للمطالبة بالأضرار (بيان الحادث)
+    </h2>
+    <p>
+        إذا لحِق الضررُ بمركبتك فعليك أنت وأيّ طرفٍ آخر معنيّ إكمالُ نموذج المطالبة بالأضرار. ولا يُلزَم حملُ هذا
+        النموذج معك، لكنه قد يكون مفيدًا. يتكوّن نموذجُ المطالبة من ورقتين: ورقةٍ تُملأ وورقةِ نسخ. وبعد إكمال
+        النموذج وتوقيعه يتسلّم الطرفان نسخة. لاحقًا يمكنك ملء ظهر النموذج وإرساله إلى شركة التأمين.
+    </p>
+    <div class="image-text-container">
+        <figure>
+            <img alt="بطاقة التأمين"
+                src="https://static.wixstatic.com/media/4b688f_b47b9221b4ac401a9cc2d2cb76bfa4a1~mv2.png" />
+            <figcaption>
+                <em>
+                    ملصق التأمين
+                </em>
+            </figcaption>
+        </figure>
+        <div class="text-content">
+            <h2>
+                لا يوجد متطلب تسجيل
+            </h2>
+            <p>
+                ليست كل المركبات الآلية مُلزَمة بالتسجيل. فبعض المركبات مثل الـ Segway ومركبات ذوي الإعاقة المُحرّكة
+                يجب أن تكون مؤمَّنةً وتحمل ملصق تأمين ظاهرًا. ويُزوّدك المُؤمِّن بهذا الملصق بعد التأمين على
+                المركبة. وتتسلّم واحدًا جديدًا كلَّ سنة.
+            </p>
+        </div>
+    </div>
+    <h2>
+        إعارة مركبتك
+    </h2>
+    <p>
+        الأشخاصُ الآخرون الذين يقودون مركبتك يكونون مشمولين بوثيقة تأمين سيارتك. ويدفع المؤمِّنُ التعويضَ عن أي
+        ضررٍ يقع أثناء قيادة غيرِ المالك. وقد يؤدّي هذا إلى قسطٍ أعلى بسبب انقطاع سنواتك الخالية من المطالبات.
+        لذا يُنصَح السائقون بالحذر عند إعارة مركباتهم للآخرين.
+    </p>
+    <h2>
+        القيادة دون تأمين
+    </h2>
+    <p>
+        عدمُ تأمين مركبتك يُعدّ جريمةً جنائية. وستُستردّ منك شخصيًا أيُّ أضرارٍ تسبّبت بها مركبتك وهي غير مؤمَّنة،
+        وقد يكون ذلك مكلفًا. فضلًا عن ذلك، لا تُلزَم شركةُ التأمين بالدفع عن الأضرار الناتجة عن الإهمال أو
+        السلوك غير المسؤول مثل القيادة تحت تأثير الكحول أو المخدّرات، أو القيادة دون رخصة، أو استخدام المركبة
+        لغرضٍ غير مُؤمَّن عليه (مثل دروس القيادة أو رحلات الأجرة). وفي هذه الحالات تدفع شركةُ التأمين غالبًا
+        للطرف الآخر ثم تستردّ المبلغ منك.
+    </p>
+    <h2>
+        صندوقُ ضمان حركة المرور بالمركبات الآلية
+    </h2>
+    <p>
+        إذا تكبّدتَ أضرارًا تسبّب بها شخصٌ لا تعرفه أو لا يملك تأمينًا، فقد تكون مُستحقًا في بعض الحالات لتعويضٍ من
+        «صندوق الضمان الوطني» (Waarborgfonds motorverkeer). وهو صندوقٌ وطني أنشأته الحكومة لتغطية السائقين
+        المتضرّرين بشدة من أضرارٍ لا يستطيعون تغطيتَها بأنفسهم ولا استردادَها من الطرف المسؤول.
+    </p>
+    <h2>
+        المركبات الموقوفة عن الاستعمال
+    </h2>
+    <p>
+        إذا كنت لا تتوقّع قيادة سيارة ركّابٍ لفترةٍ طويلة، فيمكنك اختيارُ تعليق المتطلبات الإلزامية المتعلقة
+        بالمركبة. وقد يكون هذا مفيدًا مثلًا إذا رغبتَ في العمل على ترميم مركبة. ويعني ذلك أيضًا أنك لن تتمكّن
+        من قيادتها أو ركنها على الطرق العامة. ويجب إبعاد المركبة تمامًا عن حركة المرور وركنُها في ملكيتك الخاصة،
+        مثل المرآب.
+    </p>
+    <p>
+        أكبرُ ميزةٍ لإيقاف مركبةٍ عن الاستعمال أنك غيرُ مُلزَمٍ بدفع ضريبة الطريق ولا بتأمين المركبة طوال مدة
+        الإيقاف. كما لا تُطلَب الفحوصُ الدورية للمركبات الموقوفة. وبمجرد انتهاء مدة الإيقاف تعود جميعُ هذه
+        الأمور إلزاميةً من جديد. ويمكن طلب مدة الإيقاف لسنةٍ أو سنتين أو ثلاث. وتُقدَّم الطلبات إلى RDW.
+    </p>
+    <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

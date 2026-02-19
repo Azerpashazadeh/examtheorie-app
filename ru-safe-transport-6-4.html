@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+
+
+
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Safe transport
+  </h1>
+  <p>
+   If you drive a vehicle, transport young passengers, or ride as a passenger yourself, it is important to do so as
+        safely as possible. For this reason, certain rules have been established regarding the use of seats, seat belts,
+        and child restraint systems.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Seat
+   </h3>
+   <p>
+    Construction that can accommodate an adult. This can be an individual seat or part of a row.
+   </p>
+  </div>
+  <h2>
+   Seats
+  </h2>
+  <p>
+   It is mandatory that both the driver and the passengers sit on a designated seat while participating in traffic.
+        You may not be in the boot or cargo area while the vehicle is being driven. Sitting or standing in a trailer or
+        caravan while it is being driven is also prohibited.
+  </p>
+  <p>
+   There are a number of exceptions to these rules, for example:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Transport in a public bus.
+    </p>
+   </li>
+   <li>
+    <p>
+     Passengers in a wheelchair, if it can be secured properly.
+    </p>
+   </li>
+   <li>
+    <p>
+     Children under three years of age during transportation in a bus.
+    </p>
+   </li>
+   <li>
+    <p>
+     Transporting patients in ambulances or other laying-down areas (berths).
+    </p>
+   </li>
+   <li>
+    <p>
+     Passenger transport during parades at events.
+    </p>
+   </li>
+   <li>
+    <p>
+     Children older than eight years on the rear rack of a bicycle.
+     <br/>
+     Note: this is not allowed on a snorfiets!
+    </p>
+   </li>
+  </ul>
+  <div class="important-words2">
+   <p>
+    Passengers under the age of 8 may only be transported on bicycles, snorfietsen, and mopeds if they are
+            seated in an appropriate seat with sufficient support for the back, hands, and feet.
+   </p>
+  </div>
+  <h2>
+   Seat belts
+  </h2>
+  <p>
+   The use of a seat belt is mandatory for all drivers and passengers of:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Passenger cars
+    </p>
+   </li>
+   <li>
+    <p>
+     Company cars
+    </p>
+   </li>
+   <li>
+    <p>
+     Three-wheeled motor vehicles with closed bodywork
+    </p>
+   </li>
+   <li>
+    <p>
+     Brommobielen
+    </p>
+   </li>
+  </ul>
+  <p>
+   Never transport more passengers than there are seat belts. In today’s passenger cars, seat belts must be fitted
+        on all seats. In most cases, these are three-point belts that run across the hip and obliquely across the chest
+        and shoulder.
+  </p>
+  <p>
+   Belts are also compulsory for pregnant women. Without a belt, unborn babies are more at risk than with a belt.
+        The belt must be worn correctly. The hip belt must be worn well under the abdomen and the shoulder part well
+        above the abdomen. Running the belt over the abdomen does pose an additional risk to unborn children.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_bc7c3b8ac1a647a78c12f49e68840de6~mv2.jpg"/>
+     <figcaption>
+      All drivers and passengers are obligated to wear a seat belt. Even pregnant women.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_78040b8aedb94b958b3b3a2df8950d73~mv2.jpg"/>
+     <figcaption>
+      Children should not wear the three point belt as a hip belt only. It should also cross the
+                    chest.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    It is
+    <strong>
+     always
+    </strong>
+    mandatory for
+    <strong>
+     all
+    </strong>
+    drivers and passengers of passenger cars to
+            wear a seat belt while driving. This should be done correctly, so the three-point belt should run well
+            across your hips and chest. You should not run the top of the belt behind your back or under your armpit.
+   </p>
+   <p>
+    <strong>
+     Children under 12 years of age: Driver responsible for seat belt obligation. Children aged 12 and
+                older: Self responsible for the seat belt obligation.
+    </strong>
+   </p>
+  </div>
+  <h2>
+   Wearing a seat belt
+  </h2>
+  <p>
+   Wearing a seat belt prevents drivers and passengers from being launched forwards or upwards in the event of a
+        head-on collision. Even at speeds as low as 30 km/h, drivers and passengers not wearing a seat belt may sustain
+        fatal injures in a collision. Airbags are of little use when not wearing a seat belt, and in some cases may even
+        cause additional injury.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_241c8ebafa24464eb159d4f04b441dd3~mv2.jpg"/>
+     <figcaption>
+      When no seat belt is used, the airbag can cause additional injury during an accident. Always
+                    wear your seat belt!
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_968c474e929a4cd4a4cb982eef84d60a~mv2.jpg"/>
+     <figcaption>
+      Children under the age of 18 and up to 1.35 metres in length, must use a child restraint
+                    system like a child seat, or in this case, a booster seat.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   When putting on and wearing a belt, a number of things are important:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Wear the seat belt as intended
+     </strong>
+     So not only as a hip belt, or with the oblique part under your armpit. Make sure the hip part is tight
+                over your hip and the oblique part is halfway between your neck and your shoulder. Many belts are
+                adjustable in height at the top so that it does not get too close to your neck or shoulder.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Pull the belt tightly after clicked into place
+     </strong>
+     A belt that is too loose does not tighten properly or too late in a collision.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Take off thick sweaters and winter jackets
+     </strong>
+     The thicker the clothes, the less the belt fits your body. This extra buffer ensures that the belt does
+                not tighten as well or later in a collision. This will bring your body further forward.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Wear a seat belt when driving alongside water
+     </strong>
+     It is often said that exiting a vehicle upon entering water is more difficult when wearing a seat belt.
+                Of course, seat belts must be taken off before exiting a vehicle. However, not wearing a seat belt
+                increases the chance that impact with water renders vehicle occupants seriously injured or unconscious.
+                Obviously, this would make exiting the vehicle impossible.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_0aac586607e84ff69c774e23db0b7945~mv2.jpg"/>
+     <figcaption>
+      Always instruct children to wear the seat belt properly and check wether they do so.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_53815a68a8964075aae775cfe87170de~mv2.jpg"/>
+     <figcaption>
+      With a thick winter coat on, the belt no longer fits properly around the body. Transporting
+                    a child in this way is unsafe.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Using the headrest
+  </h2>
+  <p>
+   Many people overlook the importance of headrests and thus fail to properly adjust them. However, a properly
+        adjusted headrest can prevent head and neck injuries in the event of a rear-end collision.
+  </p>
+  <p>
+   The top of a headrest should align with the top of the head. If the headrest cannot be adjusted high enough, it
+        should at least be as high as possible. Some headrests can also be tilted forwards or backwards, which can be
+        used to reduce the distance between the back of the head and the headrest.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Body
+   </h3>
+   <p>
+    The steel construction that gives the passenger car its strength. It is, as it were, the “skeleton” of the
+            passenger car.
+   </p>
+  </div>
+  <h2>
+   Child restraint systems
+  </h2>
+  <p>
+   Children under 18 years of age and less than 1.35 metres must use an approved child restraint system adapted to
+        the size and weight of the child. This consists of four groups: 0+, I, II and III.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_007365726f0c4dd499332fec9360d1ad~mv2.jpg"/>
+     <figcaption>
+      Baby car seat
+      <br/>
+      Group 0+, 0-13 kg
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_8e2a0b2f9a7042a088c10ff24dead869~mv2.jpg"/>
+     <figcaption>
+      Child car seat
+      <br/>
+      Group I, 9-18 kg
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_ec23095a331b4445804c16ad366b021f~mv2.jpg"/>
+     <figcaption>
+      Booster seats (with or without backrest)
+      <br/>
+      Group II, 15-25 kg
+      <br/>
+      Group III, 22-36 kg
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   Baby car seat (Group 0+, 0-13 kg)
+  </h3>
+  <p>
+   These car seats are for babies and small children up to about 18 months. These seats are mounted against the
+        direction of travel and can be used until the child weighs about 13 kg, or sits with his/her head above the seat
+        shell. Until then, this is the safest choice. The seats are secured in the passenger car by means of the seat
+        belt or the Isofix system and are equipped with their own seat belt for the baby.
+  </p>
+  <h3>
+   Child car seat (Group I, 9-18 kg)
+  </h3>
+  <p>
+   These seats are usually mounted facing the direction of travel and are secured with the seat belt or the Isofix
+        system. They are suitable for children from about one year old. The child is secured by means of a belt of the
+        seat itself, or by means of a “restraint”. This is a kind of block that is secured in front of the abdomen and
+        partly the chest with the normal three-point belt.
+  </p>
+  <h3>
+   Booster seat with or without backrest (Group II, 15-25 kg / group III, 22-36 kg)
+  </h3>
+  <p>
+   Usually these two groups are combined in one chair, a booster seat with or without (removable) backrest. It is
+        wise to use the booster seat with backrest for as long as possible, because it provides the best protection. In
+        this seats, the child is usually secured with the normal three-point belt. The booster seat must ensure that the
+        belt is correctly positioned over the body.
+  </p>
+  <h2>
+   Disabling airbags
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      When using a seat that is placed in the opposite direction to the direction of travel, always
+                    deactivate the front airbag. These are the airbags that should normally protect the head in a
+                    frontal impact. These are included in the dashboard, but can also be located in the headrest of the
+                    front seat to protect the rear passengers. This airbag will launch the seat and thus the child
+                    through the car. It is therefore
+      <strong>
+       mandatory
+      </strong>
+      to deactivate this airbag.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_f745fb48ce5740b98429f86c3a61afed~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   When the airbag is activated, always use a seat that is placed in the direction of travel. In that case, put the
+        car seat where the child seat is placed on as far back as possible.
+  </p>
+  <h2>
+   Using child restraint systems
+  </h2>
+  <p>
+   When using a child restraint system, pay attention to the following:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Make sure the seat is properly secured
+     </strong>
+     Seats with an isofix system are the most stable when properly secured. These are attached to the body of
+                the vehicle with a special click system and will therefore almost never shift. A seat that you fasten
+                with a belt is only properly held in the event of an accident if the seat is correctly positioned in the
+                belt. Read the instructions carefully.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Disable the passenger airbag
+     </strong>
+     If you are transporting a child in a child restraint system on the front seat against the direction of
+                travel, deactivating the passenger airbag is mandatory. Not turning it off is very dangerous. Should the
+                airbag deploy during an accident, the child could be fatally injured.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Take off thick sweaters and coats
+     </strong>
+     A child sitting in a child seat with a winter coat is not so well protected. The child can even be
+                launched from the seat in the event of an accident. In that case, the belts do not close tightly enough
+                around the body.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Use a car seat of a certain group for as long as possible
+     </strong>
+     Switching to a higher group early is less safe because every higher group offers less protection. The
+                child must of course still be able to sit comfortably enough.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Exercise caution when using second-hand seats
+     </strong>
+     With second-hand child restraints, always check whether they have been involved in an accident. As with
+                belts, airbags and helmets, the functioning of a child restraint deteriorates if they have already
+                provided protection in an accident. It is often impossible to determine whether something has ever
+                happened to it. If you have any doubts about this, it is advisable not to use that chair.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_7efd5bd0b32b4b598d93ef1a3b5b56ae~mv2.jpg"/>
+     <figcaption>
+      Disabling the passenger airbag is not mandatory in this case, but it is recommended. If this
+                    is not possible, move the passenger seat as far back as possible
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_97ffa6844ae14f7ab177ab3db398c8af~mv2.jpg"/>
+     <figcaption>
+      This child seat can only be placed here if the passenger airbag is disabled.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Child restraint system exceptions
+  </h2>
+  <p>
+   Despite the fact that transport in a child restraint system is always the safest choice for children under 1.35
+        metres, in exceptional cases this may simply not be possible.
+  </p>
+  <p>
+   Therefore, a number of exceptions are included in the law:
+  </p>
+  <ul>
+   <li>
+    <p>
+     In taxis and public buses, their use is not mandatory, but they should not be in the front row of seats.
+    </p>
+   </li>
+   <li>
+    <p>
+     If a third child seat no longer fits through the use of two other child restraint systems in the back
+                seat, the third child may be transported with only a seat belt in the back seat. This is preferably the
+                oldest child, but in any case a child older than three years.
+    </p>
+   </li>
+   <li>
+    <p>
+     If there is incidental transport, such as a children’s party, then children, older than three years but
+                less than 1.35 metres, can be transported in the back seat with only a seat belt.
+    </p>
+   </li>
+  </ul>
+  <div class="important-words2">
+   <p>
+    <strong>
+     Warning!
+    </strong>
+    <br/>
+    The fact that something is allowed by law does not mean that it is the best choice. If there is an option to
+            use a child restraint system on a child under 1.35 metres, this is always preferable.
+   </p>
+  </div>
+  <h2>
+   Helmet requirement
+  </h2>
+  <p>
+   For a number of motor carriages, instead of a seat belt requirement, a helmet requirement applies. These
+        vehicles, which include mopeds, motorcycles, brommobielen without a closed body, motorised tricycles, and quads,
+        often do not have seat belts. In these cases you are obliged to wear an approved helmet. Again, from the age of
+        12 the responsibility lies with the passenger himself. The driver is responsible for younger children.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

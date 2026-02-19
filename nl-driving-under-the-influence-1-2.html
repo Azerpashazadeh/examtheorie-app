@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: ;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        Rijden onder invloed
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            Beginnende bestuurders
+        </h3>
+        <p>
+            Wanneer u voor het eerst uw rijbewijs behaalt, wordt u gedurende de eerste vijf jaar als beginnende
+            bestuurder beschouwd. Als u vóór uw 18e een bromfiets- of tractorrijbewijs haalt, geldt u de eerste zeven
+            jaar als beginnende bestuurder. Voor beginnende bestuurders gelden iets strengere regels.
+        </p>
+        <h3>
+            Promille
+        </h3>
+        <p>
+            Een waarde (aangeduid met ‰) die het bloedalcoholgehalte aangeeft.
+        </p>
+        <h3>
+            µg/l
+        </h3>
+        <p>
+            In de horeca worden bier, wijn en sterke drank doorgaans in standaardglazen geserveerd:
+        </p>
+        <ul>
+            <li>
+                Bier 25 cl (5% alcohol)
+            </li>
+            <li>
+                Wijn 10 cl (12% alcohol)
+            </li>
+            <li>
+                Sterke drank 3,5 cl (35% alcohol)
+            </li>
+        </ul>
+        <p>
+            Hierdoor bevat één glas wijn evenveel pure alcohol als één glas bier of één glas sterke drank. Dit geldt
+            niet wanneer geen standaardglazen worden gebruikt, bijvoorbeeld bij speciaalbieren en cocktails. In die
+            gevallen zit er vaak veel meer pure alcohol in één glas.
+        </p>
+    </div>
+    <div class="image-container1">
+        <figure>
+            <img alt="Afbeelding 1"
+                src="https://static.wixstatic.com/media/4b688f_0fdd95b6c5d14282a8f65097358f4013~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Elk glas bevat een gelijke hoeveelheid pure alcohol.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>
+        Rijden onder invloed (DUI) van alcohol, drugs of medicijnen die uw rijvaardigheid beïnvloeden is een strafbaar
+        feit. Er gelden bepaalde grenswaarden. Voor alcohol zijn dit:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                Voor beginnende bestuurders: maximaal 88 μg/l of 0,2 promille.
+            </strong>
+            <p>
+                Dit komt neer op ongeveer 0,5 tot 1 standaardglas bier, wijn of sterke drank.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Voor ervaren bestuurders: maximaal 220 μg/l of 0,5 promille.
+            </strong>
+            <p>
+                Dit is ongeveer 1,5 tot 2,5 standaardglazen bier, wijn of sterke drank.
+            </p>
+            <strong>
+                Deze grenswaarde geldt ook voor fietsers!
+            </strong>
+        </li>
+    </ul>
+    <p>
+        De grenswaarden voor drugs en medicijnen verschillen per middel. Bij drugs kunt u er het best van uitgaan dat u
+        na één “dosis” doorgaans boven de grens zit en dus niet meer mag rijden. Sommige middelen blijven tot enkele
+        dagen in uw lichaam.
+    </p>
+    <p>
+        Rijden onder invloed van zowel drugs als alcohol is strafbaar, ongeacht de hoeveelheid.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="Afbeelding 1"
+                src="https://static.wixstatic.com/media/4b688f_363a4357b25642fd888d4719c2a08c64~mv2.jpg">
+            <figcaption>
+                <em>
+                    U bent strafrechtelijk aansprakelijk zodra u uw eerste glas alcohol heeft gedronken en vervolgens
+                    gaat rijden.
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <figure>
+            <img alt="Afbeelding 2"
+                src="https://static.wixstatic.com/media/4b688f_0350da323b1949e197fa94de83e23723~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Reeds het tonen van de intentie om onder invloed te gaan rijden kan leiden tot een rijverbod.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            Voertuigen
+        </h3>
+        <p>
+            Fietsen, bromfietsen, gehandicaptenvoertuigen, trams, motorrijtuigen, door paarden getrokken voertuigen en
+            handkarren.
+        </p>
+        <h3>
+            Bromfietsen
+        </h3>
+        <p>
+            Een motorrijtuig op twee, drie of vier wielen dat niet sneller kan en mag dan 45 km/u (constructiesnelheid),
+            uitgerust met een verbrandingsmotor van maximaal 50 cm³ (cc) of een verbrandings- of elektromotor met een
+            maximaal nettovermogen van 4 kW. Een bromfiets op vier wielen (brommobiel) heeft een ledige massa van minder
+            dan 350 kg. Bromfietsen zijn geen gehandicaptenvoertuigen.
+        </p>
+        <h3>
+            Motorrijtuigen
+        </h3>
+        <p>
+            Alle door een motor aangedreven voertuigen. Deze hebben geen rails nodig om te rijden (bijv. trein, metro of
+            tram vallen hier dus niet onder). Dit omvat geen fietsen met trapondersteuning. Let op: trolleybussen en
+            speed-pedelecs vallen wél onder deze klasse!
+        </p>
+        <h3>
+            Rijverbod (rijden verboden)
+        </h3>
+        <p>
+            Een verbod om voertuigen (inclusief fietsen) te besturen, dat kan worden opgelegd als u rijdt of probeert te
+            rijden onder invloed van alcohol, drugs of medicijnen.
+        </p>
+        <h3>
+            Ontzegging van de rijbevoegdheid (rijbewijs geschorst)
+        </h3>
+        <p>
+            Een ontzegging om gedurende enkele weken, maanden of zelfs jaren een motorrijtuig te besturen. Als u
+            verkeersregels overtreedt, kan een officier van justitie of een rechter u de rijbevoegdheid ontzeggen.
+            Fietsen blijft toegestaan.
+        </p>
+    </div>
+    <h2>
+        Handhaving rijden onder invloed
+    </h2>
+    <p>
+        Als u onder invloed een voertuig bestuurt of tracht te besturen, mag de politie direct ingrijpen. Dat kan op de
+        volgende manieren:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                Rijverbod (rijden verboden)
+            </strong>
+            <p>
+                Het plannen of proberen te rijden terwijl u onder invloed bent is strafbaar; u kunt dus al vóórdat u
+                instapt een rijverbod krijgen. Een rijverbod geldt voor enkele uren tot maximaal 24 uur. De exacte duur
+                hangt af van hoeveel u de wettelijke limiet overschrijdt. Een rijverbod betekent dat u geen enkel
+                voertuig mag besturen, ook geen fiets.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Invordering (rijbewijs)
+            </strong>
+            <p>
+                Als u door de politie wordt staande gehouden en uit een blaastest blijkt dat u bepaalde alcohollimieten
+                overschrijdt, wordt uw rijbewijs direct ingevorderd. Dit geldt ook wanneer bij een speekseltest drugs
+                worden aangetroffen. Zodra uw rijbewijs is ingevorderd, mag u geen motorrijtuig besturen totdat u het
+                terugkrijgt. De grenzen voor invordering na een alcoholovertreding zijn:
+            </p>
+            <ul class="dash-list">
+                <li>
+                    350 μg/l (0,8 promille) voor beginnende bestuurders.
+                </li>
+                <li>
+                    570 μg/l (1,3 promille) voor ervaren bestuurders.
+                </li>
+                <li>
+                    Als u niet meewerkt of bijvoorbeeld een blaastest weigert of geen speekselmonster afgeeft, kan uw
+                    rijbewijs eveneens worden ingevorderd.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Melding aan het CBR
+            </strong>
+            <p>
+                Boven bepaalde grenswaarden meldt de politie de zaak ook bij het CBR. Deze waarden zijn:
+            </p>
+            <ul class="dash-list">
+                <li>
+                    220 μg/l (0,5 promille) voor beginnende bestuurders.
+                </li>
+                <li>
+                    350 μg/l (0,8 promille) voor ervaren bestuurders.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Als uw rijbewijs vanwege rijden onder invloed is ingevorderd, wordt het ook naar de officier van justitie
+        gestuurd. Deze beslist binnen 10 dagen of u uw rijbewijs terugkrijgt. De officier kan u een schikkingsvoorstel
+        doen. Gaat u akkoord met de voorwaarden, dan is de zaak afgedaan. Het kan echter ook betekenen dat u naar de
+        rechtbank moet; een rechter bepaalt dan de uiteindelijke straf.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="Afbeelding 1"
+                src="https://static.wixstatic.com/media/4b688f_120f99ab44bc4571a95f1ca44d047d9a~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Een blaastest wordt gebruikt om alcoholgebruik vast te stellen. U mag deze test niet weigeren.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="Afbeelding 2"
+                src="https://static.wixstatic.com/media/4b688f_944bea95c792475daeb61e08786578c8~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Een speekseltest wordt gebruikt om drugsgebruik vast te stellen. Ook deze test mag u niet weigeren.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+        Terug naar
+        overzicht
+    </a>
+
+    
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   General requirements - part 1
+  </h2>
+  <p>
+   Legally speaking, every vehicle must meet a number of technical requirements. It can usually be assumed that
+        vehicles purchased brand new meet these requirements. If a malfunction occurs, it may mean the vehicle no longer
+        meets the requirements, however repairs or replacement parts can often ensure the vehicle is up to standards
+        again.
+  </p>
+  <p>
+   The APK (MOT), a periodic general inspection, was introduced to enforce compliance with technical requirements.
+        However, this inspection does not cover everything. Drivers are therefore advised to regularly check the
+        condition of their vehicle, and preferably have annual checks carried out by a garage.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_c4be1d97270f4bed89ff76c7ca4f1f06~mv2.jpg"/>
+    <figcaption>
+     <em>
+      If you make exterior modifications to your vehicle, it could result in your vehicle not
+                    being up to standards anymore
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_49214b93462f48f69f44a1d07c89205e~mv2.jpg"/>
+    <figcaption>
+     <em>
+      When you modify something in the engine then your vehicle will have to pass an inspection
+                    again.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Custom modifications
+  </h2>
+  <p>
+   If you modify your vehicle, it may no longer meet the requirements laid out in the national vehicle register.
+        This means the car must be re-inspected. These modifications may include:
+  </p>
+  <ul>
+   <li>
+    Adding extra weight.
+   </li>
+   <li>
+    Increasing the track width (the width between the left and right wheel).
+   </li>
+   <li>
+    Replacing the engine block.
+   </li>
+   <li>
+    Changing the fuel type (for example adding a gas installation).
+   </li>
+   <li>
+    Changing the power (more than 20%).
+   </li>
+   <li>
+    Changing the body type.
+   </li>
+   <li>
+    Changing the number of seats.
+   </li>
+   <li>
+    Changing the noise level (e.g. mounting another exhaust).
+   </li>
+  </ul>
+  <p>
+   If a vehicle has been modified but has not yet been re-inspected and approved, it may not be driven!
+  </p>
+  <h2>
+   Registration number
+  </h2>
+  <p>
+   Vehicles can be identified via the number plate and the vehicle identification number (VIN). This means that:
+  </p>
+  <ul>
+   <li>
+    the vehicle must also comply with the information on the registration card and in the vehicle register;
+   </li>
+   <li>
+    the vehicle must be fitted with original, properly attached, and clearly legible number plates with an
+            approval mark;
+   </li>
+   <li>
+    the VIN must be stamped into the chassis, frame, or similar structure and be clearly legible. If this has
+            been (partly) removed, this could mean that the vehicle has been stolen.
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_759f8187903f42fead5949073a1d08b7~mv2.jpg"/>
+    <figcaption>
+     <em>
+      The number plate on the vehicle must be an original. You may not drive with a temporary
+                    written number plate in case of theft or loss.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Weights and dimensions
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Unladen weight
+   </h3>
+   <p>
+    Weight of the vehicle as delivered by the manufacturer (including tools and spare wheel), reduced by 100 kg.
+   </p>
+   <h3>
+    Load
+   </h3>
+   <p>
+    Persons being transported in the vehicle and cargo (payload) being transported in, on or attached to the
+            vehicle.
+   </p>
+   <h3>
+    Load carrier
+   </h3>
+   <p>
+    Removable or extendable constructions such as roof boxes and bicycle carriers, used for the transportation of
+            goods and devices. Load carriers must be:
+   </p>
+   <ul>
+    <li>
+     mounted on the bumper, on the tow bar or on the roof, or integrated into the rear of the vehicle;
+    </li>
+    <li>
+     fitted to the front or back of the trailer;
+    </li>
+    <li>
+     mounted on the side of a light commercial vehicle for transporting glass or plates.
+    </li>
+   </ul>
+  </div>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_6edf0b6619354fd3be0b001328349ee7~mv2.jpg">
+     <figcaption>
+      <em>
+       A bicycle carrier mounted on a tow bar.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_7822fa6e7ba34c70be085de188708c14~mv2.jpg"/>
+    <figcaption>
+     <em>
+      A roof box also classifies as a ‘load carrier’.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   A passenger car is subject to limited maximum sizes and weight. These maximums always include any cargo. The
+        maximum dimensions for passenger cars are:
+  </p>
+  <ul>
+   <li>
+    12 metres long
+   </li>
+   <li>
+    2.55 metres wide
+   </li>
+   <li>
+    4 metres high
+   </li>
+  </ul>
+  <p>
+   A combination of a passenger car and a trailer may not exceed 18 metres in length.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_344d942b9c2e4f0fa5c0ec9bc507e4b6~mv2.jpeg"/>
+    <figcaption>
+     <em>
+      The maximum dimensions of a vehicle always include loads and load carriers.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   The maximum authorised mass (‘toegestane maximummassa’) for a passenger car is stated in the national vehicle
+        register and on the vehicle registration card. This maximum weight includes any load.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_2169439901674377866ba3781c9c7672~mv2.jpg"/>
+    <figcaption>
+     <em>
+      The maximum weight is recorded on your registration card.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   The maximum authorised axle load - the weight that can rest on one axle - is also stated in the vehicle register.
+        A passenger car may never weigh more than the maximum weight or have more weight on one axle than stated in the
+        vehicle register. Drivers are therefore advised to exercise caution when loading heavy items into the boot.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_c8300104f8064af6bae3cd64a118c6ab~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Exhaust system
+  </h2>
+  <p>
+   The exhaust system on vehicles with combustion engines runs from the exit of the engine block to the part of the exhaust that (usually) hangs under or in the rear bumper. Problems with the exhaust are often easy to detect as the car will make more noise. The entire exhaust system must meet a number of requirements:
+  </p>
+  <ul>
+   <li>
+    It must be gas-tight across the entire length, with the exception of the drainage holes.
+   </li>
+   <li>
+    It must be properly attached.
+   </li>
+   <li>
+    The system may not produce more noise than stated in the vehicle register, with a maximum excess of 2 decibels. If nothing is stated in the vehicle register, the maximum value is 95 decibels.
+   </li>
+   <li>
+    The system must not emit more CO (carbon monoxide) than prescribed.
+   </li>
+  </ul>
+  <h2>
+   Speedometer
+  </h2>
+  <p>
+   The speedometer and odometer are two different metres. The speedometer shows the speed at which you are driving, while the odometer shows how many kilometres the vehicle has travelled in total.
+  </p>
+  <p>
+   Only the speedometer is required to be functioning, legally, and must be clearly legible in darkness. If the speedometer is not functioning properly, the vehicle may not be driven.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_a34b737df3aa42d6a243d70f52ea07b0~mv2.jpeg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

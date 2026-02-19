@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #0093C3;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #0093C3;
+            /* Kırmızı */
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+
+
+
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+        .images-container7 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .images-container7 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container7 {
+                display: grid;
+                /* Flex yerine Grid kullanımı */
+                grid-template-columns: repeat(3, 1fr);
+                /* 2 sütun yap */
+                width: 100%;
+
+                gap: 10px;
+                /* Daha küçük boşluk */
+            }
+
+            .images-container7 figure {
+                flex: none;
+                /* Grid yapıda esneklik gereksiz */
+            }
+        }
+
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Roundabouts
+  </h1>
+  <p>
+   A roundabout is a special intersection. It consists of a circular main road with a number of side roads. The
+        direction of travel is always counterclockwise. The traffic rules on roundabouts are the same as at an
+        intersection. Again, it depends on whether or not there are signs, how the priority is arranged.
+  </p>
+  <p>
+   If there are no signs, the rule applies that drivers from the right have priority. Drivers on the roundabout
+        should in that case give priority to drivers entering the roundabout. This is not very common anymore. In most
+        roundabouts, priority is controlled by priority signs and road markings.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_4c67ff402a2c4663801c1f1a15adea17~mv2.jpg"/>
+     <figcaption>
+      Right of way on this roundabout is not regulated by signs. Drivers from the right, i.e.
+                    drivers entering the roundabout, have priority over drivers already on the roundabout.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_f3165b1ca0a840fa90060c6c40273ef3~mv2.jpg"/>
+     <figcaption>
+      Right of way on this roundabout is regulated by signs (B-6). Drivers on the roundabout have
+                    right of way. This also applies to the separate cycle path.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   At most roundabouts, road signs govern right of way. When approaching a roundabout, this is usually the B-6 sign
+        (“give right of way to drivers on the intersecting road”). There are almost always priority triangles on the
+        road surface. In this case, drivers going around the roundabout have priority over drivers entering the
+        roundabout.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_e2014b1c07a04d168b5ced04e65aa94b~mv2.png"/>
+     <figcaption>
+      B-6
+                    Give right of way to drivers on the intersecting road
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_4f910f361f144bee90cf84de5d5da1a3~mv2.png"/>
+     <figcaption>
+      D-1
+                    Roundabout, compulsory direction of travel
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Leaving a roundabout is seen as a right turn, and you must indicate in time before leaving a roundabout. Also
+        give way to through traffic on the same road (i.e. the roundabout), including cyclists, snorfietsers, and
+        pedestrians.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_dded973caa7a4b3bba9564943edda9f5~mv2.jpg"/>
+     <figcaption>
+      When entering a roundabout, you do not have to give way to the crossing pedestrian. He is
+                    not a driver.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_dc34b932adf448a5b95094236f8d102b~mv2.jpg"/>
+     <figcaption>
+      When leaving the roundabout, you must give the pedestrian right of way. He will continue to
+                    follow the roundabout you are leaving and is therefore through traffic on the same road.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   At some roundabouts, cyclists, snorfietsers, and pedestrians do not take part in roundabout traffic. In these
+        cases, cycle paths are further away from the roundabout and do not bend and turn with it.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_5857cbe664dd4f7c9ac81bc59f072dd3~mv2.jpg"/>
+     <figcaption>
+      At this roundabout, cyclists do not participate in the priority of the roundabout. They must
+                    give right of way when crossing the road.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_a4ec766f920e477795cea660b986ae1b~mv2.jpg"/>
+     <figcaption>
+      The cyclist crossing the road has to wait for the lesson car to leave the roundabout. The
+                    cyclist is not on the roundabout.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Where the cycle path and footpath or pavement crosses the road, this should be seen as a separate intersection.
+        Usually the cycle path in that case has sign B-6 and priority triangles. If you leave the roundabout, you do not
+        have to give way to snorfietsers, cyclists, and pedestrians.
+  </p>
+  <p>
+   A roundabout can also be designed as a multi-lane roundabout. In that case, most new roundabouts are designed as
+        “turbo roundabouts”. This is a spiral roundabout where, by choosing the right lane at the beginning, you can
+        leave the roundabout in the right place. Choosing the lane in time is important here. It is often not possible
+        to change at the roundabout itself.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_13935f4814784fbf864f2bf2de1687df~mv2.jpg"/>
+     <figcaption>
+      This roundabout consists of several lanes. If you want to go three-quarters (turn left), you
+                    have to start at the roundabout on the inner lane and move halfway up the roundabout to the outer
+                    lane.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_fa5f38bee87343b0a2d4ad9424448c7d~mv2.jpg"/>
+     <figcaption>
+      This roundabout is designed as a multi-lane turbo roundabout. If you choose the correct lane
+                    before you enter the roundabout, you will not have to change lanes on the roundabout.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   On the lead road to the turbo roundabout, there are usually arrows on the road that indicate which lane to take
+        for which direction.
+  </p>
+  <div>
+   <div class="images-container7">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_7c67e799ea32486b96f640c1b0d9240d~mv2.jpeg"/>
+     <figcaption>
+      Turn left
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_d867bf19358c4885bcfd51aa98028f2c~mv2.jpeg"/>
+     <figcaption>
+      Turn left and straight on
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_986f35e1453b4aef80d9f9b05e7c097a~mv2.jpeg"/>
+     <figcaption>
+      Turn left, straight on and turn right
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_d999657511314126b58349e719e77e8d~mv2.jpeg"/>
+     <figcaption>
+      Straight on
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_b6197c2bf68e48f2b82e35bee639470e~mv2.jpeg"/>
+     <figcaption>
+      Straight on and turn right
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_c68f39c3d3b64f1abb8b133c2e6d1181~mv2.jpeg"/>
+     <figcaption>
+      Turn right
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

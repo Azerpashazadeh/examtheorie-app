@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+            margin-bottom: 20px;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container3 strong {
+    display: block; /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+    margin-bottom: 7px; /* Altına 10 piksel boşluk ekler */
+    margin-top: 10px;
+}
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+        }
+
+        .text3 h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+            }
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+            margin-bottom: 15px;
+            margin-top: -5px;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+      
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .images-container6 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Resimler arasında eşit boşluk */
+            gap: 20px; /* Resimler arası boşluk */
+            width: 100%; /* Konteyner genişliği */
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center; /* Figcaption yazılarını ortalar */
+            flex: 1; /* Esnek yapıda genişlik dengeler */
+            max-width: 22%; /* Masaüstünde genişlik */
+        }
+
+        .images-container6 img {
+            width: 100%; /* Resim genişliği */
+            height: auto; /* Resmin orantısını korur */
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em; /* Figcaption yazı boyutu */
+            font-style: italic; /* Yazıları italik yapar */
+            color: #333; /* Figcaption yazı rengi */
+            margin-top: 5px; /* Resim ve yazı arasında boşluk */
+        }
+
+        /* Tablet görünüm (768px altında) - İkili sütun hizalama */
+        @media (max-width: 768px) {
+            .images-container6 figure {
+                max-width: 48%; /* İki sütun için genişlik */
+                flex-basis: 48%; /* İki sütun için esnek genişlik */
+            }
+        }
+
+        /* Küçük mobil görünüm (480px altında) - Tek sütun hizalama */
+        @media (max-width: 540px) {
+    .images-container6 {
+        justify-content: center; /* Ögeleri yatayda ortala */
+    }
+
+    .images-container6 figure {
+        max-width: 100%; /* Tek sütun için tam genişlik */
+        flex-basis: 100%; /* Esnek genişlik */
+    }
+}
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+
+
+
+
+      
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: -10px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   التعامل مع الحوادث والأعطال
+  </h1>
+  <p>
+   كل من يشارك في حركة المرور قد يتعرّض عاجلًا أم آجلًا لعطل أو حادث. من المهم
+        معرفة ما يجب فعله وما لا ينبغي فعله عند وقوع مثل هذه السيناريوهات.
+  </p>
+  <h2>
+   المعدات
+  </h2>
+  <p>
+   على الرغم من أنه غير إلزامي، فإن المعدات المفيدة في سيارة الركاب تشمل:
+  </p>
+  <div class="container3">
+   <div class="item3">
+    <img alt="طفاية حريق" class="image3" src="https://static.wixstatic.com/media/4b688f_41d5d6cc7ea040269d09cadbaa69379b~mv2.jpeg"/>
+    <div class="text3">
+     <strong>
+      طفاية حريق
+     </strong>
+     <p>
+      لإطفاء الحرائق الصغيرة (حديثة الاشتعال). في حال نشوب حريق كبير، غادر المركبة فورًا واتصل بقسم الإطفاء.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="عدة إسعافات أولية" class="image3" src="https://static.wixstatic.com/media/4b688f_05cfcc2b8c1f482da70951ab77329905~mv2.jpeg"/>
+    <div class="text3">
+     <strong>
+      عدة إسعافات أولية
+     </strong>
+     <p>
+      في حال الإصابات الخطيرة، قد تكون الضمادات الضاغطة منقذة للحياة. غير أنّ حقائب الإسعاف الأولي قد تكون قليلة الجدوى دون معرفة كيفية استخدام محتوياتها. لذا يُنصح جميع السائقين بأخذ دورة إسعافات أولية، والتحقق بانتظام من حقيبة الإسعاف في المركبة من حيث تواريخ الانتهاء وجرد المحتويات.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="مثلث تحذير" class="image3" src="https://static.wixstatic.com/media/4b688f_de39076849574454a729537f79e8a80d~mv2.jpeg"/>
+    <div class="text3">
+     <strong>
+      مثلث تحذير
+     </strong>
+     <p>
+      في بعض الحالات عندما تتوقف مركبة، قد تشكّل أيضًا عائقًا يعرقل حركة المرور الأخرى. إذا حدث ذلك وكانت أضواء التحذير لا تعمل، فإن استخدام مثلث التحذير إلزامي. وينطبق ذلك أيضًا إذا كانت أضواء التحذير تعمل لكنها لا تساعد في ضمان رؤية مركبتك في الوقت المناسب من قِبل مستخدمي الطريق الآخرين.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="سترة أمان عاكسة" class="image3" src="https://static.wixstatic.com/media/4b688f_5c40b889fa134d309a71b5657249d9f4~mv2.jpeg"/>
+    <div class="text3">
+     <strong>
+      سترة أمان عاكسة
+     </strong>
+     <p>
+      في حال اضطُرّ السائقون و/أو الركاب إلى الانتظار على جانب الطريق، تُسهم هذه السترات في ضمان أن يتمكّن السائقون المارّون من رؤية الأشخاص المنتظرين. وفي بعض البلدان، يكون ارتداء سترة عاكسة عند حدوث عطل أو حادث إلزاميًا لجميع ركاب المركبة.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="مطرقة أمان" class="image3" src="https://static.wixstatic.com/media/4b688f_01ef729ebd224147b1e2487f93d8c84d~mv2.jpeg"/>
+    <div class="text3">
+     <strong>
+      مطرقة أمان واحدة أو أكثر
+     </strong>
+     <p>
+      عند دخول سيارة الركاب إلى الماء، يمكن استخدام مطرقة الأمان لفتح النوافذ. قد توفّر مطارق الأمان مخرجًا سريعًا لركاب المركبة إذا تعذّر فتح الأبواب. اضرب الزجاج دائمًا عند زاوية النافذة لأنه ينكسر بسهولة أكبر. ومن الأفضل تعليق مطارق الأمان في سقف السيارة فوق البابين الأماميين لتكون أسهل وصولًا في حال وقوع تصادم.
+     </p>
+    </div>
+   </div>
+   <h3>
+    نموذج المطالبة الأوروبية بالتعويض (تقرير الحادث)
+   </h3>
+   <p>
+    يمكن للأطراف المشاركة في حادث تعبئة بياناتهم في نموذج المطالبة الأوروبية بالتعويض، والذي ستعالجه
+        شركة التأمين لاحقًا. ينبغي لجميع الأطراف تعبئة الوجه الأمامي لهذا النموذج - بما في ذلك التواقيع
+        - مباشرة بعد الواقعة. اقسموا الورقتين (الأصل وورقة النسخ) وخذ كل طرف نسخة.
+        املؤوا ظهر النموذج في المنزل وأرسلوه إلى شركة التأمين.
+   </p>
+   <div>
+    <div class="images-container5">
+     <figure>
+      <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_7ce6ef060fb74aeea7f8d8abee204947~mv2.jpeg"/>
+     </figure>
+    </div>
+   </div>
+   <h2>
+    استخدام حارة التوقف الاضطراري (كتف الطريق)
+   </h2>
+   <p>
+    ينبغي استخدام حارة التوقف الاضطراري فقط في حالة العطل أو الحادث أو أي حالة طارئة أخرى.
+        ومع ذلك، فليس من الآمن البقاء على هذه الحارة لفترة طويلة. إذا أمكن على الإطلاق،
+        يُنصح السائقون بالمتابعة عبر حارة التوقف إلى أقرب مخرج أو موقف سيارات أو محطة وقود.
+   </p>
+   <p>
+    إذا لم يكن ذلك ممكنًا، فعلى السائقين البقاء بعيدًا قدر الإمكان عن الطريق. وإذا لزم الأمر، فليكونوا في الحافة.
+        قد تقوم مديرية الأشغال العامة وإدارة المياه (بالهولندية: Rijkswaterstaat) بإغلاق حارة
+        لتسهيل الإصلاحات أو سحب المركبة. تواصل مع خدمات الطوارئ إذا احتجت أيًا مما
+        ذُكر.
+   </p>
+   <div>
+    <div class="images-container5">
+     <figure>
+      <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_451920695e6d4c55afdd41c157efe4fd~mv2.jpeg"/>
+      <figcaption>
+       بسبب العطل على حارة التوقف، أُغلِقت أيضًا الحارة المجاورة لها مباشرة.
+      </figcaption>
+     </figure>
+     <figure>
+      <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_5c37e259b0f84dd5b13e4636a71d7ef5~mv2.jpeg"/>
+      <figcaption>
+       لا تبقَ في المركبة إذا تعطلت على حارة التوقف. ابحث عن مكان خلف
+                    حاجز الاصطدام.
+      </figcaption>
+     </figure>
+    </div>
+   </div>
+   <h2>
+    حادث أو عطل على الطريق السريع
+   </h2>
+   <p>
+    في حال وقوع حادث أو عطل على الطريق السريع، اعتنِ بسلامتك أولًا. لا تعبر الطريق
+        السريع مطلقًا، حتى لو كنت في الجزيرة الوسطى نتيجة حادث. في هذه الحالة، انتظر
+        خدمات الطوارئ خارج المركبة، وفي الجزيرة الوسطى بعيدًا قدر الإمكان عن الطريق. لا
+        تقم بإزالة أجزاء المركبة من سطح الطريق بنفسك؛ واترك ذلك للشرطة أو موظفي
+        مديرية الأشغال العامة وإدارة المياه.
+   </p>
+   <h2>
+    قواعد عند حدوث عطل
+   </h2>
+   <ul>
+    <li>
+     <p>
+      أوقف المركبة بأكبر قدر ممكن من الأمان في موقف، أو منطقة طارئة، أو حارة طوارئ، أو على
+                الحافة.
+     </p>
+    </li>
+    <li>
+     <p>
+      راعِ سلامتك وسلامة ركابك، ويُفضّل ارتداء سترة أمان. أخرج الجميع من
+                السيارة وانقلهم إلى مكان آمن.
+     </p>
+    </li>
+    <li>
+     <p>
+      إن لزم الأمر، ضع مثلث تحذير و/أو شغّل أضواء التحذير. وفي الظلام أو ضعف الرؤية،
+                شغّل أيضًا أضواء الموضع والأضواء الخلفية.
+     </p>
+    </li>
+    <li>
+     <p>
+      أصلِح المشكلة إذا كان ذلك آمنًا أو اتصل بخدمة الطوارئ أو خدمة المساعدة على الطريق.
+     </p>
+    </li>
+    <li>
+     <p>
+      لا تجلس داخل المركبة أثناء الانتظار، بل انتظر على مسافة آمنة، مثلًا خلف
+                حاجز الاصطدام.
+     </p>
+    </li>
+   </ul>
+   <h2>
+    قواعد في موقع الحادث
+   </h2>
+   <ul>
+    <li>
+     <p>
+      قدّم سلامتك أولًا دائمًا! أمّن موقع الحادث إن أمكن.
+     </p>
+    </li>
+    <li>
+     <p>
+      أبلغ خدمات الطوارئ.
+     </p>
+    </li>
+    <li>
+     <p>
+      قدّم الإسعاف الأولي إذا لزم الأمر، وليقم به دائمًا الشخص الأكثر معرفة.
+     </p>
+    </li>
+    <li>
+     <p>
+      حاول تجنّب ازدحام «المساعدين» بإبعاد المتفرجين، وحافظ على مسافة إذا كان
+                هناك ما يكفي من المساعدة في الموقع.
+     </p>
+    </li>
+    <li>
+     <p>
+      استمع إلى مستجيبي الطوارئ، واتبع تعليماتهم ولا تعرقل طريقهم!
+     </p>
+    </li>
+   </ul>
+   <h2>
+    قواعد عند سقوط المركبة في الماء
+   </h2>
+   <p>
+    عند ارتطام المركبة بالماء أثناء القيادة، ينبغي مراعاة ما يلي:
+   </p>
+   <ul>
+    <li>
+     <p>
+      <strong>
+       شغّل جميع الأضواء
+      </strong>
+      عند تشغيل الإضاءة الداخلية والخارجية، تتمكّن من تحديد الاتجاه بشكل أفضل وتصبح السيارة أكثر
+                وضوحًا. اترك المفاتيح في مكان التشغيل.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>
+       فكّ حزام الأمان
+      </strong>
+      إذا لم تتمكن من فكه لأنه عالق، فاقطعه بشفرة مطرقة الأمان.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>
+       افتح النافذة الجانبية أو اكسرها
+      </strong>
+      أو نافذة أخرى إذا تعذّر ذلك. كلما خرجتَ من السيارة أسرع كان أفضل. في معظم السيارات الحديثة
+                تستمر النوافذ الكهربائية بالعمل داخل الماء. إذا لم يعد ذلك يعمل، فاكسر الزجاج
+                بمطرقة الأمان أو أي جسم ثقيل. اضرب الزجاج دائمًا عند زاوية النافذة؛ فهذا يجعل
+                الكسر أسهل. غادر السيارة.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>
+       لا تفتح النوافذ ولا تستطيع كسرها
+      </strong>
+      في هذه الحالة فقط سيتعيّن عليك الانتظار حتى تغمر المياهُ داخل السيارة أيضًا. عندها فقط
+                يمكنك فتح الباب. خذ نفسًا عميقًا قبل أن تمتلئ السيارة ثم ادفع الباب.
+                غادر السيارة.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>
+       ابتعد سباحةً عن السيارة
+      </strong>
+      ابتعد أولًا عن السيارة وأنت تواجهها. وعندما تصبح على مسافة مناسبة، استدر
+                واسبح إلى الضفة. اخرج من الماء واتصل بخدمات الطوارئ.
+     </p>
+    </li>
+   </ul>
+   <div>
+    <div class="images-container5">
+     <figure>
+      <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_99e3342ea073454b9364f83abb461356~mv2.jpeg"/>
+     </figure>
+    </div>
+   </div>
+   <h2>
+    خدمات الطوارئ
+   </h2>
+   <p>
+    في حال وقوع إصابة (محتملة) بعد حادث، اتصل دائمًا بخدمات الطوارئ على رقم الطوارئ،
+        112. قد يبدو الشخص غير مصاب، لكن في بعض الحالات قد تتطوّر إصابة خطيرة دون أن تُرى. كما يمكن
+        للأدرينالين أن يُخفي الألم وبالتالي يُخفي الإصابات الكامنة.
+   </p>
+   <p>
+    عند الاتصال بخدمات الطوارئ، اذكر دائمًا موقعك ونوع المساعدة المطلوبة (شرطة،
+        إسعاف، إطفاء). اذكر دائمًا اسم الشارع وعلامة الهكتومتر على جانب الـautoweg
+        أو الطريق السريع إن وُجدت، أو أي مؤشر آخر لموقعك. ابقَ على الخط حتى يُقال لك خلاف ذلك
+        واتبع أي تعليمات تُعطى لك.
+   </p>
+   <div>
+    <div class="images-container5">
+     <figure>
+      <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_6e41152dfb7645f5b4fa8cfd018ee844~mv2.png"/>
+     </figure>
+    </div>
+   </div>
+   <p>
+    إذا احتجت إلى الإبلاغ عن أي حارة على الطريق السريع وقع فيها الحادث، فعدّ الحارات بدءًا من
+        الجزيرة الوسطى. الحارة اليسرى هي الحارة الأولى. وعلى طريق بثلاث حارات تكون الحارة اليمنى
+        هي الحارة الثالثة.
+   </p>
+   <p>
+    إذا كنت بحاجة إلى مساعدة من الشرطة أو لديك سؤال لكن لا توجد حالة مهدِّدة للحياة،
+        فاتصل بالخط الوطني للشرطة على 0900-8844.
+   </p>
+   <div class="important-words6">
+    <p>
+     أرقام هواتف مهمة:
+    </p>
+    <ul>
+     <li>
+      <p>
+       الطوارئ:
+       <strong>
+        112
+       </strong>
+      </p>
+     </li>
+     <li>
+      <p>
+       الشرطة (غير الطوارئ):
+       <strong>
+        0900-8844
+       </strong>
+      </p>
+     </li>
+     <li>
+      <p>
+       شرطة الحيوانات:
+       <strong>
+        144
+       </strong>
+      </p>
+     </li>
+    </ul>
+   </div>
+   <h2>
+    تقديم الإسعاف الأولي
+   </h2>
+   <p>
+    لا تُنقل المصابين إلا عند الضرورة القصوى. أي فقط إذا كان عدم نقل المصاب
+        أخطر من نقله، مثلًا إذا وقع الحادث على مسار سكة حديد أو كان هناك خطر
+        نشوب حريق. وينطبق الشيء نفسه على المصابين الذين يرتدون خوذة؛ فلا ينبغي
+        نزع الخوذة إلا إذا كان إبقاؤها يشكّل خطرًا أكبر على المصاب، مثل الحاجة إلى
+        التقيؤ وعدم القدرة على التنفّس.
+   </p>
+   <p>
+    تحدّث إلى المصاب وطمئنه، وتأكد من عدم تحرّكه، وليقم شخص آخر بتثبيت رأس المصاب
+        في حال وجود خطر إصابة في الرقبة. إذا كان المصاب فاقد الوعي، فتحقّق مما إذا كان
+        يتنفّس. إذا كان المصاب لا يتنفّس، فليقم الشخص الأكثر معرفة طبية بإجراء الإنعاش
+        القلبي الرئوي. وأبلغ بذلك خدمات الطوارئ أيضًا. إذا كان المصاب يتنفّس لكن هناك خطر
+        تقيؤ أو مشكلة تنفّسية أخرى، فضعه في وضع الإفاقة.
+   </p>
+   <div class="images-container6">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_6d9fb646cc7740929da302ecb54d5f2d~mv2.jpeg"/>
+     <figcaption>
+      الخطوة 1
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_fcaa5dcfeeb94f7ab3c5d4f114ac9a43~mv2.jpeg"/>
+     <figcaption>
+      الخطوة 2
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_74f691fe4ba34669a0ca0d5f5d55a4f8~mv2.jpeg"/>
+     <figcaption>
+      الخطوة 3
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_26f6cd5d173349388b3bd007872281c2~mv2.jpeg"/>
+     <figcaption>
+      وضع الإفاقة
+     </figcaption>
+    </figure>
+   </div>
+   <p>
+    كي تتمكّن من مساعدة المصابين عمليًا، يُنصح بأخذ دورة إسعافات أولية.
+   </p>
+   <h2>
+    حوادث المركبة الواحدة
+   </h2>
+   <p>
+    الإبلاغ عن حوادث المركبة الواحدة إلزامي إذا نتج عنها ضرر لممتلكات شخص آخر
+        أو ممتلكات بلدية. يجب الإبلاغ لمالك الممتلكات إن أمكن، أو للشرطة. يُحظر
+        مغادرة موقع حادث مركبة واحدة ترتّب عليه ضرر دون تقديم بياناتك.
+   </p>
+   <p>
+    كما أن الإبلاغ عن التصادمات التي تشمل حيوانات، مثل القطط والكلاب والحيوانات البرّية كالغزلان،
+        أمرٌ إلزامي. وفي الحالة الأخيرة، ينبغي للسائقين الاتصال بشرطة الحيوانات على الرقم 144.
+        وهي شعبة خاصة ضمن الشرطة العادية.
+   </p>
+   <h2>
+    المواد الخطرة
+   </h2>
+   <p>
+    عند وقوع حادث لمركبة تنقل مواد خطرة، من المهم معرفة المواد التي تنقلها المركبة وما الخطر الذي تمثّله.
+        هذه المعلومات حيوية لجهات الطوارئ وغيرهم.
+   </p>
+   <p>
+    يشير رقم تعريف الخطر (GEVI، ويُعرف أيضًا برقم KEMLER) إلى نوع الخطر الذي تمثّله
+        المادة المنقولة. ويشير رقم تعريف المادة (STID) إلى المادة التي تُنقل. لكل مادة رمزها الخاص،
+        مثل 1203 للبنزين و1202 للديزل. يُشار إلى رقم تعريف الخطر (في الأعلى) ورقم تعريف المادة (في الأسفل)
+        على لوحة في الشاحنة.
+   </p>
+   <div>
+    <div class="images-container5">
+     <figure>
+      <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_9a2967e37ac140f18392c6a42ab19ddd~mv2.png"/>
+     </figure>
+    </div>
+   </div>
+   <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+    العودة إلى
+    نظرة عامة
+   </a>
+
+   
+  </div>
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

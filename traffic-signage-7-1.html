@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+        .images-container6 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .images-container6 p {
+            flex: 1;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .images-container6 img {
+            width: 90%;
+            height: auto;
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .images-container6 {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+ 
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Traffic signage</h1>
+    <p>
+        Traffic signage include:
+    </p>
+    <ul>
+        <li>
+            <p>
+                traffic signs and supplementary plates;
+            </p>
+        </li>
+        <li>
+            <p>
+                road surface markings (such as lines and priority triangles);
+            </p>
+        </li>
+        <li>
+            <p>
+                traffic lights.
+            </p>
+        </li>
+    </ul>
+    <p>
+        All road users must adhere to the traffic signs that contain an obligation (obligatory action) or prohibition
+        (prohibited action).
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_04e78749997d468cb56b93db8a31478f~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Obligation signs are mostly blue
+                    (You have to turn right here)
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a79fcb6518584f1eae8c403064df01cd~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Prohibition signs are mostly red or have a red edge
+                    (You are not allowed to drive in here)
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Traffic signs override traffic rules, insofar as these signs and rules refer to the same situation.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ba691fc23a234c23a3fbb9d8847e0048~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Situation 1, no traffic signs
+                    The cyclist goes first, then the driver of the lesson car and finally the red car.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_8ed4cca697df463ea1554867ae401a78~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Situation 2, with traffic signs
+                    The red car goes first, then the cyclist and lastly the driver of the lesson car.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Assuming you are in the lesson car, you must adhere to the following in situation 1:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Drivers give right of way to drivers coming from the right.</strong>
+                The driver of the red car gives you and the cyclist priority.
+
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Through traffic has right of way over turning traffic on the same road.</strong>
+                The cyclist riding straight on has right of way.
+            </p>
+        </li>
+    </ul>
+    <p>
+        In situation 2 you are dealing with traffic sign B-6 and priority triangles, which indicate that you must give
+        priority to crossing drivers.
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Drivers do not have to give right of way to drivers coming from the right.</strong>
+                The driver of the red car does not have to give right of way to you and the cyclist.
+
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Through traffic still has right of way over turning traffic.</strong>
+                You have to give way to the cyclist continuing straight on.
+            </p>
+        </li>
+    </ul>
+    <h2>
+        Temporary signs
+    </h2>
+    <p>
+        Sometimes temporary signs or road markings are placed. For example, during roadworks. There you can encounter
+        both white (normal) markings and yellow (temporary) markings on the road surface. There may also be yellow
+        traffic signs. In that case, the yellow traffic signs and markings apply instead of the normal ones.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f77ed30b0bf547bf9abe42515c2718d6~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The passenger car must follow the yellow temporary lines here.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b6b9f0a1ef274ccb973e2d59761457d2~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The road straight ahead to Woerden is closed. To go to Woerden you now have to (temporarily)
+                    turn right.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+
+    <h2>
+        Electronic matrix signs
+    </h2>
+    <p>
+        Electronic matrix signs also classed as traffic signs that contain an obligation or prohibition. These can
+        display a speed limit or, for example, a prohibition to use the lane, or to indicate that the rush hour lane is
+        open.
+    </p>
+    <p>
+        If a different speed is stated on the electronic matrix signs than on the traffic signs in the verge, the lowest
+        indicated speed applies. Usually this is the speed on the electronic matrix signs.
+    </p>
+    <p>
+        What is displayed on an electronic matrix sign can differ per lane. The displayed sign then only applies to that
+        lane.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c5178b8bdf0447e29b2f99fb9385411f~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>All lanes on this road are open. This can be seen by the green arrows above the lanes and
+                    the sign next to the road.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c796849327ea447bbaefcae820e3e3c0~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>In this case, the hard shoulder is closed because a vehicle has broken down and is
+                    stationary on it. For safety reasons, the next lane has a lower speed limit than the other two
+                    lanes.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Traffic lights and priority signs
+    </h2>
+    <p>
+        If there are working traffic lights, these take priority to the traffic signs. Other priority signs and markings
+        (like priority triangles on the road surface) no longer apply. Only when the traffic lights are out of order
+        will the traffic signs and markings that regulate the priority apply again.
+    </p>
+
+    <div class="important-words6">
+
+        <p>
+            <strong>Warning!</strong> There are some traffic rules that continue to apply, also at traffic lights:
+
+        </p>
+        <ul>
+            <li>
+                <p>
+                    Through traffic has right of way over turning traffic on the same road.
+                </p>
+            </li>
+            <li>
+                <p>
+                    A short turn has right of way over a long turn.<br>
+                    If two drivers of opposite direction meet and they both want to enter the same road, the driver who
+                    turns right has right of way over the driver who turns left.
+                </p>
+            </li>
+        </ul>
+        <p>
+            When turning off at traffic lights with <strong>round lamps</strong> instead of <strong>arrow shaped ones,</strong> you may encounter oncoming
+            traffic or traffic alongside you that has a green light at the same time. This may be through traffic -
+            including pedestrians - or traffic turning off. You must give way according to the rules stated above.
+        </p>
+        <p>
+            For example, if you turn left, you must give way to oncoming through traffic, and traffic turning right.
+        </p>
+    </div>
+
+   
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_36accb90a8984ec0ad3086da925dbf8f~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The lesson car and the pedestrian have the green light at the same time.
+                    In this case, the lesson car must wait for the pedestrian to cross.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a333d08f164f42a3ac394f0e72f49d0a~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The lesson car is turning left here at a round traffic light and must give way to the oncoming driver who is turning right.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Hierarchy traffic signage, directives and rules
+    </h2>
+
+
+
+
+
+    <div>
+        <div class="images-container6">
+            <p>
+                Sometimes you can find that rules, signage or directives are not compatible with each other. In that case there is a hierarchy between these. In the picture you can see how this hierarchy works. Rules are the basis. As soon as there are traffic signs that state otherwise, they take precedence over the rules. As soon as there are traffic lights, the priority signs no longer apply. And directions by authorised persons overrule all rules, signs and traffic lights.
+            </p>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_972ff3d663144aac93556f1fe3a57dc3~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>
+                   
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+ <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

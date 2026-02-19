@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+    <h2>
+   Gebruikseisen
+  </h2>
+  <p>
+   Gebruikseisen hebben betrekking op het gebruik van een auto, zoals hoe passagiers en lading moeten worden vervoerd en hoe ver lading mag uitsteken.
+  </p>
+  <h2>
+   Slepen
+  </h2>
+  <p>
+   Als u een voertuig moet slepen vanwege pech, of als uw voertuig gesleept moet worden, moet u zich aan bepaalde regels houden:
+  </p>
+  <ul>
+   <li>
+    De afstand tussen de twee voertuigen mag niet meer dan 5 meter bedragen.
+   </li>
+   <li>
+    Een motorvoertuig mag niet meer dan één motorvoertuig slepen, en u mag ook geen samenstel van voertuigen slepen.
+   </li>
+   <li>
+    Een combinatie van voertuigen mag geen motorvoertuig slepen.
+   </li>
+   <li>
+    U kunt met een personenauto geen tweewielige motorfiets of bromfiets slepen, en een personenauto mag ook niet door een tweewielige motorfiets of bromfiets worden gesleept.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_d688daf8776f4080bec74d849bd26c0b~mv2.jpg"/>
+    <figcaption>
+     <em>
+      De afstand tussen twee voertuigen waarvan er één gesleept wordt, mag niet meer dan vijf meter zijn.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_1d1279171b944d979bd57cfc41c5b990~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Bij het vervoeren van lading mag de manoeuvreerbaarheid van de bestuurder op geen enkele manier worden belemmerd. Vervoer zoals op de afbeelding hierboven is daarom niet toegestaan.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Hinder door lading of passagiers
+  </h2>
+  <p>
+   De bestuurder van een personenauto mag tijdens het besturen niet worden gehinderd door passagiers of lading. Rijden is verboden als lading bijvoorbeeld de toegang tot de versnellingspook of het zicht in de rechterbuitenspiegel blokkeert.
+  </p>
+  <h2>
+   Voldoende zicht op de omgeving
+  </h2>
+  <p>
+   De bestuurder van een personenauto moet te allen tijde voldoende zicht hebben op de directe omgeving van het voertuig. Dit geldt ook bij het vervoeren van een aanhangwagen achter het voertuig of lading in of op het voertuig. Zicht door de voorruit en de voorste zijruiten mag nooit worden belemmerd. De buitenspiegels moeten ook voldoende zicht langs en achter de auto of aanhangwagen bieden. Is dat niet het geval, dan moeten caravan-/aanhangwagenspiegels of een camerasysteem worden gebruikt.
+  </p>
+  <p>
+   Deze regels gelden niet voor de binnen-/achteruitkijkspiegel.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_b9caade9f98c45a5aedcedceff60b342~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Als u met de normale spiegels niet langs de aanhangwagen of caravan kunt kijken, zijn extra spiegels verplicht. De gele lijnen geven de breedte van de caravan aan. Is die breder dan de breedte van de normale spiegels, dan volstaan de normale spiegels niet.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Vastzetten van lading
+  </h2>
+  <p>
+   Lading die in of op een personenauto of aanhangwagen wordt vervoerd, mag niet kunnen verschuiven of van het voertuig vallen. Het is daarom verplicht alle lading vóór vertrek deugdelijk vast te zetten. Dit geldt ook voor lading in de auto, die de bestuurder niet mag hinderen.
+  </p>
+  <p>
+   Het vastzetten van lading moet aan een aantal eisen voldoen:
+  </p>
+  <ul>
+   <li>
+    De wijze van bevestigen moet voldoende krachten kunnen weerstaan, zowel in de rijrichting als zijwaarts, naar achteren en omhoog, zoals bij verkeersdrempels.
+   </li>
+   <li>
+    Losse lading die niet kan worden vastgezet (bijv. zand of bladeren) moet worden afgedekt met een net of zeil als deze van het voertuig kan vallen of waaien.
+   </li>
+   <li>
+    De bevestigingsmiddelen moeten geschikt zijn voor het doel waarvoor ze worden gebruikt.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_202ce935139347659caec13fdd5492c9~mv2.jpg">
+     <figcaption>
+      <em>
+       Als u een grote lading in de aanhangwagen vervoert, moet u deze goed vastzetten, bijvoorbeeld met spanbanden of touwen.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_96c96cfc36e04449886496d8617556b8~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Vervoert u losse lading in de aanhangwagen, dan moet deze worden afgedekt met een net of afdekzeil. Er mag niets kunnen wegwaaien of afvallen.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Uitstekende lading
+  </h2>
+  <p>
+   Net als bij voertuigen mag lading geen scherpe delen bevatten die bij een aanrijding letsel kunnen veroorzaken. Uitstekende stompe delen moeten worden afgeschermd als onbedekt laten het risico op letsel vergroot.
+  </p>
+  <h2>
+   Lastdrager
+  </h2>
+  <p>
+   Lading op een lastdrager vervoeren is alleen toegestaan als de lastdrager daarvoor bedoeld is. Een fietsendrager mag bijvoorbeeld alleen worden gebruikt om fietsen te vervoeren – en alleen het aantal fietsen dat volgens het ontwerp is toegestaan.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_85a65e8e2e634d3191d4fd44d3338a9e~mv2.jpg"/>
+    <figcaption>
+     <em>
+      U mag alleen fietsen vervoeren op een fietsendrager. Een koffer vervoeren is niet toegestaan.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_5b6bbf105a37447192750ca26fde3f30~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Als een lastdrager de kentekenplaat en achterlichten van een personenauto afdekt, moet hij zijn voorzien van geïntegreerde verlichting en een witte kentekenplaat.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   De lading en de lastdrager moeten ook aan de volgende eisen voldoen:
+  </p>
+  <ul>
+   <li>
+    De goederen en de lastdrager zelf moeten deugdelijk zijn bevestigd.
+   </li>
+   <li>
+    De lastdrager, inclusief de lading, mag niet meer dan 20 centimeter buiten de zijkanten van het voertuig uitsteken.
+   </li>
+   <li>
+    Als de verlichting van de personenauto door de lastdrager wordt afgedekt, moet op de lastdrager de volgende verlichting aanwezig zijn:
+   </li>
+   <ul class="dash-list">
+    <li>
+     twee rode achterlichten;
+    </li>
+    <li>
+     twee rode remlichten;
+    </li>
+    <li>
+     twee rode retroreflectoren;
+    </li>
+    <li>
+     twee amberkleurige richtingaanwijzers.
+    </li>
+   </ul>
+   <li>
+    Als de kentekenplaat van de personenauto door de lastdrager wordt afgedekt, moet op de lastdrager een witte kentekenplaat met hetzelfde kenteken als de personenauto zijn aangebracht. Deze moet een goedkeuringsmerk hebben en kentekenplaatverlichting moet aanwezig zijn.
+   </li>
+  </ul>
+  <p>
+   Als de lastdrager op de trekhaak of aan de voorkant van de aanhangwagen is gemonteerd, gelden de volgende eisen:
+  </p>
+  <ul>
+   <li>
+    De kogeldruk (ook wel maximale last op de kogel) mag niet hoger zijn dan voor deze personenauto is opgegeven. Als dit niet is vastgelegd, mag deze nooit meer dan 75 kg bedragen.
+   </li>
+   <li>
+    De lastdrager zelf, of delen daarvan, mag bij normaal gebruik de weg niet raken.
+   </li>
+   <li>
+    De lastdrager of (resterende) delen daarvan mogen de manoeuvreerbaarheid van een aangekoppelde aanhangwagen niet hinderen.
+   </li>
+  </ul>
+  <p>
+   Worden goederen op het dak van een personenauto vervoerd, dan moet dit voldoen aan de volgende eisen:
+  </p>
+  <ul>
+   <li>
+    Het vervoer moet plaatsvinden met behulp van een daarvoor bedoelde lastdrager.
+   </li>
+   <li>
+    De lastdrager en de goederen moeten deugdelijk zijn bevestigd.
+   </li>
+   <li>
+    De maximale toegestane daklast (het gewicht op het dak) mag niet worden overschreden.
+   </li>
+  </ul>
+  <p>
+   De maximale toegestane daklast en de kogeldruk zijn te vinden in het instructieboekje van het voertuig (of op de trekhaak).
+  </p>
+  <h2>
+   Uitstekende lading bij personenauto’s
+  </h2>
+  <p>
+   Bij het beladen van een voertuig maken we onderscheid tussen deelbare en ondeelbare lading.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Deelbare lading
+   </h3>
+   <p>
+    Lading die in meerdere delen kan worden vervoerd en daarom vaak op verschillende manieren in of op een voertuig kan worden geladen.
+   </p>
+   <h3>
+    Ondeelbare lading
+   </h3>
+   <p>
+    Lading die tijdens wegvervoer niet in kleinere stukken kan worden verdeeld zonder schade of onnodige kosten te veroorzaken. Dit kan bijvoorbeeld ladders, glasplaten of lange houten planken betreffen.
+   </p>
+  </div>
+  <p>
+   Lading moet altijd op de best mogelijke manier worden vervoerd, zodat deze zo min mogelijk hinder veroorzaakt voor het overige verkeer. De maximale uitsteek (hoe ver iets buiten het voertuig mag uitsteken) voor verschillende ladingen is als volgt:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Zijkanten
+    </strong>
+    <p>
+     Als u een brede lading op het dak van uw personenauto vervoert, mag deze lading maximaal 20 centimeter per zijde uitsteken. Het maakt geen verschil of het om deelbare of ondeelbare lading gaat.
+    </p>
+   </li>
+   <div class="image-container1">
+    <figure>
+     <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_6b69afdbfdaa4d3988aedf6dd091b909~mv2.jpg"/>
+     <figcaption>
+      <em>
+      </em>
+     </figcaption>
+    </figure>
+   </div>
+   <li>
+    <strong>
+     Voorzijde
+    </strong>
+    <p>
+     Lading mag aan de voorzijde van een personenauto niet uitsteken – tenzij de lading in de lengte ondeelbaar is; in dat geval mag deze maximaal één meter uitsteken.
+    </p>
+   </li>
+   <li>
+    <strong>
+     Achterzijde
+    </strong>
+    <p>
+     Lading mag aan de achterzijde van een personenauto maximaal één meter uitsteken. De afstand tussen de achteras en het uiteinde van de lading mag nooit meer dan vijf meter zijn. Dit geldt zowel voor deelbare als ondeelbare lading.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_3bb5c9f660b64067beee327806f354a3~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <div class="important-words2">
+   <p>
+    Het belangrijkste verschil tussen
+    <strong>
+     deelbare
+    </strong>
+    en
+    <strong>
+     ondeelbare
+    </strong>
+    lading is dat ondeelbare lading vóór een personenauto mag uitsteken, terwijl deelbare lading dat niet mag.
+   </p>
+   <p>
+    Lading mag nooit zó ver uitsteken dat een personenauto langer, hoger of breder wordt dan is toegestaan. Lading mag dus niet meer bedragen dan:
+   </p>
+   <ul>
+    <li>
+     12 meter lengte;
+    </li>
+    <li>
+     4 meter hoogte;
+    </li>
+    <li>
+     2,55 meter breedte.
+    </li>
+   </ul>
+   <p>
+    Combinaties (personenauto plus aanhangwagen) mogen niet langer zijn dan 18 meter.
+   </p>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

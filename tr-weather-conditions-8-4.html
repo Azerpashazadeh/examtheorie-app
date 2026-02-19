@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #D5176A;
+        }
+
+
+
+        .gh3 {
+            color: #D5176A;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 150px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #FACAD2;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+
+
+
+        .important-words23 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        /* Resim ve açıklama hizalaması */
+        .image-container23 {
+            text-align: center;
+            /* Resim ve alt yazıyı ortalar */
+            margin-top: 10px;
+        }
+
+        .image-container23 img {
+            display: block;
+            margin: 0 auto;
+            /* Resmi ortalar */
+            max-width: 100%;
+            /* Responsive */
+            height: auto;
+        }
+
+        .image-container23 figcaption {
+            font-size: 14px;
+            color: #444;
+            margin-top: 5px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hava koşulları
+    </h1>
+    <p>
+        Hava, trafiği büyük ölçüde etkileyebilir ve sürücülere takip mesafelerini hava koşullarına göre ayarlamaları
+        tavsiye edilir. Yağış; daha uzun fren mesafesine, düşük görüşe ve olası suda kızaklamaya yol açar. Bazı hava
+        durumları daha belirgindir, bazıları ise aniden ortaya çıkabilir. Deneyimsiz sürücüler özellikle risk altındadır.
+    </p>
+
+    <div class="important-words1">
+        <div class="vertical-line2"></div>
+        <h3>Oluklar</h3>
+        <p>
+            Yük taşımacılığı gibi ağır yükler nedeniyle yol yüzeyinde oluşan boyuna kanallar. Otoyollarda oluklanma
+            çoğunlukla sağ şeritte görülür.
+        </p>
+        <h3>Suda kızaklama (aquaplaning)</h3>
+        <p>
+            Lastik ile yol yüzeyi arasında oluşan su tabakası; lastiklerin yol tutuşunu azaltır. Lastik dişleri büyük
+            miktardaki suyu tahliye edemez. Bu durum çoğunlukla yol oluklarında görülse de, oluk olmayan yollarda da
+            meydana gelebilir.
+        </p>
+
+
+    </div>
+    <h2>
+        Yağmur
+    </h2>
+    <p>
+        Yağmur her zaman daha kaygan bir yol yüzeyi oluşturur. Ancak uzun bir kuraklığın ardından yağan yoğun yağmurda
+        yol çok kısa sürede son derece kaygan hâle gelebilir. Lastik kalıntıları, yağ ve kir suyla karışarak yol
+        üzerinde kaygan bir tabaka oluşturur. Sonbaharda, düşen yapraklar yağmurda tehlikeli derecede kaygan olabilir.
+    </p>
+    <p>
+        Yoğun yağışta, özellikle oluklanmanın fazla olduğu yollarda suda kızaklama riski çok gerçektir. İyi lastik
+        bakımı ve daha düşük hızlar suda kızaklamayı önlemeye yardımcı olabilir.
+    </p>
+
+    <div class="important-words1">
+
+
+        <p>
+            Yeterli lastik basıncı, iyi diş derinliği ve düşük hızlar suda kızaklamayı önlemeye yardımcı olur. Geniş
+            lastikli hafif binek araçlar, dar lastikli ağır araçlara göre suda kızaklamaya daha yatkındır.
+        </p>
+        <p>
+            Suda kızaklama olursa, yavaşça <strong>gazı bırakın</strong> ve <strong>debriyajı kullanın</strong>. Araç
+            yeniden tutuş kazanana kadar <strong>fren veya direksiyon</strong> uygulamayın! Bakışınızı gitmek
+            istediğiniz yöne sabitleyin.
+        </p>
+        <p>
+            Suda kızaklama durumunda debriyaja basmak, tekerleklerin tutuş geri geldiğinde doğru hıza dönmesini sağlar.
+        </p>
+
+
+    </div>
+    <h2>
+        Don nedeniyle kayganlık
+    </h2>
+    <p>
+        Özellikle kışın, ıslak yol yüzeyleri donar ve çok kaygan olur. Gölge alanlar güneş almadığı için daha çabuk
+        kayganlaşır ve daha uzun süre öyle kalır. Ayrıca köprü ve viyadüklerin alttan donması nedeniyle aniden kaygan
+        hâle gelebileceğine dikkat edilmelidir.
+    </p>
+    <p>
+        Sıcaklık donma noktasının üzerinde olsa bile, zemin daha soğuk olabilir ve kayganlık görülebilir. Buna zemin
+        donu denir.
+    </p>
+    <p>
+        Kaygan yol yüzeyleri önceden fark edilmesi zor olduğu için tehlikelidir. Bu nedenle ısı 4°C’nin altına düştüğünde
+        viraj ve kavşaklarda hızınızı ayarlayın ve yeterli takip mesafesi bırakın.
+    </p>
+    <div class="important-words1">
+
+
+        <p>
+            Sürüş tarzınızı yalnızca don nedeniyle kayganlıkta değil; yolda çamur nedeniyle kayganlık olduğunda ya da
+            daha zayıf (yumuşak) bankete mecburen kaçtığınızda da uyarlamalısınız. Bu durumlarda şunları aklınızda
+            tutun:
+        </p>
+        <ul>
+            <li>
+                <p>
+                    <strong>
+                        Hiçbir şeyi ani yapmayın!
+                    </strong>Yani birden fren yapmayın veya sert direksiyon hareketleri yapmayın.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <strong>
+                        Gazı bırakın
+                    </strong>Hızınızı düşürdüğünüzden emin olun.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <strong>Gerekmedikçe debriyaja basmayın</strong>Debriyajın basılı olması, aracın daha yüksek hızla
+                    akmaya devam etmesine ve kontrolünüzün azalmasına yol açar.
+                </p>
+            </li>
+            <li>
+
+                <p><strong>Daha düşük hıza ulaşmayı bekleyin</strong>Gerekirse, yalnızca daha düşük hızda tekrar taşıt
+                    yoluna yönelin. Tutuşunuz olup olmadığını kontrol edin ve aracınız tepki vermiyorsa <span class="inline">yapmayın</span>!
+                </p>
+
+            </li>
+            <p>
+                Doğru konuma yeniden geçtiğinizde ve kayganlık sona erdiğinde, hızınızı tekrar artırabilirsiniz. Yeni
+                kaygan bölgelere karşı dikkatli olun. Yukarıdakilerin tümü, bunu hiç yaşamamış sürücüler için oldukça
+                zordur. Fren yapma yönündeki ilk refleksi bastırmak güçtür. Bir kayma (skid) kursu yardımcı olabilir.
+            </p>
+
+        </ul>
+
+
+
+    </div>
+    <h2>
+        Don hasarı
+    </h2>
+    <div class="important-words23">
+        <div class="container">
+            <div>
+                <p>
+                    Don, yol yüzeyine de zarar verebilir. Asfalttaki su donar ve genleşir; asfaltın zayıf noktalarını
+                    gevşeterek üst tabakada çukurlar oluşturur. Don hasarı olan yollarda fren mesafesi belirgin şekilde
+                    uzundur.
+                </p>
+            </div>
+
+            <figure class="image-container23">
+                <img src="https://static.wixstatic.com/media/4b688f_94a2690f579b4b9380f2688c1b5a9250~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>J-1<br>Kötü yol yüzeyi</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Kış yağışları
+    </h2>
+    <div class="important-words23">
+        <div class="container">
+            <div>
+
+                <p>
+                    Donun yanı sıra kar, sulu kar (donan yağmur) ve dolu da kayganlığa neden olarak trafik için risk
+                    oluşturur. Kış yağışları görüşü azaltır. Özellikle kar yağışı sürücüleri dikkati dağıtarak yorar ve
+                    odaklanmayı etkiler.
+                </p>
+
+                <p>
+                    Kış koşullarında trafik işaretlerini ve yol çizgilerini net görmek zorlaşabilir. Bazı öncelik
+                    işaretleri şekillerinden tanınabilir. Kar yağışında bundan yararlanabilirsiniz.
+
+
+                </p>
+            </div>
+            <figure class="image-container23">
+                <img src="https://static.wixstatic.com/media/4b688f_dcb205c37784482a91b19ae9a4c3dfcc~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>J-36<br>
+                    Sulu kar (donan yağmur) veya kar</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <p>
+        Kışın güvenli sürüş için artırılmış takip mesafesi ve defansif sürüş de kritiktir. İleriye bakın, gazı zamanında
+        bırakın ve ani frenlerden kaçının. Görüş 200 metrenin altındaysa ön sis lambalarını kullanın.
+    </p>
+    <h2>
+        Sis
+    </h2>
+    <div class="important-words23">
+        <div class="container">
+            <div>
+
+                <p>
+                    Havada asılı kalan küçük su damlacıklarından oluşan sis, görüşü azaltabilir. Birçok sürücü, sis
+                    bulutuna girerken bunu beklemeden karşılar ve refleks olarak fren yapar. Sisli havada ani frenler,
+                    arkadaki sürücüleri hazırlıksız yakalayabilir. Çarpışmayı önlemek için takip mesafesini artırın ve
+                    gereksiz fren yapmayın. Çoğu durumda gazı bırakmak daha güvenlidir.
+                </p>
+            </div>
+            <figure class="image-container23">
+                <img src="https://static.wixstatic.com/media/4b688f_abe563f08d0547f5a847a4ac9b75e058~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>J-35<br>
+                    Kar, yağmur veya sis nedeniyle azalmış görüş</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Görüş 200 metrenin altındaysa ön sis lambalarını kullanın. 50 metrenin altındaysa arka sis lambalarını da
+        kullanın.
+    </p>
+
+    <div class="important-words2">
+
+
+        <p>
+            <strong>Sis: Hızınızı yarıya indirin ve takip mesafenizi iki katına çıkarın.</strong>
+
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_88c22c8d43b34636abc3572e4748eb4f~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Yoğun siste sürerken hızınızı yarıya indirin ve takip mesafenizi iki katına çıkarın.
+                </figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7d51144d3836404887031dc6f92f361f~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Yüksek araçlar yan rüzgâra çok hassastır.</figcaption>
+
+
+            </figure>
+
+
+        </div>
+    </div>
+    <h2>
+        Yan rüzgâr (yandan esen rüzgâr)
+    </h2>
+    <div class="important-words23">
+        <div class="container">
+            <div>
+
+                <p>
+                    Rüzgâr tulumları, yan rüzgâr riskinin arttığı bölgelerde sıkça bulunur. Tulum ne kadar yataysa,
+                    rüzgâr o kadar kuvvetlidir. Rüzgâr tulumları aynı zamanda rüzgârın yönünü de gösterir.
+                </p>
+                <p>
+                    Özellikle rüzgâr yol eksenine çapraz geldiğinde, sürücüler aracın dengesini etkileyebilecek esintileri
+                    öngörmelidir.
+                </p>
+            </div>
+            <figure class="image-container23">
+                <img src="https://static.wixstatic.com/media/4b688f_2b73b19d7a3648378313fa5725ff0342~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>J-31<br>
+                    Yan rüzgâr</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <p>
+        Araç ne kadar yüksek ve hafifse, rüzgârın oluşturduğu risk o kadar fazladır. Römorklar da rüzgârda yalpalayabilir.
+        Hızınızı rüzgâra göre ayarlayın ve aracınızın etrafında yeterli boşluk bırakın.
+    </p>
+
+
+
+     <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+      
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

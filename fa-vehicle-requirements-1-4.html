@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Vehicle requirements
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Motor carriage
+   </h3>
+   <p>
+    All engine-driven vehicles. These may not require rails for mobilisation (e.g. train, metro, or tram). This
+            does not include bicycles with pedal assistance. Attention: Does include trolley buses and speed pedelecs!
+   </p>
+   <h3>
+    Driver of a motor carriage
+   </h3>
+   <p>
+    The person driving a motor carriage or under whose immediate supervision a motor carriage is being driven
+            (e.g. a driving instructor).
+   </p>
+   <h3>
+    Holder of a motor carriage or trailer
+   </h3>
+   <p>
+    Someone who rents, borrows, or leases a vehicle for an extended period of time. This does not imply or refer
+            to the owner.
+   </p>
+  </div>
+  <p>
+   A vehicle must meet certain technical requirements before it can be operated on public roads. If a manufacturer
+        releases a new car model, it must first be typeapproved by the Road Traffic Service (RDW) before it can be sold
+        in the Netherlands.
+  </p>
+  <p>
+   Modifying your car in any way could invalidate the type approval, rendering your car unfit for public roads.
+        This means the car no longer meets the permanent technical requirements and must be re-approved.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_2559cc594ba147569d7fd649f4b6da31~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Mounting a large spoiler on your car may invalidate the vehicle’s compliance with technical
+                    requirements.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_3180365165ab426494593afe9faef72d~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Replacing a vehicle’s exhaust with a different type of exhaust can also lead to problems.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Registration number
+   </h3>
+   <p>
+    Unique identifier consisting of a combination of numbers and letters that is issued to a type-approved and
+            registered vehicle subject to registration.
+   </p>
+   <h3>
+    Number plate
+   </h3>
+   <p>
+    Rectangular plate on which the registration number is visible. This plate must be attached to the vehicle
+            registered with this registration number.
+   </p>
+   <h3>
+    Registration certificate
+   </h3>
+   <p>
+    Proof issued to the owner or holder of a vehicle. Contains vehicle information and registration number.
+   </p>
+   <h3>
+    National vehicle register
+   </h3>
+   <p>
+    National database in which all registration numbers and associated data are stored.
+   </p>
+  </div>
+  <h2>
+   Awaiting inspection (WOK, ‘Wachten Op Keuren’)
+  </h2>
+  <p>
+   If an inspection detects a problem with your vehicle, its registration certificate may be temporarily
+        invalidated. This may be due to modifications you have made to the vehicle, or damage caused by a collision.
+  </p>
+  <p>
+   If your vehicle’s registration certificate is temporarily invalidated, it will be marked in the vehicle register
+        as “road use prohibited”. This is also known as ‘waiting for approval’ or ‘WOK’ status. The vehicle must then be
+        re-tested at the RDW. You may not operate the vehicle until it has been re-approved.
+  </p>
+  <p>
+   If your vehicle is under WOK status, the registration certificate will not physically be confiscated, but the
+        national register will show that the vehicle may not be driven.
+  </p>
+  <p>
+   Authorised people can also require you to make the car available at an agreed time and place, for example for
+        further investigation.
+  </p>
+  <h2>
+   Unknown owner
+  </h2>
+  <p>
+   If it is unclear who owns a vehicle that is on a public road, for example due to the lack of a clearly legible
+        number plate, the vehicle may be towed and held until the owner comes forward. Before towing a vehicle, a wheel
+        clamp may be placed for up to two days as a way of tracing the owner.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

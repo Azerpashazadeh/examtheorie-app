@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 50%;
+            height: auto;
+            margin-right: 20px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            margin-right: -150px;
+            padding-right: 20px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 30px;
+
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .important-words4 img {
+                width: 30%;
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+                margin-right: -220px;
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* sağa hizala */
+        }
+
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        المتطلبات العامة - الجزء 3
+    </h2>
+    <h2>
+        الرؤية عبر النوافذ
+    </h2>
+    <p>
+        لضمان مشاركةٍ آمنة في حركة المرور، تُعدّ الرؤيةُ الكافية عبر النوافذ أمرًا مهمًا. وتُطبَّق متطلباتٌ على الزجاج
+        الأمامي والنوافذ الجانبية الأمامية:
+    </p>
+    <ul>
+        <li>
+            يجب ألّا تكون هذه النوافذ متضرّرة أو متغيّرة اللون.
+        </li>
+        <li>
+            يجب أن تخلو من الأشياء غير الضرورية التي قد تحجب الرؤية، مثل المعلّقات من مرآة الرؤية الخلفية أو زينة لوحة
+            العدّادات وأنظمة الملاحة المثبّتة بشكلٍ غير صحيح.
+        </li>
+        <li>
+            يجب ألّا تقلّ شفافيتها عن 55% (مثل الزجاج الملوّن).
+        </li>
+        <li>
+            يجب أن يكون لدى الزجاج الأمامي كذلك نظامٌ يعمل على نحوٍ صحيح لإزالة الجليد عن الزجاج الأمامي وإزالة الضباب
+            عن الزجاج. ويكون ذلك عادةً بواسطة منفاخ (هواء عبر فتحات التهوية) مع أو من دون مكيّف هواء، كما تتوافر أيضًا
+            سخانات الزجاج الأمامي الكهربائية.
+        </li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_bd4d949ebbec432db31c8d39ac2eaa15~mv2.jpg" />
+            <figcaption>
+                <em>
+                    غالبًا ما يمنع الغشاءُ الملوّن على النوافذ الأمامية دخولَ كميةٍ كافية من الضوء.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_96b0721c7fc84e19aceedaea0e57b78a~mv2.jpg" />
+            <figcaption>
+                <em>
+                    يجب أن تكون كلُّ سيارة ركّاب مزوّدةً بنظام غسيلٍ ومسّاحاتٍ للزجاج الأمامي يعملان بالكامل.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        ماسحات الزجاج الأمامي
+    </h2>
+    <p>
+        للحفاظ على رؤيةٍ كافية عبر الزجاج الأمامي، يجب تجهيزُ سيارات الركّاب بمسّاحات زجاج أمامي تعمل على نحوٍ صحيح،
+        وبنظامِ غسيلٍ للزجاج مع وظيفة الرش. وإذا نفد سائلُ تنظيف الزجاج فلن يعمل النظام، ولا يجوز قيادةُ السيارة.
+    </p>
+    <div class="important-words4">
+        <div class="image-content">
+            <img alt="صورة الرخصة"
+                src="https://static.wixstatic.com/media/4b688f_e8870e76a9e7413281602f3602a068d2~mv2.png" />
+        </div>
+        <div class="text-content">
+            <p>
+                يُحذّر هذا المصباح من خزانِ سائل تنظيف الزجاج الفارغ (أو شبه الفارغ). وبما أنّ القيادة دون سائل تنظيف
+                الزجاج محظورة، ينبغي تعبئةُ الخزان فورَ إضاءة المصباح. ليست جميعُ سيارات الركّاب مزوّدةً بمصباحٍ لمستوى
+                سائل تنظيف الزجاج.
+            </p>
+        </div>
+    </div>
+    <h2>
+        المرايا
+    </h2>
+    <p>
+        يجب تجهيزُ سيارات الركّاب بمرآةٍ جانبية على كلّ جانب (يمين ويسار) وبمرآة داخلية للرؤية الخلفية. تملك بعضُ
+        الشاحنات الصغيرة والشاحنات حجرةَ شحنٍ منفصلةً ومغلقةً خلف المقصورة، ما يعني عدمَ وجود رؤية عبر مرآة الرؤية
+        الخلفية؛ لذا لا تُطلَب هذه المرآة في تلك المركبات.
+    </p>
+    <p>
+        يجب أن تكون جميعُ المرايا المُجهَّز بها سليمةً وغيرَ متعرّضةٍ لتقادمٍ مفرط (حوافُّ بنية أو سوداء، بقعٌ على
+        الزجاج).
+    </p>
+    <h2>
+        المقاعد
+    </h2>
+    <p>
+        يجب أن تتجه جميعُ مقاعد سيارة الركّاب إمّا للأمام أو للخلف. ويجب تثبيتُ المقاعد بإحكام، وإذا كانت قابلةً للضبط
+        فلا بدّ ألا يكون هناك خطرُ انزلاقٍ أثناء القيادة.
+    </p>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            حزام (الأمان)
+        </h3>
+        <p>
+            يحمي أحزمةُ الأمان السائقين والركّاب من قوّةِ الصدمات والكبح المفاجئ وتمنع القذفَ خارج المركبة. وتُجهَّز
+            معظمُ سيارات الركّاب بأحزمة ثلاثية النقاط، بحيث يمرّ جزءٌ من الحزام حول الخصر والجزءُ الآخر قطريًا عبر
+            الصدر.
+        </p>
+        <h3>
+            نظام تقييد الأطفال
+        </h3>
+        <p>
+            يمكن تثبيتُ مقاعد أمان الأطفال في سيارات الركّاب بواسطة نظامِ نقرٍ (Isofix) أو بواسطة حزام الأمان. ويُثبَّت
+            الطفل في المقعد بحزامٍ متصلٍ بمقعد الأمان نفسه، أو بحزام السيارة الثلاثي النقاط. ويحمي هذا النظام الطفلَ من
+            قوّةِ الصدمات والكبح المفاجئ ويمنع قذفه خارج المركبة.
+        </p>
+        <h3>
+            وسادة هوائية
+        </h3>
+        <p>
+            تجهيزٌ في سيارات الركّاب ينتفخ عند التعرّض لصدمةٍ في حال وقوع تصادم. تحمي الوسادةُ الهوائية الركّاب من
+            ملامسة الأسطح الصلبة داخل المركبة وتمنع الحركةَ الأمامية أو الجانبية المفرطة أثناء التصادم.
+        </p>
+    </div>
+    <h2>
+        أحزمة الأمان
+    </h2>
+    <p>
+        تمنع أحزمةُ الأمان الإصاباتِ البالغةَ للسائقين والركّاب عند وقوع تصادم. ويمكن لحزام الأمان أن يُنقذ حياتك حتى
+        عند السير بسرعة 30 كم/س، وهو إلزامي لجميع المقاعد داخل السيارة. ونظرًا لأهميته يجب أن تلتزم أحزمةُ الأمان
+        بمتطلباتٍ خاصة بها:
+    </p>
+    <ul>
+        <li>
+            أن تكون خاليةً من الأضرار.
+        </li>
+        <li>
+            أن تكون مزوّدةً بآليات قفلٍ وتثبيتٍ تعمل على نحوٍ صحيح.
+        </li>
+        <li>
+            أن يُناسب الحزامُ الجسمَ عند الاستعمال.
+        </li>
+        <li>
+            ألّا تُشير مصابيحُ تحذير حزام الأمان والوسادة الهوائية إلى أعطال.
+        </li>
+    </ul>
+    <div class="important-words5">
+        <p>
+            جميعُ مصابيح التحذير أدناه باللون الأحمر. ويعني ذلك أنه يجب معالجةُ المشكلة فورًا ولا ينبغي متابعةُ القيادة
+            قبل حلّها. يُحذّر المصباحان الأولان من مشكلاتٍ في الوسائد الهوائية المختلفة. ويشير الأخيرُ إلى أنّ شخصًا ما
+            (أنت أو راكب) لا يرتدي حزام الأمان.
+        </p>
+        <!-- Başlık en üstte -->
+        <div class="images-container5">
+            <!-- Resimleri saran div -->
+            <figure>
+                <img alt="تحذير: عطل في الوسادة الهوائية"
+                    src="https://static.wixstatic.com/media/4b688f_ef1dad2ca0434c4d991c83c7d71c217f~mv2.png" />
+                <figcaption>
+                    تحذير: عطل في الوسادة الهوائية
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="تحذير: عطل في الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_4d438aae9e764b20b5d43370205e1d42~mv2.png" />
+                <figcaption>
+                    تحذير: عطل في الوسادة الهوائية الجانبية
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح تحذير حزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_8dca92b43b7a4bc2b7e1edf33ac319fd~mv2.png" />
+                <figcaption>
+                    مصباح تحذير حزام الأمان
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        الأجزاء البارزة والحادّة
+    </h2>
+    <p>
+        الإصاباتُ التي يتعرّض لها المشاةُ في التصادمات تكون قاتلةً في كثيرٍ من الأحيان، وأصبحت تدابيرُ حماية المشاة
+        عنصرًا متزايدَ الأهمية في تصميم المركبات. ولتقليل المخاطر تُحظر الأجسامُ الحادّة مثل زينة غطاء المحرّك والمصدّات
+        الأمامية (bull bars) المصنّعة ذاتيًا على الصادم.
+    </p>
+    <p>
+        يجب حجبُ أيّ أجزاءٍ بارزةٍ أخرى وألا تُشكّل خطرَ إصابةٍ عند وقوع تصادم. ولا يجوز أن تبرز الإطاراتُ أكثر من ثلاثة
+        سنتيمترات خارج أقواس العجلات.
+    </p>
+    <p>
+        يجب كذلك أن تخلو المركباتُ من أيّ أجزاءٍ مرتخية بسبب سوء التثبيت أو البلى أو التدهور.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_f4e26dad13ae4e7d801a37ffe733d176~mv2.jpg">
+            <figcaption>
+                <em>
+                    أحزمةُ الأمان إلزاميةٌ لكلّ مقعد.
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_f3e297a777084bef891f4d93c23fe05d~mv2.jpg">
+            <figcaption>
+                <em>
+                    لا يجوز أن تبرز الإطاراتُ أكثر من ثلاثة سنتيمترات خارج أقواس العجلات (يُشار إلى قوس العجلة بالسهم).
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

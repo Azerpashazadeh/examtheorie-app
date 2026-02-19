@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Genel Gereklilikler - Bölüm 1</h2>
+    <p>Hukuki açıdan, her araç bir dizi teknik gerekliliği karşılamak zorundadır. Genellikle yeni satın alınan araçların bu gereklilikleri karşıladığı varsayılabilir. Ancak bir arıza meydana geldiğinde, araç artık gereklilikleri karşılamıyor olabilir. Bu durumda, tamirler veya yedek parçalar genellikle aracın standartlara uygun hale getirilmesini sağlayabilir.</p>
+    <p>APK (MOT), yani periyodik genel muayene, teknik gerekliliklere uyumu sağlamak için yürürlüğe konulmuştur. Ancak bu muayene her şeyi kapsamaz. Bu nedenle sürücülere araçlarının durumunu düzenli olarak kontrol etmeleri ve tercihen bir garaj tarafından yıllık kontroller yaptırmaları tavsiye edilir.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c4be1d97270f4bed89ff76c7ca4f1f06~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>Aracınıza dış modifikasyonlar yaparsanız, bu, aracınızın artık standartlara uygun olmamasına neden olabilir.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_49214b93462f48f69f44a1d07c89205e~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>Motor kısmında bir değişiklik yaptığınızda, aracınızın yeniden muayeneden geçmesi gerekir.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <h2>Özel Modifikasyonlar</h2>
+    <p>Aracınızı modifiye ederseniz, bu durum aracın ulusal araç kaydında belirtilen gereklilikleri artık karşılamadığı anlamına gelebilir. Bu durumda, aracın yeniden muayene edilmesi gerekir. Bu modifikasyonlar şunları içerebilir:</p>
+    <ul>
+        <li>Ekstra ağırlık eklemek.</li>
+        <li>Aks genişliğini artırmak (sol ve sağ tekerlek arasındaki genişlik).</li>
+        <li>Motor bloğunu değiştirmek.</li>
+        <li>Yakıt türünü değiştirmek (örneğin, gaz sistemi eklemek).</li>
+        <li>Gücü artırmak (yüzde 20'den fazla).</li>
+        <li>Gövde tipini değiştirmek.</li>
+        <li>Koltuk sayısını değiştirmek.</li>
+        <li>Gürültü seviyesini değiştirmek (örneğin, farklı bir egzoz takmak).</li>
+    </ul>
+    <p>Eğer bir araç modifiye edilmişse ancak henüz yeniden muayene edilip onaylanmamışsa, bu araç sürülemez!</p>
+    <h2>Kayıt Numarası</h2>
+    <p>Araçlar, plaka numarası ve araç tanımlama numarası (VIN) ile tanımlanabilir. Bu, şu anlama gelir:</p>
+    <ul>
+        <li>araç ayrıca kayıt kartındaki ve araç kaydındaki bilgilere uygun olmalıdır;</li>
+        <li>araç, orijinal, düzgün şekilde takılmış ve açıkça okunabilir onay işareti taşıyan plakalarla donatılmış olmalıdır;</li>
+        <li>VIN, şasiye, çerçeveye veya benzer bir yapıya damgalanmış ve açıkça okunabilir olmalıdır. Bu numara (kısmen) kaldırılmışsa, bu durum aracın çalınmış olabileceği anlamına gelebilir.</li>
+    </ul>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_759f8187903f42fead5949073a1d08b7~mv2.jpg" alt="Image 1">
+            <figcaption><em>Araç üzerindeki plaka orijinal olmalıdır. Hırsızlık veya kayıp durumunda geçici yazılı bir plaka ile sürülemez.</em></figcaption>
+        </figure>
+    </div>
+
+    <h2>Ağırlıklar ve Boyutlar</h2>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Boş Ağırlık</h3>
+        <p>Üretici tarafından teslim edilen aracın ağırlığı (araç içindeki aletler ve yedek lastik dahil), 100 kg azaltılmış şekilde.</p>
+        <h3>Yük</h3>
+        <p>Araçta taşınan kişiler ve araç içindeki, üzerindeki veya ona bağlı olarak taşınan yük (yük kapasitesi).</p>
+        <h3>Yük Taşıyıcı</h3>
+        <p>Çatılar ve bisiklet taşıyıcıları gibi taşınabilir veya genişletilebilir yapılar, yük ve cihaz taşımak için kullanılır. Yük taşıyıcılar şu şekilde olmalıdır:</p>
+        <ul>
+            <li>Tampon, çeki demiri veya tavan üzerine monte edilmiş ya da araca entegre edilmiş olmalıdır;</li>
+            <li>Römorkun önüne veya arkasına takılmış olmalıdır;</li>
+            <li>Hafif ticari araçların yan tarafına, cam veya plakaların taşınması için monte edilmiş olmalıdır.</li>
+        </ul>
+    </div>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_6edf0b6619354fd3be0b001328349ee7~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>Çeki demirine monte edilmiş bir bisiklet taşıyıcı.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_7822fa6e7ba34c70be085de188708c14~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>Bir tavan kutusu da bir ‘yük taşıyıcı’ olarak sınıflandırılır.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <p>Binek otomobiller belirli maksimum boyut ve ağırlıklara tabidir. Bu maksimumlar her zaman herhangi bir yükü de içerir. Binek otomobiller için maksimum boyutlar şunlardır:</p>
+    <ul>
+        <li>12 metre uzunluk</li>
+        <li>2.55 metre genişlik</li>
+        <li>4 metre yükseklik</li>
+    </ul>
+    <p>Binek otomobil ve römork kombinasyonu 18 metre uzunluğu geçemez.</p>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_344d942b9c2e4f0fa5c0ec9bc507e4b6~mv2.jpeg"
+                alt="Image 1">
+            <figcaption><em>Araçların maksimum boyutları her zaman yükleri ve yük taşıyıcılarını içerir.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Binek otomobillerin maksimum izin verilen kütlesi (‘toegestane maximummassa’) ulusal araç kaydında ve araç kayıt kartında belirtilmiştir. Bu maksimum ağırlık, herhangi bir yükü de içerir.</p>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_2169439901674377866ba3781c9c7672~mv2.jpg" alt="Image 1">
+            <figcaption><em>Maksimum ağırlık kayıt kartınızda belirtilmiştir.</em></figcaption>
+        </figure>
+    </div>
+    <p>Bir aks üzerindeki maksimum izin verilen yük - bir aks üzerinde durabilecek ağırlık - araç kaydında da belirtilmiştir. Bir binek otomobil hiçbir zaman maksimum ağırlıktan fazla yük taşıyamaz veya bir aks üzerinde belirtilenden fazla ağırlık taşıyamaz. Bu nedenle sürücülere bagaja ağır eşyalar yüklerken dikkatli olmaları tavsiye edilir.</p>
+
+        <div class="image-container1">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c8300104f8064af6bae3cd64a118c6ab~mv2.jpg" alt="Image 1">
+                <figcaption><em></em></figcaption>
+            </figure>
+        </div>
+
+    <h2>Egzoz Sistemi</h2>
+    <p>Yanmalı motorlara sahip araçlardaki egzoz sistemi, motor bloğunun çıkışından başlayarak genellikle arka tamponun altında veya içinde bulunan egzozun son parçasına kadar uzanır. Egzoz ile ilgili sorunlar genellikle aracın daha fazla ses çıkarmasıyla kolayca tespit edilebilir. Tüm egzoz sistemi bir dizi gerekliliği karşılamak zorundadır:</p>
+        <ul>
+            <li>Boyunca gaz sızdırmaz olmalıdır, drenaj delikleri hariç.</li>
+            <li>Düzgün şekilde monte edilmiş olmalıdır.</li>
+            <li>Sistemin araç kaydında belirtilenden daha fazla ses çıkarmasına izin verilmez, maksimum 2 desibel aşılabilir. Araç kaydında bir değer belirtilmemişse, maksimum değer 95 desibeldir.</li>
+            <li>Sistem, belirtilen miktardan daha fazla CO (karbon monoksit) yaymamalıdır.</li>
+        </ul>
+
+        <h2>Hız Göstergesi</h2>
+        <p>Hız göstergesi ve kilometre sayacı iki farklı ölçerdir. Hız göstergesi sürüş hızını gösterirken, kilometre sayacı aracın toplamda kaç kilometre yol kat ettiğini gösterir.</p>
+        <p>Yasal olarak yalnızca hız göstergesinin çalışması gerekir ve karanlıkta açıkça okunabilir olmalıdır. Eğer hız göstergesi düzgün çalışmıyorsa, araç sürülemez.</p>
+        <div class="image-container1">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a34b737df3aa42d6a243d70f52ea07b0~mv2.jpeg" alt="Image 1">
+                <figcaption><em></em></figcaption>
+            </figure>
+        </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+  
+ </html>
+

@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            margin-top: 20px;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words2 img {
+            width: 100px;
+            height: auto;
+            /* Resim sabit boyutta */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 70%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+            margin-top: -10px;
+        }
+
+        .text3 strong {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: -10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+
+        }
+
+        @media (max-width: 480px) {
+            .text3 strong {
+                font-size: 1.2rem;
+                margin-top: -7px;
+
+                margin-bottom: -10px;
+            }
+
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+                max-width: 150px;
+            }
+        }
+
+
+
+
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            /* İçerik taşmasını önler */
+        }
+
+        .images-container12 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: nowrap;
+            /* Masaüstü: Tek satırda hizala */
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container12 figure {
+            margin: 0;
+            text-align: center;
+            flex: 0 0 calc(25% - 20px);
+            /* 4 resim için hizalama */
+        }
+
+        .images-container12 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .images-container12 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .images-container12 {
+                flex-wrap: wrap;
+                /* Mobilde resimler alt alta geçebilir */
+            }
+
+            .images-container12 figure {
+                flex: 1 1 calc(50% - 20px);
+                /* İlk aşama: İki sütun, iki satır */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .images-container12 figure {
+                flex: 1 1 100%;
+                /* İkinci aşama: Tek sütun */
+            }
+
+            .images-container12 img {
+                width: 90%;
+                height: auto;
+            }
+        }
+
+
+        .images-container19 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* Masaüstü: 4 sütun */
+            gap: 20px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container19 figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .images-container19 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .images-container19 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .images-container19 {
+                grid-template-columns: repeat(3, 1fr);
+                /* Tablet: 3 sütun */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .images-container19 {
+                grid-template-columns: repeat(2, 1fr);
+                /* Mobil: 2 sütun */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .images-container19 {
+                grid-template-columns: 1fr;
+                /* Daha küçük ekranlar: Tek sütun */
+            }
+
+            .images-container19 img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Meaning per category - C
+    </h1>
+    <p>
+        These signs indicate closures (no entry), one-way streets (entry from one direction only), and rush hour lane
+        openings.
+    </p>
+
+
+    <div class="container3">
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_a431de76447b4a67a202573ef2a5c290~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>C-1</strong>
+                <p>Closed in both directions to vehicles, horse riders, and handlers of horses and livestock.
+                    Pedestrians are allowed here.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_2f8f494391a14f5db12f6ee9b0d3d73e~mv2.png"
+                alt="İlk Yardım Seti" class="image3">
+            <div class="text3">
+                <strong>C-2</strong>
+                <p>One-way street. Closed in this direction to vehicles, horse riders, and handlers of horses and
+                    livestock. Pedestrians are allowed from this side.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="important-words2">
+        <p>
+            The C-2 sign is also placed at the end of motorway or autoweg deceleration lanes in the opposite
+            direction.<br>
+            This sign is always accompanied by a ‘ga terug’ (go back) supplementary plate to prevent motorists driving
+            in the wrong direction.
+        </p>
+        <img src="https://static.wixstatic.com/media/4b688f_888c2b828e30484da64885967485bb04~mv2.png"
+            alt="Example Image">
+    </div>
+
+
+
+
+
+
+    <div class="container3">
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_2dfc0399b33746f197dd31ae6f24b400~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>C-3</strong>
+                <p>One-way street that can be entered from this side only. If a C-2 sign is seen at the beginning of the
+                    road, this sign will be at the end.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_8f9c69213c234a26ac506d48accd4135~mv2.png"
+                alt="İlk Yardım Seti" class="image3">
+            <div class="text3">
+                <strong>C-4</strong>
+                <p>One-way street on the right. This sign is usually seen at T-junctions. You must turn right.
+                </p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_6e071b19208745f6a037a5a7692985bc~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>C-5</strong>
+                <p>Entry from both sides allowed. This sign is seen near roads that appear to be one-way, such as
+                    parallel roads alongside main roads, and indicates that they are not one-way.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="important-words2">
+
+        <p>
+            The C-6 to C-22 signs are the same as the C-1 sign, but specific to a particular group. The group to which
+            this sign applies is indicated by an image, numbers, or letters stated on the sign.
+        </p>
+
+
+    </div>
+
+
+
+
+    <div>
+        <div class="images-container19">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_db79045dfeab4b998d30baf6e1daf987~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-6<br>
+                    Closed to motor vehicles on more than two wheels (also to motorcycles with sidecars)</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_e7aec574465c4e65898bad6e753a93f4~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-7<br>
+                    Closed to lorries</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2f5fe7732a97446383adbb31b6891e60~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-7A<br>
+                    Closed to buses</figcaption>
+
+            </figure>
+
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_12500060ffc0459fb73259f141d47b40~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-7B<br>
+                    Closed to lorries and buses</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d819df25ea2849d59dc7073bb7459f93~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-8<br>
+                    Closed to agricultural vehicles, motor vehicles with limited speed and mobile machines</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_60fc0721d01747b880b1f5f3b3c9514e~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-9<br>
+                    Closed to horse riders, livestock, carriages, agricultural vehicles, motor vehicles with limited
+                    speed, mobile machines, brommobielen, bicycles, mopeds, and disabled vehicles</figcaption>
+
+            </figure>
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_426fea5f780448e6944f687a4969d441~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-10<br>
+                    Closed to motor vehicles with trailers</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_8334aac2036341c8b5164a4b8a7a5b2e~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-11<br>
+                    Closed to motorcycles (also to motorcycles with sidecars)</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6146a67d62f640bda6d76b6ae13989ec~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-12<br>
+                    Closed to all motor vehicles</figcaption>
+
+            </figure>
+
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2f4e1efcf5c044b294d7b44c8ba9ec74~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-13<br>
+                    Closed to mopeds, snorfietsen and disabled vehicles with the engine running</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f4fb2887bc2145a19258ca45e68d39e0~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-14<br>
+                    Closed to bicycles (including snorfietsen) and disabled vehicles without an engine</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2de5bb2121354126a9eb2b4f70db3e88~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-15<br>
+                    Closed to bicycles, mopeds and disabled vehicles</figcaption>
+
+            </figure>
+
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7c6bdfcdf6054af38308c68c115eec23~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-16<br>
+                    Closed to pedestrians</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_00fac37140904bd3b0e9c0542776c20f~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-17<br>
+                    Closed to vehicles and combinations of vehicles that (including load) are longer than indicated on
+                    the sign</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bc26825b292544d4931b22209294fac9~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-18<br>
+                    Closed to vehicles that (including load) are wider than indicated on the sign</figcaption>
+
+            </figure>
+
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_16583a47993f4ef087e32aace1b68bf8~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-19<br>
+                    Closed to vehicles that (including load) are higher than indicated on the sign</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0f22b96cdf0a40faaf80a1ae55d22a9d~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-20<br>
+                    Closed to vehicles with an axle load higher than indicated on the sign</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_1a170b09d5ac471ba370a7cc08bc8c30~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-21<br>
+                    Closed to vehicles and combinations of vehicles of which the total weight or the sum of the axle
+                    loads is higher than indicated on the sign</figcaption>
+
+            </figure>
+
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5678f9a2504049b5845757e9f345e5d0~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22<br>
+                    Closed to vehicles transporting certain hazardous substances</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4d14f86241be4101a672c2642f68e326~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22A<br>
+                    Closed to passenger cars, commercial cars, lorries, and buses with diesel engines due to
+                    environmental zone</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bbdc0a0784e247939268bf356b5ce208~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22B<br>
+                    End closed sign environmental zone</figcaption>
+
+            </figure>
+
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2e946a718ded425c8ff0eb6862093a62~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22C<br>
+                    Closed to commercial cars and lorries due to zero emission zone</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_eb9984ccc79c4552b032a1caffbd91c4~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22C1<br>
+                    Zero emission zone open to emission free commercial cars and lorries</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_084401b8295d49d4bd24e8dbc3d942de~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22D<br>
+                    End closed sign zero emission zone</figcaption>
+
+            </figure>
+
+        </div>
+    </div>
+    <h3>
+        C-22 Environmental zone
+    </h3>
+    <p>
+        Signs that indicate an environmental zone may be accompanied by a supplementary plate that states whether
+        certain diesel vehicles are allowed. This depends on the emission class under which the diesel vehicle falls.
+        The higher the emission class, the cleaner the vehicle. The vehicle’s emission class is stated in the national
+        vehicle register.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5d296a5c20854dcf940df7983e7fec05~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22a3<br>
+                    Environmental zone accessible to passenger and commercial cars of emission classes 5 and up
+                </figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5195552cb458437fb17837b4527a271e~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22a4<br>
+                    Environmental zone accessible to lorries of emission classes 4 and up</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_37c2000381644a96ab943c1cec886101~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-22a9<br>
+                    Environmental zone accessible to lorries and buses of emission class 6 and up</figcaption>
+
+            </figure>
+
+        </div>
+    </div>
+
+
+    <div class="important-words1">
+        <p>
+            Signs indicating a speed limit of 30 km/h or 60 km/h can also be used as zone signs. These signs remain
+            in force until the end zone sign.
+        </p>
+        <div class="images-container12">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bbbf39c732094e7d95dff4f9edf42b07~mv2.png"
+                    alt="Yan hava yastığı arızası uyarı işareti">
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f1a6c1b326f141d0921b0642399f2197~mv2.png"
+                    alt="Yan hava yastığı arızası uyarı işareti">
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7eae8d406abf418d8371554fcbdad518~mv2.png"
+                    alt="Yan hava yastığı arızası uyarı işareti">
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_cc61605aecb4457aa651ca8a102b01e6~mv2.png"
+                    alt="Yan hava yastığı arızası uyarı işareti">
+            </figure>
+        </div>
+    </div>
+
+    <p>
+        The last signs in the C series are not closure signs. This series also includes signs regarding the opening of
+        extra lanes (rush hour lanes).
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c8901f31378448ca86a997f6b4872049~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-23-01<br>
+                    Rush hour lane open</figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_13aa8150a1ec46e6a01e9017cea7acee~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-23-02<br>
+                    Clear rush hour lane</figcaption>
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bc137ba4c7ad42e6839387edbebb14b8~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>C-23-03<br>
+                    End of rush hour lane</figcaption>
+
+            </figure>
+
+        </div>
+    </div>
+    <p>
+        Closure signs may also be accompanied by supplementary plates indicating any applicable clarifications or
+        restrictions.
+    </p>
+    <div class="important-words1">
+        <div class="vertical-line2"></div>
+        <h3>Destination traffic</h3>
+        <p>
+            Drivers whose destination is on a road they are prohibited from entering due to a closure sign and cannot be
+            reached via any other route. Public buses are always classed as destination traffic.
+        </p>
+
+
+    </div>
+
+    <div class="container3">
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_ca9e505ba673434a8057bef6b9cc71ef~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>C-6 exempt destination traffic</strong>
+                <p>The supplementary plate indicates that destination traffic may always drive into this road. Even if
+                    they fall into the category indicated on the sign above: Motor vehicles on more than two wheels.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_d1b7f73ffd324f43951bdc780326582f~mv2.png"
+                alt="İlk Yardım Seti" class="image3">
+            <div class="text3">
+                <strong>C-12 during certain hours</strong>
+                <p>The supplementary plate indicates at which times the top sign applies. The road is open to all
+                    traffic outside these times. Also for the categories indicated on the sign above: All motor
+                    vehicles.</p>
+            </div>
+        </div>
+    </div>
+
+ <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

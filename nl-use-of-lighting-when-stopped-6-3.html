@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image1 {
+            width: 80px;
+            height: auto;
+
+            font-size: 0.8em;
+            /* Resim boyutu için */
+        }
+
+        .container p {
+            margin-right: 30px;
+            /* Sağdan boşluk */
+        }
+
+        figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        figcaption {
+            margin-top: 5px;
+            font-size: 0.8em;
+            /* Altyazı boyutu için */
+            font-style: italic;
+            color: #555;
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 90%;
+           
+        }
+
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Gebruik van verlichting bij stilstaan
+  </h1>
+  <p>
+   Het gebruik van verlichting kan niet alleen tijdens het rijden verplicht zijn. In sommige gevallen is het ook verplicht om bij stilstand stadslichten in combinatie met een achterlicht te voeren.
+  </p>
+  <p>
+   Verlichting bij stilstaan is verplicht voor motorvoertuigen met meer dan twee wielen en aanhangwagens, wanneer:
+  </p>
+  <ul>
+   <li>
+    <p>
+     zij stilstaan op een rijbaan buiten de bebouwde kom, overdag bij slecht zicht en ’s nachts;
+    </p>
+   </li>
+   <li>
+    <p>
+     zij stilstaan in een parkeerstrook, een parkeerplaats, op de vluchtstrook of in een vluchthaven die direct langs een autoweg of autosnelweg ligt, overdag bij slecht zicht en ’s nachts.
+    </p>
+   </li>
+  </ul>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      De meeste personenauto’s hebben een speciale lichtstand, de parkeerstand. Je kunt meestal kiezen om de verlichting slechts aan één kant in te schakelen, bijvoorbeeld alleen links als je rechts van de weg parkeert.
+     </p>
+    </div>
+    <figure>
+     <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_817b897377724eeca47bacb8fdb523bf~mv2.png"/>
+     <figcaption>
+      Parkeerlichten
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Voor smallere aanhangwagens zonder voorste stadslichten volstaan witte retroreflectoren aan de voorzijde en achterlichten aan de achterzijde.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Een personenauto die buiten de bebouwde kom op de rijbaan geparkeerd staat, moet stadslichten en achterlichten voeren." src="https://static.wixstatic.com/media/4b688f_02aab234be794f2c81b90ec15b819b6a~mv2.jpg"/>
+     <figcaption>
+      Een personenauto die buiten de bebouwde kom op de rijbaan geparkeerd staat, moet stadslichten en achterlichten voeren.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

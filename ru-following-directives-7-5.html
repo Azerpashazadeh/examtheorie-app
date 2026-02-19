@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words1 h3 {
+            margin-top: 0px;
+        }
+
+        .important-words1 p {
+            margin-top: -10px;
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Following directives
+  </h1>
+  <p>
+   It is mandatory for all road users to follow directions from authorised persons. These directions can be given
+        in different ways. For example, by means of hand gestures or texts on an illuminated transparent. They always
+        supersede traffic rules and road signs.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Authorised entity
+   </h3>
+   <p>
+    The administrative body that is empowered to take decisions or issue decisions in a particular case. In this
+            case, this refers to certain government entities that are allowed to take decisions in the field of traffic
+            and traffic behavior.
+   </p>
+   <h3>
+    Illuminated transparent
+   </h3>
+   <p>
+    Lighting on a vehicle that only provides information about the destination or use of the vehicle, or that
+            provides instructions for other road traffic.
+   </p>
+  </div>
+  <h2>
+   Authorised people
+  </h2>
+  <p>
+   The following people are allowed to give directives in traffic:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Competent and recognisable officials, such as police officers.
+    </p>
+   </li>
+   <li>
+    <p>
+     Soldiers of the Royal Netherlands Military Police (Marechaussee).
+    </p>
+   </li>
+   <li>
+    <p>
+     Escorts of rail vehicles such as a tram or a train.
+    </p>
+   </li>
+   <li>
+    <p>
+     Competent and recognisable traffic controllers.
+    </p>
+   </li>
+  </ul>
+  <p>
+   Outside this group, as a driver (not as a pedestrian) you are also obliged to follow the instructions to stop of
+        the crossing patrol (also referred to as lollipop man or lady). But this crossing patrol should not do anything
+        other than stop you. Crossing patrols mostly help children crossing the street near schools.
+  </p>
+  <h2>
+   Directives given via gestures
+  </h2>
+  <p>
+   The way in which directions should be given is laid down in the law. For example, authorised persons can control
+        traffic by means of gestures, but can also let you stop with a gesture. These gestures are explained later on.
+  </p>
+  <h2>
+   Illuminated transparent
+  </h2>
+  <p>
+   An illuminated transparent is the sign on the back or front of a service vehicle with which text can be
+        displayed by means of red illuminated letters. This is also referred to as a “ticker”. Every road user is
+        obliged to follow these directions.
+  </p>
+  <p>
+   For example, the sign may indicate “STOP POLITIE”, where it is mandatory to stop in a safe place as soon as
+        possible. If it shows the words “VOLGEN POLITIE”, it means that you should not stop immediately, but follow the
+        service vehicle.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_66f8ebf762f94d25b37af29c5e5eca3f~mv2.gif"/>
+     <figcaption>
+      If the sign indicates “STOP POLITIE”, it is mandatory to stop in a safe place as soon as
+                    possible.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_f6169aca29be45ab9bd56e121f992a2d~mv2.gif"/>
+     <figcaption>
+      If the sign indicates “VOLGEN POLITIE”, it is mandatory to follow the service vehicle.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Services other than the police may also use these illuminated transparencies, such as escorts for large
+        transports. These instructions must also be followed.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

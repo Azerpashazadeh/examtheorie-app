@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+   <h2>
+   المتطلبات العامة - الجزء 1
+  </h2>
+  <p>
+   من الناحية القانونية، يجب أن تستوفي كلُّ مركبة عددًا من المتطلبات التقنية. ويمكن افتراضُ أن المركبات المشتراة جديدةً تستوفي هذه المتطلبات عادةً. وإذا حدث عُطلٌ ما فقد يعني ذلك أن المركبة لم تَعُد تستوفي المتطلبات، غير أنّ الإصلاحات أو قطع الغيار يمكنها غالبًا أن تُعيد المركبة إلى المعايير المطلوبة.
+  </p>
+  <p>
+   أُدخِل فحصُ الـ APK (المعروف بـ MOT)، وهو فحصٌ عام دوري، لفرض الالتزام بالمتطلبات التقنية. ومع ذلك لا يغطي هذا الفحصُ كلَّ شيء. ولذا يُنصَح السائقون بفحص حالة مركباتهم بانتظام، ويفضَّل إجراءُ فحوصٍ سنوية لدى ورشة صيانة.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_c4be1d97270f4bed89ff76c7ca4f1f06~mv2.jpg"/>
+    <figcaption>
+     <em>
+      إذا أجريتَ تعديلاتٍ خارجية على مركبتك فقد يترتّب على ذلك عدمُ مطابقة مركبتك للمعايير بعد الآن.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="الصورة 2" src="https://static.wixstatic.com/media/4b688f_49214b93462f48f69f44a1d07c89205e~mv2.jpg"/>
+    <figcaption>
+     <em>
+      عند تعديل شيءٍ في المحرّك فعلى مركبتك أن تجتاز الفحص من جديد.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   تعديلات مُخصَّصة
+  </h2>
+  <p>
+   إذا عدّلتَ مركبتك فقد لا تعود مستوفيةً للمتطلبات المبيَّنة في السجلّ الوطني للمركبات. ويعني هذا أنّ السيارة يجب فحصُها من جديد. وقد تشمل هذه التعديلات:
+  </p>
+  <ul>
+   <li>
+    إضافةَ وزنٍ زائد.
+   </li>
+   <li>
+    زيادةَ عرض المحور (المسافة بين العجلة اليسرى واليمنى).
+   </li>
+   <li>
+    استبدالَ كتلة المحرّك.
+   </li>
+   <li>
+    تغييرَ نوع الوقود (مثل تركيب نظام غاز).
+   </li>
+   <li>
+    تغييرَ القدرة (بأكثر من 20%).
+   </li>
+   <li>
+    تغييرَ نوع الهيكل.
+   </li>
+   <li>
+    تغييرَ عدد المقاعد.
+   </li>
+   <li>
+    تغييرَ مستوى الضجيج (مثل تركيب عادمٍ آخر).
+   </li>
+  </ul>
+  <p>
+   إذا عُدِّلت مركبةٌ ولم تُفحَص وتُعتمَد بعد، فلا يجوز قيادتُها!
+  </p>
+  <h2>
+   رقم التسجيل
+  </h2>
+  <p>
+   يمكن التعرف على المركبات عبر لوحة التسجيل ورقم تعريف المركبة (VIN). وهذا يعني أنّ:
+  </p>
+  <ul>
+   <li>
+    على المركبة أن تمتثل كذلك للمعلومات المُدوَّنة على بطاقة التسجيل وفي سجلّ المركبات؛
+   </li>
+   <li>
+    يجب تزويد المركبة بلوحات تسجيل أصلية مثبّتةٍ على نحوٍ صحيح وواضحةِ القراءة وتحمل علامة اعتماد؛
+   </li>
+   <li>
+    يجب ختم رقم VIN على الهيكل أو الإطار أو ما شابهه وأن يكون واضحَ القراءة. وإذا أُزيل هذا الرقم (جزئيًا) فقد يعني ذلك أنّ المركبةَ مسروقة.
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_759f8187903f42fead5949073a1d08b7~mv2.jpg"/>
+    <figcaption>
+     <em>
+      يجب أن تكون لوحةُ التسجيل على المركبة أصلية. ولا يجوز القيادة بلوحةٍ مكتوبةٍ مؤقتة في حال السرقة أو الفقدان.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   الأوزانُ والأبعاد
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    الوزنُ الفارغ
+   </h3>
+   <p>
+    وزنُ المركبة كما تُسلِّمها الشركةُ المصنِّعة (بما في ذلك الأدوات والعجلةُ الاحتياطية)، مطروحًا منه 100 كغ.
+   </p>
+   <h3>
+    الحمولة
+   </h3>
+   <p>
+    الأشخاصُ المنقولون في المركبة والبضائعُ (حمولة الشحن) المنقولة داخل المركبة أو عليها أو المُلحقَة بها.
+   </p>
+   <h3>
+    حاملُ الحمولة
+   </h3>
+   <p>
+    تراكيب قابلةٌ للفكّ أو للتمديد مثل صناديق السقف وحوامل الدراجات، تُستعمل لنقل البضائع والمعدّات. ويجب أن تكون حمَلةُ الحمولة:
+   </p>
+   <ul>
+    <li>
+     مُثبّتةً على الصادم الخلفي، أو على قضيب السحب، أو على السقف، أو مدمجةً في مؤخرة المركبة؛
+    </li>
+    <li>
+     مُركّبةً في مقدّمة المقطورة أو مؤخّرتها؛
+    </li>
+    <li>
+     مُثبّتةً على جانب مركبةٍ تجارية خفيفة لنقل الزجاج أو الألواح.
+    </li>
+   </ul>
+  </div>
+  <div class="image-container">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_6edf0b6619354fd3be0b001328349ee7~mv2.jpg">
+     <figcaption>
+      <em>
+       حاملُ درّاجاتٍ مُثبَّت على قضيب السحب.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="الصورة 2" src="https://static.wixstatic.com/media/4b688f_7822fa6e7ba34c70be085de188708c14~mv2.jpg"/>
+    <figcaption>
+     <em>
+      يُعَدّ صندوقُ السقف كذلك «حاملَ حمولة».
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   تخضع سيارةُ الركّاب لحدودٍ قصوى محدودة من حيث الأبعاد والوزن. وتشمل هذه الحدود دائمًا أيَّ حمولة. أما الأبعادُ القصوى لسيارات الركّاب فهي:
+  </p>
+  <ul>
+   <li>
+    طولٌ 12 مترًا
+   </li>
+   <li>
+    عرضٌ 2.55 متر
+   </li>
+   <li>
+    ارتفاعٌ 4 أمتار
+   </li>
+  </ul>
+  <p>
+   لا يجوز أن يتجاوز طولُ مجموعةٍ مؤلَّفة من سيارة ركّاب ومقطورة 18 مترًا.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_344d942b9c2e4f0fa5c0ec9bc507e4b6~mv2.jpeg"/>
+    <figcaption>
+     <em>
+      تشمل الأبعادُ القصوى للمركبة دائمًا الحمولاتِ وحواملَ الحمولة.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   تُذكَر الكتلةُ القصوى المصرَّح بها («toegestane maximummassa») لسيارة الركّاب في السجلّ الوطني للمركبات وعلى بطاقة تسجيل المركبة. ويشمل هذا الوزنُ الأقصى أيَّ حمولة.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_2169439901674377866ba3781c9c7672~mv2.jpg"/>
+    <figcaption>
+     <em>
+      يُسجَّل الوزنُ الأقصى على بطاقة التسجيل.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   كما تُذكَر الحمولةُ المحورية القصوى المصرّح بها — أي الوزنُ الذي يمكن أن يستندَ على محورٍ واحد — في سجلّ المركبات. ولا يجوز لسيارة ركّاب أن يتجاوز وزنُها الوزنَ الأقصى، ولا أن يتجاوز وزنُ أيّ محور ما هو مُسجّل في السجلّ. لذا يُنصَح السائقون بالحذر عند تحميل أشياء ثقيلة في صندوق الأمتعة.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_c8300104f8064af6bae3cd64a118c6ab~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   نظام العادم
+  </h2>
+  <p>
+   يمتدّ نظامُ العادم في المركبات ذات محركات الاحتراق من مخرج كتلة المحرّك إلى جزء العادم الذي (عادةً) يتدلّى أسفل الصادم الخلفي أو داخله. وغالبًا ما يسهل اكتشافُ مشاكل العادم لأن السيارة ستُحدِث ضجيجًا أكبر. ويجب أن يستوفي نظام العادم بأكمله عددًا من المتطلبات:
+  </p>
+  <ul>
+   <li>
+    أن يكون محكمَ الإغلاق أمام الغازات على امتداد طوله، باستثناء فتحات التصريف.
+   </li>
+   <li>
+    أن يكون مُثبَّتًا تثبيتًا صحيحًا.
+   </li>
+   <li>
+    ألّا يصدر عنه ضجيجٌ أكثر مما هو مُسجّل في سجلّ المركبات، وبزيادةٍ قصوى قدرُها 2 ديسيبل. وإذا لم يُسجَّل شيءٌ في السجلّ فالقيمةُ القصوى 95 ديسيبل.
+   </li>
+   <li>
+    ألّا يُطلِقَ من أول أكسيد الكربون (CO) أكثرَ مما هو مُقرَّر.
+   </li>
+  </ul>
+  <h2>
+   عدّاد السرعة
+  </h2>
+  <p>
+   عدّاد السرعة وعداد المسافة جهازان مختلفان؛ يُظهِر عدّادُ السرعة السرعةَ التي تقود بها، بينما يُظهِر عدّادُ المسافة عددَ الكيلومترات التي قطعتها المركبةُ إجمالًا.
+  </p>
+  <p>
+   يُلزم القانونُ بسلامة عمل عدّاد السرعة فقط، ويجب أن يكون واضحَ القراءة في الظلام. وإذا لم يعمل عدّادُ السرعة على نحوٍ صحيح فلا يجوز قيادةُ المركبة.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="الصورة 1" src="https://static.wixstatic.com/media/4b688f_a34b737df3aa42d6a243d70f52ea07b0~mv2.jpeg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #D5176A;
+        }
+
+
+
+        .gh3 {
+            color: #D5176A;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-block13 {
+            text-align: center;
+            /* Resim ve yazıyı ortalar */
+            margin: 0;
+        }
+
+        .image-block13 img {
+            display: block;
+            width: 90%;
+            /* Resim container'ın %80'i kadar olur */
+            height: auto;
+            margin: 0 auto;
+        }
+
+
+        .image-block13 figcaption {
+            font-size: 14px;
+            color: #444;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı ortalar */
+        }
+
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 150px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #FACAD2;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Advanced Driver Assistance Systems (ADAS)
+    </h1>
+    <p>
+        Modern cars are increasingly likely to be equipped with technical gadgets that make driving safer and easier.
+        These systems are called ADAS, or Advanced Driver Assistance Systems.
+    </p>
+    <p>
+        Understanding what these features do is crucial to taking full advantage of them. However, it is important to
+        know the limitations too.
+    </p>
+    <p>
+        One significant disadvantage of ADAS is that it helps us feel increasingly safe on the road. This can lead to
+        what is known as a false sense of security. For example, in a car with an automatic braking system, it is easy
+        to assume you can maintain a shorter following distance. In reality, these systems do nothing to decrease
+        braking distance and should not be seen as a substitute for manual braking.
+    </p>
+    <p>
+        Another drawback is that the more the vehicle takes over from the driver, the less you have to focus and think
+        for yourself. This can lead to distraction, which can have serious consequences if you react to a situation too
+        slowly.
+    </p>
+    <p>
+        While ADAS can be very convenient, it is important to remain focused on traffic at all times!
+    </p>
+
+    <h2>
+        Adaptive cruise control
+    </h2>
+    <p>
+        Standard cruise control is a system that allows you to lock the vehicle’s speed, so you do not have to keep
+        accelerating. Adaptive cruise control adapts your speed to the traffic around you, monitoring your following
+        distance and braking automatically once that distance becomes too short. Braking manually will disable cruise
+        control. The use of cruise control is not recommended during bad weather and slippery road conditions.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a3cac15763ab4cf98f083c2a7795e412~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Adaptive light control
+    </h2>
+
+    <p>
+        Adaptive lighting is, for example, the cornering lights that extends your visual range when entering a bend, or
+        headlights that turn into the bend. This lighting also reduces the risk of blinding oncoming traffic when
+        cornering.
+    </p>
+    <h2>
+        Automatic lighting
+    </h2>
+
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    Automatic lighting refers to daytime running lights that automatically switches to dipped headlights
+                    at nightfall. There is also automatic full-beam lighting, whereby the full-beam headlights will be
+                    dimmed when you drive below a certain speed, when you encounter oncoming traffic, and when there is
+                    a vehicle in front of you.
+                </p>
+
+            </div>
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_d1cecc08b89841a3ae7889d43b0eb83f~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>Automatic full-beam headlights</figcaption>
+            </figure>
+
+        </div>
+    </div>
+    <p>
+        Unfortunately, however, the sensors that regulate automatic lighting do not pick up on everything. Fog often
+        goes unnoticed, and dipped headlights are therefore not switched on. The system may miss traffic that is further
+        away, so full-beam headlights are not dimmed in time. The responsibility to keep an eye on traffic remains with
+        you, the driver, at all times.
+    </p>
+    <h2>
+        Automatic navigation system with TMC and internet connections
+    </h2>
+    <p>
+        Navigation systems are increasingly being upgraded with extra features that alert drivers to traffic jams and
+        detours. Depending on settings, the system may independently adjust navigation.
+    </p>
+    <h2>
+        Autonomous emergency braking (AEB, including Forward collision warning)
+    </h2>
+    <p>
+        There are various systems designed to warn and intervene if you, as a driver, are about to encounter a dangerous
+        situation. These systems work with cameras, sensors, and other detectors that can intervene in the event of a
+        delayed reaction on your part.
+    </p>
+    <p>
+        Automatic braking systems may be linked to seat belts or other safety systems designed to prevent damage and
+        injury to the extent possible upon impact.
+    </p>
+    <p>
+        Automatic braking does not aim to prevent accidents - rather, it should be seen as a last resort in minimising
+        the consequences of an accident. The forward collision warning is a tool primarily intended to encourage the
+        driver to take action. If this does not happen, the system will brake automatically.
+    </p>
+    <p>
+        The Pedestrian protection system is another safety system designed to protect (crossing) pedestrians.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_dc6207f76a084ad59da65be0360220a0~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Autopilot
+    </h2>
+    <p>
+        Autopilot allows passenger cars to drive completely independently. This system is in fact a combination of all
+        ADAS systems, which theoretically renders a human driver unnecessary. Currently, the driver remains responsible
+        for the vehicle and must therefore be ready to intervene should the system make an error or encounter a
+        situation it is not yet equipped to handle.
+    </p>
+    <h2>
+        Blind spot warning (BSW)
+    </h2>
+    <p>
+        Blind spot warning systems alert you to other vehicles in your blind spot. An example of such a system is a
+        light in the wing mirror that illuminates when a vehicle enters your blind spot. If a blind spot detector
+        notices a vehicle in your blind spot, and you use the turn signal in the same direction, a warning sound will
+        advise you not to move in that direction.
+    </p>
+    <p>
+        While these systems are convenient in not requiring drivers to check their blind spots as often, they often fail
+        to detect smaller vehicles and motorcycles. It is therefore important to make sure you continue to check your
+        blind spot independently.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6808bf7a97304701ba830ab61aa5b891~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Crosswind stabilisation
+    </h2>
+    <p>
+        The crosswind stabilisation system keeps your vehicle stable during severe crosswinds. This system is mainly
+        used in passenger cars with active suspension and works by gently applying the brakes on the side the wind
+        occurs and adjusting the suspension to reduce the wind’s impact on the vehicle’s movements.
+    </p>
+    <h2>
+        Drowsiness detection
+    </h2>
+    <p>
+        This system monitors the driver and their behaviour to ensure they are actively driving. A camera monitoring the
+        driver’s face detects reduced attention, while the system monitors steering movements and lane positioning (for
+        example via the lane support system).
+    </p>
+    <p>
+        If the system detects fatigue or reduced concentration, an alert will sound and the dashboard will advise you to
+        take a break from driving. This does not mean you should drive while fatigued until these warnings occur.
+        Drivers are therefore advised never to drive while tired and to take regular breaks when driving longer
+        distances.
+    </p>
+    <h2>
+        Electronic stability program (ESP/ESC)
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    This system ensures that the direction your vehicle is travelling is the same as the direction in
+                    which you are steering. If this does not line up, for example when slipping, the system will correct
+                    this where possible by applying brakes to wheels individually. This stabilises the vehicle to
+                    facilitate steering control.
+                </p>
+
+            </div>
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_6648d0fc34d44d158eabee88db91dae1~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>Warning ESP disabled</figcaption>
+            </figure>
+
+        </div>
+    </div>
+    <p>
+        This makes it sound like cars equipped with ESP cannot slip. This is certainly not true. While ESP can correct a
+        slip when it starts, it cannot help you when your vehicle is slipping severely.
+    </p>
+    <p>
+        ESP can usually be disabled, but this is not recommended when driving on public roads.
+    </p>
+    <h2>
+        Emergency call system (eCall)
+    </h2>
+    <p>
+        The eCall system automatically sends a message to emergency services in the event of an accident. This message
+        includes important information such as your location and the number of occupants in your vehicle.
+    </p>
+    <h2>
+        Hill descent control
+    </h2>
+    <p>
+        This system helps drivers descend steep slopes and is mainly used on four-wheel drive vehicles designed for
+        rough terrain. If the vehicle accelerates itself, the system will apply controlled braking to the set speed.
+    </p>
+    <h2>
+        Intelligent speed assistance (ISA)
+    </h2>
+    <p>
+        This system has been developed to prevent speeding. This can be done with the help of a speed sign-recognition
+        system or GPS-linked speed limit data. The system compares this speed limit with the driven speed. The signs can
+        be displayed in the dashboard to advise the driver about the speed limit, but it can also be combined with
+        adaptive cruise control to adjust the vehicle’s speed automatically.
+    </p>
+    <p>
+        This system works well in some areas but not in others, and not all systems are sufficiently developed for Dutch
+        roads. For example, “zone” signs are often not detected, and the system occasionally picks up signs from
+        parallel roads or side roads that do not apply to the road the vehicle is currently on. Drivers are therefore
+        advised not to trust speed assist systems blindly, and to remain aware of signage on the road at all times.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b0b478e0f464458f9a5b1bc2669f9f24~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Lane support systems
+    </h2>
+    <p>
+        These tools alert drivers who are veering offcourse with a beeping sound or a vibration on the steering wheel,
+        or via automatic course correction.
+    </p>
+    <p>
+        One drawback of the lane keep assist and lane departure warning system is that rush hour lanes with lines and
+        road markings at exits can confuse it. This means the system may erroneously direct you from the rush hour lane
+        to the exit or onto another lane. The system works primarily based on line markings. Without these, it will not
+        work as well - or possibly not work at all.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0b2432acc96c4dbb863ef6c3db28340e~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Night vision
+    </h2>
+    <p>
+        This is a thermal imaging or infrared camera on the vehicle that projects an image to a monitor in or on the
+        dashboard, allowing drivers to see obstacles and other road users while driving at night or during bad weather.
+    </p>
+    <h2>
+        Parking sensors, Assisted parking en Automatic parking
+    </h2>
+    <p>
+        The simplest parking systems consist of sensors and will emit beeping sounds when your vehicle is too close to
+        an obstacle. More advanced systems are also equipped with cameras to provide you with a better view of the road
+        around your vehicle.
+    </p>
+    <p>
+        The most sophisticated systems take over parking completely, which means you do not have to do anything. In this
+        case, however, you are still responsible for any damage and you must maintain awareness of the situation around
+        you.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d34a4826a2cb43e9bfcfc0b0fb33e2a9~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Rain sensor
+    </h2>
+    <p>
+        This sensor, which is usually built into the windscreen, activates the windscreen wipers when rain is detected.
+        It also controls the speed of the wipers.
+    </p>
+    <h2>
+        Rear collision warning (RCW)
+    </h2>
+    <p>
+        The rear collision warning system detects traffic approaching from the left or right while driving backwards,
+        including traffic not yet visible to the driver, and alerts the driver with a sound signal.
+    </p>
+    <p>
+        Some systems can also automatically apply the brakes if the driver fails to react.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6aa93f9908d24b44b49ac807b914f4c6~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+
+        </div>
+    </div>
+    <h2>
+        Speed control function
+    </h2>
+
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    This function allows you to a set a maximum speed yourself. You will not be able to drive faster
+                    than the set speed. This is different from cruise control, whereby the vehicle itself controls the
+                    speed. You must maintain acceleration when using the speed control function.
+                </p>
+
+            </div>
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_7bdb8d8531ce4c4e94c2102f1dc166f1~mv2.png"
+                    alt="Örnek Resim" class="image1">
+
+
+        </div>
+    </div>
+    <h2>
+        Start stop system
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    System that makes it easier for a driver to turn of the engine at involuntary stops in traffic. For
+                    instance, at a traffic light or a level crossing. With a car with manual transmission, you usually
+                    have to put the gear in neutral and release the clutch pedal. The engine will then shut down
+                    automatically. As soon as the clutch pedal is pressed again, the engine will restart immediately.
+                </p>
+
+            </div>
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_b1bf5d3ab676478db296f4686e47da9f~mv2.png"
+                    alt="Örnek Resim" class="image1">
+
+
+        </div>
+    </div>
+    <p>
+        With a vehicle with automatic transmission, the start stop system will normally shut down the engine as soon as
+        the car comes to a stop with the use of the brake pedal. As soon as you let go of the brake pedal, the engine
+        will restart again.
+    </p>
+    <h2>
+        Tyre pressure monitoring (TPM)
+    </h2>
+
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    In some vehicles, tyre pressure is monitored by sensors. If the tyre pressure deviates, a warning
+                    light in the dashboard will alert the driver. If you see this warning light, stop in a safe place
+                    and check your tyre pressure.
+                </p>
+
+            </div>
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_cb15e84263f34a2d8726758af63ca633~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>Low tyre pressure warning</figcaption>
+            </figure>
+
+
+        </div>
+    </div>
+    <p>
+        Tyre pressure monitoring systems are not a substitute for monthly tyre pressure checks. These systems often only
+        detect a difference between tyres, and are thus unlikely to notice if all tyres have decreased pressure
+        simultaneously. Tyre pressure systems can also give false alerts in colder weather.
+    </p>
+    <h2>
+        Vehicular communication system
+    </h2>
+    <p>
+        This system allows modern vehicles and other pre-determined points to communicate regarding congestion and
+        safety warnings. For example, if an accident occurs 300 metres ahead of you, the vehicle can respond to this by
+        warning you or even braking. These types of systems are becoming increasingly important with the advent of
+        selfdriving cars.
+    </p>
+    <h2>
+        Warning sounds on electric vehicles
+    </h2>
+    <p>
+        These are warning sounds that occur when a (partly) electric vehicle is driving or reversing slowly (up to 25
+        km/h). As these vehicles are usually difficult to hear, the sound signals warn other road users of their
+        presence.
+    </p>
+
+
+
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+        overview</a>
+
+      
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

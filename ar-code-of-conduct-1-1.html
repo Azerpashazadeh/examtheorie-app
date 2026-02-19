@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>
+    Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+    body {
+      font-family: "Trirong", serif;
+      line-height: 1.2;
+      margin: 0;
+      padding: 15px;
+      /* Məzmunun kənarlara yapışmaması üçün */
+    }
+
+     
+
+    h1,
+    h2 {
+      color: #a70000;
+    }
+
+    h3 {
+      color: #000000;
+    }
+
+    .important-words1,
+    .important-words2 {
+      background-color: #f9c3ae;
+      padding: 15px;
+      margin-bottom: 20px;
+      position: relative;
+      direction: rtl;
+      /* yazıyı sağdan sola hizalar */
+      text-align: right;
+    }
+
+    .vertical-line1 {
+      width: 4px;
+      height: 60%;
+      background-color: rgb(201, 17, 17);
+      position: absolute;
+      top: 80px;
+      right: 15px;
+      /* soldan değil, sağdan hizalanacak */
+      left: auto;
+      /* soldaki hizalamayı iptal et */
+    }
+
+    .vertical-line2 {
+      width: 4px;
+      height: 100%;
+      background-color: rgb(201, 17, 17);
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      /* soldan değil, sağdan hizalanacak */
+      left: auto;
+      /* soldaki hizalamayı iptal et */
+    }
+
+    .important-words1 h2,
+    .important-words2 h2 {
+      color: #a70000;
+    }
+
+    .important-words1 ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-left: 20px;
+    }
+
+    .important-words1 li {
+      margin-bottom: 1px;
+      padding-left: 20px;
+      text-indent: -20px;
+      list-style-position: inside;
+      list-style-position: outside;
+
+    }
+
+    .important-words2 li {
+      margin-bottom: 1px;
+      padding-left: 20px;
+      text-indent: -20px;
+      list-style-position: inside;
+      list-style-position: outside;
+      padding-right: 0;
+      margin-right: 25px;
+      /* noktayı biraz sola kaydırır */
+    }
+
+    .road-section {
+      margin-top: 30px;
+    }
+
+    .road-section img,
+    .custom-image,
+    .custom-centered-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .custom-centered-image {
+      display: block;
+      margin: 20px auto;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .image-container figure {
+      max-width: 48%;
+      margin: 0;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .image-container figcaption {
+      font-size: 0.6em;
+      color: #000000;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .custom-button {
+      display: inline-block;
+      width: 140px;
+      height: 39px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      line-height: 39px;
+      text-decoration: none;
+      border-radius: 9px;
+      transition: background-color 0.3s ease;
+      margin-top: 70px;
+    }
+
+    .custom-button:hover {
+      background-color: blue;
+    }
+
+    @media (max-width: 550px) {
+      .image-container figure {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<h2>مدوّنة السلوك</h2>
+    <div class="important-words1">
+      <div class="vertical-line1"></div>
+      <h3>كلمات هولندية مهمة</h3>
+      <ul>
+        <li>
+          <strong>APK</strong> <br />مماثل لـ MOT، فحص عام دوري إلزامي للمركبة.
+        </li>
+        <li>
+          <strong>Brommobiel</strong> <br />
+          درّاجة نارية خفيفة بثلاث أو أربع عجلات ذات هيكل مغلق وبوزنٍ فارغ أقصاه 350 كغ. وتُسمّى أيضًا «سيارة صغيرة».
+        </li>
+        <li>
+          <strong>Snorfiets</strong> <br />درّاجة نارية خفيفة بسرعة تصنيع قصوى 25 كم/س.
+        </li>
+      </ul>
+    </div>
+    <p>
+      عند مشاركتك في حركة المرور، يُطلب منك الالتزام بقواعد سلوك معيّنة. وقد وُضِعت هذه القواعد العامة من أجل:
+    </p>
+    <ul>
+      <li>الحفاظ على سلامة الطرق؛</li>
+      <li>حماية مستخدمي الطريق والركّاب؛</li>
+      <li>ضمان بقاء الطرق صالحة للاستخدام؛</li>
+      <li>ضمان انسيابية حركة المرور؛</li>
+      <li>منع الإعاقة والضرر أو الحدّ منهما؛</li>
+      <li>تقليل الأثر السلبي لحركة المرور على البيئة؛</li>
+      <li>منع الجريمة.</li>
+    </ul>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>الطرق</h3>
+      <p>
+        جميع الطرق والمسارات التي يمكن لحركة المرور العامة القيادة أو المشي عليها. ويشمل ذلك الجسور والأنفاق. كما تُعدّ المسارات والحواف جزءًا من الطريق.
+      </p>
+      <p>
+        يعني ذلك أنّ الطريق يمكن أن يكون أيَّ شيء بين خندقين أو جدارين. لذا تُعدّ الأرصفة جزءًا من الطريق، وكذلك مسارات الدراجات إذا كانت مفصولةً عن الطريق بحافةٍ أو رصيف.
+      </p>
+      <img
+        src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png"
+        alt="مخطط الطريق"
+        class="custom-image"
+      />
+      <h3>الشخص المخوَّل</h3>
+      <p>
+        أشخاص مُخوَّلون بتنظيم حركة المرور وطلب المستندات الرسمية. وهُم:
+      </p>
+      <li>وكلاء النيابة العامة</li>
+      <li>ضباط الشرطة</li>
+      <li>الشرطة العسكرية</li>
+      <li>موظفو دائرة الضرائب الحكومية</li>
+      <li>
+        موظفو إدارة المركبات الهولندية وهيئة التفتيش المروري
+      </li>
+      <li>
+        موظفو Rijkswaterstaat (إدارة/وزارة شؤون المياه والأشغال العامة)
+      </li>
+      <li>مأمورو الضبط القضائي من دوائر حكومية مختلفة</li>
+    </div>
+    <h2>التعليمات</h2>
+    <p>
+      يلتزم كلّ مستخدمٍ للطريق باتّباع التعليمات الصادرة عن الأشخاص المخوَّلين.<br />
+      بالإضافة إلى ذلك، يتعيّن على مستخدمي الطريق اتّباع التعليمات الصادرة عن حرّاس العبور — الذين يجوز لهم إيقاف السائقين فقط.
+    </p>
+    <div class="image-container">
+      <figure>
+        <img
+          src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg"
+          alt="الصورة 1"
+        />
+        <figcaption><em>يجوز لحرّاس العبور إيقاف السائقين فقط.</em></figcaption>
+      </figure>
+      <figure>
+        <img
+          src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg"
+          alt="الصورة 2"
+        />
+        <figcaption>
+          <em
+            >يجوز لضبّاط الشرطة العسكرية الملكية الهولندية إصدار تعليمات يتعيّن عليك الالتزام بها. كما يجوز لهم طلب الاطّلاع على مستنداتك الرسمية.</em
+          >
+        </figcaption>
+      </figure>
+    </div>
+    <h2>التعاون الإلزامي</h2>
+    <p>
+      إذا أوقَفك شرطيّ أو شخصٌ مخوَّل آخر، فقد يطلب رؤية مستندات معيّنة. يجب أن تكون هذه المستندات بحوزتك دائمًا، ولا يجوز لك رفض طلب عرضها.
+      وتشمل هذه المستندات:
+    </p>
+    <ul>
+      <li>رخصة قيادتك.</li>
+      <li>شهادة تسجيل المركبة.</li>
+      <li>
+        بطاقة المشرف إذا كنت تقود ضمن نظام 2toDrive (القيادة ابتداءً من سنّ 17 عامًا).
+      </li>
+      <li>
+        بطاقة مواقف ذوي الإعاقة إذا كنت تقود مركبة مخصّصة أو تركن في موقف مخصّص.
+      </li>
+    </ul>
+    <p>
+      يجوز للشخص المخوَّل أيضًا أن يطلب منك الخضوع لاختبار للكحول أو المخدّرات. ويعني ذلك وجوب إجراء اختبار النَّفَس، واختبار تنسيق العين ووظيفة النطق، ومسحات اللعاب لأغراض الكشف عن المخدّرات.
+    </p>
+    <p>
+      وقد يُطلَب منك حتى إجراء فحص دم إذا رفضتَ اختبار النَّفَس أو تعذّر إجراء اختبار النَّفَس.
+    </p>
+    <h2>الإعاقة أو تعريض الآخرين للخطر</h2>
+    <p>
+      تُفصِّل معظم القواعد في التشريعات المعمول بها. فمثلًا لا يجوز القيادة أسرع من الحدّ الأقصى للسرعة، ولا يجوز تجاهل إشارات المرور، ولا يجوز اجتياز الإشارة الحمراء. ومع ذلك توجد سلوكيات كثيرة أخرى قد تُعرِّض مستخدمي الطريق للخطر أو تعيق الانسياب الطبيعي لحركة المرور وهي غير منصوصٍ عليها صراحةً في التشريعات. لذلك وُضِعَت قاعدة تحظر على مستخدمي الطريق التصرّف بما يخلق أو يساهم في وضعٍ خطِر على الطريق. كما يُحظر إعاقة حركة الآخرين أو عرقلتها. سبب هذه السلوكيات أو دافعها غير ذي صلة.
+    </p>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Kapstokartikel</h3>
+      <p>
+        تنصّ المادة 5 من قانون المرور على الطرق (وتُسمّى أيضًا «Kapstokartikel») على حظر تشغيل المركبة على نحوٍ يعيق حركة المرور أو يعرّض السائق أو غيره من مستخدمي الطريق للخطر. ويوفّر هذا القانون «شبكة أمان» تغطّي السلوك الخطر غير المحظور مباشرةً بعلامات المرور أو تخطيط الطريق لكنه يظلّ يشكّل إعاقةً أو خطرًا ويمكن الملاحقة عليه.
+      </p>
+    </div>
+        <h2>الإصابة أو الوفاة بخطأ</h2>
+    <p>
+      بالإضافة إلى عدم السماح بإحداث الإعاقة أو المواقف الخطرة، ينبغي على مستخدمي الطريق أن يتوخّوا الحذر لتجنّب التسبّب بحادثٍ مروري قد يُصيب الآخرين أو يتسبّب بوفاتهم.
+    </p>
+    <h2>مغادرة موقع الحادث</h2>
+    <p>
+      هل كنتَ طرفًا في حادث مروري؟ إذًا لا يجوز لك مغادرة موقع الحادث قبل أن تتبادل معلومات الاتصال ومعلومات المركبة مع أيّ أشخاصٍ آخرين معنيّين أو مع الشرطة — بغضّ النظر عمّا إذا كنتَ مخطئًا أم لا.
+    </p>
+    <p>
+      تُعدّ مغادرة موقع الحادث دون تقديم معلوماتك جريمة. ويمكنك التخفيف من ذلك بالإبلاغ طوعًا لدى مركز شرطة خلال 12 ساعةً من وقوع الحادث، ما لم تكن الشرطة قد قبضت عليك مشتبهًا به قبل ذلك.
+    </p>
+    <div class="important-words2">
+      <p>
+        إنّ مغادرة موقع الحادث وترك مُصابٍ دون مساعدة تُعدّ دائمًا جريمة — حتى لو أبلغتَ الشرطة لاحقًا. وبغضّ النظر عمّا إذا كنتَ طرفًا مباشرًا في الحادث أم لا، فأنت مُلزَم بتقديم العون عند الحاجة.
+      </p>
+    </div>
+    <h2>السباق على الطريق</h2>
+    <p>
+      يُحظر السباق أو التنافس مع سائقين آخرين على الطرق العامة. ومثال ذلك التسارع السريع عند إشارات المرور. وإذا ضُبِط مستخدمُ طريقٍ يفعل ذلك، يكون كلٌّ من السائق ومالك المركبة مسؤولَين عن أيّ أضرار.
+    </p>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>مصادرة رخصة القيادة</h3>
+      <p>
+        يملك ضباط الشرطة صلاحية مصادرة رخصة قيادتك إذا ضُبِطتَ مخالفًا لأنظمة المرور. ثم تُحال الرخصة إلى النيابة العامة.
+      </p>
+      <h3>المنع من القيادة (تعليق رخصة القيادة)</h3>
+      <p>
+        يعني المنع من القيادة أنّه لا يُسمح لك بتشغيل المركبات الآلية لأسابيع أو أشهر أو حتى سنوات. وإذا ضُبِطتَ مخالفًا لأنظمة المرور، فقد يمنعك وكيل النيابة أو القاضي من القيادة. وقد يستمرّ المنع حتى سنتين للمخالفات الأقلّ خطورة وحتى خمس سنوات للمخالفات الجسيمة. وتشمل الأخيرة التسبّب بوفاةٍ أو إصابة بسبب القيادة الخطرة، والقيادة تحت تأثير الكحول، والقيادة أثناء المنع. وإذا ارتكبتَ مخالفةً أخرى خلال مدةٍ قصيرة، فقد تتضاعف العقوبات.
+      </p>
+      <h3>إبطال رخصة القيادة</h3>
+      <p>
+        إذا ارتكبتَ عدّة مخالفات، أو أصبحت غير مؤهَّلٍ للقيادة لأسبابٍ أخرى، فقد تُعلَن رخصتك غير صالحة. وهذا يعني أنّه لن يُسمح لك بتشغيل المركبات الآلية التي تتطلّب رخصة. وسيظلّ مسموحًا لك ركوب الدرّاجة، وأن تكون راكبًا في مركبة، وتشغيل المركبات التي لا تحتاج إلى رخصة. وقد يقتصر الإبطال على فئةٍ واحدة فقط، ما يعني بقاء أهليتك لقيادة مركباتٍ ضمن فئاتٍ أخرى.
+      </p>
+    </div>
+    <img
+      src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg"
+      alt="الصورة 1"
+      class="custom-centered-image"
+    />
+    <h2>إنفاذ سلوك القيادة</h2>
+    <p>
+      إذا وُجِدتَ مخالفًا لقوانين المرور، فقد تُصادَر رخصة قيادتك. وهذا يعني أنّ الشرطة ستأخذ رخصتك وتُحيلها إلى النيابة العامة، التي ستقرّر (خلال 10 أيام) ما إذا كانت ستحتفظ بالرخصة أم تُعيدها إليك. وفي كلتا الحالتين قد يُحال الأمر إلى قاضٍ لاتّخاذ القرار النهائي، وعندها قد تُغرَّم و/أو تُمنَع من القيادة. ولن يُسمح لك بقيادة مركبة آلية طوال مدة منعك.
+    </p>
+    <p>
+      واستنادًا إلى سلوكك، قد تقع مصادرة رخصة قيادتك إذا:
+    </p>
+    <ul>
+      <li>تجاوزتَ الحدّ الأقصى للسرعة بـ 50 كم/س أو أكثر؛</li>
+      <li>تسبّبتَ بإعاقة أو وضعٍ خطِر.</li>
+    </ul>
+    <p>
+      وقد تُبلَّغ المخالفة أيضًا إلى CBR (المكتب المركزي لكفاءة القيادة)، الذي سيُحدّد عندها أهليتك لمواصلة القيادة.
+    </p>
+    <div class="important-words2">
+      <p>
+        يرمز CBR إلى Centraal Bureau Rijvaardigheidsbewijzen، أي «المكتب المركزي لكفاءة القيادة». وهو الذي يقرّر ما إذا كنتَ مؤهّلًا للحصول على رخصة القيادة. كما يقرّر ما إذا كنتَ ستحتفظ برخصتك عندما تكون أهليتك أو مهاراتك محلّ شك. ويُشرف CBR على اختبارات النظري والقيادة العملية. وهناك فرع آخر هو BNOR؛ فإذا رسبتَ في اختبار القيادة أربع مرّات متتالية، فسيُجري تقييمًا أعمق لتحديد قدراتك في القيادة.
+      </p>
+    </div>
+    <p>قد يُبلَّغ CBR إذا كنتَ:</p>
+    <ul>
+      <li>
+        تلازم المركبة التي أمامك على الطريق السريع (لا تحافظ على مسافةٍ كافية عن المركبة التي أمامك)؛
+      </li>
+      <li>تقطع الطريق على مستخدمين آخرين؛</li>
+      <li>تجتاز إشارةً حمراء؛</li>
+      <li>تتجاوز الحدّ الأقصى للسرعة بأكثر من 50 كم/س في الظروف العادية؛</li>
+      <li>
+        تتجاوز الحدّ الأقصى للسرعة بأكثر من 30 كم/س أثناء أعمال الطريق.
+      </li>
+    </ul>
+    <h2>القيادة أثناء المنع</h2>
+    <p>
+      يُعدّ تشغيل مركبةٍ آلية أثناء منعك من القيادة جريمةً جنائية. وينطبق ذلك أيضًا إذا شغّلت مركبةً تتطلّب رخصة وكانت رخصتك مُبطلة.
+    </p>
+   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">العودة إلى النظرة العامة</a>"
+
+
+  
+
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

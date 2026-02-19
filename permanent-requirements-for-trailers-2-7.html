@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Permanent requirements for trailers</h2>
+    <p>Like cars, trailers are also required to meet a number of permanent technical requirements. Pulling a trailer
+        that does not meet these requirements is prohibited.</p>
+    <h2>Same requirements as passenger cars</h2>
+    <p>Trailers are also subject to many of the requirements applicable to passenger cars. This applies to:</p>
+
+
+    <ul>
+        <li>maximum dimensions (4 metres high, 2.55 metres wide, 12 metres long)</li>
+        <li>tyre requirements (no damage, sufficient tread depth)</li>
+        <li>presence of sharp and protruding parts (shielded or not present)</li>
+    </ul>
+    <h2>Closing loading flaps and doors</h2>
+    <p>Many trailers have a flap at the rear that can be folded open for better access to the loading floor. Some closed
+        trailers have rear doors instead. These flaps and doors must be able to close properly and remain closed while
+        in transit.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_708b8ce1ab6a480aacafd786c14d3e66~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>The loading doors must close properly and stay closed while driving. Trailers with a maximum
+                    authorised mass above 750 kg must also be fitted with a yellow number plate.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_a36fba69584844cba5172e7de80f02e5~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>The loading bay flaps must close properly and stay closed while driving. Trailers with a maximum
+                    authorised mass up to 750 kg must also be fitted with a white number plate.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>Number plate</h2>
+    <p>Mounting a number plate on the rear of a trailer must be possible. Trailers require original number plates which
+        must be properly secured.</p>
+    <h2>Braking system</h2>
+    <p>Most trailers are braked, which means they are equipped with their own braking system. Braking systems on braked
+        trailers must be properly functioning. This means the trailer must not swing while braking, which can occur when
+        the brakes are not equally powerful on both sides.</p>
+    <p>All parts in the braking system must be undamaged, properly attached, rust-free, and leak-free. The brake hoses
+        must be in good condition and must not come into contact with other parts.</p>
+    <h2>Lighting</h2>
+    <p>Trailer lighting is subject to a number of rules that do not apply to passenger car lighting. For example,
+        reversing lights are not mandatory for trailers up to 750 kg.</p>
+    <p>Sidelighting on the front and marker lighting on the front and rear are only mandatory on wider trailers. Side
+        marker lighting is only mandatory on trailers longer than six metres. These sidelights and marker lighting may
+        be present on shorter and narrower trailers.</p>
+    <p>Additional retro-reflectors may also be fitted on the front (white), rear (red), and side (amber, rear possibly
+        red) of the trailer.</p>
+    <h2>Placement and operation of mandatory lighting</h2>
+    <p>Trailer lighting must comply with the following rules:</p>
+    <ul>
+        <li>All lighting must be placed on the trailer so that it is clearly visible, cannot be confused with other
+            lighting and the size of the trailer is well emphasised.</li>
+        <li>All mandatory lighting must work properly and be properly attached. The light output must not have decreased
+            by more than 25% due to broken lamps or damaged/dirty lamp glasses. The lamp glasses must also not be
+            removed.</li>
+        <li>All lamps with the same function must have the same appearance and be arranged symmetrically to the left and
+            right.</li>
+        <li>All mandatory retro-reflectors must reflect well.</li>
+    </ul>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_44e18c7cb4a04c71a641e26ce92a6c0c~mv2.jpeg"
+                alt="Image 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_2f2239d3dad64f6d86052d1db66f1436~mv2.jpeg"
+                alt="Image 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+
+
+    <h2>Prohibited lighting</h2>
+    <p>Only the aforementioned mandatory and permitted lighting may be present on a trailer. Trailers may not be
+        equipped with lighting on the inside that beams outwards. The vehicle must not be equipped with blue flashing or
+        blinking lights, even if these are switched off, as this may confuse other road users.</p>
+    <h2>Hitch</h2>
+    <p>The hitch, the part of the trailer that attaches to the passenger car, is located on the drawbar or draw triangle
+        - a metal frame at the front of the trailer. This part must be in good condition (no bends or cracks) to ensure
+        the trailer does not come loose.</p>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d519f5108d1e42f990380da524581ea4~mv2.jpeg"
+                alt="Image 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+    <p>To mitigate the situation should a trailer unexpectedly come loose while driving, trailers must be equipped with
+        an emergency brake or auxiliary coupling. Having both equipped simultaneously is prohibited, as each one cancels
+        out the other.</p>
+    <h2>Emergency braking system</h2>
+    <p>The emergency braking system ensures that the trailer’s handbrake is immediately applied should the trailer come
+        loose from the tow bar. This is a thin steel cable (break-away cable) connected to the trailer’s handbrake, with
+        a hook or ring attaching it to the car. If tension occurs due to the trailer coming loose, the emergency brake
+        applies the trailer’s handbrake, at which point the cable snaps. The trailer then comes to a stop, separate from
+        the car, instead of rolling out of control.</p>
+    <p>This device is mandatory on trailers with a maximum authorised mass above 1500 kg.</p>
+    <h2>Auxiliary coupling</h2>
+    <p>Many lighter trailers and all unbraked trailers are not equipped with an emergency braking system. These trailers
+        must therefore be equipped with an auxiliary coupling, which ensures the car and trailer remain connected should
+        the trailer come loose from the tow bar. An auxiliary coupling is a thicker steel cable that is connected to the
+        body of the trailer, with a hook or ring attaching it to the car.</p>
+    <p>This cable does not snap when tension occurs, but keeps the trailer and the car connected so that the driver can
+        safely stop the car and trailer at the earliest opportunity.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_6382814bcfe94dd6919cb6041834325c~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>The red cable is the break-away cable. This is mandatory on a trailer with a maximum
+                    authorised mass above 1500 kg.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_37c227eef45049a990db8bcfdb7a3a82~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>The round cable is the auxiliary coupling. This is mandatory on trailers that do not have an
+                    emergency braking system.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

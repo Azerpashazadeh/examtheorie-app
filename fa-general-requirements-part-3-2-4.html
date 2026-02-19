@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   General requirements - part 3
+  </h2>
+  <h2>
+   Visibility through windows
+  </h2>
+  <p>
+   To participate safely in traffic, adequate visibility through the windows is important. Requirements for this
+        apply to the windscreen and the front side windows:
+  </p>
+  <ul>
+   <li>
+    These windows must not be damaged or discoloured.
+   </li>
+   <li>
+    They must be free of unnecessary objects that may obscure visibility, such as items hanging from the
+            rearview mirror or dashboard ornaments and incorrectly mounted navigation systems.
+   </li>
+   <li>
+    They must not be less than 55% transparent (e.g. tinted windows).
+   </li>
+   <li>
+    The windscreen must also have a properly functioning system that defrosts the windscreen and defogs the
+            glass. This is usually a blower (air via the ventilation grilles) with or without air conditioning, but
+            electric windscreen heating is also available.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_bd4d949ebbec432db31c8d39ac2eaa15~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Tinted foil on the front windows will often prevent sufficient light from coming in.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_96b0721c7fc84e19aceedaea0e57b78a~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Each passenger car must have a fully functioning windscreen washer and wiper system.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Windscreen wipers
+  </h2>
+  <p>
+   To maintain adequate visibility through the windscreen, passenger cars must be equipped with properly functioning
+        windscreen wipers, as well as a windscreen washer system with spray function. If the screen wash has run out,
+        the system will no longer work and the car may not be driven.
+  </p>
+  <div class="important-words4">
+   <div class="image-content">
+    <img alt="Licence Image" src="https://static.wixstatic.com/media/4b688f_e8870e76a9e7413281602f3602a068d2~mv2.png"/>
+   </div>
+   <div class="text-content">
+    <p>
+     This warning light warns of an (almost) empty screen wash reservoir. Because driving without screen wash
+                is prohibited, you should refill the reservoir as soon as possible as the light comes on. Not all
+                passenger cars are equipped with a screen wash level warning light.
+    </p>
+   </div>
+  </div>
+  <h2>
+   Mirrors
+  </h2>
+  <p>
+   Passenger cars must be equipped with one wing mirror on each side (right and left) and an interior, rearview
+        mirror. Some vans and lorries have a separate, closed cargo section behind the cab, which means there is no
+        visibility via the rearview mirror. This mirror is therefore not required in these vehicles.
+  </p>
+  <p>
+   All equipped mirrors must be intact and not overly weathered (brown or black edges, stains on the glass).
+  </p>
+  <h2>
+   Seats
+  </h2>
+  <p>
+   All seats in a passenger car must face either the front or the back. Seats must be fixed in place securely and,
+        if adjustable, there must be no risk of sliding while driving.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    (Safety) seat belt
+   </h3>
+   <p>
+    Seat belts protect drivers and passengers from the impact and force involved in collisions and sudden braking
+            and prevent ejection from the vehicle. Most passenger cars are equipped with three-point seat belts, whereby
+            one part of the belt crosses the waist and another part diagonally crosses the chest.
+   </p>
+   <h3>
+    Child restraint system
+   </h3>
+   <p>
+    Child safety seats can be fixed in place in passenger cars by means of a click system (Isofix) or a seat
+            belt. The child is secured in the seat with a belt attached to the safety seat itself, or the car’s
+            three-point belt. This system protects the child against the impact and force involved in collisions and
+            sudden braking and prevents ejection from the vehicle.
+   </p>
+   <h3>
+    Airbag
+   </h3>
+   <p>
+    A feature in passenger cars that inflates upon impact in the event of a collision. The airbag protects
+            occupants against contact with hard surfaces inside the vehicle and prevents excessive forward or sideways
+            movement during a collision.
+   </p>
+  </div>
+  <h2>
+   Seat belts
+  </h2>
+  <p>
+   Seat belts prevent major injury to drivers and passengers in the event of a collision. A seat belt can save your
+        life when travelling at just 30 km/h and is mandatory for all seats inside a car. Due to their importance, seat
+        belts are required to comply with their own set of requirements:
+  </p>
+  <ul>
+   <li>
+    They must be damage-free.
+   </li>
+   <li>
+    They must be equipped with properly functioning locking and blocking.
+   </li>
+   <li>
+    The belt must fit properly when in use.
+   </li>
+   <li>
+    Seat belt and airbag warning lights may not indicate any malfunctions.
+   </li>
+  </ul>
+  <div class="important-words5">
+   <p>
+    All warning lights below are red. This means that you must address the problem immediately and you should not
+            drive on before the problem is solved. The first two lights warn of problems with the different airbags. The
+            last one states that someone (you or a passenger) is not wearing a seat belt.
+   </p>
+   <!-- Başlık en üstte -->
+   <div class="images-container5">
+    <!-- Resimleri saran div -->
+    <figure>
+     <img alt="Warning airbag malfunction" src="https://static.wixstatic.com/media/4b688f_ef1dad2ca0434c4d991c83c7d71c217f~mv2.png"/>
+     <figcaption>
+      Warning airbag malfunction
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_4d438aae9e764b20b5d43370205e1d42~mv2.png"/>
+     <figcaption>
+      Warning side-airbag malfunction
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_8dca92b43b7a4bc2b7e1edf33ac319fd~mv2.png"/>
+     <figcaption>
+      Seat belt warning light
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Protruding and sharp objects
+  </h2>
+  <p>
+   Injuries sustained by pedestrians in collisions are often fatal, and pedestrian protection measures are an
+        increasingly important element in vehicle design. To minimise the risk, sharp objects such as hood ornaments and
+        self-made bull bars on the bumper are prohibited.
+  </p>
+  <p>
+   Any other protruding parts must be shielded and may not present a risk of injury in the event of a collision.
+        Tyres may not protrude more than three centimetres from the wheel arches.
+  </p>
+  <p>
+   Vehicles must also be free of any loose parts due to poor mounting, wear and tear, or deterioration.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_f4e26dad13ae4e7d801a37ffe733d176~mv2.jpg">
+     <figcaption>
+      <em>
+       Seat belts are mandatory for every seat.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_f3e297a777084bef891f4d93c23fe05d~mv2.jpg">
+     <figcaption>
+      <em>
+       Tyres may not protrude more than three centimetres from the wheel arches (wheel arch is indicated by
+                    the arrow).
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

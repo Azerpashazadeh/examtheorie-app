@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+      body {
+        font-family: "Trirong", serif;
+        line-height: 1.2;
+      }
+         
+
+      h1,
+      h2 {
+        color: #a70000;
+      }
+
+      h3 {
+        color: #000000;
+      }
+
+      .important-words1 {
+        background-color: #f9c3ae;
+        padding: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+      }
+
+      .important-words2 {
+        background-color: #f9c3ae;
+        padding: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+      }
+      .vertical-line1 {
+        width: 4px;
+        height: 60%;
+        background-color: rgb(201, 17, 17);
+        position: absolute;
+        top: 80px;
+        left: 15px; /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+      }
+
+      .vertical-line2 {
+        width: 4px;
+        height: 100%;
+        background-color: rgb(201, 17, 17);
+        position: absolute;
+        top: 0px;
+        left: 0px; /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+      }
+
+      .important-words1 h2 {
+        color: #a70000;
+      }
+      .important-words2 h2 {
+        color: #a70000;
+      }
+
+      .important-words1 ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 20px;
+        /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+      }
+
+      .important-words1 li {
+        margin-bottom: 1px; /* Elemanlar arasındaki mesafeyi ayarlar */
+        padding-left: 0px; /* Sol boşluk, text-indent için */
+        text-indent: 0px; /* İkinci satırların hizalanması için */
+        list-style-position: inside; /* Madde işaretinin içerde kalmasını sağlar */
+      }
+
+      .important-words2 li {
+        margin-bottom: 1px; /* Elemanlar arasındaki mesafeyi ayarlar */
+        padding-left: 20px; /* Sol boşluk, text-indent için */
+        text-indent: -20px; /* İkinci satırların hizalanması için */
+        list-style-position: inside; /* Madde işaretinin içerde kalmasını sağlar */
+      }
+
+      .road-section {
+        margin-top: 30px;
+      }
+
+      .road-section img {
+        width: 100%;
+        height: auto;
+      }
+
+      .custom-image {
+        width: 100%;
+        height: auto;
+        max-width: 1500px;
+      }
+
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .image-container figure {
+        max-width: 48%;
+        margin: 0;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .image-container figcaption {
+        font-size: 0.6em;
+        color: #000000;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      @media (max-width: 550px) {
+        .image-container figure {
+          max-width: 100%;
+        }
+      }
+      /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+      .custom-centered-image {
+        display: block; /* Resmi block element olarak ayarlar */
+        margin: 20px auto; /* Ortalar ve üst-alt boşluk ekler */
+        width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+        max-width: 100%; /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+        height: auto; /* Yüksekliği otomatik olarak ayarlar */
+      }
+
+       /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h2>Davranış Kuralları</h2>
+
+    <div class="important-words1">
+      <div class="vertical-line1"></div>
+      <h3>Önemli Hollandaca Kelimeler</h3>
+      <ul>
+        <li>
+          <strong>APK</strong> <br />MOT ile aynı, aracın zorunlu periyodik
+          genel muayenesi.
+        </li>
+
+        <li>
+          <strong>Brommobiel</strong> <br />
+          Kapalı karoserli ve maksimum boş ağırlığı 350 kg olan üç veya dört
+          tekerlekli moped. Mikro araba olarak da adlandırılır.
+        </li>
+        <li>
+          <strong>Snorfiets</strong> <br />Maksimum yapı hızı 25 km/s olan
+          moped.
+        </li>
+      </ul>
+    </div>
+
+    <p>
+      Trafiğe katıldığınızda, belirli davranış kurallarına uymak zorundasınız.
+      Bu genel kurallar şunlar için tasarlanmıştır:
+    </p>
+    <ul>
+      <li>yolları güvenli tutmak;</li>
+      <li>yol kullanıcılarını ve yolcuları korumak;</li>
+      <li>yolların kullanılabilirliğini sağlamak;</li>
+      <li>trafiğin serbestçe hareket etmesini sağlamak;</li>
+      <li>rahatsızlığı ve hasarı önlemek veya sınırlamak;</li>
+      <li>trafiğin çevre üzerindeki olumsuz etkilerini sınırlamak;</li>
+      <li>suçları önlemek.</li>
+    </ul>
+
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Yollar</h3>
+      <p>
+        Kamu trafiğinin geçebileceği tüm yollar ve patikalar. Bu, köprüler ve
+        tünelleri de içerir. Patikalar ve yol kenarları da yolun bir parçası
+        olarak kabul edilir.
+      </p>
+      <p>
+        Bu, bir yolun iki hendek veya iki duvar arasında herhangi bir şey
+        olabileceği anlamına gelir. Kaldırımlar da bu nedenle yolun bir
+        parçasıdır, yolun kendisinden kaldırım veya yol kenarı ile ayrılmış
+        bisiklet yolları gibi.
+      </p>
+      <img
+        src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png"
+        alt="Yol Diyagramı"
+        class="custom-image"
+      />
+      <h3>Yetkili Kişi</h3>
+      <p>
+        Trafiği düzenlemek ve resmi belgeleri talep etmekle yetkili kişiler.
+        Bunlar şunlardır:
+      </p>
+
+      <li>Kamu savcıları</li>
+      <li>Polis memurları</li>
+      <li>Askeri polis</li>
+      <li>Devlet vergi dairesi memurları</li>
+      <li>
+        Hollanda motorlu taşıtlar departmanı ve trafik müfettişliği yetkilileri
+      </li>
+      <li>
+        Rijkswaterstaat (Su yolları ve kamu işleri departmanı) yetkilileri
+      </li>
+      <li>Çeşitli devlet dairelerinden soruşturma memurları</li>
+    </div>
+    <h2>Talimatlar</h2>
+    <p>
+      Her yol kullanıcısı, yetkili kişiler tarafından verilen talimatlara uymak
+      zorundadır.<br />
+      Ayrıca, yol kullanıcıları sadece sürücüleri durdurabilen okul geçit
+      görevlilerinin verdiği talimatlara da uymak zorundadır.
+    </p>
+
+    <div class="image-container">
+      <figure>
+        <img
+          src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg"
+          alt="Görüntü 1"
+        />
+        <figcaption>
+          <em>Okul geçit görevlileri yalnızca sürücüleri durdurabilir.</em>
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg"
+          alt="Görüntü 2"
+        />
+        <figcaption>
+          <em
+            >Hollanda Kraliyet Askeri Polisi'nden askeri görevliler, uymanız
+            gereken talimatlar verebilir. Ayrıca resmi belgelerinizi görmek
+            isteyebilirler.</em
+          >
+        </figcaption>
+      </figure>
+    </div>
+    <h2>Zorunlu işbirliği</h2>
+    <p>
+      Eğer bir polis memuru veya başka bir yetkili kişi tarafından
+      durdurulursanız, sizden belirli belgeleri göstermenizi isteyebilirler. Bu
+      belgeler her zaman yanınızda bulunmalıdır ve bu belgeleri göstermeyi
+      reddedemezsiniz. Bu belgeler şunları içerir:
+    </p>
+
+    <ul>
+      <li>Sürücü belgeniz.</li>
+      <li>Araç tescil belgesi.</li>
+      <li>
+        2toDrive (17 yaşından itibaren sürüş) programı kapsamında sürüyorsanız,
+        denetçi belgesi.
+      </li>
+      <li>
+        Engelli aracını kullanıyorsanız veya engelli park yerine park
+        ediyorsanız, engelli park kartı.
+      </li>
+    </ul>
+
+    <p>
+      Yetkili bir kişi, sizden alkol veya uyuşturucu testine uymanızı da
+      isteyebilir. Bu, nefes testi, göz koordinasyonu ve konuşma fonksiyonu
+      testi ve uyuşturucu tespiti amacıyla tükürük örnekleri almayı kabul
+      etmeniz gerektiği anlamına gelir.
+    </p>
+    <p>
+      Nefes testini reddetmeniz veya nefes testi yapmanın mümkün olmaması
+      durumunda, kan testi yaptırmanız bile gerekebilir.
+    </p>
+    <h2>Engelleme veya tehlikeye sokma</h2>
+    <p>
+      Çoğu kural ilgili mevzuatta ayrıntılı olarak belirtilmiştir. Örneğin, hız
+      sınırını aşamazsınız, trafik işaretlerini göz ardı edemezsiniz ve kırmızı
+      ışıkta geçemezsiniz. Ancak, diğer yol kullanıcılarını tehlikeye atabilecek
+      veya trafik akışını engelleyebilecek birçok davranış, yasada açıkça yer
+      almamaktadır. Bu nedenle, yol kullanıcılarının yolda tehlikeli bir durum
+      yaratmasına veya katkıda bulunmasına neden olacak şekilde davranmalarını
+      yasaklayan bir kural bulunmaktadır. Diğer trafiği engellemek veya
+      engellemek de yasaktır. Bu davranışların nedeni veya sebebi önemsizdir.
+    </p>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Kapstokartikel</h3>
+      <p>
+        Karayolu Trafik Yasası'nın 5. Maddesi (diğer adıyla ‘Kapstokartikel’),
+        yol kullanıcılarının trafiği engelleyecek veya kendilerine ya da diğer
+        yol kullanıcılarına tehlike oluşturacak şekilde bir araç kullanmasını
+        yasaklar. Bu yasa, trafik işaretleri veya yol işaretleri tarafından
+        doğrudan yasaklanmayan, ancak yine de engel oluşturan veya tehlike arz
+        eden ve bu nedenle yargılanabileceğiniz tehlikeli davranışları kapsayan
+        bir ‘güvenlik ağı’ sağlar.
+      </p>
+    </div>
+    <h2>Yaralanma veya ölüme sebep olma</h2>
+    <p>
+      Engelleme veya tehlikeli durumlar yaratma yasağının yanı sıra, yol
+      kullanıcıları başkalarının yaralanmasına veya ölmesine neden olabilecek
+      trafik kazalarına neden olmaktan kaçınmalıdır.
+    </p>
+    <h2>Kaza yerini terk etme</h2>
+    <p>
+      Bir trafik kazasına karıştınız mı? O zaman, kazaya karışan diğer kişilerle
+      veya polisle iletişim ve araç bilgilerinizi paylaşmadan kaza yerinden
+      ayrılmamalısınız – hata sizde olsun ya da olmasın.
+    </p>
+    <p>
+      Kaza yerini, bilgilerinizi vermeden terk etmek bir suçtur. Bunu, kazanın
+      gerçekleştiği andan itibaren 12 saat içinde gönüllü olarak bir polis
+      karakoluna bildirerek hafifletebilirsiniz. Ancak polis sizi daha önce bir
+      şüpheli olarak tutuklamadıysa.
+    </p>
+
+    <div class="important-words2">
+      <p>
+        Yaralı bir kişiyi yardımsız bırakarak kaza yerini terk etmek, daha sonra
+        polisi bildirseniz bile her zaman bir suçtur. Kazaya doğrudan karışıp
+        karışmadığınıza bakılmaksızın, gerektiğinde yardım sağlamak
+        zorundasınız.
+      </p>
+    </div>
+    <h2>Yolda yarışmak</h2>
+    <p>
+      Halk yollarında diğer sürücülerle yarışmak veya rekabet etmek yasaktır.
+      Bunun bir örneği, trafik ışıklarında hızla ivmelenmektir. Bir yol
+      kullanıcısı bunu yaparken yakalanırsa, hem sürücü hem de araç sahibi
+      oluşabilecek zararlardan sorumludur.
+    </p>
+
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Sürücü belgesinin el konulması</h3>
+      <p>
+        Polis memurları, trafik kurallarını ihlal ettiğinizde sürücü belgenize
+        el koyma yetkisine sahiptir. Belgeniz daha sonra savcıya iletilecektir.
+      </p>
+      <h3>Sürüşten men edilme (sürücü belgesinin askıya alınması)</h3>
+      <p>
+        Sürüşten men edilmek, birkaç hafta, ay veya hatta yıl boyunca motorlu
+        taşıt kullanmanıza izin verilmediği anlamına gelir. Trafik kurallarını
+        ihlal ettiğinizde bir savcı veya hakim, sizi sürüşten men edebilir.
+        Hafif ihlaller için sürüşten men süresi iki yıla kadar, ciddi suçlar
+        için ise beş yıla kadar sürebilir. Ciddi suçlar, tehlikeli sürüş
+        nedeniyle ölüm veya yaralanma, alkol etkisi altında araç kullanma ve
+        sürüşten men edildiğiniz halde araç kullanma gibi durumları içerir. Kısa
+        süre içinde başka bir suç işlerseniz, bu cezalar iki katına çıkabilir.
+      </p>
+      <h3>Sürücü belgesinin geçersiz kılınması</h3>
+      <p>
+        Birkaç ihlal yaparsanız veya başka nedenlerle araç kullanmaya uygun
+        değilseniz, sürücü belgeniz geçersiz kılınabilir. Bu, sürücü belgenizin
+        gerekli olduğu motorlu taşıtları artık kullanamayacağınız anlamına
+        gelir. Yine de bisiklete binebilir, bir araçta yolcu olabilir ve sürücü
+        belgesi gerektirmeyen araçları kullanabilirsiniz. Sürücü belgeniz
+        yalnızca bir araç kategorisi için geçersiz kılınabilir, bu da diğer
+        kategorilerdeki araçları kullanma yetkinizin devam edeceği anlamına
+        gelir.
+      </p>
+    </div>
+
+    <img
+      src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg"
+      alt="Resim 1"
+      class="custom-centered-image"
+    />
+    <h2>Sürüş davranışlarının denetimi</h2>
+    <p>
+      Trafik kurallarını ihlal ettiğinizde, sürücü belgenize el konulabilir. Bu,
+      polisin belgenize el koyacağı ve bunu savcıya ileteceği anlamına gelir.
+      Savcı, belgenizi (10 gün içinde) elinde tutmaya veya size iade etmeye
+      karar verecektir. Her iki durumda da, son kararı vermek üzere bir hakim
+      davet edilebilir, bu durumda para cezası alabilir ve/veya sürüşten men
+      edilebilirsiniz. Men süresi boyunca motorlu taşıt kullanmanıza izin
+      verilmeyecektir.
+    </p>
+    <p>
+      Davranışınıza bağlı olarak, sürücü belgenize şu durumlarda el konulabilir:
+    </p>
+
+    <ul>
+      <li>hız sınırını 50 km/sa veya daha fazla aştığınızda;</li>
+      <li>engelleme veya tehlikeli bir durum yarattığınızda.</li>
+    </ul>
+    <p>
+      İhlal ayrıca CBR'ye (Merkezi Sürücü Yeterlilik Bürosu) bildirilebilir ve
+      bu durumda sürüşe devam etme yetkinizi belirleyeceklerdir.
+    </p>
+
+    <div class="important-words2">
+      <p>
+        CBR kısaltması Centraal Bureau Rijvaardigheidsbewijzen, yani Merkezi
+        Sürücü Yeterlilik Bürosu anlamına gelir. Sürücü belgesi alıp
+        almayacağınıza karar verirler. Ayrıca, uygunluk veya sürüş becerileriniz
+        sorgulandığında sürücü belgenizi koruyup koruyamayacağınıza da karar
+        verirler. CBR, hem teorik hem de sürüş testlerini denetler. CBR'nin bir
+        başka dalı da BNOR'dur; sürüş testinde dört kez üst üste başarısız
+        olursanız, onlar daha ileri bir araştırma yapar ve sürüş yeteneklerinizi
+        değerlendirirler.
+      </p>
+    </div>
+
+    <p>CBR'ye şu durumlarda bildirilebilirsiniz:</p>
+    <ul>
+      <li>
+        otobanda yakın takip yaptığınızda (önünüzdeki araçla uygun mesafeyi
+        korumadığınızda);
+      </li>
+      <li>diğer yol kullanıcılarının önünü kestiğinizde;</li>
+      <li>kırmızı ışıkta geçtiğinizde;</li>
+      <li>normal durumlarda hız sınırını 50 km/sa'dan fazla aştığınızda;</li>
+      <li>
+        yol çalışmaları sırasında hız sınırını 30 km/sa'dan fazla aştığınızda.
+      </li>
+    </ul>
+    <h2>Sürüşten men edilmişken araç kullanma</h2>
+    <p>
+      Sürüşten men edilmişken motorlu taşıt kullanmak bir suçtur. Bu durum,
+      sürücü belgeniz geçersiz kılındığında ve sürücü belgesi gerektiren bir
+      araç kullandığınızda da geçerlidir.
+    </p>
+
+     <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+   
+
+  </script>
+
+
+  
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

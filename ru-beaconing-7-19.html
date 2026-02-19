@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+           
+
+            min-height: 125px;
+          
+
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Resmin konumlandırılmasını sağlayacak */
+            overflow: hidden;
+            /* İçerik taşmasını önler */
+        }
+
+        .important-words1 p {
+            margin-right: 175px;
+            /* Resmin genişliğine göre sağdan boşluk bırakır */
+        }
+
+        .important-words1 .side-image {
+            position: absolute;
+            right: 10px;
+            /* Sağdan 20px mesafe */
+            top: 50%;
+            /* Dikeyde ortalama için */
+            transform: translateY(-50%);
+            /* Gerçek dikey ortalama */
+            max-height: auto;
+            /* Resmin divi taşmasını önlemek için */
+            width: 170px;
+            /* Resim genişliği (isteğe göre ayarlanabilir) */
+            height: auto;
+            /* Oranları korumak için */
+        }
+
+
+        .important-words10 {
+           
+            min-height: 125px;
+            padding: 0px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Resmin konumlandırılmasını sağlayacak */
+            overflow: hidden;
+            /* İçerik taşmasını önler */
+        }
+
+        .important-words10 p {
+            margin-right: 100px;
+            /* Resmin genişliğine göre sağdan boşluk bırakır */
+        }
+
+        .important-words10 .side-image {
+            position: absolute;
+            right: 10px;
+            /* Sağdan 20px mesafe */
+            top: 50%;
+            /* Dikeyde ortalama için */
+            transform: translateY(-50%);
+            /* Gerçek dikey ortalama */
+            max-height: auto;
+            /* Resmin divi taşması önlemek için */
+            width: 68px;
+            /* Resim genişliği (isteğe göre ayarlanabilir) */
+            height: auto;
+            /* Oranları korumak için */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 600px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+        .images-container7 {
+            display: grid;
+            gap: 20px;
+            /* Resimler arasındaki boşluk */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        /* Tarayıcı genişliği 1024px'den büyükse 4 sütun 3 satır */
+        @media (min-width: 1025px) {
+            .images-container7 {
+                grid-template-columns: repeat(5, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 1024px veya daha küçükse 3 sütun 4 satır */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .images-container7 {
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 768px veya daha küçükse 2 sütun 6 satır */
+        @media (max-width: 768px) and (min-width: 481px) {
+            .images-container7 {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 480px veya daha küçükse tek sütun 12 satır */
+        @media (max-width: 480px) {
+            .images-container7 {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+        }
+
+        .images-container7 img {
+            width: 70%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+        /* Genel tablo stilleri */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            word-break: break-all;
+            /* Kelimeleri harflere ayırır */
+        }
+
+        /* Başlık hücrelerine stil */
+        th {
+            background-color: #d3b5d8;
+            font-weight: bold;
+        }
+
+        /* Responsive ayar: Küçük ekranlarda tablo küçülsün */
+        @media (max-width: 768px) {
+
+            th,
+            td {
+                padding: 5px;
+                font-size: 12px;
+                /* Küçük ekranlarda yazı küçülsün */
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            th,
+            td {
+                font-size: 10px;
+                /* Daha da küçük ekranlar için yazı boyutu */
+            }
+        }
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Beaconing
+  </h1>
+  <p>
+   Beaconing includes signs that provide information about the course of the road and points you should pay special
+        attention to.
+  </p>
+  <h2>
+   Hectometre signs
+  </h2>
+  <p>
+   Hectometre signs are located along motorways, autowegen and larger provincial roads. They are meant to quickly
+        see where you are. This can be vital if there is an accident. In that case, you can tell the breakdown or
+        emergency service where you are. Hectometre signs are each one hectometre apart. So that is one sign per 100
+        metres. All these signs have their own number, which indicates the distance in kilometres from the beginning of
+        the road. This is called the hectometre number.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_024f50b054c141238898af1a66818215~mv2.png"/>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    In addition to these data, hectometre signs can also be provided with a letter in the bottom right corner.
+            This means that you are driving on a ramp/acceleration or exit/deceleration lane from the autoweg/motorway
+            and
+            not on the main carriageway.
+   </p>
+   <img alt="Example Image" class="side-image" src="https://static.wixstatic.com/media/4b688f_ea7cc40a89b84e2dab57a1e274ab64ac~mv2.png"/>
+  </div>
+  <div class="important-words1">
+   <p>
+    The speed limit is also often placed on top of the hectometre sign along autowegen and motorways. Please
+            note that these do not apply if a different speed is indicated next to or above the road with normal signs
+            or
+            electronic matrix signs.
+   </p>
+   <img alt="Example Image" class="side-image" src="https://static.wixstatic.com/media/4b688f_856c521d7ff0408a87f7bacecada31df~mv2.png"/>
+  </div>
+  <h2>
+   Exit signs and chevron signs
+  </h2>
+  <p>
+   When driving on an autoweg or motorway, it is important that you can see in advance where the deceleration lane
+        ends, or where the road splits. After all, you have to make the decision about where to go well before then.
+        That is why there is a sign “UIT” (exit) at the end of the deceleration lane and the chevron sign at a fork of
+        equivalent flow roads (e.g. autowegen or motorways).
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_98228fe0f87042649e5cc64b9622510c~mv2.png"/>
+     <figcaption>
+      BB-01
+      <br/>
+      Exit sign
+      <br/>
+      Exit from a motorway
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_54a67d600d174241aa6a59bd3bccc706~mv2.png"/>
+     <figcaption>
+      BB-02
+      <br/>
+      Exit sign
+      <br/>
+      Exit from an autoweg
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_322e8af76fc0414ca8c363502f66e586~mv2.png"/>
+     <figcaption>
+      BB-03
+      <br/>
+      Chevron sign
+      <br/>
+      Fork of equivalent flow roads (e.g. autowegen or motorways) A fork is not an exit.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Missing hard shoulders and shortened acceleration lanes
+  </h2>
+  <p>
+   There is a hard shoulder along motorways. In some places, this hard shoulder can be narrowed or even completely
+        gone. For example under viaducts, on bridges and in tunnels. Because this means that you can no longer swerve to
+        the right in case of an emergency, this is indicated by a sign with oblique black lines.
+  </p>
+  <p>
+   If an acceleration lane is shorter than normal, this is also indicated by a sign. Often a short acceleration
+        lane is the result of a narrowed or missing hard shoulder.
+  </p>
+  <p>
+   If there are emergency lay-bys (refuges) instead of a hard shoulder, these are sometimes indicated with a lay-by
+        sign. You can find these along provincial roads such as 80km roads and autowegen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_38f755096a834e41ab9ccf384ec8d428~mv2.png"/>
+     <figcaption>
+      BB-04
+      <br/>
+      End or narrowing hard shoulder
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_2b7cbf09dec44e2c88c8db0fc82f55ea~mv2.png"/>
+     <figcaption>
+      BB-05
+      <br/>
+      Short acceleration lane (shorter than 200 metres)
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_99e833e6cc2c40e3b576f19493d949a7~mv2.png"/>
+     <figcaption>
+      BB-06
+      <br/>
+      Emergency lay-by Use only in emergencies
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Level crossing and bridge markings
+  </h2>
+  <p>
+   To indicate a level crossing or movable bridge in time, signs are placed along the road that indicate in about
+        how many meters you can expect to see a level crossing or bridge. The number of diagonal red lines on the sign
+        indicates how far you are from the level crossing. Each line represents 80 metres. The lines also indicate on
+        which side you should pass the sign. The lines always point down towards the carriageway.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_de401e52d69e47e2b4aa0331b457116d~mv2.png"/>
+     <figcaption>
+      Every red line represents 80 metres.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Reflector posts
+  </h2>
+  <div class="important-words10">
+   <p>
+    Reflector posts are intended to indicate the shoulders and sides of the road. By looking at these poles you can
+            see the curves earlier in the dark. On the
+    <strong>
+     right side
+    </strong>
+    of the road you can find posts with
+    <strong>
+     red
+    </strong>
+    retro-reflectors.
+            On the
+    <strong>
+     left side
+    </strong>
+    of the road you can find posts with
+    <strong>
+     white
+    </strong>
+    retro-reflectors.
+            You can remember this by
+            remembering that on your side of the road (the right side) you mainly see red taillights. On the left side of
+            the road you mainly see the white headlights of the oncoming traffic.
+   </p>
+   <img alt="Example Image" class="side-image" src="https://static.wixstatic.com/media/4b688f_051a37ce3f0e4e54b52e0708a29e55ea~mv2.png"/>
+  </div>
+  <h2>
+   Signage
+  </h2>
+  <p>
+   To find your way more easily in areas where you are unfamiliar, there are several signs that can help you. For
+        example, the signs “Doorgaand verkeer” (through traffic) point you to the through area access roads. The signs
+        P-route or P-ring point you to the parking spaces that are usually on the edge of the city center. The signs
+        that show an alternative route (an U with a number) are fixed signs. As soon as there are traffic jams or
+        closures on a flow road, the traffic information service can indicate via which alternative route you can avoid
+        these traffic jams or closures. You will therefore find these signs in places where this type of problem occurs
+        more often.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_79bf4cf0ce164307a8fac5f3c1a087c3~mv2.png"/>
+     <figcaption>
+      BW-100
+      <br/>
+      Route motorised through traffic, follow arrow
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_297dabc4f6b347ab847677a214f05927~mv2.png"/>
+     <figcaption>
+      BW-204
+      <br/>
+      Parking, follow route
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_bff1cd56e3424e76adc9eb708126d725~mv2.png"/>
+     <figcaption>
+      BW-207
+      <br/>
+      Alternative route, follow arrow
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Yellow signs are always temporary signs, for example during roadworks. For example, they can indicate that it is
+        best for reaching a city or village to follow a certain number or letter.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_0b53edb9b27741629d319f3801b6d798~mv2.png"/>
+     <figcaption>
+      T-113
+      <br/>
+      Information about the detour route to follow
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_62ac6f479dfd45f0b7715001538ed668~mv2.png"/>
+     <figcaption>
+      T-201
+      <br/>
+      Indication sign on the detour route
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_9a355a542e3743a2a5de88e6d1808c90~mv2.png"/>
+     <figcaption>
+      OB-501
+      <br/>
+      Detour route (not mandatory)
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Dynamic route information panel (DRIP)
+  </h2>
+  <p>
+   A DRIP is placed next to the road and shows traffic information to drivers. The purpose of a DRIP is, among
+        other things, to improve traffic flows and reduce traffic jams. There are several messages that can be displayed
+        on the DRIP such as:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Current travel times or delays on the route;
+    </p>
+   </li>
+   <li>
+    <p>
+     Parking information such as empty spaces;
+    </p>
+   </li>
+   <li>
+    <p>
+     Unforeseen circumstances such as traffic jams (marked in red), road closures, accidents, diversions,
+                extreme weather conditions or bridge openings;
+    </p>
+   </li>
+   <li>
+    <p>
+     Information at events such as routes and parking facilities;
+    </p>
+   </li>
+   <li>
+    <p>
+     National or regional messages or announcements, such as campaign texts.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_242151f33d8b4a5989989a1374c88c87~mv2.png"/>
+     <figcaption>
+      This DRIP shows how many traffic jams you encounter on the possible routes.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_b47acce02ef444c5997cafab16abd64c~mv2.png"/>
+     <figcaption>
+      The DRIP on the top shows information about an accident.
+      <br/>
+      The DRIP beneath shows how much normal and extra traveling time you can expect on the different
+                    routes.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    When no message is shown on a DRIP, it is usual to show a point (interference dot). In this way, a road user
+            sees that the panel is in use and is not defective.
+   </p>
+   <img alt="Example Image" class="side-image" src="https://static.wixstatic.com/media/4b688f_704f30ea1366479e8c4433fcfc745e43~mv2.png"/>
+  </div>
+  <p>
+   Because space on a DRIP is limited, abbreviations and icons are used. The following abbreviations are used:
+  </p>
+  <table>
+   <tr>
+    <th>
+     minutes
+    </th>
+    <td>
+     min
+    </td>
+    <th>
+     junction
+    </th>
+    <td>
+     knp
+    </td>
+   </tr>
+   <tr>
+    <th>
+     hour
+    </th>
+    <td>
+     h
+    </td>
+    <th>
+     intersection
+    </th>
+    <td>
+     krp
+    </td>
+   </tr>
+   <tr>
+    <th>
+     direction
+    </th>
+    <td>
+     ri
+    </td>
+    <th>
+     alley (laan)
+    </th>
+    <td>
+     ln
+    </td>
+   </tr>
+   <tr>
+    <th>
+     north
+    </th>
+    <td>
+     N
+    </td>
+    <th>
+     square
+    </th>
+    <td>
+     pln
+    </td>
+   </tr>
+   <tr>
+    <th>
+     east
+    </th>
+    <td>
+     O
+    </td>
+    <th>
+     street
+    </th>
+    <td>
+     str
+    </td>
+   </tr>
+   <tr>
+    <th>
+     south
+    </th>
+    <td>
+     Z
+    </td>
+    <th>
+     boulevard
+    </th>
+    <td>
+     blvd
+    </td>
+   </tr>
+   <tr>
+    <th>
+     west
+    </th>
+    <td>
+     W
+    </td>
+    <th>
+     tunnel
+    </th>
+    <td>
+     tnl
+    </td>
+   </tr>
+   <tr>
+    <th>
+     kilometre
+    </th>
+    <td>
+     km
+    </td>
+    <th>
+     road
+    </th>
+    <td>
+     wg
+    </td>
+   </tr>
+  </table>
+  <p>
+   City names can also be abbreviated. For example,
+   <strong>
+    Utrecht
+   </strong>
+   is shortened to
+   <strong>
+    Utr
+   </strong>
+   and
+   <strong>
+    Rotterdam
+   </strong>
+   to
+   <strong>
+    Rdam.
+   </strong>
+  </p>
+  <p>
+   When a route is shown it can be provided with icons (such as a bridge or a tunnel) or a red colour to indicate a
+        traffic jam.
+  </p>
+  <h2>
+   Pictograms in signs
+  </h2>
+  <p>
+   Just like on the DRIP, pictograms can also appear on signs. The most important ones are explained below:
+  </p>
+  <div>
+   <div class="images-container7">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_1affdcee459e44b3888f576020a49fa7~mv2.png"/>
+     <figcaption>
+      Junction
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_e12a23f4d4854b41b36ce471715922d6~mv2.png"/>
+     <figcaption>
+      Exit
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_060c3a9876f046288d511a229c5573a5~mv2.png"/>
+     <figcaption>
+      Viaduct/bridge
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_13b0e0c8d30945d89360bd55819d28ac~mv2.png"/>
+     <figcaption>
+      Tunnel
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_559369160c444d788ef65d366c19d0b1~mv2.png"/>
+     <figcaption>
+      Airport
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_a157a34b25184b7e98bebb869155e77a~mv2.png"/>
+     <figcaption>
+      Business park
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_b1ece72518544629a352b3689ffd8ace~mv2.png"/>
+     <figcaption>
+      Parking route
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_86866a025b304020b337e8bfa3495504~mv2.png"/>
+     <figcaption>
+      Ring road (bypass) around a city
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_b434201131a64d659f9912fed8cf025a~mv2.png"/>
+     <figcaption>
+      Parking and travelling (railway station)
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_c1ee7613840b42e7ae805846854f9ee1~mv2.png"/>
+     <figcaption>
+      Hospital
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

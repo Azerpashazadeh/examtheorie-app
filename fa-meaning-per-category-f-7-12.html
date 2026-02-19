@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            margin-top: 25px;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 70%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+        .images-container6 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container6 img {
+            width: 70%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container6 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container6 img {
+                width: 70%;
+
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        .images-container7 {
+            display: grid;
+            gap: 20px;
+            /* Resimler arasındaki boşluk */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        /* Tarayıcı genişliği 1024px'den büyükse 4 sütun 3 satır */
+        @media (min-width: 1025px) {
+            .images-container7 {
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 1024px veya daha küçükse 3 sütun 4 satır */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .images-container7 {
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 768px veya daha küçükse 2 sütun 6 satır */
+        @media (max-width: 768px) and (min-width: 481px) {
+            .images-container7 {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 480px veya daha küçükse tek sütun 12 satır */
+        @media (max-width: 480px) {
+            .images-container7 {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+        }
+
+        .images-container7 img {
+            width: 70%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+            margin-top: -10px;
+        }
+
+        .text3 strong {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: -10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+
+        }
+
+        @media (max-width: 480px) {
+            .text3 strong {
+                font-size: 1.2rem;
+                margin-top: -7px;
+
+                margin-bottom: -10px;
+            }
+
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+                max-width: 150px;
+            }
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Meaning per category - F
+  </h1>
+  <p>
+   In this category you will find a number of prohibitions and directives. These have to do, for example, with
+        overtaking, turning around, taking precedence over narrowing roads and the obligatory place on the road of
+        certain categories of vehicles.
+  </p>
+  <p>
+   The following signs indicate whether or not you are allowed to overtake:
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_7649699e74f543edbf2cf1c3f4201d1b~mv2.png"/>
+     <figcaption>
+      F-1
+      <br/>
+      Prohibition for motor vehicles to overtake each other (not just for passenger cars!)
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_e581b85ea6a240edbfac5ffe0ad3427a~mv2.png"/>
+     <figcaption>
+      F-2
+      <br/>
+      End of prohibition for motor vehicles to overtake each other
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_af4989fa7c9349099ded66396ca82bd4~mv2.png"/>
+     <figcaption>
+      F-3
+      <br/>
+      Prohibition for lorries to overtake motor vehicles (not just passenger cars)
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_92c43a190b8c4a3aa393816ac04905dc~mv2.png"/>
+     <figcaption>
+      F-4
+      <br/>
+      End of prohibition for lorries to overtake motor vehicles
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    The next two signs are always placed together. For example, when the carriageway narrows or you approach an
+            obstacle. One sign is placed on one side of the situation and the other on the other side.
+   </p>
+   <div class="images-container6">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_5763c8deb8db45218268f47aeb684abb~mv2.png"/>
+     <figcaption>
+      F-5
+      <br/>
+      Prohibition for drivers to continue when approaching traffic is coming from the opposite direction
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_4a31b98c43c144fd8d0caf658960e40d~mv2.png"/>
+     <figcaption>
+      F-6
+      <br/>
+      Drivers from the opposite direction should give way to traffic approaching from this direction
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="container3">
+   <div class="item3">
+    <img alt="Yangın Söndürücü" class="image3" src="https://static.wixstatic.com/media/4b688f_43dd78920e8a414dbe8f1deb6922d68e~mv2.png"/>
+    <div class="text3">
+     <strong>
+      F-7
+     </strong>
+     <p>
+      No U-turn. This sign is usually on central reservations just before an intersection, to indicate that
+                    turning is not allowed at the intersection. Usually this is too dangerous or hindering on these
+                    sections.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_0aade8506fea46fb9240a2383b0078b1~mv2.png"/>
+    <div class="text3">
+     <strong>
+      F-8
+     </strong>
+     <p>
+      End of all prohibitions previously indicated by traffic signs. After this sign, for example,
+                    temporary reductions in the speed limit no longer apply. You often see them beyond roadworks.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_68f31361ff694956ad0bfd1886eed8ee~mv2.png"/>
+    <div class="text3">
+     <strong>
+      F-9
+     </strong>
+     <p>
+      End of all prohibitions previously indicated on electronic signs. After this sign, any prohibitions
+                    indicated on ordinary signs still apply!
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_676a20bd1f75487b9aa8506853fea2b7~mv2.png"/>
+    <div class="text3">
+     <strong>
+      F-10
+     </strong>
+     <p>
+      Stop. This sign can indicate by whom or why the sign is applied. These signs are used, for example,
+                    by the crossing patrol (lollipop man or lady).
+     </p>
+    </div>
+   </div>
+  </div>
+  <p>
+   The following signs indicate that it is mandatory for these specific vehicles to drive on the specified
+        carriageway or lane, or that this carriageway or lane ends.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Passing lane
+   </h3>
+   <p>
+    Carriageway or lane that slow traffic must make use of so that they can be overtaken by other traffic. You
+            will encounter these mainly on busier roads that also see a lot of agricultural traffic.
+   </p>
+  </div>
+  <div>
+   <div class="images-container7">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_14d562e4a7f44ff7929cfff6486f0075~mv2.png"/>
+     <figcaption>
+      F-11
+      <br/>
+      Mandatory use of passing lane only for agricultural vehicles, motor vehicles with limited speed and
+                    mobile machines
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_267bd68fdcea4b54be2baf0814b6aa76~mv2.png"/>
+     <figcaption>
+      F-12
+      <br/>
+      End of passing lane only for agricultural vehicles, motor vehicles with limited speed and mobile
+                    machines
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_4f9ae2d8a8c14eac8aff553d0f0487d8~mv2.png"/>
+     <figcaption>
+      F-13
+      <br/>
+      Lane or carriageway exclusively for buses
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_544d86cd5f0c4bd7a8216817c49053e5~mv2.png"/>
+     <figcaption>
+      F-14
+      <br/>
+      End of lane or carriageway exclusively for buses
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_5bd22c376f124eb28420d188780cbd24~mv2.png"/>
+     <figcaption>
+      F-15
+      <br/>
+      Lane or carriageway exclusively for trams
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_7378b7adb3e34f51879327dd624ac34b~mv2.png"/>
+     <figcaption>
+      F-16
+      <br/>
+      End of lane or carriageway exclusively for trams
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_81a7c958183c42269278527f5714b977~mv2.png"/>
+     <figcaption>
+      F-17
+      <br/>
+      Lane or carriageway exclusively for trams and buses
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_4021f2d8b3da4a3d805411b8249d2ea6~mv2.png"/>
+     <figcaption>
+      F-18
+      <br/>
+      End of lane or carriageway exclusively for trams and buses
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_6ab2b6097dc0416eb01ceb5b635e0afd~mv2.png"/>
+     <figcaption>
+      F-19
+      <br/>
+      Lane or carriageway exclusively for lorries and buses
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_871da45a5fce4d6cafda56fe218b896f~mv2.png"/>
+     <figcaption>
+      F-20
+      <br/>
+      End of lane or carriageway exclusively for lorries and buses
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_d4c316ca3ca54b5aabe479cc41718bd3~mv2.png"/>
+     <figcaption>
+      F-21
+      <br/>
+      Lane or carriageway exclusively for lorries
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_68f45ff9440846fab4c1665bc40ec5e6~mv2.png"/>
+     <figcaption>
+      F-22
+      <br/>
+      End of lane or carriageway exclusively for lorries
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

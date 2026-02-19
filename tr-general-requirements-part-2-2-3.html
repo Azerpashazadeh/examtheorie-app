@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Genel Gereklilikler - Bölüm 2</h2>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Önemli Diş Oyukları</h3>
+        <p>Lastiğin diş kısmının orta bölümündeki geniş oyuklar, aşınma göstergelerini içerir.</p>
+        <h3>Diş</h3>
+        <p>Lastiğin yol yüzeyiyle temas eden kısmı.</p>
+        <h3>İskelet</h3>
+        <p>Lastiğin kauçuk tabakasının altındaki, lastiğe dayanıklılığını veren kısım. Genellikle plastik (naylon, polyester) ve çelik tellerle donatılmıştır.</p>
+        <h3>Aşınma Göstergeleri</h3>
+        <p>Ana oyuklardaki kabarıklıklar. Bu göstergeler diş ile aynı seviyeye geldiğinde, lastik artık minimum diş derinliğini karşılamaz.</p>
+    </div>
+    <h2>Lastikler</h2>
+    <p>Çalışmayan bir binek aracındaki lastikler tehlikeli durumlara yol açabilir. Ancak, çok az sürücü lastiklerini ve lastik basıncını düzenli olarak kontrol eder. Lastikler yavaşça aşındıkça, sürücülere basıncı ve diş derinliğini düzenli olarak kontrol etmeleri - en az ayda bir kez - tavsiye edilir.</p>
+
+    <div class="important-words3">
+        <div class="image-content">
+            <img src="https://static.wixstatic.com/media/4b688f_4297b5ee4bab4eebabd0d1614fb10364~mv2.png"
+                alt="Lisans Görseli">
+        </div>
+        <div class="text-content">
+            <p>
+                Bu, gösterge panelindeki lastik basıncı uyarı ışığıdır. Lastiklerden birinin veya birkaçının basıncı artık yeterli olmadığında, bu ışık yanar. Lastik basıncını en az ayda bir kez ve bu ışık yanar yanmaz kontrol edin. Tüm binek araçlarda lastik basıncı uyarı ışığı bulunmayabilir.
+            </p>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1ecd7b96690a4414b00e528ecc97ede4~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>Lastiğe saplanmış bir çivi veya vidayı, bir tamirciye ulaşana kadar çıkarmayın. Çıkarmak, lastiğin hızla havasının sönmesine neden olur.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c71da6371a894c5aafff49e4b348f59f~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>Bu önemli diş oyuklarındaki aşınma göstergeleri neredeyse dişin geri kalanıyla aynı seviyede. Bu lastik aşınmıştır.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <p>Lastikler aşağıdaki teknik gereklilikleri karşılamalıdır:</p>
+
+    <ul>
+        <li>Hava dolu lastikler olmalıdır. Azot dolu lastikler de kabul edilir. Örneğin, binek araçlarda katı kauçuk lastikler veya paletler bulunamaz.</li>
+        <li>Lastiklerde kabarcıklar veya iskeletin görülebileceği herhangi bir hasar olmamalıdır.</li>
+        <li>Lastikler her zaman ana diş oyuklarında minimum 1,6 mm diş derinliğine sahip olmalıdır. Derinleştirilmiş olmamalıdır, yani oyuklar daha derin kesilemez.</li>
+        <li>Lastikler doğru dönüş yönünde monte edilmelidir.</li>
+        <li>Lastiklerde, sürüş sırasında çıkabilecek metal bileşenler, örneğin sert kışların yaşandığı ülkelerde kullanılan çivili lastikler bulunamaz.</li>
+        <li>Aynı aks üzerindeki lastikler aynı boyutta olmalıdır. Örneğin, sol ön lastik sağ ön lastikten daha büyük veya küçük olmamalıdır, acil durum veya yedek lastik kullanımı haricinde.</li>
+        <li>Lastiklerin yeterli lastik basıncına sahip olması gerekir. Uygulanabilir basınç değeri kullanım kılavuzunda belirtilmiştir. Yedek lastiği unutmayın.</li>
+        <li>Lastik basıncı uyarı ışığı bir arıza göstermemelidir.</li>
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_a98e4be75137445b98001b5d81622742~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>Sert kış koşullarının yaşandığı bazı ülkelerde çivili lastiklerin kullanımı serbesttir. Hollanda'da ise bu izin verilmez.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_227675f9cd594f2da13edfa4e157f0b6~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>Yedek lastik, normal bir lastikten farklı boyutta olabilir. Yalnızca acil durumlarda kullanılır. Lastiği mümkün olan en kısa sürede değiştirin ve maksimum 80 km/s hızla sürün.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <h2>Fren Cihazı</h2>
+    <p>Frenler, binek araçların hayati bileşenleridir. Fren sistemindeki bileşenler bu nedenle hasarsız olmalıdır. Ayrıca:</p>
+    <ul>
+        <li>düzgün şekilde sabitlenmiş olmalıdır;</li>
+        <li>paslanmamış olmalıdır;</li>
+        <li>herhangi bir sızıntı belirtisi göstermemelidir;</li>
+        <li>aşırı aşınma belirtisi göstermemelidir.</li>
+    </ul>
+    <p>Tüm bileşenler düzgün çalışmalı ve fren pedalı gibi hareketli parçalar kolayca hareket ettirilebilmelidir. Fren pedalı kaymaz bir yüzeye sahip olmalıdır.</p>
+    <p>Tüm binek araçlar, düzgün çalışan bir el frenine (park freni) sahip olmalıdır.</p>
+
+    <div class="important-words2">
+        <p>Lastikler ve frenler, iyi yol tutuşu ve kısa fren mesafesi sağlamak zorundadır, bu nedenle her iki bileşen de iyi durumda tutulmalıdır.</p>
+    </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

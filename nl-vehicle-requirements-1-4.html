@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+       
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        Voertuigeisen
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            Motorrijtuig
+        </h3>
+        <p>
+            Alle door een motor aangedreven voertuigen. Deze hebben geen rails nodig om te rijden (bijv. trein, metro of tram).
+            Dit omvat geen fietsen met trapondersteuning. Let op: trolleybussen en speed-pedelecs vallen hier wél onder!
+        </p>
+        <h3>
+            Bestuurder van een motorrijtuig
+        </h3>
+        <p>
+            De persoon die een motorrijtuig bestuurt of onder wiens onmiddellijke toezicht een motorrijtuig wordt bestuurd
+            (bijv. een rijinstructeur).
+        </p>
+        <h3>
+            Houder van een motorrijtuig of aanhangwagen
+        </h3>
+        <p>
+            Iemand die een voertuig voor langere tijd huurt, leent of least. Dit zegt niets over de eigenaar en verwijst daar niet naar.
+        </p>
+    </div>
+    <p>
+        Een voertuig moet aan bepaalde technische eisen voldoen voordat het op de openbare weg mag worden gebruikt. Als een fabrikant
+        een nieuw automodel uitbrengt, moet dit eerst typegoedgekeurd worden door de Dienst Wegverkeer (RDW) voordat het in Nederland
+        verkocht mag worden.
+    </p>
+    <p>
+        Het op enigerlei wijze aanpassen van uw auto kan de typegoedkeuring ongeldig maken, waardoor uw auto ongeschikt wordt voor de
+        openbare weg. Dit betekent dat de auto niet meer aan de permanente technische eisen voldoet en opnieuw moet worden goedgekeurd.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="Afbeelding 1"
+                src="https://static.wixstatic.com/media/4b688f_2559cc594ba147569d7fd649f4b6da31~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Het monteren van een grote spoiler op uw auto kan ertoe leiden dat het voertuig niet meer aan de technische
+                    eisen voldoet.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="Afbeelding 2"
+                src="https://static.wixstatic.com/media/4b688f_3180365165ab426494593afe9faef72d~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Het vervangen van de uitlaat door een ander type uitlaat kan eveneens tot problemen leiden.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            Kenteken
+        </h3>
+        <p>
+            Unieke identificatie bestaande uit een combinatie van cijfers en letters die wordt afgegeven aan een
+            typegoedgekeurd en geregistreerd voertuig dat registratieplichtig is.
+        </p>
+        <h3>
+            Kentekenplaat
+        </h3>
+        <p>
+            Rechthoekige plaat waarop het kenteken zichtbaar is. Deze plaat moet zijn bevestigd aan het voertuig
+            dat op dit kenteken is geregistreerd.
+        </p>
+        <h3>
+            Kentekenbewijs
+        </h3>
+        <p>
+            Bewijs dat wordt afgegeven aan de eigenaar of houder van een voertuig. Bevat voertuiggegevens en het kenteken.
+        </p>
+        <h3>
+            Nationaal kentekenregister
+        </h3>
+        <p>
+            Landelijke databank waarin alle kentekens en bijbehorende gegevens zijn opgeslagen.
+        </p>
+    </div>
+    <h2>
+        In afwachting van keuring (WOK, ‘Wachten Op Keuren’)
+    </h2>
+    <p>
+        Als bij een keuring een probleem aan uw voertuig wordt geconstateerd, kan het kentekenbewijs tijdelijk ongeldig
+        worden verklaard. Dit kan komen door door u aangebrachte wijzigingen aan het voertuig of door schade na een aanrijding.
+    </p>
+    <p>
+        Als het kentekenbewijs tijdelijk ongeldig is verklaard, wordt in het kentekenregister vermeld dat het voertuig
+        “weggebruik verboden” heeft. Dit staat ook bekend als ‘wachten op keuren’ of WOK-status. Het voertuig moet dan
+        opnieuw worden gekeurd bij de RDW. U mag niet met het voertuig rijden totdat het opnieuw is goedgekeurd.
+    </p>
+    <p>
+        Bij WOK-status wordt het kentekenbewijs niet fysiek ingevorderd, maar in het nationale register staat dat het
+        voertuig niet mag worden gereden.
+    </p>
+    <p>
+        Bevoegde personen kunnen u ook verplichten het voertuig op een afgesproken tijd en plaats beschikbaar te stellen,
+        bijvoorbeeld voor nader onderzoek.
+    </p>
+    <h2>
+        Onbekende eigenaar
+    </h2>
+    <p>
+        Als onduidelijk is wie de eigenaar is van een voertuig dat op de openbare weg staat, bijvoorbeeld door het ontbreken
+        van een duidelijk leesbare kentekenplaat, kan het voertuig worden weggesleept en in bewaring genomen totdat de eigenaar
+        zich meldt. Voor het wegslepen kan er tot maximaal twee dagen een wielklem worden geplaatst om de eigenaar te achterhalen.
+    </p>
+    <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+        Terug naar
+        overzicht
+    </a>
+    
+
+   
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

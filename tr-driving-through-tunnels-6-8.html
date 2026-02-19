@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+        .images-container7 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container7 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 480px) {
+            .images-container7 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container7 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+
+        /* Video için özel kapsayıcı */
+        .video-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /* Tam ekran genişliği */
+            padding: 10px;
+            /* Kenar boşlukları */
+            box-sizing: border-box;
+            margin-top: 25px;
+        }
+
+        .video-container {
+            width: 100%;
+            /* Video oynatıcının genişliği ekranın %98'ini kapsar */
+            max-width: 1400px;
+            /* Büyük ekranlarda maksimum genişlik */
+            aspect-ratio: 16 / 9;
+            /* En-boy oranını korur */
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            /* Video kapsayıcı genişliğini tamamen doldurur */
+            height: auto;
+            /* Oranları korur */
+            border: 2px solid #ccc;
+            /* Çerçeve */
+            border-radius: 10px;
+            /* Köşeleri yuvarlama */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Hafif gölge */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tünelden Geçiş</h1>
+    <p>
+        Tünelden geçerken, ne yapılması ve - özellikle - ne yapılmaması gerektiğini bilmek önemlidir. Bu durum, özellikle tünelde durmanız veya bir kaza meydana gelmesi durumunda kritik öneme sahiptir.
+    </p>
+    <h2>
+        Aydınlatma
+    </h2>
+    <p>
+        Tünelden geçerken kısa farların kullanımı zorunludur. Otomatik aydınlatmayı kullanmayın, çünkü bu, kısa farların yalnızca tünele girdikten sonra ve karanlık olduğunda devreye girmesini sağlar. Tünele girmeden önce kısa farları manuel olarak açın. Tünel içinde arka sis lambalarını veya uzun farları asla kullanmayın, çünkü bu diğer sürücülerin gözlerini kamaştırabilir.
+    </p>
+    
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5c4c500590714a58b88d97a99f7c16cf~mv2.jpeg"
+                    alt="Kısa far kullanımı zorunludur">
+                <figcaption>Kısa far kullanımı, aydınlatılmış tünellerde bile zorunludur.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0691b725a334460f933ec13970222fdf~mv2.png"
+                    alt="Tünel uzunluğunu gösteren işaret">
+                <figcaption>Bu işaret, yaklaşmakta olduğunuz tünelin uzunluğunu gösterir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Davranış
+    </h2>
+    <p>
+        Tünelde potansiyel sorunlar karşısında sapma seçenekleri sınırlıdır. Asla karşıdan gelen trafiğin kullandığı şeridi kullanarak sollama yapmayın. Risk almayın ve daha savunmacı bir şekilde sürüş yapın. Agresif ve antisosyal sürüş davranışları tünellerde özellikle tehlikelidir, çünkü (ölümcül) kaza riskini artırır.
+    </p>
+    <h2>
+        Arıza
+    </h2>
+    <p>
+        Eğer tünelde aracınız arızalanırsa, önce tünelden çıkmaya çalışın. Eğer araç normal hızda sürülemeyecek durumda veya herhangi bir anda durma riski varsa, hemen dörtlü flaşörleri yakın.
+    </p>
+    <p>
+        Tüneli araçla terk etmek mümkün değilse, hemen dörtlü flaşörleri yakın ve aracı tünelin sağ tarafında sabit bir şekilde bırakın. Yolcuların araç içinde oturmasına veya aracın hemen yanında durmasına asla izin vermeyin. Diğer trafikten kaynaklanabilecek risklere karşı, araçtan en az 50 metre uzakta bekleyin.
+    </p>
+    <p>
+        Trafik yönünde en yakın acil durum telefonuna yürüyün. Telefonu kullanarak trafik kontrolörüne ulaşın ve talimatlarını takip edin. Tünel içindeki sinyal zayıflığı nedeniyle kendi telefonunuzla arama yapmak genellikle mümkün değildir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a3a77ea57b8841788c788315d2a32d38~mv2.png"
+                    alt="Acil durum telefon ve yangın söndürücü ile donatılmış park alanı">
+                <figcaption>Acil durum telefon ve yangın söndürücü ile donatılmış park alanı</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a0e3a5fc785c4087bfc0dbe39732a973~mv2.png"
+                    alt="Acil durum telefonu">
+                <figcaption>Acil durum telefonu</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_400e4cafd4cd4d2aa2d98c3f6f83f582~mv2.png"
+                    alt="Yangın söndürücü">
+                <figcaption>Yangın söndürücü</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Kaza
+    </h2>
+    <p>
+        Tünelde bir kaza durumunda şu noktalar çok önemlidir:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Öncelikle kendi güvenliğinizi düşünün</strong>
+                Tünelde duman veya yangın varsa, bu çok tehlikelidir. Bu durumda, diğer trafiğe dikkat ederek kaçış yolu veya tünel borusu üzerinden tünelden çıkmaya çalışın. Aracı asla geri çevirmeyin veya geri sürmeyin!
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Anahtarı kontağında bırakın</strong>
+                Bu, acil durum ekiplerinin aracı gerektiğinde hareket ettirebilmesini sağlar.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Acil servisleri arayın</strong>
+                Hemen 112'yi arayın. Sinyal yoksa, tünelden çıkın veya acil durum telefonuna ulaşın.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Yardım sağlayın</strong>
+                Diğer trafiği uyarmaya çalışın ve mümkünse yaralılara yardım edin. Duman oluştuğunda, herkesin dışarı çıkmasını sağlamaya çalışın.
+            </p>
+        </li>
+    </ul>
+    <div class="important-words1">
+        <p>
+            Bu işaretler size en yakın acil çıkışın yönünü ve mesafesini gösterir. Unutmayın ki tünelde seyahat yönüne <strong>karşı</strong> yürümek, seyahat yönünde yürümekten her zaman daha tehlikelidir. Seyahat yönünde yüründüğünde, yaklaşan trafik aracı önce görür ve yayaların yolda olmasını daha olası bir şekilde tahmin eder.
+        </p>
+        <div class="images-container7">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_eb2d47eb42e74936934a1b1bc5aecbd6~mv2.png"
+                    alt="Acil çıkış yönlendirme işareti">
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_e3ee7b1b0a1d42e88d0816d3e38db6e8~mv2.png"
+                    alt="Acil çıkış yönlendirme işareti">
+            </figure>
+        </div>
+    </div>
+    <div class="video-wrapper">
+        <div class="video-container">
+            <video controls poster="https://static.wixstatic.com/media/4b688f_8fbc4ac19a134578bf8bd06c184f6724~mv2.jpg">
+                <source
+                    src="https://video.wixstatic.com/video/4b688f_30b420076e0446d0867783643baa2412/720p/mp4/file.mp4"
+                    type="video/mp4">
+
+                    <!-- Altyazılar -->
+            <track src="altyazi_tr.vtt" kind="subtitles" srclang="nl" label="Dutch">
+            <track src="altyazi_en.vtt" kind="subtitles" srclang="tr" label="Türkçe">
+
+
+
+                Tarayıcınız bu videoyu desteklemiyor. Lütfen farklı bir tarayıcı kullanın.
+            </video>
+        </div>
+    </div>
+    <h2>
+        Tünelde Yangın
+    </h2>
+    <h5 style="font-style: italic; font-weight: 400;">Tünelde bir yangın durumunda ne yapılması ve ne yapılmaması gerektiğini anlamak için, yukarıdaki 'tünel güvenliği bilgi platformu' tarafından hazırlanan videoyu izleyin. Video Hollandaca olup Türkçe altyazılara sahiptir.</h5>
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+    
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

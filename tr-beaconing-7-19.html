@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+
+
+            min-height: 125px;
+
+
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Resmin konumlandırılmasını sağlayacak */
+            overflow: hidden;
+            /* İçerik taşmasını önler */
+        }
+
+        .important-words1 p {
+            margin-right: 175px;
+            /* Resmin genişliğine göre sağdan boşluk bırakır */
+        }
+
+        .important-words1 .side-image {
+            position: absolute;
+            right: 10px;
+            /* Sağdan 20px mesafe */
+            top: 50%;
+            /* Dikeyde ortalama için */
+            transform: translateY(-50%);
+            /* Gerçek dikey ortalama */
+            max-height: auto;
+            /* Resmin divi taşmasını önlemek için */
+            width: 170px;
+            /* Resim genişliği (isteğe göre ayarlanabilir) */
+            height: auto;
+            /* Oranları korumak için */
+        }
+
+
+        .important-words10 {
+
+            min-height: 125px;
+            padding: 0px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Resmin konumlandırılmasını sağlayacak */
+            overflow: hidden;
+            /* İçerik taşmasını önler */
+        }
+
+        .important-words10 p {
+            margin-right: 100px;
+            /* Resmin genişliğine göre sağdan boşluk bırakır */
+        }
+
+        .important-words10 .side-image {
+            position: absolute;
+            right: 10px;
+            /* Sağdan 20px mesafe */
+            top: 50%;
+            /* Dikeyde ortalama için */
+            transform: translateY(-50%);
+            /* Gerçek dikey ortalama */
+            max-height: auto;
+            /* Resmin divi taşması önlemek için */
+            width: 68px;
+            /* Resim genişliği (isteğe göre ayarlanabilir) */
+            height: auto;
+            /* Oranları korumak için */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 600px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+        .images-container7 {
+            display: grid;
+            gap: 20px;
+            /* Resimler arasındaki boşluk */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        /* Tarayıcı genişliği 1024px'den büyükse 4 sütun 3 satır */
+        @media (min-width: 1025px) {
+            .images-container7 {
+                grid-template-columns: repeat(5, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 1024px veya daha küçükse 3 sütun 4 satır */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .images-container7 {
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 768px veya daha küçükse 2 sütun 6 satır */
+        @media (max-width: 768px) and (min-width: 481px) {
+            .images-container7 {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        /* Tarayıcı genişliği 480px veya daha küçükse tek sütun 12 satır */
+        @media (max-width: 480px) {
+            .images-container7 {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+        }
+
+        .images-container7 img {
+            width: 70%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+        /* Genel tablo stilleri */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            word-break: break-all;
+            /* Kelimeleri harflere ayırır */
+        }
+
+        /* Başlık hücrelerine stil */
+        th {
+            background-color: #d3b5d8;
+            font-weight: bold;
+        }
+
+        /* Responsive ayar: Küçük ekranlarda tablo küçülsün */
+        @media (max-width: 768px) {
+
+            th,
+            td {
+                padding: 5px;
+                font-size: 12px;
+                /* Küçük ekranlarda yazı küçülsün */
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            th,
+            td {
+                font-size: 10px;
+                /* Daha da küçük ekranlar için yazı boyutu */
+            }
+        }
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>İşaretleme</h1>
+    <p>
+        İşaretleme, yolun gidişatı hakkında bilgi sağlayan ve özel dikkat göstermeniz gereken noktaları belirten
+        tabelaları içerir.
+    </p>
+    <h2>
+        Hektometre Tabelaları
+    </h2>
+    <p>
+        Hektometre tabelaları otoyollar, anayollar ve daha büyük bölgesel yollar boyunca yer alır. Bunlar, nerede
+        olduğunuzu hızlıca anlamak için tasarlanmıştır. Bu, bir kaza durumunda hayati önem taşıyabilir. Böyle bir
+        durumda, arıza veya acil servis ekiplerine nerede olduğunuzu söyleyebilirsiniz. Hektometre tabelaları her bir
+        hektometrede bir bulunur. Yani her 100 metrede bir tabela vardır. Bu tabelaların her biri, yolun başlangıcından
+        itibaren olan mesafeyi kilometre cinsinden belirten bir numaraya sahiptir. Buna hektometre numarası denir.
+    </p>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_024f50b054c141238898af1a66818215~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words1">
+        <p>
+            Bu bilgilerin yanı sıra, hektometre tabelalarının sağ alt köşesinde bir harf de bulunabilir. Bu,
+            anayol/otoyol ana yolunda değil, bir rampada/hızlanma şeridinde ya da çıkış/yavaşlama şeridinde olduğunuzu
+            belirtir.
+        </p>
+        <img src="https://static.wixstatic.com/media/4b688f_ea7cc40a89b84e2dab57a1e274ab64ac~mv2.png" alt="Örnek Resim"
+            class="side-image">
+    </div>
+
+    <div class="important-words1">
+        <p>
+            Hız sınırı da genellikle otoyol ve anayol boyunca hektometre tabelalarının üst kısmına yerleştirilir. Ancak,
+            bu tabelalar yan yol kenarındaki ya da elektronik matriks tabelalarında belirtilen hız sınırlarıyla
+            çelişirse dikkate alınmaz.
+        </p>
+        <img src="https://static.wixstatic.com/media/4b688f_856c521d7ff0408a87f7bacecada31df~mv2.png" alt="Örnek Resim"
+            class="side-image">
+    </div>
+
+    <h2>
+        Çıkış Tabelaları ve Şevron Tabelaları
+    </h2>
+    <p>
+        Bir anayol veya otoyolda sürüş yaparken, yavaşlama şeridinin nerede bittiğini ya da yolun nerede ayrıldığını
+        önceden görebilmeniz önemlidir. Sonuçta, nereye gideceğinize çok önceden karar vermeniz gerekir. Bu nedenle,
+        yavaşlama şeridinin sonunda “UIT” (çıkış) tabelası ve eş akışlı yolların (örneğin anayollar veya otoyollar)
+        ayrımında şevron tabelası bulunur.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_98228fe0f87042649e5cc64b9622510c~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BB-01<br>
+                    Çıkış tabelası<br>
+                    Otoyoldan çıkış</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_54a67d600d174241aa6a59bd3bccc706~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BB-02<br>
+                    Çıkış tabelası<br>
+                    Anayoldan çıkış</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_322e8af76fc0414ca8c363502f66e586~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BB-03<br>
+                    Şevron tabelası<br>
+                    Eş akışlı yolların ayrımı (örneğin anayollar veya otoyollar). Bir ayrım bir çıkış değildir.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Daraltılmış Sert Zeminler ve Kısaltılmış Hızlanma Şeritleri
+    </h2>
+    <p>
+        Otoyollarda sert zemin bulunur. Ancak bazı yerlerde, viyadüklerin altlarında, köprülerde ve tünellerde bu sert
+        zemin daralabilir ya da tamamen ortadan kalkabilir. Bu gibi durumlarda, acil bir durumda sağa doğru çekilme
+        şansı olmadığı için, bu durum eğik siyah çizgilerle belirtilen bir tabela ile gösterilir.
+    </p>
+    <p>
+        Bir hızlanma şeridi normalden kısa ise bu da bir tabela ile gösterilir. Genellikle kısa bir hızlanma şeridi,
+        daraltılmış veya eksik bir sert zeminin sonucudur.
+    </p>
+    <p>
+        Eğer bir sert zemin yerine acil duraklama cepleri (sığınaklar) bulunuyorsa, bunlar genellikle bir duraklama
+        tabelasıyla belirtilir. Bu tabelalara 80 km'lik yollar ve anayollar gibi bölgesel yollar boyunca rastlanabilir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_38f755096a834e41ab9ccf384ec8d428~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BB-04<br>
+                    Sert zemin sonu veya daralması</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2b7cbf09dec44e2c88c8db0fc82f55ea~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BB-05<br>
+                    Kısa hızlanma şeridi (200 metreden kısa)</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_99e833e6cc2c40e3b576f19493d949a7~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BB-06<br>
+                    Acil duraklama cebi Sadece acil durumlarda kullanın</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Hemzemin Geçit ve Köprü İşaretlemeleri
+    </h2>
+    <p>
+        Hemzemin geçit veya hareketli bir köprüyü zamanında göstermek için, yol boyunca ne kadar mesafede bir hemzemin
+        geçit veya köprü göreceğinizi belirten tabelalar yerleştirilmiştir. Tabeladaki kırmızı diyagonal çizgilerin
+        sayısı, hemzemin geçide ne kadar uzaklıkta olduğunuzu gösterir. Her çizgi 80 metreyi temsil eder. Çizgiler
+        ayrıca tabelanın hangi tarafından geçmeniz gerektiğini de belirtir. Çizgiler her zaman yol yüzeyine doğru
+        aşağıyı işaret eder.
+    </p>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_de401e52d69e47e2b4aa0331b457116d~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>Her kırmızı çizgi 80 metreyi temsil eder.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Reflektör Direkleri
+    </h2>
+    <div class="important-words10">
+        <p>Reflektör direkleri yolun kenarlarını ve omuzlarını göstermek için tasarlanmıştır. Bu direklere bakarak
+            karanlıkta virajları daha erken görebilirsiniz. Yolun <strong>sağ tarafında</strong>
+            <strong>kırmızı</strong> retro reflektörlü direkler bulunur.
+            Yolun <strong>sol tarafında</strong> ise <strong>beyaz</strong> retro reflektörlü direkler bulunur. Bunu,
+            yolun sağ tarafında genellikle kırmızı arka lambaları, sol tarafında ise karşıdan gelen trafiğin beyaz
+            farlarını gördüğünüzü hatırlayarak kolayca aklınızda tutabilirsiniz.
+        </p>
+
+        <img src="https://static.wixstatic.com/media/4b688f_051a37ce3f0e4e54b52e0708a29e55ea~mv2.png" alt="Örnek Resim"
+            class="side-image">
+    </div>
+
+    <h2>
+        Yönlendirme Tabelaları
+    </h2>
+    <p>
+        Bilmediğiniz bölgelerde yolunuzu daha kolay bulmanız için çeşitli yönlendirme tabelaları bulunmaktadır. Örneğin,
+        “Doorgaand verkeer” (geçiş trafiği) tabelaları sizi ana bağlantı yollarına yönlendirir. P-route veya P-ring
+        tabelaları genellikle şehir merkezinin kenarında bulunan otopark alanlarına yönlendirir. Alternatif güzergahı
+        gösteren tabelalar (bir numaralı U sembolü) sabittir. Bir akış yolunda trafik sıkışıklığı veya kapanma olduğu
+        durumlarda, trafik bilgilendirme servisi hangi alternatif güzergahı kullanarak bu sorunları atlatabileceğinizi
+        gösterebilir. Bu tabelaları genellikle bu tür sorunların daha sık yaşandığı yerlerde bulabilirsiniz.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_79bf4cf0ce164307a8fac5f3c1a087c3~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BW-100<br>
+                    Motorlu geçiş trafiği rotası, oku takip edin</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_297dabc4f6b347ab847677a214f05927~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BW-204<br>
+                    Otopark, rotayı takip edin</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bff1cd56e3424e76adc9eb708126d725~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>BW-207<br>
+                    Alternatif rota, oku takip edin</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Sarı tabelalar her zaman geçici tabelalardır, örneğin yol çalışmaları sırasında. Örneğin, bir şehre veya köye
+        ulaşmak için belirli bir numarayı veya harfi takip etmenin en iyi yol olduğunu gösterebilirler.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0b53edb9b27741629d319f3801b6d798~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>T-113<br>
+                    Takip edilecek alternatif rota bilgisi</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_62ac6f479dfd45f0b7715001538ed668~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>T-201<br>
+                    Alternatif rota işareti</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_9a355a542e3743a2a5de88e6d1808c90~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>OB-501<br>
+                    Alternatif rota (zorunlu değil)</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Dinamik Rota Bilgilendirme Paneli (DRIP)
+    </h2>
+    <p>
+        DRIP, yolun kenarına yerleştirilir ve sürücülere trafik bilgileri gösterir. DRIP'in amacı, trafik akışını
+        iyileştirmek ve trafik sıkışıklıklarını azaltmaktır. DRIP üzerinde aşağıdaki gibi mesajlar gösterilebilir:
+    </p>
+    <ul>
+        <li>
+            <p>
+                Rota üzerindeki mevcut seyahat süreleri veya gecikmeler;
+            </p>
+        </li>
+        <li>
+            <p>
+                Boş park alanları gibi park bilgileri;
+            </p>
+        </li>
+        <li>
+            <p>
+                Trafik sıkışıklıkları (kırmızı ile belirtilir), yol kapanmaları, kazalar, sapmalar, aşırı hava koşulları
+                veya köprü açılmaları gibi beklenmedik durumlar;
+            </p>
+        </li>
+        <li>
+            <p>
+                Etkinliklerdeki rotalar ve park yerleri gibi bilgiler;
+            </p>
+        </li>
+        <li>
+            <p>
+                Ulusal veya bölgesel mesajlar veya kampanya metinleri.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_242151f33d8b4a5989989a1374c88c87~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>Bu DRIP, olası rotalardaki kaç trafik sıkışıklığıyla karşılaşacağınızı gösteriyor.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b47acce02ef444c5997cafab16abd64c~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>Üstteki DRIP, bir kaza hakkındaki bilgileri gösteriyor.<br>
+                    Alttaki DRIP, farklı rotalarda ne kadar normal ve ekstra seyahat süresi bekleyebileceğinizi
+                    gösteriyor.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words1">
+        <p>
+            DRIP üzerinde bir mesaj gösterilmediğinde, genellikle bir nokta (parazit noktası) gösterilir. Bu şekilde bir
+            yol kullanıcısı, panelin kullanımda olduğunu ve arızalı olmadığını görür.
+        </p>
+        <img src="https://static.wixstatic.com/media/4b688f_704f30ea1366479e8c4433fcfc745e43~mv2.png" alt="Örnek Resim"
+            class="side-image">
+    </div>
+
+    <p>
+        DRIP üzerinde alan sınırlı olduğundan, kısaltmalar ve ikonlar kullanılır. Aşağıdaki kısaltmalar kullanılır:
+    </p>
+
+
+
+
+
+
+
+
+    <table>
+        <tr>
+            <th>dakika</th>
+            <td>min</td>
+            <th>kavşak</th>
+            <td>knp</td>
+        </tr>
+        <tr>
+            <th>saat</th>
+            <td>h</td>
+            <th>kesişme</th>
+            <td>krp</td>
+        </tr>
+        <tr>
+            <th>yön</th>
+            <td>ri</td>
+            <th>geçit (laan)</th>
+            <td>ln</td>
+        </tr>
+        <tr>
+            <th>kuzey</th>
+            <td>N</td>
+            <th>meydan</th>
+            <td>pln</td>
+        </tr>
+        <tr>
+            <th>doğu</th>
+            <td>O</td>
+            <th>cadde</th>
+            <td>str</td>
+        </tr>
+        <tr>
+            <th>güney</th>
+            <td>Z</td>
+            <th>bulvar</th>
+            <td>blvd</td>
+        </tr>
+        <tr>
+            <th>batı</th>
+            <td>W</td>
+            <th>tünel</th>
+            <td>tnl</td>
+        </tr>
+        <tr>
+            <th>kilometre</th>
+            <td>km</td>
+            <th>yol</th>
+            <td>wg</td>
+        </tr>
+    </table>
+
+    <p>
+        Şehir isimleri de kısaltılabilir. Örneğin, <strong>Utrecht</strong>, <strong>Utr</strong> olarak,
+        <strong>Rotterdam</strong> ise <strong>Rdam</strong> olarak kısaltılabilir.
+    </p>
+    <p>
+        Bir rota gösterildiğinde, trafik sıkışıklığını belirtmek için köprü veya tünel gibi ikonlar ya da kırmızı bir
+        renk kullanılabilir.
+    </p>
+    <h2>
+        Tabelalarda Piktogramlar
+    </h2>
+    <p>
+        DRIP üzerinde olduğu gibi, tabelalarda da piktogramlar görünebilir. En önemli olanlar aşağıda açıklanmıştır:
+    </p>
+
+    <div>
+        <div class="images-container7">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_1affdcee459e44b3888f576020a49fa7~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>Kavşak</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_e12a23f4d4854b41b36ce471715922d6~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Çıkış</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_060c3a9876f046288d511a229c5573a5~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Viyadük/Köprü</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_13b0e0c8d30945d89360bd55819d28ac~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Tünel</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_559369160c444d788ef65d366c19d0b1~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Havalimanı</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a157a34b25184b7e98bebb869155e77a~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>İş Merkezi</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b1ece72518544629a352b3689ffd8ace~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Otopark Rotası</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_86866a025b304020b337e8bfa3495504~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Şehir Çevre Yolu (Bypass)</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b434201131a64d659f9912fed8cf025a~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Park Et ve Seyahat Et (Demiryolu İstasyonu)</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c1ee7613840b42e7ae805846854f9ee1~mv2.png"
+                    alt="Yan hava yastığı arızası">
+                <figcaption>Hastane</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

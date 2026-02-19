@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 40px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+
+
+        .images-container5 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1 1 calc(20% - 20px);
+            /* 5 resim için her birine %20 genişlik veriyoruz, boşlukları hesaba katarak */
+            min-width: 50px;
+            /* Tarayıcı küçüldükçe resimlerin alta düşeceği minimum genişlik */
+        }
+
+        .images-container5 img {
+            width: 50%;
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 700px) {
+            .images-container5 figure {
+                flex: 1 1 calc(33.33% - 20px);
+                /* 1200px altında 3 resim yan yana */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .images-container5 figure {
+                flex: 1 1 calc(50% - 20px);
+                /* 900px altında 2 resim yan yana */
+            }
+        }
+
+        @media (max-width: 300px) {
+            .images-container5 figure {
+                flex: 1 1 80%;
+                /* 300px altında resimler tek tek dizilir */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Genel Gereklilikler - Bölüm 4</h2>
+    <h2>Aydınlatma Gereklilikleri</h2>
+    <p>Hem araç içinde hem de yolda yeterli görüşü sağlamak için binek araçlar belirli aydınlatma sistemleri ile donatılmalıdır.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Arka Lamba (kırmızı)</h3>
+        <p>Aracın arkasından bakıldığında aracın varlığını ve genişliğini belirtir.</p>
+
+        <h3>Geri Vites Lambası (beyaz veya sarı)</h3>
+        <p>Aracın arkasındaki yolu aydınlatmak ve aracın geri gittiğini diğer yol kullanıcılarına bildirmek için kullanılır.</p>
+
+        <h3>Kısmi Farlar (beyaz veya sarı)</h3>
+        <p>Aracın önündeki yolu diğer yol kullanıcılarını rahatsız etmeden aydınlatmak için kullanılır.</p>
+
+        <h3>Uzun Farlar (beyaz veya sarı)</h3>
+        <p>Aracın önündeki yolu uzun mesafede aydınlatmak için kullanılır.</p>
+
+        <h3>Arka Sis Lambası (kırmızı)</h3>
+        <p>Yoğun sis altında aracın arkasını daha görünür hale getirmek için kullanılır.</p>
+
+        <h3>Fren Lambası (kırmızı)</h3>
+        <p>Aracın kasten yavaşladığını arkadaki yol kullanıcılarına bildirmek için kullanılır.</p>
+
+        <h3>Sinyal Lambası (turuncu)</h3>
+        <p>Sürücünün sola veya sağa dönüş yapma niyetini diğer yol kullanıcılarına bildirmek için kullanılır.</p>
+
+        <h3>Park Lambası (beyaz veya sarı)</h3>
+        <p>Aracın varlığını belirtir ve aracın genişliği hakkında bilgi verir.</p>
+
+        <h3>Dörtlü Flaşör (sinyal lambaları ile aynı renk)</h3>
+        <p>Aracın geçici olarak diğer yol kullanıcılarına belirli bir tehlike oluşturduğunu bildirmek için tüm sinyal lambalarının eşzamanlı çalışmasıdır.</p>
+
+        <h3>Arka Plaka Lambası (beyaz)</h3>
+        <p>Karanlıkta arka plakanın okunabilir olmasını sağlayan aydınlatma. Bu ışık arkadan dışarıya doğru ışık yaymamalıdır.</p>
+
+        <h3>Arka Reflektör (kırmızı)</h3>
+        <p>Reflektör kendi ışığını yaymaz, ancak üzerine düşen ışığı (örneğin, başka bir aracın kısmi farlarından gelen) yansıtır. Bu, aydınlatması olmayan park halindeki araçların fark edilmesini sağlar. Çoğu reflektör artık aydınlatma aparatlarına entegre edilmiştir.</p>
+    </div>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c44057a9344248f394467fc8b855d0b9~mv2.jpeg"
+                alt="Görsel 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_9c885dc5649e45a8bceb9444311065c4~mv2.jpeg"
+                alt="Görsel 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+
+    <p>Lütfen ışıkların konumlarının araçlara göre değişebileceğini unutmayın.</p>
+    <h2>Aydınlatma Renkleri</h2>
+    <p>Çoğu araç kırmızı, turuncu ve beyaz aydınlatmalarla donatılmıştır. Genelde kırmızı arka tarafta, beyaz ön tarafta ve turuncu araçların yanlarında bulunur. Ancak bazı aydınlatmalar bu düzenden sapabilir. Örneğin, ön taraftaki bazı ışıklar beyaz yerine sarı, arka taraftaki bazı ışıklar ise kırmızı yerine turuncu olabilir.</p>
+    <p>Bir hatırlatıcı olarak, beyaz ışık size doğru gelir, kırmızı ışık sizden uzaklaşır. Bu yüzden geri vites lambası da aracın arkasında olmasına rağmen beyazdır.</p>
+    <h2>Yan Sinyaller</h2>
+    <p>Bir aracın sinyal lambaları tüm yönlerden açıkça görülebilir olmalıdır. Çoğu modern binek araçta, bu aydınlatma aracın köşelerini sarar, bu da dönüş sinyalinin yanlardan da görülebilmesini sağlar. Bu durum böyle değilse, aracın yan tarafına ek sinyaller monte edilmelidir.</p>
+    <h2>İzin Verilen Aydınlatmalar</h2>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Dönüş Aydınlatması (beyaz)</h3>
+        <p>Aracın varlığını ve genişliğini gösterir.</p>
+
+        <h3>Gündüz Farı (beyaz)</h3>
+        <p>Aracın arkasındaki yolu aydınlatmak ve aracın geri gittiğini diğer yol kullanıcılarına bildirmek için kullanılır.</p>
+
+        <h3>Ön Sis Lambası (beyaz veya sarı)</h3>
+        <p>Aracın önündeki yolu diğer yol kullanıcılarını rahatsız etmeden aydınlatmak için kullanılır.</p>
+
+        <h3>Park Lambası (ön beyaz, arka kırmızı)</h3>
+        <p>Park halindeki bir aracın varlığını belirtmek için kullanılır. Genellikle park lambası ile aynıdır.</p>
+
+    </div>
+    <h2>Ek İşaret Aydınlatması ve Reflektörler</h2>
+    <p>Ortalamanın üzerinde büyük olan araçlar (ekstra uzun veya geniş) diğer sürücülere bu durumu belirtmek için aydınlatma ve ek reflektörlerle işaretlenmelidir.</p>
+    <ul>
+        <li>2,10 metreden daha geniş araçlar, ön tarafta iki beyaz işaret lambasına ve arka tarafta iki kırmızı işaret lambasına sahip olmalıdır.</li>
+        <li>6 metreden daha uzun araçlar, yanlarda turuncu renkli işaret lambaları ve turuncu reflektörlerle donatılmış olmalıdır. Bu yan işaret lambalarının ve reflektörlerin arkası turuncu yerine kırmızı olabilir.</li>
+    </ul>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>İşaret Aydınlatması</h3>
+        <p>Bir aracın en dış köşelerindeki ışıklar, aracın boyutlarını belirtir (dış hat işaret lambaları).</p>
+    </div>
+
+    <p>Binek araçlar ayrıca ek işaret lambaları ve reflektörlerle donatılabilir.</p>
+    <h2>Diğer Aydınlatma Gereklilikleri</h2>
+    <p>Binek araç aydınlatmasının varlığı ve zorunlu rengi dışında başka gereklilikler de vardır:</p>
+
+    <ul>
+        <li>Zorunlu ışıklar iyi çalışmalı ve zorunlu reflektörler iyi yansıtmalıdır.</li>
+        <li>Işık yuvaları (ışık tutucular) hasarsız olmalı ve araca düzgün bir şekilde takılmış olmalıdır.</li>
+        <li>Işık yuvalarının camları kırık veya çıkmış olmamalı ve ışığın yeterince iyi yayılmasına izin vermelidir.</li>
+        <li>Aynı işlevi gören ışıklar ve reflektörler simetrik olarak yerleştirilmeli, ışıklar aynı parlaklık ve boyutta olmalıdır.</li>
+        <li>Zorunlu ışıkların yarı saydam kısımları maksimum %25 oranında kaplanabilir.</li>
+        <li>Kısmi farların seviye kontrolü düzgün çalışmalıdır. Bu, aracın arka kısmının ağır yük nedeniyle geriye eğilmesi durumunda kullanılan manuel yükseklik ayar sistemidir. Gelen trafiği rahatsız etmemek için aydınlatmayı ayarlarsınız.</li>
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_f9c9eae941a9483589385f3a502ce3ee~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Işık yuvalarının camları, ışığın düzgün bir şekilde parlamasına izin vermelidir.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_dee8fb8c83e24ff6bb4273c84e9e53ae~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Aracın arka kısmı yüklü olduğunda, ön kısmı yukarı eğilebilir. Kısmi farlar bu durumda rahatsız edici olabilir. Farların pozisyonunu, seviye kontrolü kullanarak ayarlayabilirsiniz.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>Gösterge Paneli Uyarı Işıkları</h2>
+    <p>Bazı ışıklar yanlışlıkla açılmamalıdır. Eğer açıksa, sürücüler bunun farkında olmalıdır. Bu amaçla gösterge panelinde uyarı ışıkları bulunur. Bu ışıklar şunlardır:</p>
+
+    <div class="images-container5">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_825312872d884040811a5cdb7a83af81~mv2.png" alt="Görsel 1">
+            <figcaption><em>Uzun Farlar</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d590dc72f56b49078f09e196f026b1c1~mv2.png" alt="Görsel 2">
+            <figcaption><em>Ön Sis Lambaları</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_388807b2e34e4d26ad42448f6e35856f~mv2.png" alt="Görsel 3">
+            <figcaption><em>Arka Sis Lambası</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_e92c9bdbb8ae41b0959bffff670add31~mv2.png" alt="Görsel 4">
+            <figcaption><em>Sinyaller</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b29b6e207ca64ef48354bb9a52fe95bd~mv2.png" alt="Görsel 5">
+            <figcaption><em>Dörtlü Flaşörler</em></figcaption>
+        </figure>
+    </div>
+    <p>Bir sinyal uyarı ışığının yanı sıra, sinyaller açıldığında sesli bir sinyal de eşlik edebilir.</p>
+    <h2>Yasaklanan Aydınlatma ve Reflektörler</h2>
+    <p>Binek araçlarda burada belirtilenler dışında herhangi bir aydınlatma veya reflektör bulunmamalıdır.</p>
+    <p>Mevcut aydınlatma:</p>
+    <ul>
+        <li>Uzun farlar hariç kör edici olmamalıdır;</li>
+        <li>Sinyaller, dörtlü flaşörler ve acil fren sinyali (acil fren yapıldığında otomatik olarak yanıp sönen fren lambaları) hariç yanıp sönmemelidir.</li>
+    </ul>
+    <p>Bir sinyal açıldığında, aracın o tarafındaki ışıklar yanıp sönebilir.</p>
+    <p>Acil durum araçlarında bulunan mavi ışıklar gibi tüm diğer aydınlatmalar, binek araçlarda yasaktır - açık veya kapalı olsun. Ana nokta, aracınızın hiçbir zaman veya hiçbir şekilde bir acil durum aracına benzememesi gerektiğidir.</p>
+    <p>Binek araçların iç aydınlatması, aracın dışına ışık yaymamalıdır.</p>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b40895fc50cd470ba4d6ed1634fec29c~mv2.jpg" alt="Görsel 1">
+            <figcaption><em>Normal binek araçlar mavi ışıklarla donatılmamalıdır.</em></figcaption>
+        </figure>
+    </div>
+    <h2>Römorkları Güvenceye Alma</h2>
+    <p>Bir binek araç çekme çubuğu ile donatılmışsa, bu düzgün bir şekilde sabitlenmeli ve hasarlı, kırık veya paslı olmamalıdır.</p>
+    <h2>Zorunlu ve İzin Verilen Ses Sinyalleri</h2>
+    <p>Binek araçlar sabit tonlu düzgün çalışan bir kornaya sahip olmalıdır. Melodi çalan kornalar izin verilmez.</p>
+    <p>Binek araçlarda ayrıca şu ses sinyalleri bulunabilir:</p>
+    <ul>
+        <li>Geri vites sinyali;</li>
+        <li>Elektrikli binek araçlarda 25 km/s hıza kadar duyulan bir ses sinyali;</li>
+        <li>Bir alarm sistemi ile ses sinyali.</li>
+    </ul>
+    <p>Burada belirtilen üç ses sinyali dışında ses çıkaran tüm diğer cihazlar binek araçlarda yasaktır.</p>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

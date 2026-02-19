@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body> 
+    <h2>Araç gereksinimleri</h2>
+    <p>Bir sürücü olarak, kamu yollarında kullandığınız herhangi bir aracın teknik durumu ve doğru çalışmasından siz
+        sorumlusunuz - bu motorlu araç, moped veya bisiklet olsun fark etmez. Araç, geçerli kalıcı gereksinimleri
+        (genel teknik gereksinimler) ve kullanım gereksinimlerini karşılamalıdır.</p>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Kalıcı gereksinimler</h3>
+        <p>Bu gereksinimler, araçların Hollanda'da kullanılmadan önce karşılaması gereken genel teknik
+            gereksinimleridir. Bu muayene, Karayolu Trafik Servisi (RDW) tarafından gerçekleştirilir ve aracın
+            sahip olması veya olmaması gereken aydınlatma türü, genişliği ve yüksekliği gibi unsurları kapsar.</p>
+        <h3>Kullanım gereksinimleri</h3>
+        <p>Bu gereksinimler, örneğin yolcu ve yük taşımacılığı ile diğer araçların çekilmesi gibi konuları
+            düzenler.</p>
+    </div>
+    <h2>Sorumluluk kalıcı gereksinimler ve kullanım gereksinimleri</h2>
+    <p>Bir aracın sahibi ve sürücüsü - eğer aynı kişi değillerse - aracın bu gereksinimlere uygunluğunu
+        sürdürmekten sorumludur. Örneğin, numara plakası olmayan bir arabayı ödünç alırsanız, hem siz hem de
+        aracın sahibi sorumlu tutulur.</p>
+    <p>Bu durum, aracınızı birine verirken ve bu kişinin yükü yanlış taşımaya çalışması durumunda da geçerlidir.
+        Bunun farkında olmasanız bile, hem siz hem de sürücü sorumludur.</p>
+    <div class="important-words2">
+        <p>Aşağıdaki durumlarda bir aracı sürmemeniz veya birinin sürmesine izin vermemeniz gerekir:</p>
+        <ul>
+            <li>kötü üretilmiş veya donatılmış;</li>
+            <li>kötü bakım yapılmış;</li>
+            <li>sürücünün ön veya yanlarda yeterli görüşe sahip olmadığı şekilde üretilmiş veya donatılmış;</li>
+            <li>geçerli araç gereksinimlerine uygun olmayan başka bir şekilde.</li>
+        </ul>
+        <p>Araçınızı kime ödünç verdiğinizi her zaman kontrol edin ve kullanım niyetlerini netleştirin.</p>
+    </div>
+    <p>Bir aracı, arka tarafında düzgün çalışan (zorunlu) kırmızı retro-yansıtıcılar olmadan yolda park etmek de
+        yasaktır. Bu şekilde bırakılan bir araç, karanlıkta net bir şekilde görünmez. Eğer başka bir araç, aracınızın
+        düzgün çalışan retro-yansıtıcıları olmadığı için durmakta olan aracınıza çarparsa, zararların tazmininden
+        sorumlu tutulabilirsiniz.</p>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Retro-yansıtıcı</h3>
+        <p>Retro-yansıtıcılar, ışığı geldiği yönde geri yansıtarak, monte edildikleri aracı diğer yol kullanıcılarına
+            daha görünür hale getirir. Renkleri (kırmızı, amber veya beyaz) aracın neresine yerleştirildiklerine
+            bağlıdır.</p>
+    </div>
+
+
+    <div class="image-container"> 
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_4269062f64224ffbb718b1a9f37cc23f~mv2.jpg"
+            alt="Resim 1" />
+        <figcaption><em>Retro-yansıtıcılar çeşitli renklerde gelir ve araçların karanlıkta dururken görünür olmasını sağlar.</em></figcaption>
+    </figure>
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_22f9fc467c3041dba1a3fc06dd5b304a~mv2.jpg"
+            alt="Resim 2" />
+        <figcaption>
+            <em>Yolcu araçlarında, bu retro-yansıtıcılar genellikle aydınlatma elemanlarına (ön ve arka farların olduğu kısımlara) entegre edilir.</em>
+        </figcaption>
+    </figure>
+</div>
+
+<a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+ 
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

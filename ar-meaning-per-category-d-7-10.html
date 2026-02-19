@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 110px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+            margin-top: -10px;
+        }
+
+        .text3 strong {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: -10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+
+        }
+
+        @media (max-width: 480px) {
+            .text3 strong {
+                font-size: 1.2rem;
+                margin-top: -7px;
+
+                margin-bottom: -10px;
+            }
+
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+                max-width: 150px;
+            }
+        }
+
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+    <h1>
+   المعنى حسب الفئة - D
+  </h1>
+  <p>
+   تُبيّن هذه العلامات اتجاه السير الذي يجب عليك اتباعه، أو الجهة التي يجوز لك أو يجب عليك اجتياز العلامة منها.
+  </p>
+  <p>
+   تنطبق العلامات التالية على جميع السائقين ما لم يُذكر خلاف ذلك على علامة:
+  </p>
+  <div class="container3">
+   <div class="item3">
+    <img alt="Yangın Söndürücü" class="image3" src="https://static.wixstatic.com/media/4b688f_9a01a4eb1be740958b896c29a32186a3~mv2.png"/>
+    <div class="text3">
+     <strong>
+      D-1
+     </strong>
+     <p>
+      دوّار مروري، اتجاه سير إلزامي. توجد هذه العلامة عند الدوّار وتدل على وجوب السير حوله بعكس عقارب الساعة.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_6ef1a6cf0b8843599f8b83e94a063044~mv2.png"/>
+    <div class="text3">
+     <strong>
+      D-2
+     </strong>
+     <p>
+      يُلزم المرور عن يمين العلامة. وقد يُشير السهم أيضاً إلى الجهة الأخرى.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_ce24a445b91e4779859fe997a4c9c4d8~mv2.png"/>
+    <div class="text3">
+     <strong>
+      D-3
+     </strong>
+     <p>
+      يمكن اجتياز هذه العلامة من الجانبين. وتوضع عادةً على موجّهٍ وسطي (جزيرة مرورية أو عائق بين مسربين).
+     </p>
+    </div>
+   </div>
+  </div>
+  <p>
+   تُشير العلامات الآتية إلى اتجاه سير إلزامي دون أن تدل على شارع باتجاه واحد. وقد تَرِد في جميع الاتجاهات (يسار، يمين، إلى الأمام، أو توليفات منها).
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_f25a479d232549d2b68804fb4bbffde4~mv2.png"/>
+     <figcaption>
+      D-4
+      <br/>
+      اتجاه السير الإلزامي، إلى الأمام
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_c24c3a89a7cb456abbe769ed3132faa3~mv2.png"/>
+     <figcaption>
+      D-5
+      <br/>
+      اتجاه السير الإلزامي، يميناً
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_bd9ff0d506064ee48c5b6e19411fa9b1~mv2.png"/>
+     <figcaption>
+      D-6
+      <br/>
+      اتجاه السير الإلزامي، إلى الأمام ويميناً
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_e300da9e5ca84febbf301c29573273d8~mv2.png"/>
+     <figcaption>
+      D-7
+      <br/>
+      اتجاه السير الإلزامي، يساراً ويميناً
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   وأخيراً، تشتمل هذه الفئة على علامات مخصّصة خصوصاً لراكبي الدراجات الهوائية (وبالتالي أيضاً snorfietsers)، أو سائقي الموبيدات (وبالتالي أيضاً سائقي speed-pedelecs). وتُوضَع في المواقع التي يجب فيها على هؤلاء السائقين دخول الطريق أو مغادرته إلى مسار الدراجات أو مسار الدراجات/الموبيدات.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_42174bc76e704cd79025fcd66d78c1b0~mv2.png"/>
+     <figcaption>
+      D-101
+      <br/>
+      التزام على راكبي الدراجات (وsnorfietsers) باجتياز هذه العلامة من الجهة اليمنى
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_e8fb4c1e88ca47048f4821bcc31cea9c~mv2.png"/>
+     <figcaption>
+      D-102
+      <br/>
+      التزام على راكبي الدراجات (وsnorfietsers) باجتياز هذه العلامة من الجهة اليسرى
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_f3227cd4f80f4e34aa3c4c9ac6c9c8b2~mv2.png"/>
+     <figcaption>
+      D-103
+      <br/>
+      التزام على الموبيدات باجتياز هذه العلامة من الجهة اليمنى
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_aaad058026744a188721480b69984ab7~mv2.png"/>
+     <figcaption>
+      D-104
+      <br/>
+      التزام على الموبيدات باجتياز هذه العلامة من الجهة اليسرى
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى
+    النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

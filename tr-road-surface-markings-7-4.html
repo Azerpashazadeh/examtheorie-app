@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words1 h3 {
+            margin-top: 0px;
+        }
+
+        .important-words1 p {
+            margin-top: -15px;
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+        .images-container9 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container9 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container9 img {
+            width: 50%;
+            /* Resim genişliği */
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .images-container9 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container9 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container9 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Yol (zemin) işaretleri</h1>
+    <p>
+        Trafik levhaları ve trafik lambalarına ek olarak, trafik yol yüzeyindeki işaretlerle de düzenlenir. Bunlar
+        çizgiler gibi işaretler olabileceği gibi, hız sınırını belirten zemin boyamaları veya öncelik üçgenleri ve oklar
+        gibi işaretler de olabilir.
+    </p>
+    <div class="important-words1">
+        <div class="vertical-line2"></div>
+        <h3>Kenar çizgisi</h3>
+        <p>
+            Karayolunun kenarındaki çizgi.
+        </p>
+        <h3>Orta veya eksen çizgisi</h3>
+        <p>
+            Karayolunun ortasındaki çizgi, sizin yolunuz ile karşı yönden gelen trafik arasındaki ayrımı belirler.
+        </p>
+        <h3>Şerit çizgisi</h3>
+        <p>
+            Karayolu veya tek yönlü yolun bir kısmını şeritlere ayıran çizgi.
+        </p>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4708173ef1da4845ab83709b2b5ec0e4~mv2.jpeg"
+                    alt="Kenar çizgisi">
+            </figure>
+        </div>
+    </div>
+    <h2>Kesintisiz çizgi</h2>
+    <p>
+        Kenar çizgileri, eksen çizgileri ve şerit çizgileri kesintisiz bir çizgi olarak uygulanabilir. Kesintisiz
+        çizgiler aşılamaz. Kesintisiz bir eksen çizgisi durumunda, bu çizginin solunda (karşı yönden gelen trafik
+        tarafında) gidemezsiniz. Kesintisiz bir çizgi durumunda şerit değiştiremez veya sollama yapamazsınız.
+    </p>
+    <p>
+        Aşağıdaki istisnalar geçerlidir:
+    </p>
+    <ul>
+        <li>
+            <p>
+                Örneğin, kenarda park etmek için kenar çizgisi aşılabilir.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container9">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_27dfd2a0cd344c5e990b61434baa226b~mv2.jpg"
+                    alt="Kenar çizgisi aşılarak park etme">
+            </figure>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <p>
+                Karayolu ile bitişik sığınak, emniyet şeridi veya yoğun saat şeridi arasındaki kesintisiz bir çizgi, bu
+                sığınak veya şeridi kullanmanız gerekiyorsa aşılabilir.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container9">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c9ad0ad5f5a54ccc8ce72b7d2770aa7d~mv2.jpg"
+                    alt="Emniyet şeridi kullanımı">
+            </figure>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <p>
+                Kesintisiz çizginin sizin tarafınızda kesik çizgi varsa, kesintisiz çizgiyi aşabilirsiniz.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container9">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ebb027cef17649d79949537fecb79115~mv2.jpg"
+                    alt="Kesik çizgi ile kesintisiz çizgi kombinasyonu">
+            </figure>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <p>
+                Kesintisiz çizgili bisiklet şeridini kullanmaya yetkili sürücüler, örneğin başka bir bisikletliyi
+                sollamak için bu kesintisiz çizgiyi aşabilir.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container9">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b82808aae9624941bd7d40ce2f0629d7~mv2.jpg"
+                    alt="Bisiklet şeridini kullanma">
+            </figure>
+        </div>
+    </div>
+    <h2>Kırık Çizgiler ve Uyarı Çizgileri</h2>
+    <p>
+        Eksen çizgisi veya şerit çizgisi kırık bir çizgi olarak uygulanmışsa, bu çizgi aşılabilir. Bu durumda, güvenli
+        bir şekilde yapabiliyorsanız sollama yapabilir veya şerit değiştirebilirsiniz.
+    </p>
+    <p>
+        Normalde, kırık bir çizgide çizgi uzunluğu, çizgiler arasındaki boşluktan daha kısadır. Eğer çizgi uzunluğu
+        çizgiler arasındaki boşluktan daha uzun ise, kırık çizgileri uyarı çizgileri olarak görmelisiniz. Bu, sollamanın
+        burada normal kırık çizgiye göre daha tehlikeli olduğu anlamına gelir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0b91d9d7c862450db4ae7c1d931ac9b5~mv2.jpg"
+                    alt="Normal kırık eksen çizgisi">
+                <figcaption>Normal kırık eksen çizgisi.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_113fec17f6114a2ebfd3d3b7452bb5ac~mv2.jpg"
+                    alt="Uyarı çizgisi olarak tasarlanmış eksen çizgisi">
+                <figcaption>Uyarı çizgisi olarak tasarlanmış eksen çizgisi.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>Taralı Yol İşaretleri</h2>
+    <p>
+        Bu yüzeyler eğik çizgilerden oluşur ve üzerinde araç sürmek yasaktır. Örneğin, taralı yol işaretleri, bir
+        şeridin sona erdiği ve sürücülerin bitişik bir şeride geçmesi gerektiği yerlerde kullanılır.
+    </p>
+    <h2>Ayrım Noktası</h2>
+    <p>
+        Ayrım noktaları, özellikle hızlanma ve yavaşlama şeritlerinde, otoyollarda ve karayollarında bulunur. Bu
+        noktaların üzerinden geçilmemelidir.
+    </p>
+    <div class="important-words2">
+        <p>
+            Taralı yol işaretleri ve ayrım noktaları, açık bir yoğun saat şeridinde yer alıyorsa artık geçerli değildir.
+            Bu durumda, bu işaretlerin üzerinden geçmek serbesttir.
+        </p>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_304df14a5cc344878207a5023e4bfdbc~mv2.jpg"
+                    alt="Taralı yol işaretleri üzerinde araç kullanmak yasaktır.">
+                <figcaption>Taralı yol işaretleri üzerinde araç kullanmak yasaktır.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d0dcaefef0b844639350f8fcc68656bd~mv2.jpg"
+                    alt="Ayrım noktası üzerinden araç kullanmak da yasaktır.">
+                <figcaption>Ayrım noktası üzerinden araç kullanmak da yasaktır.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>Ön Sıralama Şeritleri, Yavaşlama Şeritleri ve Oklar</h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    Ön sıralama şeritleri, (büyük) kavşaklarda bulunur ve karayolunu farklı yönlere giden şeritlere
+                    ayırır. Şeritlerdeki oklar yönü belirtir. Farklı yönlere giden şeritler arasında blok işaretleme
+                    uygulanır. Bu blok işaretlemeyi aşmak, blok işaretlemenin kesintisiz bir çizgiye dönüşmesine kadar
+                    serbesttir. Kavşakta, sürücüler kullandıkları ön sıralama şeridindeki okun belirttiği yöne gitmek
+                    zorundadır. Sol dönmek için ön sıralama yapmak ve ardından kavşakta düz devam etmek bu nedenle
+                    yasaktır.
+                </p>
+                <p>
+                    Ön sıralama şeridinde görünebilecek özel bir ok, çekiç başı sembollü bir oktur. Çoğu durumda, bu,
+                    dönüş öncesinde bir yan yolun olduğunu gösterir. Bu yan yola dönmek yasaktır.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_a3a9da94b3184028a8753b8a5e35cfcd~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_de2c0dff96d04017ab5892cbc04888ca~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Yön okları ile ön sıralama şeritleri. Burada hâlâ yön değiştirebilirsiniz.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_83135d001d78451a98d014c8af2afd3d~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Sol dönüş için ön sıralama şeridi çekiç başı sembollü bir yön oku içeriyor. İlk yan yola
+                    sola dönmek yasaktır.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Yavaşlama şeritleri, genellikle karayolları ve otoyollarda ana taşıt yolundan çıkmak için kullanılan
+        şeritlerdir. Bu şeritler, ana taşıt yolundan blok işaretleme ile ayrılmıştır.
+    </p>
+    <p>
+        Yavaşlama şeridinde oklar bulunduğunda, artık bu şeritten ana taşıt yoluna geri dönemezsiniz. Bu kural,
+        yavaşlama veya dokuma şeridinden (birleşik hızlanma ve yavaşlama şeridi) geçilerek trafik sıkışıklığını önlemek
+        için vardır.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4bd669195d4445e8af2219160a58349b~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Yön okları olmayan dokuma şeridi. Ana taşıt yoluna geri dönmek hâlâ serbesttir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f9d6355e9d0e4285bfe46e2574f652ef~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Yön okları bulunan yavaşlama şeridi. Artık ana taşıt yoluna geri dönmek yasaktır.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>Dur Çizgisi (Yavaşlama Çizgisi)</h2>
+    <p>
+        ‘DUR’ işaretinin yer aldığı bir kavşakta, yol yüzeyine bir dur çizgisi yerleştirilmelidir. Sürücüler, diğer
+        araçların olup olmadığına bakmaksızın bu çizginin önünde durmalıdır.
+    </p>
+    <p>
+        Dur çizgileri genellikle, durmanız gereken kavşak veya geçiş noktası gibi durumlara iyi bir görüş açısı
+        sağlayacak şekilde uygulanır. Trafik ışıklarında bulunan çizgi de dur çizgisi olarak adlandırılır. Bu durumda,
+        yalnızca trafik ışığı sarı veya kırmızı olduğunda dur çizgisinin önünde durmalısınız.
+    </p>
+    <h2>Öncelik Üçgenleri (Köpek Balığı Dişleri)</h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    Bunlar, yol yüzeyine yerleştirilmiş beyaz üçgenlerdir. Öncelik üçgenleri, “kesilen yoldaki
+                    sürücülere öncelik verin” anlamına gelir. Genellikle B-6 işareti ile birlikte kullanılırlar, ancak
+                    bu zorunlu değildir. Bu işaret olmadan da aynı anlama sahiptirler.
+                </p>
+                <p>
+                    Öncelik üçgenlerine ulaşmadan önce, öncelik durumu bazen yol yüzeyine yerleştirilmiş büyük bir uyarı
+                    üçgeni ile önceden bildirilebilir.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_be8acad95e55488f86787a2d7b5e9d89~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_9169f4bc41a24bd0906bd93b38afec40~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>B-7 DUR işareti ve dur çizgisi.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ed5844f3dcc24cb48f56764454641fe0~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>B-6 Öncelik işareti ve öncelik üçgenleri (köpek balığı dişleri).</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Otobüs Şeritleri ve Otobüs Yolları
+    </h2>
+    <p>
+        "BUS" veya "LIJNBUS" (toplu taşıma otobüsü) yazılı bir şerit veya yoldur. Bir otobüs şeridi, kırık veya düz bir
+        çizgi ile taşıt yolunun geri kalanından ayrılır.
+    </p>
+    <p>
+        "BUS" kelimesi durumunda, yalnızca otobüs sürücüleri (tur otobüsleri dahil) ve toplu taşıma otobüs sürücüleri bu
+        şeridi kullanabilir.
+    </p>
+    <p>
+        "LIJNBUS" kelimesi durumunda, yalnızca toplu taşıma otobüs sürücüleri bu şeridi kullanabilir.
+    </p>
+    <p>
+        Acil durum araçları da, acil bir görevleri varsa, kapalı yollarla ilgili yasaklara uymaksızın otobüs şeridi veya
+        yolunu kullanabilir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2da3edbc9a414af8876f6d7c1652ae34~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Otobüs yolu, ana taşıt yolundan ayrı bir konumdadır.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0afcc2a131964446a8ca34e8be0f67c7~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Otobüs şeridi, taşıt yolunun bir parçasıdır ve düz veya kırık bir çizgi ile ayrılmıştır.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Bisiklet Şeritleri ve Öneri (Bisiklet) Şeritleri
+    </h2>
+    <p>
+        Bir bisiklet şeridi, kırık veya düz bir çizgi ile ayrılabilir. Ayrıca, yol yüzeyine bir bisiklet simgesi
+        yerleştirilmiş olmalıdır. Eğer bu yoksa, bu bir öneri (bisiklet) şerididir ve resmi bir bisiklet şeridi
+        değildir.
+    </p>
+    <p>
+        Öneri (bisiklet) şeritlerinin yasal bir anlamı yoktur. Herkes tarafından kullanılabilir. Hatta bu şerit üzerinde
+        durabilir veya park edebilirsiniz.
+    </p>
+    <p>
+        Özel bir bisiklet şeridi türü, bisiklet kutusudur. Bu, normal ön sıralama şeridinin önünde uzatılmış bir
+        bisiklet şerididir. Bu alanın amacı, bisiklet gibi hassas yol kullanıcılarını diğer sürücülere daha görünür ve
+        güvenli kılmaktır.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d70cd673af9145df8b572c779b76f79d~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Bir bisiklet şeridi, yol yüzeyindeki bisiklet sembolleriyle tanınır. Eğer bu semboller
+                    yoksa, bu resmi bir bisiklet şeridi değil, bir öneri (bisiklet) şerididir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4d9a5e6b629643c9aca877a18237e5fd~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Bu bisiklet kutusu, bisikletçileri, moped sürücülerini ve engelli araç kullanıcılarını
+                    kırmızı ışıkta beklerken daha görünür kılar. Diğer sürücüler bisiklet kutusunun arkasında
+                    sıralanmalıdır.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Yol Kenarındaki Sarı Çizgiler
+    </h2>
+    <p>
+        Kaldırım kenarlarında veya yol kenarlarında düz ve kesik sarı çizgiler bulunabilir. Kesik sarı çizginin yanında
+        yalnızca park etmek yasaktır. Düz sarı çizginin yanında ise yalnızca park etmek değil, durmak da yasaktır.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_74a76f3b67b54c7ab52e70eef161d9ac~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Kaldırımda kesik sarı çizgi. Buraya park etmek yasaktır.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_46b7b2635900488e9fbc36e3e8f4d8ba~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Kaldırımda düz sarı çizgi. Burada durmak, hatta yolcu indirip bindirmek bile yasaktır.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Yol Yüzeyindeki Sarı Çizgiler
+    </h2>
+    <p>
+        Sarı çizgiler, yol çalışmaları sırasında geçici çizgiler ve işaretlemeler olarak yol yüzeyinde de görülebilir.
+        Bunlar, yerel beyaz çizgilerin ve işaretlerin üzerine geçer. Bu durumlarda, maksimum hız sınırlarının genellikle
+        daha düşük olduğunu ve şeritlerin daha dar olabileceğini unutmayın. Özellikle yol çalışmaları sırasında
+        otoyollardaki sol şerit daha dar olabilir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a212a758aed34770b3985e5046a18551~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Yol çalışmaları sırasında yol yüzeyindeki sarı çizgiler. Bunlar beyaz çizgilerin üzerine
+                    geçer. Burada sol şerit daha dardır.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_900db932dae54bd5ab1f5f9536e97bf5~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Park alanının yanında mavi çizgi. Burada park diski kullanmanız gereklidir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Mavi Çizgiler
+    </h2>
+    <p>
+        Mavi çizgiler, park disklerinin zorunlu olduğu park cepleri ve park şeritlerinde kullanılır.
+    </p>
+    <h2>
+        Bloklu veya Kareli İşaretlemeler
+    </h2>
+    <p>
+        Bu işaretleme, otobüs duraklarında yol yüzeyinde bulunur ve otobüsün durağa yanaşması için ihtiyaç duyduğu alanı
+        gösterir. Bloklu işaretleme aynı zamanda bir yasaklama anlamı taşır. Bu işaretlemede durmak, yolcu indirip
+        bindirmek haricinde yasaktır.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_97fe4a7b8451434aae57af2f9f1402d2~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Burada örneğin bağlantı şeridi ile ana taşıt yolu arasında blok işaretleme bulunmaktadır.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7372ce293be749499e4e2b78f395a481~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Bloklu (kareli) işaretlemeler genellikle otobüs duraklarında bulunur.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+
+    <h2>
+        Blok İşaretleme
+    </h2>
+    <p>
+        Bu, otobüs duraklarındaki blok işaretlemeden farklıdır. Blok işaretleme, hızlanma, yavaşlama ve birleşim
+        şeritleri ile önceden sıralama şeritleri arasında taşıt yolunda bulunur.
+    </p>
+    <h2>
+        Zigzag Çizgiler
+    </h2>
+    <p>
+        Bu çizgiler, tehlikeli bir noktayı size bildirmek için yol üzerine yerleştirilmiştir. Bu, bir geçiş noktası veya
+        tehlikeli bir kavşak olabilir. Bu işaretleme, geçerli öncelik hakkında bir şey ifade etmez, ancak bu durumlarda
+        hızınızı düşürmeniz tavsiye edilir.
+    </p>
+    <h2>
+        Yardımcı İşaretlemeler
+    </h2>
+    <p>
+        Bu, yol üzerine bir yardımcı olarak uygulanan işaretlemeleri içerir. Örneğin, yol yüzeyine uygulanan hız
+        sınırları. Ayrıca, bir bölgeye girdiğinizi veya çıktığınızı gösteren çizgiler ve hız tümseklerini işaretleyen
+        çizgiler de yardımcı işaretleme olarak sınıflandırılır.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d0499319e46d431d8e8ebab555ddfdc3~mv2.jpg"
+                    alt="Uyarı: Tehlikeli bir nokta">
+                <figcaption>Zigzag çizgiler, tehlikeli bir noktayı size bildirir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b416b1f05e0c4f5c9625a8d021ad4120~mv2.jpg"
+                    alt="Bölge işaretlemesi">
+                <figcaption>Bölge işaretlemeleri, bölgeleri daha net açıklamak için yardımcı bir işaretlemedir.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Hız Sınırı İşaretlemeleri
+    </h2>
+    <p>
+        Özellikle yeni yollarda, hız sınırını yol üzerindeki işaretlemelerden (çizgiler) anlayabilirsiniz. Bu
+        işaretlemeler yasal olarak bağlayıcı değildir, ancak bir hız sınırını önerir. Gerçek hız sınırı her zaman trafik
+        işaretleri ile belirtilmelidir.
+    </p>
+    <h3>
+        Autoweg (100 km/s)
+    </h3>
+    <p>
+        Tek taşıt yoluna sahip bir autoweg, düz kenar çizgileri ve iki düz veya kesik orta çizgiden oluşur. Bu beyaz
+        orta çizgilerin arasında yeşil bir çizgi bulunur.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a02c70c968854014a9a41774e1b2a523~mv2.jpeg"
+                    alt="Yeşil orta çizgi">
+                <figcaption>Yeşil orta çizgi, bir autoweg üzerinde olduğunuzu gösterir. Düz beyaz orta çizgiler
+                    nedeniyle sollama yasaktır.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d1a76d41ff57475a9302618f46e8a8a9~mv2.jpeg"
+                    alt="Yeşil orta çizgi">
+                <figcaption>Yeşil orta çizgi, bir autoweg üzerinde olduğunuzu gösterir. Kesik beyaz orta çizgiler
+                    nedeniyle sollama yapılabilir. Sollama sırasında dikkatli olun.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h3>
+        Yerleşim Alanı Dışındaki Yol (80 km/s)
+    </h3>
+    <p>
+        80 km/s hız sınırına sahip bir yol genellikle kesik kenar çizgilerine ve bir veya iki düz ya da kesik orta
+        çizgiye sahiptir. Orta çizgiler arasında yeşil bir çizgi bulunmaz.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bd7cfe7d523c48c88c336d27b70a0bf7~mv2.jpeg"
+                    alt="Yeşil çizgi olmayan yol">
+                <figcaption>Yeşil orta çizgi yoktur, bu yerleşim alanı dışında normal bir 80 km/s yoludur. Düz beyaz
+                    orta çizgiler nedeniyle sollama yasaktır.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bc71334753e842daa9e69bd4c070d9ea~mv2.jpeg"
+                    alt="Yeşil çizgi olmayan yol">
+                <figcaption>Yeşil orta çizgi yoktur, bu yerleşim alanı dışında normal bir 80 km/s yoludur. Kesik beyaz
+                    orta çizgiler nedeniyle sollama yapılabilir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <h3>
+        Yerleşim Alanı Dışında Düşük Hızlı Yol (60 km/s)
+    </h3>
+    <p>
+        60 km/s hız sınırına sahip bir yol genellikle, kenardan biraz daha uzak yerleştirilmiş kesik kenar çizgilerine
+        sahiptir. Bazen yol üzerinde kırmızı öneri (bisiklet) şeritleri bulunabilir. Orta çizgi yoktur ve bazen çizgiler
+        hiç bulunmaz.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_fd2897056b7a42a7aeb850daa4f7796a~mv2.jpeg"
+                    alt="Çizgisiz yol">
+                <figcaption>Orta çizgi yoktur, bu bir 60 km/s yoludur. Ancak bunun bir 60km bölgesi olduğunu belirtmek
+                    için bir 60km bölge işareti bulunmalıdır!</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_9443d7e685f844dfa216abd3a630c5b0~mv2.jpeg"
+                    alt="Çizgisiz yol">
+                <figcaption>Hiçbir çizgi yoktur, bu bir 60 km/s yoludur. Ancak bunun bir 60km bölgesi olduğunu belirtmek
+                    için bir 60km bölge işareti bulunmalıdır!</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

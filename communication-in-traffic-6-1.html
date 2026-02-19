@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #B9E5FB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Communication in traffic</h1>
+
+
+    <p>It is important that you communicate to let other road users know what you intend to do. You can also do this to
+        warn other road users of imminent danger. Depending on the situation, you do this with light signals, sound, or
+        gestures. It is important to know that you should not just use these signals whenever you like. There must be a
+        good reason for it.</p>
+    <p>
+        Anti-social hand gestures or unnecessary full-beams are not permitted and may be penalised. Also excessive use
+        of the horn or the indicators is not allowed.
+    </p>
+    <p>
+        In addition to the horn, unnecessary noise should not be caused in other ways. For example, a broken or adapted
+        exhaust, or the unnecessary revving while standig still. Playing extremely loud music also constitutes
+        unnecessary noise.
+    </p>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b1e39dc1946a44d59e2d437f6be58a9d~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Excessive loud music from the car is also considered unnecessary noise and is not allowed.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_00e10ebb9ef24ad09befeb53b1d8b519~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Do not react to other road users by making frustrated gestures.</figcaption>
+            </figure>
+
+
+        </div>
+    </div>
+    <h2>
+        Hand gestures
+
+    </h2>
+    <p>
+        In some situations, it may be necessary to let other road users know that have noticed them and will stop for
+        them, or that you are waiving your right of way, for example when it is more convenient for you.
+    </p>
+    <p>
+        Pedestrians are often hesitant to use pedestrian crossings, usually out of a fear of not being seen in time. In
+        these cases, a friendly hand gesture from drivers near the crossing is a good way to indicate that it is safe to
+        cross.
+    </p>
+    <p>
+        You may also notice drivers of larger vehicles using hand gestures to indicate that they are giving way to you,
+        for example if they need to enter the road you are on but cannot do this until you pull away.
+    </p>
+    <p>
+        Never use aggressive hand gestures, such as middle fingers. Count to ten and resolve any situations that arise
+        as safely and calmly as possible. Avoiding aggression prevents dangerous situations in traffic.
+    </p>
+    <h2>
+        Horn
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    Every passenger car must be equipped with a horn. Driving with a broken horn is prohibited. Only use
+                    the horn to avert imminent danger. Do not sound the horn when you encounter a friend or as a
+                    greeting when driving away. Do not use the horn when angry or frustrated. You may, however, sound
+                    your horn if you are almost hit by a car because someone has not seen you.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_41795386c2e448f191f7cf016c8a3a45~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ba59b9672bba4571b8e92239d991411d~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The horn may also only be used to avert imminent danger.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_8c31b5febf78476bb54725322b3c3505~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Hazard lights may only be used in to avert imminent danger.</figcaption>
+            </figure>
+
+
+        </div>
+    </div>
+    <h2>
+        Hazard lights
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    The hazard lights (also known as emergency lighting) must also work properly. You may only use this
+                    lighting to avert imminent danger.
+                    If you have suffered a breakdown, not using hazard lights may mean other drivers will not see you in
+                    time. The use of hazard lights during a breakdown is mandatory, unless using a warning triangle.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_33cd0e15c59544ef9ea3b95e1758e1b5~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <p>
+        When approaching a traffic jam, you can turn on the hazard lights to warn following traffic.
+    </p>
+    <p>
+        Hazard lights are not intended as lighting during loading or unloading. After all, voluntary stopping and
+        parking is not allowed in a place where this presents a danger. The use of hazard lights when there is no danger
+        is not permitted.
+    </p>
+    <h2>
+        Indicators
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    The use of indicators is mandatory before and during turning and during special manoeuvres like
+                    pulling out (driving away), overtaking, getting in lane, exiting, changing lanes and important
+                    lateral movements. Not using the indicator when necessary as well as using indicators unnecessarily
+                    can have dangerous consequences.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_a967c6c97af448279c67c3a33b0d04af~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <p>
+        If you indicate too early that you want to turn, this can cause confusion for other road users. But if you do
+        not indicate that you want to turn, this can also be dangerous. Misuse or no use of indicators is a criminal
+        offense. This lighting must therefore always work.
+    </p>
+    <h2>
+        Flashing signal with full-beam headlights
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    Another way of warning is by means of a flashing signal with full-beam headlights. You may only use
+                    this if you can avert imminent danger. For example, you can warn an oncoming driver if he has his
+                    full-beam headlights on and blinds you. Or when a driver is not using any lighting at all in the
+                    dark.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_25e0b6f0917e496c94c51822e893f5a0~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <p>
+        Full-beam flashing is not permitted to warn oncoming traffic of a police check. And not to let a driver know
+        that you want to pass by.
+    </p>
+    <h2>
+        Using the brake lights
+    </h2>
+    <p>
+        As soon as you use the brake pedal, the brake lights come on. The unnecessary use of the brake pedal is bad for
+        the energy consumption of your passenger car. In addition, it is also quite annoying for traffic behind you.
+    </p>
+    <p>
+        You can use the brake pedal as a warning. To do this, tap the pedal briefly and lightly before actually braking.
+        For example if you want to turn, or brake for a pedestrian crossing. The traffic behind you will then be warned
+        to reduce speed. They also have the option to increase the following distance a bit before you actually start
+        braking.
+    </p>
+    <p>
+        However, never use the brake lights to startle tailgaters deliberately. This can be very dangerous and
+        encourages aggressive behavior. If you cause an accident, this is a crime.
+    </p>
+    <p>
+        If there is a tailgater behind you, it is better to increase your own following distance so that you do not have
+        to brake abruptly.
+    </p>
+    <h2>
+        Warning triangle
+    </h2>
+    <p>
+        It is not mandatory for a driver of a passenger car to have a warning triangle in the passenger car. But in some
+        cases, you are obliged to place a warning triangle. For example, if you breakdown on the road or have an
+        accident and therefore pose a danger to approaching drivers.
+    </p>
+    <p>
+        Placing a warning triangle is not mandatory if the hazard lights are on and it is clearly visible to other
+        traffic. However, it may still be sensible in those cases. The warning triangle may be used in conjunction with
+        hazard lights.
+    </p>
+    <p>
+        If the vehicle cannot be seen in time by other traffic with hazard lights only, for example just after a bend or
+        a hill, a warning triangle must be used to avoid danger.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2a7d1f2175a34d89a3d959e3919d113f~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>If you have broken down immediately after a bend, you must place a warning triangle before
+                    the bend.
+                </figcaption>
+            </figure>
+
+
+
+        </div>
+    </div>
+    <p>
+        Place the warning triangle clearly visible on the road at a distance of approximately 30 metres from the
+        vehicle, in the direction of the traffic endangering the vehicle. So if you are on the right-hand side of the
+        carriageway and you form an obstacle for traffic behind you, place the warning triangle 30 metres behind the
+        passenger car.
+    </p>
+    <p>
+        The placing of a warning triangle is only compulsory for motor vehicles with more than two wheels and trailers.
+    </p>
+
+ <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

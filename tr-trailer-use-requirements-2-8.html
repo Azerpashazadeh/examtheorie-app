@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Römork kullanım şartları</h2>
+    <p>Teknik gereksinimlerin yanı sıra, römorklar yüklerin maksimum ağırlığı ve boyutları gibi bir dizi kullanım şartına da tabidir.</p>
+    <h2>Römork çekme</h2>
+    <p>Bir yolcu arabası aynı anda sadece bir römork çekebilir ve en fazla iki dönme noktasına izin verilir. Bir dingilli römorkun bağlama noktasında yalnızca bir dönme noktaları vardır. İki dingilli römorkların ön dingilde de bir dönme noktaları olabilir.</p>
+    <p>Eğer bir römork çekici aracın arkasında dik (90 derece) ise, bu aracın hiçbir yeriyle temas etmemeli, yalnızca bağlama noktasında temas etmeli ve bu nedenle serbestçe dönebilmelidir.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_8f02c290e89a4a708ed6f7bfcc63aa65~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Bir dönme noktasına sahip bir römork. Her römork, yolcu arabasının arkasında serbestçe dönebilmelidir. Yolcu arabasıyla başka herhangi bir parçası ile temas etmemelidir.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d02fed2760db4c95ae4285c23068ed24~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Genellikle birbirine doğrudan bitişik olmayan iki dingile sahip bir römorkun genellikle iki dönme noktaları bulunur (sarı oklarla gösterilmiştir)</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Römorkun tekerlekleri, yolda giderken, römork aracın arkasından çıksa bile, yalnızca yürüyüş sırasında yere temas edebilir. Her zaman burun tekerleğini doğru bir şekilde kaldırın ve gevşek kabloların yerde sürünmediğinden emin olun.</p>
+    <h2>Yük</h2>
+    <p>Römorktaki veya üzerindeki yük yeterince sağlam bir şekilde sabitlenmeli (veya örtülmeli) ve sürüş, direksiyon ve fren yaparken herhangi bir risk oluşturmayacak şekilde dağıtılmalıdır.</p>
+    <p>Yükün uygun taşınmasında çok önemli olan birkaç faktör vardır:</p>
+    <ul>
+        <li>Ağır yükleri mümkün olduğunca dingilin üzerine ve römorkta en alt konuma yerleştirin.</li>
+        <li>Römorku simetrik olarak yükleyin; sol ve sağ, ön ve arka arasında ağırlığı dengeleyin.</li>
+        <li>Yükü sabitleyin. Gevşek yük, römorkun sallanmasına veya devrilmesine neden olabilir veya yük düşebilir.</li>
+        <li>Bir süre sürdükten sonra, yükün doğru bir şekilde sabitlenip sabitlenmediğini tekrar kontrol edin.</li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_14639d1063924205a699ad30301323af~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Ağır yükleri mümkün olduğunca römork dingilinin üzerine koyun.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_5c50e91f974b45f38f10f57cba48654a~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Yükün sol ve sağ arasında dengeli dağıtıldığından emin olun.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <p>Yükte keskin çıkıntılı nesneler yasaktır. Kötü çıkıntılı nesneler, diğer yol kullanıcıları için risk oluşturuyorsa örtülmelidir.</p>
+
+    <h2>Yük taşıyıcılar</h2>
+    <p>Bisiklet rafları gibi yük taşıyıcılar, römorkların çekme çubuğuna veya çekme üçgenine takılabilir. Römorklardaki yük taşıyıcılar, yolcu arabalarındaki yük taşıyıcılara uygulanan aynı kurallara tabidir.</p>
+
+    <h2>Plaka</h2>
+    <p>Römorklar plaka ile donatılmalıdır. Römorkun maksimum yetkili ağırlığı, römorkun kendi kayıt numarasına sahip sarı bir plaka veya çekici aracın kayıt numarasına sahip beyaz bir plaka olup olmadığını belirler.</p>
+
+    <div class="image-container8">
+        <!-- Birinci sütun: Görsel 1, 2, 5, 6 -->
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_a74d2e02395a45fda385d9a5e776eece~mv2.png" alt="Görsel 1">
+            <figcaption><em></em></figcaption>
+        </div>
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_80a109686fa2483a8b409b75978d2852~mv2.png" alt="Görsel 2">
+            <figcaption><em></em></figcaption>
+        </div>
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_1f4cec496f2d460cb58149b4c04c9b00~mv2.jpg" alt="Görsel 5">
+            <figcaption><em></em></figcaption>
+        </div>
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_f84c789c3fc04eaa96899fb315993d3d~mv2.jpg" alt="Görsel 6">
+            <figcaption><em>Römorkun maksimum yetkili ağırlığı 750 kg veya daha az mı? O zaman römork çekici aracın kayıt numarasına sahip beyaz bir plaka taşımalıdır.</em>
+            </figcaption>
+        </div>
+
+        <!-- İkinci sütun: Görsel 3, 4, 7, 8 -->
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_a74d2e02395a45fda385d9a5e776eece~mv2.png" alt="Görsel 3">
+            <figcaption><em></em></figcaption>
+        </div>
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_80a109686fa2483a8b409b75978d2852~mv2.png" alt="Görsel 4">
+            <figcaption><em></em></figcaption>
+        </div>
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_1f4cec496f2d460cb58149b4c04c9b00~mv2.jpg" alt="Görsel 7">
+            <figcaption><em></em></figcaption>
+        </div>
+        <div class="image-block8">
+            <img src="https://static.wixstatic.com/media/4b688f_d2af4dfa2dc146f8976e59868cbf73db~mv2.jpg" alt="Görsel 8">
+            <figcaption><em>Römorkun maksimum yetkili ağırlığı 750 kg'ın üzerinde mi? O zaman römork kendi kayıt numarasına sahip sarı bir plaka taşımalıdır.</em></figcaption>
+        </div>
+    </div>
+    <p>Römorklar her zaman orijinal bir plaka ile donatılmalıdır. El yazısıyla yazılmış plakalar yasaktır. Bir römork kullanmanız gerekiyorsa, uygun bir plakayı önceden temin edin.</p>
+    <h2>Çıkıntılı yük</h2>
+    <p>Yolcu arabalarında olduğu gibi, römorktaki yük de belli bir noktayı geçmemeli ve römorkun maksimum boyutlarını asla aşmamalıdır, genişlik hariç. Örneğin, römorklar yerden dört metreden daha yüksek yüklenemez.</p>
+    <p><strong>Bölünebilir</strong> yük römorkta yolcu arabalarına uygulanan aynı kurallara tabidir. <strong>Bölünemez</strong> yük için kurallar biraz farklıdır:</p>
+
+    <ul>
+        <li>
+            <strong>Kenarlar</strong>
+            <p> Yalnızca bölünemez yük, bir römorkun maksimum boyutlarının ötesine geçebilir. Gerekirse bu, en fazla üç metre genişliğe kadar izin verilir. Yandan on santimetreden fazla çıkıntı yapan yükler işaret levhası ile işaretlenmelidir.</p>
+        </li>
+
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_6760672892ba471691a906fe68f886ff~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Römorkta bağlama noktasının önüne geçen bir yük asla olamaz. Böyle sürüş yapmanıza izin verilmez.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_269d41c5920a4aab920b2eb5c537a5c9~mv2.png"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Bir yük römorktan yana 10 cm'den fazla çıkıyorsa, işaret levhası zorunludur.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <ul>
+        <li>
+            <strong>Ön</strong>
+            <p> Yük, bölünebilir olsun ya da olmasın, asla römorkun önünden çıkmamalıdır. Bu durumda ön taraf, çekme çubuğunun bulunduğu noktayı ifade eder. Yük, araba veya römork dönerken yola çıkmamalıdır. Eğer yük, çekme çubuğunun üzerinden çıkarsa, bu durumu rahatsız edebilir.</p>
+        </li>
+        <li>
+            <strong>Arka</strong>
+            <p> Yük, arkadan bir metreye kadar çıkabilir. Uzunlamasına bölünemez yük, gerekirse römorkun uzunluğunun yarısı kadar aşabileceği maksimum beş metreye kadar çıkabilir. Bu, römorkun arka aksından itibaren ölçülür. Örneğin, eğer römork beş metre uzunluğunda ise, bölünemez yük arka aksından maksimum iki buçuk metre çıkabilir. Bu çıkıntılı yük, bir işaret levhası ile işaretlenmelidir.</p>
+        </li>
+
+    </ul>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b28da454bae048e0b47010711bb3d425~mv2.jpg" alt="Görsel 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+    <h2>Maksimum izin verilen ağırlıklar</h2>
+    <p>Kendi kayıt numarası olmayan römorklar için, maksimum yetkili ağırlık 750 kg veya daha az olmalıdır. Römork genellikle maksimum yetkili ağırlığı belirten bir tip onay plakasına sahiptir. Bu, römorkun ve yükün ağırlığıdır.</p>
+    <p>Eğer römorklar kendi kayıt numarasına sahipse, kayıt belgesi, tip onay plakası ve ulusal araç kayıt defteri, bu römorkun maksimum yetkili ağırlığını belirtir.</p>
+    <p>Bu ağırlıklar, bu araç kombinasyonu için hangi sürücü belgesinin gerekli olduğunu belirlemeye yardımcı olur. Sürücüler ayrıca arabalarının römork çekmeye uygun olup olmadığını ve çekebileceği maksimum ağırlığı kontrol etmelidir.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_869ba7651f644c0db8a9264c509a383f~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Römork üzerindeki tip onay plakası, maksimum ağırlık ve maksimum çekme çubuğu basıncı/ağırlığı belirtir.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_4f4a075b1f374dca8fb85fd093a2785d~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Yolcu arabasının kayıt kartı, bu araba tarafından çekilebilecek römorkun maksimum ağırlığını belirtir.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>Çekme çubuğu yükü veya çeki topu ağırlığı (top basıncı)</h2>
+    <p>Bir römork çekerken, çekme çubuğunun altındaki maksimum ağırlığı da dikkate alın, bu da çeki topu ağırlığı olarak da bilinir. Bu, römorkun bağlı olduğu sırada çekme çubuğunun taşıyacağı ağırlıktır. Hem aşırı hem de negatif çekme çubuğu yükleri tehlikelidir.</p>
+    <p>Eğer çekme çubuğu yükü negatifse ve römork çekme çubuğunu yukarı çekiyorsa, bu, römorkun arkasının aşırı yüklendiği anlamına gelir. Römork yolda daha az stabil olacaktır ve bu nedenle sallanma riski artar. Negatif çekme çubuğu yükü ile römork çekmek yasaktır.</p>
+    <p>Eğer çekme çubuğu yükü çok yüksekse, bu, römorkun önünde ağırlığın fazla olduğu anlamına gelir. Araba, arkasından aşağıya itilir, ön tekerlekler üzerindeki basıncı azaltır ve direksiyonun zorlaşmasına neden olur. Bu, dönemeçlerde tutma kaybına yol açabilir.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_04be60e13c5f4b4486a91a9ad6db81de~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>Negatif çekme çubuğu yükü bir römorku daha hızlı sallandırır.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0da833a566cb468ab927f249dc9ca540~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Çok yüksek bir çekme çubuğu yükü yolcu arabasının direksiyonunun daha zor olmasına neden olur.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Römorkun maksimum çekme çubuğu yükü, tip onay plakasında belirtilmiştir. Çekme çubuğunun ve yolcu arabasının maksimum çekme çubuğu yükü sürücü el kitabında bulunabilir. Farklı değerler gösteriliyorsa, maksimum çekme çubuğu yükü olarak en düşük değeri kabul edin.</p>
+    <p>750 kg'a kadar olan römorklar için maksimum 50 kg'lik bir çekme çubuğu yükü geçerlidir. 750 kg'ın üzerindeki römorklar için çekme çubuğu yükü genellikle 50 ila 75 kg arasındadır.</p>
+    <h2>Fren sistemi olmayan römorklar</h2>
+    <p>Fren sistemi olmayan römorklar fren yapmaz ve bu nedenle yolcu arabalarının bunları uygun bir şekilde durdurabilmesi için maksimum ağırlığı daha düşük olmalıdır.</p>
+    <p>Fren sistemi olmayan römorklar aşağıdakileri yapamaz:</p>
+    <ul>
+        <li>Maksimum ağırlıkta 750 kg'ı aşmak;</li>
+        <li>Yolcu arabasının çalışma ağırlığının yarısından daha ağır olmak.</li>
+    </ul>
+    <h2>Frenli römorklar</h2>
+    <p>Frenli römorklar, yolcu arabası fren yaptığında, bir "kapma freni" ile fren yapar. Araba yavaşlar ve çekme çubuğunun önündeki bir yayı sıkar ve frenlerin uygulanmasını sağlar.</p>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_2c3508b5c1cc41598aea047f1de59433~mv2.jpeg"
+                alt="Görsel 1" />
+            <figcaption><em>Eğer kapma freni basılmazsa, römork fren yapmaz.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_12ff1279816f4ebaa620e62d15d94315~mv2.jpeg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>Yolcu arabası fren yaptığında ve kapma freni basıldığında, römork otomatik olarak fren yapar.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Bu römorklar ayrıca önde, römorkun bağlı olmadığı sırada sabit kalması için kullanılabilecek bir el frenine sahiptir. Bir römork yolcu arabasına bağlı olduğunda, el fren her zaman aşağıda olmalıdır.</p>
+    <p>Acil durum fren cihazı, el frenine bağlıdır ve römork yolcu arabasından ayrıldığında bunu uygular.</p>
+    <h2>7-pin veya 13-pin fiş</h2>
+    <p>Bir römorku bağlarken, römork fişini her zaman yolcu arabasının arka soketine takmayı unutmayın. Römork aydınlatması, yalnızca doğru şekilde takıldığında çalışır ve bu aydınlatma, sürüşten önce her zaman kontrol edilmelidir. Göstergelerin doğru tarafta, yani arabayla aynı tarafta yandığından emin olun.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_71b21de5cb384d9ab400bb953c208089~mv2.jpg"
+                alt="Görsel 1" />
+            <figcaption><em>7-pin fiş</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_fc690c65c26d4e1fafc4a58efd5dbf0d~mv2.jpg"
+                alt="Görsel 2" />
+            <figcaption>
+                <em>13-pin fiş</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>İki fiş vardır, 7-pin ve 13-pin, bu da römorkun doğru bir şekilde bağlanması için bir adaptör fişi gerekebileceği anlamına gelir. Hangi fişin kullanılacağı, römorkun ne kadar aydınlatmaya sahip olduğuna ve bir römork veya karavanda buzdolabı gibi başka elektrikli cihazların bulunup bulunmadığına bağlıdır.</p>
+    <p>Fişler ayrıca farklı şekillerde monte edilmiştir. 7-pin fiş arabaya takılmalı, 13-pin fiş ise vidalanmalıdır.</p>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+
+</html>
+

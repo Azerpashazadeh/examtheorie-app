@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+        .vertical-line2 {
+    width: 5px;
+    background-color: rgb(201, 17, 17);
+    position: absolute;
+    top: 0;
+    right: 0;   /* sağa hizala */
+    bottom: 0;
+}
+
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 0;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   نطاق رخصة القيادة B (سيارة ركّاب)
+  </h2>
+  <p>
+   تتيح رخصة قيادة سيارة الركّاب لك قيادةَ سيارة ركّاب، وكذلك جرَّ مقطورة بتلك السيارة.
+        ومع ذلك تنطبق حدودٌ قصوى للوزن.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    وزن المقطورة الفارغ
+   </h3>
+   <p>
+    وزن المقطورة كما تُسلَّم من الشركة المصنِّعة (وقد يشمل ذلك أي إطارات احتياطية وأدوات
+            مرافقة للمقطورة، لكن ليس جميع الإكسسوارات الإضافية).
+   </p>
+   <h3>
+    الكتلة القصوى المصرّح بها للمقطورة
+   </h3>
+   <p>
+    الوزن الإجمالي الأقصى للمقطورة (بما في ذلك الحمولة). وهو وزن المقطورة (الوزن الفارغ)
+            مضافًا إليه الحمولة المسموح بها. ولتحديد ما إذا كان يمكنك قانونًا جرَّ مقطورة، تحقّق دائمًا من
+            الكتلة القصوى المصرّح بها («toegestane maximummassa») بدلًا من الوزن الفارغ.
+   </p>
+  </div>
+  <h2>
+   مقطورات حتى 750 كغ
+  </h2>
+  <p>
+   لسحب مقطورة بكتلةٍ قصوى مُصرّح بها تبلغ 750 كغ أو أقل بسيارة ركّاب، تكفي رخصة B فقط،
+        حتى لو تجاوز مجموعُ الكتلة القصوى المصرّح بها للسيارة والمقطورة 3500 كغ.
+  </p>
+  <img alt="الصورة 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_5b760c38b38c4ef5b3eaec5d97e0fd4d~mv2.png"/>
+  <h2>
+   مقطورات أثقل من 750 كغ
+  </h2>
+  <p>
+   قد يجوز في بعض الحالات سحبُ مقطوراتٍ تزيد كتلتها القصوى المصرّح بها على 750 كغ بسيارة
+        ركّاب برخصة B فقط. في هذه الحالة يجب ألّا يتجاوز مجموعُ الكتلة القصوى المصرّح بها للمجموعة 3500 كغ.
+  </p>
+  <img alt="الصورة 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_fda2237899e7496da25fcdd2fc21fcdb~mv2.png"/>
+  <h2>
+   تراكيب مركبات أثقل
+  </h2>
+  <p>
+   إذا تجاوز مجموعُ الكتلة القصوى المصرّح بها للمجموعة 3500 كغ وكانت المقطورة أثقل من
+        750 كغ، فلن تعود رخصة B كافية. لقيادة هذه المجموعة يجب أن تمتلك رخصة E (إضافةً إلى B). وتسمح لك هذه
+        الرخصة بجرّ مقطوراتٍ بكتلةٍ قصوى مُصرّح بها حتى 3500 كغ بسيارة ركّاب.
+  </p>
+  <img alt="الصورة 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_5d409e06d84347efbff23085dc35d095~mv2.png"/>
+  <h2>
+   أمثلة
+  </h2>
+  <p>
+   يعتمد نوعُ الرخصة المطلوبة عادةً على الكتلة/الوزن المجمّع لكِلتا المركبتين.
+  </p>
+  <img alt="الصورة 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_fd700bd0dc9d4ceb82ed6e23e2badbd2~mv2.png"/>
+  <p>
+   في هذه المجموعة تكون الكتلةُ القصوى المصرّح بها للكارافان — أقل من 750 كغ — هي الأهم.
+        تتطلّب هذه المجموعة رخصةَ B فقط. وتبقى الكتلةُ القصوى المصرّح بها لسيارة الركّاب أقلَّ أهمية هنا ما
+        دامت لا تتجاوز 3500 كغ.
+  </p>
+  <img alt="الصورة 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_8f907ceb6f894c699c191a0f603fe523~mv2.png"/>
+  <p>
+   المهمُّ في هذه المجموعة هو مجموعُ الكتل القصوى المصرّح بها. المقطورةُ أثقل من 750 كغ،
+        والمجموعةُ أخفّ من 3500 كغ (أي 2900 كغ)، ولذا يمكن قيادتها برخصة B.
+  </p>
+  <img alt="الصورة 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_7d5ad331142d4bcba6eb9a362c81dac5~mv2.png"/>
+  <p>
+   في هذه المجموعة المقطورةُ أثقل من 750 كغ، إضافةً إلى أن مجموعَ الكتلة القصوى المصرّح
+        بها يتجاوز 3500 كغ (أي 3850 كغ). لذلك لا تكفي رخصة B في هذه الحالة — وتحتاج أيضًا إلى رخصة E
+        للمقطورات لهذه المجموعة.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

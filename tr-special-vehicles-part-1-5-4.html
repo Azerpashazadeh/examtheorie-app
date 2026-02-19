@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #0093C3;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #0093C3;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #B9E5FB;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+
+       
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #B9E5FB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+    
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #0093C3;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #0093C3;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+       
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+       
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Özel Araçlar - Bölüm 1</h1>
+    <p>
+        Bazı araçlar diğer araçlardan daha fazla hakka sahiptir. Bunlar, örneğin, acil durum araçlarıdır. Ayrıca, tramvaylar,
+        askeri konvoylar ve motorlu araçlardan oluşan cenaze alayları da özel haklara sahiptir.<br>
+        Bunun dışında, ek haklara sahip olmasalar da dikkate almanız gereken araçlar vardır, örneğin büyük taşıma araçları.
+    </p>
+    
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Acil Durum Aracı</h3>
+        <p>
+            Optik sinyaller (yanıp sönen ışıklar) ve ses sinyalleri (sireni) taşıyan motorlu araçlardır. Bunlara mavi yanıp
+            sönen ışıklar ve çift tonlu korna dahildir. Bu araçlara her zaman yol vermelisiniz.
+        </p>
+        <h3>Ambulans</h3>
+        <p>
+            Hasta veya yaralı kişilerin hastaneye taşınması için donatılmış ve bu amaçla kullanılan motorlu araç.
+        </p>
+        <h3>Acil Tıbbi Hizmetler</h3>
+        <p>
+            Acil tıbbi bakım sağlamak için kullanılan motorlu araç. Bu, bir hastanın taşınması için gerekli olmayabilir, örneğin bir aile hekiminin (GP) şirket aracı gibi. Bu araçlar, esas olarak doktoru hastaya hızla ulaştırmak için kullanılır.
+        </p>
+        <h3>Hayvan Ambulansı</h3>
+        <p>
+            Hasta veya yaralı hayvanları taşımak için donatılmış ve bu amaçla kullanılan motorlu araç. Bu araçlar hiçbir zaman acil durum aracı değildir, çünkü mavi yanıp sönen ışıklar veya sirenler kullanmazlar. Ancak, genellikle fark edilmelerini kolaylaştırmak için ekstra sarı yanıp sönen ışıklara sahiptirler.
+        </p>
+    </div>
+    
+    <h2>Acil Durum Araçları</h2>
+    <p>
+        Acil durum araçları, acil bir görevi tamamlaması gereken motorlu araçlardır. Acele ettiklerini mavi optik sinyaller
+        (yanıp sönen ışıklar) ve çift tonlu korna (siren) şeklindeki ses sinyalleriyle gösterirler. Bu sinyaller olmadan
+        veya yalnızca bir sinyal ile, acil durum aracı olarak sınıflandırılmazlar ve öncelikleri olmaz.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_64d09112636d4d8b95ccd70a473ecda3~mv2.jpg"
+                    alt="Acil durum aracı örneği">
+                <figcaption>Acil durum araçları yalnızca bu hizmetlerin araçlarıyla sınırlı değildir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c39bcb500ca448eea472878807b0e94a~mv2.jpg"
+                    alt="Acil durum aracı örneği">
+                <figcaption>Diğer yetkili hizmetlerin araçları da mavi yanıp sönen ışıklar ve sirenler kullandığı sürece
+                    acil durum aracı olarak sınıflandırılabilir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    
+    <p>
+        Acil durum araçları arasında ambulanslar, polis araçları ve itfaiye araçları bulunur. Ancak, diğer hizmetler de bu
+        sinyalleri kullanma yetkisine sahip olabilir. Bu durumda, onlar da acil durum aracı olarak sınıflandırılır. Buna,
+        Kamu İşleri ve Su Yolları Genel Müdürlüğü (Rijkswaterstaat) veya kan ve organ taşımacılığı için kullanılan araçlar
+        da dahildir.
+    </p>
+    
+
+
+    <h2>Acil Durum Araçlarına Yol Verme</h2>
+    <p>
+        Tüm yol kullanıcıları acil durum araçlarına yol vermelidir. Bu kurala hiçbir istisna yoktur. Ancak bunu güvenli bir
+        şekilde yapmak önemlidir. Acil durum aracına yol vermek için trafik kurallarını ihlal etmemeli veya tehlike yaratmamalısınız.
+        Bir acil durum aracı yaklaşıyorsa sakin olun. Bu araçların sürücüleri, trafik içinde kendilerine yol açmak için
+        gerekli manevraları yapar. Ne kadar öngörülebilir hareket ederseniz, bunu yapmaları o kadar kolay olur. İşte bazı
+        ipuçları:
+    </p>
+    <ul>
+        <li>
+            <p>Yalnızca güvenliyse yol açın. Bu sırada izin verilen hızla sürmeye devam edin.</p>
+        </li>
+        <li>
+            <p>Eğer bir şerit boşsa, bu şeridi acil durum aracı için boş bırakın. Trafik sıkışıklığında emniyet şeridinden uzak durun!</p>
+        </li>
+        <li>
+            <p>
+                Döner kavşaktaysanız veya bir acil durum aracı arkanızda bir döner kavşağa yaklaşıyorsa, acil durum aracı
+                döner kavşaktan çıkana kadar kavşakta sürmeye devam edin.
+            </p>
+        </li>
+        <li>
+            <p>
+                Kırmızı ışıkta duruyorsanız, yalnızca acil durum aracı geçemeyecek durumdaysa yol açın. Ayrıca, yalnızca bu
+                güvenliyse hareket edin. Kırmızı ışığı geçerek kavşağa girmeyin. Bu durumda beklemek daha güvenlidir.
+            </p>
+        </li>
+        <li>
+            <p>
+                Bir acil durum aracı sizi geçmek istiyorsa, şeritte kalın ve mümkün olduğunca sağa yanaşın. Asla yüksek
+                hızla yol kenarına veya kaldırıma girmeyin.
+            </p>
+        </li>
+        <li>
+            <p>Her zaman başka acil durum araçlarının olup olmadığından emin olun.</p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_3f5cd8eee5d0470b87ca1e8566d0ed33~mv2.jpg"
+                    alt="Döner kavşakta acil durum aracı">
+                <figcaption>Bu durumda, polis aracı döner kavşaktan çıkana kadar fazladan bir tur atın.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4b38fd0a0f154b8c9519453969b8bf7a~mv2.jpg"
+                    alt="Düz geçit ve itfaiye aracı">
+                <figcaption>Kırmızı ışık yanarken itfaiye aracına yol vermek için düz geçide girmeyin.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Bir acil durum aracını göremez veya geç fark ederseniz, doğru tepki veremezsiniz. Tüm aynaları düzenli olarak kontrol
+        ettiğinizden emin olun. Çoğu zaman bir acil durum aracını duymadan önce görebilirsiniz. Ayrıca, trafik ışığında
+        beklerken her zaman yeterli takip mesafesi bırakın. Böylece bir acil durum aracı geçmek isterse hareket etmek için
+        yeriniz olur.
+    </p>
+    
+    <h2>Acil Durum Araçları ve Trafik Kuralları</h2>
+    <p>
+        Acil durum araçları, geçerli bir sebep olduğunda bazı trafik kurallarını görmezden gelebilir. Örneğin, kırmızı ışıkta
+        geçmelerine ve normalden daha hızlı sürmelerine izin verilir.
+    </p>
+    <p>
+        Polis araçları, optik ve ses sinyalleri taşımadıklarında ve bu nedenle acil durum aracı olarak sınıflandırılmadıklarında
+        bile bu kuralları görmezden gelebilir. Ancak, bunu yalnızca geçerli bir sebep olduğunda yapabilirler.
+    </p>
+    
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+ 
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

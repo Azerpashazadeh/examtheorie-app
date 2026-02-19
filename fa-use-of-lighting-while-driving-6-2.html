@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+          
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Use of lighting while driving
+  </h1>
+  <p>
+   Vehicle lighting is intended to aid visibility in the dark, and above all to be seen better by others. Sometimes
+        lighting is mandatory and sometimes not. However, drivers are advised to use appropriate lighting both during
+        the day and at night.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Day
+   </h3>
+   <p>
+    The period between sunrise and sunset.
+   </p>
+   <h3>
+    Night
+   </h3>
+   <p>
+    The period between sunset and sunrise.
+   </p>
+  </div>
+  <h2>
+   Dipped headlights
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Dipped headlights is white or yellow lighting on the front of the vehicle and illuminates a good
+                    portion of the road in front of the vehicle. It does not shine straight forward and is not normally
+                    blinding. Dipped headlights are always permitted.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_28a85b546110446480d643461cabf231~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   The use of dipped headlights is mandatory during the day in poor visibility and at night. This applies to
+        drivers of motor vehicles, all types of mopeds and drivers of motorised disabled vehicles. You also turn on the
+        dipped headlights well before entering a tunnel.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_a7add78c241d463abf490de0095ba238~mv2.jpg"/>
+     <figcaption>
+      Dipped headlights illuminate a good portion of the road in front of the vehicle without
+                    blinding oncoming traffic.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Daytime running lights
+  </h2>
+  <p>
+   Daytime running lights are available on all new passenger cars. In many cases, daytime running lights consist of
+        LED lighting next to, under or around the headlamp. Daytime running lights may only be used if dipped headlights
+        are not mandatory and if no other front lighting is switched on.
+  </p>
+  <p>
+   In most passenger cars, the daytime running lights are on when the light switch is turned off. As soon as you
+        switch on other lighting, the daytime running lights switch off automatically.
+  </p>
+  <p>
+   Daytime running lights aim to ensure vehicles always remain clearly visible, even when the dipped headlights are
+        not switched on. The disadvantage of older passenger cars is that the rear lights are not always lit together
+        with the daytime running lights. This results in poorer rear visibility. With new passenger cars, it is
+        mandatory that the taillights are lit together with the daytime running lights.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_90f817aebc984256b0a50cc66347739c~mv2.jpg"/>
+     <figcaption>
+      Daytime running lights mainly make the vehicle visible and illuminate a smaller portion of
+                    the road in front of the vehicle.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Full-beam headlights
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      If there is insufficient visibility with only dipped headlights, you can use full-beam headlights
+                    instead. Full-beam is not allowed:
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_140d0e7e4dba43f58f3b1a90d2f0d022~mv2.png"/>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     During the day;
+    </p>
+   </li>
+   <li>
+    <p>
+     When encountering other road users;
+    </p>
+   </li>
+   <li>
+    <p>
+     When driving closely behind another vehicle.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_1f0ce996236e45d88348502b57c769b9~mv2.jpg"/>
+     <figcaption>
+      Full-beam headlights illuminate much more of the road and the surrounding area. The bright
+                    beam blinds oncoming traffic. Also, drivers of vehicles driving in front of you can be blinded.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   In addition, the use of full-beam headlights is unwise in bad weather conditions such as heavy rain, snow or
+        fog. In that case, you are very likely to be blinded by your own lighting.
+  </p>
+  <p>
+   Full-beam headlights are bright lights that shine straight ahead. That is why they quickly blind. If you are
+        blinded by oncoming traffic with full-beam headlights, flash your full-beam to warn them.
+  </p>
+  <p>
+   If you are bothered by the full-beam headlights of a vehicle driving behind you, it is difficult to warn this
+        driver. However, you can use the dimming mirror yourself, by folding the rearview mirror into the dimming
+        position. Many luxury passenger cars nowadays have an automatically dimming rearview mirror. With some passenger
+        cars even the wing mirrors dim.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_65b2ade345334c019a0767a3734bd0b7~mv2.jpg"/>
+     <figcaption>
+      If you are blinded by lighting from vehicles behind you, you can set the rearview mirror to
+                    the dim position using the lever underneath. In some passenger cars, the rearview mirror dims
+                    automatically.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Front fog lights
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      As the name says, this lighting is mainly intended for use during fog. They should only be used if
+                    visibility is severely obstructed by fog, snow or rain. In addition to fog light, you can use either
+                    dipped headlights or sidelights. In very dense fog, even dipped headlights can have a blinding
+                    effect and are therefore not mandatory with fog lights.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_b89d36dfee89427aba9416d0dd167307~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Front fog lights face downwards and are therefore not blinding. The disadvantage is that the light only shines
+        close to the passenger car. Not all passenger cars are equipped with a front fog light.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_16eac050f3c2449abddd56b88d09ed7d~mv2.jpg"/>
+     <figcaption>
+      Front fog light illuminates the road just in front of the vehicle. Because the lamps are
+                    low, they partly shine through under the fog banks.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Rear fog lights
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Rear fog lights consist of one or two bright red lamps at the rear of the passenger car. Because
+                    these are very bright, they are sometimes confused with the brake light. Because the rear fog light
+                    is so bright, it should only be used if visibility is very poor. This is when the visibility is less
+                    than 50 metres.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_3085c92373664e3fb3214cade99bfa42~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Reflector posts along the road are usually 50 metres apart. If you drive past a reflector post and you only see
+        the next post after that, you can switch on your rear fog light.
+  </p>
+  <p>
+   It is also important to know that this is only allowed in fog or snow. During rainfall, the use of a rear fog
+        light is not allowed as it can blind traffic behind you. A warning light in the dashboard will come on when you
+        turn on the rear fog light. This way you cannot accidentally have it switched on.
+  </p>
+  <h2>
+   Sidelights
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Sidelights provide little light. They are white or yellow lamps on the front of the vehicle. In most
+                    passenger cars, the light switch has the sidelights between the “OFF” position and the dipped
+                    headlights. As already mentioned, sidelights can be used in combination with front fog lights.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_6c768180634d45e0a8e2f2e89f62af78~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Besides that, sidelights are seldom used. Usually the sidelights are the same as the parking light.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_6acab0eaa996470295e6fae089048a7e~mv2.jpg"/>
+     <figcaption>
+      Sidelights emit little light. They are mostly the same lights as parking lights.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Rear lights
+  </h2>
+  <p>
+   These are the normal red lamps on the back of the passenger car. These should always be on when full-beam or
+        dipped headlights, sidelights or fog lights are on at the front. These lights are normally not blinding and less
+        bright than the brake lights and rear fog light. With the latest passenger cars, this lighting also lights up
+        when the daytime running lights are on.
+  </p>
+  <h2>
+   Number plate lighting
+  </h2>
+  <p>
+   This white lighting illuminates the number plate at the rear. Just like the rear light, the number plate
+        lighting must also be lit if full-beam or dipped headlights, sidelights or fog lights are switched on at the
+        front.
+  </p>
+  <h2>
+   Brake lights
+  </h2>
+  <p>
+   The brake light consists of three bright red lamps that light up as soon as you use the brake pedal. The third
+        brake light is usually located at the top or bottom centre of the rear window. Because brake lights are so
+        bright, you should try to brake as little as possible unnecessarily. Every time the brake lights come on, this
+        can cause a startle response from the traffic behind you. So, make sure you release your gas in time and keep
+        sufficient distance.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_3dfb46f9b6624ed7a3e60141983da55d~mv2.jpg"/>
+     <figcaption>
+      Brake lights are important for communication in traffic. Because they are so bright, they
+                    can cause irritation when used unnecessarily.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_ae8b82f2a11a427c927197f5a7d196a7~mv2.jpg"/>
+     <figcaption>
+      The reverse light warns road users behind the vehicle that it is going to reverse.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Reverse lights
+  </h2>
+  <p>
+   These are the white or yellow lights on the back of a passenger car that come on as soon as you put the
+        passenger car in reverse gear. These are intended to warn traffic behind you that you will be driving backwards.
+        A passenger car can be equipped with one or two reversing lights.
+  </p>
+  <h2>
+   Special lighting
+  </h2>
+  <p>
+   In addition to all this lighting, other light may also be used during the use of dipped headlights or fog light
+        at the front. For example, modern passenger cars are increasingly equipped with cornering lights. This lighting
+        turns in the corner, or switches on as soon as you start steering. It makes the edges of the bend more visible
+        in the dark.
+  </p>
+  <h2>
+   Other lighting
+  </h2>
+  <p>
+   Adding extra lighting to a vehicle is not always allowed. Replacing the normal lighting with xenon lamps or LED
+        lighting is not something you can easily do yourself. If you still want to add more lighting to your vehicle or
+        change lighting, get advice from someone with professional knowledge. Certainly, not all lighting that is sold
+        is allowed on passenger cars.
+  </p>
+  <h2>
+   Trailer lighting
+  </h2>
+  <p>
+   Just like the towing vehicle, a trailer must provide lighting during the day in poor visibility and at night.
+        This lighting consists of red rear lights, lighting of the number plate and white sidelights at the front. These
+        sidelights only need to be present on trailers wider than 1.60 metres.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

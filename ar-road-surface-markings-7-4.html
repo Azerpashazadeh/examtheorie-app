@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words1 h3 {
+            margin-top: 0px;
+        }
+
+        .important-words1 p {
+            margin-top: -15px;
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+        .images-container9 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container9 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container9 img {
+            width: 50%;
+            /* Resim genişliği */
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .images-container9 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container9 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container9 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   علامات (سطح) الطريق
+  </h1>
+  <p>
+   بالإضافة إلى إشارات المرور والعلامات الضوئية، تُنظَّم حركة المرور أيضاً بعلامات على سطح الطريق. قد تكون هذه العلامات خطوطاً، وكذلك أرقاماً مرسومة على الطريق تدل على حد السرعة، أو علامات مثل مثلثات الأولوية والسهام.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    خط الحافة
+   </h3>
+   <p>
+    خط على حافة الطريق.
+   </p>
+   <h3>
+    خط الوسط أو المحور
+   </h3>
+   <p>
+    خط في منتصف الطريق يحدّد الفاصل بين جانبك من الطريق وجانب حركة السير المقابلة.
+   </p>
+   <h3>
+    خط المسار
+   </h3>
+   <p>
+    خط يقسّم الطريق أو جزءاً من الطريق لاتجاه واحد إلى مسارات.
+   </p>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_4708173ef1da4845ab83709b2b5ec0e4~mv2.jpeg"/>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   خط متصل
+  </h2>
+  <p>
+   يمكن تنفيذ خطوط الحافة وخطوط المحور وخطوط المسار كخط متصل. لا يجوز تجاوز الخطوط المتصلة. وفي حالة خط محور متصل لا يجوز لك القيادة إلى يسار هذا الخط (أي في جهة السير المقابلة). ومع وجود خط متصل لا يجوز تغيير المسار أو التجاوز.
+  </p>
+  <p>
+   تُستثنى الحالات التالية:
+  </p>
+  <ul>
+   <li>
+    <p>
+     يجوز عبور خط الحافة، مثلاً لإيقاف المركبة في حافة/كتف الطريق.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_27dfd2a0cd344c5e990b61434baa226b~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     يجوز عبور خط متصل بين الطريق وملجأ الطوارئ المجاور أو كتف الطريق أو حارة ساعة الذروة إذا كان لا بد من استخدام ذلك الملجأ أو تلك الحارة.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_c9ad0ad5f5a54ccc8ce72b7d2770aa7d~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     إذا كان على جانبك من الخط المتصل خطٌ متقطع، فيجوز لك عندئذٍ عبور الخط المتصل.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_ebb027cef17649d79949537fecb79115~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     السائقون المسموح لهم باستخدام مسار دراجات بخط متصل يمكنهم عبور هذا الخط المتصل، مثلاً لتجاوز درّاج آخر.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_b82808aae9624941bd7d40ce2f0629d7~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   الخطوط المتقطعة والخطوط التحذيرية
+  </h2>
+  <p>
+   إذا نُفِّذ خط المحور أو خط المسار كخط متقطع فيجوز عبوره. وفي هذه الحالة، إذا أمكن بطريقة آمنة، يمكنك التجاوز أو تغيير المسار.
+  </p>
+  <p>
+   عادةً ما يكون طول المقطع في الخط المتقطع أقصر من الفراغ بين المقاطع. وإذا كان الخط أطول من الفراغ بين الخطوط، فعندئذٍ تُعدّ الخطوط المتقطعة خطوطاً تحذيرية؛ أي إن التجاوز مسموح، لكنه أكثر خطورة هنا مقارنةً بالخط المتقطع العادي.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_0b91d9d7c862450db4ae7c1d931ac9b5~mv2.jpg"/>
+     <figcaption>
+      خط محور متقطع عادي.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_113fec17f6114a2ebfd3d3b7452bb5ac~mv2.jpg"/>
+     <figcaption>
+      خط محور مُصمَّم كخط تحذيري.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   علامات طريق مائلة (مظلَّبة)
+  </h2>
+  <p>
+   تتكوّن هذه المساحات من خطوط مائلة ولا يجوز السير فوقها. وتُستخدم مثلاً في الأماكن التي تنتهي فيها حارة ويجب على السائقين الاندماج في حارة مجاورة.
+  </p>
+  <h2>
+   نقطة فصل
+  </h2>
+  <p>
+   تجد نقطة الفصل خصوصاً عند حارات التسارع والتباطؤ على طرق autowegen والطرق السريعة. لا يجوز عبورها.
+  </p>
+  <div class="important-words2">
+   <p>
+    لا تسري علامات الطريق المائلة ونقاط الفصل إذا كانت على حارة ساعة ذروة مفتوحة. في هذه الحالة يُسمح بالسير فوقها.
+   </p>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_304df14a5cc344878207a5023e4bfdbc~mv2.jpg"/>
+     <figcaption>
+      لا يُسمح بالسير فوق العلامات المائلة على الطريق.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_d0dcaefef0b844639350f8fcc68656bd~mv2.jpg"/>
+     <figcaption>
+      كما لا يُسمح بالسير فوق نقاط الفصل.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   مسارات الفرز المسبق، وحارات التباطؤ والسهام
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      تقع مسارات الفرز المسبق عند التقاطعات (الكبيرة) وتقسّم الطريق إلى مسارات لاتجاهات مختلفة. وتُشير السهام على المسارات إلى الاتجاه. ويُطبَّق بين المسارات ذات الاتجاهات المختلفة تخطيط كتلي. يُسمح بتجاوز هذا التخطيط الكتلي حتى يتحوّل إلى خط متصل. وعند التقاطع يلتزم السائقون باتباع الاتجاه المبيَّن على السهم في مسار الفرز المسبق المستخدم. لذا لا يُسمح بالفرز المسبق للانعطاف يساراً ثم السير مباشرةً عند التقاطع.
+     </p>
+     <p>
+      سهم خاص قد يظهر على مسار الفرز المسبق هو سهم برأس مطرقة. وغالباً ما يدل على وجود طريق جانبي قبل الانعطاف. لا يجوز لك الانعطاف إلى هذا الطريق الجانبي.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_a3a9da94b3184028a8753b8a5e35cfcd~mv2.png"/>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_de2c0dff96d04017ab5892cbc04888ca~mv2.jpg"/>
+     <figcaption>
+      مسارات فرز مسبق مع سهام اتجاه. لا يزال بإمكانك تغيير الاتجاه هنا.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_83135d001d78451a98d014c8af2afd3d~mv2.jpg"/>
+     <figcaption>
+      مسار الفرز المسبق للانعطاف يساراً يحمل سهماً برأس مطرقة. لا يُسمح لك بدخول أول طريق جانبي على اليسار.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   حارات التباطؤ هي حارات مجاورة للطريق الرئيسي وتُستخدم لمغادرته، وخاصة على طرق autowegen والطرق السريعة. وتُفصل هذه الحارات عن الطريق الرئيسي أيضاً بتخطيط كتلي.
+  </p>
+  <p>
+   ما إن توضع سهام على حارة التباطؤ، لا يجوز لك الرجوع إلى الطريق الرئيسي من حارة التباطؤ. وُضعت هذه القاعدة لمنع تجاوز الازدحام عبر حارة التباطؤ أو حارة الحياكة (حارة مشتركة للتسارع والتباطؤ).
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_4bd669195d4445e8af2219160a58349b~mv2.jpg"/>
+     <figcaption>
+      حارة حياكة بدون سهام اتجاه. لا يزال مسموحاً لك العودة إلى الطريق الرئيسي.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_f9d6355e9d0e4285bfe46e2574f652ef~mv2.jpg"/>
+     <figcaption>
+      حارة تباطؤ مع سهام اتجاه. لم يعد مسموحاً لك العودة إلى الطريق الرئيسي.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   خط التوقّف (خط إعطاء الأولوية)
+  </h2>
+  <p>
+   عند تقاطع وُضعت عنده علامة «STOP»، يجب وضع خط توقّف على سطح الطريق. يجب على السائقين التوقّف قبل خط التوقّف، سواء وُجدت حركة مرور أخرى أم لا.
+  </p>
+  <p>
+   غالباً ما تُطبَّق خطوط التوقّف بحيث تتيح لك رؤيةً جيدةً من عند الخط إلى الحالة التي يجب أن تتوقّف لأجلها، مثل تقاطع أو معبر. ويُسمّى الخط عند إشارة المرور أيضاً خط التوقّف؛ وفي هذه الحالة يجب التوقّف قبله فقط إذا كان ضوء الإشارة أصفر أو أحمر.
+  </p>
+  <h2>
+   مثلثات الأولوية (أسنان القرش)
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      هي مثلثات بيضاء تُوضع على سطح الطريق. ومعناها: «أعطِ الأولوية للسائقين على الطريق المتقاطع». عادةً ما تُستخدم مع العلامة B-6، لكن ذلك غير إلزامي؛ وحتى بدون هذه العلامة يكون لها المعنى نفسه.
+     </p>
+     <p>
+      قبل الوصول إلى مثلثات الأولوية، قد تُعلَن حالة الأولوية مسبقاً بواسطة مثلث تحذير كبير على سطح الطريق.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_be8acad95e55488f86787a2d7b5e9d89~mv2.png"/>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_9169f4bc41a24bd0906bd93b38afec40~mv2.jpg"/>
+     <figcaption>
+      علامة التوقّف B-7 مع خط التوقّف.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_ed5844f3dcc24cb48f56764454641fe0~mv2.jpg"/>
+     <figcaption>
+      علامة الأولوية B-6 مع مثلثات الأولوية أو «أسنان القرش».
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   حارات الحافلات ومسارات الحافلات
+  </h2>
+  <p>
+   هي حارة أو طريق كُتبت عليه كلمة “BUS” أو “LIJNBUS” (حافلة عمومية). تُفصل حارة الحافلات عن بقية الطريق بخط متقطع أو متصل.
+  </p>
+  <p>
+   في حال كلمة “BUS”، لا يجوز استخدام الحارة إلا لسائقي الحافلات (بما في ذلك حافلات الرحلات) والحافلات العمومية.
+  </p>
+  <p>
+   في حال كلمة “LIJNBUS”، لا يجوز استخدام الحارة إلا لسائقي الحافلات العمومية.
+  </p>
+  <p>
+   كما يُسمح لمركبات الطوارئ باستخدام حارة/مسار الحافلات لعدم خضوعها لإعلانات الإغلاق، شرط أن تكون لديها مهمة عاجلة.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_2da3edbc9a414af8876f6d7c1652ae34~mv2.jpg"/>
+     <figcaption>
+      مسار حافلات منفصل عن الطريق الرئيسي.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_0afcc2a131964446a8ca34e8be0f67c7~mv2.jpg"/>
+     <figcaption>
+      حارة الحافلات جزء من الطريق، تُفصل بخط متصل أو متقطع.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   مسارات الدراجات والمسارات المقترحة (للدراجات)
+  </h2>
+  <p>
+   يمكن فصل مسار الدراجات بخط متقطع أو متصل. إضافةً إلى ذلك يجب وضع رمز دراجة على سطح الطريق. وإذا لم يوجد الرمز فهذه «حارة مقترحة للدراجات» وليست مسار دراجات رسمياً.
+  </p>
+  <p>
+   لا تحمل المسارات المقترحة للدراجات أي أثر قانوني. يمكن للجميع استخدامها. بل يُسمح بالتوقّف والوقوف عليها.
+  </p>
+  <p>
+   نوع خاص من مسار الدراجات هو «صندوق الدراجات»؛ وهو امتداد لمسار الدراجات أمام مسار الفرز المسبق العادي. الهدف منه إبقاء مستخدمي الطريق الأكثر عرضة للخطر، مثل راكبي الدراجات، أكثر أماناً ووضوحاً لبقية السائقين أثناء انتظار إشارة المرور.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_d70cd673af9145df8b572c779b76f79d~mv2.jpg"/>
+     <figcaption>
+      يمكن التعرّف على مسار الدراجات من رموز الدراجة على سطح الطريق. وإذا غابت هذه الرموز فليس مساراً رسمياً للدراجات بل حارة مقترحة.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_4d9a5e6b629643c9aca877a18237e5fd~mv2.jpg"/>
+     <figcaption>
+      يُبقي «صندوق الدراجات» راكبي الدراجات وsnorfietsers وسائقي مركبات ذوي الإعاقة أكثر وضوحاً عند انتظار الضوء الأحمر. وعلى السائقين الآخرين الفرز المسبق خلف صندوق الدراجات.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   خطوط صفراء على جانب الطريق
+  </h2>
+  <p>
+   يمكن العثور على خطوط صفراء متصلة أو متقطعة على حواف الأرصفة أو حواف الطريق. بجانب خط أصفر متقطع يُحظر الوقوف فقط. وبجانب خط أصفر متصل يُحظر الوقوف والتوقّف معاً.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_74a76f3b67b54c7ab52e70eef161d9ac~mv2.jpg"/>
+     <figcaption>
+      خط أصفر متقطع على حافة الرصيف. لا يُسمح لك بالوقوف هنا.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_46b7b2635900488e9fbc36e3e8f4d8ba~mv2.jpg"/>
+     <figcaption>
+      خط أصفر متصل على حافة الرصيف. لا يُسمح بالتوقّف هنا، حتى لإنزال أو تحميل راكب.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   خطوط صفراء على سطح الطريق
+  </h2>
+  <p>
+   قد ترى خطوطاً صفراء على سطح الطريق كخطوط وعلامات مؤقتة أثناء أعمال الطرق. وتوضع عندئذٍ فوق الخطوط والعلامات البيضاء المحلية. انتبه لأن حدود السرعة القصوى تكون أقل غالباً هنا، وقد تكون الحارات أضيق – وخاصة الحارة اليسرى على الطرق السريعة أثناء أعمال الطرق.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_a212a758aed34770b3985e5046a18551~mv2.jpg"/>
+     <figcaption>
+      خطوط صفراء على سطح الطريق أثناء أعمال الطرق. توضع فوق الخطوط البيضاء. الحارة اليسرى هنا أضيق.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_900db932dae54bd5ab1f5f9536e97bf5~mv2.jpg"/>
+     <figcaption>
+      خط أزرق بجانب مكان الوقوف. هنا يجب استخدام قرص الوقوف.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   الخطوط الزرقاء
+  </h2>
+  <p>
+   تُستخدم الخطوط الزرقاء على الطريق في مواقف وممرات الوقوف حيث يكون استعمال قرص الوقوف إلزامياً.
+  </p>
+  <h2>
+   علامات محجوزة أو متقاطعـة (مربّعة)
+  </h2>
+  <p>
+   تجد هذا التخطيط على الرصيف عند مواقف الحافلات ويُظهر المساحة التي تحتاجها الحافلة لتتمكّن من التوقّف عند موقف الحافلات. وتدل العلامات المحجوزة مباشرةً على حظر؛ فلا يجوز لك التوقّف عند هذا التخطيط إلا لإنزال أو تحميل ركاب.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_97fe4a7b8451434aae57af2f9f1402d2~mv2.jpg"/>
+     <figcaption>
+      ترى هنا تخطيطاً كتلياً، مثلاً بين حارة الحياكة والطريق الرئيسي.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_7372ce293be749499e4e2b78f395a481~mv2.jpg"/>
+     <figcaption>
+      غالباً ما تجد العلامات المحجوزة (المربّعة) عند موقف الحافلات.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   تخطيط كتلي
+  </h2>
+  <p>
+   يختلف هذا عن العلامات المحجوزة عند مواقف الحافلات. يُصادف التخطيط الكتلي على الطريق بين مسارين، مثلاً عند حارات التسارع والتباطؤ والحياكة ومسارات الفرز المسبق.
+  </p>
+  <h2>
+   خطوط متعرّجة
+  </h2>
+  <p>
+   هي خطوط وُضعت على الطريق لتحذيرك من نقطة خطرة؛ كمعبر أو تقاطع خطِر. لا تقول شيئاً عن أولوية المرور السائدة، لكن من الحكمة خفض السرعة في هذه الحالة.
+  </p>
+  <h2>
+   علامات مساعدة
+  </h2>
+  <p>
+   وتشمل العلامات المطبّقة على الطريق كوسيلة مساعدة؛ مثل حدود السرعة المرسومة على سطح الطريق، وكذلك الخطوط التي تُشير إلى دخولك أو خروجك من منطقة، والخطوط التي تحدّد مطبّ السرعة تُعدّ علامات مساعدة.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_d0499319e46d431d8e8ebab555ddfdc3~mv2.jpg"/>
+     <figcaption>
+      تحذّرك الخطوط المتعرّجة من نقطة خطرة.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_b416b1f05e0c4f5c9625a8d021ad4120~mv2.jpg"/>
+     <figcaption>
+      علامات المنطقة هي وسيلة مساعدة إضافية لتوضيح المناطق.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   علامات حد السرعة
+  </h2>
+  <p>
+   لا سيما على الطرق الحديثة يمكنك استنتاج حد السرعة بالنظر إلى العلامات (الخطوط) على الطريق. هذه العلامات ليست مُلزِمة قانوناً لكنها توحي بحد سرعة. ويجب دائماً بيان حد السرعة الفعلي بواسطة علامات.
+  </p>
+  <h3>
+   Autoweg (100 كم/س)
+  </h3>
+  <p>
+   لدى طريق Autoweg بمسار واحد خطوطُ حافةٍ متصلة، وخطا محور أبيضان متصلان أو متقطعان. وتوجد بين خطّي المحور الأبيضين خطّةٌ خضراء.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_a02c70c968854014a9a41774e1b2a523~mv2.jpeg"/>
+     <figcaption>
+      يدل الخط الأخضر للمحور على أنك على طريق Autoweg. التجاوز ممنوع بسبب خطوط المحور البيضاء المتصلة.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_d1a76d41ff57475a9302618f46e8a8a9~mv2.jpeg"/>
+     <figcaption>
+      يدل الخط الأخضر للمحور على أنك على طريق Autoweg. التجاوز مسموح بسبب خطوط المحور البيضاء المتقطعة. توخَّ الحذر أثناء التجاوز.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   طريق خارج منطقة مبنية (80 كم/س)
+  </h3>
+  <p>
+   يحتوي طريق بسرعة 80 كم/س عادةً على خطوط حافة متقطعة، وخط محور واحد أو اثنين متصلين أو متقطعين. ولا توجد خطّة خضراء بين خطّي المحور.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_bd7cfe7d523c48c88c336d27b70a0bf7~mv2.jpeg"/>
+     <figcaption>
+      لا توجد خطّة خضراء للمحور؛ هذا طريق عادي بسرعة 80 كم/س خارج المناطق المبنية. التجاوز ممنوع بسبب خطوط المحور البيضاء المتصلة.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_bc71334753e842daa9e69bd4c070d9ea~mv2.jpeg"/>
+     <figcaption>
+      لا توجد خطّة خضراء للمحور؛ هذا طريق عادي بسرعة 80 كم/س خارج المناطق المبنية. التجاوز مسموح بسبب خطوط المحور البيضاء المتقطعة.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   طريق خارج منطقة مبنية بسرعة مخفّضة (60 كم/س)
+  </h3>
+  <p>
+   يحتوي الطريق داخل منطقة 60 كم/س عادةً على خطوط حافة متقطعة موضوعة أبعد قليلاً عن حافة الطريق. وأحياناً يكون على الطريق مسارات مقترحة (للدراجات) باللون الأحمر. لا يوجد خط محور، وأحياناً لا توجد خطوط إطلاقاً.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_fd2897056b7a42a7aeb850daa4f7796a~mv2.jpeg"/>
+     <figcaption>
+      لا يوجد خط محور، ما يدل على أن هذا طريق بسرعة 60 كم/س خارج المناطق المبنية. ومع ذلك، يجب أن توجد علامة «منطقة 60 كم/س» ليُعدّ الطريق ضمن منطقة 60 كم/س!
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_9443d7e685f844dfa216abd3a630c5b0~mv2.jpeg"/>
+     <figcaption>
+      لا توجد أي خطوط إطلاقاً، ما يدل على أن هذا طريق بسرعة 60 كم/س خارج المناطق المبنية. ومع ذلك، يجب أن توجد علامة «منطقة 60 كم/س» ليُعدّ الطريق ضمن منطقة 60 كم/س!
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى
+    النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

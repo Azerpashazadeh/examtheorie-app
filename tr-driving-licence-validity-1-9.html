@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        table {
+            width: 100%;
+            /* Tablo genişliği ekranın tamamını kaplasın */
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            /* Sabit yazı boyutu */
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9c3ae;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #e3e0de;
+        }
+
+        table tr:nth-child(odd) td {
+            background-color: #f8f4f2;
+        }
+    </style>
+</head>
+
+<body> 
+    <h2>Sürücü belgesi geçerliliği</h2>
+    <p>Sürücü belgeleri genellikle on yıllık bir süre için geçerlidir. Bu, mopedler, motosikletler, römorklu veya römorksuz binek araçlar ve traktörler için geçerlidir. Kamyonlar ve otobüsler gibi daha büyük araçlar için sürücü belgeleri yalnızca beş yıl geçerlidir.
+    </p>
+    <p>Bazı durumlarda, sürücü belgesinin geçerliliği, tıbbi bir durum (örneğin diyabet) gibi belirli bir nedenden dolayı kısaltılabilir. Ayrıca, sürücü belirli bir yaşa ulaştığında geçerlilik süreleri de kısalır.</p>
+    <p>Bunun nedeni, tıbbi durumların zamanla kötüleşip sürüş yeteneğinizi daha da etkileyebilmesidir. Ayrıca, sürüş becerileri genellikle yaşla birlikte azalır. CBR'nin sürüşe uygunluğunuzu etkili bir şekilde izleyebilmesini sağlamak için sürücü belgenizi daha sık yenilemeniz gerekmektedir. Bazı durumlarda, yenileme için tıbbi bir muayene gerekebilir.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Sağlık beyanı (Gezondheidsverklaring)</h3>
+        <p>
+            Fiziksel ve zihinsel sağlığınızı detaylandırdığınız CBR tarafından yayınlanan bir anket. Bu bilgiler doğrultusunda, CBR sürüşe uygun olup olmadığınızı veya durumunuz hakkında daha fazla bilgiye ihtiyaç olup olmadığını belirler.
+        </p>
+    </div>
+
+    <h2>Tıbbi durumlar</h2>
+    <p>Eğer sürücü belgenizi almadan önce size bilinen diyabet gibi bir tıbbi durumunuz varsa, bunu pratik sürüş testinden önce sunmanız gereken sağlık beyanında belirtmek zorundasınız. Bu beyanı CBR web sitesinden sunabilirsiniz.</p>
+    <h2>65 yaş sonrası sürücü belgesi geçerliliği</h2>
+    <p>65 yaşından itibaren sürücü belgesi geçerlilik süreleri azalır. 65 ile 70 yaşları arasında sürücü belgenizi yenilerseniz, bu yenileme en fazla 75 yaşına kadar geçerlidir. Eğer sürücü belgenizi 65 yaşında yenilerseniz, belgeniz 10 yıl boyunca geçerli olacaktır. Eğer 69 yaşında yenilerseniz, belgeniz 6 yıl geçerli olacaktır. 70 yaşından itibaren sürücü belgesi yenilemeleri maksimum 5 yıl geçerlidir. 75 yaşından itibaren, her yenileme için tıbbi muayeneden geçmeniz gerekmektedir.</p>
+
+    <table>
+        <tr>
+            <th></th>
+            <th><strong>Maksimum geçerlilik</strong></th>
+        </tr>
+        <tr>
+            <td><strong>65 yaşından küçük</strong></td>
+            <td>10 yıl</td>
+        </tr>
+        <tr>
+            <td><strong>65 ile 70 yaşları arasında</strong></td>
+            <td>En fazla 75 yaşına kadar, yani 5 ila 10 yıl arasında</td>
+        </tr>
+        <tr>
+            <td><strong>70 ile 75 yaşları arasında</strong></td>
+            <td>5 yıl</td>
+        </tr>
+        <tr>
+            <td><strong>75 yaşından büyük</strong></td>
+            <td>5 yıl, zorunlu tıbbi muayene</td>
+        </tr>
+    </table>
+
+    <h2>Geçerliliğin kaybedilmesi</h2>
+    <p>Sürücü belgesi aşağıdaki durumlarda otomatik olarak geçerliliğini kaybeder:</p>
+
+
+    <ul>
+        <li>Yeni bir sürücü belgesi çıkarılmışsa veya sürücü belgeniz kayıp ya da çalıntı olarak bildirilmişse. Eski sürücü belgeniz, bulunduktan sonra artık geçerli değildir.</li>
+        <li>Eğer motorlu taşıtların (bazıları veya tamamı) kullanma yetkiniz elinizden alınmışsa.</li>
+        <li>Sürücü belgenizde değişiklikler yapılmışsa.</li>
+        <li>Eğer sürücü belgeniz tamamen veya bazı kategorilerde geçersizse.</li>
+        <li>Eğer sizinle ilgili önemli bilgiler değiştiyse, örneğin soyadınız, adlarınız, doğum yeriniz veya tarihiniz, ya da cinsiyetiniz.</li>
+    </ul>
+
+
+    <h2>Geçersiz ilan edilme</h2>
+    <p>Sürücü belgeleri bazı suçlar veya ihlaller sonucunda geçersiz ilan edilebilir:</p>
+
+
+    <ul>
+        <li>Eğer alkol etkisi altında araç kullanmaktan 5 yıl içinde iki kez mahkum olmuşsanız ve kan alkol seviyeniz 1,3 promilin üzerinde ise (570 μg/l).</li>
+        <li>Eğer uyuşturucu veya uyuşturucu ve alkol kombinasyonu etkisi altında araç kullanmaktan 5 yıl içinde iki kez mahkum olmuşsanız.</li>
+        <li>Eğer bir alkol testine (nefes testi veya kan testi) katılmayı reddederseniz.</li>
+    </ul>
+
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

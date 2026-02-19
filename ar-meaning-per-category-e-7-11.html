@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            margin-top: 25px;
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* Masaüstünde 4 sütun */
+            grid-gap: 20px;
+            /* Resimler arası boşluk */
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Orta boyutlu ekranlar için: 2 sütun 4 satır */
+        @media (max-width: 768px) {
+            .images-container5 {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 sütun */
+                grid-gap: 15px;
+                /* Daha küçük boşluk */
+            }
+        }
+
+        /* Daha küçük ekranlar için: 1 sütun 8 satır */
+        @media (max-width: 480px) {
+            .images-container5 {
+                grid-template-columns: repeat(1, 1fr);
+                /* 1 sütun */
+                grid-gap: 10px;
+                /* Daha da küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Resim genişliğini tam yap */
+            }
+        }
+
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   المعنى حسب الفئة - E
+  </h1>
+  <p>
+   تختص هذه الفئة بوقوف المركبات وتوقّفها ووضع الدراجات الهوائية والموبيدات وsnorfietsen وspeed pedelecs.
+  </p>
+  <p>
+   يشمل ذلك العلامات الآتية التي تدل على أن الوقوف أو الانتظار محظوران
+   <strong>
+    على ذلك الجانب من
+            الطريق
+   </strong>
+   ، إلا في الأماكن المخصّصة:
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_81f5fa632aec4c6fbbe8636e1163e3ca~mv2.png"/>
+     <figcaption>
+      E-1
+                    ممنوع الوقوف
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_007c631d1ad5400ab114d0726b32ee7b~mv2.png"/>
+     <figcaption>
+      E-2
+                    ممنوع التوقّف
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_278c249330ac4508af2849bf1b07026b~mv2.png"/>
+     <figcaption>
+      E-3
+                    ممنوع وضع الدراجات الهوائية والموبيدات
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words2">
+   <p>
+    تنطبق علامة E-1 على سائقي المركبات الآلية وbrommobielen فقط.
+    <br/>
+    وتنطبق علامة E-3 على راكبي الدراجات الهوائية وsnorfietsen والموبيدات وspeed pedelecs فقط.
+   </p>
+  </div>
+  <p>
+   تشير العلامات التالية إلى أن الوقوف مسموح. وغالباً ما يُذكر على هذه العلامات مَن تُطبَّق عليهم. وتُبيّن بعض العلامات أيضاً كيفية الوقوف أو ما إذا كان ينبغي دفع رسوم للوقوف. فإذا لم تستوفِ هذه الشروط فلا يجوز الوقوف هناك.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_aff520a1629f4f0997d9519fa1198f72~mv2.png"/>
+     <figcaption>
+      E-4
+      <br/>
+      منطقة وقوف
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_aa4612b08d1c42d29fea0367be4e9d0b~mv2.png"/>
+     <figcaption>
+      E-5
+      <br/>
+      مكان وقوف لسيارات الأجرة
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_6614eb1059de4531827f245f07986c83~mv2.png"/>
+     <figcaption>
+      E-6
+      <br/>
+      مكان وقوف لذوي الإعاقة
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_fbbbec142adb425d947206d7fc88e779~mv2.png"/>
+     <figcaption>
+      E-7
+      <br/>
+      موقع للتحميل أو التفريغ الفوري للبضائع
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_e6b9e93430fd41ba91eb521462e6b55b~mv2.png"/>
+     <figcaption>
+      E-8-1
+      <br/>
+      مكان وقوف لسيارات الركاب — الوقوف مع وضع عجلتين على الرصيف إلزامي
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_ce5ba24fd6db4d1189d62b0f177c901c~mv2.png"/>
+     <figcaption>
+      E-8-2
+      <br/>
+      مكان وقوف للشاحنات والحافلات
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_7c10f018e5414591b3ebfd7ceeb1646a~mv2.png"/>
+     <figcaption>
+      E-9
+      <br/>
+      مكان وقوف لحملة التصاريح
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_f6469566bc2f4e5482a0b38fa0e06023~mv2.png"/>
+     <figcaption>
+      E-12
+      <br/>
+      مكان وقوف مخصّص فقط للمنتقلين إلى وسائل النقل العام (مثلاً محطات القطار)
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_136ea5def9cb49d3b4e222c662654e7c~mv2.png"/>
+     <figcaption>
+      E-13
+      <br/>
+      مكان وقوف لمشاركة السيارات (carpool)
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_2039ef6aff934fafbfece9f9d76bd20f~mv2.png"/>
+     <figcaption>
+      E-102
+      <br/>
+      مكان وقوف مدفوع — الدفع بالبطاقة
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_b9eaa8bf694449af9f5cad0ee3eca3bc~mv2.png"/>
+     <figcaption>
+      E-1000
+      <br/>
+      مكان وقوف مزوّد بمحطة شحن للسيارات الكهربائية — يُسمح بالوقوف أثناء الشحن فقط
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_d4a01c599a3d4b339d95f6cc0665b382~mv2.png"/>
+     <figcaption>
+      E-10 منطقة
+      <br/>
+      منطقة وقوف بمدة قصوى مبيّنة على العلامة، مع إلزامية استخدام قرص الوقوف.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    يمكن أيضاً تصميم العلامات في هذه الفئة كعلامات مناطق. تبقى هذه العلامات سارية حتى علامة نهاية المنطقة.
+            وهي سارية في جميع أنحاء المنطقة وعلى جانبي الطريق.
+   </p>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_08c7195a1b864973b58b924b9a0213c7~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_0ad3fab03ab24b66bdd67b75d369a3af~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_70a679de8b8646a8b2b4984c4f9dd1ad~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_03a754e8d1ca49c2a13f5c352433904f~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_101738acdecc4132846f5e086f453271~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_8304d66e4ebd46509f52840ba37b58dd~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_d4a01c599a3d4b339d95f6cc0665b382~mv2.png"/>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطل في الوسادة الهوائية الجانبية" src="https://static.wixstatic.com/media/4b688f_29552d9df0e4427f8567ad14b16e651a~mv2.png"/>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى
+    النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

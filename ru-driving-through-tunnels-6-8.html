@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+        .images-container7 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container7 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 480px) {
+            .images-container7 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container7 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+
+        /* Video için özel kapsayıcı */
+        .video-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /* Tam ekran genişliği */
+            padding: 10px;
+            /* Kenar boşlukları */
+            box-sizing: border-box;
+            margin-top: 25px;
+        }
+
+        .video-container {
+            width: 100%;
+            /* Video oynatıcının genişliği ekranın %98'ini kapsar */
+            max-width: 1400px;
+            /* Büyük ekranlarda maksimum genişlik */
+            aspect-ratio: 16 / 9;
+            /* En-boy oranını korur */
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            /* Video kapsayıcı genişliğini tamamen doldurur */
+            height: auto;
+            /* Oranları korur */
+            border: 2px solid #ccc;
+            /* Çerçeve */
+            border-radius: 10px;
+            /* Köşeleri yuvarlama */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Hafif gölge */
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Driving through tunnels
+  </h1>
+  <p>
+   When driving through tunnels, it is important to know what to do and - especially - what not to do. This is
+        particularly crucial when coming to a stop in a tunnel or in the event of an accident.
+  </p>
+  <h2>
+   Lighting
+  </h2>
+  <p>
+   Using dipped headlights is mandatory when driving through tunnels. Do not use automatic lighting, as this only
+        enables dipped headlights when it is already dark - so after you enter the tunnel. Turn on the dipped headlights
+        manually, well before entering a tunnel. Never use the rear fog lights or full-beam headlights inside a tunnel,
+        as this may blind other traffic.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_5c4c500590714a58b88d97a99f7c16cf~mv2.jpeg"/>
+     <figcaption>
+      Using dipped headlights is mandatory, also in illuminated tunnels.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_0691b725a334460f933ec13970222fdf~mv2.png"/>
+     <figcaption>
+      This sign indicates the length of the tunnel you are approaching.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Behaviour
+  </h2>
+  <p>
+   There are few swerving options when it comes to potential problems in tunnels. Never overtake using the lane
+        used by oncoming traffic. Avoid taking risks and drive extra defensively. Aggressive and antisocial driving
+        behaviour is especially dangerous inside tunnels as it presents an increased risk of (fatal) accidents.
+  </p>
+  <h2>
+   Breakdown
+  </h2>
+  <p>
+   If you break down in a tunnel, try to leave the tunnel first. If you risk hindering or endagering other traffic
+        - for example if the vehicle cannot be driven at normal speed or may stop at any time - turn on the hazard
+        lights.
+  </p>
+  <p>
+   If leaving the tunnel in the vehicle is not possible, turn on the hazard lights immediately and leave the car
+        stationary on the right side of the tunnel. Never allow passengers to sit in or stand directly next to the
+        vehicle. Stand at least 50 metres away from the vehicle to ensure safety in the event other traffic driving
+        through the tunnel does not see the stationary vehicle in time.
+  </p>
+  <p>
+   Walk in the direction of traffic to the nearest emergency telephone. Use the telephone to contact the traffic
+        controller and follow their instructions. Calling with your own phone is often impossible due to poor signal
+        reception inside tunnels.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_a3a77ea57b8841788c788315d2a32d38~mv2.png"/>
+     <figcaption>
+      Lay-by (emergency refuge) equipped with emergency telephone and fire extinguisher
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_a0e3a5fc785c4087bfc0dbe39732a973~mv2.png"/>
+     <figcaption>
+      Emergency telephone
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_400e4cafd4cd4d2aa2d98c3f6f83f582~mv2.png"/>
+     <figcaption>
+      Fire extinguisher
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Accident
+  </h2>
+  <p>
+   In case of an accident in a tunnel, a number of things are very important:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Always think of your own safety first
+     </strong>
+     If there is smoke or fire in the tunnel, it is very dangerous. In that case, try to leave the tunnel
+                directly via the escape route or tunnel tube. Pay attention to other traffic. Never turn the car around
+                and never reverse in an attempt to exit the tunnel!
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Leave the key in the ignition
+     </strong>
+     That makes it possible for the emergency services to move your vehicle if necessary, when you have to
+                abandon your car in the tunnel.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Contact emergency services
+     </strong>
+     Call 112 immediately. If you have no signal, exit the tunnel or find an emergency post with an emergency
+                telephone to call emergency services.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Provide assistance
+     </strong>
+     Try to warn other traffic and provide help to injured people if possible and necessary. Try to get
+                everyone outside with smoke development.
+    </p>
+   </li>
+  </ul>
+  <div class="important-words1">
+   <p>
+    These signs show you in which direction you should go to find the nearest emergency exit. They also show the
+            distance to this exit. Keep in mind that walking
+    <strong>
+     against
+    </strong>
+    the direction of travel in a
+            tunnel is always more
+            dangerous than walking
+    <strong>
+     in
+    </strong>
+    the direction of travel. In the latter case, approaching traffic
+            will see the
+            stationary car first and are more likely to expect pedestrians on the carriageway.
+   </p>
+   <div class="images-container7">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_eb2d47eb42e74936934a1b1bc5aecbd6~mv2.png"/>
+     <figcaption>
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_e3ee7b1b0a1d42e88d0816d3e38db6e8~mv2.png"/>
+     <figcaption>
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="video-wrapper">
+   <div class="video-container">
+    <video controls="" poster="https://static.wixstatic.com/media/4b688f_8fbc4ac19a134578bf8bd06c184f6724~mv2.jpg">
+     <!-- Video kaynakları -->
+     <source src="https://video.wixstatic.com/video/4b688f_30b420076e0446d0867783643baa2412/720p/mp4/file.mp4" type="video/mp4"/>
+     <source src="video_dosyaniz.webm" type="video/webm"/>
+     <!-- Altyazılar -->
+     <track kind="subtitles" label="Dutch" src="altyazi_tr.vtt" srclang="nl"/>
+     <track kind="subtitles" label="English" src="altyazi_en.vtt" srclang="en"/>
+     Tarayıcınız bu videoyu desteklemiyor. Lütfen farklı bir tarayıcı kullanın.
+    </video>
+   </div>
+  </div>
+  <h2>
+   Fire in a tunnel
+  </h2>
+  <h5 style="font-style: italic; font-weight: 400;">
+   To know what to do, but also what not to do in case of a fire in a
+        tunnel, the ‘knowledge platform of tunnel
+        safety’ made the information video above. The video is in Dutch, but it has English subtitles.
+  </h5>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

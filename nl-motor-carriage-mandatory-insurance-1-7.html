@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: ;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        .image-text-container {
+
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            /* Resim ve metin arasında boşluk bırakıyoruz */
+            margin-bottom: 20px;
+        }
+
+        .image-text-container figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-text-container img {
+            width: 120px;
+            height: 120px;
+            /* Sabit boyutta resim */
+            object-fit: cover;
+        }
+
+        .image-text-container figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            margin-top: 2px;
+            max-width: 120px;
+            /* Resim altındaki yazıyı resmin genişliğine göre ayarladık */
+            text-align: center;
+        }
+
+        .image-text-container .text-content {
+            margin-top: -24px;
+            flex: 1;
+            /* Metnin kalan alanı kaplamasını sağlıyoruz */
+            text-align: left;
+            /* Metni sola hizalıyoruz */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Verplichte verzekering voor motorrijtuigen
+  </h2>
+  <p>
+   Zodra een motorrijtuig in het Nationaal kentekenregister op uw naam staat (tenaamgesteld), bent u verplicht voor het voertuig een verzekering af te sluiten. Of u met het voertuig rijdt of niet, is daarbij niet relevant.
+  </p>
+  <h2>
+   Verzekeringsvormen
+  </h2>
+  <p>
+   Er zijn verschillende mogelijkheden om een motorrijtuig te verzekeren. De drie meest voorkomende zijn:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     WA (‘Wettelijke Aansprakelijkheid’, aansprakelijkheid tegenover derden)
+    </strong>
+    <p>
+     De meest beperkte vorm van verzekering; dekt alleen schade die u bij een derde veroorzaakt. Schade aan uw eigen voertuig is niet gedekt, zoals diefstal of stormschade. Deze verzekering is voor motorrijtuigen verplicht, al is ruimere dekking ook mogelijk.
+    </p>
+   </li>
+   <li>
+    <strong>
+     WA Beperkt Casco (ook wel WA Plus)
+    </strong>
+    <p>
+     De tussenvariant, die zowel schade aan derden dekt als schade aan uw eigen voertuig door overmacht, zoals stormschade, diefstal of brand.
+    </p>
+   </li>
+   <li>
+    <strong>
+     Allrisk (Volledig Casco)
+    </strong>
+    <p>
+     De meest uitgebreide autoverzekering. Dekt niet alleen schade aan derden en schade door overmacht, maar ook schade aan uw eigen voertuig door uw eigen handelen.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_e9da3cbbb1104333a29d6136f90241fb~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Niet alle verzekeringsvormen dekken schade aan uw eigen voertuig.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_0b860389a2fd4f66b43eca9fc3fac62b~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Ook schade door diefstal is vaak niet gedekt.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   De meeste bestuurders kiezen een verzekeringsvorm op basis van factoren zoals de premie en de leeftijd van de auto. Hoe nieuwer en duurder de auto, hoe verstandiger het is om voor allrisk te kiezen.
+  </p>
+  <h2>
+   Schadevrije jaren
+  </h2>
+  <p>
+   Verzekeraars werken met het systeem van ‘schadevrije jaren’. Dit is een soort bonussysteem waarbij bestuurders worden beloond als zij langere tijd geen schade bij de verzekering claimen (een claim is schade die de verzekeraar vergoedt).
+  </p>
+  <p>
+   Voor elk jaar dat u schadevrij rijdt, ontvangt u een procentuele korting op uw premie. De premie is het bedrag dat u aan de verzekeraar betaalt om uw dekking actief te houden. Hoe meer schadevrije jaren u heeft, hoe hoger de korting. Dit heet ‘bonus’.
+  </p>
+  <p>
+   Als u schade veroorzaakt en claimt, neemt uw opgebouwde korting af. Dit heet ‘malus’; daarom spreekt men ook van een ‘bonus-malussysteem’.
+  </p>
+  <p>
+   Schade claimen kan u geld kosten, omdat uw maandpremie dan weer stijgt. Bovendien zijn reparaties van kleine schades via de verzekeraar soms duurder. In sommige gevallen is het goedkoper om kleine schades zelf te betalen in plaats van te claimen.
+  </p>
+  <div class="important-words2">
+   <p>
+    Omdat autoverzekeringen doorgaans volgens het bonus-malus-systeem werken, kan het goedkoper zijn kleine schades zelf te betalen dan deze te claimen bij uw verzekering.
+   </p>
+  </div>
+  <h2>
+   Verzekeringskaart (voorheen groene kaart)
+  </h2>
+  <p>
+   Een verzekeringskaart is het bewijs dat uw voertuig verzekerd is. Dit document bevat gegevens over uw voertuig en polis. U ontvangt elk jaar een nieuwe verzekeringskaart. Sommige maatschappijen verstrekken een digitale kaart in plaats van papier.
+  </p>
+  <p>
+   Het is in Nederland niet verplicht dit document in uw voertuig te bewaren. In andere landen kan dit wel verplicht zijn. Ook bij schadeafhandeling kan het handig zijn uw verzekeringskaart bij de hand te hebben, omdat daarop informatie staat die u en andere betrokkenen nodig kunnen hebben.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_c2c4fa496a0e485691e230d8e7fc8fa0~mv2.png"/>
+    <figcaption>
+     <em>
+      Het is niet verplicht uw verzekeringskaart bij u te dragen, maar het is raadzaam deze samen met uw kentekenpapieren te bewaren.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_d40dfb5b75fd4002a4816ed190113371~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Schade veroorzaakt door een aangekoppelde caravan wordt ook door de autoverzekering gedekt.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Aanhangwagen of caravan
+  </h2>
+  <p>
+   Aangekoppelde aanhangwagens of caravans vallen eveneens onder de autoverzekering. Dit betekent dat schade die door de aanhangwagen (of lading daarin) of caravan bij anderen wordt veroorzaakt, wordt gedekt door de autoverzekering van het trekkend voertuig. Schade aan de aanhangwagen of caravan zelf is echter niet gedekt door de autoverzekering. Daarvoor bestaan aparte verzekeringen, maar die zijn niet verplicht.
+  </p>
+  <h2>
+   Europees schadeformulier (aanrijdingsformulier)
+  </h2>
+  <p>
+   Als uw voertuig schade heeft, vult u samen met de andere betrokkene(n) een schadeformulier in. Het is niet verplicht dit bij u te hebben, maar het kan handig zijn. Een schadeformulier heeft 2 vellen: één invulblad en één doordruk. Na het invullen en ondertekenen krijgt elke partij een exemplaar. Later kunt u de achterzijde invullen en het formulier naar uw verzekeraar sturen.
+  </p>
+  <div class="image-text-container">
+   <figure>
+    <img alt="Verzekeringskaart" src="https://static.wixstatic.com/media/4b688f_b47b9221b4ac401a9cc2d2cb76bfa4a1~mv2.png"/>
+    <figcaption>
+     <em>
+      Verzekeringssticker
+     </em>
+    </figcaption>
+   </figure>
+   <div class="text-content">
+    <h2>
+     Geen registratieplicht
+    </h2>
+    <p>
+     Niet alle motorrijtuigen zijn registratieplichtig. Sommige voertuigen, zoals een Segway en gemotoriseerde gehandicaptenvoertuigen, moeten wel verzekerd zijn en een zichtbare verzekeringssticker hebben. Deze sticker wordt door de verzekeraar verstrekt zodra het voertuig is verzekerd. U ontvangt jaarlijks een nieuwe.
+    </p>
+   </div>
+  </div>
+  <h2>
+   Uw voertuig uitlenen
+  </h2>
+  <p>
+   Anderen die in uw voertuig rijden, vallen onder uw autoverzekering. De verzekeraar vergoedt schade die is ontstaan terwijl iemand anders dan de eigenaar reed. Dit kan leiden tot een hogere premie door een onderbreking in schadevrije jaren. Wees daarom voorzichtig met het uitlenen van uw voertuig.
+  </p>
+  <h2>
+   Rijden zonder verzekering
+  </h2>
+  <p>
+   Het niet verzekeren van uw voertuig is een strafbaar feit. Schade die uw voertuig onverzekerd veroorzaakt, wordt op u persoonlijk verhaald. Dit kan kostbaar zijn. Daarnaast is de verzekeraar niet verplicht uit te keren bij schade door nalatigheid of onverantwoordelijk gedrag, zoals rijden onder invloed van alcohol of drugs, rijden zonder rijbewijs en gebruik van het voertuig voor een doel waarvoor het niet is verzekerd (bijv. rijlessen of taxivervoer). In zulke gevallen zal de verzekeraar vaak aan de tegenpartij uitkeren en dat bedrag vervolgens op u verhalen.
+  </p>
+  <h2>
+   Waarborgfonds Motorverkeer
+  </h2>
+  <p>
+   Als u schade oploopt door iemand die u niet kent of die geen verzekering heeft, kunt u in sommige gevallen een vergoeding krijgen van het Waarborgfonds Motorverkeer. Dit is een landelijk fonds dat is opgezet om bestuurders te compenseren die zwaar zijn gedupeerd door schade die zij niet zelf kunnen dragen en niet op de verantwoordelijke partij kunnen verhalen.
+  </p>
+  <h2>
+   Geschorste voertuigen
+  </h2>
+  <p>
+   Als u een personenauto langere tijd niet verwacht te gebruiken, kunt u ervoor kiezen de wettelijke verplichtingen voor het voertuig te schorsen. Dit is bijvoorbeeld nuttig als u het voertuig wilt restaureren. U mag er dan niet meer mee rijden of parkeren op de openbare weg. Het voertuig moet volledig uit het verkeer worden genomen en op eigen terrein worden gestald, bijvoorbeeld in een garage.
+  </p>
+  <p>
+   Het grootste voordeel van schorsen is dat u geen wegenbelasting hoeft te betalen en het voertuig gedurende de periode van buiten gebruikstelling niet verzekerd hoeft te zijn. Periodieke keuringen zijn voor geschorste voertuigen ook niet vereist. Zodra de schorsing afloopt, worden al deze zaken weer verplicht. Een schorsing kan voor één, twee of drie jaar worden aangevraagd. Aanvragen moeten bij de RDW worden ingediend.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* sağa hizalandı */
+        }
+
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style: none;
+            /* varsayılan noktaları kaldır */
+            direction: rtl;
+            /* yazım yönünü sağdan sola yap */
+            padding: 0;
+            margin: 0;
+        }
+
+        .dash-list li {
+            position: relative;
+            padding-right: 20px;
+            /* metin ile "-" işareti arasında boşluk */
+            text-align: right;
+            /* metin sağa hizalansın */
+        }
+
+        .dash-list li::after {
+            content: "-";
+            position: absolute;
+            right: 0;
+            /* sağ kenara hizala */
+            top: 0;
+            color: black;
+            font-size: 16px;
+        }
+
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        متطلبات الاستعمال
+    </h2>
+    <p>
+        تحكم متطلباتُ الاستعمال كيفيةَ استخدام السيارة، مثل كيفية نقل الركّاب والحمولة ومدى جواز بروز الحمولة.
+    </p>
+    <h2>
+        القطر
+    </h2>
+    <p>
+        إذا اضطررتَ لقطر مركبة بسبب عطل، أو إذا كان لا بدّ من قطر مركبتك، فيجب الالتزامُ بقواعد معيّنة:
+    </p>
+    <ul>
+        <li>
+            يجب ألّا تتجاوز المسافةُ بين المركبتين 5 أمتار.
+        </li>
+        <li>
+            لا يجوز للمركبة الآلية أن تَقطُر أكثرَ من مركبةٍ آلية واحدة، كما لا يجوز قطرُ تجميعةٍ من المركبات.
+        </li>
+        <li>
+            لا يجوز لمجموعةِ مركباتٍ أن تَقطُر مركبةً آلية.
+        </li>
+        <li>
+            لا يجوز لسيارة الركّاب قطرُ درّاجةٍ نارية ذات عجلتين أو درّاجةٍ نارية خفيفة (moped)، كما لا يجوز قطرُ سيارة
+            ركّاب بواسطة درّاجةٍ نارية ذات عجلتين أو درّاجةٍ نارية خفيفة.
+        </li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_d688daf8776f4080bec74d849bd26c0b~mv2.jpg" />
+            <figcaption>
+                <em>
+                    لا يجوز أن تزيد المسافةُ بين مركبتين إحداهما مقطورةٌ على خمسة أمتار.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_1d1279171b944d979bd57cfc41c5b990~mv2.jpg" />
+            <figcaption>
+                <em>
+                    عند نقل حمولةٍ لا يجوز أن تُعيق بأيّ وجه قدرةَ السائق على المناورة؛ لذا فالنقلُ كما في الصورة أعلاه
+                    غيرُ مسموح.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        الإعاقة الناجمة عن الحمولة أو الركّاب
+    </h2>
+    <p>
+        يجب ألّا يتعرّض سائقُ سيارة الركّاب لأيّ إعاقةٍ من الركّاب أو الحمولة أثناء القيادة. تُحظر القيادةُ إذا كانت
+        الحمولةُ تحجب — مثلًا — الوصولَ إلى ناقل الحركة أو الرؤيةَ عبر المرآة الجانبية اليمنى.
+    </p>
+    <h2>
+        رؤيةٌ كافيةٌ للمحيط
+    </h2>
+    <p>
+        يجب أن تكون لدى سائق سيارة الركّاب رؤيةٌ كافيةٌ لمحيط المركبة المباشر في جميع الأوقات. وينطبق ذلك أيضًا عند نقل
+        مقطورةٍ خلف المركبة أو حمولةٍ داخل المركبة أو على سطحها. لا يجوز مطلقًا حجبُ الرؤية عبر الزجاج الأمامي والنوافذ
+        الجانبية الأمامية. كما يجب أن تؤمّن المرايا الجانبية رؤيةً كافيةً على جانبي السيارة وخلف السيارة أو المقطورة.
+        وإن لم تتحقق الرؤيةُ الكافية، فيجب استخدام مرايا للمقطورة/الكرفان أو نظام كاميرا مع شاشة.
+    </p>
+    <p>
+        لا تنطبق هذه القواعد على مرآة الرؤية الخلفية الداخلية.
+    </p>
+    <div class="image-container1">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_b9caade9f98c45a5aedcedceff60b342~mv2.jpg" />
+            <figcaption>
+                <em>
+                    إذا تعذّر النظرُ متجاوزًا المقطورة أو الكرفان بالمرايا العادية، فالمرايا الإضافية واجبة. تشير
+                    الخطوطُ الصفراء إلى عرض الكرفان؛ فإذا كان أعرضَ من عرض المرايا العادية فهذه المرايا غيرُ كافية.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        تثبيت الحمولة
+    </h2>
+    <p>
+        يجب ألّا تتمكّن الحمولةُ المنقولة في سيارة الركّاب أو على سطحها أو في المقطورة من الانزلاق أو السقوط من المركبة.
+        لذا يُلزَم تثبيتُ جميع الحمولة جيدًا قبل القيادة. وينطبق ذلك أيضًا على الحمولة داخل السيارة، إذ يجب ألّا تتمكّن
+        من إعاقة السائق.
+    </p>
+    <p>
+        ويجب تثبيتُ الحمولة بما يراعي عددًا من المتطلبات:
+    </p>
+    <ul>
+        <li>
+            يجب أن تتحمّل وسيلةُ التثبيت قوى كافيةً في اتجاه السير وإلى الجانبين وإلى الخلف وإلى الأعلى — كما عند
+            المطبات.
+        </li>
+        <li>
+            يجب تغطيةُ الحمولة السائبة التي يتعذّر تثبيتها (مثل الرمل أو الأوراق) بشَبَكٍ أو غطاءٍ مشمّع إذا كان من
+            الممكن أن تتطاير أو تسقط من المركبة.
+        </li>
+        <li>
+            يجب أن تكون أدواتُ التثبيت مناسبةً للغاية التي تُستخدَم من أجلها.
+        </li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_202ce935139347659caec13fdd5492c9~mv2.jpg">
+            <figcaption>
+                <em>
+                    عند نقل حمولةٍ كبيرة في المقطورة يجب تثبيتُها جيدًا — مثلًا بواسطة أحزمة الربط أو الحبال.
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_96c96cfc36e04449886496d8617556b8~mv2.jpg" />
+            <figcaption>
+                <em>
+                    عند نقل حمولةٍ سائبة في المقطورة يجب تغطيتُها بشَبَك أو بقماشٍ مشمّع. لا يجوز أن تتطاير أيُّ حمولةٍ
+                    أو تسقط.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        حمولةٌ بارزة
+    </h2>
+    <p>
+        كما في المركبات، لا يجوز أن تحتوي الحمولةُ على أجسامٍ حادّة قد تُسبّب إصابةً عند وقوع تصادم. ويجب تغطيةُ الأجزاء
+        البارزة غير الحادّة إذا كان تركُها مكشوفةً يزيد خطرَ الإصابة.
+    </p>
+    <h2>
+        حامل الحمولة
+    </h2>
+    <p>
+        لا يُسمَح بنقل الحمولة على حامل حمولةٍ إلا إذا كان الحاملُ مخصّصًا لتلك الحمولة. فحاملُ الدراجات — مثلًا — لا
+        يُستخدم إلا لنقل الدراجات، وبالعدد المسموح به بحسب تصميمه فقط.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_85a65e8e2e634d3191d4fd44d3338a9e~mv2.jpg" />
+            <figcaption>
+                <em>
+                    لا يجوز نقلُ غير الدراجات على حامل الدراجات. نقلُ حقيبة سفر — مثلًا — غيرُ مسموح.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_5b6bbf105a37447192750ca26fde3f30~mv2.jpg" />
+            <figcaption>
+                <em>
+                    إذا كان حاملُ الحمولة يحجب لوحةَ التسجيل وأضواءَ المؤخرة في سيارة الركّاب، فيجب أن يكون مزوّدًا
+                    بإضاءةٍ مدمجة ولوحةٍ بيضاء.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>
+        ويجب أن يستوفي الحاملُ والحمولة المتطلبات الآتية أيضًا:
+    </p>
+    <ul>
+        <li>
+            يجب تثبيتُ البضائع وحاملِ الحمولة نفسِه تثبيتًا محكمًا.
+        </li>
+        <li>
+            لا يجوز أن يبرز حاملُ الحمولة — بما في ذلك الحمولة — أكثرَ من 20 سنتيمترًا عن جانبي المركبة.
+        </li>
+        <li>
+            إذا حجب حاملُ الحمولة إضاءةَ سيارة الركّاب، فيجب أن تتوافر الإضاءةُ الآتية على الحامل:
+        </li>
+        <ul class="dash-list">
+            <li>
+                مصباحان خلفيان أحمران؛
+            </li>
+            <li>
+                مصباحا فرامل أحمران؛
+            </li>
+            <li>
+                عاكسان رجوعيان أحمران؛
+            </li>
+            <li>
+                مؤشّران كهرمانيان.
+            </li>
+        </ul>
+        <li>
+            إذا حجَب حاملُ الحمولة لوحةَ تسجيل سيارة الركّاب، فيجب تثبيتُ لوحةٍ بيضاء على الحامل تحمل رقمَ التسجيل نفسه
+            لسيارة الركّاب، وأن تكون حاصلةً على علامة اعتماد، وأن تتوافرَ إضاءةُ لوحة الأرقام.
+        </li>
+    </ul>
+    <p>
+        إذا ثُبِّت حاملُ الحمولة على قضيب السحب أو على مقدّمة المقطورة، فيجب أن يستوفي المتطلبات الآتية:
+    </p>
+    <ul>
+        <li>
+            يجب ألّا يتجاوز الوزنُ على قضيب السحب (ويُسمّى أيضًا وزنَ كرة السحب) ما هو محدَّد لهذه السيارة. وإذا لم
+            يُذكَر، فلا يجوز أن يتجاوز 75 كغ مطلقًا.
+        </li>
+        <li>
+            يجب ألّا يلامس حاملُ الحمولة نفسُه — أو أي جزءٍ منه — سطحَ الطريق في الاستعمال العادي.
+        </li>
+        <li>
+            يجب ألّا يُعيق حاملُ الحمولة أو أجزاؤه (المتبقية) قدرةَ المناورة لمقطورةٍ موصولة.
+        </li>
+    </ul>
+    <p>
+        إذا نُقلت البضائعُ على سقف سيارة الركّاب، فيجب الالتزام بالآتي:
+    </p>
+    <ul>
+        <li>
+            يجب أن يكون النقلُ بواسطة حامل حمولةٍ مخصّص لهذا الغرض.
+        </li>
+        <li>
+            يجب تثبيتُ حامل الحمولة والبضائع تثبيتًا محكمًا.
+        </li>
+        <li>
+            يجب ألّا تتجاوز الحمولةُ المصرّح بها على السقف (الوزن على السقف) الحدَّ الأقصى.
+        </li>
+    </ul>
+    <p>
+        يمكن العثورُ على الحدّ الأقصى المصرّح به لحمولة السقف ووزن كرة السحب في دليل مالك المركبة (أو على قضيب السحب).
+    </p>
+    <h2>
+        حمولةٌ بارزة في سيارات الركّاب
+    </h2>
+    <p>
+        عند تحميل حمولةٍ على المركبة أو داخلها نُفرّق بين الحمولة القابلة للتجزئة والحمولة غير القابلة للتجزئة.
+    </p>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            حمولة قابلة للتجزئة
+        </h3>
+        <p>
+            حمولةٌ يمكن نقلُها على أجزاءٍ عدّة، وبالتالي يمكن غالبًا تحميلُها في المركبة أو عليها بطرقٍ مختلفة.
+        </p>
+        <h3>
+            حمولة غير قابلة للتجزئة
+        </h3>
+        <p>
+            حمولةٌ لا يمكن تقسيمُها إلى قطعٍ أصغر أثناء النقل الطرقي دون إحداث ضررٍ أو تكاليفَ غير لازمة. وقد تشمل
+            سلالمَ أو ألواحَ زجاجٍ أو عوارضَ خشبية طويلة.
+        </p>
+    </div>
+    <p>
+        يجب دائمًا نقلُ الحمولة بأفضل طريقةٍ ممكنة بحيث تُسبّب أقلَّ إزعاجٍ ممكنٍ لحركة المرور الأخرى. وحدودُ البروز
+        القصوى (مقدار المسموح ببروزه خارج المركبة) للأنواع المختلفة من الحمولات كما يأتي:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                الجوانب
+            </strong>
+            <p>
+                إذا نقلتَ حمولةً عريضة على سقف سيارة الركّاب، فيجوز أن تبرز هذه الحمولةُ بحدٍّ أقصى 20 سنتيمترًا على كلّ
+                جانب، ولا فرق بين الحمولة القابلة للتجزئة وغير القابلة للتجزئة.
+            </p>
+        </li>
+        <div class="image-container1">
+            <figure>
+                <img alt="الصورة 1"
+                    src="https://static.wixstatic.com/media/4b688f_6b69afdbfdaa4d3988aedf6dd091b909~mv2.jpg" />
+                <figcaption>
+                    <em>
+                    </em>
+                </figcaption>
+            </figure>
+        </div>
+        <li>
+            <strong>
+                المقدّمة
+            </strong>
+            <p>
+                لا يجوز بروزُ الحمولة من مقدّمة سيارة الركّاب — إلا إذا كانت الحمولةُ غيرَ قابلةٍ للتجزئة طوليًا،
+                فعندئذٍ يجوز أن تبرز بمقدار مترٍ واحدٍ كحدٍّ أقصى.
+            </p>
+        </li>
+        <li>
+            <strong>
+                المؤخرة
+            </strong>
+            <p>
+                يجوز أن تبرز الحمولةُ مترًا واحدًا كحدٍّ أقصى من مؤخرة سيارة الركّاب. ويجب ألّا تتجاوز المسافةُ بين
+                المحور الخلفي ونهاية الحمولة خمسةَ أمتار مطلقًا. ويَنطبق ذلك على الحمولة القابلة للتجزئة وغير القابلة
+                للتجزئة معًا.
+            </p>
+        </li>
+    </ul>
+    <div class="image-container1">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_3bb5c9f660b64067beee327806f354a3~mv2.jpg" />
+            <figcaption>
+                <em>
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="important-words2">
+        <p>
+            يكمنُ الفرقُ الرئيس بين
+            <strong>
+                الحمولة القابلة للتجزئة
+            </strong>
+            و
+            <strong>
+                الحمولة غير القابلة للتجزئة
+            </strong>
+            في أنّ
+            غيرَ القابلة للتجزئة قد تبرز من مقدّمة سيارة الركّاب بينما القابلةُ للتجزئة لا يجوز لها ذلك.
+        </p>
+        <p>
+            لا يجوز مطلقًا أن يبرزَ من الحمولة ما يجعل سيارةَ الركّاب أطول أو أعلى أو أعرض من الحدود المسموح بها. لذا لا
+            يجوز تجاوز:
+        </p>
+        <ul>
+            <li>
+                12 مترًا طولًا؛
+            </li>
+            <li>
+                4 أمتار ارتفاعًا؛
+            </li>
+            <li>
+                2.55 متر عرضًا.
+            </li>
+        </ul>
+        <p>
+            لا يجوز أن تتجاوز المجموعاتُ (سيارة ركّاب مع مقطورة) 18 مترًا.
+        </p>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

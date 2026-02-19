@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+             
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+       .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+}
+
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: ;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        القيادة تحت التأثير
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            السائقون الجدد
+        </h3>
+        <p>
+            عند حصولك على رخصة القيادة لأول مرة تُعدّ سائقًا جديدًا خلال السنوات الخمس الأولى. وإذا حصلتَ على رخصة
+            درّاجة نارية خفيفة (موبيد) أو رخصة جرّار قبل سنّ 18 عامًا، فتُعدّ سائقًا جديدًا خلال السنوات السبع الأولى.
+            وتُطبَّق قواعد أشدّ قليلًا على السائقين الجدد.
+        </p>
+        <h3>
+            لكل ألف (الألفية)
+        </h3>
+        <p>
+            قيمة (يُشار إليها بالرمز ‰) تُستخدم للدلالة على مستوى الكحول في الدم.
+        </p>
+        <h3>
+            µg/l
+        </h3>
+        <p>
+            في قطاع الضيافة، تُقدَّم الجعة والنبيذ والمشروبات الروحية عادةً في كؤوس قياسية الحجم:
+        </p>
+        <ul>
+            <li>
+                جعة 25 سنتيلتر (كحول 5%)
+            </li>
+            <li>
+                نبيذ 10 سنتيلتر (كحول 12%)
+            </li>
+            <li>
+                مشروبات روحية 3.5 سنتيلتر (كحول 35%)
+            </li>
+        </ul>
+        <p>
+            يضمن ذلك أن يحتوي كأس النبيذ على نفس كمية الكحول الصافي الموجودة في كأس الجعة أو كأس المشروبات الروحية. ولا
+            ينطبق هذا حين لا تُستخدم الكؤوس القياسية، مثل الجعات المتخصّصة والكوكتيلات. ففي هذه الحالات غالبًا ما تكون
+            كمية الكحول الصافي في الكأس أكبر بكثير.
+        </p>
+    </div>
+    <div class="image-container1">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_0fdd95b6c5d14282a8f65097358f4013~mv2.jpg" />
+            <figcaption>
+                <em>
+                    يحتوي كل كأس على كمية متساوية من الكحول الصافي.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>
+        تُعدّ القيادة تحت تأثير الكحول أو المخدّرات أو الأدوية التي تؤثّر في قدرتك على القيادة جريمةً جنائية. وتُطبَّق
+        قيم حدّية معيّنة. وبالنسبة للكحول فهي:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                للسائقين الجدد: الحدّ الأقصى 88 ميكروغرام/لتر أو 0.2 لكل ألف.
+            </strong>
+            <p>
+                يُعادل ذلك تقريبًا من نصف إلى كأسٍ واحد قياسي من الجعة أو النبيذ أو المشروبات الروحية.
+            </p>
+        </li>
+        <li>
+            <strong>
+                للسائقين ذوي الخبرة: الحدّ الأقصى 220 ميكروغرام/لتر أو 0.5 لكل ألف.
+            </strong>
+            <p>
+                يُعادل ذلك نحو 1.5 إلى 2.5 كأسًا قياسيًا من الجعة أو النبيذ أو المشروبات الروحية.
+            </p>
+            <strong>
+                تنطبق هذه القيمة الحدّية أيضًا على راكبي الدراجات!
+            </strong>
+        </li>
+    </ul>
+    <p>
+        تختلف القيم الحدّية للمخدّرات والأدوية باختلاف كلّ مادة. ومع المخدّرات، يُستحسن افتراضُ أنّك بعد «جرعة» واحدة
+        تتجاوز الحدّ غالبًا، وبالتالي يُمنع عليك القيادة. وقد تبقى بعض المخدّرات في الجسم لعدّة أيام.
+    </p>
+    <p>
+        تُعدّ القيادة تحت التأثير المشترك للمخدّرات والكحول جريمةً بغضّ النظر عن الكمية.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_363a4357b25642fd888d4719c2a08c64~mv2.jpg">
+            <figcaption>
+                <em>
+                    تصبح مسؤولًا جنائيًا منذ اللحظة التي تتناول فيها أول كأس من الكحول ثم تشرع بالقيادة.
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_0350da323b1949e197fa94de83e23723~mv2.jpg" />
+            <figcaption>
+                <em>
+                    قد تُحرَم من القيادة لمجرّد إبداء نيتك القيادة تحت التأثير.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            المركبات
+        </h3>
+        <p>
+            الدراجات الهوائية، الدراجات النارية الخفيفة، مركبات ذوي الإعاقة، الترام، المركبات الآلية، المركبات المجرورة
+            بالخيول، وعربات اليد.
+        </p>
+        <h3>
+            الدراجات النارية الخفيفة (Mopeds)
+        </h3>
+        <p>
+            مركبة آلية على عجلتين أو ثلاث أو أربع، لا يمكنها ولا يجوز لها أن تتجاوز سرعة 45 كم/س (السرعة المصمَّمة)،
+            ومجهّزة بمحرّك احتراقٍ داخلي سعته القصوى 50 سم³ (سي سي) أو محرّك احتراق/كهربائي بقدرة صافية قصوى 4 كيلوواط.
+            ويكون للدراجة ذات الأربع عجلات (brommobiel) وزنٌ فارغ أقلّ من 350 كغ. والدراجات النارية الخفيفة ليست مركبات
+            لذوي الإعاقة.
+        </p>
+        <h3>
+            المركبات الآلية (Motor carriages)
+        </h3>
+        <p>
+            جميع المركبات المُحرّكة بمحرّك. ولا يشترط أن تسير على سكك (مثل القطار أو المترو أو الترام). ولا يشمل ذلك
+            الدراجات ذات المساعدة بالدّواسات. تنبيه: يشمل ذلك حافلات الترولي ودراجات البيديليك السريعة!
+        </p>
+        <h3>
+            حظر القيادة (ممنوع القيادة)
+        </h3>
+        <p>
+            حظرٌ على تشغيل المركبات (بما في ذلك الدراجات الهوائية)، ويمكن فرضه إذا ضُبِطت تقود أو تحاول القيادة تحت
+            تأثير الكحول أو المخدّرات أو الأدوية.
+        </p>
+        <h3>
+            المنع من القيادة (تعليق رخصة القيادة)
+        </h3>
+        <p>
+            منعٌ من قيادة أيّ مركبة آلية لأسابيع أو أشهر أو حتى سنوات. وإذا ضُبِطتَ مخالفًا لأنظمة المرور، فقد يُمنعك
+            وكيل النيابة أو القاضي من القيادة. ولا يزال ركوب الدراجة مسموحًا.
+        </p>
+    </div>
+    <h2>
+        إنفاذ مخالفات القيادة تحت التأثير
+    </h2>
+    <p>
+        إذا قدتَ أو حاولتَ تشغيل مركبة وأنت تحت التأثير، يملك أفراد الشرطة صلاحية اتخاذ إجراءٍ فوري. وقد يتم ذلك عبر
+        الوسائل الآتية:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                حظر القيادة (ممنوع القيادة)
+            </strong>
+            <p>
+                إنّ التخطيط أو محاولة تشغيل مركبة تحت التأثير يُعدّ مخالفًا للقانون، ما يعني إمكانيةَ حظرك من القيادة
+                قبل أن تدخل السيارة أصلًا. يسري حظر القيادة لعدة ساعات وحتى حدٍّ أقصى يبلغ 24 ساعة. وتعتمد المدة الدقيقة
+                على مدى تجاوزك للحدّ القانوني. ويعني حظر القيادة أنّه لا يجوز لك تشغيل أيّ مركبة إطلاقًا، بما في ذلك
+                الدراجات الهوائية.
+            </p>
+        </li>
+        <li>
+            <strong>
+                المصادرة
+            </strong>
+            <p>
+                إذا أوقفتك الشرطة أثناء القيادة وأظهر اختبار النَّفَس أنك فوق حدود كحول معينة، فستُصادِر الشرطة رخصة
+                قيادتك فورًا. وينطبق ذلك أيضًا إذا كُشِف عن وجود مخدّرات خلال اختبار اللعاب. وبعد مصادرة رخصتك لا يُسمح
+                لك بقيادة مركبة آلية حتى تُعاد إليك. وتكون حدود مصادرة الرخصة بعد مخالفة كحول كما يلي:
+            </p>
+            <ul class="dash-list">
+                <li>
+                    350 ميكروغرام/لتر (0.8 لكل ألف) للسائقين الجدد.
+                </li>
+                <li>
+                    570 ميكروغرام/لتر (1.3 لكل ألف) للسائقين ذوي الخبرة.
+                </li>
+                <li>
+                    إذا لم تتعاون أو رفضتَ مثلًا إجراء اختبار النَّفَس أو تقديم عيّنة لُعاب، فيجوز أيضًا مصادرة رخصتك.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                إخطار CBR
+            </strong>
+            <p>
+                عند تجاوز قيم حدّية معيّنة، ستُبلّغ الشرطة كذلك قضيةَك إلى CBR. وهذه القيم هي:
+            </p>
+            <ul class="dash-list">
+                <li>
+                    220 ميكروغرام/لتر (0.5 لكل ألف) للسائقين الجدد.
+                </li>
+                <li>
+                    350 ميكروغرام/لتر (0.8 لكل ألف) للسائقين ذوي الخبرة.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        إذا صودرت رخصة قيادتك بسبب القيادة تحت تأثير الكحول، فستُحال رخصتك أيضًا إلى النيابة العامة. وسيُتَّخذ القرار
+        خلال 10 أيام عمّا إذا كانت الرخصة ستُعاد إليك أم لا. وقد يعرض عليك وكيل النيابة صفقةً (تسويةً)؛ فإذا وافقت على
+        شروطها، يُغلق الملفّ. وقد يستلزم الأمر أيضًا المثول أمام المحكمة، حيث يحدّد القاضي الجزاء النهائي.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_120f99ab44bc4571a95f1ca44d047d9a~mv2.jpg" />
+            <figcaption>
+                <em>
+                    يُستخدم اختبار النَّفَس لتحديد تعاطي الكحول. ولا يجوز لك رفض هذا الاختبار.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_944bea95c792475daeb61e08786578c8~mv2.jpg" />
+            <figcaption>
+                <em>
+                    يُستخدم اختبار اللُّعاب لتحديد تعاطي المخدّرات. ولا يجوز لك رفض هذا الاختبار أيضًا.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+     
+
+
+
+
+  
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

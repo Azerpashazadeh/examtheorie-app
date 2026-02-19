@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+
+
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            table-layout: auto;
+            /* İçeriğe göre esnek tablo düzeni */
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #adacac;
+        }
+
+        td,
+        th {
+            padding: 8px;
+            text-align: left;
+            white-space: normal;
+            /* Satır kaydırma sağlar */
+            word-wrap: break-word;
+            /* Uzun kelimeleri böler */
+            overflow-wrap: break-word;
+            /* Kelimelerin taşmasını engeller */
+        }
+
+        /* Yazı boyutunu küçültmek için medya sorgusu */
+        @media (max-width: 600px) {
+
+            td,
+            th {
+                font-size: 0.9em;
+                /* Yazı boyutunu küçültür */
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            td,
+            th {
+                font-size: 0.7em;
+                /* Daha fazla küçültür */
+            }
+        }
+
+        thead th {
+            background-color: #f9c3ae;
+            color: rgb(0, 0, 0);
+        }
+
+        .highlight {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        Algemene Periodieke Keuring (MOT, in het Nederlands APK)
+    </h2>
+    <p>
+        Elk motorrijtuig moet eerst typegoedgekeurd zijn voordat het op de openbare weg mag worden gebruikt. Deze
+        goedkeuring wordt geregeld door de voertuigfabrikant. Daarnaast is er ook een periodieke keuring – de APK. Deze
+        is voor sommige motorrijtuigen verplicht.
+    </p>
+    <p>
+        Voertuigen die periodiek moeten worden gekeurd zijn:
+    </p>
+    <ul>
+        <li>
+            Personenauto’s
+        </li>
+        <li>
+            Bedrijfsvoertuigen (tot 3500 kg)
+        </li>
+        <li>
+            Driewielige motorrijtuigen (tussen 400 en 3500 kg)
+        </li>
+        <li>
+            Zware voertuigen (boven 3500 kg)
+        </li>
+        <li>
+            Bijzondere voertuigen (zoals ambulances, taxi’s en bussen)
+        </li>
+    </ul>
+    <p>
+        Afhankelijk van de categorie moeten voertuigen met een vaste regelmaat worden gekeurd.
+    </p>
+    <div class="image-container1">
+        <figure>
+            <img alt="Afbeelding 1"
+                src="https://static.wixstatic.com/media/4b688f_60b159f1e33f4652acbf99c79ca4635a~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Elke personenauto valt onder periodieke keuringen.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        Keuringsfrequentie personenauto’s
+    </h2>
+    <p>
+        Voor personenauto’s hangt dit af van de aandrijving (verbrandingsmotor of elektromotor) en het type brandstof.
+    </p>
+    <p>
+        Zo moeten personenauto’s die rijden op benzine, alcohol (ethanol) of uitsluitend elektrisch hun eerste keuring
+        binnen vier jaar na de eerste toelating ondergaan. Daarna nog tweemaal elke twee jaar en vervolgens jaarlijks.
+    </p>
+    <p>
+        Personenauto’s die rijden op diesel, gas of een andere brandstof, eventueel in combinatie met een elektromotor,
+        moeten hun eerste keuring binnen drie jaar na de eerste toelating doen. Daarna jaarlijks.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    1e APK
+                </th>
+                <th>
+                    2e APK
+                </th>
+                <th>
+                    3e APK
+                </th>
+                <th>
+                    Volgende APK’s
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Benzine, alcohol (ethanol) of elektromotor
+                </td>
+                <td>
+                    4 jaar na 1e toelating
+                </td>
+                <td>
+                    2 jaar na 1e APK
+                </td>
+                <td>
+                    2 jaar na 2e APK
+                </td>
+                <td>
+                    Jaarlijks
+                </td>
+            </tr>
+            <tr class="highlight">
+                <td>
+                    Diesel, gas of andere brandstof, eventueel gecombineerd met elektromotor
+                </td>
+                <td>
+                    3 jaar na 1e toelating
+                </td>
+                <td colspan="3">
+                    Jaarlijks na 1e APK
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        De APK moet altijd worden uitgevoerd vóórdat het vorige keuringsbewijs is verlopen.
+    </p>
+    <h2>
+        Keuringsbewijs
+    </h2>
+    <p>
+        Na de keuring ontvangt u een APK-keuringsbewijs. In Nederland bent u niet verplicht dit bewijs tijdens het
+        rijden bij u te hebben. In sommige andere landen is dit echter wel verplicht. Het is daarom verstandig het
+        keuringsbewijs altijd in het voertuig te bewaren. U moet ervoor zorgen dat het bewijs onbeschadigd en goed
+        leesbaar blijft.
+    </p>
+    <p>
+        Zowel de bestuurder als de eigenaar van een voertuig is verantwoordelijk voor tijdige uitvoering van verplichte
+        keuringen en voor het in goede staat houden van het keuringsbewijs.
+    </p>
+    <p>
+        Tegenwoordig vindt handhaving plaats via een landelijk registratiesysteem. Dit betekent dat u automatisch een
+        boete ontvangt als u te laat bent met keuren.
+    </p>
+    <div class="important-words2">
+        <p>
+            Een APK-goedkeuring betekent niet automatisch dat een voertuig voldoende is onderhouden. De APK controleert
+            een aantal belangrijke technische onderdelen, maar niet alles. Ook is er geen garantie voor de staat van het
+            voertuig na een maand. Naast de APK wordt bestuurders aangeraden personenauto’s minimaal jaarlijks bij een
+            garage te laten onderhouden – zeker bij oudere voertuigen. Raadpleeg altijd een professional bij storingen,
+            foutmeldingen of wanneer u vermoedt dat er iets mis is met het voertuig.
+        </p>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+        Terug naar
+        overzicht
+    </a>
+
+    
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

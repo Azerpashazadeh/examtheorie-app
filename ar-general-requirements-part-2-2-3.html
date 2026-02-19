@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* sağa hizala */
+        }
+
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        المتطلبات العامة - الجزء 2
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            الأخاديد الرئيسة العريضة لمداس الإطار
+        </h3>
+        <p>
+            أخاديد عريضة في الجزء الأوسط من مداس الإطار تحتوي مؤشّرات التآكل.
+        </p>
+        <h3>
+            مداس الإطار
+        </h3>
+        <p>
+            الجزء من الإطار الذي يلامس سطح الطريق.
+        </p>
+        <h3>
+            هيكل الإطار (Carcass)
+        </h3>
+        <p>
+            الجزء الكامن تحت طبقة المطاط والذي يمنح الإطار متانته. يتكوّن عادةً من أليافٍ بلاستيكية (نايلون، بوليستر)
+            وأسلاكٍ فولاذية.
+        </p>
+        <h3>
+            مؤشّرات التآكل
+        </h3>
+        <p>
+            نتوءاتٌ داخل الأخاديد الرئيسة. عندما تتآكل وتصبح بمستوى المداس، لا يعود الإطار مستوفيًا لعمق المداس الأدنى.
+        </p>
+    </div>
+    <h2>
+        الإطارات
+    </h2>
+    <p>
+        قد تؤدي الإطاراتُ غير السليمة في سيارة الركّاب إلى أوضاعٍ خطِرة. ومع ذلك نادرًا ما يفحص السائقون إطاراتهم
+        وضغوطها بانتظام. وبما أنّ الإطارات تتآكل تدريجيًا، يُنصَح بفحص الضغط وعمق المداس بانتظام — مرةً واحدةً على الأقل
+        شهريًا.
+    </p>
+    <div class="important-words3">
+        <div class="image-content">
+            <img alt="صورة الرخصة"
+                src="https://static.wixstatic.com/media/4b688f_4297b5ee4bab4eebabd0d1614fb10364~mv2.png" />
+        </div>
+        <div class="text-content">
+            <p>
+                هذا هو مصباح مُؤشِّر ضغط الإطارات في لوحة العدّادات. عندما لا يعود ضغطُ (أحد) الإطارات كافيًا يضيء هذا
+                المصباح. افحص ضغط الإطارات مرةً على الأقل كل شهر ومباشرةً عند إضاءة المصباح. ليست جميعُ سيارات الركّاب
+                مزوّدةً بمصباح مُؤشِّر ضغط الإطارات.
+            </p>
+        </div>
+    </div>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_1ecd7b96690a4414b00e528ecc97ede4~mv2.jpg">
+            <figcaption>
+                <em>
+                    لا تُزِل مسمارًا أو برغيًا مغروزًا في الإطار قبل الوصول إلى الورشة؛ فإزالته ستتسبب في تفريغ الإطار
+                    بسرعة.
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_c71da6371a894c5aafff49e4b348f59f~mv2.jpg" />
+            <figcaption>
+                <em>
+                    مؤشّرات التآكل في هذه الأخاديد الرئيسة تكاد تكون بمستوى بقيّة المداس. هذا الإطارُ مُتآكل.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>
+        يجب أن تستوفي الإطاراتُ المتطلباتِ التقنية الآتية:
+    </p>
+    <ul>
+        <li>
+            أن تكون إطاراتٍ هوائية؛ ويُسمح بالإطارات المملوءة بالنيتروجين أيضًا. فلا يجوز — مثلًا — تجهيز سيارات الركّاب
+            بإطارات مطاطية صلبة أو بجنازير.
+        </li>
+        <li>
+            ألّا تحتوي انتفاخاتٍ ولا أضرارًا تُظهِر هيكلَ الإطار (carcass).
+        </li>
+        <li>
+            أن يكون عمقُ المداس الأدنى دائمًا 1.6 مم في الأخاديد الرئيسة. ويُحظر إعادةُ تخديدها؛ أي لا يجوز تعميقُ
+            الأخاديد بالقطع.
+        </li>
+        <li>
+            أن تُركَّب وفق اتجاه الدوران الصحيح.
+        </li>
+        <li>
+            ألّا تحتوي مكوّناتٍ معدنية قد تبرز أثناء القيادة، مثل الإطارات المرصّعة بالمسامير المستخدمة في دولٍ ذات
+            شتاءٍ قاسٍ.
+        </li>
+        <li>
+            أن تكون الإطاراتُ على المحور الواحد بالحجم ذاته؛ فلا يكون الإطارُ الأمامي الأيسر أكبر أو أصغر من الأمامي
+            الأيمن، إلا عند استخدام إطار طوارئ/احتياط.
+        </li>
+        <li>
+            أن يكون ضغطُ الإطارات مناسبًا. تُذكَر قيمةُ الضغط المطبّقة في دليل الاستعمال. ولا تنسَ الإطار الاحتياطي.
+        </li>
+        <li>
+            ألّا يشير مصباحُ مُؤشِّر ضغط الإطار إلى وجود خلل.
+        </li>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_a98e4be75137445b98001b5d81622742~mv2.jpg" />
+            <figcaption>
+                <em>
+                    تسمح بعضُ الدول ذات الشتاء القاسي باستخدام الإطارات المرصّعة بالمسامير. وهذا غيرُ مسموحٍ به في
+                    هولندا.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_227675f9cd594f2da13edfa4e157f0b6~mv2.jpg" />
+            <figcaption>
+                <em>
+                    قد يختلف إطارُ الطوارئ في الحجم عن الإطار العادي. ويُستعمَل في حالات الطوارئ فقط. استبدله بأقرب فرصة
+                    ولا تتجاوز 80 كم/س.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        جهازُ الكبح
+    </h2>
+    <p>
+        تُعدّ الفراملُ عنصرًا أساسيًا في سيارات الركّاب، لذا يجب أن تكون مكوّناتُ نظام الفرملة خاليةً من الأضرار، وأن:
+    </p>
+    <ul>
+        <li>
+            تُثبَّت تثبيتًا سليمًا؛
+        </li>
+        <li>
+            تكون خاليةً من الصدأ؛
+        </li>
+        <li>
+            تخلو من أيّ تسرّب؛
+        </li>
+        <li>
+            لا تُظهِر تآكلًا مفرطًا.
+        </li>
+    </ul>
+    <p>
+        يجب أن تعمل جميعُ المكوّنات على نحوٍ سليم، وأن تتحرّك الأجزاءُ المتحركة — مثل بدّالة الفرامل — بسهولة. ويجب أن
+        يكون لبدّالة الفرامل سطحٌ مانعٌ للانزلاق.
+    </p>
+    <p>
+        يجب تزويد جميع سيارات الركّاب بفرامل تثبيت (فرامل يد) تعمل على نحوٍ صحيح.
+    </p>
+    <div class="important-words2">
+        <p>
+            يجب أن تضمن الإطاراتُ والفراملُ تماسكًا جيدًا على الطريق ومسافةَ توقّفٍ قصيرة، لذا يجب الحفاظُ على هذين
+            المكوّنين في حالةٍ جيدة.
+        </p>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

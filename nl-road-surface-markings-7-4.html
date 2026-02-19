@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words1 h3 {
+            margin-top: 0px;
+        }
+
+        .important-words1 p {
+            margin-top: -15px;
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+        .images-container9 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container9 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container9 img {
+            width: 50%;
+            /* Resim genişliği */
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .images-container9 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container9 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container9 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+    <h1>
+   Wegmarkeringen
+  </h1>
+  <p>
+   Naast verkeersborden en verkeerslichten wordt het verkeer ook geregeld door markeringen op het wegdek.
+        Dit kunnen markeringen zijn zoals lijnen, maar ook op het wegdek aangebrachte cijfers die de maximumsnelheid aangeven of markeringen zoals haaientanden en pijlen.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Kantstreep
+   </h3>
+   <p>
+    Lijn langs de rand van de rijbaan.
+   </p>
+   <h3>
+    Midden- of aslijn
+   </h3>
+   <p>
+    Lijn midden op de rijbaan, die de scheiding aangeeft tussen jouw weghelft en die van het tegemoetkomende verkeer.
+   </p>
+   <h3>
+    Rijstrookstreep
+   </h3>
+   <p>
+    Lijn die een rijbaan of deel van de weg voor één rijrichting in rijstroken verdeelt.
+   </p>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_4708173ef1da4845ab83709b2b5ec0e4~mv2.jpeg"/>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Doorgetrokken streep
+  </h2>
+  <p>
+   Kantstrepen, aslijnen en rijstrookstrepen kunnen zijn uitgevoerd als een doorgetrokken streep. Doorgetrokken strepen mogen niet worden overschreden. In het geval van een doorgetrokken aslijn mag je niet links van deze lijn rijden (aan de zijde van het tegemoetkomende verkeer). Bij een doorgetrokken streep mag je niet van rijstrook wisselen of inhalen.
+  </p>
+  <p>
+   De volgende uitzonderingen gelden:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Een kantstreep mag worden overschreden, bijvoorbeeld om in de berm te parkeren.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_27dfd2a0cd344c5e990b61434baa226b~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     Een doorgetrokken streep tussen de rijbaan en de aangrenzende vluchthaven, vluchtstrook of spitsstrook mag worden overschreden als je van die voorziening gebruik moet maken.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_c9ad0ad5f5a54ccc8ce72b7d2770aa7d~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     Als aan jouw zijde van de doorgetrokken streep een onderbroken streep ligt, mag je de doorgetrokken streep overschrijden.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_ebb027cef17649d79949537fecb79115~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     Bestuurders die een fietsstrook met doorgetrokken streep mogen gebruiken, mogen deze doorgetrokken streep overschrijden, bijvoorbeeld om een andere fietser in te halen.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container9">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_b82808aae9624941bd7d40ce2f0629d7~mv2.jpg"/>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Onderbroken strepen en waarschuwingsstrepen
+  </h2>
+  <p>
+   Als een aslijn of rijstrookstreep is uitgevoerd als een onderbroken streep, mag deze worden overschreden. Je mag in dat geval, als het veilig kan, inhalen of van rijstrook wisselen.
+  </p>
+  <p>
+   Normaal gesproken is bij een onderbroken streep de streep korter dan de tussenruimte. Als de streep langer is dan de tussenruimte, moet je de onderbroken strepen zien als waarschuwingsstrepen. Dat betekent dat je mag inhalen, maar dat inhalen hier gevaarlijker is dan bij een normale onderbroken streep.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_0b91d9d7c862450db4ae7c1d931ac9b5~mv2.jpg"/>
+     <figcaption>
+      Normale onderbroken aslijn.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_113fec17f6114a2ebfd3d3b7452bb5ac~mv2.jpg"/>
+     <figcaption>
+      Aslijn uitgevoerd als waarschuwingsstreep.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Verdrijvingsvlakken
+  </h2>
+  <p>
+   Deze vlakken bestaan uit schuine strepen en mogen niet worden bereden. Verdrijvingsvlakken worden bijvoorbeeld toegepast op plaatsen waar een rijstrook eindigt en bestuurders moeten invoegen op een aangrenzende rijstrook.
+  </p>
+  <h2>
+   Puntstuk
+  </h2>
+  <p>
+   Een puntstuk vind je vooral bij in- en uitvoegstroken van autowegen en autosnelwegen. Dit mag niet worden overschreden.
+  </p>
+  <div class="important-words2">
+   <p>
+    Verdrijvingsvlakken en puntstukken gelden niet als ze op een geopende spitsstrook liggen. In dat
+            geval is eroverheen rijden toegestaan.
+   </p>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_304df14a5cc344878207a5023e4bfdbc~mv2.jpg"/>
+     <figcaption>
+      Over verdrijvingsvlakken rijden is niet toegestaan.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_d0dcaefef0b844639350f8fcc68656bd~mv2.jpg"/>
+     <figcaption>
+      Over puntstukken rijden is eveneens niet toegestaan.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Voorsorteerstroken, uitvoegstroken en pijlen
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Voorsorteerstroken liggen bij (grote) kruispunten en verdelen de rijbaan in rijstroken voor
+                    verschillende richtingen. Pijlen op de rijstroken geven de richting aan. Tussen de rijstroken voor verschillende richtingen wordt blokmarkering toegepast. Het overschrijden van deze blokmarkering is toegestaan tot het moment dat de blokmarkering overgaat in een doorgetrokken streep. Op het kruispunt zijn bestuurders verplicht de richting te volgen die op de gebruikte voorsorteerstrook met een pijl is aangegeven. Voorsorteren voor linksaf en vervolgens rechtdoor rijden op het kruispunt is dus niet toegestaan.
+     </p>
+     <p>
+      Een speciale pijl die op de voorsorteerstrook kan voorkomen is een pijl met hamerkop. In
+                    de meeste gevallen geeft dit aan dat er vóór de afslag nog een zijweg ligt. Je mag niet deze zijweg inslaan.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_a3a9da94b3184028a8753b8a5e35cfcd~mv2.png"/>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_de2c0dff96d04017ab5892cbc04888ca~mv2.jpg"/>
+     <figcaption>
+      Voorsorteerstroken met richtingspijlen. Je kunt hier nog van richting wisselen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_83135d001d78451a98d014c8af2afd3d~mv2.jpg"/>
+     <figcaption>
+      De voorsorteerstrook voor linksaf heeft een pijl met hamerkop. Je mag de eerste zijweg links
+                    niet inslaan.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Uitvoegstroken liggen naast de hoofdrijbaan en worden gebruikt om de hoofdrijbaan te verlaten,
+        voornamelijk op autowegen en autosnelwegen. Deze stroken zijn eveneens met blokmarkering van de hoofdrijbaan gescheiden.
+  </p>
+  <p>
+   Zodra er pijlen op de uitvoegstrook staan, mag je niet meer vanaf de uitvoegstrook terug naar de hoofdrijbaan. Deze regel is er om te voorkomen dat files via een uitvoegstrook of weefstrook (gecombineerde in- en uitvoegstrook) worden gepasseerd.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_4bd669195d4445e8af2219160a58349b~mv2.jpg"/>
+     <figcaption>
+      Weefstrook zonder richtingspijlen. Je mag nog terug naar de hoofdrijbaan.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_f9d6355e9d0e4285bfe46e2574f652ef~mv2.jpg"/>
+     <figcaption>
+      Uitvoegstrook met richtingspijlen. Je mag niet meer terug naar de hoofdrijbaan.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Stopstreep (voorrangslijn)
+  </h2>
+  <p>
+   Op een kruispunt waar het bord ‘STOP’ is geplaatst, moet een stopstreep op het wegdek staan. Bestuurders moeten vóór de stopstreep stoppen, ongeacht of er ander verkeer is of niet.
+  </p>
+  <p>
+   Meestal zijn stopstrepen zo aangebracht dat je vanaf de stopstreep goed zicht hebt op de situatie waarvoor je moet stoppen, zoals een kruispunt of oversteek. De streep bij een verkeerslicht heet ook een stopstreep. In dat geval moet je alleen vóór de stopstreep stoppen als het verkeerslicht geel of rood is.
+  </p>
+  <h2>
+   Haaientanden
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Dit zijn witte driehoeken die op het wegdek zijn aangebracht. Haaientanden betekenen: “verleen
+                    voorrang aan bestuurders op de kruisende weg.” Ze worden meestal gebruikt in combinatie met bord B-6,
+                    maar dat is niet verplicht. Ook zonder dit bord hebben ze dezelfde betekenis.
+     </p>
+     <p>
+      Voor je de haaientanden bereikt, wordt de voorrangssituatie soms al aangekondigd door
+                    middel van een grote waarschuwingsdriehoek op het wegdek.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_be8acad95e55488f86787a2d7b5e9d89~mv2.png"/>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_9169f4bc41a24bd0906bd93b38afec40~mv2.jpg"/>
+     <figcaption>
+      Stopbord B-7 met stopstreep.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_ed5844f3dcc24cb48f56764454641fe0~mv2.jpg"/>
+     <figcaption>
+      Voorrangsbord B-6 met haaientanden.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Busstroken en busbanen
+  </h2>
+  <p>
+   Dit is een rijstrook of rijbaan met het woord “BUS” of “LIJNBUS” (openbare bus) op het wegdek. Een busstrook is van de rest van de rijbaan gescheiden door een onderbroken of doorgetrokken streep.
+  </p>
+  <p>
+   Bij het woord “BUS” mogen alleen bestuurders van bussen (inclusief touringcars) en lijnbussen van de strook gebruikmaken.
+  </p>
+  <p>
+   Bij het woord “LIJNBUS” mogen alleen bestuurders van lijnbussen van de strook gebruikmaken.
+  </p>
+  <p>
+   Hulpdiensten mogen de busstrook of busbaan ook gebruiken, omdat zij zich bij een dringende taak niet aan geslotenverklaringen hoeven te houden.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_2da3edbc9a414af8876f6d7c1652ae34~mv2.jpg"/>
+     <figcaption>
+      Een busbaan ligt los van de hoofdrijbaan.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_0afcc2a131964446a8ca34e8be0f67c7~mv2.jpg"/>
+     <figcaption>
+      Een busstrook maakt deel uit van de rijbaan en is met een doorgetrokken of onderbroken streep afgescheiden.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Fietsstroken en fietssuggestiestroken
+  </h2>
+  <p>
+   Een fietsstrook kan zijn gescheiden door een onderbroken of doorgetrokken streep. Daarnaast moet er een symbool van een fiets op het wegdek staan. Als dat niet het geval is, gaat het om een fietssuggestiestrook en niet om een officiële fietsstrook.
+  </p>
+  <p>
+   Fietssuggestiestroken hebben geen juridische betekenis. Ze mogen door iedereen worden gebruikt. Je mag er zelfs op stilstaan en parkeren.
+  </p>
+  <p>
+   Een bijzondere vorm van fietsstrook is het opstelvak voor fietsers. Dit is een uitgebouwd vak vóór de normale voorsorteerstrook. Het doel is om kwetsbare weggebruikers, zoals fietsers, veiliger en beter zichtbaar te laten wachten bij het verkeerslicht.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_d70cd673af9145df8b572c779b76f79d~mv2.jpg"/>
+     <figcaption>
+      Een fietsstrook herken je aan de fietssymbolen op het wegdek. Ontbreken deze, dan is het geen officiële fietsstrook maar een fietssuggestiestrook.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_4d9a5e6b629643c9aca877a18237e5fd~mv2.jpg"/>
+     <figcaption>
+      Dit opstelvak houdt fietsers, snorfietsers en bestuurders van gehandicaptenvoertuigen beter zichtbaar
+                    tijdens het wachten voor rood. Overige bestuurders moeten achter het opstelvak voorsorteren.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Gele lijnen langs de weg
+  </h2>
+  <p>
+   Doorgetrokken en onderbroken gele lijnen vind je op stoepranden of wegranden. Naast een onderbroken gele lijn is alleen parkeren verboden. Naast een doorgetrokken gele lijn is niet alleen parkeren, maar ook stilstaan verboden.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_74a76f3b67b54c7ab52e70eef161d9ac~mv2.jpg"/>
+     <figcaption>
+      Onderbroken gele lijn op de stoeprand. Je mag hier niet parkeren.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_46b7b2635900488e9fbc36e3e8f4d8ba~mv2.jpg"/>
+     <figcaption>
+      Doorgetrokken gele lijn op de stoeprand. Hier mag je niet stilstaan, ook niet om een passagier
+                    te laten in- of uitstappen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Gele lijnen op het wegdek
+  </h2>
+  <p>
+   Gele lijnen zijn op het wegdek ook te zien als tijdelijke lijnen en markeringen bij wegwerkzaamheden. Deze gaan dan boven de lokale witte lijnen en markeringen. Let erop dat de maximumsnelheid hier vaak lager is en rijstroken smaller kunnen zijn. Vooral de linkerrijstrook op autosnelwegen tijdens werkzaamheden.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_a212a758aed34770b3985e5046a18551~mv2.jpg"/>
+     <figcaption>
+      Gele lijnen op het wegdek tijdens wegwerkzaamheden. Deze gaan boven de witte lijnen. De
+                    linkerrijstrook is hier smaller.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_900db932dae54bd5ab1f5f9536e97bf5~mv2.jpg"/>
+     <figcaption>
+      Blauwe streep naast de parkeervak. Hier moet je een parkeerschijf gebruiken.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Blauwe lijnen
+  </h2>
+  <p>
+   Blauwe lijnen worden op de weg gebruikt in parkeerhavens en parkeerstroken waar het gebruik van een parkeerschijf verplicht is.
+  </p>
+  <h2>
+   Geblokte of geruite markeringen
+  </h2>
+  <p>
+   Deze markering vind je op het wegdek bij bushaltes en geeft aan welke ruimte de bus nodig heeft om bij de halte te kunnen stoppen. De geblokte markering duidt direct een verbod aan. Je mag op deze markering niet stilstaan, behalve voor het direct laten in- of uitstappen van passagiers.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_97fe4a7b8451434aae57af2f9f1402d2~mv2.jpg"/>
+     <figcaption>
+      Hier zie je blokmarkering, bijvoorbeeld tussen de weefstrook en de hoofdrijbaan.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_7372ce293be749499e4e2b78f395a481~mv2.jpg"/>
+     <figcaption>
+      Bij een bushalte vind je vaak geblokte (geruite) markeringen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Blokmarkering
+  </h2>
+  <p>
+   Dit is iets anders dan de geblokte markeringen bij bushaltes. Blokmarkering kom je tegen op de rijbaan tussen twee rijstroken, bijvoorbeeld bij in-, uit- en weefstroken en voorsorteerstroken.
+  </p>
+  <h2>
+   Zigzagstrepen
+  </h2>
+  <p>
+   Dit zijn strepen die op de weg zijn aangebracht om je te waarschuwen voor een gevaarlijk punt. Dit kan bijvoorbeeld een oversteek of een gevaarlijk kruispunt zijn. Deze markering zegt niets over de geldende voorrang, maar het is in dat geval wel verstandig je snelheid te verminderen.
+  </p>
+  <h2>
+   Hulpmarkeringen
+  </h2>
+  <p>
+   Hieronder vallen markeringen die als hulpmiddel op het wegdek zijn aangebracht. Bijvoorbeeld de maximumsnelheden die op het wegdek staan. Maar ook de lijnen die aangeven dat je een zone binnenkomt of verlaat en de lijnen die een drempel markeren, vallen onder hulpmarkeringen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_d0499319e46d431d8e8ebab555ddfdc3~mv2.jpg"/>
+     <figcaption>
+      Zigzagstrepen waarschuwen je voor een gevaarlijk punt.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_b416b1f05e0c4f5c9625a8d021ad4120~mv2.jpg"/>
+     <figcaption>
+      Zonemarkeringen zijn een extra hulpmiddel om zones te verduidelijken.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Snelheidsmarkeringen
+  </h2>
+  <p>
+   Vooral op nieuwere wegen kun je aan de markeringen (lijnen) op de weg de te verwachten maximumsnelheid aflezen. Deze markeringen zijn niet juridisch bindend, maar suggereren een maximumsnelheid. De daadwerkelijke maximumsnelheid moet altijd met borden worden aangegeven.
+  </p>
+  <h3>
+   Autoweg (100 km/h)
+  </h3>
+  <p>
+   Een autoweg met een enkelbaans rijbaan heeft doorgetrokken kantstrepen en twee doorgetrokken of onderbroken aslijnen. Tussen die witte aslijnen ligt een groene streep.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_a02c70c968854014a9a41774e1b2a523~mv2.jpeg"/>
+     <figcaption>
+      De groene aslijn geeft aan dat je op een autoweg rijdt. Inhalen is verboden vanwege de
+                    doorgetrokken witte aslijnen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_d1a76d41ff57475a9302618f46e8a8a9~mv2.jpeg"/>
+     <figcaption>
+      De groene aslijn geeft aan dat je op een autoweg rijdt. Inhalen is toegestaan vanwege de
+                    onderbroken witte aslijnen. Wees voorzichtig bij het inhalen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   Weg buiten de bebouwde kom (80 km/h)
+  </h3>
+  <p>
+   Een 80 km/h-weg heeft normaal gesproken onderbroken kantstrepen en één of twee doorgetrokken of onderbroken aslijnen. Er ligt geen groene streep tussen de aslijnen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_bd7cfe7d523c48c88c336d27b70a0bf7~mv2.jpeg"/>
+     <figcaption>
+      Er is geen groene aslijn; dit is een normale 80 km/h-weg buiten de bebouwde kom.
+                    Inhalen is verboden vanwege de doorgetrokken witte aslijnen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_bc71334753e842daa9e69bd4c070d9ea~mv2.jpeg"/>
+     <figcaption>
+      Er is geen groene aslijn; dit is een normale 80 km/h-weg buiten de bebouwde kom.
+                    Inhalen is toegestaan vanwege de onderbroken witte aslijnen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   Weg buiten de bebouwde kom met verlaagde snelheid (60 km/h)
+  </h3>
+  <p>
+   Een weg binnen een 60km-zone heeft normaal gesproken onderbroken kantstrepen, die iets verder van de berm liggen.
+        Soms heeft de weg rode fietssuggestiestroken. Er is geen aslijn. En soms ontbreken de lijnen helemaal.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_fd2897056b7a42a7aeb850daa4f7796a~mv2.jpeg"/>
+     <figcaption>
+      Er is geen aslijn, wat aangeeft dat dit een 60 km/h-weg buiten de bebouwde kom is.
+                    Er moet echter wel een 60km-zonebord staan om het een 60km-zone te laten zijn!
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_9443d7e685f844dfa216abd3a630c5b0~mv2.jpeg"/>
+     <figcaption>
+      Er zijn helemaal geen lijnen, wat aangeeft dat dit een 60 km/h-weg buiten de bebouwde kom is.
+                    Er moet echter wel een 60km-zonebord staan om het een 60km-zone te laten zijn!
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

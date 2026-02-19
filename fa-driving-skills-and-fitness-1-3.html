@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+      
+      /* CSS dosyası (style.css) */
+.custom-button {
+    display: inline-block;
+    width: 140px;
+    height: 39px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 39px; /* Düğme yüksekliğine göre yazıyı ortala */
+    text-decoration: none; /* Bağlantı alt çizgisini kaldır */
+    border-radius: 9px; /* Köşeleri yuvarlat */
+    transition: background-color 0.3s ease;
+    margin-top: 70px;   /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+}
+
+.custom-button:hover {
+    background-color: blue;
+}
+  </style>
+ </head>
+ <body>
+  <h2>
+   Driving skills and fitness
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Driving skills
+   </h3>
+   <p>
+    The ability to operate a vehicle. This is mainly determined by how competent you are in driving a vehicle
+            and how well you maintain control of the vehicle. The use of alcohol and drugs can impair driving skills.
+   </p>
+   <h3>
+    Fitness to drive
+   </h3>
+   <p>
+    The physical or mental fitness to operate a vehicle. Physical or mental disorders such as problems with
+            limbs or neurological conditions can impact your fitness to drive.
+   </p>
+  </div>
+  <p>
+   If you are stopped by a police officer or another authorised person who deems you unfit to drive, the officer or
+        authorised person may confiscate your driving licence. This could be due to reckless driving or when it is clear
+        that you are under the influence of alcohol, drugs, or medication. However, this can also happen if you appear
+        physically or mentally unwell. Driving skills and fitness to drive may also decline with age.
+  </p>
+  <p>
+   If your driving licence is confiscated for one of the above reasons, this will be reported to the CBR. The CBR
+        will then decide how to determine your eligibility to continue driving. Co-operation is mandatory. If you refuse
+        to co-operate with this process, your driving licence will be declared invalid.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_b3b030a3d0d54d6c9638cb890c681133~mv2.jpg"/>
+    <figcaption>
+     <em>
+      If there are any doubts about your driving ability, then you may be subject to an
+                    examination by an independent specialist. If you refuse to co-operate, your driving licence will be
+                    declared invalid.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   CBR course or medical examination
+  </h2>
+  <p>
+   The CBR has various options for determining your fitness or ability to drive:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Medical examination of driving fitness
+    </strong>
+    <p>
+     Examination carried out by an independent specialist such as an ophthalmologist, neurologist, or
+                cardiologist.
+    </p>
+   </li>
+   <li>
+    <strong>
+     Driving test to examine driving skills or fitness
+    </strong>
+    <p>
+     This test can follow a medical examination. You will drive alongside a specially trained examiner to
+                determine whether it is sensible for you to continue driving. Depending on the circumstances, this test
+                may be done with a lesson car or your own car.
+    </p>
+   </li>
+  </ul>
+  <p>
+   The CBR can also impose a compulsory course. This includes courses related to the use of alcohol or drugs:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     LEMA (Light Educational Measure Alcohol and traffic)
+    </strong>
+    <p>
+     Is imposed on drivers who have been arrested related to driving under the influence. This is a
+                blood-alcohol level of 0.5-0.8 per mille (220-350 μg/l) for new drivers and a blood alcohol-level of
+                0.8-1.0 per mille (350-440 μg/l) for experienced drivers.
+    </p>
+   </li>
+   <li>
+    <strong>
+     EMA (Educational Measure Alcohol and traffic)
+    </strong>
+    <p>
+     Is imposed on drivers with a higher blood-alcohol level or those caught for a second time for driving
+                under the influence.
+    </p>
+    <li>
+     <strong>
+      EMD (Educational Measure Drugs and traffic)
+     </strong>
+     <p>
+      Is imposed at proven drug use in traffic.
+     </p>
+    </li>
+   </li>
+  </ul>
+  <p>
+   And courses related to speeding and other anti-social behaviour:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     LEMG (Light Educational Measure Behaviour and traffic)
+    </strong>
+    <p>
+     Is imposed for speeding. This applies when you drive between 50 and 59 km/h faster than permitted (even
+                from 30 km/h at roadworks).
+    </p>
+   </li>
+   <li>
+    <strong>
+     EMG (Educational Measure Behaviour and traffic)
+    </strong>
+    <p>
+     Is imposed for anti-social and dangerous behaviour, such as tailgating, cutting off other road users,
+                driving through red lights or driving faster than permitted from 60 km/h onwards.
+    </p>
+   </li>
+  </ul>
+  <p>
+   These alcohol, drugs and behavioural courses are compulsory and entirely at your own expense. In addition to
+        this course, you will usually also receive a (considerable) fine. If you do not take the course (in full) or do
+        not pay for it, your driving licence will be invalidated.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

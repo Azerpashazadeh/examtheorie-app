@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+          
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+    <h1>
+   Gebruik van verlichting tijdens het rijden
+  </h1>
+  <p>
+   Voertuigverlichting is bedoeld om in het donker beter te zien en vooral beter gezien te worden door anderen. Soms is verlichting verplicht en soms niet. Bestuurders wordt echter aangeraden om zowel overdag als ’s nachts passende verlichting te gebruiken.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Dag
+   </h3>
+   <p>
+    De periode tussen zonsopgang en zonsondergang.
+   </p>
+   <h3>
+    Nacht
+   </h3>
+   <p>
+    De periode tussen zonsondergang en zonsopgang.
+   </p>
+  </div>
+  <h2>
+   Dimlicht
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Dimlicht is witte of gele verlichting aan de voorkant van het voertuig en verlicht een groot deel van de weg vóór het voertuig. Het schijnt niet recht vooruit en verblindt normaal gesproken niet. Dimlicht is altijd toegestaan.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_28a85b546110446480d643461cabf231~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Het gebruik van dimlicht is overdag bij slecht zicht en ’s nachts verplicht. Dit geldt voor bestuurders van motorvoertuigen, alle soorten bromfietsen en bestuurders van gemotoriseerde gehandicaptenvoertuigen. Zet het dimlicht ook ruim vóór het inrijden van een tunnel aan.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Dimlicht verlicht een groot deel van de weg zonder tegenliggers te verblinden." src="https://static.wixstatic.com/media/4b688f_a7add78c241d463abf490de0095ba238~mv2.jpg"/>
+     <figcaption>
+      Dimlicht verlicht een groot deel van de weg vóór het voertuig zonder tegenliggers te verblinden.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Dagrijverlichting
+  </h2>
+  <p>
+   Dagrijverlichting is aanwezig op alle nieuwe personenauto’s. In veel gevallen bestaat dagrijverlichting uit LED-verlichting naast, onder of rondom de koplamp. Dagrijverlichting mag alleen worden gebruikt als dimlicht niet verplicht is en als er geen andere verlichting aan de voorzijde is ingeschakeld.
+  </p>
+  <p>
+   Bij de meeste personenauto’s brandt de dagrijverlichting wanneer de lichtschakelaar uit staat. Zodra je andere verlichting inschakelt, gaat de dagrijverlichting automatisch uit.
+  </p>
+  <p>
+   Dagrijverlichting is bedoeld om voertuigen altijd goed zichtbaar te houden, ook wanneer het dimlicht niet is ingeschakeld. Nadeel bij oudere personenauto’s is dat de achterlichten niet altijd samen met de dagrijverlichting branden. Daardoor is de auto van achteren minder goed zichtbaar. Bij nieuwe personenauto’s is het verplicht dat de achterlichten samen met de dagrijverlichting branden.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Dagrijverlichting maakt het voertuig vooral zichtbaar en verlicht slechts een kleiner deel van de weg." src="https://static.wixstatic.com/media/4b688f_90f817aebc984256b0a50cc66347739c~mv2.jpg"/>
+     <figcaption>
+      Dagrijverlichting maakt het voertuig vooral zichtbaar en verlicht een kleiner deel van de weg vóór het voertuig.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Grootlicht
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Als er met alleen dimlicht onvoldoende zicht is, kun je grootlicht gebruiken. Grootlicht is niet toegestaan:
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_140d0e7e4dba43f58f3b1a90d2f0d022~mv2.png"/>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     Overdag;
+    </p>
+   </li>
+   <li>
+    <p>
+     Bij het tegemoetkomen van andere weggebruikers;
+    </p>
+   </li>
+   <li>
+    <p>
+     Wanneer je dicht achter een ander voertuig rijdt.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Grootlicht verlicht veel meer van de weg en omgeving en kan tegenliggers en voorliggers verblinden." src="https://static.wixstatic.com/media/4b688f_1f0ce996236e45d88348502b57c769b9~mv2.jpg"/>
+     <figcaption>
+      Grootlicht verlicht veel meer van de weg en de omgeving. De felle bundel verblindt tegenliggers. Ook bestuurders van voertuigen vóór je kunnen worden verblind.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Daarnaast is het gebruik van grootlicht onverstandig bij slecht weer zoals hevige regen, sneeuw of mist. Je wordt dan waarschijnlijk door je eigen verlichting verblind.
+  </p>
+  <p>
+   Grootlicht is felle verlichting die recht vooruit schijnt. Daarom verblindt het snel. Word je verblind door een tegenligger met grootlicht, geef dan met grootlicht een kort seinsignaal om te waarschuwen.
+  </p>
+  <p>
+   Heb je last van grootlicht van een voertuig achter je, dan is waarschuwen lastig. Je kunt wel de binnenspiegel dimmen door de spiegel in de dimstand te zetten. Veel luxe personenauto’s hebben tegenwoordig een automatisch dimmende binnenspiegel. Bij sommige personenauto’s dimmen zelfs de buitenspiegels mee.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Zet de binnenspiegel in de dimstand als je wordt verblind door achteropkomend verkeer; in sommige auto’s dimt de spiegel automatisch." src="https://static.wixstatic.com/media/4b688f_65b2ade345334c019a0767a3734bd0b7~mv2.jpg"/>
+     <figcaption>
+      Word je verblind door verlichting van voertuigen achter je, zet dan met de hendel eronder de binnenspiegel in de dimstand. In sommige personenauto’s dimt de binnenspiegel automatisch.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Mistlampen vóór
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Zoals de naam al zegt, zijn deze lampen vooral bedoeld voor gebruik bij mist. Ze mogen alleen worden gebruikt als het zicht ernstig wordt belemmerd door mist, sneeuw of regen. Naast het mistlicht mag je óf dimlicht óf stadslicht gebruiken. Bij zeer dichte mist kan zelfs dimlicht een verblindend effect hebben en is het in combinatie met mistlampen niet verplicht.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_b89d36dfee89427aba9416d0dd167307~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Mistlampen vóór zijn naar beneden gericht en verblinden daardoor niet. Nadeel is dat het licht alleen dicht bij de personenauto schijnt. Niet alle personenauto’s zijn uitgerust met een mistlamp vóór.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Mistlamp vóór verlicht de weg vlak vóór het voertuig en schijnt deels onder de mistbanken door." src="https://static.wixstatic.com/media/4b688f_16eac050f3c2449abddd56b88d09ed7d~mv2.jpg"/>
+     <figcaption>
+      Mistlamp vóór verlicht de weg vlak vóór het voertuig. Doordat de lampen laag zitten, schijnen ze deels onder de mistbanken door.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Mistachterlicht
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Het mistachterlicht bestaat uit één of twee felle rode lampen aan de achterzijde van de personenauto. Omdat deze zeer fel zijn, worden ze soms verward met het remlicht. Omdat het mistachterlicht zo fel is, mag het alleen worden gebruikt bij zeer slecht zicht. Dat is wanneer het zicht minder dan 50 meter is.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_3085c92373664e3fb3214cade99bfa42~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Reflectorpaaltjes langs de weg staan doorgaans 50 meter uit elkaar. Rijd je een reflectorpaaltje voorbij en zie je pas het daaropvolgende paaltje, dan kun je het mistachterlicht inschakelen.
+  </p>
+  <p>
+   Het is ook belangrijk om te weten dat dit alleen is toegestaan bij mist of sneeuw. Bij regen is het gebruik van het mistachterlicht niet toegestaan, omdat het achteropkomend verkeer kan verblinden. In het dashboard gaat een controlelampje branden wanneer je het mistachterlicht inschakelt. Zo kun je het niet per ongeluk aan laten staan.
+  </p>
+  <h2>
+   Stadslichten
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Stadslichten geven weinig licht. Het zijn witte of gele lampen aan de voorzijde van het voertuig. In de meeste personenauto’s staat op de lichtschakelaar de stand voor stadslicht tussen “UIT” en dimlicht. Zoals al genoemd, mogen stadslichten in combinatie met mistlampen vóór gebruikt worden.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_6c768180634d45e0a8e2f2e89f62af78~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Verder worden stadslichten zelden gebruikt. Meestal zijn de stadslichten hetzelfde als het parkeerlicht.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Stadslichten geven weinig licht en zijn vaak hetzelfde als parkeerlichten." src="https://static.wixstatic.com/media/4b688f_6acab0eaa996470295e6fae089048a7e~mv2.jpg"/>
+     <figcaption>
+      Stadslichten geven weinig licht. Ze zijn vaak dezelfde lampen als parkeerlichten.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Achterlichten
+  </h2>
+  <p>
+   Dit zijn de normale rode lampen aan de achterkant van de personenauto. Deze moeten altijd branden wanneer grootlicht of dimlicht, stadslichten of mistlampen vóór zijn ingeschakeld. Deze lampen verblinden normaal gesproken niet en zijn minder fel dan de remlichten en het mistachterlicht. Bij de nieuwste personenauto’s branden deze lampen ook wanneer de dagrijverlichting aan is.
+  </p>
+  <h2>
+   Kentekenplaatverlichting
+  </h2>
+  <p>
+   Dit is witte verlichting die de kentekenplaat aan de achterzijde verlicht. Net als de achterlichten moet de kentekenplaatverlichting ook branden wanneer grootlicht of dimlicht, stadslichten of mistlampen vóór zijn ingeschakeld.
+  </p>
+  <h2>
+   Remlichten
+  </h2>
+  <p>
+   Het remlicht bestaat uit drie felle rode lampen die gaan branden zodra je het rempedaal bedient. Het derde remlicht bevindt zich meestal boven of onder in het midden van de achterruit. Omdat remlichten zo fel zijn, moet je proberen onnodig remmen te vermijden. Telkens wanneer de remlichten aangaan, kan dit bij achteropkomend verkeer een schrikreactie veroorzaken. Laat daarom tijdig het gas los en houd voldoende afstand.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Remlichten zijn belangrijk voor communicatie in het verkeer maar kunnen irriteren bij onnodig gebruik." src="https://static.wixstatic.com/media/4b688f_3dfb46f9b6624ed7a3e60141983da55d~mv2.jpg"/>
+     <figcaption>
+      Remlichten zijn belangrijk voor communicatie in het verkeer. Omdat ze zo fel zijn, kunnen ze bij onnodig gebruik irritatie veroorzaken.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Het achteruitrijlicht waarschuwt weggebruikers achter het voertuig dat het gaat achteruitrijden." src="https://static.wixstatic.com/media/4b688f_ae8b82f2a11a427c927197f5a7d196a7~mv2.jpg"/>
+     <figcaption>
+      Het achteruitrijlicht waarschuwt weggebruikers achter het voertuig dat er wordt achteruitgereden.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Achteruitrijlichten
+  </h2>
+  <p>
+   Dit zijn de witte of gele lampen aan de achterkant van een personenauto die gaan branden zodra je de auto in de achteruitversnelling zet. Ze zijn bedoeld om het verkeer achter je te waarschuwen dat je achteruit gaat rijden. Een personenauto kan zijn uitgerust met één of twee achteruitrijlichten.
+  </p>
+  <h2>
+   Bijzondere verlichting
+  </h2>
+  <p>
+   Naast al deze verlichting kan ook andere verlichting aanwezig zijn tijdens het gebruik van dimlicht of mistlamp vóór. Moderne personenauto’s zijn bijvoorbeeld steeds vaker uitgerust met bochtverlichting. Deze verlichting draait mee in de bocht of schakelt in zodra je stuurt. Zo worden de bochtranden in het donker beter zichtbaar.
+  </p>
+  <h2>
+   Overige verlichting
+  </h2>
+  <p>
+   Extra verlichting aan een voertuig toevoegen is niet altijd toegestaan. Het vervangen van normale verlichting door xenonlampen of LED-verlichting kun je niet zomaar zelf doen. Wil je toch meer verlichting toevoegen of verlichting wijzigen, vraag dan advies aan iemand met vakkennis. Zeker niet alle verlichting die verkocht wordt, is toegestaan op personenauto’s.
+  </p>
+  <h2>
+   Aanhangwagenverlichting
+  </h2>
+  <p>
+   Net als het trekkend voertuig moet een aanhangwagen overdag bij slecht zicht en ’s nachts verlichting voeren. Deze verlichting bestaat uit rode achterlichten, verlichting van de kentekenplaat en witte stadslichten aan de voorzijde. Deze stadslichten hoeven alleen aanwezig te zijn bij aanhangwagens die breder zijn dan 1,60 meter.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

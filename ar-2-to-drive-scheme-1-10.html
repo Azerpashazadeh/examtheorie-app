@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+        .vertical-line2 {
+            width: 5px;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* sağa hizala */
+            bottom: 0;
+        }
+
+
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            direction: rtl;
+            /* sağdan sola yazım yönü */
+            position: relative;
+        }
+
+        .dash-list li {
+            position: relative;
+            padding-right: 20px;
+            /* metin ile işaret arasında boşluk */
+            list-style: none;
+            /* varsayılan işaretleri kaldır */
+        }
+
+        .dash-list li::after {
+            content: "-";
+            position: absolute;
+            right: 0;
+            /* sağa hizala */
+            top: 0;
+            color: black;
+            font-size: 16px;
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        نظام 2toDrive
+    </h2>
+    <p>
+        هو نظامٌ خاص لرخص قيادة سيارات الركّاب يخفِّض السنّ الدنيا للحصول على الرخصة من 18 إلى 17 عامًا. صُمِّم هذا
+        النظام لخفض عدد ضحايا الطرق بين الفئة العمرية 18–24 عامًا، وهي فئةٌ معروفة بسلوك قيادةٍ أكثر مخاطرةً بسبب قدرةٍ
+        أقل على توقّع العواقب المحتملة؛ إذ كثيرًا ما يُقلّلون من شأن العواقب. ويُشار إلى ذلك أيضًا باسم «قبولٍ أعلى
+        للمخاطر».
+    </p>
+    <p>
+        بموجب نظام 2toDrive يمكنك أداء اختبار القيادة قبل عامٍ من الموعد المعتاد، وبعده تستطيع قيادةَ سيارة برفقة
+        مُدرِّب (مشرف). ويمكن أن يكون المُدرِّب أحد الوالدين، أو عمًّا/خالًا أو عمّةً/خالة، أو حتى جارًا. يمكنك تسجيل
+        مُدرّبٍ واحد على الأقل وبحدٍّ أقصى خمسة مُدرّبين. وتُدوَّن أسماء هؤلاء الأشخاص على «بطاقة المشرف» التي يجب أن
+        تكون بحوزتك أثناء القيادة.
+    </p>
+    <p>
+        ولأنك تحصل أيضًا على رخصة قيادة «الموبيد» مع رخصة سيارة الركّاب، يُسمح لك بقيادة جميع أنواع الدراجات النارية
+        الخفيفة فور استلام الرخصة. ولا تحتاج إلى مشرفٍ لقيادة الموبيد.
+    </p>
+    <div class="important-words2">
+        <div class="text-content">
+            <div class="vertical-line2">
+            </div>
+            <h3>
+                2toDrive
+            </h3>
+            <p>
+                نظامٌ يُتيح لمن بلغوا 17 عامًا الحصولَ على رخصة القيادة وقيادةَ سيارةٍ تحت الإشراف حتى بلوغهم 18 عامًا.
+                ينطبق هذا النظام في هولندا فقط. وبمجرد بلوغ السائق 18 عامًا تنتهي أهليته للنظام، وعندها يُسمح له
+                بالقيادة بشكلٍ مستقل (بما في ذلك خارج البلاد).
+            </p>
+        </div>
+        <div class="image-content">
+            <img alt="صورة الرخصة"
+                src="https://static.wixstatic.com/media/4b688f_6cc82b76a6504ca9b07edadc04451362~mv2.png" />
+        </div>
+    </div>
+    <h2>
+        متطلبات المُدرّب (المشرف)
+    </h2>
+    <p>
+        يجب أن يستوفي المُدرّبون عددًا من المتطلبات:
+    </p>
+    <ul>
+        <li>
+            يجب أن يحملوا رخصةَ سيارة هولندية سارية منذ خمس سنوات على الأقل.
+        </li>
+        <li>
+            يجب ألا يقل عمرهم عن 27 سنة.
+        </li>
+        <li>
+            يجب أن يكونوا قادرين على إبراز رخصة قيادة سارية عند التقدّم للحصول على البطاقة وأثناء الإشراف.
+        </li>
+        <li>
+            يجب أن يلتزموا بالقواعد نفسها المفروضة على السائقين ذوي الخبرة بخصوص الكحول والمخدّرات والأدوية أثناء عملهم
+            كمشرفين.
+        </li>
+        <li>
+            يجب ألا تكون قد صدرت بحقهم إداناتٌ خطيرة بمخالفاتٍ مرورية خلال السنوات الأربع الماضية. مثلًا يجب ألا:
+        </li>
+        <ul class="dash-list">
+            <li>
+                تكون بحقهم إدانةٌ جنائية لمخالفةٍ مرورية؛
+            </li>
+            <li>
+                يكونوا قد ارتكبوا مخالفةً ترتّب عليها دورةٌ إلزامية EMG أو (L)EMA؛
+            </li>
+            <li>
+                يكونوا قد خضعوا لاختبار الكفاءة أو اللياقة للقيادة.
+            </li>
+        </ul>
+    </ul>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_86cbc4327b37445e9d565b5584bba605~mv2.jpg">
+            <figcaption>
+                <em>
+                    الوجه الأمامي لبطاقة مشرف 2toDrive
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_0436287ce4514a4bbed8dd21ac0becaa~mv2.jpg" />
+            <figcaption>
+                <em>
+                    الوجه الخلفي لبطاقة مشرف 2toDrive
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        متطلبات السائق ضمن 2toDrive
+    </h2>
+    <p>
+        يخضع السائق أيضًا لمتطلباتٍ معيّنة. فعلى سبيل المثال، لا يمكنك التقدّم للحصول على رخصة القيادة قبل عيد ميلادك
+        الثامن عشر من دون طلب «بطاقة المشرف» أولًا.
+    </p>
+    <p>
+        بالإضافة إلى ذلك:
+    </p>
+    <ul>
+        <li>
+            يُحظر القيادةُ من دون بطاقة المشرف ومن دون رخصة القيادة.
+        </li>
+        <li>
+            يُحظر القيادةُ من دون مُدرّب مُدرَجٍ على بطاقة المشرف. ويجب أن يكون المُدرّب قادرًا على إبراز إثبات هوية عند
+            الطلب.
+        </li>
+        <li>
+            ينطبق هذا النظام في هولندا فقط. وخارج هولندا لا يجوز لك القيادة قبل بلوغ 18 عامًا، لذا تذكّر هذا إذا كنت
+            تعيش قرب الحدود أو ستسافر في عطلةٍ خارج البلاد!
+        </li>
+    </ul>
+    <h2>
+        بعد عيد ميلادك ال
+        <sup>
+            th
+        </sup>
+        18
+    </h2>
+    <p>
+        إذا حصلتَ على رخصة القيادة ضمن نظام 2toDrive فيمكنك القيادةَ من دون إشرافٍ ابتداءً من عيد ميلادك الثامن عشر.
+        وتنتهي أهليتك للنظام عند بلوغك 18 عامًا، وعندها تكون بحوزتك رخصةُ قيادةٍ قياسية. وهذا يعني أنه يمكنك القيادة
+        خارج البلاد أيضًا.
+    </p>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

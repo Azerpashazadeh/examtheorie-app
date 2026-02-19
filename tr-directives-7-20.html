@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+            margin-top: 30px;
+            margin-bottom: -10px;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 170px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+            margin-top: -10px;
+        }
+
+        .text3 strong {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: -8px;
+            margin-top: 40px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+
+        }
+
+        @media (max-width: 480px) {
+            .text3 strong {
+                font-size: 1.2rem;
+                margin-top: -7px;
+
+                margin-bottom: -10px;
+            }
+
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+                max-width: 150px;
+            }
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Talimatlar</h1>
+    <p>
+        Trafikte yetkili kişiler tarafından verilen talimatlar, mümkün olduğunca aşağıdaki şekilde verilmelidir. Trafik
+        kontrol görevlisi kavşağın ortasında yer alır.
+    </p>
+
+    <div class="container3">
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_3c7b09c9e25d4d65bfc8274491cea3a0~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>Genel dur işareti</strong>
+                <p>Bu talimat size yönelik verildiğinde durmak zorundasınız. Özellikle kavşaklarda kullanılmaz, ancak
+                    örneğin bir polis kontrolü için durmanız gerektiğinde kullanılabilir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_be65298693cf4e1e9140eab3cfae4b03~mv2.png"
+                alt="İlk Yardım Seti" class="image3">
+            <div class="text3">
+                <strong>Ön taraftan gelen trafik için dur işareti</strong>
+                <p>Bu dur işaretinde kolun uzatıldığını hayal etmek ve bunu bir bariyer olarak görmek en kolay
+                    yöntemdir. Eğer düz ileri giderseniz 'bariyere' çarpacak gibiyseniz durmanız gerekir. Bu durum
+                    trafik kontrol görevlisine ön taraftan yaklaştığınızda geçerlidir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_28450c00abd440c4aebf8102300a0654~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>Arka taraftan gelen trafik için dur işareti</strong>
+                <p>Bu dur işaretinde de kolun uzatıldığını hayal etmek ve bunu bir bariyer olarak görmek en kolay
+                    yöntemdir. Eğer düz ileri giderseniz 'bariyere' çarpacak gibiyseniz durmanız gerekir. Bu durum
+                    trafik kontrol görevlisine arka taraftan yaklaştığınızda geçerlidir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_b1b8f61f7d3447ebbf44d615c5c11bf6~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>Ön ve arka taraftan gelen trafik için dur işareti</strong>
+                <p>Bu, iki dur işaretinin bir kombinasyonudur. Sadece soldan ve sağdan gelen trafik devam edebilir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_38a50b70cfbf4f428203fa2ffd9f2da4~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>Sağdan gelen trafik için dur işareti</strong>
+                <p>Bu dur işaretinde de kolun uzatıldığını hayal etmek ve bunu bir bariyer olarak görmek en kolay
+                    yöntemdir. Sadece trafik kontrol görevlisine sağdan yaklaşırsanız koluna çarpacak gibi olursunuz ve
+                    durmanız gerekir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_a986b807aadc489b8e5be2e146f139a6~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>Serbest yöndeki trafik için dur işareti, durdurulan yönlerdeki trafiğe dikkat edin, kavşağı
+                    serbest bırakın</strong>
+                <p>Bu dur işareti genel dur işaretine çok benzer. Tek fark, kaldırılan elin avucunun başa dönük
+                    olmasıdır. Bu işaret, kavşaklarda araçların durması gerektiği durumlarda ve daha sonra duran
+                    araçların hareket etmesine izin verildiğinde kullanılır.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_ea99c49629364b1594e31ede27dde226~mv2.png"
+                alt="Yangın Söndürücü" class="image3">
+            <div class="text3">
+                <strong>Hızı azalt işareti</strong>
+                <p>Trafik kontrol görevlisi ön kolunu avuç içi aşağıya bakacak şekilde yukarı aşağı hareket ettirir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_7be24b5a9aeb44379de157adb8c6360c~mv2.png"
+                alt="İlk Yardım Seti" class="image3">
+            <div class="text3">
+                <strong>Kavşak kontrol işareti F10 kullanarak verilen dur işareti</strong>
+                <p>Kavşak görevlileri (lollipop adamları veya kadınları) sadece sürücüleri durdurmaya yetkilidir. Başka
+                    talimatlar veremezler. Çoğu durumda bu talimatlar, bu resimdeki gibi bir tabela ile verilir.</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7adf3a07953540238ccb931bb0e41348~mv2.jpg"
+                    alt="Yan hava yastığı arızası">
+            </figure>
+        </div>
+    </div>
+    <p>
+        Bu durumda trafik kontrol görevlisi, ders aracının bulunduğu tarafta sol kolunu kaldırmıştır. Bu nedenle, ders
+        aracı gitmeyi planladığı yönden bağımsız olarak durmalıdır. Mavi araç ise herhangi bir yönde devam edebilir.
+    </p>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_12c15022eafd4f02b114e0955163b2f5~mv2.jpg"
+                    alt="Yan hava yastığı arızası">
+            </figure>
+        </div>
+    </div>
+    <p>
+        Bu durumda trafik kontrol görevlisi, mavi aracın bulunduğu tarafta sağ kolunu kaldırmıştır. Bu nedenle, mavi
+        araç gitmeyi planladığı yönden bağımsız olarak durmalıdır. Ders aracı ise herhangi bir yönde devam edebilir.
+    </p>
+    <div class="important-words2">
+        <p>
+            Gerçek hayatta başka işaretler verilebilir. Her zaman sağduyunuzu kullanın. İşaretler hangi şekilde
+            verilirse verilsin, yetkili bir kişi tarafından verildiği sürece bu talimatlara uymanız zorunludur.
+        </p>
+    </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

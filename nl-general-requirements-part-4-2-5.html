@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+      
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 40px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+
+
+        .images-container5 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1 1 calc(20% - 20px);
+            /* 5 resim için her birine %20 genişlik veriyoruz, boşlukları hesaba katarak */
+            min-width: 50px;
+            /* Tarayıcı küçüldükçe resimlerin alta düşeceği minimum genişlik */
+        }
+
+        .images-container5 img {
+            width: 50%;
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 700px) {
+            .images-container5 figure {
+                flex: 1 1 calc(33.33% - 20px);
+                /* 1200px altında 3 resim yan yana */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .images-container5 figure {
+                flex: 1 1 calc(50% - 20px);
+                /* 900px altında 2 resim yan yana */
+            }
+        }
+
+        @media (max-width: 300px) {
+            .images-container5 figure {
+                flex: 1 1 80%;
+                /* 300px altında resimler tek tek dizilir */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Algemene eisen - deel 4
+  </h2>
+  <h2>
+   Verlichtingseisen
+  </h2>
+  <p>
+   Om zowel in de auto als op de weg voldoende zicht te behouden, moeten personenauto’s met specifieke verlichting zijn uitgerust.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Achterlicht (rood)
+   </h3>
+   <p>
+    Vanuit de achterzijde gezien geeft dit de aanwezigheid en de breedte van het voertuig aan.
+   </p>
+   <h3>
+    Achteruitrijlicht (wit of geel)
+   </h3>
+   <p>
+    Licht bedoeld om de weg achter het voertuig te verlichten en andere weggebruikers te waarschuwen dat het voertuig achteruitrijdt.
+   </p>
+   <h3>
+    Dimlicht (wit of geel)
+   </h3>
+   <p>
+    Licht om de weg vóór het voertuig te verlichten zonder andere weggebruikers te verblinden of te hinderen.
+   </p>
+   <h3>
+    Grootlicht (wit of geel)
+   </h3>
+   <p>
+    Licht dat de weg vóór het voertuig over een grote afstand verlicht.
+   </p>
+   <h3>
+    Mistachterlicht (rood)
+   </h3>
+   <p>
+    Licht dat het voertuig aan de achterzijde beter zichtbaar maakt bij dichte mist.
+   </p>
+   <h3>
+    Remlicht (rood)
+   </h3>
+   <p>
+    Licht dat weggebruikers achter het voertuig laat zien dat het voertuig bewust afremt.
+   </p>
+   <h3>
+    Richtingaanwijzer (amber/oranje)
+   </h3>
+   <p>
+    Licht bedoeld om andere weggebruikers te informeren dat de bestuurder van richting wil veranderen naar links of rechts.
+   </p>
+   <h3>
+    Stadslicht/standlicht (wit of geel)
+   </h3>
+   <p>
+    Vanaf de voorzijde gezien geeft dit de aanwezigheid van het voertuig aan en is het een indicatie van de breedte.
+   </p>
+   <h3>
+    Alarmlichten (zelfde kleur als richtingaanwijzers)
+   </h3>
+   <p>
+    Gelijktijdig knipperen van alle richtingaanwijzers, bedoeld om aan te geven dat het voertuig tijdelijk een bijzonder gevaar kan vormen voor andere weggebruikers.
+   </p>
+   <h3>
+    Achterkentekenplaatverlichting (wit)
+   </h3>
+   <p>
+    Verlichting die ervoor zorgt dat de achterste kentekenplaat in het donker leesbaar is. Deze verlichting mag niet naar achteren uitstralen.
+   </p>
+   <h3>
+    Retroreflector achter (rood)
+   </h3>
+   <p>
+    Een retroreflector zendt zelf geen licht uit, maar kaatst het invallende licht (bijv. van het dimlicht van een ander voertuig) terug. Hierdoor vallen stilstaande voertuigen ook op als ze geen verlichting hebben. De meeste retroreflectoren zijn tegenwoordig in de lichtunits geïntegreerd.
+   </p>
+  </div>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_c44057a9344248f394467fc8b855d0b9~mv2.jpeg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_9c885dc5649e45a8bceb9444311065c4~mv2.jpeg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Let op: de plaatsing van lampen kan per personenauto verschillen.
+  </p>
+  <h2>
+   Kleuren van verlichting
+  </h2>
+  <p>
+   De meeste voertuigen zijn voorzien van rode, amberkleurige en witte verlichting. Rood is doorgaans achter, wit voor en amber/oranje aan de zijkanten. Sommige verlichting wijkt hiervan af. Zo mag bepaalde verlichting voor ook geel zijn in plaats van wit en kan achter sommige verlichting amberkleurig zijn in plaats van rood.
+  </p>
+  <p>
+   Ezelsbruggetje: wit licht komt naar je toe, rood licht gaat van je af. Daarom is het achteruitrijlicht ook wit, ondanks dat het achter op het voertuig zit.
+  </p>
+  <h2>
+   Zijrichtingaanwijzers
+  </h2>
+  <p>
+   Richtingaanwijzers van een auto moeten vanuit alle richtingen goed zichtbaar zijn. Bij de meeste moderne personenauto’s lopen deze lampen om de hoeken van de auto, zodat de richtingaanwijzer ook vanaf de zijkant zichtbaar is. Als dat niet zo is, moeten extra richtingaanwijzers aan de zijkant zijn aangebracht.
+  </p>
+  <h2>
+   Toegestane verlichting
+  </h2>
+  <p>
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Bochtverlichting (wit)
+   </h3>
+   <p>
+    Vanuit de achterzijde gezien geeft dit de aanwezigheid en de breedte van het voertuig aan.
+   </p>
+   <h3>
+    Dagrijverlichting (wit)
+   </h3>
+   <p>
+    Licht bedoeld om de weg achter het voertuig te verlichten en andere weggebruikers te waarschuwen dat het voertuig achteruitrijdt.
+   </p>
+   <h3>
+    Mistlamp voor (wit of geel)
+   </h3>
+   <p>
+    Licht om de weg vóór het voertuig te verlichten zonder andere weggebruikers te verblinden of te hinderen.
+   </p>
+   <h3>
+    Parkeerlicht (voor wit, achter rood)
+   </h3>
+   <p>
+    Licht bedoeld om de aanwezigheid van een geparkeerd voertuig aan te geven. Meestal is dit dezelfde verlichting als het stads-/standlicht.
+   </p>
+  </div>
+  <h2>
+   Extra markeringsverlichting en reflectoren
+  </h2>
+  <p>
+   Voertuigen die groter dan gemiddeld zijn (extra lang of breed) moeten duidelijk als zodanig zijn gemarkeerd met verlichting en extra reflectoren om andere bestuurders te waarschuwen.
+  </p>
+  <ul>
+   <li>
+    Voertuigen breder dan 2,10 meter moeten voor twee witte markeringslichten en achter twee rode markeringslichten hebben.
+   </li>
+   <li>
+    Voertuigen langer dan 6 meter moeten aan de zijkant amberkleurige zijmarkeringslichten en amberkleurige retroreflectoren hebben. De achterzijde van deze zijmarkeringslichten en retroreflectoren mag rood zijn in plaats van amber.
+   </li>
+  </ul>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Markeringslichten
+   </h3>
+   <p>
+    Verlichting op de meest uiterste hoeken van een voertuig die de afmetingen van het voertuig aangeven (eind-omtrekmarkeringslichten).
+   </p>
+  </div>
+  <p>
+   Personenauto’s mogen ook worden voorzien van extra markeringslichten en retroreflectoren.
+  </p>
+  <h2>
+   Overige verlichtingseisen
+  </h2>
+  <p>
+   Naast de aanwezigheid en de voorgeschreven kleur moet voertuigverlichting aan nog andere eisen voldoen. Deze zijn:
+  </p>
+  <ul>
+   <li>
+    De verplichte lampen moeten goed werken en de verplichte retroreflectoren moeten goed reflecteren.
+   </li>
+   <li>
+    De lichtunits (armaturen) moeten onbeschadigd en deugdelijk aan het voertuig bevestigd zijn.
+   </li>
+   <li>
+    Het glas van de lichtunits mag niet gebroken of verwijderd zijn en moet voldoende licht doorlaten.
+   </li>
+   <li>
+    Lampen en retroreflectoren met dezelfde functie moeten symmetrisch zijn geplaatst en de lampen moeten dezelfde helderheid en afmeting hebben.
+   </li>
+   <li>
+    De doorzichtige delen van de verplichte lampen mogen maximaal 25% worden afgeschermd.
+   </li>
+   <li>
+    De hoogteregeling van het dimlicht moet goed werken. Dit is de handmatige hoogte-instelling van het dimlicht die u gebruikt wanneer het voertuig door zware belading achterover helt. U stelt de verlichting bij om tegenliggers niet te verblinden.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_f9c9eae941a9483589385f3a502ce3ee~mv2.jpg">
+     <figcaption>
+      <em>
+       Het glas van de lichtunits mag niet zo dof zijn dat er onvoldoende licht doorheen komt.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_dee8fb8c83e24ff6bb4273c84e9e53ae~mv2.jpg">
+     <figcaption>
+      <em>
+       Als de auto achter zwaar beladen is, komt de voorkant omhoog en kan het dimlicht verblinden. Met de hoogteregeling van de koplampen kunt u dit bijstellen.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <h2>
+   Controlelampjes op het dashboard
+  </h2>
+  <p>
+   Sommige lampen mogen nooit per ongeluk aanstaan. Als ze branden, moet de bestuurder zich daarvan bewust zijn. Hiervoor zijn waarschuwingslampjes op het dashboard aanwezig. Dit zijn:
+  </p>
+  <div class="images-container5">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_825312872d884040811a5cdb7a83af81~mv2.png"/>
+    <figcaption>
+     <em>
+      Grootlicht
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_d590dc72f56b49078f09e196f026b1c1~mv2.png"/>
+    <figcaption>
+     <em>
+      Mistlampen vóór
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 3" src="https://static.wixstatic.com/media/4b688f_388807b2e34e4d26ad42448f6e35856f~mv2.png"/>
+    <figcaption>
+     <em>
+      Mistachterlicht
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 4" src="https://static.wixstatic.com/media/4b688f_e92c9bdbb8ae41b0959bffff670add31~mv2.png"/>
+    <figcaption>
+     <em>
+      Richtingaanwijzers
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 5" src="https://static.wixstatic.com/media/4b688f_b29b6e207ca64ef48354bb9a52fe95bd~mv2.png"/>
+    <figcaption>
+     <em>
+      Alarmlichten
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Naast een controlelampje kan het inschakelen van de richtingaanwijzers ook door een geluidssignaal worden begeleid.
+  </p>
+  <h2>
+   Verboden verlichting en retroreflectoren
+  </h2>
+  <p>
+   Personenauto’s mogen geen andere verlichting of retroreflectoren voeren dan hierboven beschreven.
+  </p>
+  <p>
+   Aanwezige verlichting:
+  </p>
+  <ul>
+   <li>
+    mag niet verblinden, behalve het grootlicht;
+   </li>
+   <li>
+    mag niet knipperen, behalve de richtingaanwijzers, de alarmlichten en het noodremsignaal (de remlichten knipperen automatisch bij een noodstop).
+   </li>
+  </ul>
+  <p>
+   Wanneer een richtingaanwijzer aan staat, mogen de lampen aan die zijde van het voertuig knipperen.
+  </p>
+  <p>
+   Alle andere verlichting, zoals de blauwe zwaailichten op hulpverleningsvoertuigen, is verboden voor personenauto’s – ongeacht of ze aan of uit staan. Het uitgangspunt is dat uw voertuig nooit en op geen enkele manier op een voorrangs-/noodvoertuig mag lijken.
+  </p>
+  <p>
+   Interieurverlichting in personenauto’s mag geen licht naar buiten uitstralen.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_b40895fc50cd470ba4d6ed1634fec29c~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Gewone personenauto’s mogen niet met blauwe verlichting zijn uitgerust.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Bevestiging van aanhangwagens
+  </h2>
+  <p>
+   Als een personenauto met een trekhaak is uitgerust, moet deze deugdelijk bevestigd zijn en mag deze niet beschadigd, gebroken of gecorrodeerd zijn.
+  </p>
+  <h2>
+   Verplichte en toegestane geluidssignalen
+  </h2>
+  <p>
+   Personenauto’s moeten zijn voorzien van een goed werkende claxon met een vaste toonhoogte. Claxons die een melodie spelen, zijn niet toegestaan.
+  </p>
+  <p>
+   Personenauto’s mogen daarnaast zijn uitgerust met:
+  </p>
+  <ul>
+   <li>
+    een piepend achteruitrijsignaal;
+   </li>
+   <li>
+    een geluidssignaal bij elektrische personenauto’s dat klinkt tot een snelheid van 25 km/u;
+   </li>
+   <li>
+    een alarmsysteem met geluidssignaal.
+   </li>
+  </ul>
+  <p>
+   Alle andere geluidproducerende voorzieningen dan de drie hierboven beschreven zijn verboden op personenauto’s.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

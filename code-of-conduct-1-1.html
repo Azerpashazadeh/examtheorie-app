@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+      body {
+        font-family: "Trirong", serif;
+        line-height: 1.2;
+        margin: 0;
+        padding: 15px; /* Məzmunun kənarlara yapışmaması üçün */
+      }
+      
+          
+      h1,
+      h2 {
+        color: #a70000;
+      }
+      h3 {
+        color: #000000;
+      }
+      .important-words1, .important-words2 {
+        background-color: #f9c3ae;
+        padding: 15px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .vertical-line1 {
+        width: 4px;
+        height: 60%;
+        background-color: rgb(201, 17, 17);
+        position: absolute;
+        top: 80px;
+        left: 15px;
+      }
+      .vertical-line2 {
+        width: 4px;
+        height: 100%;
+        background-color: rgb(201, 17, 17);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+      .important-words1 h2, .important-words2 h2 {
+        color: #a70000;
+      }
+      .important-words1 ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 20px;
+      }
+      .important-words1 li, .important-words2 li {
+        margin-bottom: 1px;
+        padding-left: 20px;
+        text-indent: -20px;
+        list-style-position: inside;
+      }
+      .road-section {
+        margin-top: 30px;
+      }
+      .road-section img, .custom-image, .custom-centered-image {
+        width: 100%;
+        height: auto;
+      }
+      .custom-centered-image {
+        display: block;
+        margin: 20px auto;
+      }
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .image-container figure {
+        max-width: 48%;
+        margin: 0;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+      .image-container figcaption {
+        font-size: 0.6em;
+        color: #000000;
+        text-align: center;
+        margin-top: 5px;
+      }
+      .custom-button {
+        display: inline-block;
+        width: 140px;
+        height: 39px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        line-height: 39px;
+        text-decoration: none;
+        border-radius: 9px;
+        transition: background-color 0.3s ease;
+        margin-top: 70px;
+      }
+      .custom-button:hover {
+        background-color: blue;
+      }
+      @media (max-width: 550px) {
+        .image-container figure {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Code of Conduct</h2>
+    <div class="important-words1">
+      <div class="vertical-line1"></div>
+      <h3>Important Dutch words</h3>
+      <ul>
+        <li>
+          <strong>APK</strong> <br />Same as the MOT, mandatory periodic general
+          inspection of the vehicle.
+        </li>
+        <li>
+          <strong>Brommobiel</strong> <br />
+          Moped on three or four wheels with closed bodywork and a maximum
+          unladen weight of 350 kg. Also called microcar.
+        </li>
+        <li>
+          <strong>Snorfiets</strong> <br />Moped with a maximum construction
+          speed of 25 km/h.
+        </li>
+      </ul>
+    </div>
+    <p>
+      When you participate in traffic, you are required to adhere to certain
+      rules of conduct. These general rules are designed to:
+    </p>
+    <ul>
+      <li>keep roads safe;</li>
+      <li>protect road users and passengers;</li>
+      <li>ensure roads remain usable;</li>
+      <li>ensure traffic can move freely;</li>
+      <li>prevent or limit hinder and damage;</li>
+      <li>limit the negative impact of traffic on the environment;</li>
+      <li>prevent crime.</li>
+    </ul>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Roads</h3>
+      <p>
+        All roads and paths that public traffic can drive or walk on. This
+        includes bridges and tunnels. Paths and verges are also considered part
+        of the road.
+      </p>
+      <p>
+        This means that a road can be anything between two ditches or two walls.
+        Pavements are therefore also part of the road, just like cycle paths
+        that are separated from the road itself by a verge or pavement.
+      </p>
+      <img
+        src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png"
+        alt="Road Diagram"
+        class="custom-image"
+      />
+      <h3>Authorised Person</h3>
+      <p>
+        People authorised to regulate traffic and request official documents.
+        These are:
+      </p>
+      <li>Public prosecutors</li>
+      <li>Police officers</li>
+      <li>Military police</li>
+      <li>Civil servants from the government tax service</li>
+      <li>
+        Officials of the Dutch department of motor vehicles and the traffic
+        inspectorate
+      </li>
+      <li>
+        Officials of the Rijkswaterstaat (Dept. of waterways and public works)
+      </li>
+      <li>Investigating officers from various government departments</li>
+    </div>
+    <h2>Instructions</h2>
+    <p>
+      Every road user is obliged to follow instructions given by authorised
+      people.<br />
+      In addition, road users are also required to follow instructions given by
+      crossing guards - who may only stop drivers.
+    </p>
+    <div class="image-container">
+      <figure>
+        <img
+          src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg"
+          alt="Image 1"
+        />
+        <figcaption><em>Crossing guards can only stop drivers.</em></figcaption>
+      </figure>
+      <figure>
+        <img
+          src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg"
+          alt="Image 2"
+        />
+        <figcaption>
+          <em
+            >Military officers from the Netherlands Royal Millitary Police may
+            give instructions that you must adhere to. They may also ask to see
+            your official documents.</em
+          >
+        </figcaption>
+      </figure>
+    </div>
+    <h2>Mandatory co-operation</h2>
+    <p>
+      If you are stopped by a police officer or another authorised person, they
+      may ask to see certain documents. These documents must be in your
+      possession at all times, and you may not refuse a request to show them.
+      These documents include:
+    </p>
+    <ul>
+      <li>Your driving licence.</li>
+      <li>The vehicle’s registration certificate.</li>
+      <li>
+        The supervisor pass if you are driving under the 2toDrive scheme
+        (driving from 17 years of age).
+      </li>
+      <li>
+        A disabled parking card if you are driving a disabled vehicle or parking
+        in a disabled parking space.
+      </li>
+    </ul>
+    <p>
+      An authorised person may also require you to comply with an alcohol or
+      drug test. This means you have to comply with a breath test, eye
+      co-ordination and speech function test, and saliva swabs for drug
+      detection purposes.
+    </p>
+    <p>
+      You may even be required to submit to a blood test if you refuse a breath
+      test or if it is not possible to do a breath test.
+    </p>
+    <h2>Hindering or endangering</h2>
+    <p>
+      Most rules are detailed in the applicable legislation. For example, you
+      may not drive faster than the speed limit, you may not ignore traffic
+      signs, and you may not drive through red lights. However, there are many
+      other behaviours that could endanger other road users or impede the
+      regular flow of traffic that are not explicitly recorded in legislation. A
+      rule is therefore in place prohibiting road users from behaving in such a
+      way as to create or contribute to a dangerous situation on the road.
+      Obstructing or hindering other traffic is also prohibited. The cause of or
+      reason for these behaviours is irrelevant.
+    </p>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Kapstokartikel</h3>
+      <p>
+        Article 5 of the Road Traffic Act (also called ‘Kapstokartikel’)
+        prohibits road users from operating a vehicle in such a way that it
+        hinders traffic or causes danger to themselves or other road users. This
+        law provides a so-called ‘safety net’ which covers dangerous behaviour
+        that is not directly prohibited by traffic signs or road markings but
+        still constitutes a hinder or danger and for which you may still be
+        prosecuted.
+      </p>
+    </div>
+    <h2>Injury or death at-fault</h2>
+    <p>
+      In addition to not being allowed to cause hinder or dangerous situations,
+      road users should take care to avoid causing a traffic accident that could
+      injure or kill others.
+    </p>
+    <h2>Leaving the scene of an accident</h2>
+    <p>
+      Have you been involved in a traffic accident? Then you may not leave the
+      scene of the accident until you have exchanged your contact and vehicle
+      information with any other people involved or the police – regardless of
+      whether you were at fault or not.
+    </p>
+    <p>
+      Leaving the scene of an accident without providing your information is a
+      crime. You can mitigate this by voluntarily reporting to a police station
+      within 12 hours from when the accident occurred. Unless the police
+      arrested you as a suspect before then.
+    </p>
+    <div class="important-words2">
+      <p>
+        Leaving the scene of an accident while leaving an injured person without
+        aid is always a crime – even if you report to the police later.
+        Regardless of whether you were directly involved in the accident or not,
+        you are obliged to provide help if needed.
+      </p>
+    </div>
+    <h2>Racing on the road</h2>
+    <p>
+      Racing or competing with other drivers on public roads is prohibited. One
+      example of this is rapidly accelerating at traffic lights. If a road user
+      is caught doing this, both the driver and the vehicle owner are liable for
+      any damages.
+    </p>
+    <div class="important-words2">
+      <div class="vertical-line2"></div>
+      <h3>Driving licence confiscation</h3>
+      <p>
+        Police officers are authorised to confiscate your driving licence if you
+        are caught violating traffic regulations. Your licence will then be
+        forwarded to the public prosecutor.
+      </p>
+      <h3>Driving disqualification (driving licence suspended)</h3>
+      <p>
+        Being disqualified from driving means you are not allowed to operate
+        motor carriages for several weeks, months or even years. If you are
+        caught violating traffic regulations, a public prosecutor or judge may
+        disqualify you from driving. Driving disqualification may last up to two
+        years for less severe infractions and up to five years for serious
+        offences. The latter includes death or injury caused by dangerous
+        driving, driving under the influence of alcohol, and driving while
+        disqualified. If you commit another offence within a short time, these
+        penalties may be doubled.
+      </p>
+      <h3>Driving licence invalidation</h3>
+      <p>
+        If you commit several offences, or if you are ineligible to drive for
+        other reasons, your driving licence may be declared invalid. This means
+        you are no longer permitted to operate motor carriages for which your
+        licence is required. You will still be permitted to cycle, be a
+        passenger in a vehicle, and operate vehicles that do not require a
+        driving licence. Your licence may also be invalidated for one vehicle
+        category only, which means you will remain eligible to operate vehicles
+        in other categories.
+      </p>
+    </div>
+    <img
+      src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg"
+      alt="Image 1"
+      class="custom-centered-image"
+    />
+    <h2>Driving behaviour enforcement</h2>
+    <p>
+      If you are found in violation of traffic laws, your driving licence may be
+      confiscated. This means the police will take your licence and forward it
+      to the public prosecutor, who will then decide (within 10 days) whether to
+      withhold your licence or return it to you. In either case, a judge may be
+      asked to make the final decision, at which point you may be fined and/or
+      disqualified from driving. You will no longer be permitted to drive a
+      motor carriage for the duration of your disqualification.
+    </p>
+    <p>
+      Based on your behaviour, confiscation of your driving licence, may happen
+      if you:
+    </p>
+    <ul>
+      <li>exceed the speed limit by 50 km/h or more;</li>
+      <li>cause hinder or a dangerous situation.</li>
+    </ul>
+    <p>
+      The violation may also be reported to the CBR (Central Bureau for Driving
+      Proficiency), who will then determine your eligibility to continue
+      driving.
+    </p>
+    <div class="important-words2">
+      <p>
+        The abbreviation CBR stands for Centraal Bureau Rijvaardigheidsbewijzen,
+        or Central Bureau for Driving Proficiency. They decide whether you
+        qualify for a driving licence. They also decide whether you get to keep
+        your driving licence when your eligibility or driving skills are called
+        into question. The CBR oversees both theory and driving tests. Another
+        branch of the CBR is the BNOR; if you fail your driving test four times
+        consecutively, they will investigate further and determine your driving
+        capabilities.
+      </p>
+    </div>
+    <p>The CBR may be notified if you:</p>
+    <ul>
+      <li>
+        tailgate on the motorway (you do not keep proper distance to the vehicle
+        in front of you);
+      </li>
+      <li>cut off other road users;</li>
+      <li>drive through a red light;</li>
+      <li>exceed the speed limit by more than 50 km/h in normal situations;</li>
+      <li>
+        exceed the speed limit by more than 30 km/h where roadworks are
+        underway.
+      </li>
+    </ul>
+    <h2>Driving while disqualified</h2>
+    <p>
+      Operating a motor carriage while disqualified from driving is a criminal
+      offence. This is also the case if you operate a vehicle for which a
+      licence is required and your licence has been declared invalid.
+    </p>
+   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

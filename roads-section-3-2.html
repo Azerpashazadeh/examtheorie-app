@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #83B441;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #83B441;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words6 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words5 {
+            background-color: #E0EDCB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #83B441;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #83B441;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: -18px;
+            margin-top: 10px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Road sections</h2>
+    <p>Each category of road user has their own designated space on the road to facilitate safe participation in
+        traffic.</p>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Carriageway</h3>
+        <p>
+            Any section of road used by moving vehicles, except cycle and moped paths. Cycle lanes are part of the
+            carriageway! A carriageway is therefore the section between two pavements or verges.
+        </p>
+        <h3>Lane</h3>
+        <p>Part of the carriageway marked by solid or broken lines. It must be wide enough to accommodate passenger
+            cars. This means that cycle lanes are not separate lanes.</p>
+        <img src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png" alt="Road Diagram"
+            class="custom-image" />
+        <h3>Lane lime</h3>
+        <p>Line that divides carriageways into lanes travelling in one direction.</p>
+
+        <h3>Edge line</h3>
+        <p>Line on the outer edge of the carriageway.</p>
+
+        <h3>Axis line or centre line</h3>
+        <p> Line in the middle of the carriageway that divides the left and right sides of the carriageway - one for
+            each direction of travel.</p>
+
+        <h3>Hatched road markings (gores)</h3>
+        <p>Part of the road marked with diagonal lines. Drivers are not permitted to drive here.</p>
+
+        <h3> Dividing point</h3>
+        <p>White triangle on the road surface at, for example, the beginning and end of slip roads. Road users are not
+            permitted to drive here.</p>
+
+        <h3> Target group lane</h3>
+        <p>Lane intended for a specific traffic group, such as a bus lane. This is indicated by a sign or the word ‘BUS’
+            or ‘LIJNBUS’ painted on the road surface.</p>
+
+    </div>
+    <img src="https://static.wixstatic.com/media/4b688f_dea446c7a4db4f56b0c9ad9e9a949f8c~mv2.jpg" alt="Image 1"
+        class="custom-centered-image" />
+    <h2>Keep to the right</h2>
+    <p>A fundamental rule for all drivers is to keep to the right wherever possible. This does not mean you should
+        always drive in the rightmost lane. There is sometimes a good reason to drive in the left lane. However, if no
+        reason is present, keep as far to the right as possible.</p>
+    <p>On carriageways without lanes, this means driving to the right of the centre, if the carriageway is wide enough
+        to permit this. On carriageways with lanes, drive in the middle of the lane. If there are several lanes, take
+        the right lane first.</p>
+    <p>When passing cars parked on the right, if there is no oncoming traffic, there is no need to drive between the
+        parked cars. This leads to excessive unnecessary zigzagging. Drive in a straight line as much as possible, and
+        maintain enough space (approximately a door’s width) between your vehicle and the parked cars. This helps avoid
+        a collision should the door of a parked car open unexpectedly.</p>
+
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_2cb90d54a81b49bd976d2c7c341a70fb~mv2.jpg" alt="Image 1">
+            <figcaption><em>Try not to zigzag unnecessary, but drive in a straight line as much as possible.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <p>Keeping to the right is not required on and just before roundabouts and in traffic jams. In these cases, choose
+        the best option at your own discretion.</p>
+    <h2>Section of road for pedestrians</h2>
+    <p>A pedestrian’s place on the road is the pavement or footpath. If there is no pavement or footpath present,
+        pedestrians can use the cycle path, or the cycle/moped path. If there is no cycle path or cycle/moped path
+        present, pedestrians may use the verge or the far side of the carriageway.</p>
+    <p>Pedestrians using rollerblades, skateboards, or scooters are exempt from this rule and may use their own
+        discretion to determine whether they should use the pavement or footpath, or the cycle or cycle/moped path. Only
+        if none of these are present should they travel on the carriageway itself.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Cycle lane</h3>
+        <p>Section of carriageway marked with solid or broken lines and a <strong>pictogram of a bicycle.</strong> </p>
+        <ul>
+            <li>Cycle lanes with broken lines may be used by drivers other than cyclists and snorfietsers to pre-sort or
+                evade. Cyclists and snorfietsers must not be hindered.</li>
+
+            <li>Cycle lanes with a solid line may only be used by cyclists, snorfietsers, and disabled vehicles. As a
+                driver of a passenger car, use of this lane is prohibited - even for pre-sorting.</li>
+        </ul>
+    </div>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_5f1aeb0c1cd046d4bdb7656d4db5670f~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>A carriageway with a cycle lane, recognisable by the pictograms of bicycles on the road
+                    surface.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_405c597ce4064ba6be2971829230d8f2~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>A carriageway with a suggestion (cycle) lane. This type of lane has no pictograms and therefore no
+                    legal status.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <div class="important-words6">
+        <div class="text-content">
+            <div class="vertical-line2"></div>
+            <h3>Special mopeds</h3>
+            <p>
+                This group includes vehicles such as the Segway and the BSO bus. Drivers of these vehicles must maintain
+                the same position and speed limit as snorfietsers. They have no helmet obligation. However, there is a
+                minimum age limit of 16 years.
+            </p>
+        </div>
+        <div class="image-content">
+
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_fed339891a1f44f7bfc08d7495b39008~mv2.jpg"
+                    alt="Licence Image">
+                <figcaption style="font-size: small;">BSO bus</figcaption>
+            </figure>
+
+        </div>
+    </div>
+
+    <h2>Section of road for cyclists and snorfietsers</h2>
+    <p>Cyclists, snorfietsers and riders of special mopeds must use the mandatory cycle path or cycle/moped path. If
+        this is not present, they can use the carriageway. In some cases, snorfietsers are not permitted to use the
+        mandatory cycle path. However, this must be indicated by a sign.</p>
+    <p>Cyclists may also opt to use the non-mandatory cycle path. This path is off-limits for snorfietsers unless they
+        have switched off their internal combustion engine or have an electric motor.</p>
+
+
+    <div>
+        <div class="images-container5"> <!-- Resimleri saran div -->
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f3856fad46a24c97a3e189d1c7e7ffc2~mv2.png"
+                    alt="Warning airbag malfunction">
+                <figcaption>G-11<br> Mandatory cycle path</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_641e75f2ffd54135ae1ad9ad4525c4ac~mv2.png"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>G-12a<br> Mandatory cycle/moped path</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_738d2f97dbfe4ccfa818053b2eabd540~mv2.png"
+                    alt="Seat belt warning light">
+                <figcaption>G-13<br> Non-mandatory cycle path</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>Riders of bicycles with more than two wheels and/or bicycles with trailers, including loads wider than 0.75
+        metres, may opt to use the carriageway at any time. Such vehicles include wide cargo bikes or pedicabs.</p>
+
+    <div class="important-words1">
+        <p>In most cases, snorfietsers are subject to the rules applicable to cyclists. There are a number of important
+            exceptions to this. They must not use the non-mandatory cycle path when their internal combustion engine is
+            switched on. Snorfietsers are also prohibited from riding side by side or next to a cyclist.</p>
+
+    </div>
+
+    <div>
+        <div class="images-container5"> <!-- Resimleri saran div -->
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_04fce13aabf64b8bb4855fb995963c1c~mv2.jpg"
+                    alt="Warning airbag malfunction">
+                <figcaption>Cyclists are allowed to cycle side by side.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_31515c6af35d429e8ddf3709a65aba2d~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>A snorfietser is not allowed to ride next to a cyclist.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c9af66654a2c472594ab8aafa4c32c41~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>Snorfietsers are not allowed to ride side by side.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Three wheeled cargo moped (Dutch: brombakfiets)</h3>
+        <p>
+            Moped with two wheels at the front and one at the back. Intended only to transport the driver and cargo.
+            There may be a passenger behind the driver.
+        </p>
+    </div>
+
+    <h2>Section of road for moped riders (and speed pedelec drivers)</h2>
+
+    <p>Moped riders must use the mandatory cycle/moped path. If there is no cycle/moped path present, moped riders can
+        use the carriageway. This also applies to speed pedelec drivers, who are subject to the same rules.</p>
+    <p>Riders of mopeds with more than two wheels (such as cargo mopeds) and/or mopeds with a trailer, including loads
+        wider than 0.75 metres, may use the carriageway at any time.</p>
+    <p>A lack of mandatory cycle/moped paths in many built-up areas means moped riders are required to use the
+        carriageway. This is often indicated with the D-103 and D-104 signs. Moped riders should pass this sign on the
+        side of the arrow. Depending on which side of the road the sign is placed, this means they must enter the
+        carriageway from the cycle/moped path or vice versa.
+    </p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_2a13fa31944046cda5d7623969b94c89~mv2.png"
+                alt="Image 1" />
+            <figcaption><em>D-103
+                    Moped riders must pass the sign on the right.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_739e9a776e1f41e0ad3f68d433515bd0~mv2.png"
+                alt="Image 2" />
+            <figcaption>
+                <em>D-104
+                    Moped riders must pass the sign on the left. This is usually located where the moped rider has to
+                    enter the carriageway.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <h2>Section of road for disabled vehicles</h2>
+
+    <p>Disabled vehicle drivers may use their own discretion regarding the best section of road to use. This may be the
+        pavement or footpath, cycle path, cycle/moped path, or the carriageway. Disabled vehicles are also permitted to
+        use cycle lanes on carriageways.</p>
+    <p>The rules disabled vehicle drivers must follow depends on which part of the road they are driving on. If a
+        disabled vehicle driver is using the pavement or footpath, or crossing from one pavement to another, they are
+        subject to the rules applicable to pedestrians. The speed limit in this case is 6 km/h. If a disabled vehicle
+        driver is using a cycle path, cycle/moped path, or the carriageway, they are subject to the rules applicable to
+        drivers. This includes the speed limits applicable to moped riders.</p>
+
+    <h2>Section of road for horse riders</h2>
+    <p>Horse riders must use the bridle path. If there is no bridle path present, horse riders may use the verge or the
+        carriageway. Riding side by side on the carriageway is prohibited.</p>
+    <h2>Section of road for convoys, parades, and processions</h2>
+    <p>Groups of pedestrians may use the carriageway if walking in a large, organised group such as a convoy, parade, or
+        funeral procession. This is not mandatory, however.</p>
+    <h2>Section of road for all other drivers</h2>
+    <p>Any other driver not mentioned here may use the carriageway.</p>
+    <h2>Section of road with a wide central reservation</h2>
+    <p>Some carriageways are separated by a (wide) central reservation. In these cases, signs often indicate which
+        carriageway you should use. If no signs are present, use the right-hand carriageway as much as possible. Despite
+        the wide central reservation, this is just one and the same road where the best place to drive is as far to the
+        right as possible.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_a32b208cb3b54591bb01676275522861~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>If carriageways are separated by a wide central reservation, you normally use the right-hand
+                    carriageway.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1041b1b7aaa242488cd24f68e55c2a46~mv2.png"
+                alt="Image 2" />
+            <figcaption>
+                <em>Sometimes separate carriageways may be used in both directions. This is indicated by sign C-5.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+     <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

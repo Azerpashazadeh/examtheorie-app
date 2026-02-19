@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+            margin-bottom: 20px;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container3 strong {
+    display: block; /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+    margin-bottom: 7px; /* Altına 10 piksel boşluk ekler */
+    margin-top: 10px;
+}
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+        }
+
+        .text3 h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+            }
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+            margin-bottom: 15px;
+            margin-top: -5px;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+      
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .images-container6 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Resimler arasında eşit boşluk */
+            gap: 20px; /* Resimler arası boşluk */
+            width: 100%; /* Konteyner genişliği */
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center; /* Figcaption yazılarını ortalar */
+            flex: 1; /* Esnek yapıda genişlik dengeler */
+            max-width: 22%; /* Masaüstünde genişlik */
+        }
+
+        .images-container6 img {
+            width: 100%; /* Resim genişliği */
+            height: auto; /* Resmin orantısını korur */
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em; /* Figcaption yazı boyutu */
+            font-style: italic; /* Yazıları italik yapar */
+            color: #333; /* Figcaption yazı rengi */
+            margin-top: 5px; /* Resim ve yazı arasında boşluk */
+        }
+
+        /* Tablet görünüm (768px altında) - İkili sütun hizalama */
+        @media (max-width: 768px) {
+            .images-container6 figure {
+                max-width: 48%; /* İki sütun için genişlik */
+                flex-basis: 48%; /* İki sütun için esnek genişlik */
+            }
+        }
+
+        /* Küçük mobil görünüm (480px altında) - Tek sütun hizalama */
+        @media (max-width: 540px) {
+    .images-container6 {
+        justify-content: center; /* Ögeleri yatayda ortala */
+    }
+
+    .images-container6 figure {
+        max-width: 100%; /* Tek sütun için tam genişlik */
+        flex-basis: 100%; /* Esnek genişlik */
+    }
+}
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+
+
+
+
+      
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: -10px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dealing with accidents and breakdowns</h1>
+    <p>
+        Anyone who participates in traffic may sooner or later be involved in a breakdown or accident. It is important
+        to know what to do and what not to do in the event of these scenarios.
+    </p>
+    <h2>
+        Equipment
+    </h2>
+    <p>
+        Although it is not mandatory, useful equipment in a passenger car includes:
+    </p>
+
+
+
+
+    <div class="container3">
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_41d5d6cc7ea040269d09cadbaa69379b~mv2.jpeg" alt="Fire Extinguisher" class="image3">
+            <div class="text3">
+                <strong>A fire extinguisher</strong>
+
+                <p>For extinguishing small (beginning) fires. In the event of a large fire, exit the vehicle immediately and call the fire department.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_05cfcc2b8c1f482da70951ab77329905~mv2.jpeg" alt="First Aid Kit" class="image3">
+            <div class="text3">
+                <strong>A first aid kit</strong>
+                <p>In case of serious injury, pressure bandages can be life-saving. First aid kits, however, can be of little use with no knowledge of how to use the items contained. All drivers are therefore advised to take a first aid course, and regularly check the vehicle’s first aid kit for expiry dates and inventory of items.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_de39076849574454a729537f79e8a80d~mv2.jpeg" alt="Warning Triangle" class="image3">
+            <div class="text3">
+                <strong>A warning triangle</strong>
+                <p>In some cases when a vehicle comes to a stop, it may also present an obstacle that hinders other traffic. If this occurs and the hazard lights are not working, use of a warning triangle is mandatory. This also applies if the hazard lights are working but do not help in ensuring your vehicle can be seen in time by other road users.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_5c40b889fa134d309a71b5657249d9f4~mv2.jpeg" alt="First Aid Kit" class="image3">
+            <div class="text3">
+                <strong>A fluorescent safety vest</strong>
+                <p>In the event of a situation that results in drivers and/or passengers waiting at the side of the road, these vests help ensure passing drivers can see waiting persons. In some countries, wearing a fluorescent vest in the event of a breakdown or accident is mandatory for all occupants of the vehicle.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_01ef729ebd224147b1e2487f93d8c84d~mv2.jpeg" alt="First Aid Kit" class="image3">
+            <div class="text3">
+                <strong>One or more safety hammers</strong>
+                <p>In the event of driving into water in a passenger car, a safety hammer can be used to open the windows. Safety hammers can provide a quick exit for the vehicle occupants in case the doors will not open. Always strike the glass in the corner of the window, as this breaks more easily. Ideally, hang safety hammers on the car’s ceiling, above the two front doors. This will make them easier to reach in the event of a collision.</p>
+            </div>   
+
+    </div>
+
+
+    <h3>
+        European damage claim form (accident statement)
+    </h3>
+    <p>
+        Parties involved in an accident can fill out their information on a European damage claim form, which will then
+        be processed by the insurance company. All parties should fill in the front of this form - including signatures
+        - immediately following an incident. Divide the two sheets (the original and the transfer sheet) and take one
+        copy each. Fill in the back of the form at home and send this to your insurance company.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7ce6ef060fb74aeea7f8d8abee204947~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+            </figure>
+
+
+
+
+        </div>
+    </div>
+    <h2>
+        Using the hard shoulder
+    </h2>
+    <p>
+        The hard shoulder should only be used in the event of a breakdown or accident or other emergency situation.
+        However, it is not safe to remain on the hard shoulder for an extended period of time. If at all possible,
+        drivers are advised to continue via the hard shoulder to the nearest exit, car park, or petrol station.
+    </p>
+    <p>
+        If this is not possible, drivers should stay as far away from the road as possible. If necessary, in the verge.
+        The Directorate-General for Public Works and Water Management (Dutch: Rijkswaterstaat) may close a lane to
+        facilitate repairs or have the vehicle towed. Contact the emergency services should you require either of the
+        aforementioned.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_451920695e6d4c55afdd41c157efe4fd~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Due to the breakdown on the hard shoulder, the lane immediately next to it is also closed.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5c37e259b0f84dd5b13e4636a71d7ef5~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Do not stay in the vehicle if you have broken down on the hard shoulder. Find a spot behind
+                    the crash barrier.</figcaption>
+            </figure>
+
+
+
+
+        </div>
+    </div>
+
+    
+    <h2>
+        Accident or breakdown on the motorway
+    </h2>
+    <p>
+        In the event of an accident or breakdown on the motorway, attend to your own safety first. Never cross the
+        motorway, even if you are in the central reservation as a result of an accident. In this case, wait for
+        emergency services outside the vehicle, in the central reservation, as far away from the road as possible. Never
+        remove vehicle parts from the carriageway yourself; leave this to the police or employees of the
+        Directorate-General for Public Works and Water Management.
+    </p>
+    <h2>
+        Rules in the event of breakdown
+    </h2>
+    <ul>
+        <li>
+            <p>
+                Park the vehicle as safely as possible in a parking space, emergency area, or emergency lane, or in the
+                verge.
+            </p>
+        </li>
+        <li>
+            <p>
+                Think about your own safety and that of your passengers, preferably wear a safety vest. Get everyone out
+                of the car and take them to a safe place.
+            </p>
+        </li>
+        <li>
+            <p>
+                If necessary, place a warning triangle and/or turn on your hazard lights. In dark or poor visibility,
+                also turn on your side lights and rear lights.
+            </p>
+        </li>
+        <li>
+            <p>
+                Fix the problem if you can do it safely or contact the emergency or breakdown service.
+            </p>
+        </li>
+        <li>
+            <p>
+                Do not sit in the vehicle while waiting, but wait at a safe distance, for example behind the crash
+                barrier.
+            </p>
+        </li>
+    </ul>
+    <h2>
+        Rules at the scene of an accident
+    </h2>
+    <ul>
+        <li>
+            <p>
+                Always attend to your own safety first! Secure the accident scene if possible.
+            </p>
+        </li>
+        <li>
+            <p>
+                Alert the emergency services.
+            </p>
+        </li>
+        <li>
+            <p>
+                Provide first aid if necessary, always have this done by the person who has the most knowledge.
+            </p>
+        </li>
+        <li>
+            <p>
+                Try to avoid an overload of “helpers” by keeping spectators at bay and keep your distance if there is
+                enough help on site.
+            </p>
+        </li>
+        <li>
+            <p>
+                Listen to the emergency responders, follow their directions and do not get in their way!
+            </p>
+        </li>
+    </ul>
+    <h2>
+        Rules for driving into water
+    </h2>
+    <p>
+        Upon impact with water when driving a vehicle, the following should be considered:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Turn on all lighting</strong>
+                When the interior and exterior lighting is on, you can orient yourself better and the car is more
+                visible. Leave the keys in the ignition.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Remove the seatbelt</strong>
+                If you cannot get the belt off because it blocks, cut it off with the safety hammer blade.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Open or shatter the side window</strong>
+                Or if this fails, a different window. The sooner you get out of the car the better. In most modern cars,
+                the electric windows also continue to work in the water. If this no longer works, smash the glass with
+                the safety hammer or other heavy object. Always strike the glass in the corner of the window. This will
+                make it break easier. Leave the car.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Windows do not open and you are not able to break them</strong>
+                Only in that case you will have to wait until the car is also underwater from the inside. Only then can
+                you open the door. Take a big breath of air just before the car is flooded and then push the door open.
+                Leave the car.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Swim away from the car</strong>
+                First swim away from the car while facing the car. When you are at an appropriate distance, turn around
+                and swim to the side. Climb out of the water and call the emergency services.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_99e3342ea073454b9364f83abb461356~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+
+            </figure>
+
+
+        </div>
+    </div>
+    <h2>
+        Emergency services
+    </h2>
+    <p>
+        In the event of (possible) injury following an accident, always call emergency services on the emergency number,
+        112. While a person may appear unharmed, in some cases serious injury can develop unseen. Adrenaline can also
+        hide pain and therefore mask hidden injuries.
+    </p>
+    <p>
+        When calling emergency services, always provide your location and which type of emergency help you need (police,
+        ambulance, fire department). Always mention the street name and the hectometre sign at the side of the autoweg
+        or motorway if applicable, or another indicator of your location. Stay on the line until advised otherwise and
+        follow any instructions you are given.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6e41152dfb7645f5b4fa8cfd018ee844~mv2.png"
+                    alt="Warning side-airbag malfunction">
+
+            </figure>
+
+        </div>
+    </div>
+    <p>
+        If you need to report on which lane of the motorway an accident has occurred, count the lanes starting from the
+        central reservation. The left lane is the 1st lane. On a three-lane road, the right-hand lane is therefore lane
+        3.
+    </p>
+    <p>
+        In the event you require police assistance or have a question but no life-threatening situation is occurring,
+        call the national police line on 0900-8844.
+    </p>
+    <div class="important-words6">
+
+
+        <p>
+            Important telephone numbers:
+
+        </p>
+        <ul>
+            <li>
+                <p>
+                    Emergency:<strong>112</strong>
+                </p>
+            </li>
+            <li>
+                <p>
+                    Police non-emergency:<strong>0900-8844</strong>
+                </p>
+            </li>
+            <li>
+                <p>
+                    Animal police: <strong> 144
+                    </strong>
+                </p>
+            </li>
+        </ul>
+
+
+    </div>
+    <h2>
+        Providing first aid
+    </h2>
+    <p>
+        Never move injured persons unless absolutely necessary. This means only if not moving the victim is more
+        dangerous than moving them, for example if an accident has occurred on a railway track or there is a risk of
+        fire. The same applies to victims wearing a helmet. Helmets should never be removed unless leaving them on poses
+        a greater risk to the victim, for example if they need to vomit and thus cannot breathe.
+    </p>
+    <p>
+        Speak to and reassure the victim, ensure they do not move, and have another person hold the victim’s head in
+        place in the event of a risk of neck injury. If the victim is unconscious, check whether they are still
+        breathing. If the victim is not breathing, let the bystander with the most medical knowledge to resuscitate the
+        victim. Report this to the emergency services as well. If the victim is breathing but there is a risk of
+        vomiting or another respiratory problem, place them in the recovery position.
+    </p>
+    
+        <div class="images-container6">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6d9fb646cc7740929da302ecb54d5f2d~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Step 1</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_fcaa5dcfeeb94f7ab3c5d4f114ac9a43~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Step 2</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_74f691fe4ba34669a0ca0d5f5d55a4f8~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Step 3</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_26f6cd5d173349388b3bd007872281c2~mv2.jpeg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Recovery position</figcaption>
+            </figure>
+        </div>
+    
+    <p>
+        To be able to assist victims in practice, taking a first aid course is recommended.
+    </p>
+    <h2>
+        Single-vehicle accidents
+    </h2>
+    <p>
+        Reporting single-vehicle accidents is mandatory in the event of resulting damage to another person’s properly or
+        to municipal property. This should be reported to the property owner if possible, or the police. Leaving the
+        scene of a single-vehicle accident with resulting damage without providing your information is prohibited.
+    </p>
+
+    <p>
+        It is also mandatory to report collisions involving animals, such as cats, dogs, and wild animals such as deer.
+        In the latter case, drivers should call the animal police on 144. This is a special division within the normal
+        police.
+    </p>
+    <h2>
+        Hazardous substances
+    </h2>
+    <p>
+        In the event of an accident involving a vehicle transporting hazardous substances, it is important to find out
+        which substances the vehicle is transporting and what danger they present. This information is vital to
+        emergency services and others.
+    </p>
+    <p>
+        The hazard identification number (GEVI, also known as KEMLER number) indicates the danger presented by the
+        substance being transported. The substance identification number (STID) indicates which substance is being
+        transported. Every substance has its own code, for example 1203 for petrol and 1202 for diesel. The hazard
+        identification number (at the top) and substance identification number (bottom) are indicated on a sign on the
+        lorry.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_9a2967e37ac140f18392c6a42ab19ddd~mv2.png"
+                    alt="Warning side-airbag malfunction">
+
+
+            </figure>
+        </div>
+    </div>
+
+ <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

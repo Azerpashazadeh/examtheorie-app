@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+        /* Video için özel kapsayıcı */
+        .video-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /* Tam ekran genişliği */
+            padding: 10px;
+            /* Kenar boşlukları */
+            box-sizing: border-box;
+            margin-top: 25px;
+        }
+
+        .video-container {
+            width: 100%;
+            /* Video oynatıcının genişliği ekranın %98'ini kapsar */
+            max-width: 1400px;
+            /* Büyük ekranlarda maksimum genişlik */
+            aspect-ratio: 16 / 9;
+            /* En-boy oranını korur */
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            /* Video kapsayıcı genişliğini tamamen doldurur */
+            height: auto;
+            /* Oranları korur */
+            border: 2px solid #ccc;
+            /* Çerçeve */
+            border-radius: 10px;
+            /* Köşeleri yuvarlama */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Hafif gölge */
+        }
+
+
+
+
+
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+            margin-top: 1px;
+        }
+
+        .text3 h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: -10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+            
+        }
+
+        @media (max-width: 768px) {
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+                max-width: 300px;
+            }
+        }
+
+
+
+
+        .image-container1 {
+            display: flex;
+            align-items: center;
+            /* Resim ve metnin dikey olarak hizalanması için */
+            justify-content: space-between;
+            /* Resim ve metni yatayda ayırır */
+        }
+
+        .image-container1 img {
+            width: 80px;
+            /* Resmin genişliği belirlenir */
+
+            margin-left: 15px;
+            /* Metin ile resim arasında boşluk oluşturur */
+        }
+
+        .image-container1 div {
+            width: 90%;
+            /* Metin bloğunun genişliği belirlenir */
+        }
+
+        .image-container1 figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: -30px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Verkeerslichten
+  </h1>
+  <p>
+   Naast reguliere verkeerslichten zijn er nog een aantal andere lichten. Bijvoorbeeld tram- en buslichten, overweg- en bruglichten en rijstrooksignalen.
+  </p>
+  <h2>
+   Driekleurige verkeerslichten
+  </h2>
+  <p>
+   Dit zijn de verkeerslichten die je het meest in het dagelijkse verkeer tegenkomt. Ze staan bij grotere kruispunten en bestaan uit de kleuren rood, geel (in de volksmond “oranje”) en groen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_b496345a7b694e80a48e79f74a041989~mv2.png"/>
+     <figcaption>
+      Verkeerslicht alle richtingen
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_fdf9769eb51441e68f9eabaa4e550488~mv2.png"/>
+     <figcaption>
+      Verkeerslicht linksaf
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_21d5787b20cc4c89b59ad23464b1b977~mv2.png"/>
+     <figcaption>
+      Verkeerslicht fietsers en bromfietsers
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   De lichten kunnen zijn uitgevoerd als een cirkel, maar ook als een richtingpijl of een ander symbool zoals een fiets. In die laatste gevallen geldt het verkeerslicht alleen voor de aangegeven richting, of voor bestuurders van de aangegeven voertuigen. Een fietspictogram duidt hier ook aan: bromfietsen, snorfietsen, speedpedelecs en gehandicaptenvoertuigen.
+  </p>
+  <p>
+   De betekenis van de kleuren is als volgt:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Rood
+     </strong>
+     Stop. Doorrijden is verboden.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Geel
+     </strong>
+     Stop. Tenzij je zo dicht bij het verkeerslicht bent dat je niet op een verantwoorde manier kunt stoppen. Dan mag je doorrijden.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Groen
+     </strong>
+     Doorrijden. Niet doorrijden bij groen is verboden.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Knipperend geel licht
+     </strong>
+     Het verkeerslicht is buiten werking. Benader het kruispunt voorzichtig. In dit geval gelden weer de verkeersborden en markeringen die de voorrang regelen.
+    </p>
+   </li>
+  </ul>
+  <h2>
+   Rechtsaf bij rood licht
+  </h2>
+  <p>
+   In sommige gevallen staat er onder of naast het verkeerslicht een bord met tekst:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Fietsers mogen rechtsaf — Nederlands: ‘Rechtsaf voor fietsers vrij’
+     </strong>
+     Fietsers en snorfietsers mogen rechtsaf, ook bij rood licht.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Fietsers en bromfietsers mogen rechtsaf — Nederlands: ‘Rechtsaf voor (brom)fietsers vrij’
+     </strong>
+     Fietsers, snorfietsers, bromfietsers en speedpedelecrijders mogen rechtsaf, ook bij rood licht. Brommobielen niet!
+    </p>
+   </li>
+  </ul>
+  <p>
+   Let op! Bij rechtsaf door rood heeft verkeer dat groen heeft nog steeds voorrang.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_a4f7f9ad02814e6f934981f9d8191213~mv2.png"/>
+     <figcaption>
+      Fietsers en snorfietsers mogen hier bij rood rechtsaf.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_4d42449c69d44129bb4e3d9d7bf7ded2~mv2.png"/>
+     <figcaption>
+      Fietsers, snorfietsers, bromfietsers en speedpedelecrijders mogen hier bij rood rechtsaf.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Verkeerslicht met pijl of cirkel
+  </h2>
+  <p>
+   Afhankelijk van het kruispunt kan de vorm van de lampen verschillen. Soms is dit een richtingpijl, soms een cirkel. Bij grotere kruispunten met meerdere voorsorteerstroken vind je vaak lampen in de vorm van richtingpijlen. Bij kleinere kruispunten zonder voorsorteerstroken vind je vaak lampen in de vorm van een cirkel.
+  </p>
+  <div class="important-words6">
+   <div class="image-container1">
+    <div>
+     <p>
+      Als je rechts of links wilt afslaan bij een verkeerslicht met een
+      <strong>
+       ronde lamp
+      </strong>
+      , kan tegemoetkomend verkeer of verkeer naast je tegelijkertijd groen hebben. Dan gelden twee regels:
+     </p>
+     <ul>
+      <li>
+       <p>
+        Rechtdoorgaand verkeer op dezelfde weg gaat voor afslaand verkeer.
+       </p>
+      </li>
+      <li>
+       <p>
+        Bestuurders die rechtsaf slaan gaan voor op bestuurders die linksaf slaan.
+       </p>
+      </li>
+     </ul>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_224c948a60fc4600915e7182750f77e3~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Dit wordt vaak met een onderbord bij de verkeerslichten aangegeven.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_40d27835d6be45e1a72b874615ae39c0~mv2.png"/>
+     <figcaption>
+      Sla je rechtsaf bij groen, dan moet je voorrang verlenen aan rechtdoorgaand verkeer.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_7d052c6c05d445fc9e85e3b2c60771b1~mv2.png"/>
+     <figcaption>
+      Sla je linksaf bij groen, dan moet je voorrang verlenen aan rechtdoorgaand en tegemoetkomend verkeer.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Als je rechts of links wilt afslaan bij verkeerslichten met een
+      <strong>
+       pijlvormige lamp
+      </strong>
+      , heb je geen te maken met tegemoetkomend verkeer of verkeer naast je. Je kunt dan ongehinderd links- of rechtsaf slaan.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_b4b24926c10f4fc283ef9af47c36d796~mv2.png"/>
+   </div>
+  </div>
+  <h2>
+   Overweglichten
+  </h2>
+  <p>
+   Deze lichten bestaan uit twee rode lampen die uit zijn wanneer er geen trein nadert en afwisselend knipperen wanneer er wel een trein nadert. In dat geval ben je verplicht te stoppen. Sommige overwegen hebben nog een wit knipperlicht dat aangeeft dat je kunt oversteken.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_56354e4ebd9a4b6e9bcc6335a7d6fc77~mv2.jpeg"/>
+     <figcaption>
+      Ook als de bomen omhoog zijn, moet je wachten tot de rode lichten uit zijn voordat je de overweg oversteekt.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_cf829efbc4e745f4b0ae180b03f0503c~mv2.jpeg"/>
+     <figcaption>
+      Oudere overwegen hebben een extra wit knipperlicht dat aangeeft dat er op dat moment geen trein nadert.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Bruglichten
+  </h2>
+  <p>
+   Bruglichten bestaan uit één of twee rode lampen die uit zijn wanneer de brug gesloten is en het verkeer kan passeren. Wanneer de brug opent, gaan deze rode lampen branden of knipperen (bij twee lampen) en moet je stoppen.
+  </p>
+  <h2>
+   Tram- en buslichten (negenoog)
+  </h2>
+  <p>
+   Deze verkeerslichten zijn speciaal voor voertuigen van het openbaar vervoer en bestaan uit negen ronde lampen in een vierkant vlak. De bovenste en onderste rij lampen zijn wit, de middelste lamp is geel en de twee lampen links en rechts zijn rood.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_6652481bfebf4680bf18ec097c11b618~mv2.png"/>
+     <figcaption>
+      Linksafslaan toegestaan
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_588f1a5d3ff1434faa6176e9d7f77db6~mv2.png"/>
+     <figcaption>
+      Rechtdoor toegestaan
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_088c73e25a624f82abe70b71e5d5a72b~mv2.png"/>
+     <figcaption>
+      Rechtsafslaan toegestaan
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_ed27eafccf25498eb33f82aa8455922f~mv2.png"/>
+     <figcaption>
+      Stoppen, indien redelijkerwijs mogelijk
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_0ff2738be18b4fff804b219a48ce805e~mv2.png"/>
+     <figcaption>
+      Stoppen
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Trams en bussen die de rijstrook gebruiken waarop dit verkeerslicht van toepassing is, moeten deze lichten volgen.
+  </p>
+  <h2>
+   Geel knipperlicht
+  </h2>
+  <p>
+   Een enkel geel knipperlicht wordt soms gebruikt om te waarschuwen voor gevaar. Dit kan bijvoorbeeld waarschuwen voor een voetgangersoversteekplaats of een overweg. Afhankelijk van de situatie kan het verstandig zijn je snelheid te verminderen.
+  </p>
+  <h2>
+   Rood knipperlicht
+  </h2>
+  <p>
+   Er zijn ook rode lampen die aangeven dat je een gesloten overweg of een openstaande brug voorbij een kruispunt nadert. Deze rode lampen geven aan dat je niet in de aangegeven richting mag rijden. Deze kruispunten hoeven niet verder met verkeerslichten geregeld te zijn. De rode lampen zijn bedoeld om opstoppingen op het kruispunt zelf te voorkomen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_a781cea09cc0462abc9a4525bf2419b3~mv2.jpg"/>
+     <figcaption>
+      Het gele knipperlicht waarschuwt voor een gesloten overweg verderop.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_9ab1781c515746e080047645ca60435c~mv2.jpg"/>
+     <figcaption>
+      Het rode knipperlicht geeft aan dat je hier moet stoppen als je linksaf wilt. De overweg voorbij het kruispunt is gesloten. Als je zou doorrijden, blokkeer je het kruispunt.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Voetgangerslichten
+  </h2>
+  <p>
+   De meeste voetgangerslichten bestaan uit een rood en een groen voetgangerslicht. Bij sommige voetgangerslichten is het rode licht vervangen door een geel licht in de vorm van een driehoek met een uitroepteken.
+  </p>
+  <p>
+   De kleuren van voetgangerslichten kun je als volgt interpreteren:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Groen licht
+     </strong>
+     Voetgangers mogen oversteken.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Knipperend groen licht
+     </strong>
+     Voetgangers mogen oversteken, maar het licht zal zeer snel op rood springen.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Rood licht
+     </strong>
+     Voetgangers mogen niet meer beginnen met oversteken. Voetgangers die al oversteken, moeten zo snel mogelijk doorlopen.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Geel knipperlicht
+     </strong>
+     Voetgangers mogen oversteken maar moeten het overige verkeer voorrang geven. Oversteken is op eigen risico.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_fa6951a144db49dcbbf33d1a0d4d4255~mv2.png"/>
+     <figcaption>
+      Voetgangerslicht groen
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_7f3094e636644faeb1d83c66a7fc6047~mv2.png"/>
+     <figcaption>
+      Voetgangerslicht geel
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_9a5e2570c8464be1b811337c70257337~mv2.png"/>
+     <figcaption>
+      Voetgangerslicht rood
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Rijstrooksignalen
+  </h2>
+  <p>
+   Dit zijn de signalen op elektronische matrixborden. Je vindt deze op steeds meer plaatsen boven de rijstroken van autowegen en autosnelwegen. Met deze lichten kunnen verschillende tekens worden weergegeven.
+  </p>
+  <div class="container3">
+   <div class="item3">
+    <img alt="Brandblusser" class="image3" src="https://static.wixstatic.com/media/4b688f_d1bdf3b328ce402cb1e82e2ba676597a~mv2.png"/>
+    <div class="text3">
+     <strong>
+      Maximumsnelheid
+     </strong>
+     <p>
+      Op de rijstrook mag je niet harder rijden dan de aangegeven maximumsnelheid. Dit is geen adviessnelheid. Daarnaast betekent het ook dat de rijstrook gebruikt mag worden. Bij een wijzigende snelheid (bijvoorbeeld bij file) wordt de snelheid vaak gecombineerd met gele knipperlichten op het bord.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="EHBO-koffer" class="image3" src="https://static.wixstatic.com/media/4b688f_5238ba9d928c4d85bf83f629df350311~mv2.png"/>
+    <div class="text3">
+     <strong>
+      Groene pijl
+     </strong>
+     <p>
+      De rijstrook mag worden gebruikt.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="Waarschuwingsdriehoek" class="image3" src="https://static.wixstatic.com/media/4b688f_45d50cc99967462aab7f192d3480eb24~mv2.png"/>
+    <div class="text3">
+     <strong>
+      Witte pijl
+     </strong>
+     <p>
+      Aankondiging rood kruis, de rijstrook moet zo snel mogelijk worden vrijgemaakt. Vaak gecombineerd met gele knipperlichten op het bord.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="EHBO-koffer" class="image3" src="https://static.wixstatic.com/media/4b688f_8449d7b6b4194372ae956a7aa1aa4c2d~mv2.png"/>
+    <div class="text3">
+     <strong>
+      Rood kruis
+     </strong>
+     <p>
+      Gebruik van deze rijstrook is verboden. Alleen in noodgevallen te gebruiken.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="EHBO-koffer" class="image3" src="https://static.wixstatic.com/media/4b688f_c0624732bd3e403c93a6aa9da6387967~mv2.png"/>
+    <div class="text3">
+     <strong>
+      Het woord ‘BUS’ of ‘LIJNBUS’
+     </strong>
+     <p>
+      De rijstrook mag alleen worden gebruikt door buschauffeurs. Bij het woord ‘LIJNBUS’ mag de rijstrook alleen worden gebruikt door bestuurders van lijnbussen.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="EHBO-koffer" class="image3" src="https://static.wixstatic.com/media/4b688f_7fa72759bfb84d3ab558485d1f9c576f~mv2.png"/>
+    <div class="text3">
+     <strong>
+      Matrixbord F-9
+     </strong>
+     <p>
+      Einde van alle verboden die door elektronische matrixborden zijn aangegeven. Vanaf hier gelden de standaardregels.
+     </p>
+    </div>
+   </div>
+   <h3>
+    Overige (waarschuwings)tekens
+   </h3>
+   <p>
+    Op elektronische matrixborden kunnen ook andere tekens verschijnen. Meestal zijn dit waarschuwingssymbolen. Zo weet je als bestuurder waarom de snelheid omlaag gaat of waarom een rijstrook is afgesloten.
+   </p>
+   <div>
+    <div class="images-container5">
+     <figure>
+      <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_8754b9f5a3534e45be4fb1249c07a30f~mv2.png"/>
+      <figcaption>
+       J-33
+       <br/>
+       Filewaarschuwing
+      </figcaption>
+     </figure>
+     <figure>
+      <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_3c4cd3cb7a7e47b0bfca7f6e36702759~mv2.png"/>
+      <figcaption>
+       J-34
+       <br/>
+       Ongevalswaarschuwing
+      </figcaption>
+     </figure>
+    </div>
+   </div>
+   <div class="video-wrapper">
+    <div class="video-container">
+     <video controls="" poster="https://static.wixstatic.com/media/4b688f_a76ca53620294c5eacd008ef6f974fb2~mv2.jpg">
+      <!-- Video kaynakları -->
+      <source src="https://video.wixstatic.com/video/4b688f_0dd3563306ec428ba8dbd73b782a6190/480p/mp4/file.mp4" type="video/mp4"/>
+      <source src="video_dosyaniz.webm" type="video/webm"/>
+      <!-- Altyazılar -->
+      <track kind="subtitles" label="Dutch" src="altyazi_tr.vtt" srclang="nl"/>
+      <track kind="subtitles" label="English" src="altyazi_en.vtt" srclang="en"/>
+      Tarayıcınız bu videoyu desteklemiyor. Lütfen farklı bir tarayıcı kullanın.
+     </video>
+    </div>
+   </div>
+   <p>
+    (c) Rijkswaterstaat
+   </p>
+   <p>
+    De rode kruisen staan er niet voor niets. Als er een rood kruis boven een rijstrook staat, mag je die rijstrook niet gebruiken. In de video hierboven wordt uitgelegd wanneer en waarom rode kruisen worden gebruikt.
+    <br/>
+    Let op: De video is in het Nederlands, maar je kunt de Engelse ondertiteling aanzetten door op de CC-knop te klikken.
+   </p>
+   <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+    Terug naar
+    overzicht
+   </a>
+
+   
+  </div>
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

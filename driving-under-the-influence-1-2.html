@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: ;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Driving under the influence</h2>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>New drivers</h3>
+        <p>
+            Upon first acquiring your driving licence, you are considered a new driver for the first five years. If you
+            obtain a moped or tractor licence before the age of 18, you are considered a new driver for the first seven
+            years. Slightly stricter rules apply to new drivers.
+        </p>
+        <h3>Per mille</h3>
+        <p>A value (indicated by ‰) used to indicate blood alcohol level.</p>
+        <h3>µg/l</h3>
+        <p>In hospitality, beer, wine, and spirits are generally served in standard sized glasses:</p>
+        <ul>
+            <li>Beer 25 cl (5% alcohol)</li>
+            <li>Wine 10 cl (12% alcohol)</li>
+            <li>Spirits 3.5 cl (35% alcohol)</li>
+
+        </ul>
+        <p>This ensures that one glass of wine contains the same amount of pure alcohol as one glass of beer or one
+            glass of spirits. This does not apply when standard glasses are not used, for example with speciality beers
+            and cocktails. In these cases, there is often much more pure alcohol in one glass.</p>
+
+    </div>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0fdd95b6c5d14282a8f65097358f4013~mv2.jpg" alt="Image 1">
+            <figcaption><em>Each glass contains an equal amount of pure alcohol.</em></figcaption>
+        </figure>
+    </div>
+
+    <p>
+        Driving under the influence (DUI) of alcohol, drugs, or medication that impacts your ability to drive is a
+        criminal offence. Certain limit values apply. For alcohol these are:
+    </p>
+
+
+
+    <ul>
+        <li>
+            <strong>For new drivers: maximum 88 μg/l or 0.2 per mille.</strong>
+            <p>This is approximately 0.5 to 1 standard glass of beer, wine or spirits.</p>
+        </li>
+        <li>
+            <strong>For experienced drivers: maximum 220 μg/l or 0.5 per mille.</strong>
+            <p>This is about 1.5 to 2.5 standard glasses of beer, wine or spirits.</p>
+            <strong>This limit value also applies to cyclists!</strong>
+        </li>
+    </ul>
+    <p>The limit values for drugs and medications differ per drug. With drugs, it is best to assume that after one
+        “dose” you are generally over the limit and therefore no longer permitted to drive. Some drugs remain in your
+        body for up to several days.</p>
+    <p>Driving under the influence of both drugs and alcohol is a criminal offence regardless of the amount.</p>
+
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_363a4357b25642fd888d4719c2a08c64~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>You are criminally liable the moment you consume your first glass of alcohol and then
+                    proceed to drive.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0350da323b1949e197fa94de83e23723~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>You may be banned from driving by merely showing intent to drive under the influence.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Vehicles</h3>
+        <p>
+            Bicycles, mopeds, disabled vehicles, trams, motor vehicles, horse drawn vehicles and handcarts.
+        </p>
+        <h3>Mopeds</h3>
+        <p>A motor carriage on two, three, or four wheels, which cannot and must not exceed 45 km/h (designed speed),
+            equipped with a combustion engine of maximum 50 cm3 (cc) or combustion or electric motor with maximum net
+            power of 4 kW. A moped on four wheels (brommobiel) has an unladen weight of under 350 kg. Mopeds are not
+            disabled vehicles.</p>
+        <h3>Motor carriages</h3>
+        <p>All engine-driven vehicles. These may not require rails for mobilisation (e.g. train, metro, or tram). This
+            does not include bicycles with pedal assistance. Attention: Does include trolley buses and speed pedelecs!
+        </p>
+        <h3>Driving ban (forbidden to drive)</h3>
+        <p>A ban on operating vehicles (including bicycles), which may be imposed if you are found driving or attempting
+            to drive under the influence of alcohol, drugs, or medication.</p>
+        <h3>Driving disqualification (driving licence suspended)</h3>
+        <p>A disqualification from driving any motor carriage for several weeks, months or even years. If you are caught
+            violating traffic regulations, a public prosecutor or judge may disqualify you from driving. Riding a
+            bicycle is still allowed.</p>
+
+    </div>
+    <h2>DUI enforcement</h2>
+    <p>If you drive or attempt to operate a vehicle while under the influence, police are authorised to take immediate
+        action. This may be done via the following means:</p>
+    <ul>
+        <li>
+            <strong>Driving ban (forbidden to drive)</strong>
+            <p>Planning or attempting to operate a vehicle while under the influence is against the law, which means you
+                could be banned from driving before you even get into the car. A driving ban applies for several hours
+                and up to a maximum of 24 hours. The exact length of time depends on how far over the legal limit you
+                are. A driving ban means you cannot operate any vehicle at all, including bicycles.</p>
+        </li>
+        <li>
+            <strong>Confiscation</strong>
+            <p>If you are stopped by police while driving and a breath test shows you to be above certain alcohol
+                limits, the police will confiscate your driving licence immediately. This is also the case if drugs are
+                detected during a saliva test. Once your driving licence has been confiscated, you are no longer
+                permitted to operate a motor carriage until it is returned to you. The limits for confiscating your
+                licence after an alcohol violation are:</p>
+
+            <ul class="dash-list">
+                <li>350 μg/l (0.8 per mille) for new drivers.</li>
+                <li>570 μg/l (1.3 per mille) for experienced drivers.</li>
+                <li>
+                    If you do not cooperate or, for example, refuse to take a breath test or provide a saliva sample,
+                    then your licence may also be confiscated.
+                </li>
+
+            </ul>
+
+        </li>
+        <li>
+            <strong>CBR notice</strong>
+            <p>Above certain limit values, the police will also report your case to the CBR. These values are:</p>
+            <ul class="dash-list">
+                <li>220 μg/l (0.5 per mille) for new drivers.</li>
+                <li>350 μg/l (0.8 per mille) for experienced drivers.</li>
+
+            </ul>
+
+        </li>
+
+
+    </ul>
+    <p>If your driving licence is confiscated due to driving under the influence of alcohol, your licence will also be
+        forwarded to the public prosecutor. They will decide, within 10 days, whether your licence will be returned to
+        you. The prosecutor may offer you a plea deal. If you agree to the terms, the matter will be settled. But it may
+        also involve attending court. A judge will determine the final penalty.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_120f99ab44bc4571a95f1ca44d047d9a~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>A breath test is used to determine alcohol use. You may not refuse this test.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_944bea95c792475daeb61e08786578c8~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>A saliva test is used to determine drug use. You may not refuse this test either.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+        overview</a>
+
+    
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

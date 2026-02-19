@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* sağa hizala */
+        }
+
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        متطلبات المركبات
+    </h2>
+    <p>
+        بصفتك سائقًا، فأنت مسؤولٌ عن الحالة التقنية والتشغيل الصحيح لأيّ مركبة تقودها على الطرق العامة — سواء كانت
+        مركبةً آلية أو درّاجة نارية خفيفة أو درّاجة هوائية. ويجب أن تستوفي المركبةُ المتطلباتَ الدائمة السارية
+        (المتطلبات التقنية العامة) وكذلك متطلبات الاستعمال.
+    </p>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            المتطلبات الدائمة
+        </h3>
+        <p>
+            هي المتطلبات التقنية العامة التي يجب أن تستوفيها المركبات قبل استخدامها في هولندا. يجري هذه المعاينةُ جهازُ
+            المرور على الطرق (RDW)، وتشمل — على سبيل المثال — نوعَ الإضاءة التي ينبغي أو لا ينبغي أن تتوافر في المركبة،
+            وعرضَها وارتفاعَها، والميزاتِ اللازمة.
+        </p>
+        <h3>
+            متطلبات الاستعمال
+        </h3>
+        <p>
+            هي متطلباتٌ تنظّم — على سبيل المثال — نقلَ الركّاب والبضائع وجرَّ المركبات الأخرى.
+        </p>
+    </div>
+    <h2>
+        المسؤولية عن المتطلبات الدائمة ومتطلبات الاستعمال
+    </h2>
+    <p>
+        يتحمّل كلٌّ من مالك المركبة وسائقها — إذا لم يكونا الشخصَ نفسه — مسؤوليةَ بقاء المركبة ممتثلةً لهذه المتطلبات.
+        فإذا استعرتَ سيارةً تفتقر — مثلًا — إلى لوحة تسجيل، فستُحمَّل أنت ومالكُ السيارة المسؤولية.
+    </p>
+    <p>
+        وينطبق الأمر نفسه عند إعارة مركبتك لشخصٍ يستخدمها في نقل البضائع بطريقةٍ غير صحيحة. وحتى إن لم تكن على علمٍ
+        بذلك، فأنت والسائق مسؤولان.
+    </p>
+    <div class="important-words2">
+        <p>
+            لا يجوز لك أن تقود — ولا أن تجعل غيرك يقود — مركبةً تكون:
+        </p>
+        <ul>
+            <li>
+                مصنَّعةً أو مجهَّزةً على نحوٍ سيّئ؛
+            </li>
+            <li>
+                سيّئةَ الصيانة؛
+            </li>
+            <li>
+                مصنَّعةً أو مجهَّزةً بما لا يتيح للسائق رؤيةً كافيةً أمامًا أو إلى الجانبين؛
+            </li>
+            <li>
+                غيرَ ممتثلةٍ بأيّ وجهٍ آخر لمتطلبات المركبات النافذة.
+            </li>
+        </ul>
+        <p>
+            تأكّد دائمًا ممّن تُعير مركبتك ووضّح نواياه بشأن استخدامها.
+        </p>
+    </div>
+    <p>
+        يُحظر أيضًا تركُ مركبةٍ متوقّفةٍ على الطريق من دون عواكس رجوعية حمراء إلزامية تعمل على المؤخرة. فالمركبةُ
+        المتروكة بهذه الحالة لا تكون واضحةً في الظلام. وإذا اصطدمت مركبةٌ أخرى بمركبتك المتوقّفة بسبب عدم تزويدها بعواكس
+        رجوعية عاملة في الخلف، فقد تُحمَّل المسؤوليةَ عن الأضرار.
+    </p>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            العاكسُ الرجوعي
+        </h3>
+        <p>
+            تعكس العواكسُ الرجوعية الضوءَ إلى الجهة نفسها التي جاء منها، ما يجعل المركبةَ المثبَّتة عليها أكثرَ وضوحًا
+            لمستخدمي الطريق الآخرين. ويتحدّد لونُها (أحمر أو كهرماني أو أبيض) بحسب موضعها على المركبة.
+        </p>
+    </div>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_4269062f64224ffbb718b1a9f37cc23f~mv2.jpg" />
+            <figcaption>
+                <em>
+                    تتوافر العواكسُ الرجوعية بألوانٍ مختلفة وتضمن وضوحَ المركبات عند توقفها في الظلام.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_22f9fc467c3041dba1a3fc06dd5b304a~mv2.jpg" />
+            <figcaption>
+                <em>
+                    في سيارات الركّاب تُدمَج هذه العواكسُ عادةً ضمن وحدات الإضاءة (في الأقسام نفسها للمصابيح الأمامية
+                    والخلفية).
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Use requirements
+  </h2>
+  <p>
+   Use requirements govern the use of a car, such as how to transport passengers and load and how far load may
+        protrude.
+  </p>
+  <h2>
+   Towing
+  </h2>
+  <p>
+   If you have to tow a vehicle due to a breakdown, or if your vehicle has to be towed, you must comply with certain
+        rules:
+  </p>
+  <ul>
+   <li>
+    The distance between the two vehicles should not exceed 5 meters.
+   </li>
+   <li>
+    A motor vehicle may not tow more than one motor vehicle, nor may you tow an assembly of vehicles.
+   </li>
+   <li>
+    A combination of vehicles may not tow a motor vehicle.
+   </li>
+   <li>
+    You cannot tow a two-wheeled motorcycle or moped with a passenger car, nor can a passenger car be towed by a
+            two-wheeled motorcycle or moped.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_d688daf8776f4080bec74d849bd26c0b~mv2.jpg"/>
+    <figcaption>
+     <em>
+      The distance between two vehicles, of which one is being towed, may not be more than five
+                    metres.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_1d1279171b944d979bd57cfc41c5b990~mv2.jpg"/>
+    <figcaption>
+     <em>
+      When transporting a load it may not obstruct the driver’s manoeuvrability in any way. Transporting
+                    goods like in the picture above is therefore not permitted.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Hinder caused by load or passengers
+  </h2>
+  <p>
+   The driver of a passenger car must not be hindered by passengers or load while operating the vehicle. Driving is
+        prohibited if load is blocking, for example, access to the gear stick or the view of the right wing mirror.
+  </p>
+  <h2>
+   Adequate view of surroundings
+  </h2>
+  <p>
+   The driver of a passenger car must have sufficient visibility of the vehicle’s immediate surroundings at all
+        times. This also applies when transporting a trailer behind the vehicle or load in or on the vehicle. Visibility
+        through the windscreen and front side windows should never be obstructed. The wing mirrors must also provide
+        sufficient visibility alongside and behind the car or trailer. If this is not the case, then trailer or caravan
+        mirrors or a camera monitor system must be used.
+  </p>
+  <p>
+   These rules do not apply to the rearview mirror.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_b9caade9f98c45a5aedcedceff60b342~mv2.jpg"/>
+    <figcaption>
+     <em>
+      If you cannot look past the trailer or caravan with the normal mirrors, extra mirrors are
+                    required. The yellow lines indicate the width of the caravan. If this is wider than the width of the
+                    normal mirrors, then the normal mirrors are not sufficient.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Securing load
+  </h2>
+  <p>
+   Load being transported in or on a passenger car or trailer must not be able to shift or fall off the vehicle. It
+        is therefore mandatory to properly secure all load before driving. This also applies to load inside the car,
+        which must not be able to hinder the driver.
+  </p>
+  <p>
+   Load must be secured in line with a number of requirements:
+  </p>
+  <ul>
+   <li>
+    The method of securing must be able to withstand sufficient forces, both in the direction of travel and to
+            the side, backwards and upwards, such as with speed bumps.
+   </li>
+   <li>
+    Loose cargo that cannot be secured (e.g. sand or leaves) must be covered with a net or tarp if it could fall
+            or blow off the vehicle.
+   </li>
+   <li>
+    The securing devices must be suitable for the purpose for which they are being used.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_202ce935139347659caec13fdd5492c9~mv2.jpg">
+     <figcaption>
+      <em>
+       If you are transporting a large load in the trailer, you must secure it well with, for
+                    example, lashing straps or ropes.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_96c96cfc36e04449886496d8617556b8~mv2.jpg"/>
+    <figcaption>
+     <em>
+      If you are transporting loose cargo in the trailer, it must be covered with a net or tarpaulin. No
+                    cargo should be able to blow off or fall off.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Overhanging load
+  </h2>
+  <p>
+   Just like with vehicles, load may not contain any sharp objects that could cause injury in the event of a
+        collision. Protruding blunt objects must be covered if leaving them uncovered increases the risk of injury.
+  </p>
+  <h2>
+   Load carrier
+  </h2>
+  <p>
+   Transporting load on a load carrier is only permitted if the load carrier is intended to hold that load. A
+        bicycle carrier, for example, may only be used to transport bicycles - and only the intended number of bicycles
+        according to its design.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_85a65e8e2e634d3191d4fd44d3338a9e~mv2.jpg"/>
+    <figcaption>
+     <em>
+      You may only transport bicycles on a bicycle carrier. Transporting a suitcase is not
+                    permitted.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_5b6bbf105a37447192750ca26fde3f30~mv2.jpg"/>
+    <figcaption>
+     <em>
+      When a load carrier obscures the number plate and rear lights of a passenger car, it must have
+                    integrated lighting and a white number plate.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   The load and the load carrier must also meet the following requirements:
+  </p>
+  <ul>
+   <li>
+    The goods and the load carrier itself must be properly secured.
+   </li>
+   <li>
+    The load carrier, including the load, must not protrude more than 20 centimeters from the sides of the
+            vehicle.
+   </li>
+   <li>
+    If the lighting of the passenger car is obscured by the load carrier, the following lighting must be present
+            on the load carrier:
+   </li>
+   <ul class="dash-list">
+    <li>
+     two red rear lights;
+    </li>
+    <li>
+     two red brake lights;
+    </li>
+    <li>
+     two red retro-reflectors;
+    </li>
+    <li>
+     two amber indicators.
+    </li>
+   </ul>
+   <li>
+    If the number plate of the passenger car is obscured by the load carrier, a white number plate with the same
+            registration number as the passenger car must be affixed to the load carrier. This must have an approval
+            mark and number plate lighting must be present.
+   </li>
+  </ul>
+  <p>
+   If the load carrier is mounted on the tow bar or on the front of the trailer, it must meet the following
+        requirements:
+  </p>
+  <ul>
+   <li>
+    The weight on the tow bar (also referred to as the tow ball weight) must not exceed that specified for this
+            passenger car. If it has not been recorded, it must never exceed 75 kg.
+   </li>
+   <li>
+    The load carrier itself, or parts thereof, must not touch the road surface during normal use.
+   </li>
+   <li>
+    The load carrier or (remaining) parts thereof must not hinder a coupled trailer’s manoeuvrability.
+   </li>
+  </ul>
+  <p>
+   If goods are transported on the roof of a passenger car, this must be in accordance with the following
+        requirements:
+  </p>
+  <ul>
+   <li>
+    Transport must be by means of a load carrier that is intended for this.
+   </li>
+   <li>
+    The load carrier and goods must be properly secured.
+   </li>
+   <li>
+    The maximum authorised roof load (the weight on the roof) must not be exceeded.
+   </li>
+  </ul>
+  <p>
+   The maximum authorised roof load and tow ball weight can be found in the vehicle’s owner’s manual (or on the tow
+        bar).
+  </p>
+  <h2>
+   Overhanging load in passenger cars
+  </h2>
+  <p>
+   When loading load on or in a vehicle, we distinguish between divisible and indivisible loads.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Divisible load
+   </h3>
+   <p>
+    Load that can be transported in several parts and can therefore often be loaded into or onto a vehicle in
+            several ways.
+   </p>
+   <h3>
+    Indivisible load
+   </h3>
+   <p>
+    Load that cannot be divided into smaller pieces during road transport without causing damage or unnecessary
+            costs. This can include ladders, glass plates, or long wooden planks.
+   </p>
+  </div>
+  <p>
+   Load must always be transported in the best possible way, so that it causes as little inconvenience as possible
+        to other traffic. The maximum overhang (how far something may protrude outside the vehicle) for different loads
+        are as follows:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Sides
+    </strong>
+    <p>
+     If you transport a wide load on the roof of your passenger car, this load may protrude a maximum of 20
+                centimetres on each side. It makes no difference whether it is a divisible or an indivisible load.
+    </p>
+   </li>
+   <div class="image-container1">
+    <figure>
+     <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_6b69afdbfdaa4d3988aedf6dd091b909~mv2.jpg"/>
+     <figcaption>
+      <em>
+      </em>
+     </figcaption>
+    </figure>
+   </div>
+   <li>
+    <strong>
+     Front
+    </strong>
+    <p>
+     Load must not protrude from the front of a passenger car - unless the load is indivisible lengthwise, in
+                which case it may protrude by a maximum of one metre.
+    </p>
+   </li>
+   <li>
+    <strong>
+     Rear
+    </strong>
+    <p>
+     Load may protrude by a maximum of one metre from the rear of a passenger car. The distance between the
+                rear axle and the end of the load must never exceed five metres. This applies to both divisible and
+                indivisible load.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_3bb5c9f660b64067beee327806f354a3~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <div class="important-words2">
+   <p>
+    The main difference between
+    <strong>
+     divisible
+    </strong>
+    and
+    <strong>
+     indivisible
+    </strong>
+    load is that
+            indivisible load may protrude in front of a passenger car whereas divisible load may not.
+   </p>
+   <p>
+    Load may never protrude too much that it makes a passenger car longer, higher or wider than is permitted. So
+            load may not exceed:
+   </p>
+   <ul>
+    <li>
+     12 metres in length;
+    </li>
+    <li>
+     4 metres in height;
+    </li>
+    <li>
+     2.55 metres in width.
+    </li>
+   </ul>
+   <p>
+    Combinations (passenger car plus trailer) may not exceed 18 metres.
+   </p>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

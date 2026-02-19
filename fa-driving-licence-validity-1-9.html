@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        table {
+            width: 100%;
+            /* Tablo genişliği ekranın tamamını kaplasın */
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            /* Sabit yazı boyutu */
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9c3ae;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #e3e0de;
+        }
+
+        table tr:nth-child(odd) td {
+            background-color: #f8f4f2;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Driving licence validity
+  </h2>
+  <p>
+   Driving licences are usually valid for a period of ten years. This applies to licences for mopeds, motorcycles,
+        passenger cars with or without trailers, and tractors. Driving licences for larger vehicles such as lorries and
+        buses are only valid for five years.
+  </p>
+  <p>
+   In some cases, the validity of a licence is shortened for a specific reason, such as a medical condition (e.g.
+        diabetes). Validity periods also become shorter once the driver reaches a certain age.
+  </p>
+  <p>
+   This is because medical conditions can worsen with time and further impact your ability to drive. In addition,
+        driving skills often decline with age. To ensure the CBR can effectively monitor your ongoing fitness to drive,
+        you are required to renew your licence more often. In some cases, a medical examination may be required for
+        renewal.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Health declaration (Gezondheidsverklaring)
+   </h3>
+   <p>
+    Questionnaire issued by the CBR in which you detail your physical and mental health. Based on this
+            information, the CBR determines whether you are fit to drive or if further insight into your circumstances
+            is required.
+   </p>
+  </div>
+  <h2>
+   Medical conditions
+  </h2>
+  <p>
+   If you have a medical condition such as diabetes that is known to you before obtaining your driving licence, you
+        must state this on the health declaration you are required to submit before taking the practical driving test.
+        You can submit this on the CBR website.
+  </p>
+  <h2>
+   Driving licence validity after age 65
+  </h2>
+  <p>
+   Driving licence validity periods decrease from the age of 65 onwards. If you renew your driving licence between
+        the ages of 65 and 70, this renewal is valid until you reach the age of 75 maximum. If you renew your licence at
+        65 years of age, your licence will therefore be valid for ten years. If you renew it at the age of 69, your
+        licence will be valid for six years. From the age of 70, driving licence renewals are valid for a maximum of
+        five years. From the age of 75, you are also required to undergo a medical check-up for each renewal.
+  </p>
+  <table>
+   <tr>
+    <th>
+    </th>
+    <th>
+     <strong>
+      Maximum validity
+     </strong>
+    </th>
+   </tr>
+   <tr>
+    <td>
+     <strong>
+      Younger than 65 years
+     </strong>
+    </td>
+    <td>
+     10 years
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <strong>
+      Between 65 and 70 years
+     </strong>
+    </td>
+    <td>
+     Up to age 75, so between 5 and 10 years
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <strong>
+      Between 70 and 75 years
+     </strong>
+    </td>
+    <td>
+     5 years
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <strong>
+      Over 75 years
+     </strong>
+    </td>
+    <td>
+     5 years, mandatory medical check-up
+    </td>
+   </tr>
+  </table>
+  <h2>
+   Loss of validity
+  </h2>
+  <p>
+   A driving licence automatically loses its validity in the following cases:
+  </p>
+  <ul>
+   <li>
+    A replacement driving licence has been issued, or your driving licence has been reported missing or stolen.
+            Your old driving licence is therefore no longer valid after retrieval.
+   </li>
+   <li>
+    If you have been denied the authority to drive (some or all) motor carriages.
+   </li>
+   <li>
+    If changes have been made to your driving licence.
+   </li>
+   <li>
+    If your entire driving licence is invalid or invalid for certain categories.
+   </li>
+   <li>
+    If important information about you has changed, such as your surname, your first names, the place or date of
+            your birth, or your gender.
+   </li>
+  </ul>
+  <h2>
+   Declared invalid
+  </h2>
+  <p>
+   Driving licences can be declared invalid as a result of certain crimes or violations:
+  </p>
+  <ul>
+   <li>
+    If you are convicted twice within 5 years of driving under the influence of alcohol and your blood alcohol
+            level is more than 1.3 per mille (570 μg/l).
+   </li>
+   <li>
+    If you are convicted twice within 5 years of driving under the influence of drugs or a combination of drugs
+            and alcohol.
+   </li>
+   <li>
+    If you refuse to co-operate with an alcohol test (breath test or blood test).
+   </li>
+  </ul>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: ;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        .image-text-container {
+
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            /* Resim ve metin arasında boşluk bırakıyoruz */
+            margin-bottom: 20px;
+        }
+
+        .image-text-container figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-text-container img {
+            width: 120px;
+            height: 120px;
+            /* Sabit boyutta resim */
+            object-fit: cover;
+        }
+
+        .image-text-container figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            margin-top: 2px;
+            max-width: 120px;
+            /* Resim altındaki yazıyı resmin genişliğine göre ayarladık */
+            text-align: center;
+        }
+
+        .image-text-container .text-content {
+            margin-top: -24px;
+            flex: 1;
+            /* Metnin kalan alanı kaplamasını sağlıyoruz */
+            text-align: left;
+            /* Metni sola hizalıyoruz */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Motorlu Araç Zorunlu Sigortası</h2>
+    <p>Bir motorlu araç adınıza ulusal araç sicilinde (kayıtlı mülkiyet) tescil edildiğinde, araç için sigorta
+        yaptırmanız zorunludur. Aracı sürüp sürmemeniz önemli değildir.</p>
+    <h2>Sigorta Türleri</h2>
+    <p>Motorlu araç sigortalarken birkaç seçenek vardır. En yaygın üç seçenek şunlardır:</p>
+    <ul>
+        <li>
+            <strong>WA (‘Wettelijke Aansprakelijkheid’, Üçüncü şahıs sorumluluğu)</strong>
+            <p>En sınırlı sigorta türüdür; yalnızca üçüncü bir kişinin aracına verilen hasarı kapsar. Kendi aracınıza
+                verilen hasar, hırsızlık ya da fırtına hasarı gibi durumlar kapsanmaz. Bu sigorta motorlu araçlar için
+                zorunludur, ancak daha kapsamlı teminatlar da mevcuttur.</p>
+        </li>
+        <li>
+            <strong>WA sınırlı teminat (WA plus olarak da bilinir)</strong>
+            <p>Üçüncü şahıs araçlarına verilen hasarın yanı sıra, fırtına hasarı, hırsızlık ya da yangın gibi mücbir
+                sebeplerden kaynaklanan aracınıza verilen hasarları kapsayan orta düzeyde bir sigorta türüdür.</p>
+        </li>
+        <li>
+            <strong>WA Tam kapsamlı sigorta (casco olarak da bilinir)</strong>
+            <p>Mevcut en kapsamlı araç sigortasıdır. Yalnızca üçüncü şahıslara verilen hasarları ve mücbir sebeplerden
+                kaynaklanan hasarları değil, aynı zamanda kendi eylemlerinizden kaynaklanan aracınıza verilen hasarları
+                da kapsar.</p>
+        </li>
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_e9da3cbbb1104333a29d6136f90241fb~mv2.jpg"
+                alt="Resim 1" />
+            <figcaption><em>Tüm sigorta seçenekleri, aracınıza verilen hasarı kapsamaz.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0b860389a2fd4f66b43eca9fc3fac62b~mv2.jpg"
+                alt="Resim 2" />
+            <figcaption>
+                <em>Ayrıca, hırsızlıktan kaynaklanan hasarlar genellikle kapsanmaz.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Çoğu sürücü, sigorta poliçesini poliçenin fiyatına ve aracın yaşına göre seçecektir. Araç ne kadar yeni ve
+        pahalıysa, tam kapsamlı sigorta yaptırmak o kadar akıllıca olur.</p>
+    <h2>Hasarsız Yıllar</h2>
+    <p>Araç sigortacıları, ‘hasarsız yıllar’ sistemi ile çalışırlar. Bu, sürücülerin daha uzun süre hasar için sigorta
+        talebinde bulunmamaları durumunda ödüllendirildiği bir tür bonus sistemidir (bir talep, sigortacının ödediği
+        hasarlardır).</p>
+    <p>Her yıl hasarsız geçirdiğinizde, priminizde belirli bir yüzde indirim alırsınız. Prim, sigorta kapsamınızı aktif
+        tutmak için sigortacınıza ödediğiniz tutardır. Ne kadar çok hasarsız yılınız varsa, o kadar yüksek indirim
+        alırsınız. Buna ‘bonus’ denir.</p>
+    <p>Eğer hasar yapar ve talepte bulunursanız, biriktirdiğiniz indirim azalır. Buna ‘malus’ denir, bu nedenle sistem
+        bazen ‘bonus-malus sistemi’ olarak adlandırılır.</p>
+    <p>Hasar için talepte bulunmak size para kaybettirebilir, çünkü aylık priminiz yeniden yükselir. Ayrıca, küçük
+        hasarlar için onarımlar bazen sigortacınız aracılığıyla düzenlendiğinde daha pahalı olabilir. Bazı durumlarda,
+        hasarları sigortanız üzerinden talep etmek yerine kendiniz ödemeniz daha ucuz olabilir.</p>
+
+    <div class="important-words2">
+        <p>
+            Araç sigortası genellikle bonus-malus sistemine göre çalıştığından, küçük hasarları sigortanızdan talep
+            etmek yerine kendiniz ödemeniz daha ucuz olabilir.
+        </p>
+    </div>
+    <h2>Sigorta Kartı (eski yeşil kart)</h2>
+    <p>Sigorta kartı, aracınızın sigortalı olduğunu kanıtlayan bir belgedir. Bu belge, aracınız ve sigorta poliçenizle
+        ilgili bilgileri içerir. Her yıl size yeni bir sigorta kartı verilecektir. Bazı şirketler size kağıt yerine
+        dijital bir kart sağlayabilir.</p>
+    <p>Hollanda’da bu belgeyi aracınızda bulundurmak zorunlu değildir. Ancak, diğer ülkelerde gerekli olabilir. Ayrıca,
+        sigorta kartınızı elinizde bulundurmak, hasar durumunda faydalı olabilir, çünkü bu kart gerekli bilgileri
+        içerir.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c2c4fa496a0e485691e230d8e7fc8fa0~mv2.png"
+                alt="Resim 1" />
+            <figcaption><em>Sigorta kartınızı yanınızda bulundurmanız zorunlu olmasa da, bu belgeyi araç tescil
+                    belgeleriyle birlikte saklamanız tavsiye edilir.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d40dfb5b75fd4002a4816ed190113371~mv2.jpg"
+                alt="Resim 2" />
+            <figcaption>
+                <em>Bağlı bir karavanın neden olduğu hasarlar da araç sigortası tarafından karşılanır.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+
+    <h2>Römork veya Karavan</h2>
+    <p>Bağlı römorklar veya karavanlar da araç sigortası poliçeleri tarafından karşılanır. Bu, römork (veya içindeki
+        yük) ya da karavanın başka bir tarafa verdiği zararların çeken aracın sigortası tarafından karşılanacağı
+        anlamına gelir. Ancak, römork veya karavanın kendisine verilen zarar araç sigortası poliçesi tarafından
+        karşılanmaz. Bu tür zararlar için ayrı römork veya karavan sigortası mevcuttur, ancak zorunlu değildir.</p>
+
+    <h2>Avrupa Hasar Bildirim Formu (Kaza Tutanağı)</h2>
+    <p>Eğer aracınız hasar görürse, siz ve diğer tarafın hasar bildirim formu doldurmanız gerekir. Bu formu yanınızda
+        bulundurmak zorunlu değildir, ancak faydalı olabilir. Hasar bildirim formu 2 sayfadan oluşur; biri doldurulacak
+        sayfa, diğeri ise karbon kopya sayfasıdır. Form doldurulup imzalandıktan sonra her iki taraf da birer nüsha
+        alır. Daha sonra formun arka kısmı doldurularak sigortacınıza gönderilir.</p>
+
+    <div class="image-text-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b47b9221b4ac401a9cc2d2cb76bfa4a1~mv2.png"
+                alt="Sigorta Kartı" />
+            <figcaption><em>Sigorta etiketi</em></figcaption>
+        </figure>
+        <div class="text-content">
+            <h2>Kayıt Zorunluluğu Yok</h2>
+            <p>Tüm motorlu araçların kayıtlı olması zorunlu değildir. Segway ve motorlu engelli araçları gibi bazı
+                araçların sigortalı olması ve görünür bir sigorta etiketine sahip olması gerekir. Bu etiket, araç
+                sigortalandığında sigortacı tarafından sağlanır. Her yıl yenisi gönderilecektir.</p>
+        </div>
+    </div>
+
+    <h2>Aracınızı Başkasına Vermek</h2>
+    <p>Aracınızı kullanan diğer kişiler de araç sigortası poliçeniz tarafından kapsanır. Başka biri aracı sürerken
+        oluşan herhangi bir hasar sigortacınız tarafından karşılanır. Ancak bu durum, hasarsız yıllarınızın bozulmasına
+        neden olabilir ve priminizin yükselmesine yol açabilir. Bu nedenle, sürücülere araçlarını başkalarına vermeden
+        önce dikkatli olmaları tavsiye edilir.</p>
+
+    <h2>Sigortasız Araç Kullanmak</h2>
+    <p>Aracınızı sigortalatmamak bir suçtur. Aracınızın sigortasız olduğu bir durumda neden olduğu herhangi bir hasar
+        şahsen sizden tahsil edilecektir. Bu çok maliyetli olabilir. Ayrıca, sigortacınız, alkol veya uyuşturucu etkisi
+        altında araç kullanmak, ehliyetsiz sürüş yapmak ve aracın sigortalanmadığı bir amaç için kullanılması (örneğin,
+        sürüş dersleri veya taksi hizmeti) gibi sorumsuz davranışlardan kaynaklanan hasarları ödeme yükümlülüğünde
+        değildir. Bu durumlarda sigortacı genellikle karşı tarafa ödeme yapar ve ardından bu tutarı sizden tahsil eder.
+    </p>
+
+    <h2>Motorlu Trafik Garanti Fonu</h2>
+    <p>Tanımadığınız bir kişi tarafından ya da sigortasız bir kişi tarafından size verilen hasarlar durumunda, bazı
+        durumlarda Ulusal Garanti Fonu'ndan (Waarborgfonds motorverkeer) tazminat alma hakkına sahip olabilirsiniz. Bu,
+        hükümet tarafından, hasarları kendisi karşılayamayan veya sorumlu taraftan tazminat alamayan sürücüleri
+        desteklemek için kurulan ulusal bir fondur.</p>
+
+    <h2>Trafiğe Çıkmayan Araçlar</h2>
+    <p>Eğer uzun bir süre boyunca bir binek aracı kullanmayı düşünmüyorsanız, araçla ilgili herhangi bir zorunlu
+        gereksinimi askıya alma seçeneğiniz vardır. Bu, örneğin bir aracı restore etmeyi düşünüyorsanız yararlı
+        olabilir. Bu aynı zamanda aracın artık kamuya açık yollarda sürülemeyeceği veya park edilemeyeceği anlamına
+        gelir. Araç tamamen trafikten çıkarılmalı ve özel mülkünüzde, örneğin bir garajda park edilmelidir.</p>
+    <p>Aracın trafiğe çıkmamasının en büyük avantajı, yol vergisi ödemenizin ve araç sigortası yaptırmanızın gerekmediği
+        dönem boyunca zorunlu olmamasıdır. Trafiğe çıkmayan araçlar için periyodik muayeneler de gerekmemektedir.
+        Trafiğe çıkmama süresi sona erdiğinde tüm bu gereklilikler yeniden zorunlu hale gelir. Trafiğe çıkmama süresi
+        bir, iki veya üç yıl için talep edilebilir. Başvurular RDW'ye yapılmalıdır.</p>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

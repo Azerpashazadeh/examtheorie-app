@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+      
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 40px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+
+
+        .images-container5 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1 1 calc(20% - 20px);
+            /* 5 resim için her birine %20 genişlik veriyoruz, boşlukları hesaba katarak */
+            min-width: 50px;
+            /* Tarayıcı küçüldükçe resimlerin alta düşeceği minimum genişlik */
+        }
+
+        .images-container5 img {
+            width: 50%;
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 700px) {
+            .images-container5 figure {
+                flex: 1 1 calc(33.33% - 20px);
+                /* 1200px altında 3 resim yan yana */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .images-container5 figure {
+                flex: 1 1 calc(50% - 20px);
+                /* 900px altında 2 resim yan yana */
+            }
+        }
+
+        @media (max-width: 300px) {
+            .images-container5 figure {
+                flex: 1 1 80%;
+                /* 300px altında resimler tek tek dizilir */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>General requirements - part 4</h2>
+    <h2>Lighting requirements</h2>
+    <p>To maintain adequate visibility both inside a car and on the road, passenger cars must be equipped with specific
+        lighting.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Rear light (red)</h3>
+        <p>Seen from the rear, this indicates the vehicle’s presence and width.</p>
+
+        <h3>Reverse light (white or yellow)</h3>
+        <p>Light intended to illuminate the road behind the vehicle and to warn other road users that the vehicle is
+            reversing.</p>
+
+        <h3>Dipped headlights (white or yellow)</h3>
+        <p>Light used to illuminate the road ahead of the vehicle without blinding or obstructing other road users.</p>
+
+        <h3>Full-beam headlights (white or yellow)</h3>
+        <p>Light illuminating the road in front of the vehicle over a long distance.</p>
+
+        <h3>Rear fog light (red)</h3>
+        <p>Light that makes the vehicle more visible at the rear in dense fog.</p>
+
+        <h3>Brake light (red)</h3>
+        <p>Light used to indicate to road users behind the vehicle that the vehicle is intentionally decelerating.</p>
+
+        <h3>Indicator (amber)</h3>
+        <p>Light intended to inform other road users that the driver intends to change direction to the left or right.
+        </p>
+
+        <h3>Sidelights (white or yellow)</h3>
+        <p>Seen from the front, this indicates the presence of the vehicle and is an indication of the width of the
+            vehicle.</p>
+
+        <h3>Hazard warning light (same colour as indicators)</h3>
+        <p>Simultaneous operation of all indicator lights intended to indicate that the vehicle temporarily presents a
+            particular danger to other road users.</p>
+
+        <h3>Rear number plate light (white)</h3>
+        <p>Lighting that makes the rear number plate readable in the dark. This lighting may not beam out of the rear.
+        </p>
+
+        <h3>Retro-reflector rear (red)</h3>
+        <p>A retro-reflector itself does not emit light, but reflects the light beam (from the dipped headlights of
+            another vehicle, for example) that falls on it. This also makes stationary vehicles stand out if they do not
+            have lighting. Most retro-reflectors are now integrated in the lighting fixtures (holder of the lighting).
+        </p>
+    </div>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c44057a9344248f394467fc8b855d0b9~mv2.jpeg"
+                alt="Image 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_9c885dc5649e45a8bceb9444311065c4~mv2.jpeg"
+                alt="Image 1">
+            <figcaption><em></em></figcaption>
+        </figure>
+    </div>
+
+    <p>Please note that the positioning of lights may vary per passenger car.</p>
+    <h2>Lighting colours</h2>
+    <p>Most vehicles are equipped with red, amber and white lighting. Where red is generally on the rear, white on the
+        front and amber on the sides of the vehicle. Some lighting deviates from this. For example, some lights on the
+        front may also be yellow instead of white and some lights on the rear may also be amber instead of red.</p>
+    <p>As a mnemonic, you can remember: white light comes towards you, red light goes away from you. That is why the
+        reverse light is also white, despite being on the rear of the vehicle.</p>
+    <h2>Side indicators</h2>
+    <p>A car’s indicators must be clearly visible from all directions. On most modern passenger cars, this lighting
+        wraps around the car’s corners, which means the turn signal is also visible from the side. If this is not the
+        case, additional indicators must be equipped on the side of the vehicle.</p>
+    <h2>Permitted lighting</h2>
+    <p></p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Cornering lighting (white)</h3>
+        <p>Seen from the rear, this indicates the vehicle’s presence and width.</p>
+
+        <h3>Daytime running light (white)</h3>
+        <p>Light intended to illuminate the road behind the vehicle and to warn other road users that the vehicle is
+            reversing.</p>
+
+        <h3>Front fog light (white or yellow)</h3>
+        <p>Light used to illuminate the road ahead of the vehicle without blinding or obstructing other road users.</p>
+
+        <h3>Parking light (front white, rear red)</h3>
+        <p>Light intended to indicate the presence of a parked vehicle. Usually this is the same lighting as the
+            sidelight.</p>
+
+    </div>
+    <h2>Additional marker lighting and reflectors</h2>
+    <p>Vehicles that are larger than average (extra long or wide) must be clearly marked as such with lighting and
+        additional reflectors to alert other drivers.</p>
+    <ul>
+        <li>Vehicles wider than 2.10 metres must have two white marker lights at the front and two red marker lights at
+            the rear.</li>
+        <li>Vehicles longer than 6 metres must be fitted with amber-coloured side marker lights and amber-coloured
+            retro-reflectors on the side. The rear of these side marker lamps and retro-reflectors may be red instead of
+            amber.</li>
+    </ul>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Marker lighting</h3>
+        <p>Lighting on the outermost corners of a vehicle that indicate the size of the vehicle (end-outline marker
+            lights).</p>
+    </div>
+
+    <p> Passenger cars may also be equipped with additional marker lights and retro-reflectors.</p>
+    <h2>Miscellaneous lighting requirements</h2>
+    <p>In addition to its presence and mandatory colour, passenger car lighting must meet other requirements. These are:
+    </p>
+
+    <ul>
+        <li>The mandatory lights must work well and the mandatory retro-reflectors must reflect well.</li>
+        <li>The light luminaires (light holders) must be undamaged and properly attached to the vehicle.</li>
+        <li>The glass of the luminaires must not be broken or removed, and they must allow enough light to shine through
+            properly.</li>
+        <li>Lights and retro-reflectors that have the same function must be placed symmetrically and the lights must
+            have the same brightness and size.</li>
+        <li>The translucent parts of the mandatory lights may be shielded for a maximum of 25%.</li>
+        <li>The level control of the dipped headlights must work properly. This is the manual height adjustment of the
+            dipped beams that you use if the vehicle leans backwards due to heavier loading. You adjust the lighting to
+            avoid blinding oncoming traffic.</li>
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_f9c9eae941a9483589385f3a502ce3ee~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>The glass of the luminaires may not be too tarnished that light cannot shine through
+                    properly.</em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_dee8fb8c83e24ff6bb4273c84e9e53ae~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>When the car is heavy-loaded at the rear, the front will tilt upwards. The dipped headlights can
+                    then be blinding. You can adjust the positioning by using the level control of the headlights.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>Dashboard warning lights</h2>
+    <p>Some lights should never be switched on accidentally. If they are on, drivers must be aware of this. Warning
+        lights for this purpose are present on the dashboard. These lights are:</p>
+
+
+    <div class="images-container5">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_825312872d884040811a5cdb7a83af81~mv2.png" alt="Image 1">
+            <figcaption><em>Full-beam headlights</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d590dc72f56b49078f09e196f026b1c1~mv2.png" alt="Image 2">
+            <figcaption><em>Front fog lights</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_388807b2e34e4d26ad42448f6e35856f~mv2.png" alt="Image 3">
+            <figcaption><em>Rear fog light</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_e92c9bdbb8ae41b0959bffff670add31~mv2.png" alt="Image 4">
+            <figcaption><em>Indicators</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b29b6e207ca64ef48354bb9a52fe95bd~mv2.png" alt="Image 5">
+            <figcaption><em>Hazard warning lights</em></figcaption>
+        </figure>
+    </div>
+    <p>In addition to an indicator warning light, indicators may also be accompanied by a sound signal when switched on.
+    </p>
+    <h2>Prohibited lighting and retro-reflectors</h2>
+    <p>Passenger cars may not feature any lighting or retro-reflectors other than those previously described.</p>
+    <p>Present lighting:</p>
+    <ul>
+        <li>may not be blinding, except for the full-beam headlights;</li>
+        <li>may not be blinking, except for the indicators, hazard warning lights and the emergency break signal (the
+            brake lights automatically blink when an emergency stop is made).</li>
+    </ul>
+    <p>When an indicator is switched on, the lights on that side of the vehicle may blink.</p>
+    <p>All other lighting, such as the blue lights featured on emergency vehicles, is prohibited for passenger cars -
+        regardless of whether it is on or off. The main point is that your vehicle may not at any time or in any way
+        resemble an emergency vehicle.</p>
+    <p>Interior lighting in passenger cars must not beam light outside the vehicle.</p>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b40895fc50cd470ba4d6ed1634fec29c~mv2.jpg" alt="Image 1">
+            <figcaption><em>Normal passenger cars may not be equipped with blue lights.</em></figcaption>
+        </figure>
+    </div>
+    <h2>Securing trailers</h2>
+    <p>If a passenger car is equipped with a tow bar, this must be properly secured and must not be damaged, broken, or
+        corroded.</p>
+    <h2>Mandatory and permitted sound signals</h2>
+    <p>Passenger cars must be equipped with a properly functioning horn, with a fixed pitch. Car horns playing a melody
+        are not permitted.</p>
+    <p>Passenger cars may also be equipped with:</p>
+    <ul>
+        <li>a beeping reverse signal;</li>
+        <li>a sound signal on electric passenger cars that sounds at a speed of up to 25 km/h;</li>
+        <li>an alarm system with sound signal.</li>
+    </ul>
+    <p>All other sound-generating devices other than the three described above are prohibited on passenger cars.</p>
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

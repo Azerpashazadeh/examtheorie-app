@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #0093C3;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #0093C3;
+            /* Kırmızı */
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+
+
+
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+        .images-container7 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .images-container7 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container7 {
+                display: grid;
+                /* Flex yerine Grid kullanımı */
+                grid-template-columns: repeat(3, 1fr);
+                /* 2 sütun yap */
+                width: 100%;
+
+                gap: 10px;
+                /* Daha küçük boşluk */
+            }
+
+            .images-container7 figure {
+                flex: none;
+                /* Grid yapıda esneklik gereksiz */
+            }
+        }
+
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Rotondes
+  </h1>
+  <p>
+   Een rotonde is een bijzonder kruispunt. Zij bestaat uit een cirkelvormige hoofdrijbaan met een aantal zijwegen. De rijrichting is altijd tegen de klok in. De verkeersregels op rotondes zijn hetzelfde als op een kruispunt. Ook hier hangt het ervan af of er borden zijn, hoe de voorrang is geregeld.
+  </p>
+  <p>
+   Als er geen borden zijn, geldt de regel dat bestuurders van rechts voorrang hebben. Bestuurders op de rotonde moeten in dat geval voorrang verlenen aan bestuurders die de rotonde oprijden. Dit komt tegenwoordig niet vaak meer voor. Bij de meeste rotondes wordt de voorrang geregeld met voorrangsborden en wegmarkeringen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_4c67ff402a2c4663801c1f1a15adea17~mv2.jpg"/>
+     <figcaption>
+      Op deze rotonde is de voorrang niet met borden geregeld. Bestuurders van rechts, dus bestuurders die de rotonde oprijden, hebben voorrang op bestuurders die al op de rotonde rijden.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_f3165b1ca0a840fa90060c6c40273ef3~mv2.jpg"/>
+     <figcaption>
+      Op deze rotonde is de voorrang geregeld met borden (B-6). Bestuurders op de rotonde hebben voorrang. Dit geldt ook voor het aparte fietspad.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Bij de meeste rotondes regelen verkeersborden de voorrang. Bij het naderen van een rotonde is dit meestal bord B-6 (“voorrang verlenen aan bestuurders op de kruisende weg”). Op het wegdek staan bijna altijd haaientanden. In dat geval hebben bestuurders die op de rotonde rijden voorrang op bestuurders die de rotonde oprijden.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_e2014b1c07a04d168b5ced04e65aa94b~mv2.png"/>
+     <figcaption>
+      B-6
+                    Voorrang verlenen aan bestuurders op de kruisende weg
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwingslampje gordel" src="https://static.wixstatic.com/media/4b688f_4f910f361f144bee90cf84de5d5da1a3~mv2.png"/>
+     <figcaption>
+      D-1
+                    Rotonde, verplichte rijrichting
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Het verlaten van een rotonde wordt gezien als rechts afslaan, en je moet tijdig richting aangeven voordat je de rotonde verlaat. Verleen ook voorrang aan het rechtdoorgaande verkeer op dezelfde weg (dus de rotonde), inclusief fietsers, snorfietsers en voetgangers.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_dded973caa7a4b3bba9564943edda9f5~mv2.jpg"/>
+     <figcaption>
+      Bij het oprijden van een rotonde hoef je de overstekende voetganger geen voorrang te geven. Hij is geen bestuurder.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwingslampje gordel" src="https://static.wixstatic.com/media/4b688f_dc34b932adf448a5b95094236f8d102b~mv2.jpg"/>
+     <figcaption>
+      Bij het verlaten van de rotonde moet je de voetganger voorrang geven. Hij blijft de rotonde volgen die jij verlaat en is daarom rechtdoorgaand verkeer op dezelfde weg.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Bij sommige rotondes nemen fietsers, snorfietsers en voetgangers niet deel aan het rotondeverkeer. In die gevallen liggen de fietspaden verder van de rotonde en buigen ze niet mee.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_5857cbe664dd4f7c9ac81bc59f072dd3~mv2.jpg"/>
+     <figcaption>
+      Bij deze rotonde doen fietsers niet mee met de voorrang van de rotonde. Zij moeten bij het oversteken van de weg voorrang verlenen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwingslampje gordel" src="https://static.wixstatic.com/media/4b688f_a4ec766f920e477795cea660b986ae1b~mv2.jpg"/>
+     <figcaption>
+      De overstekende fietser moet wachten tot de lesauto de rotonde verlaat. De fietser bevindt zich niet op de rotonde.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Waar het fietspad en voetpad of trottoir de rijbaan kruisen, moet dit worden gezien als een apart kruispunt. Meestal heeft het fietspad daar bord B-6 en haaientanden. Verlaat je de rotonde, dan hoef je snorfietsers, fietsers en voetgangers geen voorrang te verlenen.
+  </p>
+  <p>
+   Een rotonde kan ook zijn uitgevoerd als een meerstrooks rotonde. In dat geval zijn de meeste nieuwe rotondes ontworpen als “turborotondes”. Dit is een spiraalrotonde waarbij je door aan het begin de juiste rijstrook te kiezen op de juiste plaats de rotonde kunt verlaten. Tijdig de juiste rijstrook kiezen is hier belangrijk. Op de rotonde zelf wisselen is vaak niet mogelijk.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_13935f4814784fbf864f2bf2de1687df~mv2.jpg"/>
+     <figcaption>
+      Deze rotonde bestaat uit meerdere rijstroken. Wil je driekwart (linksaf), dan moet je de rotonde beginnen op de binnenste rijstrook en halverwege opschuiven naar de buitenste rijstrook.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwingslampje gordel" src="https://static.wixstatic.com/media/4b688f_fa5f38bee87343b0a2d4ad9424448c7d~mv2.jpg"/>
+     <figcaption>
+      Deze rotonde is uitgevoerd als een meerstrooks turborotonde. Kies je de juiste rijstrook vóórdat je de rotonde oprijdt, dan hoef je op de rotonde niet van rijstrook te wisselen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Op de aanvoerweg naar de turborotonde staan meestal pijlen op het wegdek die aangeven welke rijstrook bij welke richting hoort.
+  </p>
+  <div>
+   <div class="images-container7">
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_7c67e799ea32486b96f640c1b0d9240d~mv2.jpeg"/>
+     <figcaption>
+      Linksaf
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_d867bf19358c4885bcfd51aa98028f2c~mv2.jpeg"/>
+     <figcaption>
+      Linksaf en rechtdoor
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_986f35e1453b4aef80d9f9b05e7c097a~mv2.jpeg"/>
+     <figcaption>
+      Linksaf, rechtdoor en rechtsaf
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_d999657511314126b58349e719e77e8d~mv2.jpeg"/>
+     <figcaption>
+      Rechtdoor
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_b6197c2bf68e48f2b82e35bee639470e~mv2.jpeg"/>
+     <figcaption>
+      Rechtdoor en rechtsaf
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zij-airbag" src="https://static.wixstatic.com/media/4b688f_c68f39c3d3b64f1abb8b133c2e6d1181~mv2.jpeg"/>
+     <figcaption>
+      Rechtsaf
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

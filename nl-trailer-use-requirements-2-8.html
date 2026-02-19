@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Gebruikseisen voor aanhangwagens
+  </h2>
+  <p>
+   Naast de technische eisen gelden voor aanhangwagens ook een aantal gebruikseisen, zoals maximale gewichten en afmetingen van lading.
+  </p>
+  <h2>
+   Een aanhangwagen trekken
+  </h2>
+  <p>
+   Er mag met een personenauto altijd maar één aanhangwagen worden getrokken, met maximaal twee draaipunten. Een aanhangwagen met één as heeft slechts één draaipunt bij de koppeling. Tweeassige aanhangwagens kunnen ook een draaipunt op de vooras hebben.
+  </p>
+  <p>
+   Staat een aanhangwagen haaks (onder 90 graden) achter het trekkende voertuig, dan mag hij dit voertuig nergens anders raken dan bij de koppeling en moet dus vrij kunnen draaien.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_8f02c290e89a4a708ed6f7bfcc63aa65~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Een aanhangwagen met één draaipunt. Elke aanhangwagen moet vrij achter de personenauto kunnen zwenken. Hij mag de personenauto nergens raken behalve bij de koppeling.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_d02fed2760db4c95ae4285c23068ed24~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Een aanhangwagen met twee assen die niet direct naast elkaar staan heeft meestal twee draaipunten (aangegeven met de gele pijlen).
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Alleen de wielen van de aanhangwagen mogen tijdens het rijden de grond raken – ook als de aanhangwagen losschiet en nog met de hulpkoppeling aan de auto vastzit. Zet het neuswiel altijd goed omhoog en zorg dat er geen losse kabels over de grond slepen.
+  </p>
+  <h2>
+   Lading
+  </h2>
+  <p>
+   Lading in of op een aanhangwagen moet (of afgedekt) voldoende worden geborgd. Ook moet de lading zo worden verdeeld dat er geen risico’s ontstaan tijdens rijden, sturen en remmen.
+  </p>
+  <p>
+   Belangrijke aandachtspunten bij het vervoer van lading:
+  </p>
+  <ul>
+   <li>
+    Plaats zware lading zoveel mogelijk boven de as en zo laag mogelijk in de aanhangwagen.
+   </li>
+   <li>
+    Beladingssymmetrie aanhouden: dus evenveel gewicht links als rechts en voor als achter.
+   </li>
+   <li>
+    Borg de lading. Losse lading kan grote problemen veroorzaken, zoals slingeren of zelfs kantelen van de aanhangwagen, of de lading kan eraf vallen.
+   </li>
+   <li>
+    Controleer na een stukje rijden opnieuw of de lading nog goed vastzit.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_14639d1063924205a699ad30301323af~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Plaats zware lading zoveel mogelijk boven de as van de aanhangwagen.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_5c50e91f974b45f38f10f57cba48654a~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Zorg dat de lading goed is verdeeld tussen links en rechts.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Scherp uitstekende delen in de lading zijn verboden. Stomp uitstekende delen moeten worden afgeschermd als zij gevaar opleveren voor andere weggebruikers.
+  </p>
+  <h2>
+   Dragers
+  </h2>
+  <p>
+   Ladingdragers zoals fietsendragers kunnen op de dissel of disseldriehoek van aanhangwagens worden bevestigd. Ladingdragers op aanhangwagens vallen onder dezelfde regels als ladingdragers op personenauto’s.
+  </p>
+  <h2>
+   Kentekenplaat
+  </h2>
+  <p>
+   Aanhangwagens moeten zijn voorzien van kentekenplaten. De toegestane maximummassa van de aanhangwagen bepaalt of de aanhangwagen een gele kentekenplaat met een eigen kenteken moet hebben, of een witte kentekenplaat met het kenteken van het trekkende voertuig.
+  </p>
+  <div class="image-container8">
+   <!-- Birinci sütun: Resim 1, 2, 5, 6 -->
+   <div class="image-block8">
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_a74d2e02395a45fda385d9a5e776eece~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_80a109686fa2483a8b409b75978d2852~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Afbeelding 5" src="https://static.wixstatic.com/media/4b688f_1f4cec496f2d460cb58149b4c04c9b00~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Afbeelding 6" src="https://static.wixstatic.com/media/4b688f_f84c789c3fc04eaa96899fb315993d3d~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Is de toegestane maximummassa van de aanhangwagen 750 kg of minder? Dan moet de aanhangwagen een witte kentekenplaat hebben met het kenteken van het trekkende voertuig.
+     </em>
+    </figcaption>
+   </div>
+   <!-- İkinci sütun: Resim 3, 4, 7, 8 -->
+   <div class="image-block8">
+    <img alt="Afbeelding 3" src="https://static.wixstatic.com/media/4b688f_a74d2e02395a45fda385d9a5e776eece~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Afbeelding 4" src="https://static.wixstatic.com/media/4b688f_80a109686fa2483a8b409b75978d2852~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Afbeelding 7" src="https://static.wixstatic.com/media/4b688f_1f4cec496f2d460cb58149b4c04c9b00~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Afbeelding 8" src="https://static.wixstatic.com/media/4b688f_d2af4dfa2dc146f8976e59868cbf73db~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Is de toegestane maximummassa van de aanhangwagen hoger dan 750 kg? Dan moet de aanhangwagen een gele kentekenplaat hebben met een eigen kenteken.
+     </em>
+    </figcaption>
+   </div>
+  </div>
+  <p>
+   Aanhangwagens moeten altijd zijn voorzien van een originele kentekenplaat. Handgeschreven kentekenplaten zijn verboden. Als je een aanhangwagen nodig hebt, regel dan vooraf een conforme kentekenplaat.
+  </p>
+  <h2>
+   Uitstekende lading
+  </h2>
+  <p>
+   Net als bij personenauto’s mag lading op aanhangwagens niet verder uitsteken dan is toegestaan en de maximale afmetingen van de aanhangwagen nooit overschrijden, behalve wat betreft de breedte. Zo mogen aanhangwagens niet hoger worden beladen dan vier meter vanaf het wegdek.
+  </p>
+  <p>
+   <strong>
+    Deelbare
+   </strong>
+   lading op een aanhangwagen valt onder dezelfde regels als bij personenauto’s. De regels voor
+   <strong>
+    ondeelbare
+   </strong>
+   lading wijken iets af:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Zijkanten
+    </strong>
+    <p>
+     Alleen ondeelbare lading mag buiten de maximale afmetingen van een aanhangwagen uitsteken. Indien nodig is dit toegestaan tot een breedte van drie meter. Steekt de lading meer dan tien centimeter aan de zijkant uit, dan is een markeringsbord verplicht.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_6760672892ba471691a906fe68f886ff~mv2.jpg">
+     <figcaption>
+      <em>
+       Lading mag aan de voorzijde van een aanhangwagen nooit voorbij de koppeling uitsteken. Zo mag je niet rijden.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_269d41c5920a4aab920b2eb5c537a5c9~mv2.png">
+     <figcaption>
+      <em>
+       Steekt lading meer dan 10 cm uit aan de zijkant van een aanhangwagen, dan is een markeringsbord verplicht.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <ul>
+   <li>
+    <strong>
+     Voorzijde
+    </strong>
+    <p>
+     Lading mag aan de voorzijde nooit uitsteken, of deze nu deelbaar is of niet. De voorzijde is hier het midden van de koppeling – de kogel waar de trekhaak zit. Lading mag draaien van auto of aanhangwagen nooit hinderen. Steekt lading boven de dissel of disseldriehoek uit, dan levert dat al snel hinder op.
+    </p>
+   </li>
+   <li>
+    <strong>
+     Achterzijde
+    </strong>
+    <p>
+     Lading mag tot één meter achter uitsteken. Lengte-ondeelbare lading mag indien nodig verder uitsteken, tot maximaal de helft van de lengte van de aanhangwagen met een maximum van vijf meter. Dit wordt gemeten vanaf de achteras van de aanhangwagen. Is de aanhangwagen bijvoorbeeld vijf meter lang, dan mag ondeelbare lading maximaal tweeënhalve meter achter de achteras uitsteken. Deze uitstekende lading moet worden gemarkeerd met een bord.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_b28da454bae048e0b47010711bb3d425~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Maximale toegestane gewichten
+  </h2>
+  <p>
+   Voor aanhangwagens zonder eigen kenteken geldt een toegestane maximummassa van 750 kg of minder. Op de aanhangwagen staat meestal een typeplaatje met de toegestane maximummassa. Dit is het gewicht van de aanhangwagen plus lading.
+  </p>
+  <p>
+   Heeft de aanhangwagen een eigen kenteken, dan staan op de kentekencard, het typeplaatje en in het kentekenregister de maximale toegestane gewichten van deze aanhangwagen vermeld.
+  </p>
+  <p>
+   Deze gewichten bepalen mede welk rijbewijs voor de voertuigcombinatie nodig is. Bestuurders moeten ook nagaan of hun auto deze aanhangwagen mag trekken en het maximale trekgewicht controleren.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_869ba7651f644c0db8a9264c509a383f~mv2.jpg">
+     <figcaption>
+      <em>
+       Typeplaatje op de aanhangwagen met de maximale massa en maximale koppeldruk/kogeldruk.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_4f4a075b1f374dca8fb85fd093a2785d~mv2.jpg">
+     <figcaption>
+      <em>
+       Op de kentekencard van de personenauto staat het maximale aanhangwagengewicht dat deze auto mag trekken.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <h2>
+   Kogeldruk (ook wel trekhaaklast)
+  </h2>
+  <p>
+   Houd bij het trekken van een aanhangwagen rekening met de maximale belasting op de kogel, ook wel kogeldruk genoemd. Dit is de kracht die op de trekhaakkogel rust wanneer de aanhangwagen aangekoppeld is. Zowel een te hoge als een negatieve kogeldruk is gevaarlijk.
+  </p>
+  <p>
+   Is de kogeldruk negatief en trekt de aanhangwagen de trekhaak omhoog, dan is de achterkant van de aanhangwagen overbeladen. De combinatie wordt instabieler en de kans op slingeren neemt toe. Rijden met een negatieve kogeldruk is verboden.
+  </p>
+  <p>
+   Is de kogeldruk te hoog, dan is de voorkant van de aanhangwagen overbeladen. De auto zakt dan achter in en er komt minder druk op de voorwielen, waardoor sturen lastiger wordt. Dit kan tot gripverlies leiden in bochten.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_04be60e13c5f4b4486a91a9ad6db81de~mv2.jpg">
+     <figcaption>
+      <em>
+       Een negatieve kogeldruk laat een aanhangwagen sneller slingeren.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_0da833a566cb468ab927f249dc9ca540~mv2.jpg">
+     <figcaption>
+      <em>
+       Een te hoge kogeldruk maakt het sturen met de personenauto lastiger.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <p>
+   De maximale kogeldruk van de aanhangwagen staat op het typeplaatje. De maximale kogeldruk voor de trekhaak en de personenauto vind je in het instructieboekje. Bij verschillende waarden geldt de laagste waarde als maximale kogeldruk.
+  </p>
+  <p>
+   Voor aanhangwagens tot en met 750 kg geldt doorgaans een maximale kogeldruk van 50 kg. Bij aanhangwagens boven 750 kg ligt de kogeldruk meestal tussen 50 en 75 kg.
+  </p>
+  <h2>
+   Ongeremde aanhangwagens
+  </h2>
+  <p>
+   Ongeremde aanhangwagens remmen niet mee en moeten daarom een lager maximaal gewicht hebben zodat personenauto’s ze nog veilig tot stilstand kunnen brengen.
+  </p>
+  <p>
+   Ongeremde aanhangwagens mogen:
+  </p>
+  <ul>
+   <li>
+    niet zwaarder zijn dan 750 kg toegestane maximummassa;
+   </li>
+   <li>
+    niet zwaarder zijn dan de helft van de massa rijklaar van de personenauto.
+   </li>
+  </ul>
+  <h2>
+   Geremde aanhangwagens
+  </h2>
+  <p>
+   Geremde aanhangwagens remmen zodra de personenauto remt, via een <em>oplooprem</em>. De auto vertraagt, een veer vooraan op de dissel wordt ingedrukt en zo worden de remmen bediend.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_2c3508b5c1cc41598aea047f1de59433~mv2.jpeg">
+     <figcaption>
+      <em>
+       Als de oplooprem niet is ingedrukt, remt de aanhangwagen niet.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_12ff1279816f4ebaa620e62d15d94315~mv2.jpeg">
+     <figcaption>
+      <em>
+       Remt de personenauto en wordt de oplooprem ingedrukt, dan remt de aanhangwagen automatisch mee.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <p>
+   Deze aanhangwagens hebben voorop ook een handrem die gebruikt kan worden wanneer de aanhangwagen is losgekoppeld, zodat hij op zijn plaats blijft. Is de aanhangwagen aangekoppeld, dan moet de parkeerrem altijd los staan.
+  </p>
+  <p>
+   De noodreminrichting is verbonden met de handrem en trekt deze aan wanneer de aanhangwagen losschiet van de personenauto.
+  </p>
+  <h2>
+   7-polige of 13-polige stekker
+  </h2>
+  <p>
+   Vergeet bij het aankoppelen niet de stekker van de aanhangwagen in de contrastekker achter op de personenauto te steken. Aanhangwagenverlichting werkt alleen correct wanneer deze goed is aangesloten, en deze verlichting moet altijd vóór vertrek worden gecontroleerd. Let erop dat de richtingaanwijzers aan de juiste kant branden, dus overeenkomstig met de auto.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_71b21de5cb384d9ab400bb953c208089~mv2.jpg">
+     <figcaption>
+      <em>
+       7-polige stekker
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_fc690c65c26d4e1fafc4a58efd5dbf0d~mv2.jpg"/>
+    <figcaption>
+     <em>
+      13-polige stekker
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Er zijn twee stekkertypen, een 7-polige en een 13-polige; soms is een verloopstekker nodig om correct te kunnen koppelen. Welk type nodig is, hangt af van de hoeveelheid verlichting op de aanhangwagen en van andere elektrische voorzieningen in een aanhangwagen of caravan, zoals een koelkast.
+  </p>
+  <p>
+   De stekkers worden ook anders bevestigd. De 7-polige stekker wordt in de autosocket gedrukt, terwijl de 13-polige stekker wordt vastgedraaid/vergrendeld.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

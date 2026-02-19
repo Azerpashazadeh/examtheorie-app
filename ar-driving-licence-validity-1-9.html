@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* sağa hizala */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            direction: rtl;
+            /* sağdan sola yazım */
+        }
+
+        table th,
+        table td {
+            text-align: right;
+            /* hücre içi sağa hizala */
+            padding: 8px;
+            border: 1px solid #ccc;
+            /* isteğe bağlı sınır */
+        }
+
+
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        table {
+            width: 100%;
+            /* Tablo genişliği ekranın tamamını kaplasın */
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            /* Sabit yazı boyutu */
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9c3ae;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #e3e0de;
+        }
+
+        table tr:nth-child(odd) td {
+            background-color: #f8f4f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        صلاحية رخصة القيادة
+    </h2>
+    <p>
+        تكون رُخصُ القيادة صالحةً عادةً لمدة عشر سنوات. وينطبق ذلك على رخص الدراجات النارية الخفيفة، والدراجات النارية،
+        وسيارات الركاب مع المقطورات أو بدونها، والجرارات. أما رخص قيادة المركبات الأكبر مثل الشاحنات والحافلات فلا تكون
+        صالحة إلا لمدة خمس سنوات.
+    </p>
+    <p>
+        في بعض الحالات تُقصَّر صلاحيةُ الرخصة لسببٍ محدد، مثل حالةٍ طبية (مثل داء السكّري). كما تصبح فتراتُ الصلاحية
+        أقصر بعد بلوغ السائق سنًّا معيّنة.
+    </p>
+    <p>
+        ويعود ذلك إلى أن الحالات الطبية قد تسوء مع الوقت فتؤثر أكثر في قدرتك على القيادة. إضافةً إلى ذلك، غالبًا ما
+        تتراجع مهارات القيادة مع التقدّم في السن. ولتمكين CBR من متابعة لياقتك المستمرة للقيادة بفعالية، يتعيّن عليك
+        تجديدُ رخصتك على نحوٍ أكثر تواترًا. وفي بعض الحالات قد يُطلب فحصٌ طبي عند التجديد.
+    </p>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            الإقرار الصحي (Gezondheidsverklaring)
+        </h3>
+        <p>
+            استبيانٌ يصدر عن CBR تُفصّل فيه حالتك الصحية البدنية والذهنية. وبناءً على هذه المعلومات يحدّد CBR ما إذا
+            كنتَ لائقًا للقيادة أم يلزم الحصولُ على مزيدٍ من الإيضاحات عن ظروفك.
+        </p>
+    </div>
+    <h2>
+        الحالات الطبية
+    </h2>
+    <p>
+        إذا كانت لديك حالةٌ طبية مثل داء السكّري معلومةٌ لديك قبل الحصول على رخصة القيادة، فيجب عليك ذكرُ ذلك في الإقرار
+        الصحي الذي تُلزَم بتقديمه قبل أداء الامتحان العملي للقيادة. ويمكنك تقديمه عبر موقع CBR.
+    </p>
+    <h2>
+        صلاحية رخصة القيادة بعد سن 65
+    </h2>
+    <p>
+        تقلُّ فتراتُ صلاحية الرخص ابتداءً من سن 65 عامًا. فإذا جدّدتَ رخصة القيادة بين سنّي 65 و70، يكون التجديد صالحًا
+        حتى بلوغك سن 75 كحدٍّ أقصى. فإذا جدّدتها عند سن 65 فستكون صالحة لعشر سنوات، وإذا جدّدتها عند سن 69 فستكون صالحة
+        لستّ سنوات. وابتداءً من سن 70 تكون التجديدات صالحة لمدّةٍ أقصاها خمس سنوات. وابتداءً من سن 75 يجب كذلك الخضوعُ
+        لفحصٍ طبي عند كلّ تجديد.
+    </p>
+    <table>
+        <tr>
+            <th>
+            </th>
+            <th>
+                <strong>
+                    أقصى مدة صلاحية
+                </strong>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <strong>
+                    أصغر من 65 سنة
+                </strong>
+            </td>
+            <td>
+                10 سنوات
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>
+                    بين 65 و70 سنة
+                </strong>
+            </td>
+            <td>
+                حتى سن 75، أي بين 5 و10 سنوات
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>
+                    بين 70 و75 سنة
+                </strong>
+            </td>
+            <td>
+                5 سنوات
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>
+                    أكثر من 75 سنة
+                </strong>
+            </td>
+            <td>
+                5 سنوات، فحص طبي إلزامي
+            </td>
+        </tr>
+    </table>
+    <h2>
+        فقدان الصلاحية
+    </h2>
+    <p>
+        تفقد رخصةُ القيادة صلاحيتَها تلقائيًا في الحالات الآتية:
+    </p>
+    <ul>
+        <li>
+            إذا أُصدرت رخصةُ قيادة بديلة، أو أُبلِغ عن رخصتك بأنها مفقودة أو مسروقة. وعليه فلا تعود رخصتك القديمة صالحةً
+            بعد العثور عليها.
+        </li>
+        <li>
+            إذا مُنِعتَ من سلطة قيادة (بعض أو كل) المركبات الآلية.
+        </li>
+        <li>
+            إذا أُجريت تغييراتٌ على رخصة القيادة.
+        </li>
+        <li>
+            إذا كانت رخصةُ القيادة برمّتها غير صالحة، أو غير صالحة لفئاتٍ معيّنة.
+        </li>
+        <li>
+            إذا تغيّرت معلوماتٌ مهمّة عنك، مثل لقبك، أو أسمائك الأولى، أو مكان/تاريخ ميلادك، أو جنسك.
+        </li>
+    </ul>
+    <h2>
+        إعلان عدم الصلاحية
+    </h2>
+    <p>
+        يمكن إعلانُ رخص القيادة غيرَ صالحة نتيجةَ جرائم أو مخالفات معيّنة:
+    </p>
+    <ul>
+        <li>
+            إذا أُدينتَ مرتين خلال 5 سنوات بالقيادة تحت تأثير الكحول وكان مستوى كحول الدم لديك أكثر من 1.3 لكل ألف (570
+            μg/l).
+        </li>
+        <li>
+            إذا أُدينتَ مرتين خلال 5 سنوات بالقيادة تحت تأثير المخدّرات أو مزيجٍ من المخدّرات والكحول.
+        </li>
+        <li>
+            إذا رفضتَ التعاون في اختبار الكحول (اختبار النَّفَس أو فحص الدم).
+        </li>
+    </ul>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

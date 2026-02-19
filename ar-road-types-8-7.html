@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #D5176A;
+        }
+
+
+
+        .gh3 {
+            color: #D5176A;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 425px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #FACAD2;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>أنواع الطرق
+    </h1>
+    <p>
+        تأتي الطرق بأشكالٍ وأحجامٍ متعدّدة، وقد صُمِّمت لغرضٍ محدّد. وهناك تمييزٌ بين ثلاثة أنواعٍ مختلفة من الطرق:
+    </p>
+    <ul>
+        <li>
+            <p>
+                طرق الوصول
+            </p>
+        </li>
+        <li>
+            <p>
+                الطرق الموزِّعة
+            </p>
+        </li>
+        <li>
+            <p>
+                طرق الانسياب
+            </p>
+        </li>
+    </ul>
+    <h2>
+        طريق وصول
+    </h2>
+    <p>
+        هذه المناطق سكنية بالدرجة الأولى. السرعات هنا منخفضة، والطرق أضيق وفيها مطبّاتٌ وعوائق أكثر. ستتواصل مع مستخدمين أضعف للطريق مثل راكبي الدراجات والمشاة. هنا عليك ضبط السرعة. على هذه الطرق غالبًا لا يملك راكبو الدراجات مسارًا خاصًا، بل يقودون على الطريق. ومعظم التقاطعات متكافئة.
+    </p>
+     <p>
+                    أمثلة طرق الوصول هي الأحياء (Erf) ومناطق 30 كم/س. ومع ذلك تندرج مناطق 60 كم/س أيضًا ضمن فئة طرق الوصول، لأنها تهدف إلى ضمان سهولة الوصول إلى المزارع ومداخل المروج والحقول. كما ستصادف الكثير من حركة السير البطيئة على هذه الطرق، مثل راكبي الدراجات وراكبي الدراجات النارية الخفيفة وسائقي المركبات الزراعية.
+                </p>
+
+   <div class="images-container5">
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_f29781d1e6924cf2aa37b21565958294~mv2.jpeg"
+            alt="Örnek Resim" class="image1">
+        <figcaption>Erf</figcaption>
+    </figure>
+</div>
+
+<div class="images-container5">
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_b643db27e50d4cf5826a86a5465ba955~mv2.jpeg"
+            alt="تحذير: عطل في الوسادة الهوائية الجانبية" class="image1">
+        <figcaption>منطقة 30 كم/س</figcaption>
+    </figure>
+
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_6b0efadfaaa54aa1b0ec4bc0c3c2c93f~mv2.jpeg"
+            alt="تحذير: عطل في الوسادة الهوائية الجانبية" class="image1">
+        <figcaption>منطقة 60 كم/س</figcaption>
+    </figure>
+</div>
+
+    <h2>
+        الطرق الموزِّعة
+    </h2>
+    <p>
+        تربط هذه الطرق المناطق السكنية (ذات طرق الوصول) بطرق الانسياب. تكون الطرق الموزِّعة أعرض قليلًا ويُسمح فيها بسرعاتٍ أعلى قليلًا، مثل الطرق داخل المناطق المبنية حيث يمكنك القيادة بسرعة 50 كم/س وأحيانًا 70 كم/س وحيث لا تقع المساكنُ مباشرةً على الطريق. تُشكّل هذه الطرق الصلة بين أحياءٍ مختلفة في المدينة.
+    <p>
+        الطرق خارج المناطق المبنية حيث يمكنك القيادة بسرعة 80 كم/س تندرج ضمن فئة الطرق الموزِّعة. وهي تصل بين القرى والبلدات الصغيرة المختلفة.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_74b424fb794642ed838bea2bd0c20f9c~mv2.jpeg"
+                    alt="تحذير: عطل في الوسادة الهوائية الجانبية">
+                <figcaption>طريق 50 كم/س
+                </figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_90f2595fb2ff4ea9948dc4f040a63b24~mv2.jpeg"
+                    alt="تحذير: عطل في الوسادة الهوائية الجانبية">
+                <figcaption>طريق 80 كم/س</figcaption>
+
+
+            </figure>
+
+
+        </div>
+    </div>
+
+
+    <p>
+        معظم الطرق الموزِّعة تحتوي على مساراتٍ منفصلةٍ للدراجات ومساراتٍ للدراجات/الدراجات النارية الخفيفة. كما ستصادف هنا حركةً بطيئةً أقل (مثل الزراعية). معظم التقاطعات على مستوى واحد ولكنها غير متكافئة. وتُضبط أولوية المرور بواسطة اللوحات وعلامات الطريق أو إشارات المرور.
+    </p>
+    <p>
+        تقع معظم الحوادث المميتة على الطرق الموزِّعة، وأكثرها على طرق 50 كم/س البلدية. ويرجع ذلك أساسًا إلى الحوادث بين المركبات الآلية وراكبي الدراجات وراكبي الدراجات النارية الخفيفة والمشاة. كما تقع حوادث مميتةٌ كثيرة على طرق 80 كم/س، بما في ذلك الاصطداماتُ الأمامية أثناء مناورات التجاوز.
+    </p>
+    <h2>
+        طرق الانسياب
+    </h2>
+    <p>
+        الغاية من هذه الطرق، التي تربط المدنَ الكبرى، هي انسيابُ حركة المرور لمسافاتٍ أطول. فكّر في autowegen والطرق السريعة. حدّ السرعة مرتفع، وجميع الطرق السريعة وautowegen الأعرض فيها فاصلٌ بين الاتجاهين (حاجز اصطدام أو فاصلٌ وسطي).
+    </p>
+    <p>
+        إنّ autowegen ثنائية المسار التي لا تحتوي على فاصلٍ كحاجز اصطدام أو جزيرةٍ وسطية أكثر خطورةً بكثيرٍ من تلك التي فيها فاصل. ولأجل التجاوز عليك عبورُ جانب حركة السير المقابلة، ما يؤدّي إلى وقوع اصطداماتٍ أمامية بشكلٍ متكرّر على هذه الطرق، وغالبًا بعواقبَ مميتة.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a97b87e8d15a416a81a8161cebef65ed~mv2.jpeg"
+                    alt="تحذير: عطل في الوسادة الهوائية الجانبية">
+                <figcaption>Autoweg
+                </figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c1e2caec95c745c3a494712a358e1971~mv2.jpeg"
+                    alt="تحذير: عطل في الوسادة الهوائية الجانبية">
+                <figcaption>طريق سريع</figcaption>
+
+
+            </figure>
+
+
+        </div>
+    </div>
+    <p>
+        بعضُ autowegen فيها تقاطعات أو معابرُ على مستوى واحد، لكن معظم طرق الانسياب فيها تقاطعاتٌ متعددةُ المستويات، حيث يُوجَّه المرورُ من طريقٍ (انسيابي) إلى آخر عبر ممرّاتٍ ومخارج.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_924b9124450f4c519985fc90cef10805~mv2.jpg"
+                    alt="تحذير: عطل في الوسادة الهوائية الجانبية">
+                <figcaption>تقاطع بمستوى واحد على Autoweg
+                </figcaption>
+
+
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bbbb241179fa4efeb28c9deec0fbe767~mv2.jpg"
+                    alt="تحذير: عطل في الوسادة الهوائية الجانبية">
+                <figcaption>تقاطع بمستويات مختلفة على Autoweg</figcaption>
+
+
+            </figure>
+
+
+        </div>
+    </div>
+    <p>
+        لن تصادف راكبي الدراجات أو غيرهم من حركة السير البطيئة على طرق الانسياب. يجب أن تكون المركبات قادرةً ومسموحًا لها بالقيادة بسرعةٍ دنيا قبل السماح لها باستخدام طرق الانسياب. أكثرُ الحوادث شيوعًا على طرق الانسياب هي اصطداماتٌ من الخلف بسبب عدم الحفاظ على مسافةٍ كافية والْفرملةِ المفاجئة. كما تُعرَف هذه الطرق بازدحاماتها المرورية.
+    </p>
+    <p>
+        ما إنْ تصادف ازدحامًا مروريًا، فاكبحْ بما يكفي وشغّلْ أضواء التحذير (الفلشر) عند الحاجة لتنبيه السائقين خلفك. لا تفرملْ أشدَّ مما يلزم لتجنّبِ الاصطدامات من الخلف.
+    </p>
+
+
+
+
+     <a href="https://www.examtheorie.nl/ar-test-and-theory-menu" class="custom-button" target="_blank">العودة إلى
+        النظرة العامة</a>
+
+      
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

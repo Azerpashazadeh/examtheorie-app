@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #83B441;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #83B441;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words6 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words5 {
+            background-color: #E0EDCB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #83B441;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #83B441;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: -18px;
+            margin-top: 10px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sollama</h2>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Hızlanma Şeridi</h3>
+        <p>
+            Ana taşıt yoluna giriş yapmak isteyen sürücüler için ayrılmış şerit. Bu şerit ana taşıt yolunun bir parçası değildir.
+            Hızlanma şeridi ile ana taşıt yolu arasında blok işaretleri bulunur.
+        </p>
+        <h3>Yavaşlama Şeridi</h3>
+        <p>
+            Ana taşıt yolundan çıkış yapmak isteyen sürücüler için ayrılmış şerit. Bu şerit de ana taşıt yolunun bir parçası değildir.
+            Yavaşlama şeridi ile ana taşıt yolu arasında blok işaretleri bulunur.
+        </p>
+        <h3>Birleşme Şeridi</h3>
+        <p>
+            Hem hızlanma hem de yavaşlama şeridi olarak kullanılan birleşik bir şerit. Bu şerit, ana taşıt yoluna giriş yapmak isteyen ve çıkış yapmak isteyen sürücüler tarafından kullanılır. Bu giriş ve çıkışların değişimli kullanımı "birleşme" olarak adlandırılır.
+        </p>
+    
+        <h3>Emniyet Şeridi</h3>
+        <p>
+            Otoyolun ana taşıt yolunun sağ tarafında, düz bir çizgiyle ayrılmış ek yol bölümü. Bu şerit yalnızca acil durumlarda
+            veya yoğun saatlerde açık olduğunda kullanılabilir.
+        </p>
+    
+        <h3>Yoğun Saat Şeridi</h3>
+        <p>
+            Yoğun saatlerde ek bir şerit olarak kullanılabilen bir şerit. Bu, taşıt yolunun sol tarafında daha dar bir şerit
+            olabileceği gibi emniyet şeridi de olabilir. Yoğun saatler dışında bu şerit kapalıdır veya emniyet şeridi olarak
+            kullanılır. Açık bir yoğun saat şeridi yeşil oklarla, kapalı bir şerit ise kırmızı çarpılarla belirtilir. Bu durum
+            genellikle tabelalarla da belirtilir. Yoğun saat şeridi açık olduğunda hız limiti düşürülebilir, örneğin 100 km/sa
+            yerine 80 km/sa. Emniyet şeridi yoğun saat şeridi olarak kullanıldığında, bu şeridin solundaki düz çizgi aşılabilir.
+        </p>
+    </div>
+    
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_e88f4b590942424bb31e1cab3315ba69~mv2.png"
+                    alt="Yoğun saat şeridi açık">
+                <figcaption>Yoğun saat şeridi açık</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c67fb8a3b09d497e980e856aa3b8ea27~mv2.png"
+                    alt="Yoğun saat şeridini temizleyin">
+                <figcaption>Yoğun saat şeridini temizleyin</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_1e82217d9e864d24a59e0653840d24bb~mv2.png"
+                    alt="Yoğun saat şeridi sonu">
+                <figcaption>Yoğun saat şeridi sonu</figcaption>
+            </figure>
+        </div>
+    </div>
+    
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Sollama için Ana Kural</h3>
+        <p>Sadece soldan sollayın.</p>
+    </div>
+    
+    <h2>Sağdan Sollamanın Zorunlu Olduğu Durumlar</h2>
+    <p>
+        “Sadece soldan sollayın” kuralına birkaç istisna vardır. Bu istisnalardan birinde, soldan sollama yasaktır. Sollamak istediğiniz sürücü sola dönme niyetini belirtmiş ve buna göre şeride geçmişse, güvenli bir şekilde yapılabiliyorsa, sağdan sollama zorunludur. Sağdan sollarken, kesik çizgilerle işaretlenmiş bir bisiklet şeridi kullanılabilir.
+    </p>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_cbf7b95076084a0f9c1cb3ac63f747e0~mv2.jpg" alt="Resim 1">
+            <figcaption><em>Ders aracı, sola dönmek isteyen kırmızı aracı soldan geçemez. Sağdan sollama izinlidir ve iyi bir akış sağlayabilir.</em></figcaption>
+        </figure>
+    </div>
+    
+    <h2>Sağdan Sollamanın İzinli Olduğu Durumlar</h2>
+    <p>Sadece soldan sollama kuralına istisna olan diğer durumlar şunlardır:</p>
+    <ul>
+        <li>Bisikletçiler birbirlerini soldan sollamalıdır, ancak diğer sürücüleri sağdan sollayabilirler.</li>
+        <li>Sürücüler, alan uygun olduğunda tramvayı hem sağdan hem soldan sollayabilirler.</li>
+        <li>Blok işaretlerin sağında bulunan sürücüler, bu işaretlerin solunda bulunan sürücüleri sağdan sollayabilirler.</li>
+        <li>Aynı yönde birden fazla şerit olan trafik sıkışıklığında, hem sağdan hem soldan sollama yapılabilir.</li>
+        <li>Bir kavşak öncesinde ve kavşakta, hem sağdan hem soldan sollama yapılabilir.</li>
+    </ul>
+    
+
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_7ab8c6daa2db4c9593250b7734268d8e~mv2.jpg" alt="Resim 1" />
+            <figcaption><em>Tramvay burada sağdan sollanabilir.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d716c5dbe18c458b8c057c6c42411004~mv2.jpg" alt="Resim 2" />
+            <figcaption>
+                <em>Blok işaretin sağında sollama yapmak serbesttir.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c958bf762c534e2f8b2f447dc2019474~mv2.jpg" alt="Resim 1" />
+            <figcaption><em>Trafik sıkışıklığında sağdan sollama da yapılabilir.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d71774abf3a84754a3ae8b949cee7732~mv2.jpg" alt="Resim 2" />
+            <figcaption>
+                <em>Kavşak öncesinde ve kavşakta sağdan sollama yapılabilir.</em>
+            </figcaption>
+        </figure>
+    </div>
+    
+    <h2>Sollama Yasakları</h2>
+    <p>Sollamanın hiçbir şekilde izin verilmediği durumlar da vardır. Aşağıdaki durumlarda sollama yasaktır:</p>
+    
+    <ul>
+        <li>Yaya geçidinin hemen önünde veya üzerinde (zebra geçidi olarak da bilinir).</li>
+        <li>Eğer şeritler arasında kesintisiz bir çizgiyi aşmanız gerekiyorsa. Ancak, kesintisiz çizginin sizin tarafınızda kesik çizgi varsa bu mümkündür.</li>
+        <li>İşaretlerle belirtildiğinde.</li>
+        <li>Hali hazırda sollanıyorsanız.</li>
+        <li>Görüşün kısıtlandığı veya sis, yağış gibi nedenlerle görüşün zayıf olduğu yerlerde tehlike veya engel oluşturabilecek durumlarda.</li>
+    </ul>
+    
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_674f3244e24947f3acb108accf9b0b6c~mv2.jpg" alt="Resim 1" />
+            <figcaption><em>Yaya geçidinin hemen önünde veya üzerinde sollama yapmanıza izin verilmez.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_28d8ca3899f84055a7300f19cd8ee09d~mv2.jpg" alt="Resim 2" />
+            <figcaption>
+                <em>Eğer bu işaret (F-1) yol kenarında bulunuyorsa, motorlu araçların birbirlerini sollaması yasaktır.</em>
+            </figcaption>
+        </figure>
+    </div>
+    
+    <p>Sollama, özellikle karşıdan gelen trafiği geçmeyi gerektiriyorsa, tehlikeli bir manevradır. Hatalı yapılan sollamalar genellikle ciddi yaralanmalarla veya daha kötü sonuçlarla sonuçlanan kafa kafaya çarpışmalara yol açar.</p>
+    
+    <div class="important-words2">
+        <h3>Sollama Konusunda Emin Değilseniz - Yapmayın!</h3>
+        <p>
+            Yalnızca kesinlikle gerekli ve güvenli olduğunda sollama yapın.
+        </p>
+    </div>
+    
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Trafik Sıkışıklığında Motosiklet Sürücülerinin Davranış Kuralları</h3>
+        <p>
+            Trafik sıkışıklığında motosiklet sürücüleri yalnızca en sol iki şerit arasında ve diğer trafikten en fazla 10 km/s daha hızlı sürüş yapabilir. Trafik hareket etmeye başladığında, motosiklet sürücüleri bir şeride geri dönmelidir. Trafik sıkışıklığı sırasında motosiklet sürücülerine dikkat edin!
+        </p>
+    </div>
+    
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+    
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

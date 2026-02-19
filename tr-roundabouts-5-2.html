@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #0093C3;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #0093C3;
+            /* Kırmızı */
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+
+
+
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+
+
+
+
+        .images-container7 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container7 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .images-container7 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .images-container7 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container7 {
+                display: grid;
+                /* Flex yerine Grid kullanımı */
+                grid-template-columns: repeat(3, 1fr);
+                /* 2 sütun yap */
+                width: 100%;
+
+                gap: 10px;
+                /* Daha küçük boşluk */
+            }
+
+            .images-container7 figure {
+                flex: none;
+                /* Grid yapıda esneklik gereksiz */
+            }
+        }
+
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Döner Kavşaklar</h1>
+    <p>
+        Döner kavşak, özel bir kavşak türüdür. Dairesel bir ana yol ve bir dizi yan yoldan oluşur. Trafik her zaman saat yönünün tersine doğru hareket eder. Döner kavşaklardaki trafik kuralları, diğer kavşaklarla aynıdır. Öncelik düzeni yine işaretlerin varlığına veya yokluğuna bağlıdır.
+    </p>
+    <p>
+        Eğer işaretler yoksa, sağdan gelen araçların önceliği olduğu kuralı geçerlidir. Bu durumda, döner kavşaktaki sürücüler, kavşağa giren sürücülere yol vermek zorundadır. Ancak bu durum artık pek yaygın değildir. Çoğu döner kavşakta, öncelik trafik işaretleri ve yol çizgileriyle düzenlenmiştir.
+    </p>
+    
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4c67ff402a2c4663801c1f1a15adea17~mv2.jpg"
+                    alt="İşaretsiz döner kavşak">
+                <figcaption>Bu döner kavşakta öncelik işaretlerle düzenlenmemiştir. Sağdan gelen araçlar, yani kavşağa giren sürücüler, döner kavşaktaki sürücülere göre önceliklidir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f3165b1ca0a840fa90060c6c40273ef3~mv2.jpg"
+                    alt="İşaretli döner kavşak">
+                <figcaption>Bu döner kavşakta öncelik işaretlerle düzenlenmiştir (B-6). Döner kavşaktaki sürücüler önceliğe sahiptir. Bu kural, ayrılmış bisiklet yolundaki bisikletliler için de geçerlidir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    
+    <p>
+        Çoğu döner kavşakta, trafik işaretleri önceliği düzenler. Döner kavşağa yaklaşırken genellikle B-6 işareti (“kesişen yoldaki sürücülere yol ver”) bulunur. Yol yüzeyinde neredeyse her zaman öncelik üçgenleri vardır. Bu durumda, döner kavşakta dönen sürücüler, kavşağa giren sürücülere göre önceliğe sahiptir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_e2014b1c07a04d168b5ced04e65aa94b~mv2.png"
+                    alt="B-6 işareti">
+                <figcaption>B-6: Kesişen yoldaki sürücülere yol ver</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4f910f361f144bee90cf84de5d5da1a3~mv2.png"
+                    alt="D-1 işareti">
+                <figcaption>D-1: Döner kavşak, zorunlu yön</figcaption>
+            </figure>
+        </div>
+    </div>
+    
+    <p>
+        Döner kavşaktan çıkış yapmak bir sağa dönüş olarak kabul edilir ve döner kavşaktan çıkmadan önce zamanında sinyal vermeniz gerekir. Ayrıca döner kavşaktaki (aynı yoldaki) diğer araçlara, bisikletlilere, snorfietsers’e ve yayalara yol vermelisiniz.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_dded973caa7a4b3bba9564943edda9f5~mv2.jpg"
+                    alt="Yayaya yol vermek gerekmez">
+                <figcaption>Döner kavşağa girerken karşıdan karşıya geçen yayaya yol vermenize gerek yoktur. Çünkü yaya bir sürücü değildir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_dc34b932adf448a5b95094236f8d102b~mv2.jpg"
+                    alt="Yayaya yol verme">
+                <figcaption>Döner kavşaktan çıkarken, yaya yoluna devam ettiği için ona yol vermelisiniz. Yaya, ayrıldığınız yolda kalmaya devam edecektir ve bu nedenle aynı yoldaki diğer araçlara benzer bir önceliğe sahiptir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    
+    <p>
+        Bazı döner kavşaklarda, bisikletliler, snorfietsers ve yayalar döner kavşak trafiğine dahil değildir. Bu durumlarda bisiklet yolları döner kavşaktan daha uzakta yer alır ve döner kavşakla birlikte dönmez.
+    </p>
+    
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5857cbe664dd4f7c9ac81bc59f072dd3~mv2.jpg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Bu döner kavşakta, bisikletliler döner kavşak önceliğine dahil değildir. Yolu geçerken yol
+                    verme zorunluluğuna sahiptirler.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_a4ec766f920e477795cea660b986ae1b~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Yolu geçen bisikletli, eğitim aracının döner kavşaktan ayrılmasını beklemek zorundadır.
+                    Bisikletli döner kavşakta değildir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Bisiklet yolu ve yaya yolu ya da kaldırım yolun karşısına geçtiğinde, bu ayrı bir kavşak olarak
+        görülmelidir. Bu durumda bisiklet yolunda genellikle B-6 işareti ve öncelik üçgenleri bulunur.
+        Döner kavşaktan çıkarken motosiklet, bisiklet ve yayalara yol vermeniz gerekmez.
+    </p>
+    
+    <p>
+        Döner kavşaklar çok şeritli olarak da tasarlanabilir. Bu durumda, yeni döner kavşakların çoğu “turbo
+        döner kavşaklar” olarak tasarlanmaktadır. Bu tür döner kavşaklar, doğru şeridi en baştan seçerek
+        kavşağı doğru noktadan terk etmenizi sağlayan spiral yapıya sahiptir. Burada şeridi zamanında
+        seçmek önemlidir. Döner kavşakta şerit değiştirmek genellikle mümkün değildir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_13935f4814784fbf864f2bf2de1687df~mv2.jpg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Bu döner kavşak birden fazla şeritten oluşmaktadır. Eğer üç çeyrek dönüş yapmak
+                    (sola dönmek) istiyorsanız, döner kavşağa iç şeritten başlamalı ve kavşağın ortasında dış
+                    şeride geçmelisiniz.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_fa5f38bee87343b0a2d4ad9424448c7d~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Bu döner kavşak çok şeritli bir turbo döner kavşak olarak tasarlanmıştır. Döner
+                    kavşağa girmeden önce doğru şeridi seçerseniz, döner kavşakta şerit değiştirmenize gerek
+                    kalmaz.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Turbo döner kavşağa giden yolda genellikle hangi yöne gitmek için hangi şeridin seçilmesi
+        gerektiğini gösteren yol işaretleri bulunur.
+    </p>
+    <div>
+        <div class="images-container7">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7c67e799ea32486b96f640c1b0d9240d~mv2.jpeg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Sola dön</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d867bf19358c4885bcfd51aa98028f2c~mv2.jpeg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Sola dön ve düz devam et</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_986f35e1453b4aef80d9f9b05e7c097a~mv2.jpeg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Sola dön, düz devam et ve sağa dön</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d999657511314126b58349e719e77e8d~mv2.jpeg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Düz devam et</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b6197c2bf68e48f2b82e35bee639470e~mv2.jpeg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Düz devam et ve sağa dön</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_c68f39c3d3b64f1abb8b133c2e6d1181~mv2.jpeg"
+                    alt="Yan hava yastığı arıza uyarısı">
+                <figcaption>Sağa dön</figcaption>
+            </figure>
+        </div>
+    </div>
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+    
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

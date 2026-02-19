@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+        .vertical-line2 {
+            width: 5px;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 0;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body> 
+    <h2>2toDrive programı</h2>
+    <p>Binek araç sürücü belgeleri için özel bir program olan 2toDrive, ehliyet alma yaşını 18'den 17'ye düşürür. Bu program, 18-24 yaş arası gençler arasında daha fazla trafik kazasının meydana gelmesini önlemek amacıyla tasarlanmıştır. Bu yaş grubunun, potansiyel sonuçları öngörememe nedeniyle daha riskli sürüş davranışları sergilediği bilinmektedir. Genellikle sonuçları hafife alırlar. Bu duruma daha yüksek risk kabulü de denir.</p>
+    <p>2toDrive programı kapsamında, sürüş testine normalden bir yıl önce girebilirsiniz ve ardından bir koç (gözetmen) eşliğinde araç kullanabilirsiniz. Koç, bir ebeveyn, amca veya teyze ya da komşu olabilir. Minimum bir, maksimum beş koç kaydedebilirsiniz. Bu kişiler, araç kullanırken yanınızda bulundurmanız gereken gözetmen kartında belirtilir.</p>
+    <p>Ayrıca, binek araç sürücü belgesi ile birlikte moped ehliyetinizi de aldığınız için, ehliyetinizi aldığınız anda tüm moped türlerini kullanmanıza izin verilir. Moped kullanmak için bir gözetmene ihtiyacınız yoktur.</p>
+
+    <div class="important-words2">
+        <div class="text-content">
+            <div class="vertical-line2"></div>
+            <h3>2toDrive</h3>
+            <p>
+                17 yaşındaki kişilerin ehliyet alarak 18 yaşına kadar gözetim altında araç kullanabildiği program. Bu program sadece Hollanda'da geçerlidir. Sürücü 18 yaşına ulaştığında, bu programa katılım hakkı sona erer ve bu noktadan itibaren bağımsız olarak (yurtdışında da dahil) araç kullanabilirler.
+            </p>
+        </div>
+        <div class="image-content">
+            <img src="https://static.wixstatic.com/media/4b688f_6cc82b76a6504ca9b07edadc04451362~mv2.png"
+                alt="Ehliyet Görüntüsü">
+        </div>
+    </div>
+
+    <h2>Koç (gözetmen) gereksinimleri</h2>
+    <p>Koçların bazı gereksinimleri karşılaması gerekir:</p>
+
+    <ul>
+        <li>En az beş yıldır geçerli bir Hollanda binek araç ehliyetine sahip olmalıdırlar.</li>
+        <li>En az 27 yaşında olmalıdırlar.</li>
+        <li>Kart başvurusu yaparken ve gözetmenlik yaparken geçerli bir ehliyet gösterebilmelidirler.</li>
+        <li>Alkol, uyuşturucu ve ilaçlar ile ilgili diğer deneyimli sürücülere uygulanan kurallara uymalıdırlar.</li>
+        <li>Son dört yıl içinde ciddi bir trafik suçu nedeniyle mahkum edilmemiş olmalıdırlar. Örneğin:</li>
+        <ul class="dash-list">
+            <li>Trafik suçundan dolayı bir ceza mahkumiyeti olmamalıdır;</li>
+            <li>Zorunlu EMG veya (L)EMA kursu ile sonuçlanan bir suç işlememiş olmalıdır;</li>
+            <li>Sürüş yeteneği veya sürüşe uygunluk testi geçirmemiş olmalıdır.</li>
+        </ul>
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_86cbc4327b37445e9d565b5584bba605~mv2.jpg"
+                alt="Görüntü 1" />
+            <figcaption><em>2toDrive gözetmen kartı önü</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0436287ce4514a4bbed8dd21ac0becaa~mv2.jpg"
+                alt="Görüntü 2" />
+            <figcaption>
+                <em>2toDrive gözetmen kartı arkası</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <h2>2toDrive sürücü gereksinimleri</h2>
+    <p>Sürücüler de belirli gereksinimlere tabi tutulur. Örneğin, gözetmen kartı talep etmeden 18. doğum gününüzden önce ehliyet başvurusu yapamazsınız.</p>
+    <p>Buna ek olarak:</p>
+    <ul>
+        <li>Gözetmen kartı ve ehliyet olmadan araç kullanmak yasaktır.</li>
+        <li>Gözetmen kartında listelenen bir koç olmadan araç kullanmak yasaktır. Gerekirse koç kimlik gösterebilmelidir.</li>
+        <li>Bu program yalnızca Hollanda'da geçerlidir. Hollanda dışında, 18 yaşına gelmeden araç kullanamazsınız, bu nedenle sınırda yaşıyorsanız veya yurtdışında tatil yapmayı düşünüyorsanız bunu unutmayın!</li>
+    </ul>
+    <h2>18. doğum gününüzden sonra</h2>
+    <p>Eğer 2toDrive programı kapsamında ehliyet alırsanız, 18. doğum gününüzden itibaren gözetim olmadan araç kullanabilirsiniz. 18 yaşınıza geldiğinizde, programa uygunluğunuz sona erer ve bu noktada standart bir sürücü belgesine sahip olursunuz. Bu, yurtdışında da araç kullanabileceğiniz anlamına gelir.</p>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+
+</html>
+

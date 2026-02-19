@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #035EB1;
+            margin-bottom: 20px;
+        }
+
+
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+        }
+
+        .text3 h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+            }
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+            margin-bottom: 15px;
+            margin-top: -5px;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .images-container6 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            width: 100%;
+            /* Konteyner genişliği */
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption yazılarını ortalar */
+            flex: 1;
+            /* Esnek yapıda genişlik dengeler */
+            max-width: 22%;
+            /* Masaüstünde genişlik */
+        }
+
+        .images-container6 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+            /* Resmin orantısını korur */
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+            margin-top: 5px;
+            /* Resim ve yazı arasında boşluk */
+        }
+
+        /* Tablet görünüm (768px altında) - İkili sütun hizalama */
+        @media (max-width: 768px) {
+            .images-container6 figure {
+                max-width: 48%;
+                /* İki sütun için genişlik */
+                flex-basis: 48%;
+                /* İki sütun için esnek genişlik */
+            }
+        }
+
+        /* Küçük mobil görünüm (480px altında) - Tek sütun hizalama */
+        @media (max-width: 540px) {
+            .images-container6 {
+                justify-content: center;
+                /* Ögeleri yatayda ortala */
+            }
+
+            .images-container6 figure {
+                max-width: 100%;
+                /* Tek sütun için tam genişlik */
+                flex-basis: 100%;
+                /* Esnek genişlik */
+            }
+        }
+
+
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kazalar ve Arızalarla Başa Çıkma</h1>
+    <p>
+        Trafikte bulunan herkes er ya da geç bir arıza veya kaza ile karşılaşabilir. Bu durumlarda ne yapılması ve ne
+        yapılmaması gerektiğini bilmek önemlidir.
+    </p>
+    <h2>
+        Ekipman
+    </h2>
+    <p>
+        Zorunlu olmamakla birlikte, binek araçlarda faydalı olabilecek ekipmanlar şunlardır:
+    </p>
+
+    <div class="container3">
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_41d5d6cc7ea040269d09cadbaa69379b~mv2.jpeg"
+                alt="Fire Extinguisher" class="image3">
+            <div class="text3">
+                <strong>Yangın Söndürücü</strong>
+                <p>Küçük (başlangıç aşamasındaki) yangınları söndürmek için kullanılır. Büyük bir yangın durumunda,
+                    aracı hemen terk edin ve itfaiyeyi arayın.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_05cfcc2b8c1f482da70951ab77329905~mv2.jpeg"
+                alt="First Aid Kit" class="image3">
+            <div class="text3">
+                <strong>İlk Yardım Çantası</strong>
+                <p>Ciddi yaralanmalar durumunda, basınç bandajları hayat kurtarıcı olabilir. Ancak, içerikteki
+                    malzemelerin nasıl kullanılacağını bilmeden ilk yardım çantası pek işe yaramayabilir. Bu nedenle tüm
+                    sürücülere ilk yardım kursu almaları ve çantayı düzenli olarak kontrol etmeleri önerilir.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_de39076849574454a729537f79e8a80d~mv2.jpeg"
+                alt="Warning Triangle" class="image3">
+            <div class="text3">
+                <strong>Uyarı Üçgeni</strong>
+                <p>Bazı durumlarda araç durduğunda, diğer trafiği engelleyebilecek bir engel oluşturabilir. Bu durum
+                    meydana geldiğinde ve aracın dörtlü flaşörleri çalışmıyorsa, uyarı üçgeninin kullanımı zorunludur.
+                    Flaşörler çalışıyor olsa bile aracınızın yeterince fark edilmesini sağlayamıyorsa, uyarı üçgeni
+                    kullanılmalıdır.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_5c40b889fa134d309a71b5657249d9f4~mv2.jpeg"
+                alt="First Aid Kit" class="image3">
+            <div class="text3">
+                <strong>Fosforlu Güvenlik Yeleği</strong>
+                <p>Yol kenarında beklenmesi gereken bir durumda, bu yelekler diğer sürücülerin bekleyen kişileri
+                    görmesini sağlar. Bazı ülkelerde, arıza veya kaza durumunda tüm araç içindekilerin fosforlu yelek
+                    giymesi zorunludur.</p>
+            </div>
+        </div>
+        <div class="item3">
+            <img src="https://static.wixstatic.com/media/4b688f_01ef729ebd224147b1e2487f93d8c84d~mv2.jpeg"
+                alt="First Aid Kit" class="image3">
+            <div class="text3">
+                <strong>Bir veya Daha Fazla Güvenlik Çekici</strong>
+                <p>Binek bir araçla suya girildiğinde, güvenlik çekici camların açılması için kullanılabilir. Güvenlik
+                    çekici, kapılar açılmadığında araç içindekilere hızlı bir çıkış sağlar. Camın köşesinden vurmak,
+                    kırılmasını kolaylaştırır. Çekiciyi ön kapıların üzerindeki tavana asmak, çarpışma anında daha kolay
+                    ulaşılmasını sağlar.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h3>
+        Avrupa Hasar Beyan Formu (Kaza Beyanı)
+    </h3>
+    <p>
+        Kaza yapan taraflar, bilgilerini Avrupa hasar beyan formuna yazabilirler. Bu form daha sonra sigorta şirketi
+        tarafından işleme alınacaktır. Tüm taraflar, olaydan hemen sonra bu formun ön yüzünü - imzalar dahil -
+        doldurmalıdır. İki nüshayı (orijinal ve kopya) ayırın ve her biri bir kopya alın. Formun arka yüzünü evde
+        doldurun ve sigorta şirketinize gönderin.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_7ce6ef060fb74aeea7f8d8abee204947~mv2.jpeg"
+                    alt="Yan hava yastığı arızası uyarısı">
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Emniyet Şeridinin Kullanımı
+    </h2>
+    <p>
+        Emniyet şeridi yalnızca bir arıza, kaza veya diğer acil durumlarda kullanılmalıdır. Ancak, uzun süre emniyet
+        şeridinde kalmak güvenli değildir. Mümkünse, sürücülere emniyet şeridinden devam ederek en yakın çıkışa,
+        otoparka veya benzin istasyonuna ulaşmaları önerilir.
+    </p>
+    <p>
+        Bu mümkün değilse, sürücüler yolun mümkün olduğunca uzağında kalmalıdır. Gerekirse yol kenarında bekleyin. Kamu
+        İşleri ve Su Yönetimi Genel Müdürlüğü (Hollanda: Rijkswaterstaat), onarımları kolaylaştırmak veya aracı
+        çektirmek için bir şeridi kapatabilir. Yukarıdaki durumlarda acil servislerle iletişime geçin.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_451920695e6d4c55afdd41c157efe4fd~mv2.jpeg"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>Emniyet şeridindeki bir arıza nedeniyle, hemen yanındaki şerit de kapatılmıştır.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5c37e259b0f84dd5b13e4636a71d7ef5~mv2.jpeg"
+                    alt="Yan hava yastığı arızası uyarısı">
+                <figcaption>Emniyet şeridinde arızalanırsanız, araçta kalmayın. Çarpışma bariyerinin arkasında bir yer
+                    bulun.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+
+
+    <h2>
+        Otoyolda Kaza veya Arıza
+    </h2>
+    <p>
+        Otoyolda bir kaza veya arıza durumunda, öncelikle kendi güvenliğinizi sağlayın. Kazadan dolayı orta refüjde
+        olsanız bile asla otoyolu geçmeyin. Bu durumda, araçtan inip acil servislerin gelmesini, orta refüjde, yoldan
+        mümkün olduğunca uzak bir yerde bekleyin. Yol üzerindeki araç parçalarını kendiniz kaldırmaya çalışmayın; bu işi
+        polise veya Kamu İşleri ve Su Yönetimi Genel Müdürlüğü personeline bırakın.
+    </p>
+    <h2>
+        Arıza Durumunda Uyulması Gereken Kurallar
+    </h2>
+    <ul>
+        <li>
+            <p>
+                Aracınızı mümkün olduğunca güvenli bir şekilde bir park alanına, acil durum alanına, emniyet şeridine ya
+                da yol kenarına park edin.
+            </p>
+        </li>
+        <li>
+            <p>
+                Kendi güvenliğinizi ve yolcularınızın güvenliğini düşünün, tercihen güvenlik yeleği giyin. Herkesi
+                araçtan çıkarın ve güvenli bir alana götürün.
+            </p>
+        </li>
+        <li>
+            <p>
+                Gerekirse bir uyarı üçgeni yerleştirin ve/veya acil durum ışıklarını yakın. Karanlık veya düşük görüş
+                koşullarında yan ve arka lambaları da açın.
+            </p>
+        </li>
+        <li>
+            <p>
+                Sorunu güvenli bir şekilde çözebiliyorsanız çözün veya acil durum ya da arıza hizmetlerini arayın.
+            </p>
+        </li>
+        <li>
+            <p>
+                Beklerken araç içinde oturmayın; güvenli bir mesafede, örneğin çarpışma bariyerinin arkasında bekleyin.
+            </p>
+        </li>
+    </ul>
+    <h2>
+        Kaza Yerinde Uyulması Gereken Kurallar
+    </h2>
+    <ul>
+        <li>
+            <p>
+                Öncelikle kendi güvenliğinizi sağlayın! Mümkünse kaza alanını emniyete alın.
+            </p>
+        </li>
+        <li>
+            <p>
+                Acil servisleri bilgilendirin.
+            </p>
+        </li>
+        <li>
+            <p>
+                Gerekirse ilk yardım yapın; her zaman bu işi en bilgili kişinin yapmasına özen gösterin.
+            </p>
+        </li>
+        <li>
+            <p>
+                Yardımcı sayısının fazlalığını önlemek için izleyicileri uzak tutun. Eğer yeterli yardım varsa, mesafeli
+                durun.
+            </p>
+        </li>
+        <li>
+            <p>
+                Acil durum görevlilerini dinleyin, talimatlarına uyun ve onların işlerini engellemeyin!
+            </p>
+        </li>
+    </ul>
+
+    <h2>
+        Suyla Karşılaşıldığında Uyulması Gereken Kurallar
+    </h2>
+    <p>
+        Bir araçla suya çarpışma durumunda aşağıdakilere dikkat edilmelidir:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>Tüm ışıkları açın</strong> İç ve dış aydınlatmanın açık olması, hem yönünüzü bulmanızı
+                kolaylaştırır hem de aracın daha görünür olmasını sağlar. Anahtarı kontağında bırakın.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Emniyet kemerini çıkarın</strong> Kemer sıkışırsa, güvenlik çekici üzerindeki bıçak ile kesin.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Yan camı açın veya kırın</strong> Eğer bu mümkün olmazsa, başka bir camı deneyin. Araçtan ne
+                kadar hızlı çıkarsanız o kadar iyidir. Modern araçlarda elektrikli camlar genellikle su altında da
+                çalışır. Çalışmıyorsa, camı güvenlik çekici veya ağır bir nesne ile kırın. Camın köşesinden vurun,
+                böylece kırılması daha kolay olur. Aracı terk edin.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Camlar açılmıyorsa ve kıramıyorsanız</strong> Bu durumda aracın içinin tamamen su dolmasını
+                beklemeniz gerekecek. Araç suyla dolmadan hemen önce derin bir nefes alın, ardından kapıyı iterek açın.
+                Aracı terk edin.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>Araçtan uzaklaşarak yüzün</strong> Önce araca bakarak yüzün. Yeterli mesafeye ulaştığınızda
+                arkanızı dönerek kıyıya doğru yüzün. Sudan çıkın ve acil durum servislerini arayın.
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_99e3342ea073454b9364f83abb461356~mv2.jpeg"
+                    alt="Yan hava yastığı arızası uyarısı">
+            </figure>
+        </div>
+    </div>
+    <h2>
+        Acil Servisler
+    </h2>
+    <p>
+        Bir kaza sonrası (muhtemel) yaralanma durumunda, her zaman 112 acil numarasını arayın. Bir kişi sağlıklı görünse
+        bile, bazen fark edilmeyen ciddi yaralanmalar oluşabilir. Adrenalin, ağrıyı gizleyebilir ve böylece saklı
+        yaralanmaları maskeleyebilir.
+    </p>
+    <p>
+        Acil servisleri ararken her zaman konumunuzu ve hangi tür acil yardım gerektiğini (polis, ambulans, itfaiye)
+        belirtin. Sokak adını ve varsa otoyol üzerindeki hektometre işaretini ya da başka bir konum belirleyiciyi
+        mutlaka söyleyin. Aksi belirtilmedikçe hatta kalın ve verilen talimatlara uyun.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6e41152dfb7645f5b4fa8cfd018ee844~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+            </figure>
+        </div>
+    </div>
+    <p>
+        Otoyolda bir kazanın hangi şeritte olduğunu bildirmeniz gerekiyorsa, şeritleri orta refüjden başlayarak sayın.
+        Sol şerit 1. şerittir. Üç şeritli bir yolda sağ şerit 3. şerit olur.
+    </p>
+    <p>
+        Eğer polis yardımı gerekiyorsa ya da bir sorunuz varsa ancak yaşamı tehdit eden bir durum yoksa, ulusal polis
+        hattını 0900-8844 üzerinden arayın.
+    </p>
+    <div class="important-words6">
+        <p>
+            Önemli telefon numaraları:
+        </p>
+        <ul>
+            <li>
+                <p>
+                    Acil Durum: <strong>112</strong>
+                </p>
+            </li>
+            <li>
+                <p>
+                    Polis (Acil Olmayan): <strong>0900-8844</strong>
+                </p>
+            </li>
+            <li>
+                <p>
+                    Hayvan Polisi: <strong>144</strong>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <h2>
+        İlk Yardım Yapmak
+    </h2>
+    <p>
+        Yaralı kişileri kesinlikle zorunlu olmadıkça hareket ettirmeyin. Bu, yalnızca yaralıyı hareket ettirmemek,
+        hareket ettirmekten daha tehlikeli olduğunda yapılmalıdır. Örneğin, bir kaza demiryolu üzerinde meydana gelmişse
+        veya yangın riski varsa. Aynı durum kask takan yaralılar için de geçerlidir. Kasklar, yalnızca çıkarmamak yaralı
+        için daha büyük bir risk oluşturuyorsa çıkarılmalıdır, örneğin kusmaları gerekiyorsa ve bu nedenle nefes
+        alamıyorlarsa.
+    </p>
+    <p>
+        Yaralıya konuşarak moral verin, hareket etmemelerini sağlayın ve boyun yaralanması riski varsa başka bir kişinin
+        yaralının başını sabit tutmasını sağlayın. Eğer yaralı bilinçsizse, hala nefes alıp almadıklarını kontrol edin.
+        Yaralı nefes almıyorsa, en çok tıbbi bilgiye sahip olan kişinin yaralıyı hayata döndürmesi için müdahale
+        etmesini sağlayın. Bu durumu acil servis ekiplerine bildirin. Eğer yaralı nefes alıyor ancak kusma veya başka
+        bir solunum problemi riski varsa, onları kurtarma pozisyonuna yerleştirin.
+    </p>
+    <div class="images-container6">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_6d9fb646cc7740929da302ecb54d5f2d~mv2.jpeg"
+                alt="Yan hava yastığı arızası uyarısı">
+            <figcaption>Adım 1</figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_fcaa5dcfeeb94f7ab3c5d4f114ac9a43~mv2.jpeg"
+                alt="Yan hava yastığı arızası uyarısı">
+            <figcaption>Adım 2</figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_74f691fe4ba34669a0ca0d5f5d55a4f8~mv2.jpeg"
+                alt="Yan hava yastığı arızası uyarısı">
+            <figcaption>Adım 3</figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_26f6cd5d173349388b3bd007872281c2~mv2.jpeg"
+                alt="Yan hava yastığı arızası uyarısı">
+            <figcaption>Kurtarma pozisyonu</figcaption>
+        </figure>
+    </div>
+    <p>
+        Yaralılara pratikte yardımcı olabilmek için ilk yardım kursu almanız önerilir.
+    </p>
+    <h2>
+        Tek Araçlı Kazalar
+    </h2>
+    <p>
+        Tek araçlı kazaların, başka bir kişinin mülküne veya belediye mülküne zarar vermesi durumunda bildirilmesi
+        zorunludur. Mümkünse bu durum, mülk sahibine veya polise bildirilmelidir. Zarar meydana gelen bir tek araçlı
+        kazadan bilgi vermeden olay yerini terk etmek yasaktır.
+    </p>
+    <p>
+        Ayrıca, kediler, köpekler veya geyik gibi vahşi hayvanları içeren çarpışmaların bildirilmesi zorunludur. Bu
+        durumda sürücüler, 144 numaralı Hayvan Polisi'ni aramalıdır. Bu, normal polis teşkilatı içinde özel bir
+        birimdir.
+    </p>
+    <h2>
+        Tehlikeli Maddeler
+    </h2>
+    <p>
+        Tehlikeli maddeler taşıyan bir araçla kaza meydana geldiğinde, aracın hangi maddeleri taşıdığını ve bu
+        maddelerin ne tür bir tehlike oluşturduğunu öğrenmek önemlidir. Bu bilgi, acil servisler ve diğer kişiler için
+        hayati öneme sahiptir.
+    </p>
+    <p>
+        Tehlike tanımlama numarası (GEVI, aynı zamanda KEMLER numarası olarak da bilinir), taşınan maddenin oluşturduğu
+        tehlikeyi belirtir. Madde tanımlama numarası (STID), taşınan maddenin ne olduğunu gösterir. Her maddenin kendine
+        ait bir kodu vardır, örneğin benzin için 1203, dizel için 1202. Tehlike tanımlama numarası (üstte) ve madde
+        tanımlama numarası (altta), kamyondaki bir tabelada belirtilir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_9a2967e37ac140f18392c6a42ab19ddd~mv2.png"
+                    alt="Yan hava yastığı arızası uyarısı">
+            </figure>
+        </div>
+    </div>
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

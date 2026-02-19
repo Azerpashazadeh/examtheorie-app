@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+
+
+
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Veilig vervoer
+  </h1>
+  <p>
+   Als je een voertuig bestuurt, jonge passagiers vervoert of zelf als passagier meerijdt, is het belangrijk dit zo veilig mogelijk te doen. Daarom zijn er regels vastgesteld over het gebruik van zitplaatsen, autogordels en kinderbeveiligingssystemen.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Zitplaats
+   </h3>
+   <p>
+    Constructie die plaats biedt aan een volwassene. Dit kan een individuele stoel zijn of onderdeel van een zitrij.
+   </p>
+  </div>
+  <h2>
+   Zitplaatsen
+  </h2>
+  <p>
+   Het is verplicht dat zowel de bestuurder als de passagiers op een aangewezen zitplaats zitten tijdens deelname aan het verkeer. Je mag niet in de kofferbak of laadruimte zijn terwijl het voertuig in beweging is. Zitten of staan in een aanhangwagen of caravan tijdens het rijden is eveneens verboden.
+  </p>
+  <p>
+   Er zijn een aantal uitzonderingen op deze regels, bijvoorbeeld:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Vervoer in een lijnbus.
+    </p>
+   </li>
+   <li>
+    <p>
+     Passagiers in een rolstoel, mits deze deugdelijk kan worden vastgezet.
+    </p>
+   </li>
+   <li>
+    <p>
+     Kinderen jonger dan drie jaar tijdens vervoer in een bus.
+    </p>
+   </li>
+   <li>
+    <p>
+     Vervoer van patiënten in ambulances of andere ligplaatsen.
+    </p>
+   </li>
+   <li>
+    <p>
+     Personenvervoer tijdens optochten bij evenementen.
+    </p>
+   </li>
+   <li>
+    <p>
+     Kinderen ouder dan acht jaar op de bagagedrager van een fiets.
+     <br/>
+     Let op: dit is niet toegestaan op een snorfiets!
+    </p>
+   </li>
+  </ul>
+  <div class="important-words2">
+   <p>
+    Passagiers jonger dan 8 jaar mogen alleen worden vervoerd op fietsen, snorfietsen en bromfietsen als zij zitten op een geschikte zitplaats met voldoende steun voor rug, handen en voeten.
+   </p>
+  </div>
+  <h2>
+   Autogordels
+  </h2>
+  <p>
+   Het gebruik van de autogordel is verplicht voor alle bestuurders en passagiers van:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Personenauto’s
+    </p>
+   </li>
+   <li>
+    <p>
+     Bedrijfsauto’s
+    </p>
+   </li>
+   <li>
+    <p>
+     Driewielige motorvoertuigen met gesloten carrosserie
+    </p>
+   </li>
+   <li>
+    <p>
+     Brommobielen
+    </p>
+   </li>
+  </ul>
+  <p>
+   Vervoer nooit meer passagiers dan er gordels aanwezig zijn. In moderne personenauto’s moeten op alle zitplaatsen gordels aanwezig zijn. Dit zijn meestal driepuntsgordels die over de heup en schuin over borst en schouder lopen.
+  </p>
+  <p>
+   Gordels zijn ook verplicht voor zwangere vrouwen. Zonder gordel lopen ongeboren baby’s meer risico dan mét gordel. De gordel moet correct worden gedragen. De heupgordel moet goed onder de buik worden gedragen en het schoudergedeelte goed boven de buik. De gordel over de buik laten lopen brengt extra risico voor ongeboren kinderen met zich mee.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_bc7c3b8ac1a647a78c12f49e68840de6~mv2.jpg"/>
+     <figcaption>
+      Alle bestuurders en passagiers zijn verplicht een gordel te dragen. Ook zwangere vrouwen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_78040b8aedb94b958b3b3a2df8950d73~mv2.jpg"/>
+     <figcaption>
+      Kinderen mogen de driepuntsgordel niet alleen als heupgordel dragen. Hij moet ook over de borst lopen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    Het is
+    <strong>
+     altijd
+    </strong>
+    verplicht voor
+    <strong>
+     alle
+    </strong>
+    bestuurders en passagiers van personenauto’s om tijdens het rijden een gordel te dragen. Doe dit correct: de driepuntsgordel moet goed over je heupen en borst lopen. Draag het bovenste deel niet achter je rug langs of onder je oksel.
+   </p>
+   <p>
+    <strong>
+     Kinderen jonger dan 12 jaar: bestuurder verantwoordelijk voor de gordelplicht. Kinderen van 12 jaar en ouder: zelf verantwoordelijk voor de gordelplicht.
+    </strong>
+   </p>
+  </div>
+  <h2>
+   Het dragen van een autogordel
+  </h2>
+  <p>
+   Het dragen van een autogordel voorkomt dat bestuurders en passagiers bij een frontale botsing naar voren of omhoog worden geslingerd. Zelfs bij snelheden van slechts 30 km/h kunnen bestuurders en passagiers zonder gordel dodelijk letsel oplopen. Airbags hebben weinig nut zonder gordel en kunnen in sommige gevallen zelfs extra letsel veroorzaken.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_241c8ebafa24464eb159d4f04b441dd3~mv2.jpg"/>
+     <figcaption>
+      Zonder gordel kan de airbag bij een ongeval extra letsel veroorzaken. Draag altijd je gordel!
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_968c474e929a4cd4a4cb982eef84d60a~mv2.jpg"/>
+     <figcaption>
+      Kinderen jonger dan 18 jaar en tot 1,35 meter lengte moeten een kinderbeveiligingssysteem gebruiken, zoals een kinderzitje of, zoals hier, een zitverhoger.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Bij het omdoen en dragen van een gordel zijn een aantal zaken belangrijk:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Draag de gordel zoals bedoeld
+     </strong>
+     Dus niet alleen als heupgordel of met het schuine deel onder je oksel. Zorg dat het heupgedeelte strak over je heup ligt en het schuine deel halverwege tussen je nek en schouder. Veel gordels zijn bovenaan in hoogte verstelbaar zodat hij niet te dicht bij je nek of schouder komt.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Trek de gordel strak aan nadat hij is vastgeklikt
+     </strong>
+     Een te losse gordel spant bij een botsing niet goed of te laat aan.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Doe dikke truien en winterjassen uit
+     </strong>
+     Hoe dikker de kleding, hoe minder goed de gordel aansluit op het lichaam. Deze extra buffer zorgt ervoor dat de gordel minder goed of later aanspant bij een botsing. Je lichaam komt dan verder naar voren.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Draag een gordel bij het rijden langs water
+     </strong>
+     Er wordt vaak gezegd dat uitstappen bij te water raken moeilijker is met gordel. Natuurlijk moet je de gordel losmaken voordat je uitstapt. Geen gordel dragen vergroot echter de kans dat je door de klap met het water ernstig gewond of bewusteloos raakt. Dan kun je het voertuig helemaal niet verlaten.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_0aac586607e84ff69c774e23db0b7945~mv2.jpg"/>
+     <figcaption>
+      Instrueer kinderen altijd om de gordel correct te dragen en controleer of zij dit doen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_53815a68a8964075aae775cfe87170de~mv2.jpg"/>
+     <figcaption>
+      Met een dikke winterjas past de gordel niet meer goed om het lichaam. Een kind zo vervoeren is onveilig.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Het gebruik van de hoofdsteun
+  </h2>
+  <p>
+   Het belang van hoofdsteunen wordt vaak onderschat en ze worden daardoor niet goed afgesteld. Een goed afgestelde hoofdsteun kan echter hoofd- en nekletsel voorkomen bij een kop-staartbotsing.
+  </p>
+  <p>
+   De bovenkant van de hoofdsteun moet op gelijke hoogte zijn met de kruin. Als de hoofdsteun niet hoog genoeg kan worden ingesteld, zet hem dan in ieder geval zo hoog mogelijk. Sommige hoofdsteunen kunnen ook naar voren of achteren worden gekanteld, zodat de afstand tussen het achterhoofd en de hoofdsteun kleiner wordt.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Carrosserie
+   </h3>
+   <p>
+    De stalen constructie die de personenauto zijn sterkte geeft. Het is als het ware het “skelet” van de personenauto.
+   </p>
+  </div>
+  <h2>
+   Kinderbeveiligingssystemen
+  </h2>
+  <p>
+   Kinderen jonger dan 18 jaar en kleiner dan 1,35 meter moeten een goedgekeurd kinderbeveiligingssysteem gebruiken dat is aangepast aan de lengte en het gewicht van het kind. Dit bestaat uit vier groepen: 0+, I, II en III.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_007365726f0c4dd499332fec9360d1ad~mv2.jpg"/>
+     <figcaption>
+      Baby-autostoeltje
+      <br/>
+      Groep 0+, 0-13 kg
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_8e2a0b2f9a7042a088c10ff24dead869~mv2.jpg"/>
+     <figcaption>
+      Kinderautostoel
+      <br/>
+      Groep I, 9-18 kg
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_ec23095a331b4445804c16ad366b021f~mv2.jpg"/>
+     <figcaption>
+      Zitverhogers (met of zonder rugleuning)
+      <br/>
+      Groep II, 15-25 kg
+      <br/>
+      Groep III, 22-36 kg
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   Baby-autostoeltje (Groep 0+, 0-13 kg)
+  </h3>
+  <p>
+   Deze stoeltjes zijn voor baby’s en kleine kinderen tot ongeveer 18 maanden. Ze worden tegen de rijrichting in geplaatst en kunnen worden gebruikt tot het kind circa 13 kg weegt of met het hoofd boven de schaal uitkomt. Tot dat moment is dit de veiligste keuze. De stoeltjes worden in de auto vastgezet met de gordel of met het ISOFIX-systeem en zijn voorzien van een eigen gordel voor de baby.
+  </p>
+  <h3>
+   Kinderautostoel (Groep I, 9-18 kg)
+  </h3>
+  <p>
+   Deze stoelen worden meestal in de rijrichting geplaatst en worden vastgezet met de gordel of met het ISOFIX-systeem. Ze zijn geschikt voor kinderen vanaf circa één jaar. Het kind wordt vastgezet met een gordel van de stoel zelf, of met een “vangtafel” (beveiligingskussen) die met de normale driepuntsgordel voor buik en borst wordt bevestigd.
+  </p>
+  <h3>
+   Zitverhoger met of zonder rugleuning (Groep II, 15-25 kg / groep III, 22-36 kg)
+  </h3>
+  <p>
+   Vaak worden deze twee groepen gecombineerd in één stoel, een zitverhoger met of zonder (afneembare) rugleuning. Het is verstandig de zitverhoger mét rugleuning zo lang mogelijk te gebruiken, omdat deze de beste bescherming biedt. In deze stoelen wordt het kind meestal met de normale driepuntsgordel vastgezet. De zitverhoger zorgt ervoor dat de gordel correct over het lichaam loopt.
+  </p>
+  <h2>
+   Airbags uitschakelen
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Bij gebruik van een zitje dat tegen de rijrichting in is geplaatst, schakel je altijd de voorairbag uit. Dit zijn de airbags die normaal het hoofd beschermen bij een frontale botsing. Ze zitten in het dashboard, maar kunnen ook in de hoofdsteun van de voorstoel zitten om achterpassagiers te beschermen. Deze airbag zal het zitje en dus het kind door de auto slingeren. Het is daarom
+      <strong>
+       verplicht
+      </strong>
+      deze airbag te deactiveren.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_f745fb48ce5740b98429f86c3a61afed~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Als de airbag is geactiveerd, gebruik dan altijd een zitje dat in de rijrichting is geplaatst. Zet in dat geval de stoel waarop het kinderzitje staat zo ver mogelijk naar achteren.
+  </p>
+  <h2>
+   Gebruik van kinderbeveiligingssystemen
+  </h2>
+  <p>
+   Let bij het gebruik van een kinderbeveiligingssysteem op het volgende:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Zorg dat het zitje deugdelijk is bevestigd
+     </strong>
+     Zitjes met een ISOFIX-systeem zijn het stabielst als ze correct zijn vastgezet. Ze zijn met een speciaal kliksysteem aan de carrosserie bevestigd en verschuiven daarom vrijwel nooit. Een zitje dat je met een gordel vastzet, wordt pas bij een ongeval goed tegengehouden als het zitje correct in de gordel staat. Lees de instructies zorgvuldig.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Schakel de passagiersairbag uit
+     </strong>
+     Vervoer je een kind op de voorstoel tegen de rijrichting in in een kinderzitje, dan is het uitschakelen van de passagiersairbag verplicht. Niet uitschakelen is zeer gevaarlijk. Mocht de airbag bij een ongeval afgaan, dan kan het kind dodelijk gewond raken.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Doe dikke truien en jassen uit
+     </strong>
+     Een kind in een zitje met een winterjas is minder goed beschermd. Het kind kan bij een ongeval zelfs uit het zitje worden geslingerd. De gordels sluiten dan niet strak genoeg om het lichaam.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Gebruik een zitje van een bepaalde groep zo lang mogelijk
+     </strong>
+     Te vroeg overstappen naar een hogere groep is minder veilig, omdat elke hogere groep minder bescherming biedt. Het kind moet natuurlijk nog wel comfortabel kunnen zitten.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Wees voorzichtig met tweedehands zitjes
+     </strong>
+     Controleer bij tweedehands kinderzitjes altijd of ze bij een ongeluk betrokken zijn geweest. Net als bij gordels, airbags en helmen neemt de werking af als het systeem al eens bescherming heeft geboden. Vaak is niet vast te stellen of er ooit iets mee is gebeurd. Bij twijfel is het raadzaam het zitje niet te gebruiken.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_7efd5bd0b32b4b598d93ef1a3b5b56ae~mv2.jpg"/>
+     <figcaption>
+      Het uitschakelen van de passagiersairbag is hier niet verplicht, maar wel aan te raden. Als dit niet mogelijk is, zet de passagiersstoel zo ver mogelijk naar achteren.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_97ffa6844ae14f7ab177ab3db398c8af~mv2.jpg"/>
+     <figcaption>
+      Dit kinderzitje mag hier alleen worden geplaatst als de passagiersairbag is uitgeschakeld.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Uitzonderingen op kinderzitjesplicht
+  </h2>
+  <p>
+   Hoewel vervoer in een kinderbeveiligingssysteem voor kinderen onder 1,35 meter altijd de veiligste keuze is, kan dit in uitzonderingsgevallen simpelweg niet.
+  </p>
+  <p>
+   Daarom zijn er in de wet enkele uitzonderingen opgenomen:
+  </p>
+  <ul>
+   <li>
+    <p>
+     In taxi’s en lijnbussen is gebruik niet verplicht, maar kinderen mogen niet op de voorste zitrij zitten.
+    </p>
+   </li>
+   <li>
+    <p>
+     Past door het gebruik van twee andere kinderzitjes op de achterbank geen derde kinderzitje meer, dan mag het derde kind met alleen een gordel achterin worden vervoerd. Bij voorkeur het oudste kind, maar in ieder geval een kind ouder dan drie jaar.
+    </p>
+   </li>
+   <li>
+    <p>
+     Bij incidenteel vervoer, zoals een kinderfeestje, mogen kinderen ouder dan drie jaar maar kleiner dan 1,35 meter achterin met alleen een gordel worden vervoerd.
+    </p>
+   </li>
+  </ul>
+  <div class="important-words2">
+   <p>
+    <strong>
+     Waarschuwing!
+    </strong>
+    <br/>
+    Dat iets wettelijk is toegestaan, betekent niet dat het de beste keuze is. Als het mogelijk is een kinderbeveiligingssysteem te gebruiken bij een kind kleiner dan 1,35 meter, heeft dit altijd de voorkeur.
+   </p>
+  </div>
+  <h2>
+   Helmplicht
+  </h2>
+  <p>
+   Voor een aantal motorrijtuigen geldt in plaats van gordelplicht een helmplicht. Deze voertuigen, waaronder bromfietsen, motorfietsen, brommobielen zonder gesloten carrosserie, gemotoriseerde driewielers en quads, hebben vaak geen gordels. In deze gevallen ben je verplicht een goedgekeurde helm te dragen. Ook hier geldt: vanaf 12 jaar is de passagier zelf verantwoordelijk. De bestuurder is verantwoordelijk voor jongere kinderen.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

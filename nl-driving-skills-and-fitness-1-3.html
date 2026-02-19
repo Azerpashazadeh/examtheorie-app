@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        Rijvaardigheid en rijgeschiktheid
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            Rijvaardigheid
+        </h3>
+        <p>
+            Het vermogen om een voertuig te besturen. Dit wordt vooral bepaald door hoe bekwaam u bent in het besturen
+            van een voertuig en hoe goed u de controle over het voertuig behoudt. Het gebruik van alcohol en drugs kan
+            de rijvaardigheid verminderen.
+        </p>
+        <h3>
+            Rijgeschiktheid
+        </h3>
+        <p>
+            De lichamelijke of geestelijke geschiktheid om een voertuig te besturen. Lichamelijke of psychische
+            aandoeningen, zoals problemen met ledematen of neurologische aandoeningen, kunnen uw rijgeschiktheid
+            beïnvloeden.
+        </p>
+    </div>
+    <p>
+        Als u wordt staande gehouden door een politieagent of een andere bevoegde persoon die u ongeschikt acht om te
+        rijden, kan deze uw rijbewijs invorderen. Dit kan het gevolg zijn van roekeloos rijgedrag of wanneer duidelijk
+        is dat u onder invloed bent van alcohol, drugs of medicijnen. Dit kan echter ook gebeuren als u lichamelijk of
+        geestelijk onwel oogt. Rijvaardigheid en rijgeschiktheid kunnen bovendien met de leeftijd afnemen.
+    </p>
+    <p>
+        Als uw rijbewijs om een van bovenstaande redenen wordt ingevorderd, wordt dit gemeld bij het CBR. Het CBR
+        beslist vervolgens op welke wijze uw geschiktheid om te blijven rijden wordt beoordeeld. Medewerking is
+        verplicht. Als u weigert mee te werken aan dit traject, wordt uw rijbewijs ongeldig verklaard.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="Afbeelding 1" class="custom-centered-image"
+                src="https://static.wixstatic.com/media/4b688f_b3b030a3d0d54d6c9638cb890c681133~mv2.jpg" />
+            <figcaption>
+                <em>
+                    Als er twijfels zijn over uw rijvermogen, kunt u worden onderzocht door een onafhankelijke
+                    specialist. Weigert u mee te werken, dan wordt uw rijbewijs ongeldig verklaard.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        CBR-cursus of medische keuring
+    </h2>
+    <p>
+        Het CBR heeft verschillende opties om uw rijgeschiktheid of rijvaardigheid te bepalen:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                Medische keuring van de rijgeschiktheid
+            </strong>
+            <p>
+                Keuring uitgevoerd door een onafhankelijke specialist, zoals een oogarts, neuroloog of cardioloog.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Rijtest ter beoordeling van rijvaardigheid of rijgeschiktheid
+            </strong>
+            <p>
+                Deze test kan volgen op een medische keuring. U rijdt met een speciaal opgeleide examinator om vast te
+                stellen of het verantwoord is dat u blijft rijden. Afhankelijk van de omstandigheden kan deze test
+                worden afgenomen in een lesauto of in uw eigen auto.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Het CBR kan ook een verplichte cursus opleggen. Dit omvat cursussen met betrekking tot alcohol- of drugsgebruik:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                LEMA (Lichte Educatieve Maatregel Alcohol en verkeer)
+            </strong>
+            <p>
+                Wordt opgelegd aan bestuurders die zijn aangehouden wegens rijden onder invloed. Dit betreft een
+                bloedalcoholgehalte van 0,5–0,8 promille (220–350 μg/l) voor beginnende bestuurders en 0,8–1,0 promille
+                (350–440 μg/l) voor ervaren bestuurders.
+            </p>
+        </li>
+        <li>
+            <strong>
+                EMA (Educatieve Maatregel Alcohol en verkeer)
+            </strong>
+            <p>
+                Wordt opgelegd bij een hoger bloedalcoholgehalte of bij een tweede keer rijden onder invloed.
+            </p>
+        <li>
+            <strong>
+                EMD (Educatieve Maatregel Drugs en verkeer)
+            </strong>
+            <p>
+                Wordt opgelegd bij aangetoond drugsgebruik in het verkeer.
+            </p>
+        </li>
+        </li>
+    </ul>
+    <p>
+        En cursussen met betrekking tot snelheidsovertredingen en ander asociaal gedrag:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                LEMG (Lichte Educatieve Maatregel Gedrag en verkeer)
+            </strong>
+            <p>
+                Wordt opgelegd bij snelheidsovertredingen. Dit geldt wanneer u 50 tot 59 km/u sneller rijdt dan
+                toegestaan (zelfs vanaf 30 km/u bij wegwerkzaamheden).
+            </p>
+        </li>
+        <li>
+            <strong>
+                EMG (Educatieve Maatregel Gedrag en verkeer)
+            </strong>
+            <p>
+                Wordt opgelegd bij asociaal en gevaarlijk gedrag, zoals bumperkleven, het afsnijden van andere
+                weggebruikers, door rood rijden of vanaf 60 km/u te hard rijden.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Deze alcohol-, drugs- en gedragscursussen zijn verplicht en volledig voor uw eigen rekening. Naast deze cursus
+        krijgt u meestal ook een (aanzienlijke) boete. Als u de cursus niet (volledig) volgt of niet betaalt, wordt uw
+        rijbewijs ongeldig verklaard.
+    </p>
+    <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+        Terug naar
+        overzicht
+    </a>
+
+    
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

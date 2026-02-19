@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+        .vertical-line2 {
+            width: 5px;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 0;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Scope of driving licence B (passenger car)</h2>
+    <p>A passenger car driving licence permits you to drive a passenger car, and also to tow a trailer with that car.
+        However, maximum weight limits do apply.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Empty trailer weight</h3>
+        <p>
+            Weight of the trailer as delivered by the manufacturer (so this may include any spare wheels and tools that
+            accompany the trailer, but not all extra accessories).
+        </p>
+        <h3>Maximum authorised mass trailer</h3>
+        <p>Maximum total weight of the trailer (including load). That is the weight of the trailer (unladen weight) plus
+            the permissible load (payload). To determine whether you can legally tow a trailer, always check the maximum
+            authorised mass (‘toegestane maximummassa’) rather than the unladen weight.</p>
+
+    </div>
+    <h2>Trailers up to 750 kg</h2>
+    <p>To tow a trailer with a maximum authorised mass of 750 kg or less with a passenger car, only a B driving licence
+        is required, even if the maximum authorised mass of the car and trailer combined exceeds 3500 kg.</p>
+
+    <img src="https://static.wixstatic.com/media/4b688f_5b760c38b38c4ef5b3eaec5d97e0fd4d~mv2.png" alt="Image 1"
+        class="custom-centered-image" />
+
+    <h2>Trailers heavier than 750 kg</h2>
+
+    <p>Trailers with a maximum authorised mass above 750 kg may in some cases be towed with a passenger car with only a
+        B driving licence. In this case, the maximum authorised mass of the combination must not exceed 3500 kg.</p>
+    <img src="https://static.wixstatic.com/media/4b688f_fda2237899e7496da25fcdd2fc21fcdb~mv2.png" alt="Image 1"
+        class="custom-centered-image" />
+    <h2>Heavier vehicle combinations</h2>
+
+    <p>If the maximum authorised mass of the combination does exceed 3500 kg and the trailer weighs more than 750 kg, a
+        B driving licence is no longer sufficient. To drive this combination, you must have an E driving licence (as
+        well as a B licence). This licence permits you to tow trailers with a maximum authorised mass up to 3500 kg with
+        a passenger car.</p>
+
+    <img src="https://static.wixstatic.com/media/4b688f_5d409e06d84347efbff23085dc35d095~mv2.png" alt="Image 1"
+        class="custom-centered-image" />
+    <h2>Examples</h2>
+    <p>Which driving licence is required usually depends on the combined weight of both vehicles.</p>
+
+    <img src="https://static.wixstatic.com/media/4b688f_fd700bd0dc9d4ceb82ed6e23e2badbd2~mv2.png" alt="Image 1"
+        class="custom-centered-image" />
+
+    <p>In this combination, the maximum authorised mass of the caravan - less than 750 kg - is particularly important.
+        This combination requires only a B driving licence. The maximum authorised mass of the passenger car is less
+        important here, as long as it does not exceed 3500 kg.</p>
+    <img src="https://static.wixstatic.com/media/4b688f_8f907ceb6f894c699c191a0f603fe523~mv2.png" alt="Image 1"
+        class="custom-centered-image" />
+    <p>The combined maximum authorised masses is important in this combination. The trailer is heavier than 750 kg. The
+        combination is lighter than 3500 kg (namely 2900 kg) and can therefore still be driven with driving licence B.
+    </p>
+
+    <img src="https://static.wixstatic.com/media/4b688f_7d5ad331142d4bcba6eb9a362c81dac5~mv2.png" alt="Image 1"
+        class="custom-centered-image" />
+    <p>With this combination, the trailer is heavier than 750 kg. In addition, the combination together is heavier than
+        3500 kg (namely 3850 kg). Therefore, driving licence B is not enough in this case - you also need the trailer
+        driving licence E for this combination.</p>
+
+   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

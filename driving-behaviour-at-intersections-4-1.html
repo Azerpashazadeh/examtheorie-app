@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #009669;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #009669;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+        
+
+        .important-words6 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            
+        }
+
+
+        .container {
+    display: flex;
+    align-items: flex-start; /* Metni resmin üst kenarıyla hizalar */
+    margin-bottom: 30px; /* Her bir konteyner arasında boşluk */
+    gap: 30px; /* Resim ve metin arasındaki mesafeyi sabit tutar */
+}
+
+.container figure {
+    margin: 0;
+    flex: 0 0 auto; /* Resmin genişliğini içeriğine göre ayarlar ve büyüyüp küçülmesini engeller */
+    text-align: center; /* Açıklamaları resmin altında ortalamak için */
+    min-width: 50px; /* Resmin minimum genişliği */
+    max-width: 100px; /* Resmin maksimum genişliği */
+}
+
+
+.container figure img {
+    width: 100%; /* Resmin figure elemanını tamamen doldurmasını sağlar */
+    height: auto;
+    display: block;
+    max-width: 100%; /* Resmin kapsayıcıdan taşmasını engeller */
+   }
+
+.container .heading-primary {
+    margin-top: 0; /* Başlığın üstünde boşluk olmamasını sağlar */
+}
+
+.container > div {
+    flex: 1; /* Metin içeriğinin kalan alanı kaplamasını sağlar */
+}
+
+.container figcaption {
+    margin-top: 5px; /* Resim ile açıklama arasında boşluk */
+    font-style: italic; /* Açıklamaları vurgulamak için */
+}
+
+
+
+
+
+        p {
+            max-width: 98%;
+           
+        }
+        .image {
+            width: 100px; /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px; /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #BEE3D5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+            
+        }
+
+       
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #009669;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #009669;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container20 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container20 figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container20 img {
+            width: 100%;
+            height: auto;
+            margin-top: 0;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container20 figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+        }
+   
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-text-container {
+    display: flex;
+    align-items: flex-start; /* Metni resmin üst kenarıyla hizalar */
+    margin-bottom: 30px; /* Her bir konteyner arasında boşluk */
+    gap: 30px; /* Resim ve metin arasındaki mesafeyi sabit tutar */
+}
+
+.image-text-container figure {
+    margin: 0;
+    flex: 0 0 49%; /* Resmin genişliğini ekranın %50'sine ayarlar */
+}
+
+.image-text-container img {
+    width: 100%; /* Resmin konteynerini tamamen doldurmasını sağlar */
+    height: auto;
+    display: block;
+}
+
+.image-text-container .text-content {
+    flex: 1; /* Metin içeriğinin kalan alanı kaplamasını sağlar */
+}
+
+@media (max-width: 767px) {
+    .image-text-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px; /* Mobilde resim ve metin arasındaki boşluk */
+    }
+
+    .image-text-container figure,
+    .image-text-container .text-content {
+        flex: 1 1 auto; /* Mobilde esnek hale gelir */
+    }
+}
+
+
+
+
+
+
+
+.text-content {
+    flex: px; /* Metin içeriği alanını genişlet */
+    font-size: 16px;
+    
+   
+}
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+        
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        .image-container20 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px; /* Resimler arasında boşluk için */
+}
+
+.image-container20 figure {
+    flex: 1 1 calc(25% - 10px); /* Masaüstü: Resimleri dört sütun olarak hizalar */
+    max-width: calc(25% - 10px);
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .image-container20 figure {
+        flex: 1 1 calc(50% - 10px); /* Mobil: Resimleri iki sütun olarak hizalar */
+        max-width: calc(50% - 10px);
+    }
+}
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Driving behaviour at intersections</h1>
+    <p>Different rules apply for when you encounter other traffic at intersections. With these rules, it is important
+        that you understand the difference between road users (all traffic, including pedestrians) and drivers (all
+        traffic without pedestrians). In addition, it is important that you understand the difference between traffic on
+        the intersecting road and traffic on the same road.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Intersection</h3>
+        <p>
+            Intersection or junction of roads. At an intersection it is possible to change direction. This means that
+            you can turn left or right.
+            Intersections can be designed in many different ways.
+        </p>
+
+    </div>
+
+    <div>
+        <div class="image-container20">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Normal intersection</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>T-junction</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>Y-junction or fork</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>Bayonet intersection</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Intersecting road</h3>
+        <p>
+            This is a road that crosses the road you are on. This does not always have to be at an angle of 90 degrees (perpendicular). It can also be a road that is more oblique to the road you are on, such as at a Y-junction.
+        </p>
+
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>Compared to the white lesson car, the coloured part is the intersecting road.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>Compared to the white lesson car, the coloured part of the Y-junction is the crossing road.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>The same road</h3>
+        <p>
+            This is the road you are on. Traffic on the same road approaches you from behind or from the front. It does not matter whether these are pedestrians on the pavement or on the verge, or drivers of passenger cars on the carriageway. If you drive on a roundabout, all traffic that also follows this roundabout is traffic on the same road.
+        </p>
+
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>All these road users are on the same road (coloured part).</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg"
+                    alt="Seat belt warning light">
+                <figcaption>On a roundabout, the circular stretch of road counts as “the same road”. The lesson car and the cyclist are therefore on the same road.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Giving way</h3>
+        <p>
+            Allows the drivers involved to proceed without hindrance. This means that the driver who has priority must also have the idea that he has priority. This driver must be able to drive unhindered.
+        </p>
+
+    </div>
+    <h2>
+        Giving way
+    </h2>
+    <p>
+        If the priority at an intersection is not regulated by signs, markings on the road surface or traffic lights, these are known as equivalent roads. On equivalent roads, drivers give right of way to drivers from the right.
+    </p>
+    <p>
+        You do not have to give a pedestrian priority, because they are not classed as drivers.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The cyclist coming from the right has priority over the lesson car.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>The pedestrian coming from the right is not a driver and must therefore let the lesson car pass.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        There are two exceptions to this rule:
+    </p>
+    <ul>
+        <li>
+            Drivers give priority to tram drivers.
+        </li>
+        <li>
+            Drivers on unpaved roads give right of way to drivers from the left and right on a paved road.
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg"
+                    alt="Warning side-airbag malfunction">
+                <figcaption>The lesson car coming from the right must give right of way to the tram coming from the left.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg"
+                    alt="Seat belt warning light">
+                <figcaption>The lesson car comes from an unpaved road and must give right of way to the driver on the paved road.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Priority triangles (Shark’s teeth)</h3>
+        <p>
+            White triangles on the road. These are usually used with, but sometimes also without, sign B-6. In both cases, these triangles mean that you must give right of way to drivers on the intersecting road.
+        </p>
+
+    </div>
+    <h2>
+        Priority indicated by signs or road markings
+    </h2>
+<p>
+    If right of way at an intersection is controlled by signs or markings on the road surface, the priority rule that drivers from the right have right of way is then irrelevant. There are various signs that regulate the priority.
+</p>
+<div class="important-words6">
+    <div class="vertical-line2"></div>
+
+   
+    
+
+    <div class="container">
+        <div>
+            <h3 class="heading-primary"><strong>Being given right of way - priority road</strong></h3>
+            <p>
+                The B-1 sign indicates that you are on a priority road. You must be given priority by the crossing drivers. This sign is repeated within the built-up area before and outside the built-up area after every intersection. That way you can tell from these signs whether you are driving inside or outside built-up areas.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_71ed77b3f56847e399c1547a5a7a12eb~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-1</figcaption>
+        </figure>
+    </div>
+    
+    <div class="container">
+        <div>
+            <p>
+                The B-2 sign indicates the end of this priority road. After this sign the normal priority rules apply.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_5b541bedc0ca4d048fa80dbbdcb7ab99~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-2</figcaption>
+        </figure>
+    </div>
+    
+    <div class="container">
+        <div>
+            <h3 class="heading-primary"><strong>Being given right of way - priority intersection</strong></h3>
+            <p>
+                The B-3 sign indicates a priority intersection. You must be given priority by the crossing drivers. The thick arrow indicates the road you are driving on. The cross marks indicate the side roads. In this case, there are side roads on both the left and the right. This sign, as well as the B-4 and B-5 sign, only apply to the intersection you are approaching.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_6cba878b84114d19a45e0cc897401bc1~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-3</figcaption>
+        </figure>
+    </div>
+    
+    <div class="container">
+        <div>
+            <p>
+                The B-4 sign indicates a priority intersection. In this case there is one side road on the left. You must be given priority by the crossing drivers from that side road.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_6386b91bf4af48eba2b76f5598bde178~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-4</figcaption>
+        </figure>
+    </div>
+    
+    <div class="container">
+        <div>
+            <p>
+                The B-5 sign indicates a priority intersection. In this case there is one side road on the right. You must be given priority by the crossing drivers from that side road.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_964195d9ac754a918b0dc4f4599a29a9~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-5</figcaption>
+        </figure>
+    </div>
+    
+    <div class="container">
+        <div>
+            <h3 class="heading-primary"><strong>Giving right of way</strong></h3>
+            <p>
+                The B-6 sign indicates that you must give priority to drivers on the intersecting road. It may be that this intersection is a priority road, but it may also be a priority intersection. Stopping is not mandatory, as long as you are able to give priority to the crossing drivers.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_4b2a0103cec54e10a8de7f43100c00bf~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-6</figcaption>
+        </figure>
+    </div>
+    
+    <div class="container">
+        <div>
+            <p>
+                The B-7 sign indicates that you must give priority to drivers on the intersecting road. It may be that this intersection is a priority road, but it may also be a priority intersection. In this case, stopping is <strong>always</strong> mandatory! These signs are applied at intersections where there is poor visibility, or a high accident risk.
+            </p>
+        </div>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_31408e28c07947ec9589ca27a9d12799~mv2.png" alt="Örnek Resim" class="image">
+            <figcaption>B-7</figcaption>
+        </figure>
+    </div>
+    
+
+
+
+
+
+
+</div>
+<p>
+    The difference between these two signs is that you always have to stop at the “STOP” sign. Even if you have seen that there are no drivers on the intersecting road. In addition, the sign B-6 is always combined with priority triangles and the sign B-7 with a stop line.
+</p>
+<div>
+    <div class="images-container5">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg"
+                alt="Warning side-airbag malfunction">
+            <figcaption>The B-6 sign is always combined with priority triangles.</figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg"
+                alt="Seat belt warning light">
+            <figcaption>The B-7 sign is always combined with a stop line.</figcaption>
+        </figure>
+    </div>
+</div>
+<p>
+    These signs and markings are also only intended for drivers. Pedestrians are not subject to these priority rules.
+</p>
+<h2>
+    Examples
+</h2>
+<div class="image-text-container">
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg"
+            alt="Sigorta Kartı" />
+        <figcaption><em></em></figcaption>
+    </figure>
+    <div class="text-content">
+        
+        <p>When approaching sign B-6 and priority triangles, give priority to drivers on the intersecting road. In this case, a horse-drawn vehicle comes from the left on the intersecting road. The lesson car must give right of way to this driver.</p>
+    </div>
+</div>
+<div class="image-text-container">
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg"
+            alt="Sigorta Kartı" />
+        <figcaption><em></em></figcaption>
+    </figure>
+    <div class="text-content">
+        
+        <p>In this case, the lesson car is also approaching priority triangles. The pedestrian on the intersecting road must wait for the lesson car. The lesson car only has to give drivers priority and no pedestrians on the priority triangles.</p>
+    </div>
+</div>
+<div class="image-text-container">
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg"
+            alt="Sigorta Kartı" />
+        <figcaption><em></em></figcaption>
+    </figure>
+    <div class="text-content">
+        
+        <p>Here, too, the pedestrian must wait for the lesson car. This is approaching a stop sign with stop line. Due to the stop sign, the lesson car must stop, but can immediately drive away if no drivers come from the left or right. A pedestrian is not a driver.</p>
+    </div>
+</div>
+<div class="image-text-container">
+    <figure>
+        <img src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg"
+            alt="Sigorta Kartı" />
+        <figcaption><em></em></figcaption>
+    </figure>
+    <div class="text-content">
+        
+        <p>Tram drivers always have priority at an equivalent intersection. As soon as there are signs and road markings that regulate the priority, the tram driver must follow these. In this case, the tram driver must wait for the lesson car.</p>
+    </div>
+</div>
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

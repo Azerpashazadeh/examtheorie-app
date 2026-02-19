@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: left;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: ;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        .image-text-container {
+
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            /* Resim ve metin arasında boşluk bırakıyoruz */
+            margin-bottom: 20px;
+        }
+
+        .image-text-container figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-text-container img {
+            width: 120px;
+            height: 120px;
+            /* Sabit boyutta resim */
+            object-fit: cover;
+        }
+
+        .image-text-container figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            margin-top: 2px;
+            max-width: 120px;
+            /* Resim altındaki yazıyı resmin genişliğine göre ayarladık */
+            text-align: center;
+        }
+
+        .image-text-container .text-content {
+            margin-top: -24px;
+            flex: 1;
+            /* Metnin kalan alanı kaplamasını sağlıyoruz */
+            text-align: left;
+            /* Metni sola hizalıyoruz */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Motor carriage mandatory insurance</h2>
+    <p>Once a motor carriage has been registered in your name in the national vehicle register (registered ownership),
+        you are required to take out an insurance policy for the vehicle. Whether you drive the vehicle or not is
+        irrelevant.</p>
+    <h2>Types of insurance</h2>
+    <p>There are several options when it comes to insuring a motor vehicle. The three most common are:</p>
+    <ul>
+        <li>
+            <strong>WA (‘Wettelijke Aansprakelijkheid’, Third-party liability)</strong>
+            <p>The most limited form of insurance; only covers damage caused to a third party’s vehicle. Damage to your
+                own vehicle is not covered, nor, for example, theft or storm damage. This insurance is mandatory for
+                motor carriages, although more comprehensive coverage is also available.</p>
+        </li>
+        <li>
+            <strong>WA limited cover (also called WA plus)</strong>
+            <p>The intermediate type of insurance, which covers damage to third-party vehicles as well as damage to your
+                own vehicle caused by force majeure such as storm damage, theft, or fire.</p>
+        </li>
+        <li>
+            <strong>WA All-risk insurance (also called ‘casco’)</strong>
+            <p>The most comprehensive car insurance available. Covers not only third-party damage and damage caused by
+                force majeure, but also damage to your own vehicle caused by your own actions.</p>
+        </li>
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_e9da3cbbb1104333a29d6136f90241fb~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>Not all insurance options cover damage to your own vehicle.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0b860389a2fd4f66b43eca9fc3fac62b~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>Also, damage due to theft is often not covered.</em>
+            </figcaption>
+        </figure>
+    </div>
+    <p>Most drivers will select a type of insurance policy that is based on factors such as the price of the policy and
+        the age of their car. The newer and more expensive the car, the wiser it is to take out all-risk insurance.</p>
+    <h2>Claim-free years</h2>
+    <p>Vehicle insurers work with a ‘claim-free years’ scheme. It is a kind of bonus system where drivers are rewarded
+        if they do not file an insurance claim for damages for a longer period of time (a claim is damages that the
+        insurer pays for).</p>
+    <p>For every year you are claim-free, you will receive a percentage discount on your premium. The premium is the
+        amount you pay your insurer to keep your coverage active. The more claim-free years you have, the higher the
+        discount you receive. This is called ‘bonus’.</p>
+    <p>If you cause and file a claim for damages, your accrued discount will decrease. This is called ‘malus’, hence the
+        system is sometimes called a ‘bonus-malus system’.</p>
+    <p>Filing claims for damages can cost you money, as your monthly premium goes up again. In addition, repairs for
+        minor damages are sometimes more expensive when arranged through your insurer. In some cases, it may be cheaper
+        to pay for damages yourself instead of claiming it via your insurance.</p>
+
+    <div class="important-words2">
+        <p>
+            As car insurance usually works according to the bonus-malus system, it might be cheaper to pay for minor
+            damages yourself, rather than claiming from your insurance.
+        </p>
+    </div>
+    <h2>Insurance card (former green card)</h2>
+    <p>An insurance card is proof that your vehicle is insured. This paper contains details regarding your vehicle and
+        insurance policy. You will be issued a new insurance card every year. Some companies provide you with a digital
+        card instead of a paper one.</p>
+    <p>It is not mandatory to keep this document in your vehicle in the Netherlands. However, it may be required in
+        other countries. It can also be useful to have your insurance card on hand when dealing with damages, as it
+        contains information you and other involved parties may need.</p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_c2c4fa496a0e485691e230d8e7fc8fa0~mv2.png"
+                alt="Image 1" />
+            <figcaption><em>It is not mandatory to carry your insurance card with you, but it is advisable to keep this
+                    together with your vehicle registration papers.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d40dfb5b75fd4002a4816ed190113371~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>Damages caused by a coupled caravan are also covered by the car insurance.</em>
+            </figcaption>
+        </figure>
+    </div>
+
+    <h2>Trailer or caravan</h2>
+    <p>Coupled trailers or caravans are also covered by car insurance policies. This means any damages caused by a
+        trailer (or cargo therein) or caravan to another party will be covered by the towing vehicle’s car insurance.
+        Any damage to the trailer or caravan itself, however, is not covered by the car insurance policy. Separate
+        trailer or caravan insurance policies are available for this, but not mandatory.</p>
+    <h2>European damage claim form (Accident statement)</h2>
+    <p>If your vehicle is damaged, you and any other involved party must complete a damage claim form. It is not
+        mandatory to have this with you, but it can be useful. A damage claim form has 2 sheets, one which must be
+        filled in and one transfer sheet. After completing and signing the form, both parties receive a copy. Later, you
+        can fill in the back of the form and send it to your insurer.</p>
+
+    <div class="image-text-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b47b9221b4ac401a9cc2d2cb76bfa4a1~mv2.png"
+                alt="Insurance Card" />
+            <figcaption><em>Insurance sticker</em></figcaption>
+        </figure>
+        <div class="text-content">
+            <h2>No registration requirement</h2>
+            <p>Not all motor vehicles are required to be registered. Some vehicles, such as a Segway and motorised
+                disabled vehicles, must be insured and have a visible insurance sticker. This sticker is provided by the
+                insurer once the vehicle has been insured. You will receive a new one every year.</p>
+        </div>
+    </div>
+    <h2>Lending your vehicle</h2>
+    <p>Other people driving your vehicle are covered by your car insurance policy. Your insurer will pay out for any
+        damages incurred while someone other than the owner was driving. This may lead to a higher premium due to a
+        break in claim-free years. Drivers are therefore advised to exercise caution in lending their vehicle to others.
+    </p>
+    <h2>Driving without insurance</h2>
+    <p>Failing to insure your vehicle is a criminal offence. Any damages caused by your vehicle while uninsured will be
+        recovered from you personally. This can be expensive. Furthermore, your insurer is not required to pay out for
+        damages caused by negligence or irresponsible behaviour, such as driving under the influence of alcohol or
+        drugs, driving without a licence, and using the vehicle for a purpose for which it is not insured (e.g. driving
+        lessons or taxi rides). In these cases, the insurer will often pay out to the other party and then recover that
+        amount from you.</p>
+    <h2>Motor Traffic Guarantee Fund</h2>
+    <p>If you incur damages caused by someone you do not know personally or someone who does not have insurance, you may
+        in some cases be entitled to compensation from the National Guarantee Fund (Waarborgfonds motorverkeer). This is
+        a national fund set up by the government to cover drivers severely impacted by damages which they cannot cover
+        themselves or recover from the responsible party.</p>
+    <h2>Laid-up vehicles</h2>
+    <p>If you do not expect to drive a passenger car for an extended period of time, you can opt to suspend any
+        mandatory requirements regarding the vehicle. This can be useful if, for example, you want to work on restoring
+        a vehicle. This also means you can no longer drive or park it on public roads. The vehicle must be completely
+        removed from any traffic and parked on your own property, for example, in a garage.</p>
+    <p>The biggest advantage of having a vehicle laid-up is that you are not required to pay road tax and the vehicle
+        does not have to be insured for the duration of nonuse. Periodic inspections are also not required for laid-up
+        vehicles. Once the laid-up period expires, all of these things become mandatory again. A laid-up period can be
+        requested for one, two, or three years. Applications must be submitted to the RDW.</p>
+
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+        overview</a>
+
+    
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

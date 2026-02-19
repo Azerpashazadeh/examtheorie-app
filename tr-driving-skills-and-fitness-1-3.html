@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+         /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sürüş becerileri ve sürüşe uygunluk</h2>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Sürüş becerileri</h3>
+        <p>
+            Bir aracı kullanma yeteneği. Bu, esas olarak bir aracı ne kadar yetkin şekilde kullanabildiğinize ve aracı ne kadar iyi kontrol ettiğinize bağlıdır. Alkol ve uyuşturucu kullanımı sürüş becerilerini bozabilir.
+        </p>
+        <h3>Sürüşe uygunluk</h3>
+        <p>
+            Bir aracı kullanmaya fiziksel veya zihinsel olarak uygun olma durumu. Uzuvlar veya nörolojik durumlarla ilgili sorunlar gibi fiziksel veya zihinsel bozukluklar, sürüşe uygunluğunuzu etkileyebilir.
+        </p>
+    </div>
+
+    <p>
+        Bir polis memuru veya yetkili bir kişi tarafından durdurulup sürüşe uygun olmadığınız değerlendirilirse, memur veya yetkili kişi ehliyetinize el koyabilir. Bu, dikkatsiz sürüş ya da alkol, uyuşturucu veya ilaçların etkisi altında olduğunuzun açıkça görülmesi nedeniyle olabilir. Ancak, fiziksel veya zihinsel olarak sağlıksız görünmeniz durumunda da bu olabilir. Sürüş becerileri ve sürüşe uygunluk yaşla birlikte de düşebilir.
+    </p>
+
+    <p>
+        Ehliyetinize yukarıdaki nedenlerden biriyle el konulursa, bu durum CBR'ye rapor edilir. CBR, sürüşe devam etme uygunluğunuzu nasıl belirleyeceğine karar verecektir. İşbirliği zorunludur. Bu sürece katılmayı reddederseniz, ehliyetiniz geçersiz sayılır.
+    </p>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_b3b030a3d0d54d6c9638cb890c681133~mv2.jpg" alt="Görsel 1"
+                class="custom-centered-image" />
+            <figcaption><em>Sürüş yeteneğinizle ilgili şüpheler varsa, bağımsız bir uzmanın muayenesine tabi tutulabilirsiniz. İşbirliği yapmayı reddederseniz, ehliyetiniz geçersiz sayılır.</em></figcaption>
+        </figure>
+    </div>
+
+    <h2>CBR kursu veya tıbbi muayene</h2>
+    <p>CBR, sürüş becerilerinizi veya uygunluğunuzu belirlemek için çeşitli seçenekler sunmaktadır:</p>
+
+    <ul>
+        <li>
+            <strong>Sürüş uygunluğu için tıbbi muayene</strong>
+            <p>Bağımsız bir uzman tarafından yapılan, oftalmolog, nörolog veya kardiyolog gibi uzmanlar tarafından gerçekleştirilen bir muayenedir.</p>
+        </li>
+        <li>
+            <strong>Sürüş becerilerini veya uygunluğunu incelemek için sürüş testi</strong>
+            <p>Bu test, tıbbi muayeneden sonra yapılabilir. Yanınızda özel olarak eğitilmiş bir denetçiyle sürüş yaparak sürüşe devam etmenin mantıklı olup olmadığı belirlenir. Duruma bağlı olarak, bu test bir ders aracıyla veya kendi aracınızla yapılabilir.</p>
+        </li>
+    </ul>
+
+    <p>
+        CBR ayrıca zorunlu bir kurs uygulayabilir. Bu, alkol veya uyuşturucu kullanımına yönelik kursları içerir:
+    </p>
+
+    <ul>
+        <li>
+            <strong>LEMA (Hafif Eğitici Önlem Alkol ve Trafik)</strong>
+            <p>Alkol etkisi altında sürüşle ilgili olarak tutuklanan sürücülere uygulanır. Bu, yeni sürücüler için 0,5-0,8 promil (220-350 μg/l) ve deneyimli sürücüler için 0,8-1,0 promil (350-440 μg/l) arasında bir kan alkol seviyesidir.</p>
+        </li>
+        <li>
+            <strong>EMA (Eğitici Önlem Alkol ve Trafik)</strong>
+            <p>Daha yüksek bir kan alkol seviyesi olan sürücülere veya alkol etkisi altında sürüşten ikinci kez yakalanan sürücülere uygulanır.</p>
+        <li>
+            <strong>EMD (Eğitici Önlem Uyuşturucu ve Trafik)</strong>
+            <p>Trafikte uyuşturucu kullanımı kanıtlanan sürücülere uygulanır.</p>
+        </li>
+    </ul>
+
+    <p>
+        Hız yapma ve diğer antisosyal davranışlarla ilgili kurslar da mevcuttur:
+    </p>
+
+    <ul>
+        <li>
+            <strong>LEMG (Hafif Eğitici Önlem Davranış ve Trafik)</strong>
+            <p>Hız yapma nedeniyle uygulanır. Bu, izin verilen hızdan 50-59 km/h daha hızlı sürmeniz durumunda geçerlidir (şantiyelerde 30 km/h'den itibaren bile).</p>
+        </li>
+        <li>
+            <strong>EMG (Eğitici Önlem Davranış ve Trafik)</strong>
+            <p>Araba takip etme, diğer sürücülerin önüne kırma, kırmızı ışıkta geçme veya izin verilen hızdan 60 km/h daha hızlı sürme gibi antisosyal ve tehlikeli davranışlar için uygulanır.</p>
+        </li>
+    </ul>
+
+    <p>
+        Bu alkol, uyuşturucu ve davranış kursları zorunludur ve tamamen sizin masraflarınıza tabidir. Bu kursun yanı sıra genellikle (önemli) bir ceza da alırsınız. Kursu (tamamını) almaz veya ödemezseniz, ehliyetiniz geçersiz hale gelir.
+    </p>
+
+     <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+    
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+
+</html>
+

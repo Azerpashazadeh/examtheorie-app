@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container3 strong {
+            display: block;
+            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
+            margin-bottom: 7px;
+            /* Altına 10 piksel boşluk ekler */
+            margin-top: 10px;
+        }
+
+
+        .item3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .image3 {
+            max-width: 110px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .text3 {
+            flex-grow: 1;
+            margin-top: -10px;
+        }
+
+        .text3 strong {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: -10px;
+        }
+
+        .text3 p {
+            font-size: 1rem;
+
+        }
+
+        @media (max-width: 480px) {
+            .text3 strong {
+                font-size: 1.2rem;
+                margin-top: -7px;
+
+                margin-bottom: -10px;
+            }
+
+            .item3 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+            }
+
+            .image3 {
+                margin-bottom: 10px;
+                max-width: 150px;
+            }
+        }
+
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Meaning per category - D
+  </h1>
+  <p>
+   These signs indicate which driving direction you must follow, or on which side you may or must drive past the
+        sign.
+  </p>
+  <p>
+   The following signs apply to all drivers unless otherwise stated on a sign:
+  </p>
+  <div class="container3">
+   <div class="item3">
+    <img alt="Yangın Söndürücü" class="image3" src="https://static.wixstatic.com/media/4b688f_9a01a4eb1be740958b896c29a32186a3~mv2.png"/>
+    <div class="text3">
+     <strong>
+      D-1
+     </strong>
+     <p>
+      Roundabout, mandatory direction of travel. This sign can be found on a roundabout and indicates that
+                    you have to drive the roundabout counterclockwise.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_6ef1a6cf0b8843599f8b83e94a063044~mv2.png"/>
+    <div class="text3">
+     <strong>
+      D-2
+     </strong>
+     <p>
+      It is mandatory to pass the sign on the right. The arrow can also indicate the other direction.
+     </p>
+    </div>
+   </div>
+   <div class="item3">
+    <img alt="İlk Yardım Seti" class="image3" src="https://static.wixstatic.com/media/4b688f_ce24a445b91e4779859fe997a4c9c4d8~mv2.png"/>
+    <div class="text3">
+     <strong>
+      D-3
+     </strong>
+     <p>
+      This sign can be passed on both sides. This sign is usually on a center guide (traffic island or
+                    obstacle between two lanes).
+     </p>
+    </div>
+   </div>
+  </div>
+  <p>
+   The following signs indicate a mandatory direction of travel, without indicating a one-way street. They can
+        occur in all directions (left, right, straight and combinations thereof).
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_f25a479d232549d2b68804fb4bbffde4~mv2.png"/>
+     <figcaption>
+      D-4
+      <br/>
+      Mandatory direction of travel, straight on
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_c24c3a89a7cb456abbe769ed3132faa3~mv2.png"/>
+     <figcaption>
+      D-5
+      <br/>
+      Mandatory direction of travel, right
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_bd9ff0d506064ee48c5b6e19411fa9b1~mv2.png"/>
+     <figcaption>
+      D-6
+      <br/>
+      Mandatory direction of travel, straight on and right
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_e300da9e5ca84febbf301c29573273d8~mv2.png"/>
+     <figcaption>
+      D-7
+      <br/>
+      Mandatory direction of travel, left and right
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Finally, this category includes signs that are especially intended for cyclists (and therefore also
+        snorfietsers), or moped riders (and therefore also drivers of speed-pedelecs). They are placed in places where
+        these drivers must enter the road or leave the road and enter the cycle path or cycle/moped path.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_42174bc76e704cd79025fcd66d78c1b0~mv2.png"/>
+     <figcaption>
+      D-101
+      <br/>
+      Obligation for cyclists (and snorfietsers) to pass this sign on the right side
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_e8fb4c1e88ca47048f4821bcc31cea9c~mv2.png"/>
+     <figcaption>
+      D-102
+      <br/>
+      Obligation for cyclists (and snorfietsers) to pass this sign on the left side
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_f3227cd4f80f4e34aa3c4c9ac6c9c8b2~mv2.png"/>
+     <figcaption>
+      D-103
+      <br/>
+      Obligation for mopeds to pass this sign on the right side
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_aaad058026744a188721480b69984ab7~mv2.png"/>
+     <figcaption>
+      D-104
+      <br/>
+      Obligation for mopeds to pass this sign on the left side
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

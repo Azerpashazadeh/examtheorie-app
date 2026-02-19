@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How does the final test work?</title>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+    
+
+     /* CSS dosyası (style.css) */
+    .custom-button {
+      display: inline-block;
+      width: 140px;
+      height: 39px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      line-height: 39px;
+      /* Düğme yüksekliğine göre yazıyı ortala */
+      text-decoration: none;
+      /* Bağlantı alt çizgisini kaldır */
+      border-radius: 9px;
+      /* Köşeleri yuvarlat */
+      transition: background-color 0.3s ease;
+      margin-top: 70px;
+      /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+    }
+
+    .custom-button:hover {
+      background-color: blue;
+    }
+  
+  </style>
+  
+</head>
+<body>
+  <h1>How does the final test work?</h1>
+  <p>The final driving theory test evaluates your knowledge of road rules, safe driving practices, and vehicle operation. It typically includes multiple-choice questions, hazard perception tasks, and situational assessments.</p>
+<a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

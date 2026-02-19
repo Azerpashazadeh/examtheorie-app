@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+
+        h1,
+        h2 {
+            color: #009669;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #009669;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+
+        .important-words6 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            /* Metni resmin üst kenarıyla hizalar */
+            margin-bottom: 30px;
+            /* Her bir konteyner arasında boşluk */
+            gap: 30px;
+            /* Resim ve metin arasındaki mesafeyi sabit tutar */
+        }
+
+        .container figure {
+            margin: 0;
+            flex: 0 0 auto;
+            /* Resmin genişliğini içeriğine göre ayarlar ve büyüyüp küçülmesini engeller */
+            text-align: center;
+            /* Açıklamaları resmin altında ortalamak için */
+            min-width: 50px;
+            /* Resmin minimum genişliği */
+            max-width: 100px;
+            /* Resmin maksimum genişliği */
+        }
+
+
+        .container figure img {
+            width: 100%;
+            /* Resmin figure elemanını tamamen doldurmasını sağlar */
+            height: auto;
+            display: block;
+            max-width: 100%;
+            /* Resmin kapsayıcıdan taşmasını engeller */
+        }
+
+        .container .heading-primary {
+            margin-top: 0;
+            /* Başlığın üstünde boşluk olmamasını sağlar */
+        }
+
+        .container>div {
+            flex: 1;
+            /* Metin içeriğinin kalan alanı kaplamasını sağlar */
+        }
+
+        .container figcaption {
+            margin-top: 5px;
+            /* Resim ile açıklama arasında boşluk */
+            font-style: italic;
+            /* Açıklamaları vurgulamak için */
+        }
+
+
+
+
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #BEE3D5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #009669;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #009669;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container20 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container20 figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container20 img {
+            width: 100%;
+            height: auto;
+            margin-top: 0;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container20 figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+        }
+
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-text-container {
+            display: flex;
+            align-items: flex-start;
+            /* Metni resmin üst kenarıyla hizalar */
+            margin-bottom: 30px;
+            /* Her bir konteyner arasında boşluk */
+            gap: 30px;
+            /* Resim ve metin arasındaki mesafeyi sabit tutar */
+        }
+
+        .image-text-container figure {
+            margin: 0;
+            flex: 0 0 49%;
+            /* Resmin genişliğini ekranın %50'sine ayarlar */
+        }
+
+        .image-text-container img {
+            width: 100%;
+            /* Resmin konteynerini tamamen doldurmasını sağlar */
+            height: auto;
+            display: block;
+        }
+
+        .image-text-container .text-content {
+            flex: 1;
+            /* Metin içeriğinin kalan alanı kaplamasını sağlar */
+        }
+
+        @media (max-width: 767px) {
+            .image-text-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                /* Mobilde resim ve metin arasındaki boşluk */
+            }
+
+            .image-text-container figure,
+            .image-text-container .text-content {
+                flex: 1 1 auto;
+                /* Mobilde esnek hale gelir */
+            }
+        }
+
+
+
+
+
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        .image-container20 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 10px;
+            /* Resimler arasında boşluk için */
+        }
+
+        .image-container20 figure {
+            flex: 1 1 calc(25% - 10px);
+            /* Masaüstü: Resimleri dört sütun olarak hizalar */
+            max-width: calc(25% - 10px);
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-container20 figure {
+                flex: 1 1 calc(50% - 10px);
+                /* Mobil: Resimleri iki sütun olarak hizalar */
+                max-width: calc(50% - 10px);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        سلوك القيادة عند التقاطعات
+    </h1>
+    <p>
+        تسري قواعد مختلفة عندما تصادف حركة مرور أخرى عند التقاطعات. ومع هذه القواعد، من المهم أن تفهم الفرق بين مستخدمي
+        الطريق (جميع حركة المرور، بما في ذلك المشاة) والسائقين (جميع حركة المرور من دون المشاة). إضافةً إلى ذلك، من
+        المهم أن تفهم الفرق بين حركة المرور على الطريق المتقاطع وحركة المرور على نفس الطريق.
+    </p>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            تقاطع
+        </h3>
+        <p>
+            تقاطع أو ملتقى طرق. في التقاطع يمكن تغيير الاتجاه؛ أي يمكنك الانعطاف يمينًا أو يسارًا. ويمكن تصميم التقاطعات
+            بطرقٍ عديدة مختلفة.
+        </p>
+    </div>
+    <div>
+        <div class="image-container20">
+            <figure>
+                <img alt="تحذير عطل الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg" />
+                <figcaption>
+                    تقاطع عادي
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg" />
+                <figcaption>
+                    تقاطع بشكل حرف T
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg" />
+                <figcaption>
+                    تقاطع بشكل Y أو مفترق
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg" />
+                <figcaption>
+                    تقاطع بايونيت
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            طريق متقاطع
+        </h3>
+        <p>
+            هو طريق يَعبر الطريق الذي تسير عليه. ولا يلزم أن يكون بزاوية 90 درجة (عموديًا) دائمًا؛ فقد يكون طريقًا
+            مائلاً أكثر بالنسبة للطريق الذي تسير عليه، كما في تقاطع Y.
+        </p>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير عطل الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg" />
+                <figcaption>
+                    مقارنةً بسيارة التدريب البيضاء، يُعدّ الجزء الملوّن هو الطريق المتقاطع.
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg" />
+                <figcaption>
+                    مقارنةً بسيارة التدريب البيضاء، يُعدّ الجزء الملوّن من تقاطع Y هو الطريق المتقاطع.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            نفس الطريق
+        </h3>
+        <p>
+            هو الطريق الذي تسير عليه. تأتيك حركة المرور على نفس الطريق من الخلف أو من الأمام. ولا يهمّ إن كانوا مشاة على
+            الرصيف أو على الحافة، أم سائقين لسيارات ركّاب على المعبد. إذا كنت تقود على دوّار، فإن كل حركة المرور التي
+            تسلك هذا الدوار تُعدّ حركة على نفس الطريق.
+        </p>
+    </div>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير عطل الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg" />
+                <figcaption>
+                    كل هؤلاء المستخدمين للطريق على نفس الطريق (الجزء الملوّن).
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg" />
+                <figcaption>
+                    على الدوّار يُعدّ الجزء الدائري من الطريق «نفس الطريق». لذلك فسيارة التدريب والدراج هما على نفس
+                    الطريق.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            منح الأولوية
+        </h3>
+        <p>
+            تمكين السائقين المعنيّين من المتابعة دون إعاقة. وهذا يعني أنّ السائق الذي له أولوية يجب أن يشعر أيضًا بأن له
+            أولوية، وأن يكون قادرًا على القيادة دون عائق.
+        </p>
+    </div>
+    <h2>
+        منح الأولوية
+    </h2>
+    <p>
+        إذا لم تُنظَّم الأولوية عند تقاطعٍ بعلاماتٍ أو تخطيطٍ أرضي أو إشارات مرور، فإنها تُسمّى طرقًا متكافئة. وعلى
+        الطرق المتكافئة يمنح السائقون أولوية المرور للقادمين من اليمين.
+    </p>
+    <p>
+        لستَ مُلزَمًا بإعطاء المشاة أولويةً، لأنهم ليسوا من السائقين.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير عطل الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg" />
+                <figcaption>
+                    للدراج القادم من اليمين أولوية على سيارة التدريب.
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg" />
+                <figcaption>
+                    المشاة القادمون من اليمين ليسوا سائقين، لذا يجب عليهم ترك الأولوية لسيارة التدريب.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        هناك استثناءان لهذه القاعدة:
+    </p>
+    <ul>
+        <li>
+            يمنح السائقون أولوية المرور لسائقي الترام.
+        </li>
+        <li>
+            يمنح السائقون على الطرق غير المُعبّدة أولوية المرور للقادمين من اليسار واليمين على طريق مُعبّد.
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير عطل الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg" />
+                <figcaption>
+                    يجب على سيارة التدريب القادمة من اليمين أن تمنح أولوية المرور للترام القادم من اليسار.
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg" />
+                <figcaption>
+                    تأتي سيارة التدريب من طريق غير مُعبّد وعليها أن تمنح أولوية المرور للسائق على الطريق المُعبّد.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            مثلثات الأولوية (أسنان القرش)
+        </h3>
+        <p>
+            مثلثات بيضاء على الطريق. تُستخدم عادةً مع اللوحة B-6، وأحيانًا من دونها. وفي كلتا الحالتين تعني هذه المثلثات
+            أنك يجب أن تمنح أولوية المرور للسائقين على الطريق المتقاطع.
+        </p>
+    </div>
+    <h2>
+        تنظيم الأولوية بعلامات أو تخطيط الطريق
+    </h2>
+    <p>
+        إذا كانت أولوية المرور عند تقاطع منظَّمة بعلاماتٍ أو تخطيطٍ على سطح الطريق، فلا تُطبَّق حينها قاعدة أولوية
+        القادمين من اليمين. وهناك عدة علامات تنظّم هذه الأولوية.
+    </p>
+    <div class="important-words6">
+        <div class="vertical-line2">
+        </div>
+        <div class="container">
+            <div>
+                <h3 class="heading-primary">
+                    <strong>
+                        تُمنح أولوية المرور – طريق ذو أولوية
+                    </strong>
+                </h3>
+                <p>
+                    تشير اللوحة B-1 إلى أنك على طريقٍ ذي أولوية. يجب على السائقين القاطعين للطريق أن يمنحوك أولوية
+                    المرور. وتُكرَّر هذه اللوحة داخل المناطق المبنية قبل كل تقاطع، وخارجها بعد كل تقاطع. وبهذه الطريقة
+                    يمكنك الاستدلال من هذه اللوحات إن كنت تقود داخل المناطق المبنية أم خارجها.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_71ed77b3f56847e399c1547a5a7a12eb~mv2.png" />
+                <figcaption>
+                    B-1
+                </figcaption>
+            </figure>
+        </div>
+        <div class="container">
+            <div>
+                <p>
+                    تشير اللوحة B-2 إلى نهاية هذا الطريق ذي الأولوية. بعد هذه اللوحة تسري القواعد العادية للأولوية.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_5b541bedc0ca4d048fa80dbbdcb7ab99~mv2.png" />
+                <figcaption>
+                    B-2
+                </figcaption>
+            </figure>
+        </div>
+        <div class="container">
+            <div>
+                <h3 class="heading-primary">
+                    <strong>
+                        تُمنح أولوية المرور – تقاطع ذو أولوية
+                    </strong>
+                </h3>
+                <p>
+                    تشير اللوحة B-3 إلى تقاطع ذي أولوية. يجب على السائقين القاطعين للطريق أن يمنحوك أولوية المرور. يشير
+                    السهم السميك إلى الطريق الذي تسير عليه. وتشير العلامات المتقاطعة إلى الطرق الجانبية. في هذه الحالة
+                    توجد طرق جانبية إلى اليسار وإلى اليمين. تنطبق هذه اللوحة، وكذلك اللوحتان B-4 وB-5، على التقاطع الذي
+                    تقترب منه فقط.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_6cba878b84114d19a45e0cc897401bc1~mv2.png" />
+                <figcaption>
+                    B-3
+                </figcaption>
+            </figure>
+        </div>
+        <div class="container">
+            <div>
+                <p>
+                    تشير اللوحة B-4 إلى تقاطع ذي أولوية. في هذه الحالة يوجد طريق جانبي واحد على اليسار. يجب أن يمنحك
+                    السائقون القادمون من ذلك الطريق الجانبي أولوية المرور.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_6386b91bf4af48eba2b76f5598bde178~mv2.png" />
+                <figcaption>
+                    B-4
+                </figcaption>
+            </figure>
+        </div>
+        <div class="container">
+            <div>
+                <p>
+                    تشير اللوحة B-5 إلى تقاطع ذي أولوية. في هذه الحالة يوجد طريق جانبي واحد على اليمين. يجب أن يمنحك
+                    السائقون القادمون من ذلك الطريق الجانبي أولوية المرور.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_964195d9ac754a918b0dc4f4599a29a9~mv2.png" />
+                <figcaption>
+                    B-5
+                </figcaption>
+            </figure>
+        </div>
+        <div class="container">
+            <div>
+                <h3 class="heading-primary">
+                    <strong>
+                        إعطاء أولوية المرور
+                    </strong>
+                </h3>
+                <p>
+                    تشير اللوحة B-6 إلى أنه يجب عليك منح أولوية المرور للسائقين على الطريق المتقاطع. قد يكون هذا التقاطع
+                    طريقًا ذا أولوية، وقد يكون تقاطعًا ذا أولوية. لا يكون التوقّف إلزاميًا ما دمتَ قادرًا على منح
+                    الأولوية للقاطعين.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_4b2a0103cec54e10a8de7f43100c00bf~mv2.png" />
+                <figcaption>
+                    B-6
+                </figcaption>
+            </figure>
+        </div>
+        <div class="container">
+            <div>
+                <p>
+                    تشير اللوحة B-7 إلى أنه يجب عليك منح أولوية المرور للسائقين على الطريق المتقاطع. قد يكون هذا التقاطع
+                    طريقًا ذا أولوية، وقد يكون تقاطعًا ذا أولوية. في هذه الحالة يكون التوقّف
+                    <strong>
+                        دائمًا
+                    </strong>
+                    إلزاميًا! وتُستخدم هذه العلامات عند التقاطعات ذات ضعف الرؤية أو ارتفاع مخاطر الحوادث.
+                </p>
+            </div>
+            <figure>
+                <img alt="Örnek Resim" class="image"
+                    src="https://static.wixstatic.com/media/4b688f_31408e28c07947ec9589ca27a9d12799~mv2.png" />
+                <figcaption>
+                    B-7
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        يكمن الفرق بين هاتين اللوحتين في أنك يجب أن تتوقّف دائمًا عند علامة «STOP»، حتى لو رأيتَ أنه لا يوجد سائقون على
+        الطريق المتقاطع. بالإضافة إلى ذلك، تُقرَن اللوحة B-6 دائمًا بمثلثات الأولوية، وتُقرَن اللوحة B-7 بخط توقّف.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير عطل الوسادة الهوائية الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg" />
+                <figcaption>
+                    تُقرَن اللوحة B-6 دائمًا بمثلثات الأولوية.
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="مصباح التحذير لحزام الأمان"
+                    src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg" />
+                <figcaption>
+                    تُقرَن اللوحة B-7 دائمًا بخط توقّف.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        هذه العلامات والتخطيطات مقصودةٌ للسائقين فقط. ولا يخضع المشاة لقواعد الأولوية هذه.
+    </p>
+    <h2>
+        أمثلة
+    </h2>
+    <div class="image-text-container">
+        <figure>
+            <img alt="Sigorta Kartı"
+                src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg">
+            <figcaption>
+                <em>
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <div class="text-content">
+            <p>
+                عند الاقتراب من اللوحة B-6 ومثلثات الأولوية، امنح الأولوية للسائقين على الطريق المتقاطع. في هذه الحالة
+                تأتي عربة تجرّها الخيول من اليسار على الطريق المتقاطع. يجب على سيارة التدريب أن تمنح هذا السائق أولوية
+                المرور.
+            </p>
+        </div>
+    </div>
+    <div class="image-text-container">
+        <figure>
+            <img alt="Sigorta Kartı"
+                src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg">
+            <figcaption>
+                <em>
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <div class="text-content">
+            <p>
+                في هذه الحالة تقترب سيارة التدريب أيضًا من مثلثات الأولوية. يجب على المشاة على الطريق المتقاطع انتظارُ
+                سيارة التدريب. فسيارة التدريب لا يلزمها إلا منح السائقين أولوية المرور وليس المشاة عند مثلثات الأولوية.
+            </p>
+        </div>
+    </div>
+    <div class="image-text-container">
+        <figure>
+            <img alt="Sigorta Kartı"
+                src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg">
+            <figcaption>
+                <em>
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <div class="text-content">
+            <p>
+                هنا أيضًا يجب على المشاة انتظارُ سيارة التدريب. فهذه تقترب من علامة توقّف مع خط توقّف. وبسبب علامة
+                التوقّف يجب على سيارة التدريب أن تتوقّف، لكنها تستطيع الانطلاق فورًا إذا لم يأتِ سائقون من اليسار أو
+                اليمين. والمشاة ليسوا سائقين.
+            </p>
+        </div>
+    </div>
+    <div class="image-text-container">
+        <figure>
+            <img alt="Sigorta Kartı"
+                src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg">
+            <figcaption>
+                <em>
+                </em>
+            </figcaption>
+            </img>
+        </figure>
+        <div class="text-content">
+            <p>
+                يتمتّع سائقو الترام بالأولوية دائمًا عند التقاطع المتكافئ. وبمجرّد وجود علامات وتخطيطات تنظّم الأولوية،
+                يجب على سائق الترام الالتزام بها. في هذه الحالة يجب على سائق الترام انتظارُ سيارة التدريب.
+            </p>
+        </div>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

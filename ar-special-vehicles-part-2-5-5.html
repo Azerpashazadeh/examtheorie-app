@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+
+
+        h1,
+        h2 {
+            color: #0093C3;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #0093C3;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #B9E5FB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #B9E5FB;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+
+        .important-words6 {
+            background-color: #B9E5FB;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #B9E5FB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+        .images-container6 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .images-container6 p {
+            flex: 1;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .images-container6 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .images-container6 {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #0093C3;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #0093C3;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        table {
+            direction: rtl;
+            /* tabloyu sağdan sola çevirir */
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table th,
+        table td {
+            text-align: right;
+            /* hücre içindeki metni sağa hizalar */
+            padding: 8px;
+            border: 1px solid #ccc;
+            /* sınırlar örnek için */
+        }
+
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+
+        }
+
+        th {
+            background-color: #a2d9f4;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 360px) {
+
+            th,
+            td {
+                word-break: break-all;
+            }
+        }
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        المركبات الخاصة - الجزء الثاني
+    </h1>
+    <div class="important-words1">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            رتل عسكري
+        </h3>
+        <p>
+            عددٌ من المركبات الآلية العسكرية تسيرُ واحدةً وراء أخرى، أو مركباتٌ آلية تابعة لمنظمةِ الإغاثة من الكوارث.
+        </p>
+    </div>
+    <h2>
+        الأرتال العسكرية
+    </h2>
+    <p>
+        لضمان بقاء الرتل العسكري متماسكًا قدر الإمكان، تُطبَّقُ القواعدُ الآتية:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>
+                    يجب ألا يقطع مستعملو الطريق رتلاً عسكريًا.
+                </strong>
+                وهذا يعني أنّه ما إن تبدأَ المركبةُ الأولى بالعبور أو الانعطاف، جاز لبقيةِ الرتل أن تتبعها، ولا يُسمَحُ
+                لمستعملي الطريق الآخرين بقطع هذا الرتل أو مقاطعته؛ وعليهم الانتظار، حتى لو كانت لهم أولويةٌ بموجب قواعد
+                المرور. ملاحظة: يجب على المركبة الأولى في الرتل الالتزامِ بقواعد الأسبقية.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    لا يتعيّن عليهم إفساحُ الطريق للمشاة عند ممرّ المشاة.
+                </strong>
+                تُسمَح لجميع مركبات الرتل، بما فيها الأولى، بالمرور عند ممرّ المشاة حتى لو كان المشاة بانتظار العبور.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    لا يتعيّن عليهم إعطاءُ الأسبقية لحافلاتٍ تريدُ مغادرةَ موقفِ الحافلات.
+                </strong>
+                تُسمَح لجميع مركبات الرتل بالاستمرار في السير إذا أشارت حافلةٌ داخل منطقةٍ مبنية إلى نيتها مغادرةَ
+                الموقف.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    إذا بدأت المركبةُ الأولى في الرتل باجتياز التقاطع عند إشارةٍ خضراء، جاز لجميع المركبات اللاحقة
+                    الاستمرارُ في السير.
+                </strong>
+                حتى لو اقتضى ذلك المرورَ على ضوءٍ أصفر أو أحمر. وإذا كانت لدى مستعملي الطريق الآخرين إشارةٌ خضراء،
+                فعليهم الانتظارُ حتى يُتمّ الرتل عبورَ التقاطع. يُرجى الانتباه: يجب على المركبة الأولى في الرتل طاعةُ
+                الإشارات الضوئية!
+            </p>
+        </li>
+    </ul>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_4fefaa0ff91846128c5599978eef4461~mv2.jpg" />
+                <figcaption>
+                    في هذه الحالة يُسمَح لمركبات الرتل العسكري بالانطلاق أولًا؛ فقد بدأت بالفعل بالانعطاف.
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_fe71f5bc51ac41b88243119304414c38~mv2.jpg" />
+                <figcaption>
+                    على الرغم من أنّ سائقَ سيارةِ الدرس يملك الآن الضوءَ الأخضر، فلا يجوز له قطعُ الرتل العسكري إذا كانت
+                    المركبةُ الأولى قد دخلت التقاطع حين كان لديه الضوءُ الأخضر.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        لا تسري قواعدُ عدمِ قطع الرتل أو متابعةِ السير عند ضوءٍ أحمر على سائقِ المركبة الأولى في الرتل العسكري. إنما
+        تنحصرُ هذه الحقوق الخاصة بالمركبات المُرافِقة لضمان بقاء المجموعة متماسكةً قدر الإمكان.
+    </p>
+    <p>
+        تحملُ مركباتُ الأرتال العسكرية علاماتِ تعريفٍ تُبيّن ما إذا كانت المركبةُ الأولى أم الوسطى أم الأخيرة في الرتل.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th style="border-left: none; border-top: none; background-color: transparent;">
+                </th>
+                <th>
+                    المركبة الأولى
+                </th>
+                <th>
+                    المركبات الوسطى
+                </th>
+                <th>
+                    المركبة الأخيرة
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    أعلام
+                </td>
+                <td>
+                    زرقاوان اثنتان، يسارًا ويمينًا
+                </td>
+                <td>
+                    زرقاء واحدة، على اليمين فقط
+                </td>
+                <td>
+                    خضراء واحدة، على اليمين فقط
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    غطاءٌ شِبْهُ شفافٍ للمصباحِ الأمامي
+                </td>
+                <td>
+                    زرقاء واحدة، على اليمين فقط
+                </td>
+                <td>
+                    زرقاء واحدة، على اليمين فقط
+                </td>
+                <td>
+                    خضراء واحدة، على اليمين فقط
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_0e7af0463ebf440b851dcd6a234251b7~mv2.jpeg" />
+                <figcaption>
+                    المركبة الأولى
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_d4c336f29a6e4d308dfbc993e137e902~mv2.jpeg" />
+                <figcaption>
+                    المركبة/المركبات الوسطى
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_acb0f5808c59480a8c90b3580ecb659f~mv2.jpeg" />
+                <figcaption>
+                    المركبة الأخيرة
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <div class="text-content">
+            <div class="vertical-line2">
+            </div>
+            <h3>
+                موكب جنازة لمركباتٍ آلية
+            </h3>
+            <p>
+                موكبٌ يتألّف من مركباتٍ آلية يُرافق فقيدًا إلى مقبرةٍ أو محرقةِ جثامين. ويُمكن التعرّف على المركباتِ
+                المشاركة في موكبِ الجنازة برايةٍ سوداء ذاتِ ثلاثِ خطوطٍ أفقيةٍ بيضاء.
+            </p>
+        </div>
+        <div class="image-content">
+            <img alt="Licence Image"
+                src="https://static.wixstatic.com/media/4b688f_cc93e9301fae48f1bbccb704318917d1~mv2.png" />
+        </div>
+    </div>
+    <h2>
+        موكب الجنازة للمركبات الآلية
+    </h2>
+    <p>
+        ترتبط مواكبُ الجنازات بإبداءِ الاحترام للمتوفّى. ومن اللائق أن تتمكّن المركباتُ اللاحقة من متابعةِ المركبة التي
+        في المقدّمة (سيارة نقل الجثمان) قدرَ الإمكان؛ ولذلك تتمتّعُ بحقوقٍ شبهِ مساويةٍ لحقوق الرتل العسكري:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <strong>
+                    لا يجوز قطعُها.
+                </strong>
+                غير أنّ سيارةَ نقل الجثمان يجب عليها دائمًا الالتزامُ بقواعد الأسبقية.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    لا يتعيّن عليهم إفساحُ الطريق للمشاة عند ممرّ المشاة.
+                </strong>
+                وفي هذه الحالة يجوز حتى لسيارةِ نقل الجثمان متابعةُ السير.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    لا يتعيّن عليهم إفساحُ الطريق لحافلاتٍ تريدُ مغادرةَ موقفِ الحافلات.
+                </strong>
+                ويشملُ ذلك سيارةَ نقلِ الجثمان.
+            </p>
+        </li>
+    </ul>
+    <p>
+        لكن، وعلى خلاف الأرتال العسكرية، يجب على المركبات اللاحقة في موكب الجنازة أن تتوقّف دائمًا عند الضوءِ الأصفر أو
+        الأحمر، حتى لو كانت سيارةُ نقل الجثمان قد دخلت التقاطع على ضوءٍ أخضر.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_4564c6ed6b2f435ab94626006794ac6e~mv2.jpg" />
+                <figcaption>
+                    على سائقِ سيارةِ الدرس منحُ موكبِ الجنازة حقَّ الأسبقية لأنه بدأ بالفعل بالانعطاف.
+                </figcaption>
+            </figure>
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_4b0fdcc3aaa947b2b33aa89592187ecc~mv2.jpg" />
+                <figcaption>
+                    يُسمَح لسائقِ سيارةِ الدرس بالاستمرار لأنّ سائقي المركباتِ الأخرى عليهم الانتظارُ للضوءِ الأخضر.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <h2>
+        الاندماج والتجاوز
+    </h2>
+    <div>
+        <div class="images-container6">
+            <p>
+                إذا وجدتَ نفسك عند الاندماج على طريقٍ سريع (autoweg أو motorway) بمحاذاة رتلٍ عسكريٍّ أو موكبِ جنازة،
+                وتعذّر عليك الاندماجُ أمامه أو خلفه، جاز لك الاندماجُ بين مركبات الرتل/الموكب. وكذلك إنْ لم تستطع تجاوزَ
+                الرتلِ أو الموكبِ كاملًا دفعةً واحدة، جاز لك السيرُ بين مركباته. ملاحظة: لا تُصبِح جزءًا من الرتل أو
+                الموكب في هذه الحالة؛ إذ يظلّ لزامًا عليك اتّباعُ جميع قواعد المرور العادية. ولأن ذلك قد يسبّب إزعاجًا
+                للرتل العسكري أو موكب الجنازة، فعليك تجنّبه قدرَ المستطاع.
+            </p>
+            <figure>
+                <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية"
+                    src="https://static.wixstatic.com/media/4b688f_4b0fdcc3aaa947b2b33aa89592187ecc~mv2.jpg" />
+                <figcaption>
+                    يُسمَح لسائقِ سيارةِ الدرس بالاستمرار لأنّ سائقي المركباتِ الأخرى عليهم الانتظارُ للضوءِ الأخضر.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="important-words2">
+        <p>
+            فيما يخصّ قطعَ الرتل أو الموكب، فنحن نتحدّث فقط عن
+            <strong>
+                قواعد
+            </strong>
+            المرور المتعلقة بالأولوية وإفساح الطريق؛ أي قواعد من قبيل «الأولويةِ للقادم من اليمين»، و«المرورِ المستقيم
+            على الطريق نفسه يسبقُ حركةَ الالتفاف»، و«المنعطفِ القصير يسبقُ المنعطفَ الطويل». ومتى وُجدت شاخصاتُ أسبقيةٍ
+            وإشاراتٌ تنظّم الأسبقية فإنها
+            <strong>
+                تتقدّم على هذه القواعد.
+            </strong>
+            وبما أنّ حظرَ القطع
+            <strong>
+                قاعدةٌ
+            </strong>
+            أيضًا، فإن شاخصاتِ الأسبقية والعلاماتِ كالمثلثاتِ البيضاء على سطح الطريق (أسنان القرش) تتقدّمُ عليها كذلك.
+            وهذا يعني أنّ مركباتِ الرتل العسكري أو موكبِ الجنازة يجب أن تلتزمَ شاخصاتِ الأسبقية عند الاقتراب منها. ومع
+            ذلك، لا تُطرَح أسئلةٌ من CBR حول هذه الحالة بعينها.
+        </p>
+    </div>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

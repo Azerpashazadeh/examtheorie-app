@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        مهارات القيادة واللياقة للقيادة
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            مهارات القيادة
+        </h3>
+        <p>
+            القدرة على تشغيل مركبة. ويُحدَّد ذلك أساسًا بمدى كفاءتك في قيادة المركبة ومدى إحكامك السيطرة عليها. ويمكن أن
+            يضعف استعمال الكحول والمخدّرات مهارات القيادة.
+        </p>
+        <h3>
+            اللياقة للقيادة
+        </h3>
+        <p>
+            اللياقة البدنية أو الذهنية لتشغيل مركبة. قد تؤثر الاضطرابات البدنية أو الذهنية مثل مشكلات الأطراف أو الحالات
+            العصبية في لياقتك للقيادة.
+        </p>
+    </div>
+    <p>
+        إذا أوقَفك شرطي أو شخصٌ مخوَّل آخر ورأى أنك غير لائق للقيادة، فيجوز له مصادرة رخصة قيادتك. وقد يكون ذلك بسبب
+        القيادة المتهوّرة أو عندما يكون واضحًا أنك تحت تأثير الكحول أو المخدّرات أو الأدوية. وقد يحدث هذا أيضًا إذا بدا
+        أنك غير سليم بدنيًا أو ذهنيًا. كما قد تتراجع مهارات القيادة واللياقة لها مع التقدّم في السن.
+    </p>
+    <p>
+        إذا صودرت رخصة قيادتك لأحد الأسباب المذكورة أعلاه، فسيُبلَّغ بذلك CBR. ثم يقرّر CBR كيفية تحديد أهليتك لمواصلة
+        القيادة. التعاون إلزامي. وإذا رفضت التعاون مع هذه الإجراءات، فستُبطَل رخصة قيادتك.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1" class="custom-centered-image"
+                src="https://static.wixstatic.com/media/4b688f_b3b030a3d0d54d6c9638cb890c681133~mv2.jpg" />
+            <figcaption>
+                <em>
+                    إذا ثارت شكوك بشأن قدرتك على القيادة، فقد تُحال إلى فحصٍ يجريه اختصاصي مستقل. وإذا رفضت التعاون،
+                    فستُبطَل رخصة قيادتك.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <h2>
+        دورة لدى CBR أو فحص طبي
+    </h2>
+    <p>
+        لدى CBR خيارات متعدّدة لتحديد لياقتك أو قدرتك على القيادة:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                فحص طبي للياقة القيادة
+            </strong>
+            <p>
+                فحص يجريه اختصاصي مستقل مثل طبيب عيون أو طبيب أعصاب أو طبيب قلب.
+            </p>
+        </li>
+        <li>
+            <strong>
+                اختبار قيادة لفحص مهارات القيادة أو اللياقة للقيادة
+            </strong>
+            <p>
+                يمكن أن يلي هذا الاختبارَ فحصٌ طبي. ستقود إلى جانب فاحصٍ مُدرَّب تدريبًا خاصًا لتحديد ما إذا كان من
+                المنطقي أن تواصل القيادة. وقد يُجرى هذا الاختبار بسيارة الدرس أو بسيارتك الخاصة، وفقًا للظروف.
+            </p>
+        </li>
+    </ul>
+    <p>
+        يمكن لـ CBR أيضًا فرض دورة إلزامية. ويشمل ذلك دورات متعلقة باستخدام الكحول أو المخدّرات:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                LEMA (إجراء تعليمي خفيف: الكحول والمرور)
+            </strong>
+            <p>
+                تُفرض على السائقين الذين أُوقفوا بسبب القيادة تحت التأثير. ويعادل ذلك مستوى كحول في الدم قدره 0.5-0.8
+                لكل ألف (220-350 ميكروغرام/لتر) للسائقين الجدد، ومستوى 0.8-1.0 لكل ألف (350-440 ميكروغرام/لتر) للسائقين
+                ذوي الخبرة.
+            </p>
+        </li>
+        <li>
+            <strong>
+                EMA (إجراء تعليمي: الكحول والمرور)
+            </strong>
+            <p>
+                تُفرض على السائقين ذوي مستوى كحول أعلى أو على من ضُبطوا للمرّة الثانية يقودون تحت التأثير.
+            </p>
+        <li>
+            <strong>
+                EMD (إجراء تعليمي: المخدّرات والمرور)
+            </strong>
+            <p>
+                تُفرض عند ثبوت تعاطي المخدّرات في المرور.
+            </p>
+        </li>
+        </li>
+    </ul>
+    <p>
+        ودورات متعلّقة بتجاوز السرعة وسلوكيات أخرى غير اجتماعية:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                LEMG (إجراء تعليمي خفيف: السلوك والمرور)
+            </strong>
+            <p>
+                تُفرض بسبب تجاوز السرعة. ويُطبَّق ذلك عندما تقود بسرعة تزيد بين 50 و59 كم/س على المسموح (وحتى من 30 كم/س
+                عند أعمال الطريق).
+            </p>
+        </li>
+        <li>
+            <strong>
+                EMG (إجراء تعليمي: السلوك والمرور)
+            </strong>
+            <p>
+                تُفرض بسبب السلوكيات غير الاجتماعية والخطرة، مثل ملازمة المركبة الأمامية عن قرب، وقطع الطريق على
+                مستخدمين آخرين، واجتياز الإشارة الحمراء، أو القيادة بسرعة تفوق المسموح ابتداءً من 60 كم/س.
+            </p>
+        </li>
+    </ul>
+    <p>
+        هذه الدورات المتعلقة بالكحول والمخدّرات والسلوك إلزامية وعلى نفقتك بالكامل. إضافةً إلى هذه الدورة، ستتلقى عادةً
+        غرامة (كبيرة). وإذا لم تُتمّ الدورة بالكامل أو لم تدفع تكلفتها، فستُبطَل رخصة قيادتك.
+    </p>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>
+
+    
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

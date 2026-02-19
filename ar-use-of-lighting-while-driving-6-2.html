@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+          
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+   <h1>
+   استخدامُ الإضاءة أثناء القيادة
+  </h1>
+  <p>
+   يُقصَدُ من إضاءة المركبة تحسينُ الرؤية في الظلام، وقبل ذلك كلّه أن يراك الآخرون بوضوحٍ أكبر. وأحيانًا تكون الإضاءةُ إلزاميةً وأحيانًا لا تكون. ومع ذلك يُنصَح السائقون باستعمال الإضاءة المناسبة نهارًا وليلًا.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    النهار
+   </h3>
+   <p>
+    الفترةُ ما بين شروق الشمس وغروبها.
+   </p>
+   <h3>
+    الليل
+   </h3>
+   <p>
+    الفترةُ ما بين غروب الشمس وشروقها.
+   </p>
+  </div>
+  <h2>
+   مصابيحُ التقاطع (الواطئة)
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      مصابيحُ التقاطع إضاءةٌ بيضاءُ أو صفراء في مقدّمة المركبة، وتُنير قسمًا جيّدًا من الطريق أمامها. وهي لا تُسلَّط إلى الأمام مباشرةً ولا تُبهِر عادةً. ويُسمح باستخدام مصابيح التقاطع دائمًا.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_28a85b546110446480d643461cabf231~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   يَلزَمُ استخدامُ مصابيح التقاطع نهارًا عند ضعف الرؤية وليلاً. ويسري ذلك على سائقي المركبات الآلية، وجميع أنواع الدراجات ذات المحرك الصغير، وسائقي مركبات ذوي الإعاقة المزوّدة بمحرك. كما ينبغي تشغيلُ مصابيح التقاطع قبل دخول النفق بوقتٍ كافٍ.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_a7add78c241d463abf490de0095ba238~mv2.jpg"/>
+     <figcaption>
+      تُضيء مصابيحُ التقاطع قسمًا جيّدًا من الطريق أمام المركبة من غير أن تُبهِر القادمين من الاتجاه المقابل.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   أضواءُ القيادة النهارية
+  </h2>
+  <p>
+   تتوفّر أضواءُ القيادة النهارية في جميع سيارات الركّاب الحديثة. وغالبًا ما تتكوّن من مصابيح LED بجوار المصباح الأمامي أو أسفله أو حوله. ولا يجوز استعمالُ أضواء القيادة النهارية إلا إذا لم تكن مصابيحُ التقاطع إلزاميةً ولم تُشغَّل أيُّ إضاءةٍ أماميةٍ أخرى.
+  </p>
+  <p>
+   في معظم سيارات الركّاب تضيء أضواءُ القيادة النهارية عندما يكون مفتاحُ الإضاءة على وضع الإيقاف. وبمجرّد تشغيل أي إضاءةٍ أخرى تنطفئ هذه الأضواءُ تلقائيًا.
+  </p>
+  <p>
+   الغايةُ من أضواء القيادة النهارية أن تبقى المركباتُ ظاهرةً بوضوح حتى عندما لا تكون مصابيحُ التقاطع مُشغّلة. ومن مساوئ السيارات الأقدم أنّ أضواءها الخلفية لا تضيء دائمًا مع أضواء القيادة النهارية، فيسوء الظهورُ من الخلف. أمّا في السيارات الحديثة فإضاءةُ المصابيح الخلفية مع أضواء القيادة النهارية إلزامية.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_90f817aebc984256b0a50cc66347739c~mv2.jpg"/>
+     <figcaption>
+      تجعل أضواءُ القيادة النهارية المركبةَ مرئيةً بالدرجة الأولى، وتُنير جزءًا أصغر من الطريق أمام المركبة.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   الأنوارُ العالية
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      إذا كانت الرؤيةُ غيرَ كافيةٍ بمصابيح التقاطع فقط، يمكنك استخدامُ الأنوار العالية بدلًا منها. ولا تُسمح الأنوارُ العالية:
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_140d0e7e4dba43f58f3b1a90d2f0d022~mv2.png"/>
+   </div>
+  </div>
+  <ul>
+   <li>
+    <p>
+     في النهار؛
+    </p>
+   </li>
+   <li>
+    <p>
+     عند مقابلةِ مستعملي طريقٍ آخرين؛
+    </p>
+   </li>
+   <li>
+    <p>
+     عند السيرِ قريبًا جدًا خلف مركبةٍ أخرى.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_1f0ce996236e45d88348502b57c769b9~mv2.jpg"/>
+     <figcaption>
+      تُنير الأنوارُ العالية مساحةً أكبر من الطريق ومحيطَه، غير أنّ شعاعَها الساطع يُبهِر القادمَ من الاتجاه المقابل، وقد يُبهِر كذلك سائقي المركبات أمامك.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   فضلًا عن ذلك، فاستعمالُ الأنوار العالية غيرُ مُستحسنٍ في الأحوال الجوية السيئة كالمطر الغزير أو الثلج أو الضباب؛ إذ يُحتمل أن تُبهِرك أضواؤك أنت.
+  </p>
+  <p>
+   الأنوارُ العالية أضواءٌ ساطعةٌ مُسلَّطةٌ مباشرةً إلى الأمام، ولذلك تُبهِر سريعًا. فإذا أبهرك قادمٌ يستخدم الأنوار العالية فنبِّهْه بومضةٍ قصيرةٍ من الضوء العالي.
+  </p>
+  <p>
+   وإن أزعجتك الأنوارُ العالية من مركبةٍ خلفك فصعبٌ تنبيهُ سائقها؛ لكن يمكنك استخدامُ المرآة الداخلية المُعتِّمة بطَيّ المرآة إلى وضع التعْتيم. وكثيرٌ من سيارات الركّاب الفاخرة اليوم مزوَّدٌ بمرآةٍ داخليةٍ تُعتِّم تلقائيًا، بل وتُعتِّم بعضُ مرايا الأبواب أيضًا.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_65b2ade345334c019a0767a3734bd0b7~mv2.jpg"/>
+     <figcaption>
+      إذا أبهرك ضوءُ مركبةٍ خلفك، يمكنك ضبطُ المرآة الداخلية على وضع التعْتيم باستخدام الرافعة أسفلها. وفي بعض سيارات الركّاب تُعتِّم المرآةُ تلقائيًا.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   مصابيحُ الضباب الأمامية
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      كما يدلّ الاسم، تُقصَد هذه الإضاءة أساسًا للاستخدام في الضباب. ولا تُستعمَل إلا إذا كانت الرؤيةُ معاقةً بشدةٍ بسبب الضباب أو الثلج أو المطر. وإلى جانب مصباح الضباب يمكنك استعمالُ مصابيح التقاطع أو الأضواء الجانبية. وفي الضباب الكثيف جدًا قد تُحدِث مصابيحُ التقاطع إبهارًا، ولذا لا تكون إلزاميةً مع مصابيح الضباب.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_b89d36dfee89427aba9416d0dd167307~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   تُوجَّه مصابيحُ الضباب الأمامية إلى الأسفل، ولذلك لا تُبهِر. لكن من مساوئها أن ضوءها لا يتجاوز منطقةً قريبةً من سيارة الركّاب. وليست كلُّ السيارات مجهّزةً بمصباح ضبابٍ أمامي.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_16eac050f3c2449abddd56b88d09ed7d~mv2.jpg"/>
+     <figcaption>
+      يُضيء مصباحُ الضباب الأمامي الطريقَ أمام المركبة مباشرة. وبما أنّ المصابيح منخفضةُ الموضع فهي تشقُّ طريقها جزئيًا تحت طبقات الضباب.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   مصابيحُ الضباب الخلفية
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      تتكوّن مصابيحُ الضباب الخلفية من مصباحٍ أو مصباحين أحمرَين ساطعين في مؤخرة سيارة الركّاب. وبسبب سطوعها قد يختلط الأمرُ على البعض فيظنها أضواءَ مكابح. ولشدّة سطوع مصباح الضباب الخلفي لا يجوز تشغيلُه إلا عندما تسوء الرؤيةُ جدًا—أي عندما تقلّ المسافةُ المرئية عن 50 مترًا.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_3085c92373664e3fb3214cade99bfa42~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   تكون الدعاماتُ العاكسةُ على جانب الطريق عادةً متباعدةً مسافةَ 50 مترًا. فإذا مررتَ بعمودٍ عاكس ولم ترَ إلا العمودَ التالي بعده، فيمكنك عندئذٍ تشغيلُ مصباح الضباب الخلفي.
+  </p>
+  <p>
+   ومما ينبغي معرفتُه أيضًا أن ذلك لا يُسمح به إلا في الضباب أو الثلج؛ فلا يجوز استعمالُ مصباح الضباب الخلفي أثناء هطول المطر لأنه قد يُبهِر حركة المرور خلفك. وعند تشغيل مصباح الضباب الخلفي تَضيء إشارةُ تحذيرٍ في لوحة العدادات، كي لا يبقى مشغّلًا سهوًا.
+  </p>
+  <h2>
+   الأضواءُ الجانبية
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      الأضواءُ الجانبيةُ ضعيفةُ الإضاءة. وهي مصابيحُ بيضاءُ أو صفراء في مقدّمة المركبة. وفي معظم سيارات الركّاب يكون وضعُ الأضواء الجانبية على مفتاح الإضاءة بين وضع "OFF" ومصابيح التقاطع. وكما ذُكِر، يمكن استخدامُ الأضواء الجانبية مع مصابيح الضباب الأمامية.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_6c768180634d45e0a8e2f2e89f62af78~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   وعلاوةً على ذلك فالأضواءُ الجانبية نادرًا ما تُستعمَل؛ وغالبًا ما تكون هي نفسُها أضواءَ الوقوف.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_6acab0eaa996470295e6fae089048a7e~mv2.jpg"/>
+     <figcaption>
+      تُصدر الأضواءُ الجانبية ضوءًا قليلًا، وغالبًا ما تكون هي نفسُ أضواء الوقوف.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   الأضواءُ الخلفية
+  </h2>
+  <p>
+   هي المصابيحُ الحمراءُ العادية في مؤخرة سيارة الركّاب، ويجب أن تكون مُضاءةً دائمًا عند تشغيل الأنوار العالية أو مصابيح التقاطع أو الأضواء الجانبية أو مصابيح الضباب في الأمام. وهذه الأضواء عادةً غيرُ مُبهِرة وأقلُّ سطوعًا من أضواء المكابح ومصباح الضباب الخلفي. وفي أحدث سيارات الركّاب تضيء هذه المصابيح أيضًا عند تشغيل أضواء القيادة النهارية.
+  </p>
+  <h2>
+   إنارةُ لوحة الأرقام
+  </h2>
+  <p>
+   هذه إضاءةٌ بيضاء تُنير لوحةَ الأرقام الخلفية. وكالأضواء الخلفية يجب أن تكون إنارةُ اللوحة مضاءةً إذا كانت الأنوارُ العالية أو مصابيحُ التقاطع أو الأضواءُ الجانبية أو مصابيحُ الضباب الأمامية مُشغَّلة.
+  </p>
+  <h2>
+   أضواءُ المكابح
+  </h2>
+  <p>
+   يتكوّن ضوءُ المكابح من ثلاثة مصابيحَ حمراءَ شديدةِ السطوع تضيء ما إن تضغطَ دواسةَ المكابح. ويكون المصباحُ الثالث غالبًا في أعلى أو أسفل منتصف الزجاج الخلفي. ولشدّة سطوع أضواء المكابح ينبغي تجنّبُ الكبح غيرِ الضروري قدر الإمكان؛ فكلُّ مرةٍ تضيء فيها قد تُفاجِئ حركةَ المرور خلفك. لذا ارفع قدمك عن دواسة الوقود في الوقت المناسب وحافِظْ على مسافةٍ كافية.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_3dfb46f9b6624ed7a3e60141983da55d~mv2.jpg"/>
+     <figcaption>
+      تُعَدّ أضواءُ المكابح مهمةً للتواصل في حركة المرور. وبسبب سطوعها قد تُسبّب إزعاجًا إذا استُخدِمت بلا داعٍ.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_ae8b82f2a11a427c927197f5a7d196a7~mv2.jpg"/>
+     <figcaption>
+      يَحذّر ضوءُ الرجوع إلى الخلف مستعملي الطريق خلف المركبة من أنّها ستتراجع إلى الخلف.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   أضواءُ الرجوع للخلف
+  </h2>
+  <p>
+   هي الأضواءُ البيضاءُ أو الصفراء في مؤخرة سيارة الركّاب التي تضيء ما إن تُشغِّلَ ترسَ الرجوع للخلف. وهي مُخصّصةٌ لتحذير حركة المرور خلفك بأنك ستسير إلى الخلف. وقد تُجهَّز سيارةُ الركّاب بمصباحٍ واحدٍ للرجوع أو بمصباحين.
+  </p>
+  <h2>
+   إضاءاتٌ خاصة
+  </h2>
+  <p>
+   إضافةً إلى هذه الأضواء، قد تُستخدَم أضواءٌ أخرى أثناء تشغيل مصابيح التقاطع أو مصابيح الضباب الأمامية. فالكثير من السيارات الحديثة مزوّدةٌ مثلًا بمصابيح انعطافٍ تتبعيّة؛ تدور مع المنعطف أو تشتغل بمجرد البدء في التوجيه، فتجعل حوافَّ المنعطف أوضحَ ليلًا.
+  </p>
+  <h2>
+   إضاءاتٌ أخرى
+  </h2>
+  <p>
+   لا يُسمح دائمًا بإضافة أضواءٍ إضافيةٍ إلى المركبة. وليس استبدالُ الإضاءةِ العادية بمصابيح زينون أو LED أمرًا يسيرًا تقوم به بنفسك. فإذا رغبتَ في إضافة إضاءةٍ أخرى إلى مركبتك أو تغييرها فاستشرْ مختصًّا؛ إذْ ليس كلُّ ما يُباع من مصابيح مسموحًا به في سيارات الركّاب.
+  </p>
+  <h2>
+   إضاءةُ المقطورة
+  </h2>
+  <p>
+   شأنُها شأنُ مركبة السحب، يجب أن تُوفّر المقطورةُ الإضاءةَ نهارًا عند ضعف الرؤية وليلًا. وتتكوّن هذه الإضاءةُ من أضواءٍ خلفيةٍ حمراء، وإنارةِ لوحةِ الأرقام، وأضواءٍ جانبيةٍ أماميةٍ بيضاء. ولا يُشترط وجودُ هذه الأضواء الجانبية إلا في المقطورات الأعرض من 1.60 متر.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

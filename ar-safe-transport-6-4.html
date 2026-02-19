@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D7DCEF;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D7DCEF;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #035EB1;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+
+
+
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   النقل الآمن
+  </h1>
+  <p>
+   إذا قدتَ مركبةً، أو نقلتَ ركّابًا صغارًا، أو كنتَ راكبًا بنفسك، فمن المهم القيامُ بذلك بأقصى درجات السلامة. ولهذا السبب وُضِعت قواعدٌ معيّنة بشأن استخدام المقاعد، وأحزمة الأمان، وأنظمة تقييد الأطفال.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+  المقعد
+</h3>
+   <p>
+    بنيةٌ مُعدّة لاستيعاب شخصٍ بالغ. قد تكون مقعدًا منفردًا أو جزءًا من صفٍّ من المقاعد.
+   </p>
+  </div>
+  <h2>
+   المقاعد
+  </h2>
+  <p>
+   يُلزم أن يجلس كلٌّ من السائق والركّاب على مقعدٍ مخصّص أثناء المشاركة في حركة المرور. لا يجوز التواجد في صندوق الأمتعة أو حيّز الحمولة أثناء سير المركبة. كما يُحظر الجلوس أو الوقوف في مقطورةٍ أو كارافان أثناء سيرهما.
+  </p>
+  <p>
+   توجدُ بعضُ الاستثناءات لهذه القواعد، مثلًا:
+  </p>
+  <ul>
+   <li>
+    <p>
+     النقل في حافلةٍ عامة.
+    </p>
+   </li>
+   <li>
+    <p>
+     الركّاب على كرسيٍّ متحرّك إذا أمكن تثبيته تثبيتًا سليمًا.
+    </p>
+   </li>
+   <li>
+    <p>
+     الأطفال دون ثلاثِ سنواتٍ أثناء النقل في الحافلة.
+    </p>
+   </li>
+   <li>
+    <p>
+     نقل المرضى في سياراتِ الإسعاف أو في أماكن الاستلقاء الأخرى (أسرّة).
+    </p>
+   </li>
+   <li>
+    <p>
+     نقلُ الركّاب أثناء الاستعراضات في الفعاليات.
+    </p>
+   </li>
+   <li>
+    <p>
+     الأطفال الأكبر من ثماني سنوات على الحامل الخلفي للدراجة الهوائية.
+     <br/>
+     ملاحظة: هذا غيرُ مسموحٍ على snorfiets!
+    </p>
+   </li>
+  </ul>
+  <div class="important-words2">
+   <p>
+    لا يجوز نقلُ ركّابٍ دون سنّ الثامنة على الدراجات الهوائية وsnorfietsen والدراجات النارية الخفيفة (mopeds) إلا إذا كانوا جالسين على مقعدٍ مناسب يوفّر دعمًا كافيًا للظهر واليدين والقدمين.
+   </p>
+  </div>
+  <h2>
+   أحزمة الأمان
+  </h2>
+  <p>
+   يكون استعمالُ حزام الأمان إلزاميًّا لجميع السائقين والركّاب في:
+  </p>
+  <ul>
+   <li>
+    <p>
+     سيارات الركّاب
+    </p>
+   </li>
+   <li>
+    <p>
+     السيارات التجارية
+    </p>
+   </li>
+   <li>
+    <p>
+     المركبات الآلية ذات الثلاث عجلات ذات الهيكل المغلق
+    </p>
+   </li>
+   <li>
+    <p>
+     brommobielen
+    </p>
+   </li>
+  </ul>
+  <p>
+   لا تنقل أبدًا عددًا من الركّاب يفوق عدد أحزمة الأمان المتوفّرة. في سيارات الركّاب الحديثة يجب أن تكون أحزمة الأمان مُثبّتةً على جميع المقاعد. وفي معظم الحالات تكون أحزمةً ثلاثية النقاط تمرّ فوق الورك وبشكلٍ مائلٍ عبر الصدر والكتف.
+  </p>
+  <p>
+   الأحزمةُ إلزاميةٌ أيضًا للحوامل. فبدون حزامٍ تكون المخاطر على الأجنّة أعلى مما لو استُخدم الحزام. ويجب ارتداءُ الحزام بطريقةٍ صحيحة؛ فيوضع جزءُ الورك أسفل البطن جيدًا، ويكون جزءُ الكتف فوق البطن. أما تمريرُ الحزام فوق البطن فيمثّل خطرًا إضافيًا على الأجنّة.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_bc7c3b8ac1a647a78c12f49e68840de6~mv2.jpg"/>
+     <figcaption>
+      يُلزَم جميعُ السائقين والركّاب بارتداء حزام الأمان، حتى الحوامل.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_78040b8aedb94b958b3b3a2df8950d73~mv2.jpg"/>
+     <figcaption>
+      لا ينبغي للأطفال ارتداءُ الحزام الثلاثي كنطاقٍ حول الورك فقط؛ بل يجب أن يعبر الصدر أيضًا.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words1">
+   <p>
+    إن ارتداءَ حزام الأمان
+    <strong>
+     واجبٌ دائمًا
+    </strong>
+    على
+    <strong>
+     جميع
+    </strong>
+    سائقي وسيّاح سيارات الركّاب أثناء القيادة. ويجب ارتداؤه بصورةٍ صحيحة، بحيث يمرّ الحزامُ الثلاثي جيدًا فوق الوركين والصدر. لا تضع الجزء العلوي من الحزام خلف ظهرك أو تحت إبْطك.
+   </p>
+   <p>
+    <strong>
+     الأطفال دون 12 عامًا: السائقُ مسؤولٌ عن الالتزام بحزام الأمان. الأطفالُ بعمر 12 عامًا فأكثر: المسؤوليةُ عليهم أنفسهم.
+    </strong>
+   </p>
+  </div>
+  <h2>
+   ارتداءُ حزام الأمان
+  </h2>
+  <p>
+   يمنع ارتداءُ الحزام اندفاعَ السائقين والركّاب إلى الأمام أو إلى الأعلى عند وقوع تصادمٍ وجهي. وحتى على سرعاتٍ منخفضة كـ 30 كم/س قد يتعرّض غيرُ المقيّدين بالأحزمة لإصاباتٍ قاتلة. كما أن الوسائد الهوائية قليلةُ الفائدة بدون حزام، وقد تُسبب في بعض الحالات إصابةً إضافية.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_241c8ebafa24464eb159d4f04b441dd3~mv2.jpg"/>
+     <figcaption>
+      عند عدم استخدام الحزام قد تُحدث الوسادةُ الهوائية إصاباتٍ إضافية أثناء الحادث. ارتدِ حزامك دائمًا!
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_968c474e929a4cd4a4cb982eef84d60a~mv2.jpg"/>
+     <figcaption>
+      يجب على الأطفال دون 18 سنةً وحتى طول 1.35 متر استخدامُ نظامِ تقييدٍ للأطفال مثل مقعد الطفل أو، كما هنا، مقعد الرافعة.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   عند ارتداء الحزام واستخدامه، ثمة أمورٌ مهمّة:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      ارتدِ الحزام كما صُمّم
+     </strong>
+     فلا يُستعمل كحزامِ وركٍ فقط، ولا يُمرَّر الجزءُ المائل تحت الإبط. احرص على أن يكون جزءُ الورك مشدودًا فوق الوركين، وأن يقع الجزءُ المائل في منتصف المسافة بين العنق والكتف. كثيرٌ من الأحزمة قابلةٌ لتعديل ارتفاعها من الأعلى كي لا تقترب كثيرًا من العنق أو الكتف.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      اسحب الحزام بإحكامٍ بعد التثبيت
+     </strong>
+     فالحزامُ المرتخي لا يشدّ جيدًا أو يتأخّر في الشدّ عند التصادم.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      اخلع الملابس السميكة والمعاطف الشتوية
+     </strong>
+     فكلما ازدادت سماكة الملابس قلّت ملاءمةُ الحزام للجسم؛ وهذا العازلُ الإضافي قد يؤخّر شدَّ الحزام أو يقلّله عند التصادم، ما يدفع الجسمَ أكثر إلى الأمام.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      ارتدِ الحزام عند القيادة بمحاذاة المسطّحات المائية
+     </strong>
+     يُقال غالبًا إن الخروجَ من المركبة بعد دخول الماء أصعبُ مع الحزام؛ وطبعًا يجب فكُّ الحزام قبل الخروج. لكن عدمَ ارتداء الحزام يزيد احتمالَ التعرّض لإصاباتٍ خطيرة أو فقدان الوعي عند الارتطام بالماء، مما يجعل الخروجَ مستحيلًا.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_0aac586607e84ff69c774e23db0b7945~mv2.jpg"/>
+     <figcaption>
+      علِّم الأطفال دائمًا ارتداءَ الحزام بصورةٍ صحيحة وتحقّق من التزامهم بذلك.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_53815a68a8964075aae775cfe87170de~mv2.jpg"/>
+     <figcaption>
+      مع معطفٍ شتويٍّ سميك لا يطوّق الحزامُ الجسمَ كما ينبغي؛ ونقلُ الطفل بهذه الطريقة غيرُ آمن.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   استخدامُ مسند الرأس
+  </h2>
+  <p>
+   يغفل كثيرٌ من الناس أهميةَ مساند الرأس، فلا يضبطونها ضبطًا صحيحًا. غير أنّ مسندًا مضبوطًا جيدًا قد يقي من إصابات الرأس والعنق عند التعرّض لصدمٍ خلفي.
+  </p>
+  <p>
+   ينبغي أن يتساوى أعلى مسند الرأس مع قمة الرأس. وإن تعذّر رفعُه إلى ذلك الحدّ فيُرفع إلى أعلى ما يمكن. وبعضُ المساند قابلةٌ للإمالة للأمام أو للخلف لتقليل المسافة بين مؤخر الرأس والمسند.
+  </p>
+  <div class="important-words1">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+  الهيكل
+</h3>
+   <p>
+    البنيةُ الفولاذية التي تمنح سيارةَ الركّاب صلابتها؛ فهي بمثابة “الهيكل العظمي” للمركبة.
+   </p>
+  </div>
+  <h2>
+   أنظمةُ تقييدِ الأطفال
+  </h2>
+  <p>
+   يجب على الأطفال دون 18 عامًا وأقصر من 1.35 متر استخدامُ نظامِ تقييدٍ مُعتمدٍ ومُلائمٍ لحجم الطفل ووزنه. ويندرج ذلك ضمن أربع مجموعات: 0+، I، II وIII.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_007365726f0c4dd499332fec9360d1ad~mv2.jpg"/>
+     <figcaption>
+      مقعدُ رضيعٍ للسيارة
+      <br/>
+      المجموعة 0+، 0–13 كغ
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_8e2a0b2f9a7042a088c10ff24dead869~mv2.jpg"/>
+     <figcaption>
+      مقعدُ طفلٍ للسيارة
+      <br/>
+      المجموعة I، 9–18 كغ
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_ec23095a331b4445804c16ad366b021f~mv2.jpg"/>
+     <figcaption>
+      مقاعدُ الرافعة (بمسندِ ظهرٍ أو بدونه)
+      <br/>
+      المجموعة II، 15–25 كغ
+      <br/>
+      المجموعة III، 22–36 كغ
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h3>
+   مقعدُ الرضّع في السيارة (المجموعة 0+، 0–13 كغ)
+  </h3>
+  <p>
+   تُخصَّص هذه المقاعد للرضّع وصغارِ الأطفال حتى نحو 18 شهرًا. تُثبَّت عكسَ اتجاه السير، وتُستخدم حتى يبلغ الطفلُ نحو 13 كغ أو يصبح رأسُه أعلى من هيكل المقعد. وحتى ذلك الحين فهي الخيارُ الأكثر أمانًا. تُثبَّت المقاعدُ بحزام الأمان أو بنظام Isofix، وتكون مزوّدةً بحزامٍ خاصّ بالرضيع.
+  </p>
+  <h3>
+   مقعدُ الطفل في السيارة (المجموعة I، 9–18 كغ)
+  </h3>
+  <p>
+   غالبًا ما تُثبّت هذه المقاعد باتجاه السير وتُربط بحزام الأمان أو بنظام Isofix. وهي مناسبةٌ للأطفال من نحو عامٍ واحد. يُثبَّت الطفلُ إمّا بحزامِ المقعد نفسه، أو بواسطة “مِسندٍ واقٍ” يُشدّ أمام البطن وجزءٍ من الصدر بواسطة الحزام الثلاثي المعتاد.
+  </p>
+  <h3>
+   مقعدُ الرافعة مع أو من دون مسندِ ظهر (المجموعة II، 15–25 كغ / المجموعة III، 22–36 كغ)
+  </h3>
+  <p>
+   عادةً ما تُدمَج هاتان المجموعتان في مقعدٍ واحد هو مقعدُ الرافعة مع أو من دون مسندٍ خلفي (قابلٍ للإزالة). ويُستحسن استخدامُ مقعد الرافعة مع مسندِ ظهر أطولَ مدةٍ ممكنة لأنه يوفّر أفضلَ حماية. ويُثبَّت الطفلُ عادةً بالحزام الثلاثي المعتاد. ويجب أن يضمن مقعدُ الرافعة تموضعَ الحزام على الجسم بصورةٍ صحيحة.
+  </p>
+  <h2>
+   تعطيلُ الوسائد الهوائية
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      عند استخدامِ مقعدٍ مُثبّتٍ بعكسِ اتجاه السير، يجب دائمًا
+                    تعطيلُ الوسادةِ الهوائية الأمامية. فهذه الوسائد مُعدّةٌ عادةً لحماية الرأس عند الصدمة الأمامية، وتكون ضمن لوحةِ العدّادات أو في مسندِ رأسِ المقعد الأمامي لحماية ركّاب الخلف. هذه الوسادةُ ستقذف المقعد، وبالتالي الطفلَ، عبر السيارة؛ لذا فمن
+      <strong>
+       الإلزامي
+      </strong>
+      تعطيلُ هذه الوسادة.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_f745fb48ce5740b98429f86c3a61afed~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   عند تفعيل الوسادةِ الهوائية يجب استخدامُ مقعدٍ مُثبّتٍ باتجاه السير دائمًا. وفي هذه الحالة أرجِع المقعدَ الذي يُثبَّت عليه كرسيُّ الطفل إلى أقصى الخلف الممكن.
+  </p>
+  <h2>
+   استخدامُ أنظمةِ تقييدِ الأطفال
+  </h2>
+  <p>
+   عند استخدام نظامِ تقييدٍ للأطفال انتبه لما يلي:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      تأكّد من تثبيت المقعد بإحكام
+     </strong>
+     فمقاعدُ نظام Isofix هي الأكثرُ ثباتًا عند تثبيتها جيدًا؛ إذ تُثبَّت بهيكل المركبة عبر نظامِ إقفالٍ خاص، ولذلك نادرًا ما تتحرّك. أما المقعدُ المثبّت بالحزام فلا يُمسِك جيدًا عند الحوادث إلا إذا وُضع داخل الحزام بطريقةٍ صحيحة. اقرأ الإرشادات بعناية.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      عطّل وسادةَ الراكب الهوائية
+     </strong>
+     إذا نقلتَ طفلًا في المقعد الأمامي على نظامِ تقييدٍ مُثبّتٍ بعكسِ السير، فإن تعطيلَ وسادةِ الراكب الهوائية واجبٌ إلزامي. وعدمُ تعطيلها شديدُ الخطورة؛ فلو انفتحت عند حادثٍ فقد يتعرّض الطفلُ لإصابةٍ مميتة.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      اخلع الملابس السميكة والمعاطف
+     </strong>
+     الطفلُ الجالسُ في مقعدٍ ومعه معطفٌ شتويّ لا يكون محميًّا جيدًا؛ وقد يُقذف خارج المقعد عند حادث، لأن الأحزمة لا تُحكِم الإغلاق حول الجسم.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      استخدم مقعدَ المجموعة المناسبة أطولَ مدةٍ ممكنة
+     </strong>
+     فالانتقالُ المبكّر إلى مجموعةٍ أعلى أقلُّ أمانًا لأن كلَّ مجموعةٍ أعلى توفّرُ حمايةً أقل، على أن يبقى الطفلُ مرتاحًا في الجلوس.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      توخَّ الحذر مع المقاعدِ المستعملة
+     </strong>
+     تحقّق دائمًا مما إذا كانت قد شاركت في حادثٍ سابق؛ إذ كما هو الحال مع الأحزمة والوسائد الهوائية والخوذات، تتدهور فاعليةُ نظامِ تقييدِ الطفل إذا كان قد وفّر حمايةً في حادث. وغالبًا يتعذّر الجزمُ بماضيه؛ فإن ساورك الشكّ فالأفضل عدمُ استخدام ذلك المقعد.
+    </p>
+   </li>
+  </ul>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_7efd5bd0b32b4b598d93ef1a3b5b56ae~mv2.jpg"/>
+     <figcaption>
+      تعطيلُ وسادةِ الراكب الهوائية غيرُ إلزامي في هذه الحالة، لكنه مُستحسن. وإن تعذّر ذلك فأرجِع مقعدَ الراكب إلى أقصى الخلف الممكن.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="تحذير: عطلُ الوسادةِ الهوائيةِ الجانبية" src="https://static.wixstatic.com/media/4b688f_97ffa6844ae14f7ab177ab3db398c8af~mv2.jpg"/>
+     <figcaption>
+      لا يُمكن وضعُ هذا مقعدِ الطفل هنا إلا إذا كانت وسادةُ الراكب الهوائية مُعطّلة.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   استثناءاتُ نظامِ تقييدِ الأطفال
+  </h2>
+  <p>
+   على الرغم من أن نقلَ الأطفال دون 1.35 متر في نظامِ تقييدٍ هو الخيارُ الأكثر أمانًا دائمًا، فقد يتعذّر ذلك استثنائيًا.
+  </p>
+  <p>
+   لذا تضمن القانونُ عددًا من الاستثناءات:
+  </p>
+  <ul>
+   <li>
+    <p>
+     في سياراتِ الأجرة والحافلات العامة لا يكون استعمالُه إلزاميًّا، لكن لا ينبغي جلوسُ الأطفال في الصفّ الأمامي من المقاعد.
+    </p>
+   </li>
+   <li>
+    <p>
+     إذا لم يعد يتّسع المقعدُ الخلفي لمقعدِ طفلٍ ثالث بسبب وجود مقعدَي أطفالٍ آخرين، فيُمكن نقلُ الطفل الثالث بحزام الأمان فقط في المقعد الخلفي. ويُفضَّل أن يكون الأكبر سنًّا، وعلى كلّ حالٍ طفلًا فوق ثلاث سنوات.
+    </p>
+   </li>
+   <li>
+    <p>
+     في النقل العارض، مثل حفلات الأطفال، يجوز نقلُ الأطفالِ الأكبر من ثلاث سنواتٍ والأقصر من 1.35 متر في المقعد الخلفي بحزام الأمان فقط.
+    </p>
+   </li>
+  </ul>
+  <div class="important-words2">
+   <p>
+    <strong>
+     تحذير!
+    </strong>
+    <br/>
+    كونُ الأمر مسموحًا به قانونًا لا يعني أنه الخيارُ الأفضل. فإذا توفّر إمكانُ استخدامِ نظامِ تقييدٍ لطفلٍ أقصر من 1.35 متر، فذلك هو الخيارُ المفضّل دائمًا.
+   </p>
+  </div>
+  <h2>
+   اشتراطُ الخوذة
+  </h2>
+  <p>
+   بالنسبة لعددٍ من المركبات الآلية، يُستعاضُ عن اشتراط حزام الأمان باشتراطِ ارتداء الخوذة. فهذه المركبات – ومنها الدراجاتُ النارية الخفيفة، والدراجاتُ النارية، وbrommobielen من دون هيكلٍ مغلق، والدراجاتُ الآلية الثلاثية، والرباعية (quads) – غالبًا لا تحتوي على أحزمة أمان. وفي هذه الحالات تُلزَم بارتداء خوذةٍ معتمدة. ومرةً أخرى، ابتداءً من سنّ 12 عامًا تقع المسؤوليةُ على الراكب نفسِه، بينما يكون السائقُ مسؤولًا عن الأطفال الأصغر.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+   العودة إلى النظرة العامة
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

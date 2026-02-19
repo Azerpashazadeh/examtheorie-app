@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+        .vertical-line2 {
+            width: 5px;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: px;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 0;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>2toDrive scheme</h2>
+    <p>A special scheme for passenger car driving licences, 2toDrive, reduces the minimum age for obtaining a licence
+        from 18 to 17. This scheme was designed to reduce the number of road casualties among 18-24 year olds, a
+        demographic known for riskier driving behaviour due to a reduced ability to anticipate potential consequences.
+        They often underestimate the consequences. This is also referred to as a higher risk acceptance.</p>
+    <p>Under the 2toDrive scheme, you can take the driving test a year earlier than normal, after which you will be able
+        to drive a car accompanied by a coach (supervisor). The coach can be a parent, an uncle or aunt, or even a
+        neighbour. You can register a minimum of one and a maximum of five coaches. These individuals will be named on
+        the supervisor pass you are required to have in your possession when driving.</p>
+    <p>Because you also get your moped driving licence with the passenger car driving licence, you are allowed to ride
+        all types of mopeds as soon as you received your licence. You do not need a supervisor to drive a moped.</p>
+
+    <div class="important-words2">
+        <div class="text-content">
+            <div class="vertical-line2"></div>
+            <h3>2toDrive</h3>
+            <p>
+                Scheme under which persons 17 years of age can obtain their driving licence and drive a car under
+                supervision until the age of 18. This scheme only applies in the Netherlands. Once the driver reaches 18
+                years of age, their eligibility for the scheme expires, at which point they are allowed to drive
+                independently (including abroad).
+            </p>
+        </div>
+        <div class="image-content">
+            <img src="https://static.wixstatic.com/media/4b688f_6cc82b76a6504ca9b07edadc04451362~mv2.png"
+                alt="Licence Image">
+        </div>
+    </div>
+
+
+    <h2>Coach (supervisor) requirements</h2>
+    <p>Coaches must meet a number of requirements:</p>
+
+    <ul>
+        <li>They must have had a valid Dutch car licence for at least five years.</li>
+        <li>They must be at least 27 years old.</li>
+        <li>They must be able to show a valid driving licence when applying for the pass and while supervising.</li>
+        <li>They must adhere to the same rules as other experienced drivers are subject to regarding alcohol, drugs and
+            medication while acting as a coach.</li>
+        <li>They must not have been convicted of any serious traffic offences within the last four years. For example,
+            they must not:</li>
+        <ul class="dash-list">
+            <li>have a criminal conviction for a traffic offence;</li>
+            <li>have committed an offence resulting in a mandatory EMG or (L)EMA course;</li>
+            <li>
+                have been subject to a test of ability or fitness to drive.
+            </li>
+        </ul>
+
+    </ul>
+
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_86cbc4327b37445e9d565b5584bba605~mv2.jpg"
+                alt="Image 1" />
+            <figcaption><em>2toDrive supervisor pass front</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0436287ce4514a4bbed8dd21ac0becaa~mv2.jpg"
+                alt="Image 2" />
+            <figcaption>
+                <em>2toDrive supervisor pass back</em>
+            </figcaption>
+        </figure>
+    </div>
+
+
+    <h2>2toDrive driver requirements</h2>
+    <p>The driver is also subject to certain requirements. For example, you cannot apply for a driving licence before
+        your 18th birthday without requesting a supervisor pass first.</p>
+    <p>In addition:</p>
+    <ul>
+        <li>Driving without a supervisor pass and driving licence is prohibited.</li>
+        <li>Driving without a coach listed on the supervisor pass is prohibited. The coach must be able to produce
+            identification if required.</li>
+        <li>This scheme is only valid in the Netherlands. Outside the Netherlands, you may not drive before you turn 18,
+            so keep this in mind if you live near a border or go on holiday abroad!</li>
+    </ul>
+    <h2>After your 18<sup>th</sup> birthday</h2>
+    <p>If you obtain your driving licence under the 2toDrive scheme, you can drive without supervision from your 18th
+        birthday onwards. Your eligibility for the scheme expires once you turn 18, at which point you are in possession
+        of a standard driving licence. This means you can also drive abroad.</p>
+
+   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+    overview</a>
+
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

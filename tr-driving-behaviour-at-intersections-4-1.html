@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #009669;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #009669;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+
+        .important-words6 {
+            background-color: #BEE3D5;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            /* Metni resmin üst kenarıyla hizalar */
+            margin-bottom: 30px;
+            /* Her bir konteyner arasında boşluk */
+            gap: 30px;
+            /* Resim ve metin arasındaki mesafeyi sabit tutar */
+        }
+
+        .container figure {
+            margin: 0;
+            flex: 0 0 auto;
+            /* Resmin genişliğini içeriğine göre ayarlar ve büyüyüp küçülmesini engeller */
+            text-align: center;
+            /* Açıklamaları resmin altında ortalamak için */
+            min-width: 50px;
+            /* Resmin minimum genişliği */
+            max-width: 100px;
+            /* Resmin maksimum genişliği */
+        }
+
+
+        .container figure img {
+            width: 100%;
+            /* Resmin figure elemanını tamamen doldurmasını sağlar */
+            height: auto;
+            display: block;
+            max-width: 100%;
+            /* Resmin kapsayıcıdan taşmasını engeller */
+        }
+
+        .container .heading-primary {
+            margin-top: 0;
+            /* Başlığın üstünde boşluk olmamasını sağlar */
+        }
+
+        .container>div {
+            flex: 1;
+            /* Metin içeriğinin kalan alanı kaplamasını sağlar */
+        }
+
+        .container figcaption {
+            margin-top: 5px;
+            /* Resim ile açıklama arasında boşluk */
+            font-style: italic;
+            /* Açıklamaları vurgulamak için */
+        }
+
+
+
+
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #BEE3D5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #009669;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #009669;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container20 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container20 figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container20 img {
+            width: 100%;
+            height: auto;
+            margin-top: 0;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container20 figcaption {
+            font-size: 0.8em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+        }
+
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+        .image-text-container {
+            display: flex;
+            align-items: flex-start;
+            /* Metni resmin üst kenarıyla hizalar */
+            margin-bottom: 30px;
+            /* Her bir konteyner arasında boşluk */
+            gap: 30px;
+            /* Resim ve metin arasındaki mesafeyi sabit tutar */
+        }
+
+        .image-text-container figure {
+            margin: 0;
+            flex: 0 0 49%;
+            /* Resmin genişliğini ekranın %50'sine ayarlar */
+        }
+
+        .image-text-container img {
+            width: 100%;
+            /* Resmin konteynerini tamamen doldurmasını sağlar */
+            height: auto;
+            display: block;
+        }
+
+        .image-text-container .text-content {
+            flex: 1;
+            /* Metin içeriğinin kalan alanı kaplamasını sağlar */
+        }
+
+        @media (max-width: 767px) {
+            .image-text-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                /* Mobilde resim ve metin arasındaki boşluk */
+            }
+
+            .image-text-container figure,
+            .image-text-container .text-content {
+                flex: 1 1 auto;
+                /* Mobilde esnek hale gelir */
+            }
+        }
+
+
+
+
+
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        .image-container20 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 10px;
+            /* Resimler arasında boşluk için */
+        }
+
+        .image-container20 figure {
+            flex: 1 1 calc(25% - 10px);
+            /* Masaüstü: Resimleri dört sütun olarak hizalar */
+            max-width: calc(25% - 10px);
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-container20 figure {
+                flex: 1 1 calc(50% - 10px);
+                /* Mobil: Resimleri iki sütun olarak hizalar */
+                max-width: calc(50% - 10px);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kavşaklarda Sürüş Davranışı</h1>
+    <p>Kavşaklarda diğer trafikle karşılaştığınızda farklı kurallar uygulanır. Bu kurallarla, yol kullanıcıları (yaya
+        dahil tüm trafik) ve sürücüler (yayalar hariç tüm trafik) arasındaki farkı anlamanız önemlidir. Ayrıca, kesişen
+        yoldaki trafik ile aynı yoldaki trafik arasındaki farkı anlamanız da önemlidir.</p>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Kavşak</h3>
+        <p>
+            Kavşak veya yolların kesişmesi. Bir kavşakta yön değiştirmek mümkündür. Bu, sola veya sağa dönebileceğiniz
+            anlamına gelir.
+            Kavşaklar birçok farklı şekilde tasarlanabilir.
+        </p>
+    </div>
+
+    <div>
+        <div class="image-container20">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg"
+                    alt="Uyarı yan hava yastığı arızası">
+                <figcaption>Normal kavşak</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>T-kavşak</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Y-kavşak veya çatallı kavşak</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Süngü kavşak</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Kesişen yol</h3>
+        <p>
+            Bu, üzerinde bulunduğunuz yolu kesen bir yoldur. Bu her zaman 90 derecelik (dik) bir açıyla olmak zorunda
+            değildir. Y-kavşak gibi, yolunuza daha eğik bir açıyla kesişen bir yol da olabilir.
+        </p>
+    </div>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg"
+                    alt="Uyarı yan hava yastığı arızası">
+                <figcaption>Beyaz ders arabasına kıyasla, renkli kısım kesişen yoldur.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Beyaz ders arabasına kıyasla, Y-kavşağının renkli kısmı kesişen yoldur.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Aynı yol</h3>
+        <p>
+            Bu, üzerinde bulunduğunuz yoldur. Aynı yoldaki trafik size arkadan veya önden yaklaşır. Bunlar kaldırımdaki
+            veya banketteki yayalar ya da taşıt yolundaki otomobil sürücüleri olabilir, fark etmez. Eğer bir dönel
+            kavşakta sürüyorsanız, bu dönel kavşağı takip eden tüm trafik aynı yoldaki trafiktir.
+        </p>
+    </div>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg"
+                    alt="Uyarı yan hava yastığı arızası">
+                <figcaption>Tüm bu yol kullanıcıları aynı yoldadır (renkli kısım).</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Dönel kavşakta, dairesel yol bölümü "aynı yol" olarak kabul edilir. Bu nedenle, ders arabası
+                    ve bisikletçi aynı yoldadır.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Yol vermek</h3>
+        <p>
+            İlgili sürücülerin engellenmeden ilerlemelerine izin verir. Bu, önceliği olan sürücünün önceliği olduğunun
+            farkında olması gerektiği anlamına gelir. Bu sürücü engellenmeden yol alabilmelidir.
+        </p>
+    </div>
+
+    <h2>
+        Yol vermek
+    </h2>
+    <p>
+        Eğer bir kavşakta öncelik işaretler, yol yüzeyindeki işaretlemeler veya trafik ışıklarıyla düzenlenmemişse,
+        bunlar eşdeğer yollar olarak bilinir. Eşdeğer yollarda, sürücüler sağdan gelen sürücülere yol verir.
+    </p>
+    <p>
+        Yayalara öncelik vermek zorunda değilsiniz, çünkü onlar sürücü olarak sınıflandırılmaz.
+    </p>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg"
+                    alt="Uyarı yan hava yastığı arızası">
+                <figcaption>Sağdan gelen bisikletçi, ders arabasına karşı önceliğe sahiptir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Sağdan gelen yaya sürücü değildir ve bu nedenle ders arabasına yol vermelidir.</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <p>
+        Bu kuralın iki istisnası vardır:
+    </p>
+    <ul>
+        <li>
+            Sürücüler tramvay sürücülerine öncelik verir.
+        </li>
+        <li>
+            Asfaltsız yoldaki sürücüler, asfaltlı yoldan gelen soldaki ve sağdaki sürücülere yol verir.
+        </li>
+    </ul>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg"
+                    alt="Uyarı yan hava yastığı arızası">
+                <figcaption>Sağdan gelen ders arabası, soldan gelen tramvaya yol vermelidir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>Ders arabası asfaltsız bir yoldan geliyor ve asfaltlı yoldaki sürücüye yol vermelidir.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="important-words2">
+        <div class="vertical-line2"></div>
+        <h3>Öncelik üçgenleri (Köpekbalığı dişleri)</h3>
+        <p>
+            Yol üzerindeki beyaz üçgenler. Genellikle B-6 işaretiyle birlikte kullanılır, ancak bazen de olmadan
+            kullanılır. Her iki durumda da, bu üçgenler kesişen yoldaki sürücülere yol vermeniz gerektiği anlamına
+            gelir.
+        </p>
+    </div>
+
+    <h2>
+        İşaretler veya yol işaretlemeleriyle belirtilen öncelik
+    </h2>
+    <p>
+        Eğer bir kavşakta öncelik, işaretler veya yol yüzeyindeki işaretlemelerle kontrol ediliyorsa, sağdan gelen
+        sürücülerin önceliği kuralı artık geçerli değildir. Önceliği düzenleyen çeşitli işaretler vardır.
+    </p>
+
+    <div class="important-words6">
+        <div class="vertical-line2"></div>
+
+
+
+
+
+
+        <div class="container">
+            <div>
+                <h3 class="heading-primary"><strong>Öncelik Verilmesi - Ana Yol</strong></h3>
+                <p>
+                    B-1 işareti, öncelikli bir yolda olduğunuzu gösterir. Kesişen sürücüler size öncelik vermelidir. Bu
+                    işaret, yerleşim yeri içinde her kavşaktan önce ve yerleşim yeri dışında her kavşaktan sonra
+                    tekrarlanır. Bu şekilde, bu işaretlerden yerleşim yeri içinde mi yoksa dışında mı sürdüğünüzü
+                    anlayabilirsiniz.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_71ed77b3f56847e399c1547a5a7a12eb~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-1</figcaption>
+            </figure>
+        </div>
+
+        <div class="container">
+            <div>
+                <p>
+                    B-2 işareti, bu öncelikli yolun sonunu gösterir. Bu işaretten sonra normal öncelik kuralları
+                    geçerlidir.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_5b541bedc0ca4d048fa80dbbdcb7ab99~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-2</figcaption>
+            </figure>
+        </div>
+
+        <div class="container">
+            <div>
+                <h3 class="heading-primary"><strong>Öncelik Verilmesi - Öncelikli Kavşak</strong></h3>
+                <p>
+                    B-3 işareti, bir öncelikli kavşağı gösterir. Kesişen sürücüler size öncelik vermelidir. Kalın ok,
+                    üzerinde sürmekte olduğunuz yolu gösterir. Çapraz işaretler yan yolları belirtir. Bu durumda, hem
+                    sol hem de sağ tarafta yan yollar vardır. Bu işaret, B-4 ve B-5 işaretleri gibi, sadece yaklaşmakta
+                    olduğunuz kavşak için geçerlidir.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6cba878b84114d19a45e0cc897401bc1~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-3</figcaption>
+            </figure>
+        </div>
+
+        <div class="container">
+            <div>
+                <p>
+                    B-4 işareti, bir öncelikli kavşağı gösterir. Bu durumda sol tarafta bir yan yol vardır. Bu yan
+                    yoldan gelen kesişen sürücüler size öncelik vermelidir.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_6386b91bf4af48eba2b76f5598bde178~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-4</figcaption>
+            </figure>
+        </div>
+
+        <div class="container">
+            <div>
+                <p>
+                    B-5 işareti, bir öncelikli kavşağı gösterir. Bu durumda sağ tarafta bir yan yol vardır. Bu yan
+                    yoldan gelen kesişen sürücüler size öncelik vermelidir.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_964195d9ac754a918b0dc4f4599a29a9~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-5</figcaption>
+            </figure>
+        </div>
+
+        <div class="container">
+            <div>
+                <h3 class="heading-primary"><strong>Öncelik Vermek</strong></h3>
+                <p>
+                    B-6 işareti, kesişen yoldaki sürücülere öncelik vermeniz gerektiğini belirtir. Bu kavşağın öncelikli
+                    bir yol olması da mümkündür, öncelikli bir kavşak olması da. Sürücülere öncelik verebildiğiniz
+                    sürece durmak zorunlu değildir.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_4b2a0103cec54e10a8de7f43100c00bf~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-6</figcaption>
+            </figure>
+        </div>
+
+        <div class="container">
+            <div>
+                <p>
+                    B-7 işareti, kesişen yoldaki sürücülere öncelik vermeniz gerektiğini belirtir. Bu kavşağın öncelikli
+                    bir yol olması da mümkündür, öncelikli bir kavşak olması da. Bu durumda, durmak her zaman
+                    zorunludur! Bu işaretler, görüşün zayıf olduğu veya yüksek kaza riski bulunan kavşaklarda uygulanır.
+                </p>
+            </div>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_31408e28c07947ec9589ca27a9d12799~mv2.png"
+                    alt="Örnek Resim" class="image">
+                <figcaption>B-7</figcaption>
+            </figure>
+        </div>
+
+    </div>
+    <p>
+        Bu iki işaret arasındaki fark, "DUR" işaretinde her zaman durmak zorunda olmanızdır. Kesişen yolda sürücü
+        olmadığını görmüş olsanız bile. Ayrıca, B-6 işareti her zaman öncelik üçgenleriyle, B-7 işareti ise bir dur
+        çizgisiyle birleştirilir.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg"
+                    alt="Uyarı yan hava yastığı arızası">
+                <figcaption>B-6 işareti her zaman öncelik üçgenleriyle birleştirilir.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg"
+                    alt="Emniyet kemeri uyarı ışığı">
+                <figcaption>B-7 işareti her zaman bir dur çizgisiyle birleştirilir.</figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Bu işaretler ve işaretlemeler de sadece sürücüler içindir. Yayalar bu öncelik kurallarına tabi değildir.
+    </p>
+    <h2>
+        Örnekler
+    </h2>
+    <div class="image-text-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg"
+                alt="Sigorta Kartı" />
+            <figcaption><em></em></figcaption>
+        </figure>
+        <div class="text-content">
+            <p>B-6 işareti ve öncelik üçgenlerine yaklaşırken, kesişen yoldaki sürücülere öncelik verin. Bu durumda,
+                kesişen yoldan soldan bir at arabası geliyor. Ders arabası bu sürücüye yol vermelidir.</p>
+        </div>
+    </div>
+    <div class="image-text-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg"
+                alt="Sigorta Kartı" />
+            <figcaption><em></em></figcaption>
+        </figure>
+        <div class="text-content">
+            <p>Bu durumda, ders arabası da öncelik üçgenlerine yaklaşıyor. Kesişen yoldaki yaya, ders arabasını
+                beklemelidir. Ders arabası, öncelik üçgenlerinde sadece sürücülere öncelik vermek zorundadır, yayalara
+                değil.</p>
+        </div>
+    </div>
+    <div class="image-text-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg"
+                alt="Sigorta Kartı" />
+            <figcaption><em></em></figcaption>
+        </figure>
+        <div class="text-content">
+            <p>Burada da yaya, ders arabasını beklemelidir. Bu, dur çizgili bir dur işaretine yaklaşıyor. Dur işareti
+                nedeniyle ders arabası durmak zorundadır, ancak soldan veya sağdan sürücü gelmiyorsa hemen hareket
+                edebilir. Bir yaya sürücü değildir.</p>
+        </div>
+    </div>
+    <div class="image-text-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg"
+                alt="Sigorta Kartı" />
+            <figcaption><em></em></figcaption>
+        </figure>
+        <div class="text-content">
+            <p>Tramvay sürücüleri, eşdeğer bir kavşakta her zaman önceliğe sahiptir. Önceliği düzenleyen işaretler ve
+                yol işaretlemeleri olduğu anda, tramvay sürücüsü bunlara uymalıdır. Bu durumda, tramvay sürücüsü ders
+                arabasını beklemelidir.</p>
+        </div>
+    </div>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

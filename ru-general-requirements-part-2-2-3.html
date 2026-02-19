@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   General requirements - part 2
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Major tread grooves
+   </h3>
+   <p>
+    Wide grooves in the middle section of a tyre’s tread that contain the wear indicators.
+   </p>
+   <h3>
+    Tread
+   </h3>
+   <p>
+    Part of the tyre that comes into contact with the road surface.
+   </p>
+   <h3>
+    Carcass
+   </h3>
+   <p>
+    Part of the tyre under the rubber layer that gives the tyre its strength. Usually equipped with plastic
+            (nylon, polyester) and steel wires.
+   </p>
+   <h3>
+    Wear indicators
+   </h3>
+   <p>
+    Elevations in the main grooves. When these wear with the tread, the tyre no longer meets the minimum tread
+            depth.
+   </p>
+  </div>
+  <h2>
+   Tyres
+  </h2>
+  <p>
+   Tyres on a passenger car that are not in working order can lead to dangerous situations. However, few drivers
+        check their tyres and tyre pressure on a regular basis. As tyres gradually wear down, drivers are advised to
+        check the pressure and tread depth regularly - at least once a month.
+  </p>
+  <div class="important-words3">
+   <div class="image-content">
+    <img alt="Licence Image" src="https://static.wixstatic.com/media/4b688f_4297b5ee4bab4eebabd0d1614fb10364~mv2.png"/>
+   </div>
+   <div class="text-content">
+    <p>
+     This is the tyre pressure indicator light in the dashboard. When the tyre pressure of (one of) the tyres
+                is no longer adequate, this light will light up. Check the tyre pressure at least once a month and as
+                soon as this light comes on. Not all passenger cars are equipped with a tyre pressure indicator light.
+    </p>
+   </div>
+  </div>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_1ecd7b96690a4414b00e528ecc97ede4~mv2.jpg">
+     <figcaption>
+      <em>
+       Do not remove a nail or screw embedded in the tyre until you reach a garage. Removal will
+                    cause the tyre to deflate rapidly.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_c71da6371a894c5aafff49e4b348f59f~mv2.jpg"/>
+    <figcaption>
+     <em>
+      The wear indicators in these major tread grooves are worn down almost to the level of the rest of
+                    the tread. This tyre is worn down.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Tyres must meet the following technical requirements:
+  </p>
+  <ul>
+   <li>
+    They must be air-filled tyres. Nitrogen-filled tyres are also permitted. For example, passenger cars may not
+            be equipped with solid rubber tyres or tracks.
+   </li>
+   <li>
+    Tyres must not have any bulges or any damage where the carcass is visible.
+   </li>
+   <li>
+    Tyres must always have a minimum tread depth of 1.6 mm in the major tread grooves. They are not allowed to
+            be re-treaded, which means the grooves may not be cut deeper.
+   </li>
+   <li>
+    Tyres must be mounted in the correct direction of rotation.
+   </li>
+   <li>
+    Tyres may not contain any metal components that can protrude while driving, such as studded tyres used in
+            countries with harsh winters.
+   </li>
+   <li>
+    Tyres on one axle must be the same size. For example, the front left tyre should not be larger or smaller
+            than the front right, except when an emergency or spare tyre must be used.
+   </li>
+   <li>
+    Tyres must have adequate tyre pressure. The applicable pressure value is stated in the instruction booklet.
+            Do not forget the spare tyre.
+   </li>
+   <li>
+    The tyre pressure indicator light must not indicate a malfunction.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_a98e4be75137445b98001b5d81622742~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Some countries with harsh winter conditions allow the use of studded tyres. It is not
+                    permitted in the Netherlands.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_227675f9cd594f2da13edfa4e157f0b6~mv2.jpg"/>
+    <figcaption>
+     <em>
+      A spare tyre could differ in size from a normal tyre. It is used in emergency situations only.
+                    Replace the tyre as soon as possible and drive a maximum of 80 km/h.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Braking device
+  </h2>
+  <p>
+   Brakes are a vital component of passenger cars. Components in the brake system must therefore be damage-free.
+        They must also:
+  </p>
+  <ul>
+   <li>
+    be properly secured;
+   </li>
+   <li>
+    be rust-free;
+   </li>
+   <li>
+    show no signs of leakage;
+   </li>
+   <li>
+    show no signs of excessive wear.
+   </li>
+  </ul>
+  <p>
+   All components must function properly and movable parts such as the brake pedal must be easily moved. The brake
+        pedal must have a non-slip surface.
+  </p>
+  <p>
+   All passenger cars must be equipped with a properly functioning parking brake (handbrake).
+  </p>
+  <div class="important-words2">
+   <p>
+    Tyres and brakes must ensure good road holding and a short braking distance, hence both components must be
+            kept in good condition.
+   </p>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Algemene eisen - deel 1
+  </h2>
+  <p>
+   Juridisch gezien moet elk voertuig aan een aantal technische eisen voldoen. Bij nieuw gekochte voertuigen mag
+        er doorgaans vanuit worden gegaan dat zij aan deze eisen voldoen. Als er een storing optreedt, kan het voertuig
+        echter niet meer aan de eisen voldoen; reparaties of vervangende onderdelen kunnen er vaak voor zorgen dat het
+        voertuig weer aan de norm voldoet.
+  </p>
+  <p>
+   De APK (Algemene Periodieke Keuring) is ingevoerd om naleving van de technische eisen te handhaven. Deze keuring
+        dekt echter niet alles. Bestuurders wordt daarom aangeraden regelmatig de staat van hun voertuig te controleren
+        en bij voorkeur jaarlijks een controle bij een garage te laten uitvoeren.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_c4be1d97270f4bed89ff76c7ca4f1f06~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Als u uiterlijke wijzigingen aan uw voertuig aanbrengt, kan dat ertoe leiden dat uw voertuig niet meer
+                    aan de eisen voldoet.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_49214b93462f48f69f44a1d07c89205e~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Wanneer u iets aan de motor wijzigt, moet uw voertuig opnieuw worden gekeurd.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Wijzigingen aan het voertuig
+  </h2>
+  <p>
+   Als u uw voertuig wijzigt, kan het zijn dat het niet meer voldoet aan de eisen zoals vastgelegd in het Nationaal
+        kentekenregister. De auto moet dan opnieuw worden gekeurd. Hieronder vallen onder meer:
+  </p>
+  <ul>
+   <li>
+    Extra gewicht toevoegen.
+   </li>
+   <li>
+    Verbreden van de spoorbreedte (de afstand tussen linker- en rechterwiel).
+   </li>
+   <li>
+    Vervangen van het motorblok.
+   </li>
+   <li>
+    Wijzigen van het brandstoftype (bijvoorbeeld inbouw van een gasinstallatie).
+   </li>
+   <li>
+    Wijzigen van het vermogen (meer dan 20%).
+   </li>
+   <li>
+    Wijzigen van het carrosserietype.
+   </li>
+   <li>
+    Wijzigen van het aantal zitplaatsen.
+   </li>
+   <li>
+    Wijzigen van het geluidsniveau (bijv. monteren van een andere uitlaat).
+   </li>
+  </ul>
+  <p>
+   Als een voertuig is gewijzigd maar nog niet opnieuw is gekeurd en goedgekeurd, mag er niet mee worden gereden!
+  </p>
+  <h2>
+   Kenteken
+  </h2>
+  <p>
+   Voertuigen kunnen worden geïdentificeerd via de kentekenplaat en het voertuigidentificatienummer (VIN). Dit betekent:
+  </p>
+  <ul>
+   <li>
+    het voertuig moet ook overeenkomen met de gegevens op de kentekencard en in het kentekenregister;
+   </li>
+   <li>
+    het voertuig moet zijn voorzien van originele, deugdelijk bevestigde en goed leesbare kentekenplaten met
+            een goedkeuringsmerk;
+   </li>
+   <li>
+    het VIN moet in het chassis, frame of een vergelijkbare structuur zijn ingeslagen en goed leesbaar zijn.
+            Als dit (gedeeltelijk) is verwijderd, kan dat duiden op diefstal.
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_759f8187903f42fead5949073a1d08b7~mv2.jpg"/>
+    <figcaption>
+     <em>
+      De kentekenplaat op het voertuig moet origineel zijn. U mag niet rijden met een tijdelijk
+                    handgeschreven kenteken bij diefstal of verlies.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Gewichten en afmetingen
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Ledige massa
+   </h3>
+   <p>
+    Gewicht van het voertuig zoals door de fabrikant geleverd (inclusief gereedschap en reservewiel), verminderd met 100 kg.
+   </p>
+   <h3>
+    Lading
+   </h3>
+   <p>
+    Personen die in het voertuig worden vervoerd en lading (laadvermogen) die in, op of aan het voertuig
+            wordt vervoerd.
+   </p>
+   <h3>
+    Lastdrager
+   </h3>
+   <p>
+    Afneembare of uitschuifbare constructies, zoals dakkoffers en fietsendragers, die worden gebruikt voor het
+            vervoer van goederen en apparatuur. Lastdragers moeten:
+   </p>
+   <ul>
+    <li>
+     op de bumper, op de trekhaak of op het dak zijn gemonteerd, of geïntegreerd zijn in de achterzijde van het voertuig;
+    </li>
+    <li>
+     aan de voor- of achterkant van de aanhangwagen zijn bevestigd;
+    </li>
+    <li>
+     aan de zijkant van een lichte bedrijfsauto zijn gemonteerd voor het vervoeren van glas of platen.
+    </li>
+   </ul>
+  </div>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_6edf0b6619354fd3be0b001328349ee7~mv2.jpg">
+     <figcaption>
+      <em>
+       Een fietsendrager gemonteerd op de trekhaak.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_7822fa6e7ba34c70be085de188708c14~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Een dakkoffer valt ook onder een ‘lastdrager’.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Voor een personenauto gelden beperkte maximale afmetingen en massa. Deze maxima zijn altijd inclusief lading. De
+        maximumafmetingen voor personenauto’s zijn:
+  </p>
+  <ul>
+   <li>
+    12 meter lang
+   </li>
+   <li>
+    2,55 meter breed
+   </li>
+   <li>
+    4 meter hoog
+   </li>
+  </ul>
+  <p>
+   Een combinatie van personenauto met aanhangwagen mag niet langer zijn dan 18 meter.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_344d942b9c2e4f0fa5c0ec9bc507e4b6~mv2.jpeg"/>
+    <figcaption>
+     <em>
+      De maximale afmetingen van een voertuig zijn altijd inclusief lading en lastdragers.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   De ‘toegestane maximummassa’ voor een personenauto staat vermeld in het Nationaal kentekenregister en op de
+        kentekencard. Dit maximumgewicht is inclusief lading.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_2169439901674377866ba3781c9c7672~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Het maximumgewicht staat op uw kentekencard.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   De toegestane maximale aslast – het gewicht dat op één as mag rusten – staat ook in het kentekenregister.
+        Een personenauto mag nooit zwaarder zijn dan het maximumgewicht of meer gewicht op één as hebben dan in het
+        kentekenregister staat. Wees daarom voorzichtig met het plaatsen van zware voorwerpen in de bagageruimte.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_c8300104f8064af6bae3cd64a118c6ab~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Uitlaatsysteem
+  </h2>
+  <p>
+   Het uitlaatsysteem van voertuigen met verbrandingsmotor loopt van de uitgang van het motorblok tot het deel
+        van de uitlaat dat (meestal) onder of in de achterbumper hangt. Problemen met de uitlaat zijn vaak goed te
+        herkennen doordat de auto meer geluid maakt. Het gehele uitlaatsysteem moet aan een aantal eisen voldoen:
+  </p>
+  <ul>
+   <li>
+    Het moet over de gehele lengte gasdicht zijn, met uitzondering van de afwateringsgaatjes.
+   </li>
+   <li>
+    Het moet deugdelijk bevestigd zijn.
+   </li>
+   <li>
+    Het systeem mag niet meer geluid produceren dan in het kentekenregister is vermeld, met een maximale
+            overschrijding van 2 decibel. Als er niets in het kentekenregister staat, is de maximumwaarde 95 decibel.
+   </li>
+   <li>
+    Het systeem mag niet meer CO (koolmonoxide) uitstoten dan is voorgeschreven.
+   </li>
+  </ul>
+  <h2>
+   Snelheidsmeter
+  </h2>
+  <p>
+   De snelheidsmeter en de kilometerteller zijn twee verschillende meters. De snelheidsmeter toont de snelheid waarmee
+        u rijdt, terwijl de kilometerteller aangeeft hoeveel kilometers het voertuig in totaal heeft afgelegd.
+  </p>
+  <p>
+   Wettelijk is alleen de snelheidsmeter verplicht en deze moet in het donker goed leesbaar zijn. Als de snelheidsmeter
+        niet goed functioneert, mag met het voertuig niet worden gereden.
+  </p>
+  <div class="image-container1">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_a34b737df3aa42d6a243d70f52ea07b0~mv2.jpeg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

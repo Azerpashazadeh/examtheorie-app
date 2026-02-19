@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #B9E5FB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Communicatie in het verkeer
+  </h1>
+  <p>
+   Het is belangrijk dat je communiceert om andere weggebruikers te laten weten wat je van plan bent. Je kunt dit ook doen om andere weggebruikers te waarschuwen voor dreigend gevaar. Afhankelijk van de situatie doe je dit met lichtsignalen, geluid of handgebaren. Het is belangrijk om te weten dat je deze signalen niet zomaar naar eigen inzicht mag gebruiken. Er moet een goede reden voor zijn.
+  </p>
+  <p>
+   Asociale handgebaren of onnodig gebruik van grootlicht zijn niet toegestaan en kunnen worden beboet. Ook overmatig gebruik van de claxon of de richtingaanwijzers is niet toegestaan.
+  </p>
+  <p>
+   Naast claxonneren mag er ook niet op andere manieren onnodig lawaai worden gemaakt. Denk aan een kapotte of aangepaste uitlaat, of onnodig gas geven terwijl je stilstaat. Het afspelen van extreem harde muziek vormt eveneens onnodig geluid.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Zeer harde muziek uit de auto wordt ook beschouwd als onnodig geluid en is niet toegestaan." src="https://static.wixstatic.com/media/4b688f_b1e39dc1946a44d59e2d437f6be58a9d~mv2.jpg"/>
+     <figcaption>
+      Zeer harde muziek uit de auto wordt ook beschouwd als onnodig geluid en is niet toegestaan.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Reageer niet op andere weggebruikers door gefrustreerde gebaren te maken." src="https://static.wixstatic.com/media/4b688f_00e10ebb9ef24ad09befeb53b1d8b519~mv2.jpg"/>
+     <figcaption>
+      Reageer niet op andere weggebruikers door gefrustreerde gebaren te maken.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Handgebaren
+  </h2>
+  <p>
+   In sommige situaties kan het nodig zijn om andere weggebruikers te laten weten dat je hen hebt opgemerkt en voor hen zult stoppen, of dat je je voorrang afstaat, bijvoorbeeld wanneer dat voor jou handiger is.
+  </p>
+  <p>
+   Voetgangers zijn vaak terughoudend bij het gebruik van een voetgangersoversteekplaats, meestal uit angst om niet op tijd gezien te worden. In zulke gevallen is een vriendelijk handgebaar van bestuurders in de buurt van de oversteekplaats een goede manier om aan te geven dat het veilig is om over te steken.
+  </p>
+  <p>
+   Je ziet ook dat bestuurders van grotere voertuigen handgebaren gebruiken om aan te geven dat zij jou voorrang geven, bijvoorbeeld als zij de weg waarop jij rijdt willen oprijden maar dit pas kunnen doen wanneer jij wegrijdt.
+  </p>
+  <p>
+   Gebruik nooit agressieve handgebaren, zoals middelvingers. Tel tot tien en los situaties zo veilig en rustig mogelijk op. Het vermijden van agressie voorkomt gevaarlijke situaties in het verkeer.
+  </p>
+  <h2>
+   Claxon
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Elke personenauto moet zijn uitgerust met een claxon. Rijden met een kapotte claxon is verboden. Gebruik de claxon alleen om dreigend gevaar af te wenden. Claxonneer niet wanneer je een bekende tegenkomt of als groet bij het wegrijden. Gebruik de claxon niet uit boosheid of frustratie. Je mag echter wel claxonneren als je bijna wordt aangereden omdat iemand je niet heeft gezien.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_41795386c2e448f191f7cf016c8a3a45~mv2.png"/>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="De claxon mag ook alleen worden gebruikt om dreigend gevaar af te wenden." src="https://static.wixstatic.com/media/4b688f_ba59b9672bba4571b8e92239d991411d~mv2.jpg"/>
+     <figcaption>
+      De claxon mag ook alleen worden gebruikt om dreigend gevaar af te wenden.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Alarmlichten mogen alleen worden gebruikt om dreigend gevaar af te wenden." src="https://static.wixstatic.com/media/4b688f_8c31b5febf78476bb54725322b3c3505~mv2.jpg"/>
+     <figcaption>
+      Alarmlichten mogen alleen worden gebruikt om dreigend gevaar af te wenden.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Alarmlichten
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      De alarmlichten (ook wel waarschuwingslichten) moeten ook goed werken. Je mag deze verlichting alleen gebruiken om dreigend gevaar af te wenden.
+                    Als je pech hebt, kan het niet gebruiken van alarmlichten betekenen dat andere bestuurders je niet op tijd zien. Het gebruik van alarmlichten bij pech is verplicht, tenzij je een gevarendriehoek gebruikt.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_33cd0e15c59544ef9ea3b95e1758e1b5~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Bij het naderen van een file kun je de alarmlichten inschakelen om het achteropkomend verkeer te waarschuwen.
+  </p>
+  <p>
+   Alarmlichten zijn niet bedoeld als verlichting tijdens laden of lossen. Vrijwillig stoppen en parkeren is immers niet toegestaan op een plaats waar dit gevaar oplevert. Het gebruik van alarmlichten wanneer er geen gevaar is, is niet toegestaan.
+  </p>
+  <h2>
+   Richtingaanwijzers
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Het gebruik van richtingaanwijzers is verplicht vóór en tijdens het afslaan en bij bijzondere manoeuvres zoals wegrijden, inhalen, invoegen, uitvoegen, van rijstrook wisselen en belangrijke zijdelingse verplaatsingen. Het niet gebruiken van de richtingaanwijzer wanneer dat nodig is, evenals het onnodig gebruiken ervan, kan gevaarlijke gevolgen hebben.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_a967c6c97af448279c67c3a33b0d04af~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Als je te vroeg aangeeft dat je wilt afslaan, kan dat voor andere weggebruikers verwarrend zijn. Maar als je niet aangeeft dat je wilt afslaan, kan dat ook gevaarlijk zijn. Onjuist of geen gebruik van richtingaanwijzers is een strafbaar feit. Deze verlichting moet daarom altijd werken.
+  </p>
+  <h2>
+   Seinen met grootlicht
+  </h2>
+  <div class="important-words13">
+   <div class="container">
+    <div>
+     <p>
+      Een andere manier van waarschuwen is door middel van een seinsignaal met grootlicht. Je mag dit alleen gebruiken als je daarmee dreigend gevaar kunt afwenden. Zo kun je een tegenligger waarschuwen als hij met grootlicht rijdt en jou verblindt. Of wanneer een bestuurder in het donker helemaal geen verlichting voert.
+     </p>
+    </div>
+    <img alt="Örnek Resim" class="image1" src="https://static.wixstatic.com/media/4b688f_25e0b6f0917e496c94c51822e893f5a0~mv2.png"/>
+   </div>
+  </div>
+  <p>
+   Seinen met grootlicht is niet toegestaan om tegenliggers te waarschuwen voor een politiecontrole. Evenmin om een bestuurder te laten weten dat je wilt passeren.
+  </p>
+  <h2>
+   Gebruik van de remlichten
+  </h2>
+  <p>
+   Zodra je het rempedaal gebruikt, gaan de remlichten branden. Het onnodig gebruiken van het rempedaal is slecht voor het energieverbruik van je personenauto. Bovendien is het behoorlijk hinderlijk voor het achteropkomende verkeer.
+  </p>
+  <p>
+   Je kunt het rempedaal gebruiken als waarschuwing. Tik daarvoor het pedaal kort en lichtjes aan vóórdat je daadwerkelijk gaat remmen. Bijvoorbeeld als je wilt afslaan of remt voor een voetgangersoversteekplaats. Het achteropkomende verkeer wordt dan gewaarschuwd om snelheid te verminderen. Zij kunnen ook de volgafstand nog iets vergroten voordat jij echt begint te remmen.
+  </p>
+  <p>
+   Gebruik de remlichten echter nooit om bumperklevers opzettelijk te laten schrikken. Dit kan zeer gevaarlijk zijn en wakkert agressief gedrag aan. Als je een ongeval veroorzaakt, is dat strafbaar.
+  </p>
+  <p>
+   Staat iemand te dicht achter je, vergroot dan je eigen volgafstand zodat je niet abrupt hoeft te remmen.
+  </p>
+  <h2>
+   Waarschuwingsdriehoek
+  </h2>
+  <p>
+   Het is voor een bestuurder van een personenauto niet verplicht om een waarschuwingsdriehoek in de auto te hebben. Maar in sommige gevallen ben je wel verplicht een waarschuwingsdriehoek te plaatsen. Bijvoorbeeld als je pech hebt of een ongeval krijgt en daardoor een gevaar vormt voor naderend verkeer.
+  </p>
+  <p>
+   Het plaatsen van een waarschuwingsdriehoek is niet verplicht als de alarmlichten branden en dit voor het overige verkeer duidelijk zichtbaar is. In die gevallen kan het echter alsnog verstandig zijn. De waarschuwingsdriehoek mag samen met alarmlichten worden gebruikt.
+  </p>
+  <p>
+   Als het voertuig met alleen alarmlichten niet op tijd kan worden gezien door ander verkeer, bijvoorbeeld net na een bocht of heuvel, moet een waarschuwingsdriehoek worden gebruikt om gevaar te voorkomen.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Als je direct na een bocht pech hebt, moet je vóór de bocht een waarschuwingsdriehoek plaatsen." src="https://static.wixstatic.com/media/4b688f_2a7d1f2175a34d89a3d959e3919d113f~mv2.jpg"/>
+     <figcaption>
+      Als je direct na een bocht pech hebt, moet je vóór de bocht een waarschuwingsdriehoek plaatsen.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Plaats de waarschuwingsdriehoek duidelijk zichtbaar op de weg op een afstand van ongeveer 30 meter van het voertuig, in de richting van het verkeer dat door jouw voertuig in gevaar kan komen. Sta je dus aan de rechterzijde van de rijbaan en vorm je een obstakel voor het achteropkomende verkeer, plaats de waarschuwingsdriehoek dan 30 meter achter de personenauto.
+  </p>
+  <p>
+   Het plaatsen van een waarschuwingsdriehoek is alleen verplicht voor motorrijtuigen met meer dan twee wielen en voor aanhangwagens.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #035EB1;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #035EB1;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 90px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+           
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #B9E5FB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Trafikte İletişim</h1>
+
+    <p>
+        Diğer yol kullanıcılarının ne yapmayı planladığınızı bilmesi için iletişim kurmanız önemlidir. Ayrıca yaklaşan
+        bir tehlike konusunda diğer yol kullanıcılarını uyarmak için de bunu yapabilirsiniz. Duruma bağlı olarak bunu
+        ışık sinyalleri, ses veya el hareketleri ile yapabilirsiniz. Ancak bu sinyalleri istediğiniz zaman kullanmamanız
+        gerektiğini bilmek önemlidir. Bunun için geçerli bir sebep olmalıdır.
+    </p>
+    <p>
+        Anti-sosyal el hareketleri veya gereksiz uzun far kullanımı yasaktır ve cezalandırılabilir. Ayrıca korna veya
+        sinyal lambalarının aşırı kullanımı da izin verilmez.
+    </p>
+    <p>
+        Kornanın yanı sıra başka yollarla gereksiz gürültü yapılmamalıdır. Örneğin, bozuk veya değiştirilmiş bir egzoz
+        sistemi, araç dururken gereksiz yere gaz verme ya da aşırı yüksek sesle müzik çalma gereksiz gürültü oluşturur.
+    </p>
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_b1e39dc1946a44d59e2d437f6be58a9d~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Aracın içinden gelen aşırı yüksek sesle müzik de gereksiz gürültü olarak kabul edilir ve
+                    yasaktır.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_00e10ebb9ef24ad09befeb53b1d8b519~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Diğer yol kullanıcılarına kızgın hareketlerle tepki vermeyin.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>El Hareketleri</h2>
+    <p>
+        Bazı durumlarda diğer yol kullanıcılarına onları fark ettiğinizi ve onlar için duracağınızı veya yol verme
+        hakkınızdan vazgeçtiğinizi belirtmek gerekebilir, örneğin sizin için daha uygun olduğunda.
+    </p>
+    <p>
+        Yayalar genellikle yaya geçitlerini kullanmada tereddüt ederler, genellikle zamanında görülmeme korkusuyla. Bu
+        durumlarda, geçidin yakınındaki sürücülerden gelen dostane bir el hareketi, geçmenin güvenli olduğunu belirtmek
+        için iyi bir yoldur.
+    </p>
+    <p>
+        Ayrıca, büyük araç sürücülerinin, sizin öncelik almanız gerektiğini belirtmek için el hareketleri
+        kullandıklarını görebilirsiniz. Örneğin, sizin ilerlemenizi beklerken yolu kullanmaları gerektiğinde.
+    </p>
+    <p>
+        Asla saldırgan el hareketleri (örneğin orta parmak göstermek) yapmayın. On’a kadar sayın ve ortaya çıkan
+        durumları olabildiğince güvenli ve sakin bir şekilde çözün. Saldırganlıktan kaçınmak trafikte tehlikeli
+        durumları önler.
+    </p>
+
+    <h2>Korna</h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    Her binek araçta bir korna bulunmalıdır. Bozuk bir korna ile araç sürmek yasaktır. Kornayı yalnızca
+                    yaklaşan bir tehlikeyi önlemek için kullanın. Arkadaşınızı gördüğünüzde veya hareket ederken
+                    selamlaşma amacıyla kornayı çalmayın. Öfkeli ya da sinirli olduğunuzda kornayı kullanmayın. Ancak,
+                    sizi görmediği için neredeyse bir araç çarpacaksa kornayı kullanabilirsiniz.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_41795386c2e448f191f7cf016c8a3a45~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+
+
+
+
+
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_ba59b9672bba4571b8e92239d991411d~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Korna yalnızca yaklaşan bir tehlikeyi önlemek için kullanılabilir.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_8c31b5febf78476bb54725322b3c3505~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Dörtlü sinyaller yalnızca yaklaşan bir tehlikeyi önlemek için kullanılabilir.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>Dörtlü Sinyaller</h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    Dörtlü sinyaller (acil durum ışıkları olarak da bilinir) düzgün çalışmalıdır. Bu ışıklar yalnızca
+                    yaklaşan bir tehlikeyi önlemek için kullanılabilir. Eğer aracınız arızalanırsa, dörtlü sinyalleri
+                    kullanmamak diğer sürücülerin sizi zamanında görmemesine neden olabilir. Arıza sırasında dörtlü
+                    sinyallerin kullanılması zorunludur, ancak uyarı üçgeni kullanılıyorsa bu zorunluluk kalkar.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_33cd0e15c59544ef9ea3b95e1758e1b5~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <p>
+        Bir trafik sıkışıklığına yaklaşırken, arkadaki trafiği uyarmak için dörtlü sinyalleri açabilirsiniz.
+    </p>
+    <p>
+        Dörtlü sinyaller yükleme veya boşaltma sırasında aydınlatma olarak kullanılmamalıdır. Sonuçta, tehlike
+        yaratabilecek bir yerde gönüllü olarak durma ve park etme yasaktır. Tehlike olmadığı durumlarda dörtlü
+        sinyallerin kullanılması izin verilmez.
+    </p>
+
+    <h2>Sinyal Lambaları</h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    Sinyal lambalarının kullanımı, dönmeden önce ve dönerken, ayrıca özel manevralar sırasında (harekete
+                    geçme, sollama, şerit değiştirme, çıkış yapma, şerit değiştirme ve önemli yan hareketler)
+                    zorunludur. Gerekli olduğunda sinyal lambası kullanmamak veya gereksiz yere kullanmak tehlikeli
+                    sonuçlar doğurabilir.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_a967c6c97af448279c67c3a33b0d04af~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <p>
+        Dönmek istediğinizi çok erken belirtirseniz, diğer yol kullanıcıları için kafa karışıklığına neden olabilir.
+        Ancak, dönmek istediğinizi belirtmezseniz, bu da tehlikeli olabilir. Yanlış sinyal kullanımı veya hiç
+        kullanılmaması bir suçtur. Bu ışıklar her zaman çalışır durumda olmalıdır.
+    </p>
+
+    <h2>Uzun Farlarla Işık Sinyali Verme</h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    Bir diğer uyarı yöntemi, uzun farlarla ışık sinyali vermektir. Bunu yalnızca yaklaşan bir tehlikeyi
+                    önleyebileceğiniz durumlarda kullanabilirsiniz. Örneğin, karşıdan gelen bir sürücüyü, uzun farlarını
+                    kapatmadığı için sizi rahatsız ettiği durumlarda veya karanlıkta hiç ışık kullanmayan bir sürücüyü
+                    uyarmak için kullanabilirsiniz.
+                </p>
+            </div>
+            <img src="https://static.wixstatic.com/media/4b688f_25e0b6f0917e496c94c51822e893f5a0~mv2.png"
+                alt="Örnek Resim" class="image1">
+        </div>
+    </div>
+    <p>
+        Uzun far sinyalleri, karşıdan gelen trafiği bir polis kontrolü konusunda uyarmak veya bir sürücüye yol
+        istediğinizi belirtmek için kullanılmamalıdır.
+    </p>
+
+    <h2>Fren Lambalarının Kullanımı</h2>
+    <p>
+        Fren pedalına bastığınız anda fren lambaları yanar. Fren pedalının gereksiz yere kullanılması, binek aracınızın
+        enerji tüketimi için kötü bir etkendir. Ayrıca arkanızdaki trafiği oldukça rahatsız edebilir.
+    </p>
+    <p>
+        Fren pedalını bir uyarı olarak kullanabilirsiniz. Bunun için, örneğin dönmek istediğinizde veya bir yaya
+        geçidine yaklaşırken fren pedalına hafifçe dokunun. Bu, arkanızdaki trafiği hızını azaltması için uyarır ve siz
+        fren yapmaya başlamadan önce takip mesafesini artırma seçeneği sunar.
+    </p>
+    <p>
+        Ancak, fren lambalarını kasıtlı olarak arkadaki sürücüleri korkutmak için kullanmayın. Bu çok tehlikeli olabilir
+        ve agresif davranışları teşvik eder. Eğer bir kazaya neden olursanız, bu bir suçtur.
+    </p>
+    <p>
+        Arkadan sizi takip eden bir sürücü varsa, kendi takip mesafenizi artırmanız daha iyidir, böylece ani fren yapmak
+        zorunda kalmazsınız.
+    </p>
+
+    <h2>Uyarı Üçgeni</h2>
+    <p>
+        Binek araç sürücülerinin araçlarında uyarı üçgeni bulundurması zorunlu değildir. Ancak bazı durumlarda bir uyarı
+        üçgeni yerleştirilmesi zorunludur. Örneğin, yolda arıza yaptığınızda veya bir kaza geçirdiğinizde ve bu durum
+        diğer sürücüler için bir tehlike oluşturuyorsa.
+    </p>
+    <p>
+        Dörtlü sinyaller açıksa ve diğer sürücüler tarafından açıkça görülebiliyorsa, uyarı üçgeni yerleştirilmesi
+        zorunlu değildir. Ancak bu gibi durumlarda bile uyarı üçgeni kullanmak mantıklı olabilir. Uyarı üçgeni, dörtlü
+        sinyallerle birlikte kullanılabilir.
+    </p>
+    <p>
+        Araç yalnızca dörtlü sinyallerle yeterince görünmüyorsa, örneğin bir virajdan hemen sonra veya bir tepenin
+        ardında, tehlikeyi önlemek için uyarı üçgeni kullanılmalıdır.
+    </p>
+    <div>
+        <div class="images-container5">
+            <figure>
+                <img src="https://static.wixstatic.com/media/4b688f_2a7d1f2175a34d89a3d959e3919d113f~mv2.jpg"
+                    alt="Uyarı: Yan hava yastığı arızası">
+                <figcaption>Eğer bir virajdan hemen sonra arıza yaptıysanız, uyarı üçgenini virajdan önce
+                    yerleştirmelisiniz.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
+        Uyarı üçgenini yola açıkça görülebilir şekilde, araca yaklaşık 30 metre mesafede ve tehlike oluşturan trafiğin
+        yönüne doğru yerleştirin. Yani yolun sağ tarafında bulunuyorsanız ve arkanızdaki trafik için bir engel
+        oluşturuyorsanız, uyarı üçgenini aracın 30 metre gerisine yerleştirin.
+    </p>
+    <p>
+        Uyarı üçgeni yerleştirme zorunluluğu, yalnızca iki tekerlekten fazla tekerleğe sahip motorlu araçlar ve
+        römorklar için geçerlidir.
+    </p>
+
+    <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

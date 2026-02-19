@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        html,
+    body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Trailer use requirements
+  </h2>
+  <p>
+   In addition to the technical requirements, trailers are also subject to a number of use requirements, such as
+        maximum weights and dimensions of load.
+  </p>
+  <h2>
+   Pulling a trailer
+  </h2>
+  <p>
+   Only one trailer may be pulled by a passenger car at any time, with a maximum of two pivot points allowed. A
+        trailer with one axle has only one pivot point at the hitch. Two-axle trailers may also have a pivot point on
+        the front axle.
+  </p>
+  <p>
+   If a trailer is perpendicular (at 90 degrees) to the rear of the pulling vehicle, it must not come into contact
+        with this vehicle other than at the hitch and must therefore be able to turn freely.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_8f02c290e89a4a708ed6f7bfcc63aa65~mv2.jpg"/>
+    <figcaption>
+     <em>
+      A trailer with one pivot point. Each trailer must be able to turn freely behind the
+                    passenger car. It must not touch the passenger car with any other parts except the hitch.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_d02fed2760db4c95ae4285c23068ed24~mv2.jpg"/>
+    <figcaption>
+     <em>
+      A trailer with two axles not directly next to each other usually has two pivot points (indicated by
+                    the yellow arrows)
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Only the wheels of the trailer may come into contact with the ground during transit - even if the trailer comes
+        loose and is connected to the car by the auxiliary coupling. Always hoist the nose wheel properly, and ensure no
+        loose cables drag on the ground.
+  </p>
+  <h2>
+   Load
+  </h2>
+  <p>
+   Load in or on a trailer must be secured (or covered) well enough. It must also be distributed in such a way that
+        it does not pose any risk while driving, steering, and braking.
+  </p>
+  <p>
+   There are several important factors in the proper transport of load:
+  </p>
+  <ul>
+   <li>
+    Place heavy loads above the axle as much as possible and as low as possible in the trailer.
+   </li>
+   <li>
+    Load the trailer symmetrically, so as much weight on the left as on the right and on the front and rear.
+   </li>
+   <li>
+    Secure the load. Loose load can cause major problems, such as swinging or even tilting the trailer, or the
+            load can fall off.
+   </li>
+   <li>
+    After driving for a while, check again whether the load is properly secured.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_14639d1063924205a699ad30301323af~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Put heavy loads above the axle of the trailer as much as possible.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_5c50e91f974b45f38f10f57cba48654a~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Make sure the load is well distributed between left and right.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   Sharp protruding objects in load are prohibited. Blunt protruding objects must be covered if they pose a risk to
+        other road users.
+  </p>
+  <h2>
+   Load carriers
+  </h2>
+  <p>
+   Load carriers such as bicycle racks can be attached to the drawbar or towing triangle on trailers. Load carriers
+        on trailers are subject to the same rules that apply to load carriers on passenger cars.
+  </p>
+  <h2>
+   Number plate
+  </h2>
+  <p>
+   Trailers must be equipped with number plates. The trailer’s maximum authorised mass determines whether the
+        trailer must have a yellow number plate with its own registration number, or a white number plate with the
+        pulling vehicle’s registration number.
+  </p>
+  <div class="image-container8">
+   <!-- Birinci sütun: Resim 1, 2, 5, 6 -->
+   <div class="image-block8">
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_a74d2e02395a45fda385d9a5e776eece~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_80a109686fa2483a8b409b75978d2852~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Image 5" src="https://static.wixstatic.com/media/4b688f_1f4cec496f2d460cb58149b4c04c9b00~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Image 6" src="https://static.wixstatic.com/media/4b688f_f84c789c3fc04eaa96899fb315993d3d~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Is the maximum authorised mass of the trailer 750 kg or less? Than the trailer must have a
+                    white number plate with the registration number of the pulling vehicle.
+     </em>
+    </figcaption>
+   </div>
+   <!-- İkinci sütun: Resim 3, 4, 7, 8 -->
+   <div class="image-block8">
+    <img alt="Image 3" src="https://static.wixstatic.com/media/4b688f_a74d2e02395a45fda385d9a5e776eece~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Image 4" src="https://static.wixstatic.com/media/4b688f_80a109686fa2483a8b409b75978d2852~mv2.png"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Image 7" src="https://static.wixstatic.com/media/4b688f_1f4cec496f2d460cb58149b4c04c9b00~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </div>
+   <div class="image-block8">
+    <img alt="Image 8" src="https://static.wixstatic.com/media/4b688f_d2af4dfa2dc146f8976e59868cbf73db~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Is the maximum authorised mass of the trailer above 750 kg? Than the trailer must have a
+                    yellow number plate with its own registration number.
+     </em>
+    </figcaption>
+   </div>
+  </div>
+  <p>
+   Trailers must always be equipped with an original number plate. Handwritten number plates are prohibited. If you
+        need to use a trailer, secure a compliant number plate in advance.
+  </p>
+  <h2>
+   Overhanging load
+  </h2>
+  <p>
+   As with passenger cars, load on trailers must not protrude past a certain point and may never exceed the
+        trailer’s maximum dimensions, except for the width. For example, trailers may not be loaded higher than four
+        metres from the ground.
+  </p>
+  <p>
+   <strong>
+    Divisible
+   </strong>
+   load on a trailer is subject to the same rules that apply to passenger cars. The rules
+        for
+   <strong>
+    indivisible
+   </strong>
+   load are slightly different:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     Sides
+    </strong>
+    <p>
+     Only indivisible load may protrude beyond the maximum dimensions of a trailer. If necessary, this is
+                permitted up to a width of three metres. Load that protrudes more than ten centimetres from the side
+                must be
+                marked with a sign.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_6760672892ba471691a906fe68f886ff~mv2.jpg">
+     <figcaption>
+      <em>
+       The load may never protrude in front of the hitch on a trailer. You are not allowed to drive
+                    like this.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_269d41c5920a4aab920b2eb5c537a5c9~mv2.png">
+     <figcaption>
+      <em>
+       If a load protrudes more than 10 cm from the sides of a trailer, then a marking sign is
+                    mandatory.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <ul>
+   <li>
+    <strong>
+     Front
+    </strong>
+    <p>
+     Load must never protrude from the front of a trailer, whether divisible or not. The front in this case
+                refers to the centre of the hitch - the bowl where the tow bar is located. Load must not be able to get
+                in the way when the car or trailer is turning. If the load protrudes above the drawbar or towing
+                triangle, this can quickly become a nuisance.
+    </p>
+   </li>
+   <li>
+    <strong>
+     Rear
+    </strong>
+    <p>
+     Load may protrude up to one metre from the rear. Lengthwise indivisible load may protrude further if
+                necessary, up to a maximum of half the trailer’s length with a maximum of five metres. This is measured
+                from the rear axle of the trailer. For example, if the trailer is five metres long, indivisible load may
+                protrude a maximum of two and a half metres from the rear axle. This overhanging load must be marked
+                with a sign.
+    </p>
+   </li>
+  </ul>
+  <div class="image-container1">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_b28da454bae048e0b47010711bb3d425~mv2.jpg"/>
+    <figcaption>
+     <em>
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Maximum allowed weights
+  </h2>
+  <p>
+   For trailers without their own registration, a maximum authorised mass of 750 kg or less applies. The trailer
+        usually has a type approval plate with the maximum authorised mass. This is the weight of the trailer plus load.
+  </p>
+  <p>
+   If trailers have their own registration number, the registration certificate, the type approval plate, and the
+        national vehicle register will state the maximum authorised weight of this trailer.
+  </p>
+  <p>
+   These weights help determine which driving licence is required for this vehicle combination. Drivers must also
+        ensure their car is permitted to pull the trailer and double-check the maximum weight it can transport.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_869ba7651f644c0db8a9264c509a383f~mv2.jpg">
+     <figcaption>
+      <em>
+       Type-approval plate on the trailer stating the maximum mass and maximum coupling
+                    pressure/tow ball weight.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_4f4a075b1f374dca8fb85fd093a2785d~mv2.jpg">
+     <figcaption>
+      <em>
+       The registration card of the passenger car states the maximum weight of the trailer that can be
+                    towed by this car.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <h2>
+   Drawbar load or tow ball weight (ball pressure)
+  </h2>
+  <p>
+   When pulling a trailer, take into account the maximum weight under the hitch, also known as drawbar load or tow
+        ball weight. This is the weight the tow bar will bear when the trailer is coupled. Both excessive and negative
+        draw bar loads are dangerous.
+  </p>
+  <p>
+   If the drawbar load is negative and the trailer pulls the tow bar up, this means the rear of the trailer is
+        overloaded. The trailer will be less stable on the road and therefore has an increased risk of swinging. Pulling
+        a trailer with negative drawbar load is prohibited.
+  </p>
+  <p>
+   If the drawbar load is too high, this means the front of the trailer is overloaded. The car is being pushed down
+        at the rear, reducing pressure on the front wheels and making steering more difficult. This can result in a loss
+        of grip when taking bends.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_04be60e13c5f4b4486a91a9ad6db81de~mv2.jpg">
+     <figcaption>
+      <em>
+       A negative drawbar load makes a trailer swing faster.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_0da833a566cb468ab927f249dc9ca540~mv2.jpg">
+     <figcaption>
+      <em>
+       A drawbar load that is too high makes the passenger car less easy to steer.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <p>
+   The trailer’s maximum drawbar load is stated on the type approval plate. The maximum drawbar load for the towbar
+        and the passenger car can be found in the owner’s manual. If different values are indicated, assume the lowest
+        value as the maximum drawbar load.
+  </p>
+  <p>
+   A maximum drawbar load of 50 kg applies to trailers up to and including 750 kg. Drawbar load for trailers over
+        750 kg is usually between 50 and 75 kg.
+  </p>
+  <h2>
+   Unbraked trailers
+  </h2>
+  <p>
+   Unbraked trailers do not brake, and therefore must have a lower maximum weight so passenger cars can properly
+        stop them.
+  </p>
+  <p>
+   Unbraked trailers may not:
+  </p>
+  <ul>
+   <li>
+    Exceed 750 kg in maximum weight;
+   </li>
+   <li>
+    Be heavier than half the weight in running order of the passenger car.
+   </li>
+  </ul>
+  <h2>
+   Braked trailers
+  </h2>
+  <p>
+   Braked trailers brake as soon as the passenger car brakes, by means of an “overrun brake”. The car slows down,
+        pressing a spring at the front of the drawbar and ensuring the application of the brakes.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_2c3508b5c1cc41598aea047f1de59433~mv2.jpeg">
+     <figcaption>
+      <em>
+       If the overrun brake is not pressed, the trailer will not brake.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_12ff1279816f4ebaa620e62d15d94315~mv2.jpeg">
+     <figcaption>
+      <em>
+       If the passenger car brakes and the overrun brake is pressed, the trailer brakes automatically.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <p>
+   These trailers are also equipped with a handbrake at the front, which can be used when the trailer is uncoupled
+        so that it remains stationary. If a trailer is coupled to a passenger car, the parking brake must always be
+        down.
+  </p>
+  <p>
+   The emergency braking device is attached to the handbrake and applies this when the trailer comes loose from the
+        passenger car.
+  </p>
+  <h2>
+   7-pin or 13-pin plug
+  </h2>
+  <p>
+   When coupling a trailer, always remember to plug the trailer plug into the rear socket of the passenger car.
+        Trailer lighting only works when properly mounted, and this lighting should always be checked before driving.
+        Make sure indicators are lit up on the correct side, so on the same side as the car.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_71b21de5cb384d9ab400bb953c208089~mv2.jpg">
+     <figcaption>
+      <em>
+       7-pin plug
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_fc690c65c26d4e1fafc4a58efd5dbf0d~mv2.jpg"/>
+    <figcaption>
+     <em>
+      13-pin plug
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <p>
+   There are two plugs, a 7-pin and a 13-pin, which means an adapter plug may be required to properly couple the
+        trailer. Which plug should be used depends on how much lighting the trailer is equipped with and the possible
+        presence of other electrical devices in a trailer or caravan, such as a refrigerator.
+  </p>
+  <p>
+   The plugs are also mounted in different ways. The 7-pin plug must be pushed into the car socket, while the 13-pin
+        plug is screwed in.
+  </p>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>

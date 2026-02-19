@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h2>
+   Voertuigeisen
+  </h2>
+  <p>
+   Als bestuurder bent u verantwoordelijk voor de technische staat en het juiste functioneren van elk voertuig waarmee u op de openbare weg rijdt – ongeacht of het een motorvoertuig, bromfiets of fiets is. Het voertuig moet voldoen aan de toepasselijke permanente eisen (algemene technische eisen) en aan gebruikseisen.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Permanente eisen
+   </h3>
+   <p>
+    Dit zijn de algemene technische eisen waaraan voertuigen moeten voldoen voordat ze in Nederland mogen worden gebruikt. Deze keuring wordt uitgevoerd door de RDW en betreft bijvoorbeeld welke verlichting een voertuig wel of niet moet hebben, de breedte en hoogte, en de noodzakelijke voorzieningen.
+   </p>
+   <h3>
+    Gebruikseisen
+   </h3>
+   <p>
+    Dit zijn eisen die onder meer het vervoer van personen en lading en het slepen van andere voertuigen regelen.
+   </p>
+  </div>
+  <h2>
+   Aansprakelijkheid permanente eisen en gebruikseisen
+  </h2>
+  <p>
+   Zowel de eigenaar als de bestuurder van een voertuig – als dit niet dezelfde persoon is – is verantwoordelijk voor het blijvend voldoen aan deze eisen. Als u een auto leent die bijvoorbeeld geen kentekenplaat heeft, worden zowel u als de eigenaar van de auto verantwoordelijk gehouden.
+  </p>
+  <p>
+   Hetzelfde geldt wanneer u uw voertuig uitleent aan iemand die het gebruikt om lading onjuist te vervoeren. Ook als u hiervan niet op de hoogte bent, bent u samen met de bestuurder verantwoordelijk.
+  </p>
+  <div class="important-words2">
+   <p>
+    U mag geen voertuig besturen of laten besturen dat:
+   </p>
+   <ul>
+    <li>
+     slecht is vervaardigd of uitgerust;
+    </li>
+    <li>
+     slecht is onderhouden;
+    </li>
+    <li>
+     zo is vervaardigd of uitgerust dat de bestuurder onvoldoende uitzicht heeft naar voren of opzij;
+    </li>
+    <li>
+     anderszins niet voldoet aan de toepasselijke voertuigeisen.
+    </li>
+   </ul>
+   <p>
+    Weet altijd aan wie u uw voertuig uitleent en maak duidelijke afspraken over het beoogde gebruik.
+   </p>
+  </div>
+  <p>
+   Het op de weg laten staan van een voertuig zonder deugdelijk werkende (verplichte) rode retroreflectoren aan de achterzijde is eveneens verboden. Een dergelijk voertuig is in het donker onvoldoende zichtbaar. Als een ander voertuig op uw stilstaande voertuig botst doordat het niet is voorzien van goed werkende retroreflectoren achter, kunt u aansprakelijk worden gesteld voor de schade.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Retroreflector
+   </h3>
+   <p>
+    Retroreflectoren kaatsen licht terug in dezelfde richting als waar het vandaan komt, waardoor het voertuig waarop ze zijn aangebracht beter zichtbaar is voor andere weggebruikers. De kleur (rood, amber/oranje of wit) hangt af van de plaats op het voertuig.
+   </p>
+  </div>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_4269062f64224ffbb718b1a9f37cc23f~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Retroreflectoren zijn er in verschillende kleuren en zorgen ervoor dat voertuigen bij stilstand in het donker zichtbaar zijn.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_22f9fc467c3041dba1a3fc06dd5b304a~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Bij personenauto’s zijn deze retroreflectoren meestal in de lichtunits geïntegreerd (in dezelfde delen als de voor- en achterlichten).
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

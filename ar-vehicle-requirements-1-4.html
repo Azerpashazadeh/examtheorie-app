@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Dikey Hat Örneği
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        .important-words1 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 20px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 10px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        متطلبات المركبات
+    </h2>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            المركبة الآلية
+        </h3>
+        <p>
+            جميع المركبات المُحرَّكة بمحرّك. ولا يشترط أن تسير على سككٍ للتشغيل (مثل القطار أو المترو أو الترام). ولا
+            يشمل ذلك الدراجات المزودة بمساعدة بدّال. تنبيه: يشمل ذلك حافلات الترولي ودراجات البيديليك السريعة!
+        </p>
+        <h3>
+            سائق المركبة الآلية
+        </h3>
+        <p>
+            الشخص الذي يقود مركبةً آلية أو الذي تُقاد المركبة تحت إشرافه المباشر
+            (مثل مُدرّب القيادة).
+        </p>
+        <h3>
+            حائز مركبة آلية أو مقطورة
+        </h3>
+        <p>
+            من يستأجر أو يستعير أو يستأجر بطريق التأجير لفترةٍ ممتدة مركبةً. وهذا لا يعني ولا يشير إلى المالك.
+        </p>
+    </div>
+    <p>
+        يجب أن تستوفي المركبة متطلباتٍ تقنية معيّنة قبل السماح بتشغيلها على الطرق العامة. وإذا طرح المصنع طراز سيارة
+        جديدًا، فيجب أولًا أن يحصل على اعتمادٍ نوعي من هيئة المرور على الطرق (RDW) قبل بيعه في هولندا.
+    </p>
+    <p>
+        إن تعديل سيارتك بأيّ طريقة قد يُبطل اعتماد النوع، ما يجعل سيارتك غير صالحة للسير على الطرق العامة.
+        وهذا يعني أنّ السيارة لم تعد تستوفي المتطلبات التقنية الدائمة ويجب إعادة اعتمادها.
+    </p>
+    <div class="image-container">
+        <figure>
+            <img alt="الصورة 1"
+                src="https://static.wixstatic.com/media/4b688f_2559cc594ba147569d7fd649f4b6da31~mv2.jpg" />
+            <figcaption>
+                <em>
+                    قد يؤدّي تركيب جناحٍ خلفي كبير على سيارتك إلى إبطال امتثال المركبة للمتطلبات التقنية.
+                </em>
+            </figcaption>
+        </figure>
+        <figure>
+            <img alt="الصورة 2"
+                src="https://static.wixstatic.com/media/4b688f_3180365165ab426494593afe9faef72d~mv2.jpg" />
+            <figcaption>
+                <em>
+                    كما قد يؤدّي استبدال عادم المركبة بنوعٍ مختلف إلى مشاكل.
+                </em>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="important-words2">
+        <div class="vertical-line2">
+        </div>
+        <h3>
+            رقم التسجيل
+        </h3>
+        <p>
+            معرّف فريد يتكوّن من مجموعة أرقامٍ وحروف يُمنح لمركبةٍ معتمدة النوع ومسجّلة وخاضعةٍ لواجب التسجيل.
+        </p>
+        <h3>
+            لوحة التسجيل
+        </h3>
+        <p>
+            لوحة مستطيلة تُعرَض عليها رقم التسجيل. ويجب تثبيت هذه اللوحة على المركبة المسجّلة بذلك الرقم.
+        </p>
+        <h3>
+            شهادة التسجيل
+        </h3>
+        <p>
+            مستند يُمنَح لمالك المركبة أو حائزها. يتضمّن معلومات المركبة ورقم التسجيل.
+        </p>
+        <h3>
+            السجلّ الوطني للمركبات
+        </h3>
+        <p>
+            قاعدة بيانات وطنية تُحفَظ فيها جميع أرقام التسجيل والبيانات المرتبطة بها.
+        </p>
+    </div>
+    <h2>
+        بانتظار الفحص (WOK، «Wachten Op Keuren»)
+    </h2>
+    <p>
+        إذا كشف الفحص عن مشكلة في مركبتك، فقد تُبطَل شهادة التسجيل مؤقّتًا. وقد يكون ذلك بسبب تعديلات أجريتها على
+        المركبة، أو بسبب أضرار نتجت عن تصادم.
+    </p>
+    <p>
+        إذا أُبطلت مؤقتًا شهادة تسجيل مركبتك، فسيُشار إليها في سجلّ المركبات بأنها «ممنوعة من السير على الطريق». ويُعرف
+        ذلك أيضًا بحالة «بانتظار الاعتماد» أو «WOK». ويجب عندها إعادة اختبار المركبة لدى RDW. ولا يجوز لك تشغيل المركبة
+        حتى تُعاد الموافقة عليها.
+    </p>
+    <p>
+        إذا كانت مركبتك في حالة WOK، فلن تُصادَر شهادة التسجيل فعليًا، لكن سيُظهِر السجلّ الوطني أنّ المركبة لا يجوز
+        قيادتها.
+    </p>
+    <p>
+        ويجوز للأشخاص المخوَّلين أيضًا مطالبتك بإتاحة السيارة في وقتٍ ومكانٍ متّفق عليهما، مثلًا لإجراء مزيد من التحقيق.
+    </p>
+    <h2>
+        مالك غير معلوم
+    </h2>
+    <p>
+        إذا لم يتّضح مَن يملك مركبةً موجودةً على طريقٍ عام، مثلًا بسبب عدم وجود لوحة تسجيل مقروءة بوضوح، فقد تُسحَب
+        المركبة وتُحتجَز حتى يتقدّم المالك. وقبل سحب المركبة، قد يُثبَّت قفلٌ للعجلات لمدّةٍ تصل إلى يومين كوسيلةٍ
+        لتعقّب المالك.
+    </p>
+    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
+        العودة إلى النظرة العامة
+    </a>"
+
+
+    
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>

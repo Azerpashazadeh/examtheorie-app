@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        
+
+        h1,
+        h2 {
+            color: #E5AA1A;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        .yh3 {
+            color: #E5AA1A;
+            /* Kırmızı */
+        }
+
+        .important-words1 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words2 {
+            background-color: #FFECC5;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        .important-words5 {
+            background-color: #FFECC5;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 80%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            padding-right: 15px;
+            flex-grow: 1;
+            /* Metnin daha fazla alan kaplamasına izin ver */
+            flex-basis: 0;
+            /* Metnin esnek olmasını sağlar */
+            min-width: 150px;
+            /* Metnin minimum genişliğini belirler */
+            margin-left: 10px;
+        }
+
+        .image-content {
+            flex-shrink: 0;
+            /* Resmin sabit bir boyutta kalmasını sağlar */
+        }
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 5px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 80px;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #E5AA1A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+   <h2>
+   Algemene eisen - deel 3
+  </h2>
+  <h2>
+   Zicht door ruiten
+  </h2>
+  <p>
+   Om veilig aan het verkeer deel te nemen, is voldoende zicht door de ruiten belangrijk. Hiervoor gelden eisen voor de voorruit en de voorste zijruiten:
+  </p>
+  <ul>
+   <li>
+    Deze ruiten mogen niet beschadigd of verkleurd zijn.
+   </li>
+   <li>
+    Ze moeten vrij zijn van onnodige voorwerpen die het zicht belemmeren, zoals hangers aan de achteruitkijkspiegel, dashboardornamenten en verkeerd gemonteerde navigatiesystemen.
+   </li>
+   <li>
+    Ze moeten minstens 55% licht doorlaten (bijv. getinte ruiten).
+   </li>
+   <li>
+    De voorruit moet bovendien zijn voorzien van een goed werkend systeem om de ruit te ontdooien en het glas te ontwasemen. Dit is meestal een blower (lucht via de ventilatieroosters) al dan niet met airconditioning, maar elektrische voorruitverwarming komt ook voor.
+   </li>
+  </ul>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_bd4d949ebbec432db31c8d39ac2eaa15~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Getinte folie op de voorste ruiten voorkomt vaak dat er voldoende licht binnenkomt.
+     </em>
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_96b0721c7fc84e19aceedaea0e57b78a~mv2.jpg"/>
+    <figcaption>
+     <em>
+      Elke personenauto moet een volledig werkend ruitenwisser- en ruitensproeiersysteem hebben.
+     </em>
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Ruitenwissers
+  </h2>
+  <p>
+   Om voldoende zicht door de voorruit te behouden, moeten personenauto’s zijn uitgerust met goed werkende ruitenwissers én een ruitensproeiersysteem met sproeifunctie. Als de ruitensproeiervloeistof op is, werkt het systeem niet meer en mag er niet worden gereden.
+  </p>
+  <div class="important-words4">
+   <div class="image-content">
+    <img alt="Afbeelding rijbewijs" src="https://static.wixstatic.com/media/4b688f_e8870e76a9e7413281602f3602a068d2~mv2.png"/>
+   </div>
+   <div class="text-content">
+    <p>
+     Dit controlelampje waarschuwt voor een (bijna) leeg ruitensproeiervloeistofreservoir. Omdat rijden zonder ruitensproeiervloeistof verboden is, vult u het reservoir zo snel mogelijk bij zodra het lampje gaat branden. Niet alle personenauto’s zijn met een niveauwaarschuwingslampje voor de ruitensproeiervloeistof uitgerust.
+    </p>
+   </div>
+  </div>
+  <h2>
+   Spiegels
+  </h2>
+  <p>
+   Personenauto’s moeten zijn uitgerust met één buitenspiegel aan elke zijde (rechts en links) en een binnen-/achteruitkijkspiegel. Sommige bestelwagens en vrachtauto’s hebben een aparte, gesloten laadruimte achter de cabine, waardoor er geen zicht via de binnen-/achteruitkijkspiegel is. Deze spiegel is daarom bij die voertuigen niet verplicht.
+  </p>
+  <p>
+   Alle aanwezige spiegels moeten intact zijn en niet overmatig verweerd (bruine of zwarte randen, vlekken op het glas).
+  </p>
+  <h2>
+   Zitplaatsen
+  </h2>
+  <p>
+   Alle zitplaatsen in een personenauto moeten naar voren of naar achteren gericht zijn. Stoelen moeten deugdelijk bevestigd zijn en – indien verstelbaar – mag er geen risico bestaan dat ze tijdens het rijden verschuiven.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    (Veiligheids)gordel
+   </h3>
+   <p>
+    Veiligheidsgordels beschermen bestuurders en passagiers tegen de krachten bij botsingen en plotseling remmen en voorkomen dat men uit het voertuig wordt geslingerd. De meeste personenauto’s zijn uitgerust met driepuntsgordels, waarbij één deel over de heupen en een ander deel diagonaal over de borst loopt.
+   </p>
+   <h3>
+    Kinderbeveiligingssysteem
+   </h3>
+   <p>
+    Kinderzitjes kunnen in personenauto’s worden bevestigd met een kliksysteem (ISOFIX) of met een gordel. Het kind wordt vastgezet met een gordel aan het zitje zelf of met de driepuntsgordel van de auto. Dit systeem beschermt het kind tegen de krachten bij botsingen en plotseling remmen en voorkomt dat het uit het voertuig wordt geslingerd.
+   </p>
+   <h3>
+    Airbag
+   </h3>
+   <p>
+    Voorziening in personenauto’s die bij een aanrijding opblaast. De airbag beschermt inzittenden tegen contact met harde delen in het voertuig en voorkomt overmatige voorwaartse of zijwaartse beweging tijdens een botsing.
+   </p>
+  </div>
+  <h2>
+   Veiligheidsgordels
+  </h2>
+  <p>
+   Veiligheidsgordels voorkomen ernstig letsel bij bestuurders en passagiers bij een botsing. Een gordel kan al bij 30 km/u uw leven redden en is verplicht op alle zitplaatsen in een auto. Vanwege het belang moeten gordels aan eigen eisen voldoen:
+  </p>
+  <ul>
+   <li>
+    Ze moeten vrij van beschadigingen zijn.
+   </li>
+   <li>
+    Ze moeten zijn voorzien van goed werkende vergrendeling en blokkering.
+   </li>
+   <li>
+    De gordel moet bij gebruik goed aansluiten.
+   </li>
+   <li>
+    De controlelampjes voor gordel en airbag mogen geen storingen aangeven.
+   </li>
+  </ul>
+  <div class="important-words5">
+   <p>
+    Alle onderstaande controlelampjes zijn rood. Dit betekent dat u het probleem direct moet verhelpen en niet mag doorrijden voordat het is opgelost. De eerste twee lampjes waarschuwen voor problemen met verschillende airbags. Het laatste geeft aan dat iemand (u of een passagier) geen gordel draagt.
+   </p>
+   <!-- Başlık en üstte -->
+   <div class="images-container5">
+    <!-- Resimleri saran div -->
+    <figure>
+     <img alt="Waarschuwing storing airbag" src="https://static.wixstatic.com/media/4b688f_ef1dad2ca0434c4d991c83c7d71c217f~mv2.png"/>
+     <figcaption>
+      Waarschuwing: storing airbag
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing storing zijairbag" src="https://static.wixstatic.com/media/4b688f_4d438aae9e764b20b5d43370205e1d42~mv2.png"/>
+     <figcaption>
+      Waarschuwing: storing zijairbag
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Gordelwaarschuwingslampje" src="https://static.wixstatic.com/media/4b688f_8dca92b43b7a4bc2b7e1edf33ac319fd~mv2.png"/>
+     <figcaption>
+      Gordelwaarschuwingslampje
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Uitstekende en scherpe delen
+  </h2>
+  <p>
+   Letsel bij voetgangers door aanrijdingen is vaak ernstig; voetgangersbescherming is daarom een steeds belangrijker onderdeel van voertuigontwerp. Om het risico te beperken, zijn scherpe uitsteeksels zoals motorkapornamenten en zelfgemaakte bullbars op de bumper verboden.
+  </p>
+  <p>
+   Andere uitstekende delen moeten zijn afgeschermd en mogen bij een aanrijding geen gevaar voor letsel opleveren. Banden mogen niet meer dan drie centimeter buiten de wielkasten uitsteken.
+  </p>
+  <p>
+   Voertuigen moeten bovendien vrij zijn van losse delen door slechte bevestiging, slijtage of veroudering.
+  </p>
+  <div class="image-container">
+   <figure>
+    <img alt="Afbeelding 1" src="https://static.wixstatic.com/media/4b688f_f4e26dad13ae4e7d801a37ffe733d176~mv2.jpg">
+     <figcaption>
+      <em>
+       Veiligheidsgordels zijn op elke zitplaats verplicht.
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+   <figure>
+    <img alt="Afbeelding 2" src="https://static.wixstatic.com/media/4b688f_f3e297a777084bef891f4d93c23fe05d~mv2.jpg">
+     <figcaption>
+      <em>
+       Banden mogen niet meer dan drie centimeter buiten de wielkasten uitsteken (de wielkast is aangegeven met de pijl).
+      </em>
+     </figcaption>
+    </img>
+   </figure>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

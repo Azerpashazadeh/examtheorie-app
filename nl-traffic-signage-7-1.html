@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+         
+
+        h1,
+        h2 {
+            color: #972B90;
+        }
+
+
+
+        .gh3 {
+            color: #972B90;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattın pozisyonunu ayarlamak için */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 65px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #D9C0DD;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #D9C0DD;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #972B90;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #972B90;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+        .images-container6 {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .images-container6 figure {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .images-container6 p {
+            flex: 1;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .images-container6 img {
+            width: 90%;
+            height: auto;
+        }
+
+        .images-container6 figcaption {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .images-container6 {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+ 
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Verkeerstekens
+  </h1>
+  <p>
+   Verkeerstekens omvatten:
+  </p>
+  <ul>
+   <li>
+    <p>
+     verkeersborden en onderborden;
+    </p>
+   </li>
+   <li>
+    <p>
+     markeringen op het wegdek (zoals lijnen en haaientanden);
+    </p>
+   </li>
+   <li>
+    <p>
+     verkeerslichten.
+    </p>
+   </li>
+  </ul>
+  <p>
+   Alle weggebruikers moeten zich houden aan de verkeersborden die een gebod (verplichte handeling) of verbod
+        (verboden handeling) bevatten.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_04e78749997d468cb56b93db8a31478f~mv2.png"/>
+     <figcaption>
+      Gebodsborden zijn meestal blauw
+                    (Je moet hier rechtsaf)
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_a79fcb6518584f1eae8c403064df01cd~mv2.png"/>
+     <figcaption>
+      Verbodsborden zijn meestal rood of hebben een rode rand
+                    (Je mag hier niet inrijden)
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Verkeersborden gaan boven verkeersregels, voor zover deze borden en regels op dezelfde situatie betrekking hebben.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_ba691fc23a234c23a3fbb9d8847e0048~mv2.jpg"/>
+     <figcaption>
+      Situatie 1, geen verkeersborden
+                    De fietser gaat eerst, daarna de bestuurder van de lesauto en tot slot de rode auto.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_8ed4cca697df463ea1554867ae401a78~mv2.jpg"/>
+     <figcaption>
+      Situatie 2, met verkeersborden
+                    De rode auto gaat eerst, daarna de fietser en als laatste de bestuurder van de lesauto.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   Stel dat je in de lesauto zit, dan moet je je in situatie 1 aan het volgende houden:
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Bestuurders verlenen voorrang aan bestuurders van rechts.
+     </strong>
+     De bestuurder van de rode auto verleent jou en de fietser voorrang.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Rechtdoorgaand verkeer heeft voorrang op afslaand verkeer op dezelfde weg.
+     </strong>
+     De rechtdoor rijdende fietser heeft voorrang.
+    </p>
+   </li>
+  </ul>
+  <p>
+   In situatie 2 heb je te maken met verkeersbord B-6 en haaientanden, die aangeven dat je voorrang moet verlenen aan bestuurders op de kruisende weg.
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Bestuurders hoeven geen voorrang te verlenen aan bestuurders van rechts.
+     </strong>
+     De bestuurder van de rode auto hoeft jou en de fietser geen voorrang te geven.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Rechtdoorgaand verkeer heeft nog steeds voorrang op afslaand verkeer.
+     </strong>
+     Je moet voorrang geven aan de fietser die rechtdoor gaat.
+    </p>
+   </li>
+  </ul>
+  <h2>
+   Tijdelijke borden
+  </h2>
+  <p>
+   Soms worden tijdelijke borden of wegmarkeringen geplaatst. Bijvoorbeeld bij wegwerkzaamheden. Daar kun je zowel witte (normale) markeringen als gele (tijdelijke) markeringen op het wegdek tegenkomen. Er kunnen ook gele verkeersborden zijn. In dat geval gelden de gele verkeersborden en markeringen in plaats van de normale.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_f77ed30b0bf547bf9abe42515c2718d6~mv2.jpg"/>
+     <figcaption>
+      De personenauto moet hier de gele tijdelijke lijnen volgen.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_b6b9f0a1ef274ccb973e2d59761457d2~mv2.png"/>
+     <figcaption>
+      De weg rechtdoor naar Woerden is afgesloten. Om naar Woerden te gaan moet je nu (tijdelijk)
+                    rechtsaf.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Elektronische matrixborden
+  </h2>
+  <p>
+   Elektronische matrixborden gelden ook als verkeersborden die een gebod of verbod bevatten. Ze kunnen een snelheidslimiet tonen of bijvoorbeeld een verbod om de rijstrook te gebruiken, of aangeven dat de spitsstrook open is.
+  </p>
+  <p>
+   Als op de elektronische matrixborden een andere snelheid staat dan op de verkeersborden in de berm, geldt de laagste aangegeven snelheid. Meestal is dat de snelheid op de elektronische matrixborden.
+  </p>
+  <p>
+   Wat op een elektronisch matrixbord wordt weergegeven kan per rijstrook verschillen. Het getoonde teken geldt dan alleen voor die rijstrook.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_c5178b8bdf0447e29b2f99fb9385411f~mv2.jpg"/>
+     <figcaption>
+      Alle rijstroken op deze weg zijn open. Dat is te zien aan de groene pijlen boven de rijstroken en
+                    het bord naast de weg.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_c796849327ea447bbaefcae820e3e3c0~mv2.jpg"/>
+     <figcaption>
+      In dit geval is de vluchtstrook gesloten omdat daar een voertuig met pech stilstaat. Om veiligheidsredenen heeft de naastgelegen rijstrook een lagere maximumsnelheid dan de andere twee
+                    rijstroken.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Verkeerslichten en voorrangsborden
+  </h2>
+  <p>
+   Als er werkende verkeerslichten zijn, gaan deze vóór de verkeersborden. Andere voorrangsborden en markeringen
+        (zoals haaientanden op het wegdek) gelden dan niet meer. Pas wanneer de verkeerslichten defect zijn, gelden de verkeersborden en markeringen die de voorrang regelen weer.
+  </p>
+  <div class="important-words6">
+   <p>
+    <strong>
+     Waarschuwing!
+    </strong>
+    Er zijn enkele verkeersregels die ook bij verkeerslichten blijven gelden:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Rechtdoorgaand verkeer heeft voorrang op afslaand verkeer op dezelfde weg.
+     </p>
+    </li>
+    <li>
+     <p>
+      Korte bocht gaat vóór lange bocht.
+      <br/>
+      Als twee bestuurders uit tegengestelde richting elkaar ontmoeten en zij beiden dezelfde weg willen inrijden, heeft de bestuurder die rechtsaf slaat voorrang op de bestuurder die linksaf slaat.
+     </p>
+    </li>
+   </ul>
+   <p>
+    Bij afslaan bij verkeerslichten met
+    <strong>
+     ronde lampen
+    </strong>
+    in plaats van
+    <strong>
+     pijlvormige,
+    </strong>
+    kun je tegemoetkomend
+            verkeer of naast je rijdend verkeer tegenkomen dat tegelijk groen heeft. Dit kan rechtdoorgaand verkeer zijn –
+            inclusief voetgangers – of afslaand verkeer. Je moet voorrang verlenen volgens de hierboven genoemde regels.
+   </p>
+   <p>
+    Als je bijvoorbeeld linksaf slaat, moet je voorrang verlenen aan tegemoetkomend rechtdoorgaand verkeer en aan verkeer dat rechtsaf slaat.
+   </p>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_36accb90a8984ec0ad3086da925dbf8f~mv2.jpg"/>
+     <figcaption>
+      De lesauto en de voetganger hebben tegelijk groen.
+                    In dit geval moet de lesauto wachten tot de voetganger is overgestoken.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Waarschuwing zij-airbag storing" src="https://static.wixstatic.com/media/4b688f_a333d08f164f42a3ac394f0e72f49d0a~mv2.jpg"/>
+     <figcaption>
+      De lesauto slaat hier linksaf bij een rond verkeerslicht en moet voorrang verlenen aan de tegemoetkomende bestuurder die rechtsaf slaat.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <h2>
+   Hiërarchie verkeerstekens, aanwijzingen en regels
+  </h2>
+  <div>
+   <div class="images-container6">
+    <p>
+     Soms blijken regels, tekens of aanwijzingen niet met elkaar in overeenstemming te zijn. In dat geval is er een hiërarchie tussen deze. In de afbeelding zie je hoe deze hiërarchie werkt. Regels zijn de basis. Zodra er verkeersborden zijn die iets anders aangeven, gaan die boven de regels. Zodra er verkeerslichten zijn, gelden de voorrangsborden niet meer. En aanwijzingen door bevoegde personen gaan boven alle regels, borden en verkeerslichten.
+    </p>
+    <figure>
+     <img alt="Uyarı: Yan hava yastığı arızası" src="https://static.wixstatic.com/media/4b688f_972ff3d663144aac93556f1fe3a57dc3~mv2.jpg"/>
+     <figcaption>
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/nl-test-and-theory-menu" target="_blank">
+   Terug naar
+    overzicht
+  </a>
+
+  
+ 
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+</html>
+

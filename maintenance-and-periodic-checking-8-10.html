@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dikey Hat Örneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <style>
+html, body {
+  overflow: hidden !important;
+  height: 100%;
+  margin: 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+        body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+        h1,
+        h2 {
+            color: #D5176A;
+        }
+
+
+
+        .gh3 {
+            color: #D5176A;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+
+        .important-words2 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words13 {
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-block13 {
+            text-align: center;
+            /* Resim ve yazıyı ortalar */
+            margin: 0;
+        }
+
+        .image-block13 img {
+            display: block;
+            width: 100%;
+            /* Resim 400px genişliğinde olur */
+            height: auto;
+            margin: 0 auto;
+        }
+
+
+
+        .image-block13 figcaption {
+            font-size: 14px;
+            color: #444;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı ortalar */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .image1 {
+            width: 150px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+
+        }
+
+
+        .important-words6 {
+            background-color: #FACAD2;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Resim ve metni üst hizaya sabitle */
+            max-width: 100%;
+            margin-bottom: 20px;
+            /* Paragraflar arası boşluk */
+        }
+
+        .container * {
+            margin: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+            padding: 0px;
+            /* Sadece container içindeki elemanlar için geçerli */
+        }
+
+        p {
+            max-width: 98%;
+            text-align: justify;
+        }
+
+        .image {
+            width: 100px;
+            /* Sabit genişlik */
+            height: auto;
+            margin-left: 5px;
+            /* Resmi metinden ayırmak için boşluk */
+            margin-top: 40px;
+        }
+
+        .important-words5 {
+            background-color: #FACAD2;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+
+        }
+
+        .inline {
+            display: inline;
+            /* Elemanı satır içi hale getirir */
+            color: black;
+            /* Yazı rengini değiştirir */
+            font-weight: bold;
+            /* Yazıyı kalın yapar */
+        }
+
+
+
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+
+        .image-content {
+            margin-left: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            max-width: 150px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #D5176A;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .image-text-container {
+            display: flex;
+            /* Görüntü ve metni yan yana koymak için */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: -30px;
+
+        }
+
+        .image-text-container img {
+            max-width: 100%;
+            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
+            height: auto;
+            /* Görselin oranlarını koru */
+            width: 440px;
+            /* Görseli küçültmek için sabit bir genişlik */
+            margin-left: -40px;
+            /* Görsel ile sol kenar arasındaki boşluk */
+
+
+        }
+
+
+        .text-content {
+            flex: px;
+            /* Metin içeriği alanını genişlet */
+            font-size: 16px;
+
+
+        }
+
+
+
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Maintenance and periodic checking
+    </h1>
+    <p>
+        To ensure a vehicle can safely participate in traffic, it must meet a number of requirements. This compliance
+        must be monitored via regular checking of the vehicle. How and when to do this is explained per car part.
+    </p>
+    <h2>
+        Steering
+    </h2>
+
+    <div class="important-words13">
+        <div class="container">
+            <div>
+                <p>
+                    If you notice that the steering wheel begins to vibrate, or feels heavier or otherwise different,
+                    always look into this. While it could be due to a steering malfunction, this could also be caused by
+                    a problem with the tyres, wheels, or suspension. Driving the vehicle is prohibited until this
+                    problem is resolved.
+                </p>
+            </div>
+
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_4253c7ddf88c464581bd9ac38cf4d5d3~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption>Power steering malfunction</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <h2>
+        Horn
+    </h2>
+    <div class="important-words13">
+        <div class="container">
+            <div>
+
+                <p>
+                    Every passenger car must be equipped with a properly functioning horn. Driving a vehicle with a
+                    non-functioning horn is prohibited.
+                </p>
+
+            </div>
+            <figure class="image-block13">
+                <img src="https://static.wixstatic.com/media/4b688f_e5bc940dced7487ea8f88d05296d004f~mv2.png"
+                    alt="Örnek Resim" class="image1">
+                <figcaption></figcaption>
+            </figure>
+
+
+        </div>
+    </div>
+    <h2>
+        Suspension
+    </h2>
+    <p>
+        A car’s suspension is the part that connects the vehicle with the wheels. Malfunctioning suspension is often
+        noticeable due to the vehicle’s decreased stability while driving. This may include bumping, swerving, and
+        pulling to the left or right. Steering may become more difficult, or the vehicle may make a thumping sound when
+        driving over speed bumps and other raised surfaces. The vehicle may also tilt as it drops through one of the
+        springs.
+    </p>
+    <p>
+        This loss of stability can lead to dangerous situations, as well as ensuring irregular wear and tear on tyres.
+        Should this occur, the suspension must be repaired before the vehicle can be driven.
+    </p>
+    <div class="important-words1">
+        <div class="vertical-line2"></div>
+        <h3>ABS (Anti-lock braking system)</h3>
+
+        <div class="important-words13">
+            <div class="container">
+                <div>
+                    <p>
+                        Most passenger cars are equipped with ABS. This system ensures that the wheels do not lock
+                        during
+                        hard
+                        braking. This keeps the vehicle more controllable during an emergency stop. ABS does not always
+                        ensure a
+                        shorter braking distance, but you can continue to steer during braking, which makes it easier to
+                        avoid
+                        obstacles. When ABS is activated, the brake pedal will begin to vibrate. This is not a brake
+                        malfunction,
+                        but a sign that the ABS is working. Do not release the brake pedal.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_777522730bb54fc18399fe356dd3fb4c~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>ABS malfunction</figcaption>
+                </figure>
+
+
+            </div>
+
+
+
+        </div>
+        <h2>
+            Brakes
+        </h2>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        Poorly functioning brakes are a life-threatening risk. If you notice a decline in brake
+                        function,
+                        skidding while braking, or a warning light, have a garage inspect the vehicle as soon as
+                        possible.
+                        Driving with malfunctioning brakes is prohibited.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_908dac3ed0c347a28529d6bd43af487d~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Worn brake lining</figcaption>
+                </figure>
+
+
+            </div>
+        </div>
+        <h2>
+            Tyres
+        </h2>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        Tyres are relatively easy to check without professional assistance. Before driving, walk around
+                        the
+                        vehicle to ensure no tyres are flat or flattening. Also check for any visible damage and confirm
+                        the
+                        presence of all valve caps.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_70a972d05d5944b2a9ac33e35cbd3734~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Low tyre pressure</figcaption>
+
+
+            </div>
+        </div>
+        <p>
+            Measure the tyre pressure and tread depth on a monthly basis. In the main grooves of a tyre, small
+            elevations
+            (wear indicators) should be deeper than the top edge of the grooves. Should the indicators begin to wear
+            with
+            the tread, the tyre’s profile is insufficient, which means the tyre must be replaced. Driving with
+            insufficient
+            tyre profile is prohibited.
+        </p>
+        <div>
+            <div class="images-container5">
+                <figure>
+                    <img src="https://static.wixstatic.com/media/4b688f_31a94b8ba1c84590a4e5d4575c608ad1~mv2.jpeg"
+                        alt="Warning side-airbag malfunction">
+                    <figcaption>Tyre wear indicators are the cross marks in the main grooves.
+                    </figcaption>
+
+
+                </figure>
+                <figure>
+                    <img src="https://static.wixstatic.com/media/4b688f_6d4bacf5fbbe4144b5a7e88c47e7560d~mv2.jpeg"
+                        alt="Warning side-airbag malfunction">
+                    <figcaption>Winter tyres are usually recognisable by the extra grooves between the main grooves of
+                        the
+                        tyre.
+                    </figcaption>
+
+
+                </figure>
+
+
+
+
+            </div>
+        </div>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        Winter tyres on passenger cars must have a tread depth in the main grooves of at least 1.6 mm
+                        (the
+                        legal minimum). To function properly, however, winter tyres need a minimum of 4 mm tread depth.
+                        The
+                        softer rubber on winter tyres makes them useful only in temperatures under 8 degrees Celsius.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_45817bae85ed4983b3e87935f8fc68f4~mv2.jpeg"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Symbol on a winter tyre</figcaption>
+                </figure>
+
+
+            </div>
+        </div>
+        <p>
+            Always check the tyre pressure before driving when the tyres are still cold, including the spare tyre. If
+            the
+            tyre pressure is too low, inflate the tyres. This can be done at most petrol stations. The ideal tyre
+            pressure
+            can be found in the instruction booklet. Most passenger cars also have a table indicating ideal tyre
+            pressure on
+            the inside of the door or in the fuel filler flap. Most air pumps also come with an extensive list of car
+            manufacturers and models and their associated ideal tyre pressure. In most cases, tyre pressure should be
+            between 2 and 2.5 bars. This applies to both winter and summer tyres. Ideal tyre pressure may vary per tyre
+            width, however.
+        </p>
+        <p>
+            If a tyre is too damaged or has a bulge, driving is prohibited due to the increased risk of a blowout.
+        </p>
+        <p>
+            Missing valve caps present an increased risk of dirt entering the valve, which means it will no longer close
+            fully, deflating the tyre. A slowly deflating tyre can also be caused by a nail or screw in the tyre. If you
+            find a screw or nail in a tyre on your vehicle, do not remove it and take the vehicle to a garage. This will
+            ensure some air remains in the tyre and it makes the hole easier to locate.
+        </p>
+        <p>
+            Low tyre pressure leads to higher energy consumption, poor road holding due to lack of grip, and increased
+            wear
+            and tear on tyres. At worst, low tyre pressure can even cause a blowout. If the tyre pressure is to high,
+            you
+            can also experience a lack of grip. The abrasion of the tyres will occur more in the centre.
+        </p>
+        <h2>
+            Lighting and indicators
+        </h2>
+        <p>
+            Adequate vehicle lighting is crucial to ensure your vehicle remains visible to other road users, signalling
+            remains possible, and you maintain a proper view of your surroundings. Always walk around the vehicle to
+            ensure
+            lights are clean and undamaged before driving.
+        </p>
+        <div>
+            <div class="images-container5">
+                <figure>
+                    <img src="https://static.wixstatic.com/media/4b688f_e153e765e6f54720b2df049bda4a69fd~mv2.jpeg"
+                        alt="Warning side-airbag malfunction">
+                    <figcaption>Always clear the light coverings of snow before driving.
+                    </figcaption>
+
+
+                </figure>
+                <figure>
+                    <img src="https://static.wixstatic.com/media/4b688f_a4849ab6e6d74f50a0c67be5468b9024~mv2.jpeg"
+                        alt="Warning side-airbag malfunction">
+                    <figcaption>Over the years, lamp coverings can become dull. This allows less light to pass through.
+                        If
+                        this gets too bad they should be replaced.
+                    </figcaption>
+
+
+                </figure>
+
+
+
+
+            </div>
+        </div>
+        <p>
+            Check all lighting on a regular basis. At the beginning of your journey, check to ensure you see both
+            headlights
+            reflecting. This reflection can be seen when driving past a glass pane or when stopped behind another
+            vehicle at
+            traffic lights. The rear lights and brake lights are best checked through the rearview mirror when facing
+            away
+            from a window or a smooth wall. Turn the lights on and off and apply the brakes. The reflection in the
+            window or
+            smooth wall will indicate whether any lights are nonfunctioning.
+        </p>
+        <p>
+            Many modern passenger cars have a warning light in the dashboard that illuminates when a vehicle light is
+            broken. Broken indicators are usually obvious as the other indicators will flash more quickly.
+        </p>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        All mandatory lighting must be properly functioning at all times, even if you are not required
+                        to
+                        use it at the time. For example, full-beam lighting must be functioning even during the day. If
+                        a
+                        lamp is broken, you must be able to replace it immediately to continue driving.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_af52513551c5425f95cd6e277a7137d0~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Broken lamp</figcaption>
+
+
+            </div>
+        </div>
+        <p>
+            In practice, however, this is often not possible. The lamps in most modern passenger cars are no longer
+            replaceable without professional knowledge and the required tools. In some cases, entire bumpers or
+            headlight
+            units must be removed to access them. If one of your vehicle’s lamps is broken and you are unable to replace
+            it,
+            have it replaced in a garage as soon as possible.
+        </p>
+        <h2>
+            Retro-reflectors
+        </h2>
+        <p>
+            Most retro-reflectors in modern passenger cars are incorporated into the lamp units. The glass around these
+            units must not be broken, damaged, or dulled, as this may affect the light quality. Individual
+            retro-reflectors
+            must not be damaged, dulled, or missing. Like lamps, they must not be covered with snow, ice, mud, or other
+            dirt.
+        </p>
+        <p>
+            Passenger cars that are not equipped with mandatory retro-reflectors or equipped with broken
+            retro-reflectors
+            may not be driven on public roads. In some cases, even parking the vehicle on the road is prohibited, for
+            example, when the red retro-reflectors on the back of the car ar missing or broken.
+        </p>
+        <h2>
+            Mirrors
+        </h2>
+        <p>
+            Mirrors must be clean and undamaged at all times, as visibility through them must remain optimal. Always
+            check
+            the mirrors before driving and clean them if necessary. Driving with a broken mirror is prohibited. Even a
+            simple crack in the glass affects visibility enough that safe participation in traffic is no longer
+            possible.
+        </p>
+        <h2>
+            Windscreen washers and wipers
+        </h2>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        If a vehicle’s windscreen wipers or windscreen washers malfunction, or if the screen wash runs
+                        out,
+                        visibility through the windscreen may be severely limited and driving the vehicle is therefore
+                        prohibited. Always have screen wash, which is sold in most petrol stations, in the vehicle.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_f18112742f3543e6b90c6e720ae4bd8a~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Screen wash level low</figcaption>
+
+
+            </div>
+        </div>
+        <p>
+            Windscreen wiper blades (the part of the wiper that slides across the windscreen) should be replaced
+            regularly
+            due to wear and tear. This can be recognised via the stripes they leave over the windscreen when used.
+        </p>
+        <p>
+            Clean windscreen wipers regularly, especially when parking a vehicle under a tree. Small twigs and leaves
+            may
+            scratch the windscreen if left under a wiper for an extended period of time. In addition, dirt under the
+            windscreen wiper also streaks across the windshield when you use the wipers. Wipe them once a week with a
+            cloth,
+            or more often if you see dirt on them.
+        </p>
+        <p>
+            Unlike the windscreen wipers on the windshield, wipers on the rear window are not required and do not have
+            to be
+            functioning. However, functioning wipers are of course recommended.
+        </p>
+        <h2>
+            Exhaust
+        </h2>
+        <p>
+            A broken exhaust is often obvious due to increased noise. If a car is suddenly sounding heavier or louder
+            than
+            usual, or makes a crackling sound when accelerating, the exhaust may be broken.
+        </p>
+        <p>
+            Normal wear and tear is usually noticed in time during the annual APK or other checks. However, an exhaust
+            with
+            damage due to coming into contact with something will often make much more noise quite suddenly. In some
+            cases,
+            the exhaust may even come loose and drag on the ground while driving, resulting in a scraping sound.
+        </p>
+        <p>
+            Driving with a broken exhaust is prohibited. Not only does the noise present a nuisance, the emission of
+            harmful
+            substances also increases significantly.
+        </p>
+        <h2>
+            Oil level and liquids
+        </h2>
+        <p>
+            You can check a number of things under the bonnet yourself, such as oil level and other fluids.
+        </p>
+        <div>
+            <div class="images-container5">
+                <figure>
+                    <img src="https://static.wixstatic.com/media/4b688f_5976b957091040cdaa8664044199b135~mv2.jpeg"
+                        alt="Warning side-airbag malfunction">
+
+
+
+                </figure>
+
+
+
+
+
+            </div>
+        </div>
+        <h3>
+            Engine oil
+        </h3>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        Engine oil provides good lubrication and partly cooling of the rotating parts of the engine. If
+                        the
+                        oil level drops too much, it can cause the engine to overheat, stop running and eventually
+                        break.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_c86d387c64594b26b839e970b65b8d25~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Insufficient oil pressure</figcaption>
+                </figure>
+
+
+            </div>
+        </div>
+        <p>
+            Check the oil level (with the engine cooled) every month. You do this with the dipstick, which you usually
+            recognise by a yellow or orange ring or handle that sticks up between the engine parts.
+        </p>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        Pull out the dipstick, wipe it and put it back in the same hole completely. Pull the dipstick
+                        out
+                        again and observe the oil level on the bottom of the dipstick.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_62345ffdf50a4ca2a069ac993a790b21~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Low oil level</figcaption>
+                </figure>
+
+
+            </div>
+        </div>
+        <p>
+            If the level is too low, top it up via the filling opening on top of the engine block.
+        </p>
+        <h3>
+            Coolant
+        </h3>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        As its name suggests, the coolant cools the engine. If the coolant level is too low, the engine
+                        can
+                        overheat, break or even catch fire. Therefore, check the coolant level every month. Do this with
+                        a
+                        cold engine! Because the coolant can get very hot while driving, this can be dangerous when
+                        checking
+                        or topping up with a hot engine. The level can be checked on the coolant reservoir.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_d2c9a0acaa714d9db42a87d2275cf130~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Engine overheated</figcaption>
+
+
+            </div>
+        </div>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        If the level drops below the minimum value, do not drive any further, but top it up with coolant
+                        first. This is for sale at most petrol stations and hardware stores. In an emergency, the
+                        reservoir
+                        can also be refilled with water. This must then be replaced as soon as possible.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_5392f52eaa0243d2876ac2b9c01a4817~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Coolant level low</figcaption>
+
+
+            </div>
+        </div>
+        <p>
+            Normally, the coolant level should not drop just like that. This can mean that there is a leak somewhere.
+            Have
+            this checked by the garage.
+        </p>
+        <h3>
+            Brake fluid
+        </h3>
+        <div class="important-words13">
+            <div class="container">
+                <div>
+
+                    <p>
+                        The brake fluid is a fluid that you cannot just refill yourself. Air must not enter the brake
+                        lines
+                        and if the brake is topped up incorrectly, the brakes may (partially) lose their function. So
+                        always
+                        have this done at a garage. Normally this level remains good, if the level has dropped this can
+                        mean
+                        that the brakes are worn out or that there is a leak somewhere.
+                    </p>
+
+                </div>
+                <figure class="image-block13">
+                    <img src="https://static.wixstatic.com/media/4b688f_4665f419bf514bd585bbfd3476c8f7d7~mv2.png"
+                        alt="Örnek Resim" class="image1">
+                    <figcaption>Braking system malfunction
+
+                    </figcaption>
+
+
+            </div>
+        </div>
+        <p>
+            You can read the level by looking at the reservoir of the brake fluid. This must not fall below the minimum
+            value. If this is the case, you may not drive any further.
+        </p>
+
+
+        <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
+        overview</a>
+
+      
+  
+
+
+<script>
+window.addEventListener("scroll", () => {
+  window.scrollTo(0, 0);
+});
+
+// Sag tiklamayi engelle
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Metin se�meyi engelle
+document.addEventListener("selectstart", function (event) {
+  event.preventDefault();
+});
+
+function sendHeight() {
+  const target = document.querySelector(".custom-button");
+  if (!target) return;
+  const height = target.getBoundingClientRect().bottom;
+  // Post message ile dis sayfaya g�nder
+  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+}
+
+window.onload = () => {
+  sendHeight();
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 3000);
+};
+
+// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
+window.onresize = () => {
+  sendHeight();
+};
+</script>
+</body>
+
+</html>
+

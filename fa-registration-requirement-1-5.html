@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+        html,
+     body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #a70000;
+        }
+
+        h3 {
+            color: #000000;
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+
+        li p {
+            margin: 0;
+            padding-left: 0px;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .important-words1,
+        .important-words2 {
+            background-color: #f9c3ae;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 80px;
+            left: 15px;
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: rgb(201, 17, 17);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .important-words1 h2,
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul,
+        .important-words2 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+        }
+
+        .important-words1 li,
+        .important-words2 li {
+            margin-bottom: 1px;
+            padding-left: 20px;
+            text-indent: -20px;
+            list-style-position: inside;
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .custom-centered-image {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            align-items: flex-start;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 0 15px;
+        }
+
+        .container1 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .image-text-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .image-text-container .image {
+            flex: 1;
+            max-width: 48%;
+        }
+
+        .image-text-container .image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .image-text-container .text {
+            flex: 1;
+            max-width: 48%;
+            text-align: left;
+        }
+
+        /* Resim alanı */
+        .container .images {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .container .images img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            max-width: 500px;
+        }
+
+        /* Metin konteyneri */
+        .text-container {
+            flex: 1;
+            padding-left: 30px;
+            max-width: 50%;
+            text-align: left;
+            box-sizing: border-box;
+            align-self: flex-start;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+
+        @media (max-width: 550px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                max-width: 100%;
+            }
+
+            .container .images,
+            .text-container {
+                max-width: 100%;
+            }
+
+            .text-container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 775px) {
+            .container .images img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-text-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-text-container .image,
+            .image-text-container .text {
+                max-width: 100%;
+            }
+        }
+
+        /* Yeni eklemeler: Resim ve metinlerin yan yana hizalanmasını düzeltmek */
+        @media (min-width: 769px) {
+            .image-text-container {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+
+        /* Mevcut stilin sonu */
+  </style>
+ </head>
+ <body>
+  <h2>
+   Registration requirement
+  </h2>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Vehicle registration
+   </h3>
+   <p>
+    Registering a vehicle in the national vehicle register with the name of the owner or holder.
+   </p>
+   <h3>
+    First admission
+   </h3>
+   <p>
+    The date on which a vehicle was first allowed on public roads. This may have occurred abroad if the vehicle
+            was imported at a later date.
+   </p>
+   <h3>
+    Maximum authorised mass
+   </h3>
+   <p>
+    The maximum permitted weight of a vehicle, including load.
+   </p>
+  </div>
+  <p>
+   Most motor carriages are subject to a registration requirement. This means that as soon as a vehicle is
+        registered, a registration number will be issued for the vehicle. The corresponding registration certificate
+        will be issued to the owner of the vehicle, who is then responsible for that certificate.
+  </p>
+  <p>
+   The vehicle that is being driven must always comply with the relevant information recorded in the national
+        vehicle register. In addition, the vehicle must be equipped with original and clearly visible number plates.
+        Depending on the vehicle, there may be one or two number plates.
+  </p>
+  <img alt="Image 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_1deea4fefc6b4632a9e894999cc58740~mv2.jpg"/>
+  <p>
+   Number plates must not be covered or treated in any other way that reduces their legibility. The driver and the
+        owner are responsible for all above matters.
+  </p>
+  <h2>
+   Registration certificate
+  </h2>
+  <p>
+   Once a vehicle has been registered, the owner will be issued a registration certificate. This registration
+        certificate consists of a registration card, a registration certificate part ll, and proof of ownership.
+  </p>
+  <div class="container">
+   <div class="images">
+    <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_fa3dcd0d21f74548bb96dfc2ead1ee77~mv2.jpg"/>
+    <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_cfe75b6a7f4d460e8390b04f2e6537f1~mv2.jpg"/>
+   </div>
+   <div class="text-container">
+    <p>
+     The registration card contains details regarding the owner or holder:
+    </p>
+    <ul>
+     <li>
+      Surname and first initials
+     </li>
+     <li>
+      Address
+     </li>
+    </ul>
+    <p>
+     And the vehicle information:
+    </p>
+    <ul>
+     <li>
+      Registration number
+     </li>
+     <li>
+      “Meldcode” (last 4 digits of VIN)
+     </li>
+     <li>
+      Date of first admission
+     </li>
+     <li>
+      Date of registration in the Netherlands
+     </li>
+     <li>
+      Date of ascription
+     </li>
+     <li>
+      Vehicle identification number (VIN)
+     </li>
+     <li>
+      Vehicle manufacturer and model
+     </li>
+     <li>
+      Vehicle colour
+     </li>
+     <li>
+      Vehicle maximum weights
+     </li>
+     <li>
+      Trailer maximum weights
+     </li>
+     <li>
+      Technical information engine
+     </li>
+     <li>
+      Weight in running order
+     </li>
+     <li>
+      Seats
+     </li>
+    </ul>
+   </div>
+  </div>
+  <p>
+   In practice, as the owner, you receive only the registration card and the proof-of-ownership code. In some cases,
+        you will not receive the proof-of-ownership code - for example with lease cars. A registration certificate part
+        ll is maintained by the RDW and only issued to the owner if they export the vehicle abroad permanently.
+  </p>
+  <h2>
+   Registration certificate validity
+  </h2>
+  <p>
+   A registration certificate generally remains valid until the vehicle changes owner (usually when it is sold).
+        Even though the owner’s address is stated on the card, it does not have to be changed if you move. The RDW
+        automatically receives your new address from the municipality and updates this information in the national
+        vehicle register. It does not matter if a previous address is stated on a registration card.
+  </p>
+  <p>
+   A registration certificate may be invalidated if it no longer meets certain requirements. For example, the
+        certificate must always be clearly legible.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Indemnity certificate
+   </h3>
+   <p>
+    The document you receive when you sell your vehicle and it is no longer registered in your name in the
+            vehicle registration register. This is proof that you are no longer responsible for this vehicle and it must
+            therefore be kept in good order.
+   </p>
+  </div>
+  <h2>
+   Registration certificate transfer
+  </h2>
+  <p>
+   Once a passenger car is registered in your name, you are required to show the corresponding registration
+        certificate if and when stopped and asked to do so by an authorised person. This may be a police officer,
+        military police, or a tax or customs officer. You are only required to show the registration card (and your
+        driving licence, if requested).
+  </p>
+  <img alt="Image 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_ae2b444fe69e43b8b89cd4ede297b381~mv2.jpg">
+   <p>
+    If you are in arrears on your taxes or have too many outstanding fines, for example, your vehicle may be seized
+        during such a stop.
+   </p>
+   <p>
+    You will be unable to register another vehicle in your name while unpaid debts are flagged in the national
+        vehicle register.
+   </p>
+   <h2>
+    Exceptions to registration requirement
+   </h2>
+   <p>
+    Not all motor carriages are required to have a registration number. Vehicles exempt from this requirement are:
+   </p>
+   <ul>
+    <li>
+     <strong>
+      Narrow motor carriages with limited speed
+     </strong>
+     <p>
+      Such as municipal lawn mowers and road sweepers (maximum 1.30 metres wide).
+     </p>
+    </li>
+    <li>
+     <strong>
+      Disabled vehicles
+     </strong>
+     <p>
+      Motorised disabled vehicles must be equipped with an insurance plate or sticker.
+     </p>
+    </li>
+    <li>
+     <strong>
+      Special mopeds
+     </strong>
+     <p>
+      This group is tricky in that it is determined per vehicle type whether the group includes special mopeds,
+                such as Segways and BSO buses (Stints). These vehicles must also be equipped with an insurance plate or
+                sticker.
+     </p>
+    </li>
+    <li>
+     <strong>
+      Trailers with a maximum authorised mass of 750 kg (or less)
+     </strong>
+     <p>
+      These trailers do not have their own registration number, but must have a white number plate with the
+                same registration number as the towing vehicle.
+     </p>
+    </li>
+   </ul>
+   <div class="image-container">
+    <figure>
+     <img alt="Image 1" src="https://static.wixstatic.com/media/4b688f_e12cb28c5a0c444493a178ce7644fa88~mv2.jpg">
+      <figcaption>
+       <em>
+        A breath test is used to determine alcohol use. You may not refuse this test.
+       </em>
+      </figcaption>
+     </img>
+    </figure>
+    <figure>
+     <img alt="Image 2" src="https://static.wixstatic.com/media/4b688f_e511d54f7f5f4666a9e76ef9e51ae74a~mv2.jpg"/>
+     <figcaption>
+      <em>
+       A saliva test is used to determine drug use. You may not refuse this test either.
+      </em>
+     </figcaption>
+    </figure>
+   </div>
+   <h2>
+    Number plate features
+   </h2>
+   <p>
+    Each passenger car has a unique number plate consisting of letters and numbers or one letter and numbers. The
+        layout of these numbers and letters may change if all possible combinations have been used for one layout.
+   </p>
+   <p>
+    Every number plate must bear an approval mark. You may only operate vehicles with approved number plates. In the
+        event a number plate is lost, stolen, or severely damaged, you may not operate the vehicle until you obtain new
+        plates. Replacement number plates are provided with a duplicate code. This is an extra number above the first
+        dash on the number plate, which indicates how often the plates have been re-applied for.
+   </p>
+   <img alt="Image 1" class="custom-centered-image" src="https://static.wixstatic.com/media/4b688f_acddcac686ab4f2bbe14199ca9d6707d~mv2.jpeg"/>
+   <h2>
+    Different number plates per category
+   </h2>
+   <div class="container1">
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 1" src="https://static.wixstatic.com/media/4b688f_ea0617749d6c4683a9df5155ba475b33~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate motor vehicle
+      </strong>
+      <p>
+       This plate has a blue section featuring the EU logo and country code. Depending on the vehicle, one
+                    or two number plates are issued. These plates come in two sizes.
+      </p>
+     </div>
+    </div>
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 2" src="https://static.wixstatic.com/media/4b688f_dbb99844cee24ea992de244a0b22bcf4~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate heavy trailer
+      </strong>
+      <p>
+       This plate is for trailers with a maximum authorised mass above 750 kg. One plate is issued per
+                    vehicle.
+      </p>
+     </div>
+    </div>
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 3" src="https://static.wixstatic.com/media/4b688f_61f47ae4a9cd4007859e961e903c28a5~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate light trailer and load carrier
+      </strong>
+      <p>
+       This plate is for trailers with a maximum authorised mass of up to 750 kg and for load carriers on
+                    the tow bar, such as bicycle carriers. This has the same registration number as the towing vehicle.
+      </p>
+     </div>
+    </div>
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 4" src="https://static.wixstatic.com/media/4b688f_6295cea090714deb8dcfdaaf70b3bff9~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate car dealership
+      </strong>
+      <p>
+       This plate is used by car dealerships and is mounted over the normal number plate during test drives.
+      </p>
+     </div>
+    </div>
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 5" src="https://static.wixstatic.com/media/4b688f_a0cc66aae74f4ff3a043ea9992928c27~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate taxi
+      </strong>
+      <p>
+       This plate is used by taxis.
+      </p>
+     </div>
+    </div>
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 6" src="https://static.wixstatic.com/media/4b688f_d3b17a4f9c0842f886e5ac4549afcc72~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate moped, speed pedelec, and brommobiel
+      </strong>
+      <p>
+       Depending on the vehicle, these plates come in two sizes: narrow or wide.
+      </p>
+     </div>
+    </div>
+    <div class="image-text-container">
+     <div class="image">
+      <img alt="Resim 7" src="https://static.wixstatic.com/media/4b688f_0c7ce78213b84c01979eed627dac8acb~mv2.jpg"/>
+     </div>
+     <div class="text">
+      <strong>
+       Number plate snorfiets
+      </strong>
+      <p>
+       Depending on the type of snorfiets, these plates come in two sizes: narrow or wide.
+      </p>
+     </div>
+    </div>
+   </div>
+   <h2>
+    Letters per category
+   </h2>
+   <p>
+    Each vehicle category except passenger cars has one or two initial letters:
+   </p>
+   <ul>
+    <li>
+     mopeds and snorfietsen with a D or F;
+    </li>
+    <li>
+     trailers weighing more than 750 kg with a W;
+    </li>
+    <li>
+     semi-trailers with an O;
+    </li>
+    <li>
+     light commercial vehicles (up to 3500 kg) with a V;
+    </li>
+    <li>
+     heavy commercial vehicles (lorries) with a B;
+    </li>
+    <li>
+     motorcycles with an M;
+    </li>
+    <li>
+     border traffic with the combination GV;
+    </li>
+    <li>
+     fast agricultural traffic T (towed vehicles and trailers L).
+    </li>
+   </ul>
+   <a class="custom-button" href="https://www.examtheorie.nl/fa-test-and-theory-menu" target="_blank">
+    Back to
+    overview
+   </a>
+   <script>
+    window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+   </script>
+  </img>
+ </body>
+</html>

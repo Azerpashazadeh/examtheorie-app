@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dikey Hat Örneği
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: "Trirong", serif;
+            line-height: 1.2;
+        }
+
+         html,
+      body {
+      overflow: hidden !important;
+      height: 100%;
+      margin: 0;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+        h1,
+        h2 {
+            color: #83B441;
+        }
+
+        h3 {
+            color: #000000;
+            margin-bottom: -8px;
+            margin-top: -8px;
+
+        }
+
+        .gh3 {
+            color: #83B441;
+            /* Kırmızı */
+        }
+
+        strong {
+            display: block;
+            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
+            margin-bottom: 10px;
+            /* Alttaki boşluk miktarını ayarlar */
+        }
+
+
+        .important-words1 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+
+        strong {
+            font-weight: bold;
+            margin-bottom: 0;
+            /* Alttaki boşluğu sıfırla */
+            margin-top: 0;
+            /* Üstteki boşluğu sıfırla */
+            display: inline;
+            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
+        }
+
+
+        .important-words2 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            margin-top: 20px;
+            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
+        }
+        .important-words7 {
+            display: flex; /* Yatayda hizalama sağlamak için flexbox */
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .important-words6 {
+            background-color: #E0EDCB;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            /* Flexbox kullanarak içeriği yan yana hizala */
+            justify-content: space-between;
+            /* Metin ve resim arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama için */
+        }
+
+        .important-words5 {
+            background-color: #E0EDCB;
+            /* Arka plan rengi */
+            padding: 15px;
+            margin-bottom: 20px;
+            /* "Merhaba" başlığını yatay olarak ortalar */
+        }
+
+        .important-words5 p {
+            margin-bottom: 20px;
+            /* Alt boşluk */
+
+        }
+
+        .images-container5 {
+            display: flex;
+            justify-content: space-between;
+            /* Resimler arasında eşit boşluk */
+            gap: 20px;
+            /* Resimler arası boşluk */
+            flex-wrap: wrap;
+            /* Ekranda sığmazsa resimleri alta taşır */
+            width: 100%;
+            /* Konteyner genişliği */
+            max-width: 100%;
+            /* Taşmaları önler */
+        }
+
+        .images-container5 figure {
+            margin: 0;
+            text-align: center;
+            /* Figcaption'ları ortalar */
+            flex: 1;
+            /* Esnek yapıda genişliği dengeler */
+        }
+
+        .images-container5 img {
+            width: 100%;
+            /* Resim genişliği */
+            height: auto;
+        }
+
+        .images-container5 figcaption {
+            font-size: 0.8em;
+            /* Figcaption yazı boyutu */
+            font-style: italic;
+            /* Yazıları italik yapar */
+            color: #333;
+            /* Figcaption yazı rengi */
+        }
+
+        /* Mobil versiyon için media query */
+        @media (max-width: 768px) {
+            .images-container5 {
+                flex-direction: column;
+                /* Mobilde resimleri dikey hizalar */
+                align-items: center;
+                /* Resimleri ortalar */
+                gap: 10px;
+                /* Mobilde daha küçük boşluk */
+            }
+
+            .images-container5 img {
+                width: 100%;
+                /* Mobilde resim genişliğini korur */
+            }
+        }
+
+        .important-words3 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 {
+            background-color: #FFECC5;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            /* Dikey hizalama */
+            justify-content: space-between;
+            /* Boşlukları kontrol eder */
+        }
+
+        .important-words4 img {
+            width: 90%;
+            height: auto;
+            margin-right: -202px;
+            margin-left: 10px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+
+        .important-words3 img {
+            width: 100%;
+            height: auto;
+            margin-right: -192px;
+
+            /* Resim ile metin arasındaki boşluk */
+            flex-shrink: 0;
+            /* Resmin daralmasını önler */
+        }
+
+        .text-content {
+            flex: 1;
+            /* Metin kısmının esnek olmasını sağlar */
+        }
+        p {
+            text-align: justify;
+        }
+
+        .image-content {
+            margin-right: 20px;
+            /* Metin ile resim arasında boşluk bırak */
+        }
+
+        .image-content img {
+            margin-top: 5px;
+            max-width: 80px;
+            /* Resmin boyutunu ayarla */
+            height: auto;
+            /* Oranlı olarak yüksekliği ayarla */
+        }
+
+
+        /* Küçük ekranlar için medya sorgusu */
+        @media screen and (max-width: 768px) {
+            .important-words3 img {
+                width: 100%;
+                /* Küçük ekranlarda resmin boyutunu biraz küçült */
+            }
+
+            .text-content {
+                min-width: 80px;
+                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
+            }
+        }
+
+
+
+
+
+
+
+        /* Masaüstü için 2 sütun düzeni */
+        .image-container8 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* İki sütun yapısı */
+            gap: 10px;
+        }
+
+        .image-block8 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-block8 img {
+            width: 100%;
+            max-width: 600px;
+            /* Resim genişliği sınırlanabilir */
+            height: auto;
+        }
+
+        .image-block8 figcaption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.6em;
+            /* Yazı boyutunu küçültmek için */
+        }
+
+        /* Açıklamalı resimler için yüksekliği ayarlama */
+        .image-block8:nth-child(6n) figcaption,
+        .image-block8:nth-child(8n) figcaption {
+            min-height: 20px;
+            /* Açıklamalar için minimum yükseklik */
+        }
+
+        /* Mobil görünüm için sıralama ayarı */
+        @media (max-width: 650px) {
+            .image-container8 {
+                grid-template-columns: 1fr;
+                /* Mobilde tek sütun */
+                grid-template-areas:
+                    "image1"
+                    "image5"
+                    "image2"
+                    "image6"
+                    "image3"
+                    "image7"
+                    "image4"
+                    "image8";
+                /* İstenilen sıralama */
+            }
+
+            /* Her resim bloğuna grid area tanımlaması */
+            .image-block8:nth-child(1) {
+                grid-area: image1;
+            }
+
+            .image-block8:nth-child(2) {
+                grid-area: image2;
+            }
+
+            .image-block8:nth-child(3) {
+                grid-area: image5;
+            }
+
+            .image-block8:nth-child(4) {
+                grid-area: image6;
+            }
+
+            .image-block8:nth-child(5) {
+                grid-area: image3;
+            }
+
+            .image-block8:nth-child(6) {
+                grid-area: image4;
+            }
+
+            .image-block8:nth-child(7) {
+                grid-area: image7;
+            }
+
+            .image-block8:nth-child(8) {
+                grid-area: image8;
+            }
+        }
+
+        .vertical-line1 {
+            width: 4px;
+            height: 60%;
+            background-color: #83B441;
+            position: absolute;
+            top: 28%;
+            left: 15px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .vertical-line2 {
+            width: 4px;
+            height: 100%;
+            background-color: #83B441;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
+        }
+
+        .important-words1 h2 {
+            color: #a70000;
+        }
+
+        .important-words2 h2 {
+            color: #a70000;
+        }
+
+        .important-words1 ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 20px;
+            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
+        }
+
+        .important-words1 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: 0px;
+            /* Sol boşluk, text-indent için */
+            text-indent: 0px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .important-words2 li {
+            margin-bottom: 1px;
+            /* Elemanlar arasındaki mesafeyi ayarlar */
+            padding-left: px;
+            /* Sol boşluk, text-indent için */
+            text-indent: -20px;
+            /* İkinci satırların hizalanması için */
+            list-style-position: inside;
+            /* Madde işaretinin içerde kalmasını sağlar */
+        }
+
+        .road-section {
+            margin-top: 30px;
+        }
+
+        .road-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .custom-image {
+            width: 100%;
+            height: auto;
+            max-width: 1500px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .image-container figure {
+            max-width: 48%;
+            margin: 0px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+
+        }
+
+        .image-container figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+
+        }
+
+        .image-container1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container1 figure {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .image-container1 figcaption {
+            font-size: 0.6em;
+            color: #000000;
+            margin-top: 5px;
+            text-align: center;
+            /* Yazıyı sol tarafa hizalar */
+        }
+
+        .dash-list {
+            list-style-type: none;
+            /* Varsayılan liste işaretçilerini kaldırır */
+            padding-left: 10px;
+            /* Sol iç boşluğu kaldırır */
+        }
+
+        .dash-list li {
+            position: relative;
+            /* Pozisyonlama için gerekli */
+            padding-left: 12px;
+            /* İşaretçi ile metin arasındaki boşluk */
+            margin-bottom: px;
+            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
+        }
+
+        .dash-list li::before {
+            content: "- ";
+            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
+            position: absolute;
+            /* Pozisyonu mutlak olarak ayarlamak */
+            left: 0;
+            /* Sol kenardan hizalama */
+            top: 0;
+            /* Üst kenardan hizalama */
+            color: black;
+            /* İşaretçi rengi (isteğe bağlı) */
+            font-size: 16px;
+            /* İşaretçi boyutu (isteğe bağlı) */
+        }
+
+        li strong {
+            display: block;
+            font-weight: bold;
+            margin-bottom: px;
+            /* Kalın yazı ile altındaki metin arasındaki mesafe */
+        }
+
+        li p {
+            margin: 0;
+            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
+            padding-left: 0px;
+            /* Altyazıyı biraz sağa kaydır */
+            font-size: 16px;
+            /* Altyazının boyutunu küçült */
+            color: #000000;
+            /* Altyazının rengini gri tonlarında yap */
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table thead th {
+            background-color: #E0EDCB;
+            color: #333;
+            padding: 12px;
+        }
+
+        table tbody td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tbody td.first-column {
+            background-color: #E0EDCB;
+            /* Sol sütun rengi */
+            font-weight: bold;
+            /* Yazıları kalın yapma */
+        }
+
+
+
+
+        @media (max-width: 650px) {
+            .image-container figure {
+                max-width: 100%;
+            }
+        }
+
+        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
+        .custom-centered-image {
+            display: block;
+            /* Resmi block element olarak ayarlar */
+            margin: 20px auto;
+            /* Ortalar ve üst-alt boşluk ekler */
+            width: 100%;
+            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
+            max-width: 100%;
+            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
+            height: auto;
+            /* Yüksekliği otomatik olarak ayarlar */
+        }
+
+        h3 {
+            margin-top: 20px;
+            /* Üstte 20 piksel boşluk bırakır */
+        }
+
+
+        /* CSS dosyası (style.css) */
+        .custom-button {
+            display: inline-block;
+            width: 140px;
+            height: 39px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 39px;
+            /* Düğme yüksekliğine göre yazıyı ortala */
+            text-decoration: none;
+            /* Bağlantı alt çizgisini kaldır */
+            border-radius: 9px;
+            /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease;
+            margin-top: 70px;
+            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+        }
+
+        .custom-button:hover {
+            background-color: blue;
+        }
+  </style>
+ </head>
+ <body>
+  <h1>
+   Stopping and parking - part 2
+  </h1>
+  <h2>
+   Parking
+  </h2>
+  <p>
+   If you are waiting not due to a traffic situation, and you are also not loading or unloading goods or picking up
+        or dropping off passengers, this falls under parking. For example, if you are waiting for a passenger, you are
+        parking until this passenger is actually getting into the vehicle. If you stop at the side of the road to make a
+        phone call, check a map, ask for directions, or read a message, this all falls under parking.
+  </p>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Parking lane
+   </h3>
+   <p>
+    Paved strip located along the carriageway intended for stationary or parked vehicles.
+   </p>
+   <h3>
+    Parking
+   </h3>
+   <p>
+    Stopping a vehicle for a reason other than the immediate dropping off or picking up passengers or the
+            immediate loading and unloading of goods, and for longer than either of the aforementioned would require.
+   </p>
+  </div>
+  <p>
+   Parking is prohibited in areas where waiting is prohibited. Parking is also prohibited in the following areas:
+  </p>
+  <ul>
+   <li>
+    <p>
+     Within five metres of an intersection.
+    </p>
+   </li>
+   <li>
+    <p>
+     For an entrance or exit construction, even if this is your own exit.
+    </p>
+   </li>
+   <li>
+    <p>
+     Outside the built-up area on the carriageway of a priority road. Parking in the verge is allowed.
+    </p>
+   </li>
+   <li>
+    <p>
+     Next to a broken yellow line, usually found on kerbs.
+    </p>
+   </li>
+   <li>
+    <p>
+     Next to another parked vehicle which means you are double parked.
+    </p>
+   </li>
+   <li>
+    <p>
+     In a parking lot indicated by signs with a P, you may not park outside the parking spaces, if these
+                spaces are there.
+    </p>
+   </li>
+   <li>
+    <p>
+     Outside the parking spaces within an erf.
+    </p>
+   </li>
+  </ul>
+  <div class="important-words7">
+   <div class="image-content">
+    <img alt="Licence Image" src="https://static.wixstatic.com/media/4b688f_ffa31cf4f67843c4989fc2aed4313114~mv2.png"/>
+   </div>
+   <div class="text-content">
+    <p>
+     Parking lots with indicated parking spaces are usually indicated with the E-4 sign. In that case,
+                parking outside of the parking spaces is prohibited.
+    </p>
+   </div>
+  </div>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_3a352dbb36e2435aa8fd8cd4db6f0e86~mv2.jpg"/>
+     <figcaption>
+      You are not allowed to park next to a broken yellow line. Stopping to load or unload goods
+                    or to pick up or drop off passengers is allowed.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_f610be32c2bf4f08bd1a1cf28771c15e~mv2.jpg"/>
+     <figcaption>
+      Parking in front of an exit is not permitted. Stopping for loading or unloading, or for
+                    dropping off or picking up passengers is allowed.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   In some areas, parking may be subject to certain conditions. For example, only certain vehicles may be allowed to
+        park, or parking may only be allowed during certain timeframes. A parking permit may be required to park in some
+        areas. At sign E-7 (loading and unloading), parking is not allowed at all. Even though there is a P on the sign.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_92760a96f08e495d889014a4e03e0d8d~mv2.png"/>
+     <figcaption>
+      E-9
+                    Only drivers with a parking permit are allowed to park in this zone.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_7b7e75d4e8744a079226efac1e18a8ac~mv2.png"/>
+     <figcaption>
+      E-8
+                    Only lorry drivers are allowed to park here
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_a45b604d85274b3fb65939771fcdffb6~mv2.png"/>
+     <figcaption>
+      E-4
+                    Parking is only allowed within the given timeframes.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_3b53740f5b134496b81cd94b9f733218~mv2.png"/>
+     <figcaption>
+      E-7
+                    Parking is not allowed. You are allowed to load or unload goods, or drop off or pick up passengers
+                    here.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <p>
+   The E-1 sign prohibits parking on the side of the carriageway where the sign is placed. If designed as a zone
+        sign, parking is prohibited on both sides of the carriageway throughout the entire zone. In this case, parking
+        is still allowed in areas intended for this purpose, such as parking spaces, car parks, and the verge.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_d577326ef1cb4b2583332e91a936c43f~mv2.png"/>
+     <figcaption>
+      E-1
+                    No parking on the side of the carriageway where the sign is placed.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_fecec9d2cf5b46bd84fb601ba4a99715~mv2.png"/>
+     <figcaption>
+      E-1 zone sign
+                    No parking on both sides of the carriageway within the entire zone.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <div class="important-words2">
+   <p>
+    Warning!
+    <br/>
+    Waiting or parking where it causes hinder or danger to other road users is prohibited.
+   </p>
+  </div>
+  <div class="important-words2">
+   <div class="vertical-line2">
+   </div>
+   <h3>
+    Three-wheeled motor vehicle
+   </h3>
+   <p>
+    Vehicle that according to the vehicle registration register is a three-wheeled motor carriage. For example a
+            trike. This is not a motor vehicle with limited speed or a disabled vehicle. Contrary to what the name
+            suggests, a vehicle registered in this way may even have four wheels instead of three. A quad-bike is an
+            example of a three-wheeled motor vehicle.
+   </p>
+   <h3>
+    Motorcycle
+   </h3>
+   <p>
+    Two-wheeled motor vehicle with or without sidecar or trailer.
+   </p>
+  </div>
+  <h2>
+   Parking disc zone
+  </h2>
+  <p>
+   Road signs are often used to indicate parking disc zones, where parking is only allowed in designated parking
+        spaces marked with a P road sign. Parking is also allowed in blue-line areas.
+  </p>
+  <p>
+   Drivers who park a motor vehicle with more than two wheels alongside a blue line must leave a clearly visible
+        parking disc behind their windscreen. It is not allowed to put it behind the rear window or side windows.
+  </p>
+  <p>
+   The parking disc must indicate at what time you started parking. This time may be rounded up to the nearest hour
+        or half hour. Amending the time on the parking disc later is prohibited. Remaining parked after the maximum
+        allowed parking time has expired is also prohibited.
+  </p>
+  <div class="images-container5">
+   <figure>
+    <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_4d77ce7c0aff4ecc9b53d552875021aa~mv2.jpg"/>
+    <figcaption>
+     You may only park next to this blue line if you use a set parking disc.
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_ae7a3a5241314d10873e9d41c3ac5db8~mv2.png"/>
+    <figcaption>
+     On the left: a parking disc.
+                On the right: the E-10 zone sign with a parking time limit of two hours.
+    </figcaption>
+   </figure>
+  </div>
+  <h2>
+   Disabled parking space
+  </h2>
+  <p>
+   Disabled parking spaces are intended to ensure that persons with limited mobility can park as close as possible
+        to certain locations. Parking in these spaces is only allowed if related to the transport of a person with a
+        disability.
+  </p>
+  <p>
+   You can park in a disabled parking space with the following vehicles:
+  </p>
+  <ul>
+   <li>
+    <p>
+     A disabled vehicle.
+    </p>
+   </li>
+   <li>
+    <p>
+     A motor vehicle on more than two wheels in which a valid disabled parking card is clearly visible.
+    </p>
+   </li>
+   <li>
+    <p>
+     A vehicle for which this disabled parking space is reserved. This is usually done by means of a
+                supplementary plate with the registration number of the vehicle on it.
+    </p>
+   </li>
+  </ul>
+  <p>
+   Maximum allowed parking times are indicated on road signs. When parking in areas marked by these signs, a clearly
+        visible parking disc in the windscreen is required. A blue line alongside the parking area is not required.
+  </p>
+  <div class="images-container5">
+   <figure>
+    <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_5a6cb3eca832411d858a0cff67b71892~mv2.png"/>
+    <figcaption>
+     E-6
+                Disabled parking space
+    </figcaption>
+   </figure>
+   <figure>
+    <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_f71b8d3aa9444969b45923a15892b532~mv2.png"/>
+    <figcaption>
+     E-6 with registration number on supplementary plate
+                Disabled parking space reserved for the mentioned vehicle.
+    </figcaption>
+   </figure>
+  </div>
+  <div class="important-words6">
+   <div class="text-content">
+    <p>
+     Drivers of disabled vehicles, or with a valid disabled parking card, are allowed to park in more places
+                than other drivers.
+    </p>
+    <ul>
+     <li>
+      <p>
+       Within a parking disc zone they are allowed to park anywhere and do not have to use a parking
+                        disc.
+      </p>
+     </li>
+     <li>
+      <p>
+       They can park for a maximum of 3 hours next to a broken yellow line, within an erf outside the
+                        parking spaces and at sign E-1. In this case, a parking disc must be set.
+      </p>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <h2>
+   Placing bicycles, mopeds, speed pedelecs, and snorfietsen
+  </h2>
+  <p>
+   This does not relate to parking. If you put these vehicles somewhere, we are talking about “placing”. The rules
+        and signs about parking say nothing about placing.
+  </p>
+  <p>
+   You can use the pavement, footpath or verge to place these vehicles. In addition, you may also use places that
+        are clearly intended for placing bicycles, speed pedelecs, snorfietsen, and mopeds.
+  </p>
+  <p>
+   Because brommobielen must follow the traffic rules of motor vehicles, the rules for parking do apply to
+        brommobielen. They must follow the same rules as drivers of passenger cars and may not, for example, park on the
+        pavement.
+  </p>
+  <div>
+   <div class="images-container5">
+    <figure>
+     <img alt="Warning side-airbag malfunction" src="https://static.wixstatic.com/media/4b688f_36d15fe861e4438394b3dd736ea12bd0~mv2.png"/>
+     <figcaption>
+      E-3
+                    Forbidden to place bicycles, speed pedelecs and mopeds on this side of the road.
+     </figcaption>
+    </figure>
+    <figure>
+     <img alt="Seat belt warning light" src="https://static.wixstatic.com/media/4b688f_7097b982c2b54f1a853389de794ebcc2~mv2.png"/>
+     <figcaption>
+      E-3 zone sign
+                    Forbidden to place bicycles, speed pedelecs and mopeds within this zone.
+     </figcaption>
+    </figure>
+   </div>
+  </div>
+  <a class="custom-button" href="https://www.examtheorie.nl/ru-test-and-theory-menu" target="_blank">
+   Back to
+    overview
+  </a>
+  <script>
+   window.addEventListener("scroll", () => {
+      window.scrollTo(0, 0);
+    });
+
+
+    // Sağ tıklamayı engelle
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+
+    // Metin seçmeyi engelle
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    function sendHeight() {
+      const target = document.querySelector(".custom-button");
+      if (!target) return;
+
+      const height = target.getBoundingClientRect().bottom;
+
+      // Post message ile dış sayfaya gönder
+      window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
+
+
+    }
+
+    window.onload = () => {
+      sendHeight();
+      setTimeout(sendHeight, 300);
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    };
+
+
+    // Tarayıcı yeniden boyutlandığında da yükseklik gönder
+    window.onresize = () => {
+      sendHeight();
+    };
+  </script>
+ </body>
+</html>
