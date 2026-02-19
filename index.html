@@ -2023,7 +2023,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('🔄 Auth event:', event);
 
     try {
-        if (event === 'SIGNED_IN' && session?.user) {
+        if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
             currentUser = session.user;
             if (window.location.hash) {
                 window.history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -2031,11 +2031,20 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons();
             updateNavbarUser();
-            closeModal('si');
-            closeModal('su');
+            if (event === 'SIGNED_IN') {
+                closeModal('si');
+                closeModal('su');
+            }
+
+        } else if (event === 'INITIAL_SESSION' && !session) {
+            // Oturum yok — misafir görünümü
+            currentUser      = null;
+            currentPlanId    = null;
+            accessibleGroups = [];
+            updateNavbarUser();
+            buildTestButtons();
 
         } else if (event === 'SIGNED_OUT') {
-            // Manuel signOut zaten UI'ı güncelledi; tekrar yapmayı önle
             if (currentUser !== null) {
                 currentUser      = null;
                 currentPlanId    = null;
@@ -2086,20 +2095,17 @@ document.querySelectorAll('.modal-bg').forEach(bg => {
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
-    await checkAuth();
+    // Not: Auth kontrolü onAuthStateChange → INITIAL_SESSION eventi ile yapılıyor
 
     // Auth guard'dan yönlendirildiyse otomatik modal/paywall aç
     const params = new URLSearchParams(window.location.search);
     const reason = params.get('reason');
     if (reason === 'login') {
-        // Giriş yapılmamış — Sign In modalını aç
         setTimeout(() => openModal('si'), 600);
     } else if (reason === 'plan') {
-        // Plan yok — Paywall'u aç
         const group = window.location.href.includes('test-') ? 'tests' : 'theory';
         setTimeout(() => showPaywall(group), 600);
     }
-    // URL'yi temizle (reason parametresini kaldır)
     if (reason) {
         const clean = window.location.pathname;
         window.history.replaceState(null, '', clean);
