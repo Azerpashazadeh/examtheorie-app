@@ -1,0 +1,26 @@
+name: HTML Dosyalarına Auth Guard Ekle
+
+on:
+  workflow_dispatch: # Bu butonla manuel çalıştırmanı sağlar
+
+jobs:
+  inject-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repoyu Kopyala
+        uses: actions/checkout@v4
+
+      - name: Scripti HTML Dosyalarına Ekle
+        run: |
+          # Klasördeki tüm .html dosyalarını bul ve </body> öncesine scripti ekle
+          # Eğer script zaten varsa tekrar eklememesi için bir kontrol yapar
+          find . -name "*.html" -exec sed -i '/<script src="https:\/\/oefenen\.examtheorie\.nl\/auth-guard\.js"><\/script>/d' {} +
+          find . -name "*.html" -exec sed -i 's/<\/body>/<script src="https:\/\/oefenen\.examtheorie\.nl\/auth-guard\.js"><\/script>\n<\/body>/g' {} +
+
+      - name: Değişiklikleri Kaydet ve Pushla
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add .
+          git commit -m "Tüm HTML dosyalarına auth-guard.js eklendi" || echo "Değişiklik yok"
+          git push
