@@ -1,0 +1,38 @@
+name: Repo Birlestirme Botu
+on: workflow_dispatch
+
+jobs:
+  merge-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ana Repoyu Hazırla (examtheorie-app)
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          path: main_repo
+
+      - name: Git Ayarları
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+
+      - name: Sayfa1 Reposunu Kopyala
+        run: |
+          git clone https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/${{ github.repository_owner }}/sayfa1.git sayfa1_temp
+          # Gizli git dosyaları hariç her şeyi ana repoya kopyala
+          rsync -av --exclude='.git' sayfa1_temp/ main_repo/
+          rm -rf sayfa1_temp
+
+      - name: İngilizce-Teori Reposunu Kopyala
+        run: |
+          git clone https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/${{ github.repository_owner }}/ingilizce-teori.git teori_temp
+          # Gizli git dosyaları hariç her şeyi ana repoya kopyala
+          rsync -av --exclude='.git' teori_temp/ main_repo/
+          rm -rf teori_temp
+
+      - name: Değişiklikleri Push Et
+        run: |
+          cd main_repo
+          git add .
+          git commit -m "Sayfa1 ve Ingilizce-Teori dosyaları başarıyla birleştirildi" || echo "Değişiklik yok"
+          git push origin main
