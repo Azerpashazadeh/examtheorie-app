@@ -1634,7 +1634,14 @@ document.addEventListener('keydown', e => {
 ═══════════════════════════════════════════════════════ */
 const supabaseUrl = 'https://rvbcsakzfadhtlfeigus.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
-const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
+    auth: {
+        storage: window.localStorage,
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+    }
+});
 
 let currentUser = null;
 let currentPlanId = null;        // Kullanıcının aktif plan id'si
@@ -1783,53 +1790,34 @@ async function signInWithGoogle() {
 
 /* ─── ÇIKIŞ ─── */
 async function signOut() {
-    // Butonu hemen devre dışı bırak — çift tıklamayı önle
-    const signinBtn = document.getElementById('signinBtn');
-    const mobSignin = document.getElementById('mobSigninBtn');
-    if (signinBtn) { signinBtn.disabled = true; signinBtn.style.opacity = '0.6'; }
-    if (mobSignin) { mobSignin.disabled = true; mobSignin.style.opacity = '0.6'; }
+    // Önce UI'ı hemen güncelle — gecikme hissini önler
+    currentUser      = null;
+    currentPlanId    = null;
+    accessibleGroups = [];
+    updateNavbarUser();
+    buildTestButtons();
 
-    try {
-        const { error } = await _supabase.auth.signOut();
-        if (error) throw error;
-    } catch (err) {
-        console.error('Sign out error:', err);
-    } finally {
-        // Supabase başarılı ya da başarısız — her durumda local state temizle
-        currentUser      = null;
-        currentPlanId    = null;
-        accessibleGroups = [];
-        Object.keys(localStorage).forEach(k => { if(k.startsWith('et_')) localStorage.removeItem(k); });
-        if (window.location.hash || window.location.search.includes('token')) {
-            window.history.replaceState(null, '', window.location.pathname);
-        }
-        // Butonu geri aç
-        if (signinBtn) { signinBtn.disabled = false; signinBtn.style.opacity = '1'; }
-        if (mobSignin) { mobSignin.disabled = false; mobSignin.style.opacity = '1'; }
-        updateNavbarUser();
-        buildTestButtons();
+    // Sonra Supabase oturumunu kapat
+    await _supabase.auth.signOut();
+
+    // localStorage'daki et_ anahtarlarını temizle
+    Object.keys(localStorage).forEach(k => { if (k.startsWith('et_')) localStorage.removeItem(k); });
+
+    // URL'den token/hash kalıntısı varsa temizle
+    if (window.location.hash || window.location.search.includes('token')) {
+        window.history.replaceState(null, '', window.location.pathname);
     }
 }
 
 /* ─── AUTH KONTROLÜ ─── */
 async function checkAuth() {
-    // getSession yerine refreshSession kullan — token süre dolmuşsa yeniler
-    const { data: { session }, error } = await _supabase.auth.getSession();
-    
+    const { data: { session } } = await _supabase.auth.getSession();
     if (session?.user) {
         currentUser = session.user;
         await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
         buildTestButtons();
     } else {
-        // Session yoksa token refresh dene
-        const { data: refreshData } = await _supabase.auth.refreshSession();
-        if (refreshData?.session?.user) {
-            currentUser = refreshData.session.user;
-            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-            buildTestButtons();
-        } else {
-            currentUser = null;
-        }
+        currentUser = null;
     }
     updateNavbarUser();
 }
@@ -1966,8 +1954,7 @@ window.addEventListener('message', async function(e) {
 /* ─── AUTH STATE DEĞİŞİKLİKLERİ ─── */
 _supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('🔄 Auth event:', event);
-
-    if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION' || event === 'TOKEN_REFRESHED') && session?.user) {
+    if (event === 'SIGNED_IN' && session?.user) {
         currentUser = session.user;
         if (window.location.hash) {
             window.history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -1975,17 +1962,17 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
         await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
         buildTestButtons();
         updateNavbarUser();
-        // Sadece gerçek giriş yapıldıysa modalı kapat
-        if (event === 'SIGNED_IN') {
-            closeModal('si');
-            closeModal('su');
-        }
+        closeModal('si');
+        closeModal('su');
     } else if (event === 'SIGNED_OUT') {
-        currentUser      = null;
-        currentPlanId    = null;
-        accessibleGroups = [];
-        updateNavbarUser();
-        buildTestButtons();
+        // signOut() zaten UI'ı güncelledi; sadece emin olmak için kontrol et
+        if (currentUser !== null) {
+            currentUser      = null;
+            currentPlanId    = null;
+            accessibleGroups = [];
+            updateNavbarUser();
+            buildTestButtons();
+        }
     }
 });
 
@@ -2014,22 +2001,23 @@ document.querySelectorAll('.modal-bg').forEach(bg => {
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
-
-    // onAuthStateChange INITIAL_SESSION eventi auth'u halleder
-    // checkAuth sadece fallback olarak kalır
     await checkAuth();
 
     // Auth guard'dan yönlendirildiyse otomatik modal/paywall aç
     const params = new URLSearchParams(window.location.search);
     const reason = params.get('reason');
     if (reason === 'login') {
-        setTimeout(() => openModal('si'), 800);
+        // Giriş yapılmamış — Sign In modalını aç
+        setTimeout(() => openModal('si'), 600);
     } else if (reason === 'plan') {
+        // Plan yok — Paywall'u aç
         const group = window.location.href.includes('test-') ? 'tests' : 'theory';
-        setTimeout(() => showPaywall(group), 800);
+        setTimeout(() => showPaywall(group), 600);
     }
+    // URL'yi temizle (reason parametresini kaldır)
     if (reason) {
-        window.history.replaceState(null, '', window.location.pathname);
+        const clean = window.location.pathname;
+        window.history.replaceState(null, '', clean);
     }
 });
 </script>
