@@ -667,6 +667,7 @@
         }
         .user-chip.visible { display:flex; }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1634,14 +1635,52 @@ document.addEventListener('keydown', e => {
 ═══════════════════════════════════════════════════════ */
 const supabaseUrl = 'https://rvbcsakzfadhtlfeigus.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
+/* ═══════════════════════════════════════════════════════
+   SUPABASE — GÜÇLENDİRİLMİŞ YAPILANDIRMA
+═══════════════════════════════════════════════════════ */
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
     auth: {
-        storage: window.localStorage,
+        storage: localStorage,  // window.localStorage yerine localStorage
+        storageKey: 'et-supabase-auth-token', // Özel storage key
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
     }
 });
+
+// Session yönetimi için yardımcı fonksiyonlar
+async function getValidSession() {
+    // Önce mevcut session'ı kontrol et
+    const { data: { session }, error } = await _supabase.auth.getSession();
+    if (error) {
+        console.error('❌ Session getirme hatası:', error);
+        return null;
+    }
+    if (session?.user) {
+        return session;
+    }
+    return null;
+}
+
+async function refreshSessionIfNeeded() {
+    const { data: { session }, error } = await _supabase.auth.getSession();
+    if (error || !session) return null;
+
+    // Token expire olmuşsa refresh dene
+    const expiresAt = session.expires_at;
+    const now = Math.floor(Date.now() / 1000);
+
+    if (expiresAt && expiresAt < now + 300) { // 5 dakika içinde expire olacak
+        console.log('🔄 Token yenileniyor...');
+        const { data: { session: newSession }, error: refreshError } = await _supabase.auth.refreshSession();
+        if (refreshError) {
+            console.error('❌ Token yenileme hatası:', refreshError);
+            return null;
+        }
+        return newSession;
+    }
+    return session;
+}
 
 let currentUser = null;
 let currentPlanId = null;        // Kullanıcının aktif plan id'si
@@ -1789,34 +1828,88 @@ async function signInWithGoogle() {
 }
 
 /* ─── ÇIKIŞ ─── */
+/* ─── ÇIKIŞ — GÜÇLENDİRİLMİŞ ─── */
 async function signOut() {
-    // Önce UI'ı hemen güncelle — gecikme hissini önler
-    currentUser      = null;
-    currentPlanId    = null;
-    accessibleGroups = [];
-    updateNavbarUser();
-    buildTestButtons();
+    try {
+        console.log('🚪 Çıkış yapılıyor...');
 
-    // Sonra Supabase oturumunu kapat
-    await _supabase.auth.signOut();
+        // Önce UI'ı hemen güncelle — gecikme hissini önler
+        currentUser      = null;
+        currentPlanId    = null;
+        accessibleGroups = [];
+        updateNavbarUser();
+        buildTestButtons();
 
-    // localStorage'daki et_ anahtarlarını temizle
-    Object.keys(localStorage).forEach(k => { if (k.startsWith('et_')) localStorage.removeItem(k); });
+        // Supabase oturumunu kapat (force: true ile kesin çıkış)
+        const { error } = await _supabase.auth.signOut({ scope: 'global' });
+        if (error) {
+            console.error('❌ Supabase çıkış hatası:', error);
+            // Hata olsa bile devam et, local temizliği yap
+        }
 
-    // URL'den token/hash kalıntısı varsa temizle
-    if (window.location.hash || window.location.search.includes('token')) {
-        window.history.replaceState(null, '', window.location.pathname);
+        // Tüm localStorage'daki auth ve app verilerini temizle
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && (key.startsWith('et_') || key.includes('supabase') || key.startsWith('sb-'))) {
+                keysToRemove.push(key);
+            }
+        }
+        keysToRemove.forEach(k => {
+            localStorage.removeItem(k);
+            console.log('🗑️ Temizlendi:', k);
+        });
+
+        // URL'den token/hash kalıntısı varsa temizle
+        if (window.location.hash || window.location.search.includes('token') || window.location.search.includes('code=')) {
+            window.history.replaceState(null, '', window.location.pathname);
+        }
+
+        console.log('✅ Çıkış tamamlandı');
+
+    } catch (err) {
+        console.error('❌ Çıkış hatası:', err);
+        // Hata durumunda bile state'i temizle
+        currentUser = null;
+        currentPlanId = null;
+        accessibleGroups = [];
+        updateNavbarUser();
     }
 }
 
 /* ─── AUTH KONTROLÜ ─── */
+/* ─── AUTH KONTROLÜ — GÜÇLENDİRİLMİŞ ─── */
 async function checkAuth() {
-    const { data: { session } } = await _supabase.auth.getSession();
-    if (session?.user) {
-        currentUser = session.user;
-        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-        buildTestButtons();
-    } else {
+    try {
+        // Önce session'ı refresh dene (eğer expire olmuşsa)
+        const session = await refreshSessionIfNeeded();
+
+        if (session?.user) {
+            currentUser = session.user;
+            console.log('✅ Kullanıcı oturumu bulundu:', currentUser.email);
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons();
+        } else {
+            // Session yoksa localStorage'dan son çare olarak kontrol et
+            const storedSession = localStorage.getItem('et-supabase-auth-token');
+            if (storedSession) {
+                
+                // Biraz bekle ve tekrar dene (Supabase'in localStorage'dan okuması için)
+                await new Promise(r => setTimeout(r, 100));
+                const { data: { session: retrySession } } = await _supabase.auth.getSession();
+                if (retrySession?.user) {
+                    currentUser = retrySession.user;
+                    await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                    buildTestButtons();
+                } else {
+                    currentUser = null;
+                }
+            } else {
+                currentUser = null;
+            }
+        }
+    } catch (err) {
+        console.error('❌ Auth kontrolü hatası:', err);
         currentUser = null;
     }
     updateNavbarUser();
@@ -1951,28 +2044,50 @@ window.addEventListener('message', async function(e) {
     buildTestButtons();
 });
 
-/* ─── AUTH STATE DEĞİŞİKLİKLERİ ─── */
+/* ─── AUTH STATE DEĞİŞİKLİKLERİ — GÜÇLENDİRİLMİŞ ─── */
 _supabase.auth.onAuthStateChange(async (event, session) => {
-    console.log('🔄 Auth event:', event);
+    console.log('🔄 Auth event:', event, 'Session:', session ? 'Mevcut' : 'Yok');
+
     if (event === 'SIGNED_IN' && session?.user) {
         currentUser = session.user;
-        if (window.location.hash) {
-            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        console.log('✅ Giriş yapıldı:', currentUser.email);
+
+        // URL'den hash ve query parametrelerini temizle
+        if (window.location.hash || window.location.search.includes('code=') || window.location.search.includes('token')) {
+            window.history.replaceState(null, '', window.location.pathname);
         }
+
+        // Session'ı localStorage'a manuel olarak da kaydet (yedek)
+        try {
+            localStorage.setItem('et-last-session', JSON.stringify({
+                user: session.user,
+                timestamp: Date.now()
+            }));
+        } catch(e) {}
+
         await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
         buildTestButtons();
         updateNavbarUser();
         closeModal('si');
         closeModal('su');
+
     } else if (event === 'SIGNED_OUT') {
-        // signOut() zaten UI'ı güncelledi; sadece emin olmak için kontrol et
-        if (currentUser !== null) {
-            currentUser      = null;
-            currentPlanId    = null;
-            accessibleGroups = [];
-            updateNavbarUser();
-            buildTestButtons();
-        }
+        console.log('👋 Çıkış yapıldı (event)');
+        // Tüm state'i temizle
+        currentUser      = null;
+        currentPlanId    = null;
+        accessibleGroups = [];
+        updateNavbarUser();
+        buildTestButtons();
+
+    } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+        console.log('🔄 Token yenilendi');
+        currentUser = session.user;
+
+    } else if (event === 'USER_UPDATED' && session?.user) {
+        console.log('👤 Kullanıcı güncellendi');
+        currentUser = session.user;
+        updateNavbarUser();
     }
 });
 
@@ -1997,11 +2112,33 @@ document.querySelectorAll('.modal-bg').forEach(bg => {
     });
 });
 
-/* ─── INIT ─── */
+/* ─── INIT — GÜÇLENDİRİLMİŞ ─── */
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
+
+    // Auth kontrolü - önce localStorage'dan hızlıca kontrol et
+    const hasStoredSession = localStorage.getItem('et-supabase-auth-token');
+    if (hasStoredSession) {
+        console.log('📦 Stored session bulundu, auth kontrolü yapılıyor...');
+    }
+
     await checkAuth();
+
+    // Eğer giriş yapılmışsa ve session valid ise, token refresh kontrolü yap
+    if (currentUser) {
+        console.log('✅ Kullanıcı girişli, token kontrolü yapılıyor...');
+        // Periyodik token refresh kontrolü (her 5 dakikada bir)
+        setInterval(async () => {
+            if (currentUser) {
+                const refreshed = await refreshSessionIfNeeded();
+                if (!refreshed) {
+                    console.log('⚠️ Session refresh başarısız, çıkış yapılıyor...');
+                    await signOut();
+                }
+            }
+        }, 5 * 60 * 1000); // 5 dakika
+    }
 
     // Auth guard'dan yönlendirildiyse otomatik modal/paywall aç
     const params = new URLSearchParams(window.location.search);
