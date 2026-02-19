@@ -1851,31 +1851,23 @@ function openTheoryLink(url) {
     if (!currentUser) { openModal('si'); return; }
     if (!canAccess('theory')) { showPaywall('theory'); return; }
 
-    // Dile göre URL'yi dinamik olarak güncelle
-    // EN: /ingilizce-teori/code-of-conduct-1-1.html
-    // TR: /ingilizce-teori/tr-code-of-conduct-1-1.html
-    // NL: /ingilizce-teori/nl-code-of-conduct-1-1.html
-    // AR: /ingilizce-teori/ar-code-of-conduct-1-1.html
+    // URL yapısı: https://oefenen.examtheorie.nl/code-of-conduct-1-1.html
+    // TR için:    https://oefenen.examtheorie.nl/tr-code-of-conduct-1-1.html
+    // NL için:    https://oefenen.examtheorie.nl/nl-code-of-conduct-1-1.html
+    // AR için:    https://oefenen.examtheorie.nl/ar-code-of-conduct-1-1.html
+
     const lang = currentLang || 'en';
     let finalUrl = url;
 
-    if (lang !== 'en') {
-        // URL'den dosya adını al ve önüne dil kodu ekle
-        finalUrl = url.replace(
-            /\/ingilizce-teori\/((?:tr-|nl-|ar-)?.+\.html)$/,
-            `/ingilizce-teori/${lang}-$1`
-        );
-        // Eğer zaten bir dil öneki varsa temizle, doğrusunu ekle
-        finalUrl = url.replace(
-            /\/ingilizce-teori\/((?:tr-|nl-|ar-)?)(.+\.html)$/,
-            `/ingilizce-teori/${lang}-$2`
-        );
+    // URL'den base ve dosya adını ayır
+    // Mevcut dil önekini temizle (tr-, nl-, ar-)
+    const cleanUrl = url.replace(/\/(tr-|nl-|ar-)([^/]+\.html)$/, '/$2');
+
+    if (lang === 'en') {
+        finalUrl = cleanUrl;
     } else {
-        // İngilizce için dil önekini kaldır (varsa)
-        finalUrl = url.replace(
-            /\/ingilizce-teori\/(?:tr-|nl-|ar-)(.+\.html)$/,
-            '/ingilizce-teori/$1'
-        );
+        // Dosya adının başına dil önekini ekle
+        finalUrl = cleanUrl.replace(/\/([^/]+\.html)$/, `/${lang}-$1`);
     }
 
     window.open(finalUrl, '_blank');
@@ -1993,6 +1985,23 @@ window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
     await checkAuth();
+
+    // Auth guard'dan yönlendirildiyse otomatik modal/paywall aç
+    const params = new URLSearchParams(window.location.search);
+    const reason = params.get('reason');
+    if (reason === 'login') {
+        // Giriş yapılmamış — Sign In modalını aç
+        setTimeout(() => openModal('si'), 600);
+    } else if (reason === 'plan') {
+        // Plan yok — Paywall'u aç
+        const group = window.location.href.includes('test-') ? 'tests' : 'theory';
+        setTimeout(() => showPaywall(group), 600);
+    }
+    // URL'yi temizle (reason parametresini kaldır)
+    if (reason) {
+        const clean = window.location.pathname;
+        window.history.replaceState(null, '', clean);
+    }
 });
 </script>
 </body>
