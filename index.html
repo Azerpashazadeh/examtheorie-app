@@ -169,7 +169,7 @@
             font-size:clamp(38px,7vw,80px); font-weight:900; line-height:1.08;
             margin-bottom:18px;
             background:linear-gradient(135deg,#fff 40%,var(--cyan));
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
         }
         body.ar .hero-title { font-family:'Noto Sans Arabic',serif; }
         .hero-slogan {
@@ -204,7 +204,7 @@
         .stat-n {
             font-size:clamp(36px,5vw,56px); font-weight:900; margin-bottom:8px;
             background:linear-gradient(135deg,var(--cyan),var(--blue));
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
         }
         .stat-l { font-size:14px; color:rgba(255,255,255,0.75); font-weight:500; }
 
@@ -347,7 +347,7 @@
             font-family:'Playfair Display',serif;
             font-size:clamp(28px,4vw,46px); font-weight:900;
             background:linear-gradient(135deg,#fff 40%,var(--cyan));
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
             margin-bottom:8px;
         }
         body.ar .pc-header h2 { font-family:'Noto Sans Arabic',serif; }
@@ -767,7 +767,7 @@
         <h1 class="hero-title" data-i18n="hero_title"></h1>
         <p  class="hero-slogan" data-i18n-html="hero_slogan"></p>
         <div class="hero-cta">
-            <button class="btn-hero-p" data-i18n="btn_start" onclick="openModal('su')"></button>
+            <button class="btn-hero-p" data-i18n="btn_start"></button>
             <button class="btn-hero-s" data-i18n="btn_prices" onclick="openPricing()"></button>
         </div>
     </div>
