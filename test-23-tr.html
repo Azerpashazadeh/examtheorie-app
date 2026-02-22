@@ -6794,6 +6794,29 @@ function lockQuizQuestionsS3() {
         }
     </script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
+
+<script>
+function notifyNewSystem() {
+    var urlParts = window.location.pathname.match(/test-(\d+)-(\w+)\.html/);
+    if (urlParts) {
+        var testNumber = parseInt(urlParts[1], 10);
+        var lang       = urlParts[2];
+        if (window.opener && !window.opener.closed) {
+            try {
+                window.opener.postMessage({
+                    action: 'testCompleted',
+                    testNumber: testNumber,
+                    lang: lang
+                }, 'https://oefenen.examtheorie.nl');
+                console.log('✅ Test ' + testNumber + ' (' + lang + ') bildirildi');
+            } catch (e) {
+                console.error('❌ PostMessage hatası:', e);
+            }
+        }
+    }
+}
+</script>
+
 </body>
 
 </html>
