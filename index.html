@@ -2073,8 +2073,53 @@ function canAccess(groupId) {
 /* ─── TEST AÇ — ERİŞİM KONTROLLÜ ─── */
 function openTest(testNum) {
     const lang = currentLang || 'en';
-    if (!currentUser) { openModal('si'); return; }
-    if (!canAccess('tests')) { showPaywall('tests'); return; }
+    
+    // Session'ı kontrol et ve gerekirse yenile
+    if (currentUser) {
+        // Session'ı kontrol et
+        _supabase.auth.getSession().then(({ data: sessionData, error: sessionError }) => {
+            if (sessionError || !sessionData?.session) {
+                console.warn('⚠️ Session expired before opening test, attempting refresh...');
+                _supabase.auth.refreshSession().then(({ data: refreshData, error: refreshError }) => {
+                    if (refreshError || !refreshData?.session?.user) {
+                        console.error('❌ Session refresh failed before test');
+                        currentUser = null;
+                        currentPlanId = null;
+                        accessibleGroups = [];
+                        updateNavbarUser();
+                        buildTestButtons();
+                        showNotification('Session expired. Please sign in again.', 'error');
+                        setTimeout(() => openModal('si'), 2000);
+                        return;
+                    }
+                    currentUser = refreshData.session.user;
+                    console.log('✅ Session refreshed before test');
+                    
+                    // Session yenilendikten sonra testi aç
+                    openTestAfterSessionCheck(testNum, lang);
+                });
+            } else {
+                // Session aktif, testi aç
+                currentUser = sessionData.session.user;
+                openTestAfterSessionCheck(testNum, lang);
+            }
+        });
+    } else {
+        // Kullanıcı giriş yapmamış
+        openModal('si');
+    }
+}
+
+function openTestAfterSessionCheck(testNum, lang) {
+    if (!currentUser) { 
+        openModal('si'); 
+        return; 
+    }
+    if (!canAccess('tests')) { 
+        showPaywall('tests'); 
+        return; 
+    }
+    console.log(`🚀 Opening test ${testNum} for user ${currentUser.id}`);
     window.open(`${QUIZ_BASE}/test-${testNum}-${lang}.html`, '_blank');
 }
 
@@ -2516,24 +2561,32 @@ window.addEventListener('focus', async () => {
 });
 
 /* ─── PERİYODİK SESSION CHECK ─── */
-// Her 2 dakikada bir session'ı kontrol et
+// Her 1 dakikada bir session'ı kontrol et (önce 2 dakikaydı)
 setInterval(async () => {
     if (currentUser) {
         try {
             const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
             if (sessionError || !sessionData?.session) {
-                console.warn('⚠️ Session expired during periodic check');
-                currentUser = null;
-                currentPlanId = null;
-                accessibleGroups = [];
-                updateNavbarUser();
-                buildTestButtons();
+                console.warn('⚠️ Session expired during periodic check, attempting refresh...');
+                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+                if (refreshError || !refreshData?.session?.user) {
+                    console.warn('⚠️ Session could not be refreshed during periodic check');
+                    currentUser = null;
+                    currentPlanId = null;
+                    accessibleGroups = [];
+                    updateNavbarUser();
+                    buildTestButtons();
+                    showNotification('Session expired. Please sign in again.', 'info');
+                } else {
+                    currentUser = refreshData.session.user;
+                    console.log('✅ Session refreshed during periodic check');
+                }
             }
         } catch (err) {
             console.error('❌ Periodic session check error:', err);
         }
     }
-}, 2 * 60 * 1000); // 2 dakika
+}, 1 * 60 * 1000); // 1 dakika
 
 /* ─── MODAL KAPANINCA FORMU TEMİZLE ─── */
 /* Modal dışına tıklayınca kapanmaz — sadece X butonu ile kapanır */
