@@ -2228,7 +2228,7 @@ async function saveProgressToSupabase(testNum, lang) {
 
 /* ─── POSTMESSAGE (Quiz tamamlandı) ─── */
 window.addEventListener('message', async function(e) {
-    if (e.origin !== 'https://azerpashazadeh.github.io') return;
+    if (e.origin !== 'https://azerpashazadeh.github.io' && e.origin !== 'https://oefenen.examtheorie.nl') return;
     const d = e.data || {};
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
     console.log(`📩 Test ${d.testNumber} (${d.lang}) tamamlandı`);
