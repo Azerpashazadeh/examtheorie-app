@@ -6537,20 +6537,14 @@ function lockQuizQuestionsS3() {
 
             // View Result override'ını dinamikleştir (testNumber = tn)
             var viewBtn = document.getElementById("viewResult");
-            if (viewBtn) {
-                var old = viewBtn.onclick;
-                viewBtn.onclick = function (ev) {
-                    if (old) old(ev);
-                    try {
-                        window.parent.postMessage(
-                            { action: "updateProgress", testNumber: TEST_NUMBER },
-                            ORIGIN,
-                        );
-                    } catch (e) { }
-                    // iyimser UI
-                    setCompleted();
-                };
-            }
+if (viewBtn) {
+    var old = viewBtn.onclick;
+    viewBtn.onclick = function (ev) {
+        if (old) old(ev);
+        setCompleted();
+        notifyNewSystem();
+    };
+}
         })();
 
 

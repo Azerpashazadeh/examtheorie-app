@@ -6521,13 +6521,8 @@ if (viewBtn) {
     var old = viewBtn.onclick;
     viewBtn.onclick = function (ev) {
         if (old) old(ev);
-        try {
-            window.parent.postMessage(
-                { action: "updateProgress", testNumber: TEST_NUMBER, lang: "en" },
-                "https://www.examtheorie.nl"
-            );
-        } catch (e) { }
         setCompleted();
+        notifyNewSystem();
     };
 }
         })();
