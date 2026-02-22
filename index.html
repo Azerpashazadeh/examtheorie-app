@@ -2276,6 +2276,7 @@ async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
 
 /* ─── POSTMESSAGE (Quiz tamamlandı) ─── */
 window.addEventListener('message', async function(e) {
+    // Esnek origin kontrolü - tüm examtheorie.nl subdomain'lerini kabul et
     const allowedOrigins = [
         'https://azerpashazadeh.github.io',
         'https://oefenen.examtheorie.nl',
@@ -2283,7 +2284,12 @@ window.addEventListener('message', async function(e) {
         'https://examtheorie.nl'
     ];
     
-    if (!allowedOrigins.includes(e.origin)) {
+    // Wildcard kontrol - examtheorie.nl içeren her origin'i kabul et
+    const isAllowed = allowedOrigins.includes(e.origin) || 
+                   e.origin.includes('examtheorie.nl') ||
+                   e.origin.includes('oefenen.examtheorie.nl');
+    
+    if (!isAllowed) {
         console.warn('❌ Blocked message from origin:', e.origin);
         return;
     }
