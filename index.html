@@ -1560,7 +1560,6 @@ const I18N = {
 
 /* ─── TEST PROGRESS ─── */
 const TOTAL_TESTS = 50;
-const LANG_OFFSET = { en: 1000, tr: 2000, nl: 3000, ar: 4000 };
 const QUIZ_BASE   = 'https://oefenen.examtheorie.nl';
 
 function lsKey(lang) { return `et_completed_${lang}`; }
@@ -1569,16 +1568,14 @@ function getCompleted(lang) {
     return JSON.parse(localStorage.getItem(lsKey(lang)) || '[]');
 }
 function markCompleted(lang, testNum) {
-    const offset  = LANG_OFFSET[lang] || 1000;
-    const stored  = getCompleted(lang);
-    const code    = offset + testNum;
-    if (!stored.includes(code)) {
-        stored.push(code);
+    const stored = getCompleted(lang);
+    if (!stored.includes(testNum)) {
+        stored.push(testNum);
         localStorage.setItem(lsKey(lang), JSON.stringify(stored));
     }
 }
 function isCompleted(lang, testNum) {
-    return getCompleted(lang).includes((LANG_OFFSET[lang] || 1000) + testNum);
+    return getCompleted(lang).includes(testNum);
 }
 function getNextTest(lang) {
     for (let i = 1; i <= TOTAL_TESTS; i++) {
@@ -2137,7 +2134,7 @@ async function fetchProgressFromSupabase() {
     const completedTests = (data || []).map(r => r.test_number);
     localStorage.setItem(
         `et_completed_${lang}`,
-        JSON.stringify(completedTests.map(n => LANG_OFFSET[lang] + n))
+        JSON.stringify(completedTests)
     );
     console.log(`✅ Progress (${lang}):`, completedTests);
 }
@@ -2233,11 +2230,19 @@ window.addEventListener('message', async function(e) {
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
     console.log(`📩 Test ${d.testNumber} (${d.lang}) tamamlandı`);
     markCompleted(d.lang, d.testNumber);
+    buildTestButtons();
+    // currentUser yoksa session'dan tekrar dene
+    if (!currentUser) {
+        const { data: sessionData } = await _supabase.auth.getSession();
+        if (sessionData?.session?.user) currentUser = sessionData.session.user;
+    }
     if (currentUser) {
         await saveProgressToSupabase(d.testNumber, d.lang);
         await fetchProgressFromSupabase();
+        buildTestButtons();
+    } else {
+        console.warn('⚠️ Test tamamlandı ama kullanıcı oturumu yok, Supabase\'e kaydedilemedi');
     }
-    buildTestButtons();
 });
 
 /* ─── AUTH STATE DEĞİŞİKLİKLERİ ─── */
