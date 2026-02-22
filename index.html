@@ -1601,9 +1601,9 @@ function buildTestButtons() {
         btn.textContent = i;
 
         if (isCompleted(lang, i)) {
-            btn.classList.add('completed');
-            btn.title = `Test ${i} — Completed ✓`;
-            btn.onclick = () => openTest(i); // tamamlanmışı tekrar açabilir
+            btn.classList.add('completed', 'locked');
+            btn.title   = `Test ${i} — Completed ✓`;
+            btn.onclick = null;
         } else if (i === next) {
             btn.classList.add('active-test');
             btn.title   = `Test ${i} — Click to start!`;
