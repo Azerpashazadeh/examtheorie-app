@@ -2276,11 +2276,22 @@ async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
 
 /* ─── POSTMESSAGE (Quiz tamamlandı) ─── */
 window.addEventListener('message', async function(e) {
-    if (e.origin !== 'https://azerpashazadeh.github.io' && e.origin !== 'https://oefenen.examtheorie.nl') return;
+    const allowedOrigins = [
+        'https://azerpashazadeh.github.io',
+        'https://oefenen.examtheorie.nl',
+        'https://www.examtheorie.nl',
+        'https://examtheorie.nl'
+    ];
+    
+    if (!allowedOrigins.includes(e.origin)) {
+        console.warn('❌ Blocked message from origin:', e.origin);
+        return;
+    }
+    
     const d = e.data || {};
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
     
-    console.log(`📩 Test ${d.testNumber} (${d.lang}) tamamlandı`);
+    console.log(`📩 Test ${d.testNumber} (${d.lang}) tamamlandı - Origin: ${e.origin}`);
     
     // Local storage'a kaydet
     markCompleted(d.lang, d.testNumber);
