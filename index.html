@@ -1711,6 +1711,10 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         detectSessionInUrl: true,
         flowType: 'implicit',
         lock: function(name, acquireTimeout, fn) { return fn(); },
+        // Session timeout'u uzat
+        maxSessionTimeout: 60 * 60 * 24 * 7, // 7 gün
+        // Token refresh frekansını artır
+        refreshTokenThreshold: 60 * 5, // 5 dakika
     }
 });
 
@@ -2206,21 +2210,68 @@ style.textContent = `
 document.head.appendChild(style);
 
 /* ─── PROGRESS — SUPABASE'E KAYDET ─── */
-async function saveProgressToSupabase(testNum, lang) {
+async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
-    const { error } = await _supabase
-        .from('user_progress')
-        .upsert({ user_id: currentUser.id, test_number: testNum, language: lang },
-                 { onConflict: 'user_id,test_number,language' });
-    if (error) { 
-        console.error('❌ Progress kaydedilemedi:', error);
-        // Kullanıcıya hata bildirimi göster
-        showNotification('Progress could not be saved. Please check your connection.', 'error');
-        return false; 
+    
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY = 1000; // 1 second
+    
+    try {
+        // Session'ı kontrol et ve gerekirse yenile
+        const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+        if (sessionError || !sessionData?.session) {
+            console.warn('⚠️ Session expired, attempting to refresh...');
+            // Session'ı yenilemeyi dene
+            const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+            if (refreshError || !refreshData?.session?.user) {
+                console.error('❌ Session refresh failed:', refreshError);
+                // Kullanıcıyı bilgilendir ve giriş yapmasını iste
+                showNotification('Session expired. Please sign in again.', 'error');
+                setTimeout(() => openModal('si'), 2000);
+                return false;
+            }
+            currentUser = refreshData.session.user;
+            console.log('✅ Session refreshed successfully');
+        }
+        
+        // Progress'i kaydet
+        const { error } = await _supabase
+            .from('user_progress')
+            .upsert({ user_id: currentUser.id, test_number: testNum, language: lang },
+                     { onConflict: 'user_id,test_number,language' });
+                     
+        if (error) { 
+            console.error('❌ Progress kaydedilemedi:', error);
+            
+            // Retry mekanizması
+            if (retryCount < MAX_RETRIES) {
+                console.log(`🔄 Retry ${retryCount + 1}/${MAX_RETRIES} for test ${testNum}`);
+                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (retryCount + 1)));
+                return await saveProgressToSupabase(testNum, lang, retryCount + 1);
+            }
+            
+            // Kullanıcıya hata bildirimi göster
+            showNotification('Progress could not be saved. Please check your connection.', 'error');
+            return false; 
+        }
+        
+        console.log(`✅ Test ${testNum} (${lang}) kaydedildi`);
+        return true;
+        
+    } catch (err) {
+        console.error('❌ Unexpected error saving progress:', err);
+        
+        // Retry mekanizması
+        if (retryCount < MAX_RETRIES) {
+            console.log(`🔄 Retry ${retryCount + 1}/${MAX_RETRIES} for test ${testNum}`);
+            await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (retryCount + 1)));
+            return await saveProgressToSupabase(testNum, lang, retryCount + 1);
+        }
+        
+        showNotification('Unexpected error occurred. Please try again.', 'error');
+        return false;
     }
-    console.log(`✅ Test ${testNum} (${lang}) kaydedildi`);
-    return true;
 }
 
 /* ─── POSTMESSAGE (Quiz tamamlandı) ─── */
@@ -2228,20 +2279,44 @@ window.addEventListener('message', async function(e) {
     if (e.origin !== 'https://azerpashazadeh.github.io' && e.origin !== 'https://oefenen.examtheorie.nl') return;
     const d = e.data || {};
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
+    
     console.log(`📩 Test ${d.testNumber} (${d.lang}) tamamlandı`);
+    
+    // Local storage'a kaydet
     markCompleted(d.lang, d.testNumber);
     buildTestButtons();
-    // currentUser yoksa session'dan tekrar dene
+    
+    // Session'ı kontrol et
     if (!currentUser) {
-        const { data: sessionData } = await _supabase.auth.getSession();
-        if (sessionData?.session?.user) currentUser = sessionData.session.user;
+        console.log('🔄 Kullanıcı sessionı yok, kontrol ediliyor...');
+        const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+        if (sessionError) {
+            console.error('❌ Session alınamadı:', sessionError);
+            showNotification('Please sign in to save your progress.', 'info');
+            setTimeout(() => openModal('si'), 2000);
+            return;
+        }
+        if (sessionData?.session?.user) {
+            currentUser = sessionData.session.user;
+            console.log('✅ Session bulundu, kullanıcı güncellendi');
+        } else {
+            console.warn('⚠️ Session bulunamadı');
+            showNotification('Please sign in to save your progress.', 'info');
+            setTimeout(() => openModal('si'), 2000);
+            return;
+        }
     }
-    if (currentUser) {
-        await saveProgressToSupabase(d.testNumber, d.lang);
+    
+    // Supabase'e kaydet
+    const saved = await saveProgressToSupabase(d.testNumber, d.lang);
+    if (saved) {
+        // Başarılı kayıttan sonra progress'i yeniden çek
         await fetchProgressFromSupabase();
         buildTestButtons();
+        showNotification(`Test ${d.testNumber} completed successfully!`, 'success');
     } else {
-        console.warn('⚠️ Test tamamlandı ama kullanıcı oturumu yok, Supabase\'e kaydedilemedi');
+        console.warn('⚠️ Supabase kaydı başarısız oldu, local storage kullanılıyor');
+        showNotification('Progress saved locally. Will sync when you sign in.', 'info');
     }
 });
 
@@ -2320,7 +2395,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
 
 /* ─── SEKMEYE DÖNÜNCE GÜNCELLE ─── */
 let lastFocusUpdate = 0;
-const FOCUS_THROTTLE = 5000; // 5 saniye
+const FOCUS_THROTTLE = 3000; // 3 saniyaya düşür
 
 window.addEventListener('focus', async () => {
     const now = Date.now();
@@ -2332,6 +2407,25 @@ window.addEventListener('focus', async () => {
     
     if (currentUser) {
         try {
+            // Session'ı kontrol et
+            const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+            if (sessionError || !sessionData?.session) {
+                console.warn('⚠️ Session expired on focus, attempting refresh...');
+                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+                if (refreshError || !refreshData?.session?.user) {
+                    console.error('❌ Session refresh failed on focus');
+                    currentUser = null;
+                    currentPlanId = null;
+                    accessibleGroups = [];
+                    updateNavbarUser();
+                    buildTestButtons();
+                    showNotification('Session expired. Please sign in again.', 'info');
+                    return;
+                }
+                currentUser = refreshData.session.user;
+                console.log('✅ Session refreshed on focus');
+            }
+            
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons();
         } catch (err) {
@@ -2341,6 +2435,26 @@ window.addEventListener('focus', async () => {
         buildTestButtons();
     }
 });
+
+/* ─── PERİYODİK SESSION CHECK ─── */
+// Her 2 dakikada bir session'ı kontrol et
+setInterval(async () => {
+    if (currentUser) {
+        try {
+            const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+            if (sessionError || !sessionData?.session) {
+                console.warn('⚠️ Session expired during periodic check');
+                currentUser = null;
+                currentPlanId = null;
+                accessibleGroups = [];
+                updateNavbarUser();
+                buildTestButtons();
+            }
+        } catch (err) {
+            console.error('❌ Periodic session check error:', err);
+        }
+    }
+}, 2 * 60 * 1000); // 2 dakika
 
 /* ─── MODAL KAPANINCA FORMU TEMİZLE ─── */
 /* Modal dışına tıklayınca kapanmaz — sadece X butonu ile kapanır */
