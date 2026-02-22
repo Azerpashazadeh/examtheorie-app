@@ -1,20 +1,7 @@
 import os
+import re
 
-old_code = """var viewBtn = document.getElementById("viewResult");
-            if (viewBtn) {
-                var old = viewBtn.onclick;
-                viewBtn.onclick = function (ev) {
-                    if (old) old(ev);
-                    try {
-                        window.parent.postMessage(
-                            { action: "updateProgress", testNumber: TEST_NUMBER, lang: "en" },
-                            "https://www.examtheorie.nl"
-                        );
-                    } catch (e) { }
-                    setCompleted();
-                };
-            }"""
-
+# Yeni, tertemiz buton kodumuz
 new_btn_code = """var viewBtn = document.getElementById("viewResult");
 if (viewBtn) {
     var old = viewBtn.onclick;
@@ -25,39 +12,31 @@ if (viewBtn) {
     };
 }"""
 
-notify_func = """
-<script>
-function notifyNewSystem() {
-    var urlParts = window.location.pathname.match(/test-(\d+)-(\w+)\.html/);
-    if (urlParts) {
-        var testNumber = parseInt(urlParts[1], 10);
-        var lang       = urlParts[2];
-        if (window.opener && !window.opener.closed) {
-            try {
-                window.opener.postMessage({
-                    action: 'testCompleted',
-                    testNumber: testNumber,
-                    lang: lang
-                }, 'https://oefenen.examtheorie.nl');
-                console.log('✅ Test ' + testNumber + ' (' + lang + ') bildirildi');
-            } catch (e) {
-                console.error('❌ PostMessage hatası:', e);
-            }
-        }
-    }
-}
-</script>
-"""
-
 for root, dirs, files in os.walk("."):
     for file in files:
+        # test- ile başlayan, .html olan ve test-1-en.html OLMAYANLAR
         if file.startswith("test-") and file.endswith(".html") and file != "test-1-en.html":
             file_path = os.path.join(root, file)
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-            if old_code in content:
-                content = content.replace(old_code, new_btn_code)
-            if "function notifyNewSystem()" not in content:
-                content = content.replace("</body>", notify_func + "\n</body>")
-            with open(file_path, 'w', encoding='utf-8') as f:
-                f.write(content)
+            
+            # Eğer notifyNewSystem çağrısı zaten varsa, bu dosya güncellenmiştir, atla.
+            if "notifyNewSystem();" in content:
+                continue
+
+            # REGEX AÇIKLAMASI:
+            # Başlangıç: var viewBtn = document.getElementById("viewResult");
+            # Ara: Herhangi bir karakter (satır atlamaları dahil)
+            # Bitiş: setCompleted(); followed by }; followed by }
+            # Not: Boşluklar ( \s* ) her iki durumda da tolere edilir.
+            pattern = r'var viewBtn = document\.getElementById\("viewResult"\);.*?\n\s+setCompleted\(\);\s*};\s*}'
+            
+            # re.DOTALL sayesinde satır atlamalarını da kapsar
+            new_content = re.sub(pattern, new_btn_code, content, flags=re.DOTALL)
+
+            if new_content != content:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(new_content)
+                print(f"BAŞARIYLA GÜNCELLENDİ: {file_path}")
+            else:
+                print(f"Eşleşme bulunamadı (boşluk farkı olabilir): {file_path}")
