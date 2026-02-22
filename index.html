@@ -2218,8 +2218,10 @@ async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
     const RETRY_DELAY = 1000; // 1 second
     
     try {
-        // Session'ı kontrol et ve gerekirse yenile
+        // Session'ı her seferinde yeniden kontrol et
+        console.log(`🔄 Session kontrol ediliyor - Test ${testNum}`);
         const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+        
         if (sessionError || !sessionData?.session) {
             console.warn('⚠️ Session expired, attempting to refresh...');
             // Session'ı yenilemeyi dene
@@ -2233,9 +2235,16 @@ async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
             }
             currentUser = refreshData.session.user;
             console.log('✅ Session refreshed successfully');
+        } else {
+            // Session varsa kullanıcıyı güncelle (önemli!)
+            if (currentUser?.id !== sessionData.session.user.id) {
+                currentUser = sessionData.session.user;
+                console.log('🔄 User updated from session');
+            }
         }
         
         // Progress'i kaydet
+        console.log(`💾 Saving progress for user ${currentUser.id}, test ${testNum}, lang ${lang}`);
         const { error } = await _supabase
             .from('user_progress')
             .upsert({ user_id: currentUser.id, test_number: testNum, language: lang },
@@ -2315,12 +2324,19 @@ window.addEventListener('message', async function(e) {
         }
         if (sessionData?.session?.user) {
             currentUser = sessionData.session.user;
-            console.log('✅ Session bulundu, kullanıcı güncellendi');
+            console.log('✅ Session bulundu, kullanıcı güncellendi:', currentUser.id);
         } else {
             console.warn('⚠️ Session bulunamadı');
             showNotification('Please sign in to save your progress.', 'info');
             setTimeout(() => openModal('si'), 2000);
             return;
+        }
+    } else {
+        // Kullanıcı varsa yine de session kontrol et (sync problemi için)
+        const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+        if (!sessionError && sessionData?.session?.user && currentUser?.id !== sessionData.session.user.id) {
+            currentUser = sessionData.session.user;
+            console.log('🔄 Session sync edildi - User ID:', currentUser.id);
         }
     }
     
