@@ -1108,7 +1108,7 @@
         <div class="auth-msg" id="si-msg"></div>
         <form onsubmit="handleSignIn(event)">
             <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="si-email" class="f-inp" data-i18n-ph="f_email_ph" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="si-pass" class="f-inp" placeholder="••••••••" required></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="si-pass" class="f-inp" placeholder="••••••••" autocomplete="current-password" required></div>
             <div style="text-align:right;margin-top:-8px;margin-bottom:12px;">
                 <a onclick="showForgotPassword()" style="font-size:12px;color:rgba(255,255,255,0.6);cursor:pointer;text-decoration:underline;" data-i18n="forgot_pass">Forgot password?</a>
             </div>
@@ -1143,7 +1143,7 @@
         <form onsubmit="handleSignUp(event)">
             <div class="f-grp"><label class="f-lbl" data-i18n="f_name"></label><input type="text" id="su-name" class="f-inp" data-i18n-ph="f_name_ph" required></div>
             <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="su-email" class="f-inp" data-i18n-ph="f_email_ph" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" minlength="6" required></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" minlength="6" required></div>
             <button type="submit" class="btn-submit" id="su-btn" data-i18n="su_title"></button>
         </form>
         <div class="m-div" data-i18n="f_or"></div>
@@ -1161,8 +1161,8 @@
         <h2 class="m-title" data-i18n="np_title">Set New Password</h2>
         <div class="auth-msg" id="np-msg"></div>
         <form onsubmit="handleNewPassword(event)">
-            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" minlength="6" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" minlength="6" required></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" minlength="6" required></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" autocomplete="new-password" minlength="6" required></div>
             <button type="submit" class="btn-submit" id="np-btn" data-i18n="np_btn">Save New Password</button>
         </form>
     </div>
