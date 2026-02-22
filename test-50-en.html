@@ -6345,34 +6345,7 @@
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
 
         // Koordinat görüntüleme elemanını seç
-        const display = document.querySelector(".coordinateDisplay");
-
-        // Fare hareketini dinle
-        document.addEventListener("mousemove", (event) => {
-            const x = event.clientX;
-            const y = event.clientY;
-
-            // Koordinatları ekranda göster
-            display.textContent = `X: ${x}, Y: ${y}`;
-        });
-
-        // Tıklanan noktayı işaretlemek için
-        document.addEventListener("click", (event) => {
-            const highlight = document.createElement("div");
-            highlight.classList.add("highlightXY");
-            highlight.style.width = "10px";
-            highlight.style.height = "10px";
-            highlight.style.borderRadius = "50%";
-            highlight.style.left = `${event.clientX - 5}px`;
-            highlight.style.top = `${event.clientY - 5}px`;
-
-            document.body.appendChild(highlight);
-
-            // İşaretin 2 saniye sonra kaldırılması
-            setTimeout(() => {
-                highlight.remove();
-            }, 2000);
-        });
+        
 
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
