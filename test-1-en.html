@@ -6494,68 +6494,34 @@
   // YENİ SİSTEM İÇİN POSTMESSAGE FONKSİYONU
   // ══════════════════════════════════════════════════════════
   function notifyNewSystem() {
-    // URL'den test numarası ve dili al
     var urlParts = window.location.pathname.match(/test-(\d+)-(\w+)\.html/);
-    
     if (urlParts) {
       var testNumber = parseInt(urlParts[1], 10);
       var lang       = urlParts[2];
-      
-      // 1) Ana sayfaya bildirim gönder (window.opener - yeni sekme için)
       if (window.opener && !window.opener.closed) {
         try {
           window.opener.postMessage({
             action: 'testCompleted',
             testNumber: testNumber,
             lang: lang
-          }, '*');
-          console.log('✅ Yeni sistem (opener): Test ' + testNumber + ' (' + lang + ') bildirildi');
+          }, 'https://oefenen.examtheorie.nl');
+          console.log('✅ Test ' + testNumber + ' (' + lang + ') bildirildi');
         } catch (e) {
-          console.error('❌ Opener postMessage hatası:', e);
-        }
-      }
-      
-      // 2) Wix iframe için de gönder (window.parent)
-      if (window.parent && window.parent !== window) {
-        try {
-          window.parent.postMessage({
-            action: 'testCompleted',
-            testNumber: testNumber,
-            lang: lang
-          }, ORIGIN);
-          console.log('✅ Yeni sistem (parent): Test ' + testNumber + ' (' + lang + ') bildirildi');
-        } catch (e) {
-          console.error('❌ Parent postMessage hatası:', e);
+          console.error('❌ PostMessage hatası:', e);
         }
       }
     }
   }
 
   // ══════════════════════════════════════════════════════════
-  // VIEW RESULT BUTONU - WIX + YENİ SİSTEM BİRLİKTE
+  // VIEW RESULT BUTONU - YENİ SİSTEM
   // ══════════════════════════════════════════════════════════
   var viewBtn = document.getElementById("viewResult");
   if (viewBtn) {
-    var old = viewBtn.onclick;
-    viewBtn.onclick = function (ev) {
-      // Eski Wix kodu
-      if (old) old(ev);
-      
-      try {
-        // Wix'e bildirim gönder
-        window.parent.postMessage(
-          { action: "updateProgress", testNumber: TEST_NUMBER, lang: "en" },
-          ORIGIN
-        );
-      } catch (e) {
-        console.error('❌ Wix postMessage hatası:', e);
-      }
-      
+    viewBtn.addEventListener('click', function() {
       setCompleted();
-      
-      // ✅ YENİ SİSTEM: Supabase'e bildirim gönder
       notifyNewSystem();
-    };
+    });
   }
 
 })();
