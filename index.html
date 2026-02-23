@@ -831,7 +831,7 @@
             <div class="p-sub"  data-i18n="p1s"></div>
             <div class="p-amount"><span>€</span>14.99</div>
             <div class="p-valid" data-i18n="p1v"></div>
-            <div class="buy-row"><button class="btn-buy" data-i18n="buy">Buy now</button><div class="ideal">iD</div></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(1,'Basic','14.99')">Buy now</button><div class="ideal">iD</div></div>
             <div class="p-divider"></div>
             <ul class="p-features">
                 <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
@@ -846,7 +846,7 @@
             <div class="p-sub"  data-i18n="p2s"></div>
             <div class="p-amount"><span>€</span>24.99</div>
             <div class="p-valid" data-i18n="p2v"></div>
-            <div class="buy-row"><button class="btn-buy" data-i18n="buy">Buy now</button><div class="ideal">iD</div></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(2,'Premium','24.99')">Buy now</button><div class="ideal">iD</div></div>
             <div class="p-divider"></div>
             <ul class="p-features">
                 <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
@@ -860,7 +860,7 @@
             <div class="p-sub"  data-i18n="p3s"></div>
             <div class="p-amount"><span>€</span>34.99</div>
             <div class="p-valid" data-i18n="p3v"></div>
-            <div class="buy-row"><button class="btn-buy" data-i18n="buy">Buy now</button><div class="ideal">iD</div></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(3,'Pro','34.99')">Buy now</button><div class="ideal">iD</div></div>
             <div class="p-divider"></div>
             <ul class="p-features">
                 <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
@@ -874,7 +874,7 @@
             <div class="p-sub"  data-i18n="p4s"></div>
             <div class="p-amount"><span>€</span>58.99</div>
             <div class="p-valid" data-i18n="p4v"></div>
-            <div class="buy-row"><button class="btn-buy" data-i18n="buy">Buy now</button><div class="ideal">iD</div></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(4,'Ultimate','58.99')">Buy now</button><div class="ideal">iD</div></div>
             <div class="p-divider"></div>
             <ul class="p-features">
                 <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
@@ -1665,6 +1665,48 @@ function toggleAcc(btn) {
 /* ─── OVERLAYS & MODALS ─── */
 function openPricing()        { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; }
 function closePricing()       { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow=''; }
+
+/* ─── ÖDEME BAŞLAT ─── */
+async function startPayment(planId, planName, amount) {
+    if (!currentUser) { openModal('si'); return; }
+
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳ Processing...';
+
+    try {
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${supabaseKey}`
+            },
+            body: JSON.stringify({
+                planId,
+                planName,
+                amount,
+                userId: currentUser.id,
+                userEmail: currentUser.email
+            })
+        });
+
+        const data = await res.json();
+
+        if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('❌ Payment error: ' + (data.error || 'Unknown error'));
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    } catch (err) {
+        console.error('Payment error:', err);
+        alert('❌ Connection error. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
+}
 function openPassengerCar()   { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
 function closePassengerCar()  { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
 function openModal(id)        { if(id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id+'-modal').classList.add('active'); document.body.style.overflow='hidden'; }
@@ -2607,10 +2649,20 @@ setInterval(async () => {
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
-    // Not: Auth kontrolü onAuthStateChange → INITIAL_SESSION eventi ile yapılıyor
 
-    // Auth guard'dan yönlendirildiyse otomatik modal/paywall aç
+    // Ödeme başarılı mı kontrol et
     const params = new URLSearchParams(window.location.search);
+    const payment = params.get('payment');
+    if (payment === 'success') {
+        window.history.replaceState(null, '', window.location.pathname);
+        // Kullanıcı erişimini yenile
+        setTimeout(async () => {
+            await fetchUserAccess();
+            buildTestButtons();
+            showNotification('✅ Payment successful! Your plan is now active.', 'success');
+        }, 2000);
+    }
+
     const reason = params.get('reason');
     if (reason === 'login') {
         setTimeout(() => openModal('si'), 600);
