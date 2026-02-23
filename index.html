@@ -2074,13 +2074,19 @@ function canAccess(groupId) {
 function openTest(testNum) {
     const lang = currentLang || 'en';
     
+    console.log(`🔍 Test ${testNum} açılıyor - User: ${currentUser?.id}, Session: ${!!currentUser}`);
+    
     // Session'ı kontrol et ve gerekirse yenile
     if (currentUser) {
         // Session'ı kontrol et
         _supabase.auth.getSession().then(({ data: sessionData, error: sessionError }) => {
+            console.log('📋 Session kontrol sonucu:', { sessionError, hasSession: !!sessionData?.session });
+            
             if (sessionError || !sessionData?.session) {
                 console.warn('⚠️ Session expired before opening test, attempting refresh...');
                 _supabase.auth.refreshSession().then(({ data: refreshData, error: refreshError }) => {
+                    console.log('🔄 Refresh sonucu:', { refreshError, hasRefreshed: !!refreshData?.session?.user });
+                    
                     if (refreshError || !refreshData?.session?.user) {
                         console.error('❌ Session refresh failed before test');
                         currentUser = null;
@@ -2101,11 +2107,17 @@ function openTest(testNum) {
             } else {
                 // Session aktif, testi aç
                 currentUser = sessionData.session.user;
+                console.log('✅ Session aktif, test açılıyor');
                 openTestAfterSessionCheck(testNum, lang);
             }
+        }).catch(err => {
+            console.error('❌ Session kontrol hatası:', err);
+            showNotification('Session error. Please try signing in again.', 'error');
+            setTimeout(() => openModal('si'), 2000);
         });
     } else {
         // Kullanıcı giriş yapmamış
+        console.log('❌ Kullanıcı giriş yapmamış');
         openModal('si');
     }
 }
