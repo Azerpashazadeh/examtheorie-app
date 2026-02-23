@@ -1662,46 +1662,8 @@ function toggleAcc(btn) {
     btn.closest('.acc-item').classList.toggle('open');
 }
 
-/* ─── PRICING OVERLAY ─── */
-function openPricing() {
-    const overlay = document.getElementById('pricingOverlay');
-    if (overlay) {
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Pricing sayfasında geri dönme butonu ekle
-        setTimeout(() => {
-            const backBtn = document.createElement('button');
-            backBtn.textContent = '← Back to Tests';
-            backBtn.className = 'back-btn';
-            backBtn.style.cssText = `
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                padding: 10px 20px;
-                background: #28a745;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 500;
-                z-index: 1000;
-            `;
-            backBtn.onclick = function() {
-                console.log('🔙 Back to Tests düğmesine tıklandı');
-                closePricing();
-            };
-            
-            const pricingContent = document.querySelector('.pricing-content');
-            if (pricingContent) {
-                pricingContent.style.position = 'relative';
-                pricingContent.appendChild(backBtn);
-            }
-        }, 100);
-    }
-}
-
+/* ─── OVERLAYS & MODALS ─── */
+function openPricing()        { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; }
 function closePricing()       { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow=''; }
 function openPassengerCar()   { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
 function closePassengerCar()  { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
@@ -2211,16 +2173,6 @@ function showPaywall(groupId) {
             ? (T.paywall_desc_tests  || T.paywall_desc)
             : (T.paywall_desc_theory || T.paywall_desc);
     }
-    
-    // "View Packages" düğmesini bul ve onclick'ini değiştir
-    const viewPackagesBtn = document.getElementById('view-packages-btn');
-    if (viewPackagesBtn) {
-        viewPackagesBtn.onclick = function() {
-            console.log('🛍 View Packages düğmesine tıklandı');
-            window.location.href = '#pricing'; // Direk pricing sayfasına git
-        };
-    }
-    
     document.getElementById('paywall-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
