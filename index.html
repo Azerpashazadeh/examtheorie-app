@@ -2043,53 +2043,17 @@ async function checkAuth() {
     try {
         console.log('🔍 Checking auth state...');
         
-        // Önce localStorage'da token var mı kontrol et
-        const hasStoredToken = localStorage.getItem('sb-rvbcsakzfadhtlfeigus-auth-token');
-        if (!hasStoredToken) {
-            console.log('❌ No stored token found');
+        // Session'ı kontrol et
+        const { data: { session }, error } = await _supabase.auth.getSession();
+
+        if (error) {
+            console.error('❌ Session error:', error);
             currentUser = null;
             currentPlanId = null;
             accessibleGroups = [];
             updateNavbarUser();
             buildTestButtons();
             return;
-        }
-        
-        // Session'ı kontrol et
-        const { data: { session }, error } = await _supabase.auth.getSession();
-
-        if (error) {
-            console.error('❌ Session alınamadı:', error);
-            // Token varsa refresh dene
-            try {
-                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
-                if (refreshError || !refreshData?.session?.user) {
-                    console.error('❌ Token refresh failed:', refreshError);
-                    // Token'ı temizle
-                    localStorage.removeItem('sb-rvbcsakzfadhtlfeigus-auth-token');
-                    currentUser = null;
-                    currentPlanId = null;
-                    accessibleGroups = [];
-                    updateNavbarUser();
-                    buildTestButtons();
-                    return;
-                }
-                console.log('✅ Token refreshed successfully');
-                currentUser = refreshData.session.user;
-                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-                buildTestButtons();
-                updateNavbarUser();
-                return;
-            } catch (refreshErr) {
-                console.error('❌ Refresh attempt failed:', refreshErr);
-                localStorage.removeItem('sb-rvbcsakzfadhtlfeigus-auth-token');
-                currentUser = null;
-                currentPlanId = null;
-                accessibleGroups = [];
-                updateNavbarUser();
-                buildTestButtons();
-                return;
-            }
         }
 
         if (session?.user) {
@@ -2098,7 +2062,7 @@ async function checkAuth() {
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons();
         } else {
-            console.log('❌ No session found');
+            console.log('👤 No session - guest mode');
             currentUser = null;
             currentPlanId = null;
             accessibleGroups = [];
