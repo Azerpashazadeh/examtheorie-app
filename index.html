@@ -2677,22 +2677,23 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (payment === 'success') {
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
-        const waitAndRefresh = async (attemptsLeft) => {
-            if (attemptsLeft <= 0) {
-                showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
-                return;
-            }
-            await new Promise(r => setTimeout(r, 2000));
+        let attempts = 0;
+        const maxAttempts = 10;
+        const planInterval = setInterval(async () => {
+            attempts++;
+            console.log(`⏳ Plan kontrol ediliyor... Deneme ${attempts}/${maxAttempts}`);
             await fetchUserAccess();
-            buildTestButtons();
             if (currentPlanId) {
-                showNotification('✅ Payment successful! Your plan is now active.', 'success');
-            } else {
-                waitAndRefresh(attemptsLeft - 1);
+                clearInterval(planInterval);
+                buildTestButtons();
+                updateNavbarUser();
+                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
+                console.log('✅ Plan aktifleşti!');
+            } else if (attempts >= maxAttempts) {
+                clearInterval(planInterval);
+                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
             }
-        };
-        // Webhook'un user_plans'a yazması için 1 saniye bekle, sonra dene
-        setTimeout(() => waitAndRefresh(5), 1000);
+        }, 2000); // Her 2 saniyede bir kontrol
     }
 
     const reason = params.get('reason');
