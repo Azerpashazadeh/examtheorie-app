@@ -2126,65 +2126,8 @@ function canAccess(groupId) {
 /* ─── TEST AÇ — ERİŞİM KONTROLLÜ ─── */
 function openTest(testNum) {
     const lang = currentLang || 'en';
-    
-    console.log(`🔍 Test ${testNum} açılıyor - User: ${currentUser?.id}, Session: ${!!currentUser}`);
-    
-    // Session'ı kontrol et ve gerekirse yenile
-    if (currentUser) {
-        // Session'ı kontrol et
-        _supabase.auth.getSession().then(({ data: sessionData, error: sessionError }) => {
-            console.log('📋 Session kontrol sonucu:', { sessionError, hasSession: !!sessionData?.session });
-            
-            if (sessionError || !sessionData?.session) {
-                console.warn('⚠️ Session expired before opening test, attempting refresh...');
-                _supabase.auth.refreshSession().then(({ data: refreshData, error: refreshError }) => {
-                    console.log('🔄 Refresh sonucu:', { refreshError, hasRefreshed: !!refreshData?.session?.user });
-                    
-                    if (refreshError || !refreshData?.session?.user) {
-                        console.error('❌ Session refresh failed before test');
-                        currentUser = null;
-                        currentPlanId = null;
-                        accessibleGroups = [];
-                        updateNavbarUser();
-                        buildTestButtons();
-                        showNotification('Session expired. Please sign in again.', 'error');
-                        setTimeout(() => openModal('si'), 2000);
-                        return;
-                    }
-                    currentUser = refreshData.session.user;
-                    console.log('✅ Session refreshed before test');
-                    
-                    // Session yenilendikten sonra testi aç
-                    openTestAfterSessionCheck(testNum, lang);
-                });
-            } else {
-                // Session aktif, testi aç
-                currentUser = sessionData.session.user;
-                console.log('✅ Session aktif, test açılıyor');
-                openTestAfterSessionCheck(testNum, lang);
-            }
-        }).catch(err => {
-            console.error('❌ Session kontrol hatası:', err);
-            showNotification('Session error. Please try signing in again.', 'error');
-            setTimeout(() => openModal('si'), 2000);
-        });
-    } else {
-        // Kullanıcı giriş yapmamış
-        console.log('❌ Kullanıcı giriş yapmamış');
-        openModal('si');
-    }
-}
-
-function openTestAfterSessionCheck(testNum, lang) {
-    if (!currentUser) { 
-        openModal('si'); 
-        return; 
-    }
-    if (!canAccess('tests')) { 
-        showPaywall('tests'); 
-        return; 
-    }
-    console.log(`🚀 Opening test ${testNum} for user ${currentUser.id}`);
+    if (!currentUser) { openModal('si'); return; }
+    if (!canAccess('tests')) { showPaywall('tests'); return; }
     window.open(`${QUIZ_BASE}/test-${testNum}-${lang}.html`, '_blank');
 }
 
