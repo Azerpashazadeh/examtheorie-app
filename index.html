@@ -1758,6 +1758,9 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
     }
 });
 
+let _supabaseReady = false;
+_supabase.auth.getSession().then(() => { _supabaseReady = true; console.log('✅ Supabase hazır'); });
+
 let currentUser = null;
 let currentPlanId = null;        // Kullanıcının aktif plan id'si
 let accessibleGroups = [];       // Kullanıcının erişebildiği grup id'leri: ['tests','theory']
@@ -2084,17 +2087,21 @@ async function fetchUserAccess() {
         }
     }
 
+    // Supabase initialize olana kadar bekle
+    if (!_supabaseReady) {
+        await new Promise(resolve => {
+            const check = setInterval(() => {
+                if (_supabaseReady) { clearInterval(check); resolve(); }
+            }, 100);
+            setTimeout(() => { clearInterval(check); resolve(); }, 5000);
+        });
+    }
     console.log('🔍 fetchUserAccess: sorgu atılıyor, user:', currentUser.id);
     try {
-        const timeoutPromise = new Promise((_, reject) => 
-            setTimeout(() => reject(new Error('TIMEOUT')), 5000)
-        );
-        const queryPromise = _supabase
+        const { data, error } = await _supabase
             .from('user_access')
             .select('plan_id, plan_name, expires_at, group_id')
             .eq('user_id', currentUser.id);
-        
-        const { data, error } = await Promise.race([queryPromise, timeoutPromise]);
 
         console.log('📦 fetchUserAccess sonucu:', JSON.stringify({data, error}));
 
