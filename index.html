@@ -2309,32 +2309,7 @@ async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
     const RETRY_DELAY = 1000; // 1 second
     
     try {
-        // Session'ı her seferinde yeniden kontrol et
-        console.log(`🔄 Session kontrol ediliyor - Test ${testNum}`);
-        const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
-        
-        if (sessionError || !sessionData?.session) {
-            console.warn('⚠️ Session expired, attempting to refresh...');
-            // Session'ı yenilemeyi dene
-            const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
-            if (refreshError || !refreshData?.session?.user) {
-                console.error('❌ Session refresh failed:', refreshError);
-                // Kullanıcıyı bilgilendir ve giriş yapmasını iste
-                showNotification('Session expired. Please sign in again.', 'error');
-                setTimeout(() => openModal('si'), 2000);
-                return false;
-            }
-            currentUser = refreshData.session.user;
-            console.log('✅ Session refreshed successfully');
-        } else {
-            // Session varsa kullanıcıyı güncelle (önemli!)
-            if (currentUser?.id !== sessionData.session.user.id) {
-                currentUser = sessionData.session.user;
-                console.log('🔄 User updated from session');
-            }
-        }
-        
-        // Progress'i kaydet
+        // Progress'i direkt kaydet (session kontrolü deadlock yaratıyor)
         console.log(`💾 Saving progress for user ${currentUser.id}, test ${testNum}, lang ${lang}`);
         const { error } = await _supabase
             .from('user_progress')
@@ -2403,32 +2378,10 @@ window.addEventListener('message', async function(e) {
     markCompleted(d.lang, d.testNumber);
     buildTestButtons();
     
-    // Session'ı kontrol et
     if (!currentUser) {
-        console.log('🔄 Kullanıcı sessionı yok, kontrol ediliyor...');
-        const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
-        if (sessionError) {
-            console.error('❌ Session alınamadı:', sessionError);
-            showNotification('Please sign in to save your progress.', 'info');
-            setTimeout(() => openModal('si'), 2000);
-            return;
-        }
-        if (sessionData?.session?.user) {
-            currentUser = sessionData.session.user;
-            console.log('✅ Session bulundu, kullanıcı güncellendi:', currentUser.id);
-        } else {
-            console.warn('⚠️ Session bulunamadı');
-            showNotification('Please sign in to save your progress.', 'info');
-            setTimeout(() => openModal('si'), 2000);
-            return;
-        }
-    } else {
-        // Kullanıcı varsa yine de session kontrol et (sync problemi için)
-        const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
-        if (!sessionError && sessionData?.session?.user && currentUser?.id !== sessionData.session.user.id) {
-            currentUser = sessionData.session.user;
-            console.log('🔄 Session sync edildi - User ID:', currentUser.id);
-        }
+        showNotification('Please sign in to save your progress.', 'info');
+        setTimeout(() => openModal('si'), 2000);
+        return;
     }
     
     // Supabase'e kaydet
