@@ -2073,7 +2073,15 @@ async function checkAuth() {
 
 /* ─── KULLANICININ ERİŞİM BİLGİSİNİ ÇEK ─── */
 async function fetchUserAccess() {
-    if (!currentUser) { currentPlanId = null; accessibleGroups = []; return; }
+    // currentUser yoksa session'dan almayı dene
+    if (!currentUser) {
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session?.user) {
+            currentUser = session.user;
+        } else {
+            currentPlanId = null; accessibleGroups = []; return;
+        }
+    }
 
     try {
         const { data, error } = await _supabase
