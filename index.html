@@ -2515,8 +2515,14 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 buildTestButtons();
                 updateNavbarUser();
             } else {
-                console.log('🔄 Same user, skipping fetch');
+                console.log('🔄 Same user — checking payment param');
                 currentUser = session.user;
+                // Ödeme sonrası dönüşte fetchUserAccess'i atlamıyoruz
+                const _params = new URLSearchParams(window.location.search);
+                if (_params.get('payment') === 'success') {
+                    await fetchUserAccess();
+                    buildTestButtons();
+                }
                 updateNavbarUser();
             }
             
@@ -2670,7 +2676,8 @@ window.addEventListener('DOMContentLoaded', async () => {
                 waitAndRefresh(attemptsLeft - 1);
             }
         };
-        waitAndRefresh(5);
+        // Webhook'un user_plans'a yazması için 1 saniye bekle, sonra dene
+        setTimeout(() => waitAndRefresh(5), 1000);
     }
 
     const reason = params.get('reason');
