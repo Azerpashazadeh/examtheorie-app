@@ -2092,9 +2092,10 @@ async function fetchUserAccess() {
             .select('plan_id, plan_name, expires_at, group_id')
             .eq('user_id', currentUser.id);
 
+        console.log('📦 fetchUserAccess sonucu:', JSON.stringify({data, error}));
+
         if (error) {
             console.error('❌ Erişim bilgisi alınamadı:', error);
-            // Hata durumunda oturumu kapatma, sadece erişimi sıfırla
             currentPlanId = null;
             accessibleGroups = [];
             return;
@@ -2110,7 +2111,7 @@ async function fetchUserAccess() {
             console.log('ℹ️ Aktif plan yok');
         }
     } catch (err) {
-        console.error('❌ Erişim bilgisi alınırken hata:', err);
+        console.error('❌ Erişim bilgisi alınırken hata:', err.message);
         currentPlanId = null;
         accessibleGroups = [];
     }
