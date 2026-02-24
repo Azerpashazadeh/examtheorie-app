@@ -2517,13 +2517,28 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             } else {
                 console.log('🔄 Same user — checking payment param');
                 currentUser = session.user;
-                // Ödeme sonrası dönüşte fetchUserAccess'i atlamıyoruz
-                const _params = new URLSearchParams(window.location.search);
-                if (_params.get('payment') === 'success') {
+                updateNavbarUser();
+            }
+            // Ödeme sonrası dönüşte: webhook geç gelebilir, tekrar tekrar dene
+            const _urlParams = new URLSearchParams(window.location.search);
+            if (_urlParams.get('payment') === 'success') {
+                const pollForPlan = async (attemptsLeft) => {
+                    if (attemptsLeft <= 0) {
+                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
+                        return;
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
                     await fetchUserAccess();
                     buildTestButtons();
-                }
-                updateNavbarUser();
+                    if (currentPlanId) {
+                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                        console.log('✅ Plan aktifleşti!');
+                    } else {
+                        console.log('⏳ Plan henüz yok, tekrar deneniyor... (' + attemptsLeft + ')');
+                        pollForPlan(attemptsLeft - 1);
+                    }
+                };
+                pollForPlan(8); // 8 deneme x 2 saniye = 16 saniye max
             }
             
             if (window.location.hash) {
