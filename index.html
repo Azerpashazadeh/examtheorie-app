@@ -2653,14 +2653,26 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Ödeme başarılı mı kontrol et
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
-    if (payment === 'success') {
+    const paymentId = params.get('pid');
+    if (payment === 'success' && paymentId) {
         window.history.replaceState(null, '', window.location.pathname);
-        // Kullanıcı erişimini yenile
         setTimeout(async () => {
-            await fetchUserAccess();
-            buildTestButtons();
-            showNotification('✅ Payment successful! Your plan is now active.', 'success');
-        }, 2000);
+            try {
+                // Mollie'den ödeme durumunu kontrol et ve planı ata
+                const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${paymentId}`
+                });
+                if (res.ok) {
+                    await fetchUserAccess();
+                    buildTestButtons();
+                    showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                }
+            } catch(err) {
+                console.error('Payment verify error:', err);
+            }
+        }, 1500);
     }
 
     const reason = params.get('reason');
