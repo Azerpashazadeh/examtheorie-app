@@ -2087,30 +2087,20 @@ async function fetchUserAccess() {
         }
     }
 
-    // Supabase initialize olana kadar bekle
-    if (!_supabaseReady) {
-        await new Promise(resolve => {
-            const check = setInterval(() => {
-                if (_supabaseReady) { clearInterval(check); resolve(); }
-            }, 100);
-            setTimeout(() => { clearInterval(check); resolve(); }, 5000);
-        });
-    }
-    console.log('🔍 fetchUserAccess: sorgu atılıyor, user:', currentUser.id);
+    console.log('🔍 fetchUserAccess: fetch ile sorgu atılıyor, user:', currentUser.id);
     try {
-        const { data, error } = await _supabase
-            .from('user_access')
-            .select('plan_id, plan_name, expires_at, group_id')
-            .eq('user_id', currentUser.id);
-
-        console.log('📦 fetchUserAccess sonucu:', JSON.stringify({data, error}));
-
-        if (error) {
-            console.error('❌ Erişim bilgisi alınamadı:', error);
-            currentPlanId = null;
-            accessibleGroups = [];
-            return;
-        }
+        // Supabase JS client yerine direkt fetch ile sorgula (initialize deadlock bypass)
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
+            {
+                headers: {
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs`,
+                }
+            }
+        );
+        const data = await res.json();
+        console.log('📦 fetchUserAccess sonucu:', JSON.stringify(data));
 
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
