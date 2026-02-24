@@ -2078,11 +2078,14 @@ async function fetchUserAccess() {
         const { data: { session } } = await _supabase.auth.getSession();
         if (session?.user) {
             currentUser = session.user;
+            console.log('fetchUserAccess: sessiondan user alindi:', currentUser.id);
         } else {
+            console.log('❌ fetchUserAccess: currentUser yok, session da yok');
             currentPlanId = null; accessibleGroups = []; return;
         }
     }
 
+    console.log('🔍 fetchUserAccess: sorgu atılıyor, user:', currentUser.id);
     try {
         const { data, error } = await _supabase
             .from('user_access')
