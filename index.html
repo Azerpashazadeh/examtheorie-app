@@ -1751,17 +1751,13 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         autoRefreshToken: true,
         detectSessionInUrl: true,
         flowType: 'implicit',
+        lock: function(name, acquireTimeout, fn) { return fn(); },
         // Session timeout'u uzat
         maxSessionTimeout: 60 * 60 * 24 * 7, // 7 gün
         // Token refresh frekansını artır
         refreshTokenThreshold: 60 * 5, // 5 dakika
-        // Ek güvenlik ayarları
-        debug: false, // Production'da debug kapalı
     }
 });
-
-let _supabaseReady = false;
-_supabase.auth.getSession().then(() => { _supabaseReady = true; console.log('✅ Supabase hazır'); });
 
 let currentUser = null;
 let currentPlanId = null;        // Kullanıcının aktif plan id'si
@@ -2041,13 +2037,10 @@ async function signOut() {
 /* ─── AUTH KONTROLÜ ─── */
 async function checkAuth() {
     try {
-        console.log('🔍 Checking auth state...');
-        
-        // Session'ı kontrol et
         const { data: { session }, error } = await _supabase.auth.getSession();
 
         if (error) {
-            console.error('❌ Session error:', error);
+            console.error('❌ Session alınamadı:', error);
             currentUser = null;
             currentPlanId = null;
             accessibleGroups = [];
@@ -2057,12 +2050,10 @@ async function checkAuth() {
         }
 
         if (session?.user) {
-            console.log('✅ Valid session found:', session.user.id);
             currentUser = session.user;
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons();
         } else {
-            console.log('👤 No session - guest mode');
             currentUser = null;
             currentPlanId = null;
             accessibleGroups = [];
@@ -2539,7 +2530,6 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 currentUser = session.user;
                 updateNavbarUser();
             }
-            
             // Ödeme sonrası dönüşte: webhook geç gelebilir, tekrar tekrar dene
             const _urlParams = new URLSearchParams(window.location.search);
             if (_urlParams.get('payment') === 'success') {
@@ -2572,7 +2562,6 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
 
         } else if (event === 'INITIAL_SESSION' && !session) {
             // Oturum yok — misafir görünümü
-            console.log('👤 No session found - guest mode');
             currentUser      = null;
             currentPlanId    = null;
             accessibleGroups = [];
@@ -2581,7 +2570,6 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
 
         } else if (event === 'SIGNED_OUT') {
             if (currentUser !== null) {
-                console.log('👤 User signed out');
                 currentUser      = null;
                 currentPlanId    = null;
                 accessibleGroups = [];
@@ -2612,13 +2600,6 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
 
     } catch (err) {
         console.error('❌ Auth state değişim hatası:', err);
-        // Hata durumunda bile UI'ı güncelle
-        try {
-            updateNavbarUser();
-            buildTestButtons();
-        } catch (uiErr) {
-            console.error('❌ UI update failed:', uiErr);
-        }
     }
 });
 
@@ -2700,10 +2681,6 @@ setInterval(async () => {
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
-
-    // ÖNEMLİ: Sayfa yenilendiğinde session'ı kontrol et
-    console.log('🔄 Page loaded - checking auth state...');
-    await checkAuth();
 
     // Ödeme başarılı mı kontrol et
     const params = new URLSearchParams(window.location.search);
