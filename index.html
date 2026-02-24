@@ -2653,26 +2653,24 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Ödeme başarılı mı kontrol et
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
-    const paymentId = params.get('pid');
-    if (payment === 'success' && paymentId) {
+    if (payment === 'success') {
         window.history.replaceState(null, '', window.location.pathname);
-        setTimeout(async () => {
-            try {
-                // Mollie'den ödeme durumunu kontrol et ve planı ata
-                const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-webhook', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `id=${paymentId}`
-                });
-                if (res.ok) {
-                    await fetchUserAccess();
-                    buildTestButtons();
-                    showNotification('✅ Payment successful! Your plan is now active.', 'success');
-                }
-            } catch(err) {
-                console.error('Payment verify error:', err);
+        showNotification('⏳ Payment received, activating your plan...', 'info');
+        const waitAndRefresh = async (attemptsLeft) => {
+            if (attemptsLeft <= 0) {
+                showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
+                return;
             }
-        }, 1500);
+            await new Promise(r => setTimeout(r, 2000));
+            await fetchUserAccess();
+            buildTestButtons();
+            if (currentPlanId) {
+                showNotification('✅ Payment successful! Your plan is now active.', 'success');
+            } else {
+                waitAndRefresh(attemptsLeft - 1);
+            }
+        };
+        waitAndRefresh(5);
     }
 
     const reason = params.get('reason');
