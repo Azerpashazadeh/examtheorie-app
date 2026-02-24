@@ -1751,15 +1751,13 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         autoRefreshToken: true,
         detectSessionInUrl: true,
         flowType: 'implicit',
+        lock: function(name, acquireTimeout, fn) { return fn(); },
         // Session timeout'u uzat
         maxSessionTimeout: 60 * 60 * 24 * 7, // 7 gün
         // Token refresh frekansını artır
         refreshTokenThreshold: 60 * 5, // 5 dakika
     }
 });
-
-let _supabaseReady = false;
-_supabase.auth.getSession().then(() => { _supabaseReady = true; console.log('✅ Supabase hazır'); });
 
 let currentUser = null;
 let currentPlanId = null;        // Kullanıcının aktif plan id'si
@@ -2075,32 +2073,21 @@ async function checkAuth() {
 
 /* ─── KULLANICININ ERİŞİM BİLGİSİNİ ÇEK ─── */
 async function fetchUserAccess() {
-    // currentUser yoksa session'dan almayı dene
-    if (!currentUser) {
-        const { data: { session } } = await _supabase.auth.getSession();
-        if (session?.user) {
-            currentUser = session.user;
-            console.log('fetchUserAccess: sessiondan user alindi:', currentUser.id);
-        } else {
-            console.log('❌ fetchUserAccess: currentUser yok, session da yok');
-            currentPlanId = null; accessibleGroups = []; return;
-        }
-    }
+    if (!currentUser) { currentPlanId = null; accessibleGroups = []; return; }
 
-    console.log('🔍 fetchUserAccess: fetch ile sorgu atılıyor, user:', currentUser.id);
     try {
-        // Supabase JS client yerine direkt fetch ile sorgula (initialize deadlock bypass)
-        const res = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
-            {
-                headers: {
-                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs',
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs`,
-                }
-            }
-        );
-        const data = await res.json();
-        console.log('📦 fetchUserAccess sonucu:', JSON.stringify(data));
+        const { data, error } = await _supabase
+            .from('user_access')
+            .select('plan_id, plan_name, expires_at, group_id')
+            .eq('user_id', currentUser.id);
+
+        if (error) {
+            console.error('❌ Erişim bilgisi alınamadı:', error);
+            // Hata durumunda oturumu kapatma, sadece erişimi sıfırla
+            currentPlanId = null;
+            accessibleGroups = [];
+            return;
+        }
 
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
@@ -2112,7 +2099,7 @@ async function fetchUserAccess() {
             console.log('ℹ️ Aktif plan yok');
         }
     } catch (err) {
-        console.error('❌ Erişim bilgisi alınırken hata:', err.message);
+        console.error('❌ Erişim bilgisi alınırken hata:', err);
         currentPlanId = null;
         accessibleGroups = [];
     }
@@ -2528,30 +2515,9 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 buildTestButtons();
                 updateNavbarUser();
             } else {
-                console.log('🔄 Same user — checking payment param');
+                console.log('🔄 Same user, skipping fetch');
                 currentUser = session.user;
                 updateNavbarUser();
-            }
-            // Ödeme sonrası dönüşte: webhook geç gelebilir, tekrar tekrar dene
-            const _urlParams = new URLSearchParams(window.location.search);
-            if (_urlParams.get('payment') === 'success') {
-                const pollForPlan = async (attemptsLeft) => {
-                    if (attemptsLeft <= 0) {
-                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
-                        return;
-                    }
-                    await new Promise(r => setTimeout(r, 2000));
-                    await fetchUserAccess();
-                    buildTestButtons();
-                    if (currentPlanId) {
-                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
-                        console.log('✅ Plan aktifleşti!');
-                    } else {
-                        console.log('⏳ Plan henüz yok, tekrar deneniyor... (' + attemptsLeft + ')');
-                        pollForPlan(attemptsLeft - 1);
-                    }
-                };
-                pollForPlan(8); // 8 deneme x 2 saniye = 16 saniye max
             }
             
             if (window.location.hash) {
@@ -2687,26 +2653,26 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Ödeme başarılı mı kontrol et
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
-    if (payment === 'success') {
+    const paymentId = params.get('pid');
+    if (payment === 'success' && paymentId) {
         window.history.replaceState(null, '', window.location.pathname);
-        showNotification('⏳ Payment received, activating your plan...', 'info');
-        let attempts = 0;
-        const maxAttempts = 10;
-        const planInterval = setInterval(async () => {
-            attempts++;
-            console.log(`⏳ Plan kontrol ediliyor... Deneme ${attempts}/${maxAttempts}`);
-            await fetchUserAccess();
-            if (currentPlanId) {
-                clearInterval(planInterval);
-                buildTestButtons();
-                updateNavbarUser();
-                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
-                console.log('✅ Plan aktifleşti!');
-            } else if (attempts >= maxAttempts) {
-                clearInterval(planInterval);
-                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
+        setTimeout(async () => {
+            try {
+                // Mollie'den ödeme durumunu kontrol et ve planı ata
+                const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${paymentId}`
+                });
+                if (res.ok) {
+                    await fetchUserAccess();
+                    buildTestButtons();
+                    showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                }
+            } catch(err) {
+                console.error('Payment verify error:', err);
             }
-        }, 2000); // Her 2 saniyede bir kontrol
+        }, 1500);
     }
 
     const reason = params.get('reason');
