@@ -2180,55 +2180,19 @@ function closePaywall() {
 /* ─── PROGRESS — SUPABASE'DEN ÇEK ─── */
 async function fetchProgressFromSupabase() {
     if (!currentUser) return;
-    
-    const lang = currentLang || 'en';
-    
+    const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
-        // Önce mevcut dil için progress'i çek
-        const { data, error } = await _supabase
-            .from('user_progress')
-            .select('test_number')
-            .eq('user_id', currentUser.id)
-            .eq('language', lang);
-            
-        if (error) {
-            console.error('❌ Progress çekilemedi:', error);
-            return;
+        for (const lang of allLangs) {
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
+            const completedTests = (data || []).map(r => r.test_number);
+            localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
+            console.log(`✅ Progress (${lang}):`, completedTests);
         }
-        
-        const completedTests = (data || []).map(r => r.test_number);
-        localStorage.setItem(
-            `et_completed_${lang}`,
-            JSON.stringify(completedTests)
-        );
-        console.log(`✅ Progress (${lang}):`, completedTests);
-        
-        // Diğer dillerin progress'ini de çek (sync için)
-        const allLangs = ['en', 'tr', 'nl', 'ar'];
-        
-        for (const otherLang of allLangs) {
-            if (otherLang === lang) continue; // Mevcut dil zaten çekildi
-            
-            try {
-                const { data: otherData, error: otherError } = await _supabase
-                    .from('user_progress')
-                    .select('test_number')
-                    .eq('user_id', currentUser.id)
-                    .eq('language', otherLang);
-                    
-                if (!otherError && otherData) {
-                    const otherCompletedTests = otherData.map(r => r.test_number);
-                    localStorage.setItem(
-                        `et_completed_${otherLang}`,
-                        JSON.stringify(otherCompletedTests)
-                    );
-                    console.log(`✅ Progress sync (${otherLang}):`, otherCompletedTests);
-                }
-            } catch (err) {
-                console.warn(`⚠️ ${otherLang} progress sync hatası:`, err);
-            }
-        }
-        
     } catch (err) {
         console.error('❌ Supabase ilerlemesi alınırken hata:', err);
     }
@@ -2301,49 +2265,35 @@ style.textContent = `
 document.head.appendChild(style);
 
 /* ─── PROGRESS — SUPABASE'E KAYDET ─── */
-async function saveProgressToSupabase(testNum, lang, retryCount = 0) {
+async function saveProgressToSupabase(testNum, lang) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
-    
-    const MAX_RETRIES = 3;
-    const RETRY_DELAY = 1000; // 1 second
-    
+
     try {
-        // Progress'i direkt kaydet (session kontrolü deadlock yaratıyor)
         console.log(`💾 Saving progress for user ${currentUser.id}, test ${testNum}, lang ${lang}`);
-        const { error } = await _supabase
-            .from('user_progress')
-            .upsert({ user_id: currentUser.id, test_number: testNum, language: lang },
-                     { onConflict: 'user_id,test_number,language' });
-                     
-        if (error) { 
-            console.error('❌ Progress kaydedilemedi:', error);
-            
-            // Retry mekanizması
-            if (retryCount < MAX_RETRIES) {
-                console.log(`🔄 Retry ${retryCount + 1}/${MAX_RETRIES} for test ${testNum}`);
-                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (retryCount + 1)));
-                return await saveProgressToSupabase(testNum, lang, retryCount + 1);
+        const res = await fetch(
+            'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress',
+            {
+                method: 'POST',
+                headers: {
+                    'apikey': supabaseKey,
+                    'Authorization': `Bearer ${supabaseKey}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'resolution=merge-duplicates'
+                },
+                body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
             }
-            
-            // Kullanıcıya hata bildirimi göster
-            showNotification('Progress could not be saved. Please check your connection.', 'error');
-            return false; 
+        );
+        if (!res.ok) {
+            const err = await res.text();
+            console.error('❌ Progress kaydedilemedi:', err);
+            showNotification('Progress could not be saved.', 'error');
+            return false;
         }
-        
         console.log(`✅ Test ${testNum} (${lang}) kaydedildi`);
         return true;
-        
     } catch (err) {
         console.error('❌ Unexpected error saving progress:', err);
-        
-        // Retry mekanizması
-        if (retryCount < MAX_RETRIES) {
-            console.log(`🔄 Retry ${retryCount + 1}/${MAX_RETRIES} for test ${testNum}`);
-            await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (retryCount + 1)));
-            return await saveProgressToSupabase(testNum, lang, retryCount + 1);
-        }
-        
         showNotification('Unexpected error occurred. Please try again.', 'error');
         return false;
     }
