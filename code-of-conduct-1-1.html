@@ -457,6 +457,26 @@ body {
    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
     overview</a>
 
+
+    <script>
+  document.onkeydown = function(e) {
+    // 1. CTRL + U (Sayfa Kaynağını Görüntüle) Engelleyici
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+      return false;
+    }
+
+    // 2. CTRL + S (Sayfayı Farklı Kaydet) Engelleyici (Kodları indirmemeleri için)
+    if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+      return false;
+    }
+
+    // 3. CTRL + Shift + I veya F12 (Geliştirici Araçları - İsteğe bağlı)
+    // Eğer sadece CTRL+U istiyorsan bunları silebilirsin
+    if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) {
+      // return false; // Burayı aktif edersen İncele (Inspect) de kapanır
+    }
+  };
+</script>
   
 
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
