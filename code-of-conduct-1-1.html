@@ -9,45 +9,62 @@
       rel="stylesheet"
     />
     <style>
-/* Temel Sıfırlama ve Alt Boşluk */
-html, body {
-  margin: 0 auto;
-  padding-top: 0;
-  padding-left: 2px;
-  padding-right: 2px;
-  /* En alttaki elemandan sonra 70px boşluk bırakır */
-  padding-bottom: 70px !important; 
+/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  /* Kaydırmayı engelleyen overflow:hidden silindi! */
 }
 
+html, body {
+  /* Yatay kaymayı (sağa-sola sallanmayı) engeller */
+  overflow-x: hidden; 
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Genel Body Ayarları */
 body {
   font-family: "Trirong", serif;
   line-height: 1.2;
-  padding: 15px;
-  /* Sayfa içeriğini ortalamak için */
-  display: block; 
+  /* Alt taraftaki 70px güvenli alan */
+  padding-bottom: 70px !important;
+  display: block;
 }
 
-/* 1. Masaüstü (Geniş ekranlar) */
+/* 3. Masaüstü (Geniş ekranlar) */
 @media (min-width: 1025px) {
   body {
     width: 75%;
+    margin: 0 auto; /* Sayfayı ortalar */
+    padding-top: 20px; /* Üstten biraz nefes alma payı */
   }
 }
 
-/* 2. Tabletler (768px - 1024px arası) */
+/* 4. Tabletler (768px - 1024px arası) */
 @media (min-width: 768px) and (max-width: 1024px) {
   body {
     width: 95%;
+    margin: 0 auto;
+    padding-top: 15px;
   }
 }
 
-/* 3. Mobil Telefonlar (767px ve altı) */
+/* 5. Mobil Telefonlar (767px ve altı) */
 @media (max-width: 767px) {
   body {
-    width: 100%;
+    width: 100% !important;
+    margin: 0 !important;
+    /* Yazılar ekrana sıfır yapışmasın, 10px pay kalsın */
+    padding: 10px 10px 70px 10px !important; 
   }
+}
+
+/* Görsellerin dışarı taşmasını engelle */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Mevcut buton ve resim stillerin aşağıda devam edebilir... */
