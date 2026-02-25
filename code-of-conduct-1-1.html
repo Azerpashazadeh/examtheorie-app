@@ -10,63 +10,71 @@
     />
     <style>
 /* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html, body {
-  /* Yatay kaymayı (sağa-sola sallanmayı) engeller */
-  overflow-x: hidden; 
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 80px;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  overflow-x: hidden; /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
 }
 
-/* 2. Genel Body Ayarları */
+
+
 body {
   font-family: "Trirong", serif;
   line-height: 1.2;
-  /* Alt taraftaki 70px güvenli alan */
-  padding-bottom: 70px !important;
+  /* Genişliği belirtiyoruz */
+  width: 75%; 
+  /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
+  margin: 0 auto !important; 
   display: block;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
-/* 3. Masaüstü (Geniş ekranlar) */
+
+
+/* 1. Masaüstü (Geniş ekranlar) */
+
 @media (min-width: 1025px) {
+
   body {
+
     width: 75%;
-    margin: 0 auto; /* Sayfayı ortalar */
-    padding-top: 20px; /* Üstten biraz nefes alma payı */
+
   }
+
 }
 
-/* 4. Tabletler (768px - 1024px arası) */
+
+
+/* 2. Tabletler (768px - 1024px arası) */
+
 @media (min-width: 768px) and (max-width: 1024px) {
+
   body {
+
     width: 95%;
-    margin: 0 auto;
-    padding-top: 15px;
+
   }
+
 }
 
-/* 5. Mobil Telefonlar (767px ve altı) */
+
+
+/* 3. Mobil Telefonlar (767px ve altı) */
+
 @media (max-width: 767px) {
+
   body {
-    width: 100% !important;
-    margin: 0 !important;
-    /* Yazılar ekrana sıfır yapışmasın, 10px pay kalsın */
-    padding: 10px 10px 70px 10px !important; 
+
+    width: 98%;
+
   }
-}
 
-/* Görsellerin dışarı taşmasını engelle */
-img {
-  max-width: 100%;
-  height: auto;
 }
-
 /* Mevcut buton ve resim stillerin aşağıda devam edebilir... */
       
           
@@ -465,7 +473,9 @@ document.addEventListener("selectstart", function (event) {
 });
 
 </script>
+
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
+
 </body>
 
 </html>
