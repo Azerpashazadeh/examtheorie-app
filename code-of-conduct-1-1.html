@@ -9,23 +9,24 @@
       rel="stylesheet"
     />
     <style>
+/* Temel Sıfırlama ve Alt Boşluk */
 html, body {
-  
-  height: 100%;
-  margin: 0;
+  margin: 0 auto;
+  padding-top: 0;
   padding-left: 2px;
   padding-right: 2px;
-  padding-top: 0;
-  padding-bottom: 0;
+  /* En alttaki elemandan sonra 70px boşluk bırakır */
+  padding-bottom: 70px !important; 
+  box-sizing: border-box;
+  /* Kaydırmayı engelleyen overflow:hidden silindi! */
 }
 
-     /* Genel Ayarlar */
 body {
   font-family: "Trirong", serif;
   line-height: 1.2;
-  margin: 0 auto; /* Sayfayı ortalar */
   padding: 15px;
-  box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
+  /* Sayfa içeriğini ortalamak için */
+  display: block; 
 }
 
 /* 1. Masaüstü (Geniş ekranlar) */
@@ -48,6 +49,8 @@ body {
     width: 98%;
   }
 }
+
+/* Mevcut buton ve resim stillerin aşağıda devam edebilir... */
       
           
       h1,
