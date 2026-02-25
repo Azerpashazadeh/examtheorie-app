@@ -10,7 +10,7 @@
     />
     <style>
 html, body {
-  overflow: hidden !important;
+  
   height: 100%;
   margin: 0;
   padding-left: 2px;
@@ -410,9 +410,6 @@ html, body {
 
 
 <script>
-window.addEventListener("scroll", () => {
-  window.scrollTo(0, 0);
-});
 
 // Sag tiklamayi engelle
 document.addEventListener("contextmenu", function (event) {
@@ -424,25 +421,6 @@ document.addEventListener("selectstart", function (event) {
   event.preventDefault();
 });
 
-function sendHeight() {
-  const target = document.querySelector(".custom-button");
-  if (!target) return;
-  const height = target.getBoundingClientRect().bottom;
-  // Post message ile dis sayfaya g�nder
-  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
-}
-
-window.onload = () => {
-  sendHeight();
-  setTimeout(sendHeight, 300);
-  setTimeout(sendHeight, 1000);
-  setTimeout(sendHeight, 3000);
-};
-
-// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
-window.onresize = () => {
-  sendHeight();
-};
 </script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
