@@ -8,19 +8,50 @@
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet"/>
   <style>
-html, body {
-  overflow: hidden !important;
-  height: 100%;
-  margin: 0;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
+/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
+        html,
+        body {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-bottom: 80px;
+            width: 100%;
+            overflow-x: hidden;
+            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
+        }
 
-   body {
+        body {
             font-family: "Trirong", serif;
             line-height: 1.2;
+            /* Genişliği belirtiyoruz */
+            width: 75%;
+            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
+            margin: 0 auto !important;
+            display: block;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* 1. Masaüstü (Geniş ekranlar) */
+        @media (min-width: 1025px) {
+            body {
+                width: 75%;
+            }
+        }
+
+        /* 2. Tabletler (768px - 1024px arası) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                width: 95%;
+            }
+        }
+
+        /* 3. Mobil Telefonlar (767px ve altı) */
+        @media (max-width: 767px) {
+            body {
+                width: 96%;
+            }
         }
 
          
@@ -846,40 +877,18 @@ html, body {
   
  
 <script>
-window.addEventListener("scroll", () => {
-  window.scrollTo(0, 0);
-});
-
-// Sag tiklamayi engelle
-document.addEventListener("contextmenu", function (event) {
-  event.preventDefault();
-});
-
-// Metin se�meyi engelle
-document.addEventListener("selectstart", function (event) {
-  event.preventDefault();
-});
-
-function sendHeight() {
-  const target = document.querySelector(".custom-button");
-  if (!target) return;
-  const height = target.getBoundingClientRect().bottom;
-  // Post message ile dis sayfaya g�nder
-  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
-}
-
-window.onload = () => {
-  sendHeight();
-  setTimeout(sendHeight, 300);
-  setTimeout(sendHeight, 1000);
-  setTimeout(sendHeight, 3000);
-};
-
-// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
-window.onresize = () => {
-  sendHeight();
-};
-</script>
+        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
+        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
+        document.onkeydown = function (e) {
+            // F12 tuşu
+            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
+            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
+        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+    </script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
 </html>

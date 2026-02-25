@@ -56,40 +56,18 @@ html, body {
   
  
 <script>
-window.addEventListener("scroll", () => {
-  window.scrollTo(0, 0);
-});
-
-// Sag tiklamayi engelle
-document.addEventListener("contextmenu", function (event) {
-  event.preventDefault();
-});
-
-// Metin se�meyi engelle
-document.addEventListener("selectstart", function (event) {
-  event.preventDefault();
-});
-
-function sendHeight() {
-  const target = document.querySelector(".custom-button");
-  if (!target) return;
-  const height = target.getBoundingClientRect().bottom;
-  // Post message ile dis sayfaya g�nder
-  window.parent.postMessage({ type: 'contentHeight', height: height }, '*');
-}
-
-window.onload = () => {
-  sendHeight();
-  setTimeout(sendHeight, 300);
-  setTimeout(sendHeight, 1000);
-  setTimeout(sendHeight, 3000);
-};
-
-// Tarayici yeniden boyutlandiginda da y�kseklik g�nder
-window.onresize = () => {
-  sendHeight();
-};
-</script>
+        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
+        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
+        document.onkeydown = function (e) {
+            // F12 tuşu
+            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
+            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
+        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+    </script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
 </html>
