@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code of Conduct – ExamTheorie</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg-deep:       #050d1a;
-            --bg-mid:        #071428;
-            --blue-primary:  #1a6cf6;
-            --blue-light:    #4da6ff;
-            --blue-glow:     rgba(26, 108, 246, 0.35);
-            --blue-subtle:   rgba(77, 166, 255, 0.12);
-            --glass-bg:      rgba(10, 30, 65, 0.55);
-            --glass-border:  rgba(77, 166, 255, 0.22);
-            --glass-shine:   rgba(255, 255, 255, 0.06);
-            --red-accent:    #e84545;
-            --red-glow:      rgba(232, 69, 69, 0.3);
-            --text-primary:  #e8f0ff;
-            --text-muted:    rgba(180, 205, 255, 0.7);
-            --text-dim:      rgba(140, 175, 230, 0.55);
+            --bg-deep:      #050d1a;
+            --bg-mid:       #071428;
+            --accent:       #1a6cf6;
+            --accent-light: #4da6ff;
+            --glass-bg:     rgba(10,30,65,0.55);
+            --glass-border: rgba(77,166,255,0.22);
+            --glass-shine:  rgba(255,255,255,0.06);
+            --red:          #e84545;
+            --text-primary: #e8f0ff;
+            --text-muted:   rgba(180,205,255,0.75);
+            --text-dim:     rgba(140,175,230,0.55);
+            --heading-color: #4da6ff;
+            --card-bg:      rgba(10,30,65,0.55);
+            --card-border:  rgba(77,166,255,0.22);
         }
 
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+        html, body { width:100%; overflow-x:hidden; scroll-behavior:smooth; }
 
         body {
             font-family: 'Outfit', sans-serif;
@@ -42,628 +33,451 @@
             color: var(--text-primary);
             line-height: 1.75;
             min-height: 100vh;
-            padding-bottom: 100px;
+            padding-bottom: 120px;
             background-image:
-                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(26, 108, 246, 0.18) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26, 108, 246, 0.12) 0%, transparent 55%),
-                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(5, 20, 60, 0.9) 0%, transparent 100%);
+                radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(26,108,246,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 80%,  rgba(26,108,246,0.12) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 40% at 50% 50%,  rgba(5,20,60,0.9)    0%, transparent 100%);
+            transition: background-color 0.35s, color 0.35s;
         }
-
         body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
+            content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
             background-image:
-                linear-gradient(rgba(77, 166, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(77, 166, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(77,166,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(77,166,255,0.03) 1px, transparent 1px);
             background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
         }
+        .orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(90px); opacity:0.15; }
+        .orb-1 { width:500px; height:500px; background:var(--accent);       top:-100px; left:-100px; }
+        .orb-2 { width:400px; height:400px; background:var(--accent-light);  bottom:100px; right:-80px; }
 
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-            filter: blur(90px);
-            opacity: 0.15;
-        }
-        .orb-1 { width: 500px; height: 500px; background: var(--blue-primary); top: -100px; left: -100px; }
-        .orb-2 { width: 400px; height: 400px; background: var(--blue-light);   bottom: 100px; right: -80px; }
+        /* ── Layout ── */
+        .page-wrapper { position:relative; z-index:1; width:75%; margin:0 auto; padding:50px 20px 20px; }
+        @media(min-width:768px) and (max-width:1024px) { .page-wrapper { width:95%; } }
+        @media(max-width:767px) { .page-wrapper { width:96%; padding:30px 14px; } }
 
-        .page-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 75%;
-            margin: 0 auto;
-            padding: 50px 20px 20px;
-        }
-        @media (min-width: 768px) and (max-width: 1024px) { .page-wrapper { width: 95%; } }
-        @media (max-width: 767px) { .page-wrapper { width: 96%; padding: 30px 14px; } }
+        .brand-strip { display:flex; align-items:center; gap:10px; margin-bottom:40px; font-size:.85rem; color:var(--text-dim); letter-spacing:.04em; }
+        .brand-strip .dot { color:var(--accent-light); }
 
-        /* Breadcrumb */
-        .brand-strip {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 40px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            letter-spacing: 0.04em;
-        }
-        .brand-strip .dot { color: var(--blue-light); }
-
-        /* Headings */
         h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 30%, var(--blue-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+            font-family:'Outfit',sans-serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700;
+            background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+            margin-bottom:8px;
         }
-
         h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-            font-weight: 600;
-            color: var(--blue-light);
-            margin: 48px 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-family:'Outfit',sans-serif; font-size:clamp(1.1rem,2.5vw,1.45rem); font-weight:600;
+            color:var(--heading-color); margin:48px 0 16px;
+            display:flex; align-items:center; gap:10px;
         }
         h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 1.2em;
-            background: linear-gradient(180deg, var(--blue-primary), var(--blue-light));
-            border-radius: 4px;
-            flex-shrink: 0;
+            content:''; display:inline-block; width:4px; height:1.2em; flex-shrink:0; border-radius:4px;
+            background:linear-gradient(180deg,var(--accent),var(--accent-light));
         }
+        h3 { font-family:'Outfit',sans-serif; font-size:1rem; font-weight:600; color:var(--text-primary); margin-bottom:10px; }
+        p  { font-family:'Lora',serif; font-size:.96rem; color:var(--text-muted); margin-bottom:14px; }
 
-        h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: 0.02em;
-        }
-
-        p {
-            font-family: 'Lora', serif;
-            font-size: 0.96rem;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-        }
-
-        /* Glass cards */
         .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 28px 28px 28px 36px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            margin-bottom: 24px;
-            box-shadow:
-                0 4px 24px rgba(0, 0, 0, 0.35),
-                inset 0 1px 0 var(--glass-shine);
+            background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px;
+            padding:28px 28px 28px 36px; position:relative; overflow:hidden;
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            margin-bottom:24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,.35), inset 0 1px 0 var(--glass-shine);
         }
         .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
-            pointer-events: none;
+            content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+            background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%); pointer-events:none;
         }
         .glass-card .accent-line {
-            position: absolute;
-            left: 0; top: 0;
-            width: 3px; height: 100%;
-            background: linear-gradient(180deg, var(--blue-primary) 0%, var(--blue-light) 100%);
-            border-radius: 0 4px 4px 0;
+            position:absolute; left:0; top:0; width:3px; height:100%; border-radius:0 4px 4px 0;
+            background:linear-gradient(180deg,var(--accent),var(--accent-light));
         }
+        .glass-card.red-accent { border-color:rgba(232,69,69,.2); }
+        .glass-card.red-accent .accent-line { background:linear-gradient(180deg,var(--red),#ff8a8a); }
 
-        /* Red accent variant */
-        .glass-card.red-accent .accent-line {
-            background: linear-gradient(180deg, var(--red-accent) 0%, #ff8a8a 100%);
-        }
-        .glass-card.red-accent {
-            border-color: rgba(232, 69, 69, 0.2);
-            box-shadow:
-                0 4px 24px rgba(0, 0, 0, 0.35),
-                0 0 30px rgba(232, 69, 69, 0.06),
-                inset 0 1px 0 var(--glass-shine);
-        }
-
-        /* Vocab list inside glass card */
-        .vocab-list {
-            list-style: none;
-            padding: 0;
-            margin: 12px 0 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .vocab-list { list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column; gap:10px; }
         .vocab-list li {
-            padding: 13px 16px;
-            background: rgba(26, 108, 246, 0.08);
-            border: 1px solid rgba(77, 166, 255, 0.12);
-            border-radius: 10px;
-            font-family: 'Lora', serif;
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.6;
+            padding:13px 16px; background:rgba(26,108,246,.08);
+            border:1px solid rgba(77,166,255,.12); border-radius:10px;
+            font-family:'Lora',serif; font-size:.92rem; color:var(--text-muted); line-height:1.6;
         }
-        .vocab-list li strong {
-            display: block;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            color: var(--blue-light);
-            font-size: 0.88rem;
-            letter-spacing: 0.06em;
-            margin-bottom: 3px;
-        }
+        .vocab-list li strong { display:block; font-family:'Outfit',sans-serif; font-weight:600; color:var(--accent-light); font-size:.88rem; letter-spacing:.06em; margin-bottom:3px; }
 
-        /* Prose bullet list */
-        .prose-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .prose-list li {
-            font-family: 'Lora', serif;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            padding-left: 22px;
-            position: relative;
-        }
-        .prose-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.62em;
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--blue-primary);
-            box-shadow: 0 0 6px var(--blue-glow);
-        }
+        .prose-list { list-style:none; padding:0; margin:0 0 20px; display:flex; flex-direction:column; gap:6px; }
+        .prose-list li { font-family:'Lora',serif; font-size:.95rem; color:var(--text-muted); padding-left:22px; position:relative; }
+        .prose-list li::before { content:''; position:absolute; left:0; top:.62em; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px rgba(26,108,246,.35); }
 
-        /* Sub section divider inside glass card */
-        .sub-section {
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(77, 166, 255, 0.1);
-        }
+        .sub-section { margin-top:20px; padding-top:18px; border-top:1px solid rgba(77,166,255,.1); }
 
-        /* Images */
-        .custom-image,
-        .custom-centered-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            display: block;
-            margin: 16px 0;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        .custom-image, .custom-centered-image {
+            width:100%; height:auto; border-radius:12px; display:block;
+            border:1px solid var(--card-border); margin:16px 0;
+            box-shadow:0 8px 32px rgba(0,0,0,.45);
         }
-        .custom-centered-image { margin: 28px auto; }
+        .custom-centered-image { margin:28px auto; }
 
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .image-container figure { flex: 1 1 46%; margin: 0; }
-        .image-container img {
-            width: 100%; height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 6px 24px rgba(0,0,0,0.4);
-        }
-        .image-container figcaption {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            text-align: center;
-            margin-top: 8px;
-            letter-spacing: 0.02em;
-        }
-        @media (max-width: 550px) { .image-container figure { flex: 1 1 100%; } }
+        .image-container { display:flex; flex-wrap:wrap; gap:20px; margin:20px 0; }
+        .image-container figure { flex:1 1 46%; margin:0; }
+        .image-container img { width:100%; height:auto; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 6px 24px rgba(0,0,0,.4); }
+        .image-container figcaption { font-family:'Outfit',sans-serif; font-size:.72rem; color:var(--text-dim); text-align:center; margin-top:8px; }
+        @media(max-width:550px) { .image-container figure { flex:1 1 100%; } }
 
-        /* Divider */
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
-            margin: 10px 0 32px;
-        }
+        .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--card-border),transparent); margin:10px 0 32px; }
 
-        /* Back button */
         .custom-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            background: linear-gradient(135deg, var(--blue-primary) 0%, #1250c4 100%);
-            color: #ffffff;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 60px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(26, 108, 246, 0.45);
-            letter-spacing: 0.04em;
+            display:inline-flex; align-items:center; gap:8px; padding:12px 28px;
+            background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);
+            color:#fff; font-family:'Outfit',sans-serif; font-size:.9rem; font-weight:600;
+            text-decoration:none; border-radius:50px; margin-top:60px;
+            transition:all .3s; box-shadow:0 4px 20px rgba(26,108,246,.45); letter-spacing:.04em;
         }
-        .custom-button::before { content: '←'; font-size: 1.1rem; }
-        .custom-button:hover {
-            background: linear-gradient(135deg, #2d7ef8 0%, #1a5de0 100%);
-            box-shadow: 0 6px 30px rgba(26, 108, 246, 0.65);
-            transform: translateY(-2px);
-        }
+        .custom-button::before { content:'←'; font-size:1.1rem; }
+        .custom-button:hover { transform:translateY(-2px); box-shadow:0 6px 30px rgba(26,108,246,.65); }
 
-        /* Page entry animation */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .page-wrapper > * {
-            animation: fadeUp 0.5s ease both;
-        }
-        .page-wrapper > *:nth-child(1)  { animation-delay: 0.05s; }
-        .page-wrapper > *:nth-child(2)  { animation-delay: 0.10s; }
-        .page-wrapper > *:nth-child(3)  { animation-delay: 0.15s; }
-        .page-wrapper > *:nth-child(4)  { animation-delay: 0.20s; }
-        .page-wrapper > *:nth-child(5)  { animation-delay: 0.25s; }
-        .page-wrapper > *:nth-child(6)  { animation-delay: 0.30s; }
-        .page-wrapper > *:nth-child(n+7){ animation-delay: 0.35s; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .page-wrapper > * { animation:fadeUp .5s ease both; }
+        .page-wrapper > *:nth-child(1)  { animation-delay:.05s; }
+        .page-wrapper > *:nth-child(2)  { animation-delay:.10s; }
+        .page-wrapper > *:nth-child(3)  { animation-delay:.15s; }
+        .page-wrapper > *:nth-child(4)  { animation-delay:.20s; }
+        .page-wrapper > *:nth-child(5)  { animation-delay:.25s; }
+        .page-wrapper > *:nth-child(n+6){ animation-delay:.30s; }
 
-        /* ═══════════════════════════════════════
-           FLOATING TOOLBAR
-        ═══════════════════════════════════════ */
-        .toolbar {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            background: rgba(5, 15, 35, 0.75);
-            border: 1px solid rgba(77, 166, 255, 0.25);
-            border-radius: 20px;
-            padding: 14px 10px;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            box-shadow:
-                0 8px 32px rgba(0,0,0,0.5),
-                inset 0 1px 0 rgba(255,255,255,0.06);
+        /* ════════════════════════════════════════════════
+           FLOATING TRIGGER BUTTON
+        ════════════════════════════════════════════════ */
+        #palette-trigger {
+            position:fixed; right:20px; top:50%; transform:translateY(-50%);
+            z-index:999; width:48px; height:48px; border-radius:50%;
+            background:linear-gradient(135deg,var(--accent),var(--accent-light));
+            border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 20px rgba(26,108,246,.5);
+            transition:all .3s; color:#fff; font-size:1.3rem;
         }
+        #palette-trigger:hover { transform:translateY(-50%) scale(1.1); box-shadow:0 6px 28px rgba(26,108,246,.7); }
+        #palette-trigger.open  { transform:translateY(-50%) rotate(45deg); }
 
-        .toolbar-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: rgba(140, 175, 230, 0.5);
-            text-transform: uppercase;
-            margin-bottom: 2px;
-            text-align: center;
+        /* ════════════════════════════════════════════════
+           SIDE PANEL
+        ════════════════════════════════════════════════ */
+        #color-panel {
+            position:fixed; right:-340px; top:0; width:320px; height:100vh;
+            z-index:1000; overflow-y:auto; overflow-x:hidden;
+            background:rgba(4,12,28,0.96);
+            border-left:1px solid rgba(77,166,255,.18);
+            backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+            box-shadow:-8px 0 40px rgba(0,0,0,.6);
+            transition:right .35s cubic-bezier(.4,0,.2,1);
+            padding:0 0 40px;
         }
+        #color-panel.open { right:0; }
 
-        .toolbar-divider {
-            width: 28px;
-            height: 1px;
-            background: rgba(77, 166, 255, 0.15);
-            margin: 6px 0;
+        /* Panel header */
+        .panel-header {
+            position:sticky; top:0; z-index:2;
+            background:rgba(4,12,28,0.98);
+            border-bottom:1px solid rgba(77,166,255,.12);
+            padding:18px 20px 14px;
+            display:flex; align-items:center; justify-content:space-between;
         }
+        .panel-title {
+            font-family:'Outfit',sans-serif; font-size:.95rem; font-weight:700;
+            color:#fff; letter-spacing:.04em;
+            display:flex; align-items:center; gap:8px;
+        }
+        .panel-title span { font-size:1rem; }
+        .panel-close {
+            width:30px; height:30px; border-radius:8px; border:1px solid rgba(77,166,255,.2);
+            background:transparent; color:var(--text-dim); cursor:pointer; font-size:1.1rem;
+            display:flex; align-items:center; justify-content:center; transition:all .2s;
+        }
+        .panel-close:hover { background:rgba(232,69,69,.15); color:#e84545; border-color:rgba(232,69,69,.3); }
 
-        /* Font size buttons */
-        .font-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            border: 1px solid rgba(77, 166, 255, 0.15);
-            background: rgba(26, 108, 246, 0.1);
-            color: var(--blue-light);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            user-select: none;
-            -webkit-user-select: none;
-            line-height: 1;
+        /* Font size strip */
+        .font-strip {
+            padding:14px 20px 12px;
+            border-bottom:1px solid rgba(77,166,255,.08);
+            display:flex; align-items:center; gap:10px;
         }
-        .font-btn:hover {
-            background: rgba(26, 108, 246, 0.25);
-            border-color: rgba(77, 166, 255, 0.45);
-            box-shadow: 0 0 10px rgba(26, 108, 246, 0.3);
+        .font-strip-label { font-family:'Outfit',sans-serif; font-size:.75rem; font-weight:600; color:var(--text-dim); letter-spacing:.08em; text-transform:uppercase; flex:1; }
+        .fs-btn {
+            width:34px; height:34px; border-radius:9px; border:1px solid rgba(77,166,255,.18);
+            background:rgba(26,108,246,.1); color:var(--accent-light); cursor:pointer;
+            font-family:'Outfit',sans-serif; font-weight:700; transition:all .2s;
+            display:flex; align-items:center; justify-content:center;
         }
-        .font-btn.small-a { font-size: 0.8rem; }
-        .font-btn.big-a   { font-size: 1.15rem; }
+        .fs-btn:hover { background:rgba(26,108,246,.28); border-color:rgba(77,166,255,.4); }
+        .fs-btn.sml { font-size:.78rem; }
+        .fs-btn.lrg { font-size:1.1rem; }
+        .fs-size-display {
+            min-width:38px; text-align:center; font-family:'Outfit',sans-serif;
+            font-size:.8rem; font-weight:600; color:var(--accent-light);
+        }
+        .fs-reset {
+            padding:4px 10px; border-radius:8px; border:1px solid rgba(77,166,255,.15);
+            background:transparent; color:var(--text-dim); cursor:pointer; font-family:'Outfit',sans-serif;
+            font-size:.7rem; font-weight:500; letter-spacing:.04em; transition:all .2s;
+        }
+        .fs-reset:hover { color:var(--accent-light); border-color:rgba(77,166,255,.35); }
 
-        /* Font size reset */
-        .font-reset {
-            font-size: 0.65rem;
-            width: 36px;
-            height: 22px;
-            border-radius: 7px;
-            border: 1px solid rgba(77, 166, 255, 0.12);
-            background: transparent;
-            color: rgba(140, 175, 230, 0.55);
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            transition: all 0.2s;
-            text-align: center;
-            user-select: none;
-            -webkit-user-select: none;
+        /* Preset themes strip */
+        .presets-strip { padding:14px 20px 12px; border-bottom:1px solid rgba(77,166,255,.08); }
+        .strip-label { font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:600; color:var(--text-dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px; }
+        .preset-row { display:flex; gap:8px; flex-wrap:wrap; }
+        .preset-btn {
+            flex:1 1 auto; padding:7px 10px; border-radius:9px; border:1px solid rgba(255,255,255,.1);
+            background:rgba(255,255,255,.05); color:var(--text-muted); cursor:pointer;
+            font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:500; letter-spacing:.03em;
+            transition:all .2s; text-align:center; white-space:nowrap;
         }
-        .font-reset:hover { color: var(--blue-light); border-color: rgba(77,166,255,0.3); }
+        .preset-btn:hover { background:rgba(26,108,246,.2); border-color:rgba(77,166,255,.3); color:#fff; }
 
-        /* Color swatches */
-        .swatch {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease;
-            position: relative;
-            flex-shrink: 0;
+        /* Color rows */
+        .color-section { padding:16px 20px 0; }
+        .section-title {
+            font-family:'Outfit',sans-serif; font-size:.7rem; font-weight:700;
+            color:var(--text-dim); letter-spacing:.12em; text-transform:uppercase;
+            margin-bottom:12px; margin-top:4px;
+            display:flex; align-items:center; gap:6px;
         }
-        .swatch:hover { transform: scale(1.15); }
-        .swatch.active {
-            border-color: #ffffff;
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.3), 0 0 10px rgba(255,255,255,0.2);
-        }
+        .section-title::before { content:''; display:inline-block; width:14px; height:1px; background:rgba(77,166,255,.3); }
 
-        /* Theme: default blue-dark */
-        .swatch-blue    { background: radial-gradient(circle at 35% 35%, #4da6ff, #1a6cf6); }
-        /* Theme: deep purple */
-        .swatch-purple  { background: radial-gradient(circle at 35% 35%, #b07fff, #6b2fff); }
-        /* Theme: emerald */
-        .swatch-green   { background: radial-gradient(circle at 35% 35%, #4dffc3, #00b882); }
-        /* Theme: warm amber */
-        .swatch-amber   { background: radial-gradient(circle at 35% 35%, #ffd166, #e07b00); }
-        /* Theme: light / white */
-        .swatch-light   { background: radial-gradient(circle at 35% 35%, #e8f0ff, #b0c4e8); border-color: rgba(0,0,0,0.15); }
-        /* Theme: high contrast */
-        .swatch-contrast { background: radial-gradient(circle at 35% 35%, #ffffff, #000000); }
+        .color-row {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:10px 12px; border-radius:10px; margin-bottom:6px;
+            background:rgba(255,255,255,.03); border:1px solid rgba(77,166,255,.06);
+            transition:background .2s;
+            gap:10px;
+        }
+        .color-row:hover { background:rgba(77,166,255,.06); }
+        .color-row-label { font-family:'Outfit',sans-serif; font-size:.82rem; color:var(--text-muted); flex:1; }
+        .color-row-right { display:flex; align-items:center; gap:8px; }
+        .color-preview {
+            width:28px; height:28px; border-radius:8px; border:2px solid rgba(255,255,255,.15);
+            cursor:pointer; transition:transform .2s, box-shadow .2s; flex-shrink:0;
+        }
+        .color-preview:hover { transform:scale(1.1); box-shadow:0 0 10px rgba(255,255,255,.2); }
+        .color-input-native {
+            position:absolute; opacity:0; width:0; height:0; pointer-events:none;
+        }
+        .color-hex-input {
+            width:76px; background:rgba(255,255,255,.06); border:1px solid rgba(77,166,255,.15);
+            border-radius:7px; padding:4px 8px; font-family:'Outfit',sans-serif; font-size:.75rem;
+            color:var(--text-muted); text-align:center; letter-spacing:.04em; outline:none;
+            transition:border-color .2s;
+        }
+        .color-hex-input:focus { border-color:rgba(77,166,255,.45); color:#fff; }
 
-        /* ── Theme: Purple ── */
-        body.theme-purple {
-            --bg-deep:       #0d0520;
-            --bg-mid:        #130730;
-            --blue-primary:  #6b2fff;
-            --blue-light:    #b07fff;
-            --blue-glow:     rgba(107, 47, 255, 0.35);
-            --blue-subtle:   rgba(176, 127, 255, 0.12);
-            --glass-bg:      rgba(30, 10, 70, 0.55);
-            --glass-border:  rgba(176, 127, 255, 0.22);
-            --text-primary:  #f0e8ff;
-            --text-muted:    rgba(210, 185, 255, 0.75);
-            --text-dim:      rgba(175, 150, 230, 0.55);
+        /* Opacity slider row */
+        .opacity-row {
+            display:flex; align-items:center; gap:10px;
+            padding:8px 12px 10px; border-radius:10px; margin-bottom:6px;
+            background:rgba(255,255,255,.03); border:1px solid rgba(77,166,255,.06);
         }
-        body.theme-purple { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(107, 47, 255, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(107, 47, 255, 0.12) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(20, 5, 50, 0.9) 0%, transparent 100%);
+        .opacity-row label { font-family:'Outfit',sans-serif; font-size:.8rem; color:var(--text-muted); flex:1; }
+        .opacity-row input[type=range] {
+            flex:2; accent-color:var(--accent-light); height:4px; cursor:pointer;
         }
-        body.theme-purple .orb-1 { background: #6b2fff; }
-        body.theme-purple .orb-2 { background: #b07fff; }
+        .opacity-val { font-family:'Outfit',sans-serif; font-size:.75rem; color:var(--accent-light); min-width:32px; text-align:right; }
 
-        /* ── Theme: Green ── */
-        body.theme-green {
-            --bg-deep:       #021510;
-            --bg-mid:        #031f16;
-            --blue-primary:  #00b882;
-            --blue-light:    #4dffc3;
-            --blue-glow:     rgba(0, 184, 130, 0.35);
-            --blue-subtle:   rgba(77, 255, 195, 0.12);
-            --glass-bg:      rgba(0, 35, 25, 0.55);
-            --glass-border:  rgba(77, 255, 195, 0.22);
-            --text-primary:  #e0fff4;
-            --text-muted:    rgba(160, 255, 210, 0.75);
-            --text-dim:      rgba(120, 210, 170, 0.55);
+        /* Reset all */
+        .reset-all-btn {
+            display:block; width:calc(100% - 40px); margin:16px 20px 0;
+            padding:10px; border-radius:10px; border:1px solid rgba(232,69,69,.25);
+            background:rgba(232,69,69,.08); color:#e84545; cursor:pointer;
+            font-family:'Outfit',sans-serif; font-size:.82rem; font-weight:600;
+            letter-spacing:.04em; transition:all .25s; text-align:center;
         }
-        body.theme-green { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0, 184, 130, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(0, 184, 130, 0.12) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(2, 20, 14, 0.9) 0%, transparent 100%);
-        }
-        body.theme-green .orb-1 { background: #00b882; }
-        body.theme-green .orb-2 { background: #4dffc3; }
+        .reset-all-btn:hover { background:rgba(232,69,69,.18); border-color:rgba(232,69,69,.45); }
 
-        /* ── Theme: Amber ── */
-        body.theme-amber {
-            --bg-deep:       #150a00;
-            --bg-mid:        #201000;
-            --blue-primary:  #e07b00;
-            --blue-light:    #ffd166;
-            --blue-glow:     rgba(224, 123, 0, 0.35);
-            --blue-subtle:   rgba(255, 209, 102, 0.12);
-            --glass-bg:      rgba(40, 20, 0, 0.55);
-            --glass-border:  rgba(255, 209, 102, 0.22);
-            --text-primary:  #fff8e8;
-            --text-muted:    rgba(255, 225, 160, 0.75);
-            --text-dim:      rgba(210, 175, 100, 0.55);
-        }
-        body.theme-amber { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(224, 123, 0, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(224, 123, 0, 0.12) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(25, 12, 0, 0.9) 0%, transparent 100%);
-        }
-        body.theme-amber .orb-1 { background: #e07b00; }
-        body.theme-amber .orb-2 { background: #ffd166; }
+        /* Scrollbar */
+        #color-panel::-webkit-scrollbar { width:4px; }
+        #color-panel::-webkit-scrollbar-track { background:transparent; }
+        #color-panel::-webkit-scrollbar-thumb { background:rgba(77,166,255,.2); border-radius:4px; }
 
-        /* ── Theme: Light ── */
-        body.theme-light {
-            --bg-deep:       #f0f4ff;
-            --bg-mid:        #e4ecff;
-            --blue-primary:  #1a6cf6;
-            --blue-light:    #0050cc;
-            --blue-glow:     rgba(26, 108, 246, 0.2);
-            --blue-subtle:   rgba(26, 108, 246, 0.08);
-            --glass-bg:      rgba(255, 255, 255, 0.65);
-            --glass-border:  rgba(26, 108, 246, 0.18);
-            --glass-shine:   rgba(255, 255, 255, 0.9);
-            --text-primary:  #0a1a3a;
-            --text-muted:    rgba(30, 60, 120, 0.8);
-            --text-dim:      rgba(60, 100, 180, 0.55);
-        }
-        body.theme-light { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(26, 108, 246, 0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26, 108, 246, 0.06) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(220, 230, 255, 0.9) 0%, transparent 100%);
-        }
-        body.theme-light::before {
-            background-image:
-                linear-gradient(rgba(26, 108, 246, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(26, 108, 246, 0.04) 1px, transparent 1px);
-        }
-        body.theme-light .orb-1 { background: #4da6ff; opacity: 0.1; }
-        body.theme-light .orb-2 { background: #1a6cf6; opacity: 0.08; }
-        body.theme-light h1 {
-            background: linear-gradient(135deg, #0a1a3a 30%, #1a6cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        body.theme-light .toolbar {
-            background: rgba(240, 244, 255, 0.85);
-            border-color: rgba(26, 108, 246, 0.2);
-        }
-
-        /* ── Theme: High Contrast ── */
-        body.theme-contrast {
-            --bg-deep:       #000000;
-            --bg-mid:        #0a0a0a;
-            --blue-primary:  #ffffff;
-            --blue-light:    #ffff00;
-            --blue-glow:     rgba(255, 255, 0, 0.3);
-            --blue-subtle:   rgba(255, 255, 0, 0.1);
-            --glass-bg:      rgba(0, 0, 0, 0.85);
-            --glass-border:  rgba(255, 255, 0, 0.4);
-            --glass-shine:   rgba(255, 255, 255, 0.05);
-            --text-primary:  #ffffff;
-            --text-muted:    #eeeeee;
-            --text-dim:      #aaaaaa;
-        }
-        body.theme-contrast { background-image: none; }
-        body.theme-contrast::before { display: none; }
-        body.theme-contrast .orb { display: none; }
-        body.theme-contrast h1 {
-            background: linear-gradient(135deg, #ffffff 30%, #ffff00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        body.theme-contrast .glass-card {
-            border-width: 2px;
-        }
-
-        /* Mobile: toolbar moves to bottom */
-        @media (max-width: 767px) {
-            .toolbar {
-                right: unset;
-                top: unset;
-                bottom: 16px;
-                left: 50%;
-                transform: translateX(-50%);
-                flex-direction: row;
-                border-radius: 50px;
-                padding: 10px 16px;
-                gap: 8px;
-            }
-            .toolbar-label { display: none; }
-            .toolbar-divider {
-                width: 1px;
-                height: 28px;
-                margin: 0 4px;
-            }
+        /* Mobile: panel full-width from bottom */
+        @media(max-width:767px) {
+            #color-panel { right:unset; bottom:-100vh; top:unset; width:100%; height:75vh; border-left:none; border-top:1px solid rgba(77,166,255,.18); transition:bottom .35s cubic-bezier(.4,0,.2,1); }
+            #color-panel.open { bottom:0; right:unset; }
+            #palette-trigger { right:16px; top:unset; bottom:20px; transform:none; }
+            #palette-trigger:hover { transform:scale(1.1); }
+            #palette-trigger.open { transform:rotate(45deg); }
         }
     </style>
 </head>
-
 <body>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- ═══ FLOATING TOOLBAR ═══ -->
-    <div class="toolbar" id="toolbar">
+    <!-- ═══ FLOATING TRIGGER ═══ -->
+    <button id="palette-trigger" title="Renkleri özelleştir / Customize colors">🎨</button>
 
-        <!-- Font size -->
-        <div class="toolbar-label">size</div>
-        <button class="font-btn small-a" id="btn-shrink" title="Küçült (Decrease font)">a</button>
-        <button class="font-btn big-a"   id="btn-grow"   title="Büyüt (Increase font)">A</button>
-        <button class="font-reset"       id="btn-reset-font" title="Varsayılan boyut">reset</button>
+    <!-- ═══ COLOR PANEL ═══ -->
+    <div id="color-panel">
+        <div class="panel-header">
+            <div class="panel-title"><span>🎨</span> Renk &amp; Yazı Ayarları</div>
+            <button class="panel-close" id="panel-close-btn">✕</button>
+        </div>
 
-        <div class="toolbar-divider"></div>
+        <!-- Font Size -->
+        <div class="font-strip">
+            <div class="font-strip-label">Font Boyutu</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ reset</button>
+        </div>
 
-        <!-- Colour palette -->
-        <div class="toolbar-label">renk</div>
-        <div class="swatch swatch-blue    active" data-theme=""         title="Mavi (Default)"></div>
-        <div class="swatch swatch-purple"          data-theme="purple"  title="Mor / Purple"></div>
-        <div class="swatch swatch-green"           data-theme="green"   title="Yeşil / Emerald"></div>
-        <div class="swatch swatch-amber"           data-theme="amber"   title="Amber / Turuncu"></div>
-        <div class="swatch swatch-light"           data-theme="light"   title="Açık / Light"></div>
-        <div class="swatch swatch-contrast"        data-theme="contrast" title="Yüksek Kontrast"></div>
+        <!-- Preset Themes -->
+        <div class="presets-strip">
+            <div class="strip-label">Hazır Temalar</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 Varsayılan</button>
+                <button class="preset-btn" data-preset="light">☀️ Açık</button>
+                <button class="preset-btn" data-preset="purple">🟣 Mor</button>
+                <button class="preset-btn" data-preset="green">🟢 Yeşil</button>
+                <button class="preset-btn" data-preset="amber">🟡 Amber</button>
+                <button class="preset-btn" data-preset="contrast">⬛ Kontrast</button>
+            </div>
+        </div>
 
+        <!-- Background Colors -->
+        <div class="color-section">
+            <div class="section-title">Arka Plan</div>
+            <div class="color-row">
+                <div class="color-row-label">Ana arka plan</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-bg-deep" onclick="openPicker('bg-deep')"></div>
+                    <input class="color-hex-input" id="hex-bg-deep" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-bg-deep" />
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Fon opaklığı</label>
+                <input type="range" id="opacity-bg" min="0" max="100" value="100" />
+                <div class="opacity-val" id="opacity-bg-val">100%</div>
+            </div>
+        </div>
+
+        <!-- Accent Colors -->
+        <div class="color-section">
+            <div class="section-title">Vurgu Renkleri</div>
+            <div class="color-row">
+                <div class="color-row-label">Ana vurgu</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-accent" onclick="openPicker('accent')"></div>
+                    <input class="color-hex-input" id="hex-accent" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-accent" />
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Vurgu (açık)</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-accent-light" onclick="openPicker('accent-light')"></div>
+                    <input class="color-hex-input" id="hex-accent-light" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-accent-light" />
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Kırmızı/Uyarı</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-red" onclick="openPicker('red')"></div>
+                    <input class="color-hex-input" id="hex-red" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-red" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Colors -->
+        <div class="color-section">
+            <div class="section-title">Yazı Renkleri</div>
+            <div class="color-row">
+                <div class="color-row-label">Ana başlık (h1)</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-primary" onclick="openPicker('text-primary')"></div>
+                    <input class="color-hex-input" id="hex-text-primary" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-text-primary" />
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Başlıklar (h2/h3)</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-heading-color" onclick="openPicker('heading-color')"></div>
+                    <input class="color-hex-input" id="hex-heading-color" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-heading-color" />
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Paragraf metni</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-muted" onclick="openPicker('text-muted')"></div>
+                    <input class="color-hex-input" id="hex-text-muted" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-text-muted" />
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Soluk metin</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-dim" onclick="openPicker('text-dim')"></div>
+                    <input class="color-hex-input" id="hex-text-dim" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-text-dim" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Colors -->
+        <div class="color-section">
+            <div class="section-title">Kart / Panel</div>
+            <div class="color-row">
+                <div class="color-row-label">Kart arka planı</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-card-bg" onclick="openPicker('card-bg')"></div>
+                    <input class="color-hex-input" id="hex-card-bg" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-card-bg" />
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Kart opaklığı</label>
+                <input type="range" id="opacity-card" min="0" max="100" value="55" />
+                <div class="opacity-val" id="opacity-card-val">55%</div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Kart kenarlık</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-card-border" onclick="openPicker('card-border')"></div>
+                    <input class="color-hex-input" id="hex-card-border" maxlength="7" spellcheck="false" />
+                    <input class="color-input-native" type="color" id="pick-card-border" />
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Kenarlık opaklığı</label>
+                <input type="range" id="opacity-border" min="0" max="100" value="22" />
+                <div class="opacity-val" id="opacity-border-val">22%</div>
+            </div>
+        </div>
+
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
     </div>
 
+    <!-- ═══ PAGE CONTENT ═══ -->
     <div class="page-wrapper">
 
-        <!-- Breadcrumb -->
         <div class="brand-strip">
-            <span>ExamTheorie</span>
-            <span class="dot">›</span>
-            <span>Passenger Car</span>
-            <span class="dot">›</span>
-            <span style="color: var(--text-primary);">Code of Conduct</span>
+            <span>ExamTheorie</span><span class="dot">›</span>
+            <span>Passenger Car</span><span class="dot">›</span>
+            <span style="color:var(--text-primary)">Code of Conduct</span>
         </div>
 
         <h1>Code of Conduct</h1>
         <div class="section-divider"></div>
 
-        <!-- Important Dutch Words -->
         <div class="glass-card">
             <div class="accent-line"></div>
             <h3>Important Dutch Words</h3>
             <ul class="vocab-list">
-                <li>
-                    <strong>APK</strong>
-                    Same as the MOT, mandatory periodic general inspection of the vehicle.
-                </li>
-                <li>
-                    <strong>Brommobiel</strong>
-                    Moped on three or four wheels with closed bodywork and a maximum unladen weight of 350 kg. Also called microcar.
-                </li>
-                <li>
-                    <strong>Snorfiets</strong>
-                    Moped with a maximum construction speed of 25 km/h.
-                </li>
+                <li><strong>APK</strong>Same as the MOT, mandatory periodic general inspection of the vehicle.</li>
+                <li><strong>Brommobiel</strong>Moped on three or four wheels with closed bodywork and a maximum unladen weight of 350 kg. Also called microcar.</li>
+                <li><strong>Snorfiets</strong>Moped with a maximum construction speed of 25 km/h.</li>
             </ul>
         </div>
 
@@ -678,7 +492,6 @@
             <li>prevent crime.</li>
         </ul>
 
-        <!-- Roads & Authorised Person -->
         <div class="glass-card">
             <div class="accent-line"></div>
             <h3>Roads</h3>
@@ -689,9 +502,7 @@
                 <h3>Authorised Person</h3>
                 <p>People authorised to regulate traffic and request official documents. These are:</p>
                 <ul class="prose-list">
-                    <li>Public prosecutors</li>
-                    <li>Police officers</li>
-                    <li>Military police</li>
+                    <li>Public prosecutors</li><li>Police officers</li><li>Military police</li>
                     <li>Civil servants from the government tax service</li>
                     <li>Officials of the Dutch department of motor vehicles and the traffic inspectorate</li>
                     <li>Officials of the Rijkswaterstaat (Dept. of waterways and public works)</li>
@@ -702,7 +513,6 @@
 
         <h2>Instructions</h2>
         <p>Every road user is obliged to follow instructions given by authorised people.<br />In addition, road users are also required to follow instructions given by crossing guards – who may only stop drivers.</p>
-
         <div class="image-container">
             <figure>
                 <img src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg" alt="Crossing guard" />
@@ -731,7 +541,7 @@
         <div class="glass-card red-accent">
             <div class="accent-line"></div>
             <h3>Kapstokartikel</h3>
-            <p style="margin-bottom:0;">Article 5 of the Road Traffic Act (also called 'Kapstokartikel') prohibits road users from operating a vehicle in such a way that it hinders traffic or causes danger to themselves or other road users. This law provides a so-called 'safety net' which covers dangerous behaviour that is not directly prohibited by traffic signs or road markings but still constitutes a hinder or danger and for which you may still be prosecuted.</p>
+            <p style="margin-bottom:0">Article 5 of the Road Traffic Act (also called 'Kapstokartikel') prohibits road users from operating a vehicle in such a way that it hinders traffic or causes danger to themselves or other road users. This law provides a so-called 'safety net' which covers dangerous behaviour that is not directly prohibited by traffic signs or road markings but still constitutes a hinder or danger and for which you may still be prosecuted.</p>
         </div>
 
         <h2>Injury or Death At-Fault</h2>
@@ -743,7 +553,7 @@
 
         <div class="glass-card red-accent">
             <div class="accent-line"></div>
-            <p style="margin-bottom:0;">Leaving the scene of an accident while leaving an injured person without aid is always a crime – even if you report to the police later. Regardless of whether you were directly involved in the accident or not, you are obliged to provide help if needed.</p>
+            <p style="margin-bottom:0">Leaving the scene of an accident while leaving an injured person without aid is always a crime – even if you report to the police later. Regardless of whether you were directly involved in the accident or not, you are obliged to provide help if needed.</p>
         </div>
 
         <h2>Racing on the Road</h2>
@@ -755,18 +565,18 @@
             <p>Police officers are authorised to confiscate your driving licence if you are caught violating traffic regulations. Your licence will then be forwarded to the public prosecutor.</p>
             <div class="sub-section">
                 <h3>Driving Disqualification (licence suspended)</h3>
-                <p>Being disqualified from driving means you are not allowed to operate motor carriages for several weeks, months or even years. If you are caught violating traffic regulations, a public prosecutor or judge may disqualify you from driving. Driving disqualification may last up to two years for less severe infractions and up to five years for serious offences. The latter includes death or injury caused by dangerous driving, driving under the influence of alcohol, and driving while disqualified. If you commit another offence within a short time, these penalties may be doubled.</p>
+                <p>Being disqualified from driving means you are not allowed to operate motor carriages for several weeks, months or even years. Driving disqualification may last up to two years for less severe infractions and up to five years for serious offences. The latter includes death or injury caused by dangerous driving, driving under the influence of alcohol, and driving while disqualified. If you commit another offence within a short time, these penalties may be doubled.</p>
             </div>
             <div class="sub-section">
                 <h3>Driving Licence Invalidation</h3>
-                <p>If you commit several offences, or if you are ineligible to drive for other reasons, your driving licence may be declared invalid. This means you are no longer permitted to operate motor carriages for which your licence is required. You will still be permitted to cycle, be a passenger in a vehicle, and operate vehicles that do not require a driving licence. Your licence may also be invalidated for one vehicle category only, which means you will remain eligible to operate vehicles in other categories.</p>
+                <p>If you commit several offences, or if you are ineligible to drive for other reasons, your driving licence may be declared invalid. This means you are no longer permitted to operate motor carriages for which your licence is required. Your licence may also be invalidated for one vehicle category only, which means you will remain eligible to operate vehicles in other categories.</p>
             </div>
         </div>
 
         <img src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg" alt="Traffic enforcement" class="custom-centered-image" />
 
         <h2>Driving Behaviour Enforcement</h2>
-        <p>If you are found in violation of traffic laws, your driving licence may be confiscated. This means the police will take your licence and forward it to the public prosecutor, who will then decide (within 10 days) whether to withhold your licence or return it to you. In either case, a judge may be asked to make the final decision, at which point you may be fined and/or disqualified from driving. You will no longer be permitted to drive a motor carriage for the duration of your disqualification.</p>
+        <p>If you are found in violation of traffic laws, your driving licence may be confiscated. This means the police will take your licence and forward it to the public prosecutor, who will then decide (within 10 days) whether to withhold your licence or return it to you. In either case, a judge may be asked to make the final decision, at which point you may be fined and/or disqualified from driving.</p>
         <p>Based on your behaviour, confiscation of your driving licence may happen if you:</p>
         <ul class="prose-list">
             <li>exceed the speed limit by 50 km/h or more;</li>
@@ -776,7 +586,7 @@
 
         <div class="glass-card">
             <div class="accent-line"></div>
-            <p>The abbreviation CBR stands for <strong style="color: var(--blue-light); font-family: 'Outfit', sans-serif;">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence. They also decide whether you get to keep your driving licence when your eligibility or driving skills are called into question. The CBR oversees both theory and driving tests. Another branch of the CBR is the BNOR; if you fail your driving test four times consecutively, they will investigate further and determine your driving capabilities.</p>
+            <p>The abbreviation CBR stands for <strong style="color:var(--accent-light);font-family:'Outfit',sans-serif">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence. They also oversee both theory and driving tests. Another branch of the CBR is the BNOR; if you fail your driving test four times consecutively, they will investigate further and determine your driving capabilities.</p>
         </div>
 
         <p>The CBR may be notified if you:</p>
@@ -792,75 +602,262 @@
         <p>Operating a motor carriage while disqualified from driving is a criminal offence. This is also the case if you operate a vehicle for which a licence is required and your licence has been declared invalid.</p>
 
         <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
-
     </div>
 
     <script>
-        /* ─── Toolbar Logic ─── */
-        (function () {
-            const body        = document.body;
-            const swatches    = document.querySelectorAll('.swatch');
-            const btnGrow     = document.getElementById('btn-grow');
-            const btnShrink   = document.getElementById('btn-shrink');
-            const btnReset    = document.getElementById('btn-reset-font');
+    (function () {
+        'use strict';
 
-            // Font size state
-            const BASE_SIZE   = 16;   // px
-            const STEP        = 1;    // px per click
-            const MIN_SIZE    = 12;
-            const MAX_SIZE    = 24;
-            let currentSize   = BASE_SIZE;
+        /* ──────────────────────────────────────
+           DEFAULT VALUES
+        ────────────────────────────────────── */
+        const DEFAULTS = {
+            'bg-deep':       '#050d1a',
+            'accent':        '#1a6cf6',
+            'accent-light':  '#4da6ff',
+            'red':           '#e84545',
+            'text-primary':  '#e8f0ff',
+            'heading-color': '#4da6ff',
+            'text-muted':    '#b4cdff',
+            'text-dim':      '#8cafd6',
+            'card-bg':       '#0a1e41',
+            'card-border':   '#4da6ff',
+            'opacity-bg':    100,
+            'opacity-card':  55,
+            'opacity-border':22,
+            'font-size':     16
+        };
 
-            function applyFontSize(size) {
-                currentSize = Math.min(MAX_SIZE, Math.max(MIN_SIZE, size));
-                document.documentElement.style.fontSize = currentSize + 'px';
-                try { localStorage.setItem('et_fontsize', currentSize); } catch(e){}
+        /* Preset themes */
+        const PRESETS = {
+            default:  { ...DEFAULTS },
+            light:    { 'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':70,'opacity-border':18,'font-size':16 },
+            purple:   { 'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16 },
+            green:    { 'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16 },
+            amber:    { 'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16 },
+            contrast: { 'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16 }
+        };
+
+        /* Current state */
+        let state = {};
+        try { state = JSON.parse(localStorage.getItem('et_colors') || '{}'); } catch(e){}
+        state = Object.assign({}, DEFAULTS, state);
+
+        const root = document.documentElement;
+
+        /* ──────────────────────────────────────
+           APPLY FUNCTIONS
+        ────────────────────────────────────── */
+        function hexToRgb(hex) {
+            const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return r ? { r: parseInt(r[1],16), g: parseInt(r[2],16), b: parseInt(r[3],16) } : null;
+        }
+
+        function applyAll() {
+            // Background
+            const bgRgb = hexToRgb(state['bg-deep']);
+            if (bgRgb) {
+                const a = state['opacity-bg'] / 100;
+                root.style.setProperty('--bg-deep', `rgba(${bgRgb.r},${bgRgb.g},${bgRgb.b},${a})`);
+                document.body.style.backgroundColor = `rgba(${bgRgb.r},${bgRgb.g},${bgRgb.b},${a})`;
+                // Update orb colors
+                document.querySelector('.orb-1').style.background = state['accent'];
+                document.querySelector('.orb-2').style.background = state['accent-light'];
             }
 
-            btnGrow.addEventListener('click',   () => applyFontSize(currentSize + STEP));
-            btnShrink.addEventListener('click', () => applyFontSize(currentSize - STEP));
-            btnReset.addEventListener('click',  () => applyFontSize(BASE_SIZE));
+            // Accent
+            root.style.setProperty('--accent',        state['accent']);
+            root.style.setProperty('--accent-light',  state['accent-light']);
+            root.style.setProperty('--red',            state['red']);
 
-            // Restore saved font size
-            try {
-                const saved = parseInt(localStorage.getItem('et_fontsize'));
-                if (saved && saved >= MIN_SIZE && saved <= MAX_SIZE) applyFontSize(saved);
-            } catch(e) {}
+            // Text
+            root.style.setProperty('--text-primary',   state['text-primary']);
+            root.style.setProperty('--heading-color',   state['heading-color']);
+            root.style.setProperty('--text-muted',      state['text-muted']);
+            root.style.setProperty('--text-dim',        state['text-dim']);
 
-            // Theme switcher
-            const THEMES = ['', 'purple', 'green', 'amber', 'light', 'contrast'];
-
-            function applyTheme(theme) {
-                THEMES.forEach(t => { if (t) body.classList.remove('theme-' + t); });
-                if (theme) body.classList.add('theme-' + theme);
-                swatches.forEach(s => s.classList.toggle('active', s.dataset.theme === theme));
-                try { localStorage.setItem('et_theme', theme); } catch(e) {}
+            // Card BG
+            const cardRgb = hexToRgb(state['card-bg']);
+            if (cardRgb) {
+                const ca = state['opacity-card'] / 100;
+                root.style.setProperty('--card-bg', `rgba(${cardRgb.r},${cardRgb.g},${cardRgb.b},${ca})`);
             }
 
-            swatches.forEach(s => {
-                s.addEventListener('click', () => applyTheme(s.dataset.theme));
+            // Card border
+            const bRgb = hexToRgb(state['card-border']);
+            if (bRgb) {
+                const ba = state['opacity-border'] / 100;
+                root.style.setProperty('--card-border', `rgba(${bRgb.r},${bRgb.g},${bRgb.b},${ba})`);
+            }
+
+            // Font size
+            document.documentElement.style.fontSize = state['font-size'] + 'px';
+            document.getElementById('fs-display').textContent = state['font-size'] + 'px';
+
+            syncUI();
+            save();
+        }
+
+        /* ──────────────────────────────────────
+           SYNC UI TO STATE
+        ────────────────────────────────────── */
+        const colorKeys = ['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+
+        function syncUI() {
+            colorKeys.forEach(key => {
+                const hex = state[key] || '#000000';
+                const safeHex = hex.replace(/rgba?\(.*\)/, '#000000').startsWith('#') ? hex : '#000000';
+
+                const prev = document.getElementById('prev-' + key);
+                const hexIn = document.getElementById('hex-' + key);
+                const pick  = document.getElementById('pick-' + key);
+
+                if (prev)  prev.style.background = safeHex;
+                if (hexIn) hexIn.value = safeHex.replace('#','').toUpperCase();
+                if (pick)  pick.value  = safeHex;
             });
 
-            // Restore saved theme
-            try {
-                const saved = localStorage.getItem('et_theme');
-                if (saved !== null) applyTheme(saved);
-            } catch(e) {}
-        })();
+            // Opacity sliders
+            ['bg','card','border'].forEach(id => {
+                const key = id === 'bg' ? 'opacity-bg' : id === 'card' ? 'opacity-card' : 'opacity-border';
+                const slider = document.getElementById('opacity-' + id);
+                const val    = document.getElementById('opacity-' + id + '-val');
+                if (slider) slider.value = state[key];
+                if (val)    val.textContent = state[key] + '%';
+            });
 
-        /* ─── Security ─── */
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function (e) {
-            if (e.keyCode == 123) return false;
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
+            document.getElementById('fs-display').textContent = state['font-size'] + 'px';
+        }
+
+        function save() {
+            try { localStorage.setItem('et_colors', JSON.stringify(state)); } catch(e) {}
+        }
+
+        /* ──────────────────────────────────────
+           COLOR PICKER LOGIC
+        ────────────────────────────────────── */
+        window.openPicker = function(key) {
+            const pick = document.getElementById('pick-' + key);
+            if (pick) pick.click();
         };
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
 
-    <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
+        colorKeys.forEach(key => {
+            const pick  = document.getElementById('pick-' + key);
+            const hexIn = document.getElementById('hex-' + key);
+            const prev  = document.getElementById('prev-' + key);
+
+            if (pick) {
+                pick.addEventListener('input', e => {
+                    state[key] = e.target.value;
+                    if (prev)  prev.style.background = e.target.value;
+                    if (hexIn) hexIn.value = e.target.value.replace('#','').toUpperCase();
+                    applyAll();
+                });
+            }
+
+            if (hexIn) {
+                hexIn.addEventListener('input', e => {
+                    let v = e.target.value.replace(/[^a-fA-F0-9]/g,'');
+                    if (v.length === 6) {
+                        state[key] = '#' + v;
+                        if (prev) prev.style.background = '#' + v;
+                        if (pick) pick.value = '#' + v;
+                        applyAll();
+                    }
+                });
+                hexIn.addEventListener('keydown', e => { if(e.key==='Enter') e.target.blur(); });
+            }
+        });
+
+        /* Opacity sliders */
+        [['opacity-bg','opacity-bg-val','opacity-bg'],
+         ['opacity-card','opacity-card-val','opacity-card'],
+         ['opacity-border','opacity-border-val','opacity-border']].forEach(([sliderId, valId, stateKey]) => {
+            const el = document.getElementById(sliderId);
+            const vl = document.getElementById(valId);
+            if (el) {
+                el.addEventListener('input', e => {
+                    state[stateKey] = parseInt(e.target.value);
+                    if (vl) vl.textContent = e.target.value + '%';
+                    applyAll();
+                });
+            }
+        });
+
+        /* ──────────────────────────────────────
+           FONT SIZE
+        ────────────────────────────────────── */
+        document.getElementById('fs-grow').addEventListener('click', () => {
+            state['font-size'] = Math.min(26, state['font-size'] + 1);
+            applyAll();
+        });
+        document.getElementById('fs-shrink').addEventListener('click', () => {
+            state['font-size'] = Math.max(11, state['font-size'] - 1);
+            applyAll();
+        });
+        document.getElementById('fs-reset').addEventListener('click', () => {
+            state['font-size'] = 16;
+            applyAll();
+        });
+
+        /* ──────────────────────────────────────
+           PRESET BUTTONS
+        ────────────────────────────────────── */
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const p = PRESETS[btn.dataset.preset];
+                if (p) { state = Object.assign({}, p); applyAll(); }
+            });
+        });
+
+        /* ──────────────────────────────────────
+           RESET ALL
+        ────────────────────────────────────── */
+        document.getElementById('reset-all-btn').addEventListener('click', () => {
+            state = Object.assign({}, DEFAULTS);
+            applyAll();
+        });
+
+        /* ──────────────────────────────────────
+           PANEL OPEN / CLOSE
+        ────────────────────────────────────── */
+        const panel   = document.getElementById('color-panel');
+        const trigger = document.getElementById('palette-trigger');
+        const closeBtn= document.getElementById('panel-close-btn');
+
+        function togglePanel() {
+            panel.classList.toggle('open');
+            trigger.classList.toggle('open');
+        }
+        trigger.addEventListener('click', togglePanel);
+        closeBtn.addEventListener('click', () => { panel.classList.remove('open'); trigger.classList.remove('open'); });
+
+        // Close on outside click
+        document.addEventListener('click', e => {
+            if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== trigger) {
+                panel.classList.remove('open');
+                trigger.classList.remove('open');
+            }
+        });
+
+        /* ──────────────────────────────────────
+           INIT
+        ────────────────────────────────────── */
+        applyAll();
+
+    })();
+
+    /* ── Security ── */
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function(e) {
+        if (e.keyCode==123) return false;
+        if (e.ctrlKey && e.keyCode=='U'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode=='S'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && (e.keyCode=='I'.charCodeAt(0)||e.keyCode=='J'.charCodeAt(0)||e.keyCode=='C'.charCodeAt(0))) return false;
+    };
+    document.addEventListener('selectstart', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    </script>
     
 </body>
 </html>
