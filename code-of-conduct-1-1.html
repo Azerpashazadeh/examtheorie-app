@@ -9,49 +9,46 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg-deep:      #050d1a;
-            --bg-mid:       #071428;
-            --accent:       #1a6cf6;
-            --accent-light: #4da6ff;
-            --glass-bg:     rgba(10,30,65,0.55);
-            --glass-border: rgba(77,166,255,0.22);
-            --glass-shine:  rgba(255,255,255,0.06);
-            --red:          #e84545;
-            --text-primary: #e8f0ff;
-            --text-muted:   rgba(180,205,255,0.75);
-            --text-dim:     rgba(140,175,230,0.55);
+            --bg-deep:       #050d1a;
+            --accent:        #1a6cf6;
+            --accent-light:  #4da6ff;
+            --glass-shine:   rgba(255,255,255,0.06);
+            --red:           #e84545;
+            --text-primary:  #e8f0ff;
+            --text-muted:    rgba(180,205,255,0.75);
+            --text-dim:      rgba(140,175,230,0.55);
             --heading-color: #4da6ff;
-            --card-bg:      rgba(10,30,65,0.55);
-            --card-border:  rgba(77,166,255,0.22);
+            --card-bg:       rgba(10,30,65,0.55);
+            --card-border:   rgba(77,166,255,0.22);
         }
 
         html, body { width:100%; overflow-x:hidden; scroll-behavior:smooth; }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.75;
-            min-height: 100vh;
-            padding-bottom: 120px;
+            font-family:'Outfit',sans-serif;
+            background-color:var(--bg-deep);
+            color:var(--text-primary);
+            line-height:1.75;
+            min-height:100vh;
+            padding-bottom:120px;
             background-image:
-                radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(26,108,246,0.18) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 80%,  rgba(26,108,246,0.12) 0%, transparent 55%),
-                radial-gradient(ellipse 40% 40% at 50% 50%,  rgba(5,20,60,0.9)    0%, transparent 100%);
-            transition: background-color 0.35s, color 0.35s;
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(26,108,246,.18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26,108,246,.12) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(5,20,60,.9) 0%, transparent 100%);
+            transition:background-color .35s, color .35s;
         }
         body::before {
             content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
             background-image:
-                linear-gradient(rgba(77,166,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(77,166,255,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+                linear-gradient(rgba(77,166,255,.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(77,166,255,.03) 1px, transparent 1px);
+            background-size:60px 60px;
         }
-        .orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(90px); opacity:0.15; }
+        .orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(90px); opacity:.15; }
         .orb-1 { width:500px; height:500px; background:var(--accent);       top:-100px; left:-100px; }
         .orb-2 { width:400px; height:400px; background:var(--accent-light);  bottom:100px; right:-80px; }
 
-        /* ── Layout ── */
+        /* ── Page layout ── */
         .page-wrapper { position:relative; z-index:1; width:75%; margin:0 auto; padding:50px 20px 20px; }
         @media(min-width:768px) and (max-width:1024px) { .page-wrapper { width:95%; } }
         @media(max-width:767px) { .page-wrapper { width:96%; padding:30px 14px; } }
@@ -67,13 +64,9 @@
         }
         h2 {
             font-family:'Outfit',sans-serif; font-size:clamp(1.1rem,2.5vw,1.45rem); font-weight:600;
-            color:var(--heading-color); margin:48px 0 16px;
-            display:flex; align-items:center; gap:10px;
+            color:var(--heading-color); margin:48px 0 16px; display:flex; align-items:center; gap:10px;
         }
-        h2::before {
-            content:''; display:inline-block; width:4px; height:1.2em; flex-shrink:0; border-radius:4px;
-            background:linear-gradient(180deg,var(--accent),var(--accent-light));
-        }
+        h2::before { content:''; display:inline-block; width:4px; height:1.2em; flex-shrink:0; border-radius:4px; background:linear-gradient(180deg,var(--accent),var(--accent-light)); }
         h3 { font-family:'Outfit',sans-serif; font-size:1rem; font-weight:600; color:var(--text-primary); margin-bottom:10px; }
         p  { font-family:'Lora',serif; font-size:.96rem; color:var(--text-muted); margin-bottom:14px; }
 
@@ -82,25 +75,15 @@
             padding:28px 28px 28px 36px; position:relative; overflow:hidden;
             backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
             margin-bottom:24px;
-            box-shadow: 0 4px 24px rgba(0,0,0,.35), inset 0 1px 0 var(--glass-shine);
+            box-shadow:0 4px 24px rgba(0,0,0,.35), inset 0 1px 0 var(--glass-shine);
         }
-        .glass-card::before {
-            content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-            background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%); pointer-events:none;
-        }
-        .glass-card .accent-line {
-            position:absolute; left:0; top:0; width:3px; height:100%; border-radius:0 4px 4px 0;
-            background:linear-gradient(180deg,var(--accent),var(--accent-light));
-        }
+        .glass-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%); pointer-events:none; }
+        .glass-card .accent-line { position:absolute; left:0; top:0; width:3px; height:100%; border-radius:0 4px 4px 0; background:linear-gradient(180deg,var(--accent),var(--accent-light)); }
         .glass-card.red-accent { border-color:rgba(232,69,69,.2); }
         .glass-card.red-accent .accent-line { background:linear-gradient(180deg,var(--red),#ff8a8a); }
 
         .vocab-list { list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column; gap:10px; }
-        .vocab-list li {
-            padding:13px 16px; background:rgba(26,108,246,.08);
-            border:1px solid rgba(77,166,255,.12); border-radius:10px;
-            font-family:'Lora',serif; font-size:.92rem; color:var(--text-muted); line-height:1.6;
-        }
+        .vocab-list li { padding:13px 16px; background:rgba(26,108,246,.08); border:1px solid rgba(77,166,255,.12); border-radius:10px; font-family:'Lora',serif; font-size:.92rem; color:var(--text-muted); line-height:1.6; }
         .vocab-list li strong { display:block; font-family:'Outfit',sans-serif; font-weight:600; color:var(--accent-light); font-size:.88rem; letter-spacing:.06em; margin-bottom:3px; }
 
         .prose-list { list-style:none; padding:0; margin:0 0 20px; display:flex; flex-direction:column; gap:6px; }
@@ -140,168 +123,209 @@
         .page-wrapper > *:nth-child(2)  { animation-delay:.10s; }
         .page-wrapper > *:nth-child(3)  { animation-delay:.15s; }
         .page-wrapper > *:nth-child(4)  { animation-delay:.20s; }
-        .page-wrapper > *:nth-child(5)  { animation-delay:.25s; }
-        .page-wrapper > *:nth-child(n+6){ animation-delay:.30s; }
+        .page-wrapper > *:nth-child(n+5){ animation-delay:.25s; }
 
-        /* ════════════════════════════════════════════════
-           FLOATING TRIGGER BUTTON
-        ════════════════════════════════════════════════ */
+        /* ════════════════════════════════════════════════════
+           FLOATING DRAGGABLE TRIGGER BUTTON
+        ════════════════════════════════════════════════════ */
         #palette-trigger {
-            position:fixed; right:20px; top:50%; transform:translateY(-50%);
-            z-index:999; width:48px; height:48px; border-radius:50%;
+            position:fixed;
+            right:20px; top:50%;
+            transform:translateY(-50%);
+            z-index:1100;
+            width:52px; height:52px;
+            border-radius:50%;
             background:linear-gradient(135deg,var(--accent),var(--accent-light));
-            border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 20px rgba(26,108,246,.5);
-            transition:all .3s; color:#fff; font-size:1.3rem;
+            border:none; cursor:grab;
+            display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 24px rgba(26,108,246,.55), 0 0 0 3px rgba(77,166,255,.18);
+            color:#fff; font-size:1.4rem;
+            user-select:none; -webkit-user-select:none;
+            touch-action:none;
+            /* NO transition on transform — drag handles it live */
         }
-        #palette-trigger:hover { transform:translateY(-50%) scale(1.1); box-shadow:0 6px 28px rgba(26,108,246,.7); }
-        #palette-trigger.open  { transform:translateY(-50%) rotate(45deg); }
+        #palette-trigger:active  { cursor:grabbing; }
+        #palette-trigger.is-open { box-shadow:0 4px 24px rgba(26,108,246,.55), 0 0 0 3px rgba(77,166,255,.4); }
 
-        /* ════════════════════════════════════════════════
-           SIDE PANEL
-        ════════════════════════════════════════════════ */
+        /* Pulse ring when closed */
+        #palette-trigger::after {
+            content:''; position:absolute; inset:-4px; border-radius:50%;
+            border:2px solid rgba(77,166,255,.35);
+            animation:triggerPulse 2.5s ease infinite;
+            pointer-events:none;
+        }
+        #palette-trigger.is-open::after { animation:none; opacity:0; }
+        @keyframes triggerPulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:0;transform:scale(1.35)} }
+
+        /* Tooltip */
+        #palette-trigger .tip {
+            position:absolute; right:calc(100% + 10px); top:50%; transform:translateY(-50%);
+            background:rgba(4,12,28,.9); border:1px solid rgba(77,166,255,.2);
+            color:#fff; font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:500;
+            padding:5px 10px; border-radius:8px; white-space:nowrap;
+            pointer-events:none; opacity:0; transition:opacity .2s;
+        }
+        #palette-trigger:hover .tip { opacity:1; }
+
+        /* ════════════════════════════════════════════════════
+           FLOATING DRAGGABLE PANEL
+        ════════════════════════════════════════════════════ */
         #color-panel {
-            position:fixed; right:-340px; top:0; width:320px; height:100vh;
-            z-index:1000; overflow-y:auto; overflow-x:hidden;
-            background:rgba(4,12,28,0.96);
-            border-left:1px solid rgba(77,166,255,.18);
-            backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
-            box-shadow:-8px 0 40px rgba(0,0,0,.6);
-            transition:right .35s cubic-bezier(.4,0,.2,1);
-            padding:0 0 40px;
+            position:fixed;
+            /* default position: just left of trigger, vertically centred — JS overrides */
+            right:82px; top:50%;
+            transform:translateY(-50%) scale(.95);
+            transform-origin:right center;
+            z-index:1050;
+            width:310px;
+            max-height:82vh;
+            border-radius:18px;
+            overflow:hidden;
+            display:flex; flex-direction:column;
+            background:rgba(4,12,30,0.97);
+            border:1px solid rgba(77,166,255,.22);
+            backdrop-filter:blur(32px); -webkit-backdrop-filter:blur(32px);
+            box-shadow:0 12px 50px rgba(0,0,0,.7), 0 0 0 1px rgba(77,166,255,.08);
+            opacity:0; pointer-events:none;
+            transition:opacity .25s, transform .25s;
+            touch-action:none;
         }
-        #color-panel.open { right:0; }
+        #color-panel.is-open {
+            opacity:1; pointer-events:all;
+            transform:translateY(-50%) scale(1);
+        }
+        /* when JS takes over position (after first drag or open), remove CSS transform */
+        #color-panel.positioned {
+            transform:none !important;
+        }
+        #color-panel.positioned.is-open { opacity:1; pointer-events:all; transform:none !important; }
 
-        /* Panel header */
+        /* ── Panel drag handle (header) ── */
         .panel-header {
-            position:sticky; top:0; z-index:2;
-            background:rgba(4,12,28,0.98);
+            padding:14px 16px 12px;
+            background:rgba(6,18,45,1);
             border-bottom:1px solid rgba(77,166,255,.12);
-            padding:18px 20px 14px;
             display:flex; align-items:center; justify-content:space-between;
+            cursor:grab; flex-shrink:0;
+            /* Drag grip dots */
+            background-image:radial-gradient(circle, rgba(77,166,255,.18) 1px, transparent 1px);
+            background-size:6px 6px;
+            background-position:center;
+            background-repeat:repeat;
         }
-        .panel-title {
-            font-family:'Outfit',sans-serif; font-size:.95rem; font-weight:700;
-            color:#fff; letter-spacing:.04em;
-            display:flex; align-items:center; gap:8px;
-        }
-        .panel-title span { font-size:1rem; }
+        .panel-header:active { cursor:grabbing; }
+        .panel-header-inner { display:flex; align-items:center; gap:8px; pointer-events:none; }
+        .drag-icon { font-size:.85rem; opacity:.45; }
+        .panel-title { font-family:'Outfit',sans-serif; font-size:.92rem; font-weight:700; color:#fff; letter-spacing:.03em; }
         .panel-close {
-            width:30px; height:30px; border-radius:8px; border:1px solid rgba(77,166,255,.2);
-            background:transparent; color:var(--text-dim); cursor:pointer; font-size:1.1rem;
-            display:flex; align-items:center; justify-content:center; transition:all .2s;
+            width:28px; height:28px; border-radius:8px; border:1px solid rgba(77,166,255,.18);
+            background:transparent; color:rgba(140,175,230,.6); cursor:pointer; font-size:1rem;
+            display:flex; align-items:center; justify-content:center; transition:all .2s; flex-shrink:0;
         }
         .panel-close:hover { background:rgba(232,69,69,.15); color:#e84545; border-color:rgba(232,69,69,.3); }
 
-        /* Font size strip */
-        .font-strip {
-            padding:14px 20px 12px;
-            border-bottom:1px solid rgba(77,166,255,.08);
-            display:flex; align-items:center; gap:10px;
+        /* ── Panel scrollable body ── */
+        .panel-body {
+            overflow-y:auto; overflow-x:hidden;
+            flex:1;
+            padding-bottom:20px;
         }
-        .font-strip-label { font-family:'Outfit',sans-serif; font-size:.75rem; font-weight:600; color:var(--text-dim); letter-spacing:.08em; text-transform:uppercase; flex:1; }
+        .panel-body::-webkit-scrollbar { width:3px; }
+        .panel-body::-webkit-scrollbar-thumb { background:rgba(77,166,255,.2); border-radius:4px; }
+
+        /* ── Font size row ── */
+        .font-strip {
+            padding:12px 16px 10px; border-bottom:1px solid rgba(77,166,255,.07);
+            display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.015);
+        }
+        .font-strip-label { font-family:'Outfit',sans-serif; font-size:.7rem; font-weight:600; color:rgba(140,175,230,.55); letter-spacing:.08em; text-transform:uppercase; flex:1; }
         .fs-btn {
-            width:34px; height:34px; border-radius:9px; border:1px solid rgba(77,166,255,.18);
+            width:32px; height:32px; border-radius:8px; border:1px solid rgba(77,166,255,.16);
             background:rgba(26,108,246,.1); color:var(--accent-light); cursor:pointer;
             font-family:'Outfit',sans-serif; font-weight:700; transition:all .2s;
-            display:flex; align-items:center; justify-content:center;
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
         }
-        .fs-btn:hover { background:rgba(26,108,246,.28); border-color:rgba(77,166,255,.4); }
-        .fs-btn.sml { font-size:.78rem; }
-        .fs-btn.lrg { font-size:1.1rem; }
-        .fs-size-display {
-            min-width:38px; text-align:center; font-family:'Outfit',sans-serif;
-            font-size:.8rem; font-weight:600; color:var(--accent-light);
-        }
-        .fs-reset {
-            padding:4px 10px; border-radius:8px; border:1px solid rgba(77,166,255,.15);
-            background:transparent; color:var(--text-dim); cursor:pointer; font-family:'Outfit',sans-serif;
-            font-size:.7rem; font-weight:500; letter-spacing:.04em; transition:all .2s;
-        }
-        .fs-reset:hover { color:var(--accent-light); border-color:rgba(77,166,255,.35); }
+        .fs-btn:hover { background:rgba(26,108,246,.28); border-color:rgba(77,166,255,.38); }
+        .fs-btn.sml { font-size:.76rem; }
+        .fs-btn.lrg { font-size:1.05rem; }
+        .fs-size-display { min-width:36px; text-align:center; font-family:'Outfit',sans-serif; font-size:.78rem; font-weight:600; color:var(--accent-light); }
+        .fs-reset { padding:3px 9px; border-radius:7px; border:1px solid rgba(77,166,255,.13); background:transparent; color:rgba(140,175,230,.55); cursor:pointer; font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:500; letter-spacing:.04em; transition:all .2s; white-space:nowrap; }
+        .fs-reset:hover { color:var(--accent-light); border-color:rgba(77,166,255,.32); }
 
-        /* Preset themes strip */
-        .presets-strip { padding:14px 20px 12px; border-bottom:1px solid rgba(77,166,255,.08); }
-        .strip-label { font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:600; color:var(--text-dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px; }
-        .preset-row { display:flex; gap:8px; flex-wrap:wrap; }
+        /* ── Preset themes ── */
+        .presets-strip { padding:12px 16px 10px; border-bottom:1px solid rgba(77,166,255,.07); }
+        .strip-label { font-family:'Outfit',sans-serif; font-size:.67rem; font-weight:700; color:rgba(140,175,230,.5); letter-spacing:.12em; text-transform:uppercase; margin-bottom:9px; }
+        .preset-row { display:flex; gap:6px; flex-wrap:wrap; }
         .preset-btn {
-            flex:1 1 auto; padding:7px 10px; border-radius:9px; border:1px solid rgba(255,255,255,.1);
-            background:rgba(255,255,255,.05); color:var(--text-muted); cursor:pointer;
-            font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:500; letter-spacing:.03em;
+            flex:1 1 auto; padding:6px 8px; border-radius:8px; border:1px solid rgba(255,255,255,.08);
+            background:rgba(255,255,255,.04); color:rgba(180,205,255,.75); cursor:pointer;
+            font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:500; letter-spacing:.02em;
             transition:all .2s; text-align:center; white-space:nowrap;
         }
-        .preset-btn:hover { background:rgba(26,108,246,.2); border-color:rgba(77,166,255,.3); color:#fff; }
+        .preset-btn:hover { background:rgba(26,108,246,.2); border-color:rgba(77,166,255,.28); color:#fff; }
 
-        /* Color rows */
-        .color-section { padding:16px 20px 0; }
+        /* ── Color sections ── */
+        .color-section { padding:13px 16px 0; }
         .section-title {
-            font-family:'Outfit',sans-serif; font-size:.7rem; font-weight:700;
-            color:var(--text-dim); letter-spacing:.12em; text-transform:uppercase;
-            margin-bottom:12px; margin-top:4px;
+            font-family:'Outfit',sans-serif; font-size:.66rem; font-weight:700;
+            color:rgba(140,175,230,.5); letter-spacing:.13em; text-transform:uppercase;
+            margin-bottom:10px; margin-top:2px;
             display:flex; align-items:center; gap:6px;
         }
-        .section-title::before { content:''; display:inline-block; width:14px; height:1px; background:rgba(77,166,255,.3); }
+        .section-title::before { content:''; display:inline-block; width:12px; height:1px; background:rgba(77,166,255,.28); }
 
         .color-row {
-            display:flex; align-items:center; justify-content:space-between;
-            padding:10px 12px; border-radius:10px; margin-bottom:6px;
-            background:rgba(255,255,255,.03); border:1px solid rgba(77,166,255,.06);
+            display:flex; align-items:center; gap:8px;
+            padding:8px 10px; border-radius:9px; margin-bottom:5px;
+            background:rgba(255,255,255,.025); border:1px solid rgba(77,166,255,.055);
             transition:background .2s;
-            gap:10px;
         }
-        .color-row:hover { background:rgba(77,166,255,.06); }
-        .color-row-label { font-family:'Outfit',sans-serif; font-size:.82rem; color:var(--text-muted); flex:1; }
-        .color-row-right { display:flex; align-items:center; gap:8px; }
+        .color-row:hover { background:rgba(77,166,255,.055); }
+        .color-row-label { font-family:'Outfit',sans-serif; font-size:.8rem; color:var(--text-muted); flex:1; min-width:0; }
+        .color-row-right { display:flex; align-items:center; gap:7px; flex-shrink:0; }
         .color-preview {
-            width:28px; height:28px; border-radius:8px; border:2px solid rgba(255,255,255,.15);
+            width:26px; height:26px; border-radius:7px; border:2px solid rgba(255,255,255,.14);
             cursor:pointer; transition:transform .2s, box-shadow .2s; flex-shrink:0;
         }
-        .color-preview:hover { transform:scale(1.1); box-shadow:0 0 10px rgba(255,255,255,.2); }
-        .color-input-native {
-            position:absolute; opacity:0; width:0; height:0; pointer-events:none;
-        }
+        .color-preview:hover { transform:scale(1.12); box-shadow:0 0 10px rgba(255,255,255,.2); }
+        .color-input-native { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
         .color-hex-input {
-            width:76px; background:rgba(255,255,255,.06); border:1px solid rgba(77,166,255,.15);
-            border-radius:7px; padding:4px 8px; font-family:'Outfit',sans-serif; font-size:.75rem;
-            color:var(--text-muted); text-align:center; letter-spacing:.04em; outline:none;
-            transition:border-color .2s;
+            width:70px; background:rgba(255,255,255,.055); border:1px solid rgba(77,166,255,.14);
+            border-radius:6px; padding:3px 7px; font-family:'Outfit',sans-serif; font-size:.73rem;
+            color:var(--text-muted); text-align:center; letter-spacing:.04em; outline:none; transition:border-color .2s;
         }
-        .color-hex-input:focus { border-color:rgba(77,166,255,.45); color:#fff; }
+        .color-hex-input:focus { border-color:rgba(77,166,255,.42); color:#fff; }
 
-        /* Opacity slider row */
         .opacity-row {
-            display:flex; align-items:center; gap:10px;
-            padding:8px 12px 10px; border-radius:10px; margin-bottom:6px;
-            background:rgba(255,255,255,.03); border:1px solid rgba(77,166,255,.06);
+            display:flex; align-items:center; gap:8px;
+            padding:6px 10px 8px; border-radius:9px; margin-bottom:5px;
+            background:rgba(255,255,255,.025); border:1px solid rgba(77,166,255,.055);
         }
-        .opacity-row label { font-family:'Outfit',sans-serif; font-size:.8rem; color:var(--text-muted); flex:1; }
-        .opacity-row input[type=range] {
-            flex:2; accent-color:var(--accent-light); height:4px; cursor:pointer;
-        }
-        .opacity-val { font-family:'Outfit',sans-serif; font-size:.75rem; color:var(--accent-light); min-width:32px; text-align:right; }
+        .opacity-row label { font-family:'Outfit',sans-serif; font-size:.78rem; color:var(--text-muted); flex:1; }
+        .opacity-row input[type=range] { flex:2; accent-color:var(--accent-light); height:3px; cursor:pointer; }
+        .opacity-val { font-family:'Outfit',sans-serif; font-size:.73rem; color:var(--accent-light); min-width:30px; text-align:right; }
 
-        /* Reset all */
         .reset-all-btn {
-            display:block; width:calc(100% - 40px); margin:16px 20px 0;
-            padding:10px; border-radius:10px; border:1px solid rgba(232,69,69,.25);
-            background:rgba(232,69,69,.08); color:#e84545; cursor:pointer;
-            font-family:'Outfit',sans-serif; font-size:.82rem; font-weight:600;
-            letter-spacing:.04em; transition:all .25s; text-align:center;
+            display:block; width:calc(100% - 32px); margin:14px 16px 0;
+            padding:9px; border-radius:9px; border:1px solid rgba(232,69,69,.22);
+            background:rgba(232,69,69,.07); color:#e84545; cursor:pointer;
+            font-family:'Outfit',sans-serif; font-size:.8rem; font-weight:600;
+            letter-spacing:.04em; transition:all .22s; text-align:center;
         }
-        .reset-all-btn:hover { background:rgba(232,69,69,.18); border-color:rgba(232,69,69,.45); }
+        .reset-all-btn:hover { background:rgba(232,69,69,.17); border-color:rgba(232,69,69,.42); }
 
-        /* Scrollbar */
-        #color-panel::-webkit-scrollbar { width:4px; }
-        #color-panel::-webkit-scrollbar-track { background:transparent; }
-        #color-panel::-webkit-scrollbar-thumb { background:rgba(77,166,255,.2); border-radius:4px; }
-
-        /* Mobile: panel full-width from bottom */
+        /* ── Mobile ── */
         @media(max-width:767px) {
-            #color-panel { right:unset; bottom:-100vh; top:unset; width:100%; height:75vh; border-left:none; border-top:1px solid rgba(77,166,255,.18); transition:bottom .35s cubic-bezier(.4,0,.2,1); }
-            #color-panel.open { bottom:0; right:unset; }
-            #palette-trigger { right:16px; top:unset; bottom:20px; transform:none; }
-            #palette-trigger:hover { transform:scale(1.1); }
-            #palette-trigger.open { transform:rotate(45deg); }
+            #color-panel {
+                width:92vw;
+                max-height:78vh;
+                right:4vw; bottom:80px; top:unset;
+                transform:scale(.95) !important;
+                transform-origin:bottom right;
+                border-radius:16px;
+            }
+            #color-panel.is-open { transform:scale(1) !important; }
+            #palette-trigger { right:16px; bottom:20px; top:unset; transform:none !important; }
         }
     </style>
 </head>
@@ -309,159 +333,170 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- ═══ FLOATING TRIGGER ═══ -->
-    <button id="palette-trigger" title="Renkleri özelleştir / Customize colors">🎨</button>
+    <!-- ═══ DRAGGABLE FLOATING TRIGGER ═══ -->
+    <button id="palette-trigger" title="Customize colours">
+        <span class="tip">Customise</span>
+        🎨
+    </button>
 
-    <!-- ═══ COLOR PANEL ═══ -->
+    <!-- ═══ DRAGGABLE COLOUR PANEL ═══ -->
     <div id="color-panel">
-        <div class="panel-header">
-            <div class="panel-title"><span>🎨</span> Renk &amp; Yazı Ayarları</div>
-            <button class="panel-close" id="panel-close-btn">✕</button>
+        <!-- Drag handle = header -->
+        <div class="panel-header" id="panel-drag-handle">
+            <div class="panel-header-inner">
+                <span class="drag-icon">⠿</span>
+                <div class="panel-title">🎨 Colour &amp; Text Settings</div>
+            </div>
+            <button class="panel-close" id="panel-close-btn" title="Close">✕</button>
         </div>
 
-        <!-- Font Size -->
-        <div class="font-strip">
-            <div class="font-strip-label">Font Boyutu</div>
-            <button class="fs-btn sml" id="fs-shrink">a</button>
-            <div class="fs-size-display" id="fs-display">16px</div>
-            <button class="fs-btn lrg" id="fs-grow">A</button>
-            <button class="fs-reset" id="fs-reset">↺ reset</button>
-        </div>
+        <div class="panel-body">
 
-        <!-- Preset Themes -->
-        <div class="presets-strip">
-            <div class="strip-label">Hazır Temalar</div>
-            <div class="preset-row">
-                <button class="preset-btn" data-preset="default">🔵 Varsayılan</button>
-                <button class="preset-btn" data-preset="light">☀️ Açık</button>
-                <button class="preset-btn" data-preset="purple">🟣 Mor</button>
-                <button class="preset-btn" data-preset="green">🟢 Yeşil</button>
-                <button class="preset-btn" data-preset="amber">🟡 Amber</button>
-                <button class="preset-btn" data-preset="contrast">⬛ Kontrast</button>
+            <!-- Font Size -->
+            <div class="font-strip">
+                <div class="font-strip-label">Font Size</div>
+                <button class="fs-btn sml" id="fs-shrink" title="Decrease">a</button>
+                <div class="fs-size-display" id="fs-display">16px</div>
+                <button class="fs-btn lrg" id="fs-grow"   title="Increase">A</button>
+                <button class="fs-reset" id="fs-reset">↺ reset</button>
             </div>
-        </div>
 
-        <!-- Background Colors -->
-        <div class="color-section">
-            <div class="section-title">Arka Plan</div>
-            <div class="color-row">
-                <div class="color-row-label">Ana arka plan</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-bg-deep" onclick="openPicker('bg-deep')"></div>
-                    <input class="color-hex-input" id="hex-bg-deep" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-bg-deep" />
+            <!-- Preset Themes -->
+            <div class="presets-strip">
+                <div class="strip-label">Quick Themes</div>
+                <div class="preset-row">
+                    <button class="preset-btn" data-preset="default">🔵 Default</button>
+                    <button class="preset-btn" data-preset="light">☀️ Light</button>
+                    <button class="preset-btn" data-preset="purple">🟣 Purple</button>
+                    <button class="preset-btn" data-preset="green">🟢 Green</button>
+                    <button class="preset-btn" data-preset="amber">🟡 Amber</button>
+                    <button class="preset-btn" data-preset="contrast">⬛ Contrast</button>
                 </div>
             </div>
-            <div class="opacity-row">
-                <label>Fon opaklığı</label>
-                <input type="range" id="opacity-bg" min="0" max="100" value="100" />
-                <div class="opacity-val" id="opacity-bg-val">100%</div>
-            </div>
-        </div>
 
-        <!-- Accent Colors -->
-        <div class="color-section">
-            <div class="section-title">Vurgu Renkleri</div>
-            <div class="color-row">
-                <div class="color-row-label">Ana vurgu</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-accent" onclick="openPicker('accent')"></div>
-                    <input class="color-hex-input" id="hex-accent" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-accent" />
+            <!-- Background -->
+            <div class="color-section">
+                <div class="section-title">Background</div>
+                <div class="color-row">
+                    <div class="color-row-label">Page background</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-bg-deep" onclick="openPicker('bg-deep')"></div>
+                        <input class="color-hex-input" id="hex-bg-deep" maxlength="7" spellcheck="false" placeholder="050d1a" />
+                        <input class="color-input-native" type="color" id="pick-bg-deep" />
+                    </div>
+                </div>
+                <div class="opacity-row">
+                    <label>Background opacity</label>
+                    <input type="range" id="opacity-bg" min="0" max="100" value="100" />
+                    <div class="opacity-val" id="opacity-bg-val">100%</div>
                 </div>
             </div>
-            <div class="color-row">
-                <div class="color-row-label">Vurgu (açık)</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-accent-light" onclick="openPicker('accent-light')"></div>
-                    <input class="color-hex-input" id="hex-accent-light" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-accent-light" />
-                </div>
-            </div>
-            <div class="color-row">
-                <div class="color-row-label">Kırmızı/Uyarı</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-red" onclick="openPicker('red')"></div>
-                    <input class="color-hex-input" id="hex-red" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-red" />
-                </div>
-            </div>
-        </div>
 
-        <!-- Text Colors -->
-        <div class="color-section">
-            <div class="section-title">Yazı Renkleri</div>
-            <div class="color-row">
-                <div class="color-row-label">Ana başlık (h1)</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-text-primary" onclick="openPicker('text-primary')"></div>
-                    <input class="color-hex-input" id="hex-text-primary" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-text-primary" />
+            <!-- Accent -->
+            <div class="color-section">
+                <div class="section-title">Accent Colours</div>
+                <div class="color-row">
+                    <div class="color-row-label">Primary accent</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-accent" onclick="openPicker('accent')"></div>
+                        <input class="color-hex-input" id="hex-accent" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-accent" />
+                    </div>
+                </div>
+                <div class="color-row">
+                    <div class="color-row-label">Light accent</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-accent-light" onclick="openPicker('accent-light')"></div>
+                        <input class="color-hex-input" id="hex-accent-light" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-accent-light" />
+                    </div>
+                </div>
+                <div class="color-row">
+                    <div class="color-row-label">Warning / red</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-red" onclick="openPicker('red')"></div>
+                        <input class="color-hex-input" id="hex-red" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-red" />
+                    </div>
                 </div>
             </div>
-            <div class="color-row">
-                <div class="color-row-label">Başlıklar (h2/h3)</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-heading-color" onclick="openPicker('heading-color')"></div>
-                    <input class="color-hex-input" id="hex-heading-color" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-heading-color" />
-                </div>
-            </div>
-            <div class="color-row">
-                <div class="color-row-label">Paragraf metni</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-text-muted" onclick="openPicker('text-muted')"></div>
-                    <input class="color-hex-input" id="hex-text-muted" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-text-muted" />
-                </div>
-            </div>
-            <div class="color-row">
-                <div class="color-row-label">Soluk metin</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-text-dim" onclick="openPicker('text-dim')"></div>
-                    <input class="color-hex-input" id="hex-text-dim" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-text-dim" />
-                </div>
-            </div>
-        </div>
 
-        <!-- Card Colors -->
-        <div class="color-section">
-            <div class="section-title">Kart / Panel</div>
-            <div class="color-row">
-                <div class="color-row-label">Kart arka planı</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-card-bg" onclick="openPicker('card-bg')"></div>
-                    <input class="color-hex-input" id="hex-card-bg" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-card-bg" />
+            <!-- Text -->
+            <div class="color-section">
+                <div class="section-title">Text Colours</div>
+                <div class="color-row">
+                    <div class="color-row-label">Main heading (h1)</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-text-primary" onclick="openPicker('text-primary')"></div>
+                        <input class="color-hex-input" id="hex-text-primary" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-text-primary" />
+                    </div>
+                </div>
+                <div class="color-row">
+                    <div class="color-row-label">Section headings</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-heading-color" onclick="openPicker('heading-color')"></div>
+                        <input class="color-hex-input" id="hex-heading-color" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-heading-color" />
+                    </div>
+                </div>
+                <div class="color-row">
+                    <div class="color-row-label">Body text</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-text-muted" onclick="openPicker('text-muted')"></div>
+                        <input class="color-hex-input" id="hex-text-muted" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-text-muted" />
+                    </div>
+                </div>
+                <div class="color-row">
+                    <div class="color-row-label">Subtle / dim text</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-text-dim" onclick="openPicker('text-dim')"></div>
+                        <input class="color-hex-input" id="hex-text-dim" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-text-dim" />
+                    </div>
                 </div>
             </div>
-            <div class="opacity-row">
-                <label>Kart opaklığı</label>
-                <input type="range" id="opacity-card" min="0" max="100" value="55" />
-                <div class="opacity-val" id="opacity-card-val">55%</div>
-            </div>
-            <div class="color-row">
-                <div class="color-row-label">Kart kenarlık</div>
-                <div class="color-row-right">
-                    <div class="color-preview" id="prev-card-border" onclick="openPicker('card-border')"></div>
-                    <input class="color-hex-input" id="hex-card-border" maxlength="7" spellcheck="false" />
-                    <input class="color-input-native" type="color" id="pick-card-border" />
-                </div>
-            </div>
-            <div class="opacity-row">
-                <label>Kenarlık opaklığı</label>
-                <input type="range" id="opacity-border" min="0" max="100" value="22" />
-                <div class="opacity-val" id="opacity-border-val">22%</div>
-            </div>
-        </div>
 
-        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
-    </div>
+            <!-- Cards -->
+            <div class="color-section">
+                <div class="section-title">Cards &amp; Panels</div>
+                <div class="color-row">
+                    <div class="color-row-label">Card background</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-card-bg" onclick="openPicker('card-bg')"></div>
+                        <input class="color-hex-input" id="hex-card-bg" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-card-bg" />
+                    </div>
+                </div>
+                <div class="opacity-row">
+                    <label>Card opacity</label>
+                    <input type="range" id="opacity-card" min="0" max="100" value="55" />
+                    <div class="opacity-val" id="opacity-card-val">55%</div>
+                </div>
+                <div class="color-row">
+                    <div class="color-row-label">Card border</div>
+                    <div class="color-row-right">
+                        <div class="color-preview" id="prev-card-border" onclick="openPicker('card-border')"></div>
+                        <input class="color-hex-input" id="hex-card-border" maxlength="7" spellcheck="false" />
+                        <input class="color-input-native" type="color" id="pick-card-border" />
+                    </div>
+                </div>
+                <div class="opacity-row">
+                    <label>Border opacity</label>
+                    <input type="range" id="opacity-border" min="0" max="100" value="22" />
+                    <div class="opacity-val" id="opacity-border-val">22%</div>
+                </div>
+            </div>
+
+            <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+
+        </div><!-- /panel-body -->
+    </div><!-- /color-panel -->
+
 
     <!-- ═══ PAGE CONTENT ═══ -->
     <div class="page-wrapper">
-
         <div class="brand-strip">
             <span>ExamTheorie</span><span class="dot">›</span>
             <span>Passenger Car</span><span class="dot">›</span>
@@ -536,7 +571,7 @@
         <p>You may even be required to submit to a blood test if you refuse a breath test or if it is not possible to do a breath test.</p>
 
         <h2>Hindering or Endangering</h2>
-        <p>Most rules are detailed in the applicable legislation. For example, you may not drive faster than the speed limit, you may not ignore traffic signs, and you may not drive through red lights. However, there are many other behaviours that could endanger other road users or impede the regular flow of traffic that are not explicitly recorded in legislation. A rule is therefore in place prohibiting road users from behaving in such a way as to create or contribute to a dangerous situation on the road. Obstructing or hindering other traffic is also prohibited. The cause of or reason for these behaviours is irrelevant.</p>
+        <p>Most rules are detailed in the applicable legislation. For example, you may not drive faster than the speed limit, you may not ignore traffic signs, and you may not drive through red lights. However, there are many other behaviours that could endanger other road users or impede the regular flow of traffic that are not explicitly recorded in legislation. A rule is therefore in place prohibiting road users from behaving in such a way as to create or contribute to a dangerous situation on the road. Obstructing or hindering other traffic is also prohibited.</p>
 
         <div class="glass-card red-accent">
             <div class="accent-line"></div>
@@ -565,7 +600,7 @@
             <p>Police officers are authorised to confiscate your driving licence if you are caught violating traffic regulations. Your licence will then be forwarded to the public prosecutor.</p>
             <div class="sub-section">
                 <h3>Driving Disqualification (licence suspended)</h3>
-                <p>Being disqualified from driving means you are not allowed to operate motor carriages for several weeks, months or even years. Driving disqualification may last up to two years for less severe infractions and up to five years for serious offences. The latter includes death or injury caused by dangerous driving, driving under the influence of alcohol, and driving while disqualified. If you commit another offence within a short time, these penalties may be doubled.</p>
+                <p>Being disqualified from driving means you are not allowed to operate motor carriages for several weeks, months or even years. Driving disqualification may last up to two years for less severe infractions and up to five years for serious offences, including death or injury caused by dangerous driving, driving under the influence of alcohol, or driving while disqualified. If you commit another offence within a short time, these penalties may be doubled.</p>
             </div>
             <div class="sub-section">
                 <h3>Driving Licence Invalidation</h3>
@@ -586,7 +621,7 @@
 
         <div class="glass-card">
             <div class="accent-line"></div>
-            <p>The abbreviation CBR stands for <strong style="color:var(--accent-light);font-family:'Outfit',sans-serif">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence. They also oversee both theory and driving tests. Another branch of the CBR is the BNOR; if you fail your driving test four times consecutively, they will investigate further and determine your driving capabilities.</p>
+            <p>The abbreviation CBR stands for <strong style="color:var(--accent-light);font-family:'Outfit',sans-serif">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence and whether you get to keep it when your eligibility is called into question. The CBR oversees both theory and driving tests. Another branch of the CBR is the BNOR; if you fail your driving test four times consecutively, they will investigate further and determine your driving capabilities.</p>
         </div>
 
         <p>The CBR may be notified if you:</p>
@@ -602,166 +637,113 @@
         <p>Operating a motor carriage while disqualified from driving is a criminal offence. This is also the case if you operate a vehicle for which a licence is required and your licence has been declared invalid.</p>
 
         <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
-    </div>
+    </div><!-- /page-wrapper -->
+
 
     <script>
     (function () {
         'use strict';
 
-        /* ──────────────────────────────────────
-           DEFAULT VALUES
-        ────────────────────────────────────── */
+        /* ── Defaults ── */
         const DEFAULTS = {
-            'bg-deep':       '#050d1a',
-            'accent':        '#1a6cf6',
-            'accent-light':  '#4da6ff',
-            'red':           '#e84545',
-            'text-primary':  '#e8f0ff',
-            'heading-color': '#4da6ff',
-            'text-muted':    '#b4cdff',
-            'text-dim':      '#8cafd6',
-            'card-bg':       '#0a1e41',
-            'card-border':   '#4da6ff',
-            'opacity-bg':    100,
-            'opacity-card':  55,
-            'opacity-border':22,
-            'font-size':     16
+            'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+            'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+            'card-bg':'#0a1e41','card-border':'#4da6ff',
+            'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
         };
-
-        /* Preset themes */
         const PRESETS = {
-            default:  { ...DEFAULTS },
-            light:    { 'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':70,'opacity-border':18,'font-size':16 },
-            purple:   { 'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16 },
-            green:    { 'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16 },
-            amber:    { 'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16 },
-            contrast: { 'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16 }
+            default:  {...DEFAULTS},
+            light:    {'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+            purple:   {'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+            green:    {'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+            amber:    {'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+            contrast: {'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
         };
 
-        /* Current state */
         let state = {};
         try { state = JSON.parse(localStorage.getItem('et_colors') || '{}'); } catch(e){}
         state = Object.assign({}, DEFAULTS, state);
 
         const root = document.documentElement;
+        const colorKeys = ['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
 
-        /* ──────────────────────────────────────
-           APPLY FUNCTIONS
-        ────────────────────────────────────── */
-        function hexToRgb(hex) {
-            const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            return r ? { r: parseInt(r[1],16), g: parseInt(r[2],16), b: parseInt(r[3],16) } : null;
+        function hexToRgb(h) {
+            const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
+            return m ? [parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)] : null;
         }
 
         function applyAll() {
-            // Background
-            const bgRgb = hexToRgb(state['bg-deep']);
-            if (bgRgb) {
-                const a = state['opacity-bg'] / 100;
-                root.style.setProperty('--bg-deep', `rgba(${bgRgb.r},${bgRgb.g},${bgRgb.b},${a})`);
-                document.body.style.backgroundColor = `rgba(${bgRgb.r},${bgRgb.g},${bgRgb.b},${a})`;
-                // Update orb colors
-                document.querySelector('.orb-1').style.background = state['accent'];
-                document.querySelector('.orb-2').style.background = state['accent-light'];
+            const bg = hexToRgb(state['bg-deep']);
+            if (bg) {
+                const a = state['opacity-bg']/100;
+                root.style.setProperty('--bg-deep', `rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);
+                document.body.style.backgroundColor = `rgba(${bg[0]},${bg[1]},${bg[2]},${a})`;
             }
-
-            // Accent
             root.style.setProperty('--accent',        state['accent']);
             root.style.setProperty('--accent-light',  state['accent-light']);
             root.style.setProperty('--red',            state['red']);
-
-            // Text
             root.style.setProperty('--text-primary',   state['text-primary']);
-            root.style.setProperty('--heading-color',   state['heading-color']);
-            root.style.setProperty('--text-muted',      state['text-muted']);
-            root.style.setProperty('--text-dim',        state['text-dim']);
+            root.style.setProperty('--heading-color',  state['heading-color']);
+            root.style.setProperty('--text-muted',     state['text-muted']);
+            root.style.setProperty('--text-dim',       state['text-dim']);
+            const cb = hexToRgb(state['card-bg']);
+            if (cb) root.style.setProperty('--card-bg', `rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+            const cbr = hexToRgb(state['card-border']);
+            if (cbr) root.style.setProperty('--card-border', `rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
 
-            // Card BG
-            const cardRgb = hexToRgb(state['card-bg']);
-            if (cardRgb) {
-                const ca = state['opacity-card'] / 100;
-                root.style.setProperty('--card-bg', `rgba(${cardRgb.r},${cardRgb.g},${cardRgb.b},${ca})`);
-            }
-
-            // Card border
-            const bRgb = hexToRgb(state['card-border']);
-            if (bRgb) {
-                const ba = state['opacity-border'] / 100;
-                root.style.setProperty('--card-border', `rgba(${bRgb.r},${bRgb.g},${bRgb.b},${ba})`);
-            }
-
-            // Font size
             document.documentElement.style.fontSize = state['font-size'] + 'px';
             document.getElementById('fs-display').textContent = state['font-size'] + 'px';
 
-            syncUI();
-            save();
-        }
+            // Orbs
+            document.querySelector('.orb-1').style.background = state['accent'];
+            document.querySelector('.orb-2').style.background = state['accent-light'];
 
-        /* ──────────────────────────────────────
-           SYNC UI TO STATE
-        ────────────────────────────────────── */
-        const colorKeys = ['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+            syncUI();
+            try { localStorage.setItem('et_colors', JSON.stringify(state)); } catch(e){}
+        }
 
         function syncUI() {
             colorKeys.forEach(key => {
                 const hex = state[key] || '#000000';
-                const safeHex = hex.replace(/rgba?\(.*\)/, '#000000').startsWith('#') ? hex : '#000000';
-
-                const prev = document.getElementById('prev-' + key);
-                const hexIn = document.getElementById('hex-' + key);
-                const pick  = document.getElementById('pick-' + key);
-
-                if (prev)  prev.style.background = safeHex;
-                if (hexIn) hexIn.value = safeHex.replace('#','').toUpperCase();
-                if (pick)  pick.value  = safeHex;
+                const safe = /^#[0-9a-f]{6}$/i.test(hex) ? hex : '#000000';
+                const prev  = document.getElementById('prev-'+key);
+                const hexIn = document.getElementById('hex-'+key);
+                const pick  = document.getElementById('pick-'+key);
+                if (prev)  prev.style.background = safe;
+                if (hexIn) hexIn.value = safe.replace('#','').toUpperCase();
+                if (pick)  pick.value  = safe;
             });
-
-            // Opacity sliders
-            ['bg','card','border'].forEach(id => {
-                const key = id === 'bg' ? 'opacity-bg' : id === 'card' ? 'opacity-card' : 'opacity-border';
-                const slider = document.getElementById('opacity-' + id);
-                const val    = document.getElementById('opacity-' + id + '-val');
-                if (slider) slider.value = state[key];
-                if (val)    val.textContent = state[key] + '%';
+            [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid]) => {
+                const k = id === 'opacity-bg' ? 'opacity-bg' : id === 'opacity-card' ? 'opacity-card' : 'opacity-border';
+                const sl = document.getElementById(id), vl = document.getElementById(vid);
+                if (sl) sl.value = state[k];
+                if (vl) vl.textContent = state[k] + '%';
             });
-
             document.getElementById('fs-display').textContent = state['font-size'] + 'px';
         }
 
-        function save() {
-            try { localStorage.setItem('et_colors', JSON.stringify(state)); } catch(e) {}
-        }
-
-        /* ──────────────────────────────────────
-           COLOR PICKER LOGIC
-        ────────────────────────────────────── */
         window.openPicker = function(key) {
-            const pick = document.getElementById('pick-' + key);
-            if (pick) pick.click();
+            const p = document.getElementById('pick-'+key);
+            if (p) p.click();
         };
 
         colorKeys.forEach(key => {
-            const pick  = document.getElementById('pick-' + key);
-            const hexIn = document.getElementById('hex-' + key);
-            const prev  = document.getElementById('prev-' + key);
-
-            if (pick) {
-                pick.addEventListener('input', e => {
-                    state[key] = e.target.value;
-                    if (prev)  prev.style.background = e.target.value;
-                    if (hexIn) hexIn.value = e.target.value.replace('#','').toUpperCase();
-                    applyAll();
-                });
-            }
-
+            const pick  = document.getElementById('pick-'+key);
+            const hexIn = document.getElementById('hex-'+key);
+            const prev  = document.getElementById('prev-'+key);
+            if (pick) pick.addEventListener('input', e => {
+                state[key] = e.target.value;
+                if (prev)  prev.style.background = e.target.value;
+                if (hexIn) hexIn.value = e.target.value.replace('#','').toUpperCase();
+                applyAll();
+            });
             if (hexIn) {
                 hexIn.addEventListener('input', e => {
-                    let v = e.target.value.replace(/[^a-fA-F0-9]/g,'');
+                    const v = e.target.value.replace(/[^a-fA-F0-9]/g,'');
                     if (v.length === 6) {
-                        state[key] = '#' + v;
-                        if (prev) prev.style.background = '#' + v;
-                        if (pick) pick.value = '#' + v;
+                        state[key] = '#'+v;
+                        if (prev) prev.style.background = '#'+v;
+                        if (pick) pick.value = '#'+v;
                         applyAll();
                     }
                 });
@@ -769,80 +751,220 @@
             }
         });
 
-        /* Opacity sliders */
-        [['opacity-bg','opacity-bg-val','opacity-bg'],
-         ['opacity-card','opacity-card-val','opacity-card'],
-         ['opacity-border','opacity-border-val','opacity-border']].forEach(([sliderId, valId, stateKey]) => {
-            const el = document.getElementById(sliderId);
-            const vl = document.getElementById(valId);
-            if (el) {
-                el.addEventListener('input', e => {
-                    state[stateKey] = parseInt(e.target.value);
-                    if (vl) vl.textContent = e.target.value + '%';
-                    applyAll();
-                });
-            }
-        });
-
-        /* ──────────────────────────────────────
-           FONT SIZE
-        ────────────────────────────────────── */
-        document.getElementById('fs-grow').addEventListener('click', () => {
-            state['font-size'] = Math.min(26, state['font-size'] + 1);
-            applyAll();
-        });
-        document.getElementById('fs-shrink').addEventListener('click', () => {
-            state['font-size'] = Math.max(11, state['font-size'] - 1);
-            applyAll();
-        });
-        document.getElementById('fs-reset').addEventListener('click', () => {
-            state['font-size'] = 16;
-            applyAll();
-        });
-
-        /* ──────────────────────────────────────
-           PRESET BUTTONS
-        ────────────────────────────────────── */
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const p = PRESETS[btn.dataset.preset];
-                if (p) { state = Object.assign({}, p); applyAll(); }
+        [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid]) => {
+            const el = document.getElementById(id), vl = document.getElementById(vid);
+            if (el) el.addEventListener('input', e => {
+                state[id] = parseInt(e.target.value);
+                if (vl) vl.textContent = e.target.value + '%';
+                applyAll();
             });
         });
 
-        /* ──────────────────────────────────────
-           RESET ALL
-        ────────────────────────────────────── */
-        document.getElementById('reset-all-btn').addEventListener('click', () => {
-            state = Object.assign({}, DEFAULTS);
-            applyAll();
+        document.getElementById('fs-grow').addEventListener('click',   () => { state['font-size'] = Math.min(26,state['font-size']+1); applyAll(); });
+        document.getElementById('fs-shrink').addEventListener('click', () => { state['font-size'] = Math.max(11,state['font-size']-1); applyAll(); });
+        document.getElementById('fs-reset').addEventListener('click',  () => { state['font-size'] = 16; applyAll(); });
+
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const p = PRESETS[btn.dataset.preset];
+                if (p) { state = Object.assign({},p); applyAll(); }
+            });
         });
 
-        /* ──────────────────────────────────────
-           PANEL OPEN / CLOSE
-        ────────────────────────────────────── */
-        const panel   = document.getElementById('color-panel');
+        document.getElementById('reset-all-btn').addEventListener('click', () => {
+            state = Object.assign({}, DEFAULTS); applyAll();
+        });
+
+        /* ══════════════════════════════════════════
+           DRAGGABLE TRIGGER BUTTON
+        ══════════════════════════════════════════ */
         const trigger = document.getElementById('palette-trigger');
+        const panel   = document.getElementById('color-panel');
         const closeBtn= document.getElementById('panel-close-btn');
+        const dragHandle = document.getElementById('panel-drag-handle');
 
-        function togglePanel() {
-            panel.classList.toggle('open');
-            trigger.classList.toggle('open');
+        // Saved positions
+        let trigPos = null, panelPos = null;
+        try {
+            trigPos  = JSON.parse(localStorage.getItem('et_trig_pos'));
+            panelPos = JSON.parse(localStorage.getItem('et_panel_pos'));
+        } catch(e){}
+
+        function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+        const isMobile = () => window.innerWidth <= 767;
+
+        function setTriggerPos(x, y) {
+            const W = window.innerWidth, H = window.innerHeight;
+            const bw = trigger.offsetWidth  || 52;
+            const bh = trigger.offsetHeight || 52;
+            x = clamp(x, 0, W - bw);
+            y = clamp(y, 0, H - bh);
+            trigger.style.right   = 'unset';
+            trigger.style.top     = 'unset';
+            trigger.style.transform = 'none';
+            trigger.style.left  = x + 'px';
+            trigger.style.top   = y + 'px';
+            return {x, y};
         }
-        trigger.addEventListener('click', togglePanel);
-        closeBtn.addEventListener('click', () => { panel.classList.remove('open'); trigger.classList.remove('open'); });
 
-        // Close on outside click
-        document.addEventListener('click', e => {
-            if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== trigger) {
-                panel.classList.remove('open');
-                trigger.classList.remove('open');
+        function setPanelPos(x, y) {
+            const W = window.innerWidth, H = window.innerHeight;
+            const pw = panel.offsetWidth  || 310;
+            const ph = panel.offsetHeight || 500;
+            x = clamp(x, 0, W - pw);
+            y = clamp(y, 0, H - Math.min(ph, H * 0.85));
+            panel.classList.add('positioned');
+            panel.style.right  = 'unset';
+            panel.style.bottom = 'unset';
+            panel.style.left = x + 'px';
+            panel.style.top  = y + 'px';
+            return {x, y};
+        }
+
+        // Restore saved trigger position
+        if (trigPos && !isMobile()) {
+            setTriggerPos(trigPos.x, trigPos.y);
+        }
+
+        /* Generic drag factory — works for mouse + touch */
+        function makeDraggable(el, getStartPos, onMove, onEnd) {
+            let dragging = false, startX, startY, startElX, startElY;
+
+            function pointerDown(e) {
+                // Don't drag on interactive children
+                if (e.target !== el && (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.closest('button') || e.target.closest('input'))) return;
+                dragging = false;
+                const pt = e.touches ? e.touches[0] : e;
+                startX = pt.clientX; startY = pt.clientY;
+                const pos = getStartPos();
+                startElX = pos.x; startElY = pos.y;
+                document.addEventListener('mousemove', pointerMove, {passive:false});
+                document.addEventListener('mouseup',   pointerUp);
+                document.addEventListener('touchmove', pointerMove, {passive:false});
+                document.addEventListener('touchend',  pointerUp);
+            }
+
+            function pointerMove(e) {
+                const pt = e.touches ? e.touches[0] : e;
+                const dx = pt.clientX - startX;
+                const dy = pt.clientY - startY;
+                if (!dragging && Math.sqrt(dx*dx+dy*dy) < 5) return;
+                dragging = true;
+                e.preventDefault();
+                onMove(startElX + dx, startElY + dy);
+            }
+
+            function pointerUp(e) {
+                document.removeEventListener('mousemove', pointerMove);
+                document.removeEventListener('mouseup',   pointerUp);
+                document.removeEventListener('touchmove', pointerMove);
+                document.removeEventListener('touchend',  pointerUp);
+                if (dragging) { onEnd(); }
+                else { el._wasDrag = false; }
+                dragging = false;
+            }
+
+            el.addEventListener('mousedown',  pointerDown);
+            el.addEventListener('touchstart', pointerDown, {passive:true});
+
+            return () => dragging; // isDragging getter
+        }
+
+        /* Trigger drag */
+        const isTriggerDragging = makeDraggable(
+            trigger,
+            () => {
+                const r = trigger.getBoundingClientRect();
+                return { x: r.left, y: r.top };
+            },
+            (x, y) => {
+                trigger.style.cursor = 'grabbing';
+                setTriggerPos(x, y);
+            },
+            () => {
+                trigger.style.cursor = 'grab';
+                const r = trigger.getBoundingClientRect();
+                trigPos = { x: r.left, y: r.top };
+                try { localStorage.setItem('et_trig_pos', JSON.stringify(trigPos)); } catch(e){}
+                // Reposition panel relative to trigger if open
+                if (panel.classList.contains('is-open')) repositionPanelNearTrigger();
+            }
+        );
+
+        /* Panel drag (via header) */
+        const isPanelDragging = makeDraggable(
+            dragHandle,
+            () => {
+                const r = panel.getBoundingClientRect();
+                return { x: r.left, y: r.top };
+            },
+            (x, y) => {
+                dragHandle.style.cursor = 'grabbing';
+                setPanelPos(x, y);
+            },
+            () => {
+                dragHandle.style.cursor = 'grab';
+                const r = panel.getBoundingClientRect();
+                panelPos = { x: r.left, y: r.top };
+                try { localStorage.setItem('et_panel_pos', JSON.stringify(panelPos)); } catch(e){}
+            }
+        );
+
+        /* Open panel near trigger */
+        function repositionPanelNearTrigger() {
+            if (isMobile()) return;
+            const tr  = trigger.getBoundingClientRect();
+            const pw  = panel.offsetWidth  || 310;
+            const W   = window.innerWidth;
+            // Try left side first, fallback to right
+            let px = tr.left - pw - 12;
+            if (px < 8) px = tr.right + 12;
+            let py = tr.top + tr.height/2 - (panel.offsetHeight||400)/2;
+            const saved = setPanelPos(px, py);
+            panelPos = saved;
+        }
+
+        /* Toggle panel */
+        let panelOpen = false;
+
+        trigger.addEventListener('click', function(e) {
+            if (isTriggerDragging()) return; // suppress click after drag
+            panelOpen = !panelOpen;
+            panel.classList.toggle('is-open', panelOpen);
+            trigger.classList.toggle('is-open', panelOpen);
+            if (panelOpen) {
+                if (isMobile()) return;
+                // If we have a saved panel pos, use it; otherwise put near trigger
+                if (panelPos) {
+                    setPanelPos(panelPos.x, panelPos.y);
+                } else {
+                    repositionPanelNearTrigger();
+                }
             }
         });
 
-        /* ──────────────────────────────────────
-           INIT
-        ────────────────────────────────────── */
+        closeBtn.addEventListener('click', () => {
+            panelOpen = false;
+            panel.classList.remove('is-open');
+            trigger.classList.remove('is-open');
+        });
+
+        // Close on outside tap/click
+        document.addEventListener('mousedown', e => {
+            if (!panelOpen) return;
+            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                panelOpen = false;
+                panel.classList.remove('is-open');
+                trigger.classList.remove('is-open');
+            }
+        });
+
+        // Restore panel position on load
+        if (panelPos && !isMobile()) {
+            setPanelPos(panelPos.x, panelPos.y);
+        }
+
+        /* ── Init ── */
         applyAll();
 
     })();
@@ -850,14 +972,14 @@
     /* ── Security ── */
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.onkeydown = function(e) {
-        if (e.keyCode==123) return false;
-        if (e.ctrlKey && e.keyCode=='U'.charCodeAt(0)) return false;
-        if (e.ctrlKey && e.keyCode=='S'.charCodeAt(0)) return false;
-        if (e.ctrlKey && e.shiftKey && (e.keyCode=='I'.charCodeAt(0)||e.keyCode=='J'.charCodeAt(0)||e.keyCode=='C'.charCodeAt(0))) return false;
+        if (e.keyCode===123) return false;
+        if (e.ctrlKey && e.keyCode==='U'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode==='S'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && ['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode)) return false;
     };
     document.addEventListener('selectstart', e => e.preventDefault());
     document.addEventListener('copy', e => e.preventDefault());
     </script>
-    
+    <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
 </html>
