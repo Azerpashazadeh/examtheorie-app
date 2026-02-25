@@ -458,24 +458,28 @@ body {
     overview</a>
 
 
-    <script>
+   <script>
+  // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // 2. Klavye üzerinden tüm arka kapıları kilitler
   document.onkeydown = function(e) {
-    // 1. CTRL + U (Sayfa Kaynağını Görüntüle) Engelleyici
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-      return false;
-    }
+    // F12 tuşu
+    if (e.keyCode == 123) return false;
 
-    // 2. CTRL + S (Sayfayı Farklı Kaydet) Engelleyici (Kodları indirmemeleri için)
-    if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-      return false;
-    }
+    // CTRL+U (Kaynağı Görüntüle)
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
 
-    // 3. CTRL + Shift + I veya F12 (Geliştirici Araçları - İsteğe bağlı)
-    // Eğer sadece CTRL+U istiyorsan bunları silebilirsin
-    if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) {
-      // return false; // Burayı aktif edersen İncele (Inspect) de kapanır
-    }
+    // CTRL+S (Sayfayı Kaydet)
+    if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;
+
+    // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
+    if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
   };
+  
+  // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
 </script>
   
 
