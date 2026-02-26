@@ -1,418 +1,1169 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>
-    Dikey Hat Örneği
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
-  <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>قواعد السلوك – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+    <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;
+        --glass-shine:rgba(255,255,255,.06);--red:#e84545;
+        --text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);
+        --text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;
+        --card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22);
+    }
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{
+        font-family:'Outfit',sans-serif;background-color:var(--bg-deep);
+        color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;
+        background-image:
+            radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),
+            radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),
+            radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);
+        transition:background-color .35s,color .35s;
+    }
+    body::before{
+        content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+        background-image:
+            linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);
+        background-size:60px 60px;
+    }
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+
+    /* ── Page layout ── */
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;
+        background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;
+        color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:10px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px}
+
+    .glass-card{
+        background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;
+        padding:28px 28px 28px 36px;position:relative;overflow:hidden;
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);margin-bottom:24px;
+        box-shadow:0 4px 24px rgba(0,0,0,.35),inset 0 1px 0 var(--glass-shine);
+    }
+    .glass-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .glass-card .accent-line{position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 4px 4px 0;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .glass-card.red-accent{border-color:rgba(232,69,69,.2)}
+    .glass-card.red-accent .accent-line{background:linear-gradient(180deg,var(--red),#ff8a8a)}
+
+    .vocab-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:10px}
+    .vocab-list li{padding:13px 16px;background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.12);
+        border-radius:10px;font-family:'Lora',serif;font-size:.92rem;color:var(--text-muted);line-height:1.6}
+    .vocab-list li strong{display:block;font-family:'Outfit',sans-serif;font-weight:600;color:var(--accent-light);
+        font-size:.88rem;letter-spacing:.06em;margin-bottom:3px}
+    .prose-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:6px}
+    .prose-list li{font-family:'Lora',serif;font-size:.95rem;color:var(--text-muted);padding-left:22px;position:relative}
+    .prose-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--accent);box-shadow:0 0 6px rgba(26,108,246,.35)}
+    .sub-section{margin-top:20px;padding-top:18px;border-top:1px solid rgba(77,166,255,.1)}
+    .custom-image,.custom-centered-image{width:100%;height:auto;border-radius:12px;display:block;
+        border:1px solid var(--card-border);margin:16px 0;box-shadow:0 8px 32px rgba(0,0,0,.45)}
+    .custom-centered-image{margin:28px auto}
+    .image-container{display:flex;flex-wrap:wrap;gap:20px;margin:20px 0}
+    .image-container figure{flex:1 1 46%;margin:0}
+    .image-container img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    .image-container figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);text-align:center;margin-top:8px}
+    @media(max-width:550px){.image-container figure{flex:1 1 100%}}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+        background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;
+        border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}
+    .page-wrapper>*:nth-child(2){animation-delay:.10s}
+    .page-wrapper>*:nth-child(3){animation-delay:.15s}
+    .page-wrapper>*:nth-child(4){animation-delay:.20s}
+    .page-wrapper>*:nth-child(n+5){animation-delay:.25s}
+
+    /* ═══════════════════════════════════════════════
+       FLOATING FAB ROW  (palette + quiz triggers)
+    ═══════════════════════════════════════════════ */
+    #fab-row{
+        position:fixed;right:20px;top:50%;transform:translateY(-50%);
+        z-index:1100;display:flex;flex-direction:column;gap:10px;
+        touch-action:none;user-select:none;-webkit-user-select:none;
+        max-width:calc(100vw - 24px);
+    }
+    .fab{
+        width:52px;height:52px;border-radius:50%;border:none;cursor:grab;
+        display:flex;align-items:center;justify-content:center;
+        color:#fff;font-size:1.35rem;
+        box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);
+        transition:box-shadow .25s,filter .2s;
+        flex-shrink:0;
+    }
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15);box-shadow:0 6px 28px rgba(26,108,246,.7),0 0 0 3px rgba(77,166,255,.35)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;
+        border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{
+        position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+        background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);
+        color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;
+        padding:4px 10px;border-radius:8px;white-space:nowrap;
+        pointer-events:none;opacity:0;transition:opacity .2s;
+    }
+    .fab:hover .fab-tip{opacity:1}
+
+    /* Mobile: fixed bottom-right row, horizontal */
+    @media(max-width:767px){
+        #fab-row{
+            right:0;bottom:16px;top:unset;transform:none;
+            flex-direction:row;
+            width:100%;justify-content:flex-end;
+            padding-right:16px;
+            pointer-events:none;
         }
+        #fab-row .fab{pointer-events:all}
+    }
 
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
+    /* ═══════════════════════════════════════════════
+       COLOUR PANEL  (desktop: draggable float | mobile: fixed bottom sheet)
+    ═══════════════════════════════════════════════ */
+    #color-panel{
+        position:fixed;right:82px;top:50%;
+        transform:translateY(-50%) scale(.95);transform-origin:right center;
+        z-index:1050;width:310px;max-height:82vh;border-radius:18px;
+        overflow:hidden;display:flex;flex-direction:column;
+        background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);
+        backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+        box-shadow:0 12px 50px rgba(0,0,0,.7),0 0 0 1px rgba(77,166,255,.08);
+        opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none;
+    }
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+
+    /* Mobile: fixed bottom sheet — no dragging */
+    @media(max-width:767px){
+        #color-panel{
+            position:fixed!important;left:0!important;right:0!important;bottom:0!important;
+            top:unset!important;width:100%!important;max-height:75vh;
+            border-radius:20px 20px 0 0;transform:translateY(100%)!important;
+            transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .25s!important;
+            opacity:1!important;pointer-events:none;
         }
+        #color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}
+    }
 
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
+    .panel-header{
+        padding:14px 16px 12px;background:rgba(6,18,45,1);
+        border-bottom:1px solid rgba(77,166,255,.12);
+        display:flex;align-items:center;justify-content:space-between;
+        cursor:grab;flex-shrink:0;
+        background-image:radial-gradient(circle,rgba(77,166,255,.16) 1px,transparent 1px);
+        background-size:6px 6px;background-position:center;background-repeat:repeat;
+    }
+    .panel-header:active{cursor:grabbing}
+    /* Mobile: header not draggable — show drag indicator instead */
+    @media(max-width:767px){
+        .panel-header{cursor:default;padding-top:18px}
+        .panel-header::before{
+            content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+            width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3);
         }
+    }
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.4}
+    @media(max-width:767px){.drag-icon{display:none}}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:20px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
 
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
+    .font-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);
+        display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+        color:rgba(140,175,230,.55);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);
+        background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28);border-color:rgba(77,166,255,.38)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;
+        color:rgba(140,175,230,.55);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;
+        font-weight:500;letter-spacing:.04em;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
 
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;
+        color:rgba(140,175,230,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.04);color:rgba(180,205,255,.75);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.28);color:#fff}
 
-     
+    .color-section{padding:13px 16px 0}
+    .section-title{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;
+        color:rgba(140,175,230,.5);letter-spacing:.13em;text-transform:uppercase;
+        margin-bottom:10px;margin-top:2px;display:flex;align-items:center;gap:6px}
+    .section-title::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.28)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+    .color-preview{width:26px;height:26px;border-radius:7px;border:2px solid rgba(255,255,255,.14);
+        cursor:pointer;transition:transform .2s,box-shadow .2s;flex-shrink:0}
+    .color-preview:hover{transform:scale(1.12);box-shadow:0 0 10px rgba(255,255,255,.2)}
+    .color-input-native{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+    .color-hex-input{width:70px;background:rgba(255,255,255,.055);border:1px solid rgba(77,166,255,.14);
+        border-radius:6px;padding:3px 7px;font-family:'Outfit',sans-serif;font-size:.73rem;
+        color:var(--text-muted);text-align:center;letter-spacing:.04em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.42);color:#fff}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);height:3px;cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:30px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;
+        border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.04em;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
 
-    h1,
-    h2 {
-      color: #a70000;
+    /* ═══════════════════════════════════════════════
+       QUIZ OVERLAY
+    ═══════════════════════════════════════════════ */
+    #quiz-overlay{
+        position:fixed;inset:0;z-index:2000;
+        background:rgba(2,6,18,.85);
+        backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+        display:flex;align-items:center;justify-content:center;
+        padding:16px;
+        opacity:0;pointer-events:none;transition:opacity .3s;
+    }
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+
+    #quiz-panel{
+        width:100%;max-width:640px;max-height:90vh;
+        background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);
+        border-radius:22px;overflow:hidden;display:flex;flex-direction:column;
+        box-shadow:0 20px 70px rgba(0,0,0,.8),0 0 0 1px rgba(77,166,255,.1);
+        animation:quizIn .35s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+
+    .quiz-header{
+        display:flex;align-items:center;justify-content:space-between;
+        padding:18px 22px 14px;
+        background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);
+        flex-shrink:0;
+    }
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{
+        padding:3px 10px;border-radius:20px;
+        background:linear-gradient(135deg,var(--accent),var(--accent-light));
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em;
+    }
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s ease;width:0%}
+
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+
+    /* Start screen */
+    .quiz-start{text-align:center;padding:20px 10px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .quiz-start .qs-info{
+        display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap;
+    }
+    .qs-chip{
+        display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;
+        background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);
+        font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500;
     }
 
-    h3 {
-      color: #000000;
+    .btn-primary{
+        display:inline-flex;align-items:center;gap:8px;padding:13px 32px;
+        background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;
+        border:none;border-radius:50px;cursor:pointer;
+        box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s;letter-spacing:.03em;
     }
-
-    .important-words1,
-    .important-words2 {
-      background-color: #f9c3ae;
-      padding: 15px;
-      margin-bottom: 20px;
-      position: relative;
-      direction: rtl;
-      /* yazıyı sağdan sola hizalar */
-      text-align: right;
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{
+        display:inline-flex;align-items:center;gap:8px;padding:10px 24px;
+        background:rgba(77,166,255,.1);color:var(--accent-light);
+        font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;
+        border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s;
     }
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
 
-    .vertical-line1 {
-      width: 4px;
-      height: 60%;
-      background-color: rgb(201, 17, 17);
-      position: absolute;
-      top: 80px;
-      right: 15px;
-      /* soldan değil, sağdan hizalanacak */
-      left: auto;
-      /* soldaki hizalamayı iptal et */
+    /* Question screen */
+    .quiz-q-screen{display:none}
+    .quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;
+        background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;
+        line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{
+        display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;
+        border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);
+        cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);
+        text-align:left;width:100%;
     }
-
-    .vertical-line2 {
-      width: 4px;
-      height: 100%;
-      background-color: rgb(201, 17, 17);
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      /* soldan değil, sağdan hizalanacak */
-      left: auto;
-      /* soldaki hizalamayı iptal et */
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .q-opt .opt-letter{
+        width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);
+        border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;
     }
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
 
-    .important-words1 h2,
-    .important-words2 h2 {
-      color: #a70000;
+    .q-feedback{
+        margin-top:16px;padding:14px 16px;border-radius:12px;
+        font-family:'Lora',serif;font-size:.88rem;line-height:1.6;
+        display:none;
     }
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
 
-    .important-words1 ul {
-      list-style-type: none;
-      padding-left: 0;
-      margin-left: 20px;
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+
+    /* Results screen */
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{
+        width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        border:3px solid var(--accent-light);
+        background:radial-gradient(circle,rgba(26,108,246,.15),transparent);
+        box-shadow:0 0 30px rgba(26,108,246,.3);
     }
-
-    .important-words1 li {
-      margin-bottom: 1px;
-      padding-left: 20px;
-      text-indent: -20px;
-      list-style-position: inside;
-      list-style-position: outside;
-
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{
+        display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;
     }
-
-    .important-words2 li {
-      margin-bottom: 1px;
-      padding-left: 20px;
-      text-indent: -20px;
-      list-style-position: inside;
-      list-style-position: outside;
-      padding-right: 0;
-      margin-right: 25px;
-      /* noktayı biraz sola kaydırır */
+    .rb-chip{
+        padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;
     }
-
-    .road-section {
-      margin-top: 30px;
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .rb-chip.skip{background:rgba(140,175,230,.08);border:1px solid rgba(140,175,230,.2);color:var(--text-dim)}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    
+    /* ── RTL Arabic Support ── */
+    body { font-family: 'Outfit', 'Segoe UI', Tahoma, Arial, sans-serif; }
+    p, .vocab-list li, .prose-list li, .q-text, .q-feedback,
+    .quiz-start p, .result-sub { font-family: 'Outfit', Tahoma, Arial, sans-serif; }
+    .page-wrapper, #quiz-panel, #color-panel { direction: rtl; text-align: right; }
+    h2::before { margin-left: 10px; margin-right: 0; }
+    .glass-card .accent-line { left: unset; right: 0; border-radius: 4px 0 0 4px; }
+    .prose-list li { padding-left: 0; padding-right: 22px; }
+    .prose-list li::before { left: unset; right: 0; }
+    .custom-button::before { content: '→'; }
+    .vocab-list li strong { letter-spacing: 0; }
+    .fab .fab-tip { right: unset; left: calc(100% + 10px); }
+    #color-panel { right: unset; left: 82px; transform-origin: left center; }
+    #color-panel.is-open { transform: translateY(-50%) scale(1); }
+    @media(max-width:767px){
+        #color-panel { left:0!important; right:0!important; }
+        .fab .fab-tip { left: calc(100% + 10px); right: unset; }
     }
-
-    .road-section img,
-    .custom-image,
-    .custom-centered-image {
-      width: 100%;
-      height: auto;
-    }
-
-    .custom-centered-image {
-      display: block;
-      margin: 20px auto;
-    }
-
-    .image-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .image-container figure {
-      max-width: 48%;
-      margin: 0;
-    }
-
-    .image-container img {
-      width: 100%;
-      height: auto;
-    }
-
-    .image-container figcaption {
-      font-size: 0.6em;
-      color: #000000;
-      text-align: center;
-      margin-top: 5px;
-    }
-
-    .custom-button {
-      display: inline-block;
-      width: 140px;
-      height: 39px;
-      background-color: black;
-      color: white;
-      text-align: center;
-      line-height: 39px;
-      text-decoration: none;
-      border-radius: 9px;
-      transition: background-color 0.3s ease;
-      margin-top: 70px;
-    }
-
-    .custom-button:hover {
-      background-color: blue;
-    }
-
-    @media (max-width: 550px) {
-      .image-container figure {
-        max-width: 100%;
-      }
-    }
-  </style>
+    </style>
 </head>
-
 <body>
-<h2>مدوّنة السلوك</h2>
-    <div class="important-words1">
-      <div class="vertical-line1"></div>
-      <h3>كلمات هولندية مهمة</h3>
-      <ul>
-        <li>
-          <strong>APK</strong> <br />مماثل لـ MOT، فحص عام دوري إلزامي للمركبة.
-        </li>
-        <li>
-          <strong>Brommobiel</strong> <br />
-          درّاجة نارية خفيفة بثلاث أو أربع عجلات ذات هيكل مغلق وبوزنٍ فارغ أقصاه 350 كغ. وتُسمّى أيضًا «سيارة صغيرة».
-        </li>
-        <li>
-          <strong>Snorfiets</strong> <br />درّاجة نارية خفيفة بسرعة تصنيع قصوى 25 كم/س.
-        </li>
-      </ul>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- ═══ FLOATING FAB ROW ═══ -->
+<div id="fab-row">
+    <button class="fab" id="fab-palette" title="تخصيص الألوان">
+        <span class="fab-tip">الألوان</span>🎨
+    </button>
+    <button class="fab" id="fab-quiz" title="أداء الاختبار">
+        <span class="fab-tip">الاختبار</span>📝
+    </button>
+</div>
+
+<!-- ═══ COLOUR PANEL ═══ -->
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner">
+            <span class="drag-icon">⠿</span>
+            <div class="panel-title">🎨 إعدادات اللون والنص</div>
+        </div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
-    <p>
-      عند مشاركتك في حركة المرور، يُطلب منك الالتزام بقواعد سلوك معيّنة. وقد وُضِعت هذه القواعد العامة من أجل:
-    </p>
-    <ul>
-      <li>الحفاظ على سلامة الطرق؛</li>
-      <li>حماية مستخدمي الطريق والركّاب؛</li>
-      <li>ضمان بقاء الطرق صالحة للاستخدام؛</li>
-      <li>ضمان انسيابية حركة المرور؛</li>
-      <li>منع الإعاقة والضرر أو الحدّ منهما؛</li>
-      <li>تقليل الأثر السلبي لحركة المرور على البيئة؛</li>
-      <li>منع الجريمة.</li>
+    <div class="panel-body">
+        <div class="font-strip">
+            <div class="font-strip-label">حجم الخط</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ إعادة</button>
+        </div>
+        <div class="presets-strip">
+            <div class="strip-label">ثيمات سريعة</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 افتراضي</button>
+                <button class="preset-btn" data-preset="light">☀️ فاتح</button>
+                <button class="preset-btn" data-preset="purple">🟣 بنفسجي</button>
+                <button class="preset-btn" data-preset="green">🟢 أخضر</button>
+                <button class="preset-btn" data-preset="amber">🟡 كهرماني</button>
+                <button class="preset-btn" data-preset="contrast">⬛ تباين عالٍ</button>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">الخلفية</div>
+            <div class="color-row">
+                <div class="color-row-label">خلفية الصفحة</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-bg-deep" onclick="openPicker('bg-deep')"></div>
+                    <input class="color-hex-input" id="hex-bg-deep" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-bg-deep"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>الشفافية</label>
+                <input type="range" id="opacity-bg" min="0" max="100" value="100"/>
+                <div class="opacity-val" id="opacity-bg-val">100%</div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">ألوان التمييز</div>
+            <div class="color-row">
+                <div class="color-row-label">التمييز الأساسي</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-accent" onclick="openPicker('accent')"></div>
+                    <input class="color-hex-input" id="hex-accent" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-accent"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">التمييز الفاتح</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-accent-light" onclick="openPicker('accent-light')"></div>
+                    <input class="color-hex-input" id="hex-accent-light" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-accent-light"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">تحذير / أحمر</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-red" onclick="openPicker('red')"></div>
+                    <input class="color-hex-input" id="hex-red" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-red"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">ألوان النص</div>
+            <div class="color-row">
+                <div class="color-row-label">العنوان الرئيسي (h1)</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-primary" onclick="openPicker('text-primary')"></div>
+                    <input class="color-hex-input" id="hex-text-primary" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-text-primary"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">عناوين الأقسام</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-heading-color" onclick="openPicker('heading-color')"></div>
+                    <input class="color-hex-input" id="hex-heading-color" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-heading-color"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">نص المحتوى</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-muted" onclick="openPicker('text-muted')"></div>
+                    <input class="color-hex-input" id="hex-text-muted" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-text-muted"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">النص الخافت</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-dim" onclick="openPicker('text-dim')"></div>
+                    <input class="color-hex-input" id="hex-text-dim" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-text-dim"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">البطاقات والأجزاء</div>
+            <div class="color-row">
+                <div class="color-row-label">خلفية البطاقة</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-card-bg" onclick="openPicker('card-bg')"></div>
+                    <input class="color-hex-input" id="hex-card-bg" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-card-bg"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>شفافية البطاقة</label>
+                <input type="range" id="opacity-card" min="0" max="100" value="55"/>
+                <div class="opacity-val" id="opacity-card-val">55%</div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">حدود البطاقة</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-card-border" onclick="openPicker('card-border')"></div>
+                    <input class="color-hex-input" id="hex-card-border" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-card-border"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>شفافية الحدود</label>
+                <input type="range" id="opacity-border" min="0" max="100" value="22"/>
+                <div class="opacity-val" id="opacity-border-val">22%</div>
+            </div>
+        </div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ إعادة ضبط كل الإعدادات</button>
+    </div>
+</div>
+
+<!-- ═══ QUIZ OVERLAY ═══ -->
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header">
+            <div class="quiz-header-left">
+                <div class="quiz-title">📝 اختبار قواعد السلوك</div>
+                <div class="quiz-badge" id="quiz-badge">١٥ سؤالاً</div>
+            </div>
+            <button class="quiz-close" id="quiz-close-btn">✕</button>
+        </div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body" id="quiz-body">
+
+            <!-- START SCREEN -->
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚦</span>
+                <h2>اختبر معلوماتك</h2>
+                <p>١٥ سؤالاً مختاراً عشوائياً من نظرية قواعد السلوك. اقرأ الصفحة بعناية قبل البدء — كل سؤال مستند مباشرةً إلى محتواها.</p>
+                <div class="qs-info">
+                    <div class="qs-chip">📋 ١٥ سؤالاً</div>
+                    <div class="qs-chip">🔀 ترتيب عشوائي</div>
+                    <div class="qs-chip">✅ تغذية راجعة فورية</div>
+                </div>
+                <button class="btn-primary" id="quiz-start-btn">▶ ابدأ الاختبار</button>
+            </div>
+
+            <!-- QUESTION SCREEN (rendered by JS) -->
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+
+            <!-- RESULTS SCREEN -->
+            <div class="quiz-results" id="quiz-results-screen"></div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="page-wrapper">
+    <div class="brand-strip">
+        <span>ExamTheorie</span><span class="dot">›</span>
+        <span>سيارة الركاب</span><span class="dot">›</span>
+        <span style="color:var(--text-primary)">قواعد السلوك</span>
+    </div>
+    <h1>قواعد السلوك</h1>
+    <div class="section-divider"></div>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>مصطلحات هولندية مهمة</h3>
+        <ul class="vocab-list">
+            <li><strong>APK</strong>يماثل فحص MOT؛ الفحص الدوري الإلزامي العام للمركبة.</li>
+            <li><strong>Brommobiel</strong>دراجة آلية ذات ثلاث أو أربع عجلات بهيكل مغلق، وحدٌّ أقصى للوزن الفارغ 350 كيلوغرام. تُعرف أيضاً بالسيارة المصغرة.</li>
+            <li><strong>Snorfiets</strong>دراجة آلية بسرعة تصميمية قصوى تبلغ 25 كم/س.</li>
+        </ul>
+    </div>
+
+    <p>عند مشاركتك في حركة المرور، يتعين عليك الالتزام بقواعد سلوك معينة. صُمِّمت هذه القواعد العامة من أجل:</p>
+    <ul class="prose-list">
+        <li>الحفاظ على سلامة الطرق؛</li><li>حماية مستخدمي الطريق والركاب؛</li>
+        <li>ضمان استمرار صلاحية الطرق للاستخدام؛</li><li>ضمان انسياب حركة المرور بحرية؛</li>
+        <li>منع الإعاقة والأضرار أو الحدّ منها؛</li>
+        <li>تقليل الأثر السلبي لحركة المرور على البيئة؛</li>
+        <li>الوقاية من الجريمة.</li>
     </ul>
-    <div class="important-words2">
-      <div class="vertical-line2"></div>
-      <h3>الطرق</h3>
-      <p>
-        جميع الطرق والمسارات التي يمكن لحركة المرور العامة القيادة أو المشي عليها. ويشمل ذلك الجسور والأنفاق. كما تُعدّ المسارات والحواف جزءًا من الطريق.
-      </p>
-      <p>
-        يعني ذلك أنّ الطريق يمكن أن يكون أيَّ شيء بين خندقين أو جدارين. لذا تُعدّ الأرصفة جزءًا من الطريق، وكذلك مسارات الدراجات إذا كانت مفصولةً عن الطريق بحافةٍ أو رصيف.
-      </p>
-      <img
-        src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png"
-        alt="مخطط الطريق"
-        class="custom-image"
-      />
-      <h3>الشخص المخوَّل</h3>
-      <p>
-        أشخاص مُخوَّلون بتنظيم حركة المرور وطلب المستندات الرسمية. وهُم:
-      </p>
-      <li>وكلاء النيابة العامة</li>
-      <li>ضباط الشرطة</li>
-      <li>الشرطة العسكرية</li>
-      <li>موظفو دائرة الضرائب الحكومية</li>
-      <li>
-        موظفو إدارة المركبات الهولندية وهيئة التفتيش المروري
-      </li>
-      <li>
-        موظفو Rijkswaterstaat (إدارة/وزارة شؤون المياه والأشغال العامة)
-      </li>
-      <li>مأمورو الضبط القضائي من دوائر حكومية مختلفة</li>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>الطرق</h3>
+        <p>جميع الطرق والمسالك التي يمكن للمركبات أو المشاة سلوكها. يشمل ذلك الجسور والأنفاق. وتُعدُّ الممرات والأرصفة الجانبية جزءاً من الطريق.</p>
+        <p>يعني ذلك أن الطريق يشمل كل شيء بين خندقين أو جدارين. وبناءً على ذلك، تُعدُّ الأرصفة جزءاً من الطريق، تماماً كمسارات الدراجات المفصولة بنوافذ أو أرصفة.</p>
+        <img src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png" alt="مخطط الطريق" class="custom-image"/>
+        <div class="sub-section">
+            <h3>الشخص المُخوَّل</h3>
+            <p>الأشخاص المُخوَّلون بتنظيم حركة المرور وطلب الوثائق الرسمية. وهم:</p>
+            <ul class="prose-list">
+                <li>المدعون العامون</li><li>ضباط الشرطة</li><li>الشرطة العسكرية</li>
+                <li>موظفو مصلحة الضرائب الحكومية</li>
+                <li>مسؤولو دائرة المركبات الآلية وهيئة تفتيش المرور الهولندية</li>
+                <li>مسؤولو Rijkswaterstaat (وزارة الممرات المائية والأشغال العامة)</li>
+                <li>ضباط التحقيق من مختلف الإدارات الحكومية</li>
+            </ul>
+        </div>
     </div>
+
     <h2>التعليمات</h2>
-    <p>
-      يلتزم كلّ مستخدمٍ للطريق باتّباع التعليمات الصادرة عن الأشخاص المخوَّلين.<br />
-      بالإضافة إلى ذلك، يتعيّن على مستخدمي الطريق اتّباع التعليمات الصادرة عن حرّاس العبور — الذين يجوز لهم إيقاف السائقين فقط.
-    </p>
+    <p>يلتزم كل مستخدم للطريق باتباع التعليمات الصادرة عن الأشخاص المُخوَّلين.<br/>علاوةً على ذلك، يتعين على مستخدمي الطريق الامتثال لتعليمات حراس المعابر، الذين لا يحق لهم سوى إيقاف السائقين.</p>
     <div class="image-container">
-      <figure>
-        <img
-          src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg"
-          alt="الصورة 1"
-        />
-        <figcaption><em>يجوز لحرّاس العبور إيقاف السائقين فقط.</em></figcaption>
-      </figure>
-      <figure>
-        <img
-          src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg"
-          alt="الصورة 2"
-        />
-        <figcaption>
-          <em
-            >يجوز لضبّاط الشرطة العسكرية الملكية الهولندية إصدار تعليمات يتعيّن عليك الالتزام بها. كما يجوز لهم طلب الاطّلاع على مستنداتك الرسمية.</em
-          >
-        </figcaption>
-      </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg" alt="حارس المعبر"/>
+            <figcaption><em>لا يحق لحراس المعابر سوى إيقاف السائقين.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg" alt="الشرطة العسكرية"/>
+            <figcaption><em>يحق لضباط الشرطة الملكية العسكرية الهولندية إصدار تعليمات يجب الالتزام بها، كما يحق لهم طلب الاطلاع على وثائقك الرسمية.</em></figcaption>
+        </figure>
     </div>
+
     <h2>التعاون الإلزامي</h2>
-    <p>
-      إذا أوقَفك شرطيّ أو شخصٌ مخوَّل آخر، فقد يطلب رؤية مستندات معيّنة. يجب أن تكون هذه المستندات بحوزتك دائمًا، ولا يجوز لك رفض طلب عرضها.
-      وتشمل هذه المستندات:
-    </p>
-    <ul>
-      <li>رخصة قيادتك.</li>
-      <li>شهادة تسجيل المركبة.</li>
-      <li>
-        بطاقة المشرف إذا كنت تقود ضمن نظام 2toDrive (القيادة ابتداءً من سنّ 17 عامًا).
-      </li>
-      <li>
-        بطاقة مواقف ذوي الإعاقة إذا كنت تقود مركبة مخصّصة أو تركن في موقف مخصّص.
-      </li>
+    <p>إذا أوقفك ضابط شرطة أو أي شخص مُخوَّل آخر، فقد يطلب منك تقديم وثائق معينة. يجب أن تكون هذه الوثائق بحوزتك في جميع الأوقات، ولا يحق لك رفض طلب إبرازها. وتشمل هذه الوثائق:</p>
+    <ul class="prose-list">
+        <li>رخصة قيادتك.</li>
+        <li>شهادة تسجيل المركبة.</li>
+        <li>بطاقة المشرف إذا كنت تقود في إطار برنامج 2toDrive (القيادة من سن 17).</li>
+        <li>بطاقة وقوف ذوي الإعاقة إذا كنت تقود مركبة مجهَّزة لذوي الإعاقة أو تقف في موقف مخصص لهم.</li>
     </ul>
-    <p>
-      يجوز للشخص المخوَّل أيضًا أن يطلب منك الخضوع لاختبار للكحول أو المخدّرات. ويعني ذلك وجوب إجراء اختبار النَّفَس، واختبار تنسيق العين ووظيفة النطق، ومسحات اللعاب لأغراض الكشف عن المخدّرات.
-    </p>
-    <p>
-      وقد يُطلَب منك حتى إجراء فحص دم إذا رفضتَ اختبار النَّفَس أو تعذّر إجراء اختبار النَّفَس.
-    </p>
-    <h2>الإعاقة أو تعريض الآخرين للخطر</h2>
-    <p>
-      تُفصِّل معظم القواعد في التشريعات المعمول بها. فمثلًا لا يجوز القيادة أسرع من الحدّ الأقصى للسرعة، ولا يجوز تجاهل إشارات المرور، ولا يجوز اجتياز الإشارة الحمراء. ومع ذلك توجد سلوكيات كثيرة أخرى قد تُعرِّض مستخدمي الطريق للخطر أو تعيق الانسياب الطبيعي لحركة المرور وهي غير منصوصٍ عليها صراحةً في التشريعات. لذلك وُضِعَت قاعدة تحظر على مستخدمي الطريق التصرّف بما يخلق أو يساهم في وضعٍ خطِر على الطريق. كما يُحظر إعاقة حركة الآخرين أو عرقلتها. سبب هذه السلوكيات أو دافعها غير ذي صلة.
-    </p>
-    <div class="important-words2">
-      <div class="vertical-line2"></div>
-      <h3>Kapstokartikel</h3>
-      <p>
-        تنصّ المادة 5 من قانون المرور على الطرق (وتُسمّى أيضًا «Kapstokartikel») على حظر تشغيل المركبة على نحوٍ يعيق حركة المرور أو يعرّض السائق أو غيره من مستخدمي الطريق للخطر. ويوفّر هذا القانون «شبكة أمان» تغطّي السلوك الخطر غير المحظور مباشرةً بعلامات المرور أو تخطيط الطريق لكنه يظلّ يشكّل إعاقةً أو خطرًا ويمكن الملاحقة عليه.
-      </p>
+    <p>يجوز للشخص المُخوَّل أيضاً إلزامك بإجراء فحص للكحول أو المخدرات، ويشمل ذلك فحص النفَس، واختبار تنسيق حركة العينين ووظيفة الكلام، وأخذ مسحات اللعاب للكشف عن المخدرات.</p>
+    <p>قد يُطلب منك أيضاً إجراء فحص دم إذا رفضت فحص النفَس أو تعذَّر إجراؤه.</p>
+
+    <h2>الإعاقة أو التعريض للخطر</h2>
+    <p>معظم القواعد مفصَّلة في التشريعات المعمول بها. لا يجوز لك تجاوز حدود السرعة، أو تجاهل إشارات المرور، أو اجتياز الضوء الأحمر. غير أن كثيراً من السلوكيات الأخرى قد تُعرِّض مستخدمي الطريق للخطر أو تُعيق سير حركة المرور دون أن تكون مُدرَجة صراحةً في التشريعات. لذا تحظر قاعدةٌ على مستخدمي الطريق إيجاد مواقف خطرة أو الإسهام فيها. كما يُحظر عرقلة حركة المرور أو إعاقتها.</p>
+
+    <div class="glass-card red-accent">
+        <div class="accent-line"></div>
+        <h3>Kapstokartikel (المادة الشاملة)</h3>
+        <p style="margin-bottom:0">تحظر المادة الخامسة من قانون المرور (المعروفة بـ Kapstokartikel) على مستخدمي الطريق قيادة المركبة بأي طريقة تُعيق حركة المرور أو تُسبِّب الخطر. يُوفِّر هذا القانون "شبكة أمان" تغطي السلوكيات الخطرة غير المحظورة صراحةً بإشارات المرور أو علامات الطريق، والتي قد تستوجب الملاحقة القضائية على الرغم من ذلك.</p>
     </div>
-        <h2>الإصابة أو الوفاة بخطأ</h2>
-    <p>
-      بالإضافة إلى عدم السماح بإحداث الإعاقة أو المواقف الخطرة، ينبغي على مستخدمي الطريق أن يتوخّوا الحذر لتجنّب التسبّب بحادثٍ مروري قد يُصيب الآخرين أو يتسبّب بوفاتهم.
-    </p>
-    <h2>مغادرة موقع الحادث</h2>
-    <p>
-      هل كنتَ طرفًا في حادث مروري؟ إذًا لا يجوز لك مغادرة موقع الحادث قبل أن تتبادل معلومات الاتصال ومعلومات المركبة مع أيّ أشخاصٍ آخرين معنيّين أو مع الشرطة — بغضّ النظر عمّا إذا كنتَ مخطئًا أم لا.
-    </p>
-    <p>
-      تُعدّ مغادرة موقع الحادث دون تقديم معلوماتك جريمة. ويمكنك التخفيف من ذلك بالإبلاغ طوعًا لدى مركز شرطة خلال 12 ساعةً من وقوع الحادث، ما لم تكن الشرطة قد قبضت عليك مشتبهًا به قبل ذلك.
-    </p>
-    <div class="important-words2">
-      <p>
-        إنّ مغادرة موقع الحادث وترك مُصابٍ دون مساعدة تُعدّ دائمًا جريمة — حتى لو أبلغتَ الشرطة لاحقًا. وبغضّ النظر عمّا إذا كنتَ طرفًا مباشرًا في الحادث أم لا، فأنت مُلزَم بتقديم العون عند الحاجة.
-      </p>
+
+    <h2>التسبب في إصابة أو وفاة</h2>
+    <p>فضلاً عن حظر التسبب في الإعاقة أو المواقف الخطرة، يتعين على مستخدمي الطريق توخِّي الحذر لتفادي التسبب في حادث مروري قد يُصيب الآخرين أو يُودي بحياتهم.</p>
+
+    <h2>مغادرة مسرح الحادث</h2>
+    <p>هل تورطت في حادث مروري؟ لا يجوز لك مغادرة المسرح قبل تبادل بيانات الاتصال ومعلومات المركبة مع الأطراف الأخرى المعنية أو الشرطة — بصرف النظر عن مدى مسؤوليتك.</p>
+    <p>مغادرة المسرح دون تقديم بياناتك تُعدُّ جريمة. يمكنك التخفيف من حدة ذلك بالتوجه طوعاً إلى مركز الشرطة خلال 12 ساعة من وقوع الحادث، ما لم تكن الشرطة قد احتجزتك بوصفك مشتبهاً به قبل ذلك.</p>
+    <div class="glass-card red-accent">
+        <div class="accent-line"></div>
+        <p style="margin-bottom:0">مغادرة مسرح الحادث مع إهمال شخص مصاب دون تقديم العون تُعدُّ جريمة في جميع الأحوال — حتى لو أبلغت الشرطة لاحقاً. بصرف النظر عن مدى تورطك المباشر، أنت ملزَم بتقديم المساعدة عند الحاجة.</p>
     </div>
-    <h2>السباق على الطريق</h2>
-    <p>
-      يُحظر السباق أو التنافس مع سائقين آخرين على الطرق العامة. ومثال ذلك التسارع السريع عند إشارات المرور. وإذا ضُبِط مستخدمُ طريقٍ يفعل ذلك، يكون كلٌّ من السائق ومالك المركبة مسؤولَين عن أيّ أضرار.
-    </p>
-    <div class="important-words2">
-      <div class="vertical-line2"></div>
-      <h3>مصادرة رخصة القيادة</h3>
-      <p>
-        يملك ضباط الشرطة صلاحية مصادرة رخصة قيادتك إذا ضُبِطتَ مخالفًا لأنظمة المرور. ثم تُحال الرخصة إلى النيابة العامة.
-      </p>
-      <h3>المنع من القيادة (تعليق رخصة القيادة)</h3>
-      <p>
-        يعني المنع من القيادة أنّه لا يُسمح لك بتشغيل المركبات الآلية لأسابيع أو أشهر أو حتى سنوات. وإذا ضُبِطتَ مخالفًا لأنظمة المرور، فقد يمنعك وكيل النيابة أو القاضي من القيادة. وقد يستمرّ المنع حتى سنتين للمخالفات الأقلّ خطورة وحتى خمس سنوات للمخالفات الجسيمة. وتشمل الأخيرة التسبّب بوفاةٍ أو إصابة بسبب القيادة الخطرة، والقيادة تحت تأثير الكحول، والقيادة أثناء المنع. وإذا ارتكبتَ مخالفةً أخرى خلال مدةٍ قصيرة، فقد تتضاعف العقوبات.
-      </p>
-      <h3>إبطال رخصة القيادة</h3>
-      <p>
-        إذا ارتكبتَ عدّة مخالفات، أو أصبحت غير مؤهَّلٍ للقيادة لأسبابٍ أخرى، فقد تُعلَن رخصتك غير صالحة. وهذا يعني أنّه لن يُسمح لك بتشغيل المركبات الآلية التي تتطلّب رخصة. وسيظلّ مسموحًا لك ركوب الدرّاجة، وأن تكون راكبًا في مركبة، وتشغيل المركبات التي لا تحتاج إلى رخصة. وقد يقتصر الإبطال على فئةٍ واحدة فقط، ما يعني بقاء أهليتك لقيادة مركباتٍ ضمن فئاتٍ أخرى.
-      </p>
+
+    <h2>التسابق على الطريق العام</h2>
+    <p>يُحظر التسابق أو التنافس مع السائقين الآخرين على الطرق العامة. ومن أمثلة ذلك التسارع المفاجئ عند إشارات المرور. وفي حال الضبط، يكون كلٌّ من السائق ومالك المركبة مسؤولَين عن أي أضرار تنجم عن ذلك.</p>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>مصادرة رخصة القيادة</h3>
+        <p>يحق لضباط الشرطة مصادرة رخصة قيادتك إذا ضُبطت مخالفاً لأنظمة المرور، وتُحال الرخصة بعد ذلك إلى المدعي العام.</p>
+        <div class="sub-section">
+            <h3>الحرمان من القيادة (تعليق الرخصة)</h3>
+            <p>الحرمان من القيادة يعني عدم السماح لك بقيادة المركبات الآلية لأسابيع أو أشهر أو سنوات. قد تمتد مدة الحرمان حتى سنتين في المخالفات الأقل خطورة، وحتى خمس سنوات في الجرائم الجسيمة، بما فيها الوفاة أو الإصابة الناجمة عن القيادة الخطرة، أو القيادة تحت تأثير الكحول، أو القيادة خلال فترة الحرمان. وفي حال ارتكاب مخالفة أخرى في وقت قصير، قد تتضاعف العقوبات.</p>
+        </div>
+        <div class="sub-section">
+            <h3>إلغاء رخصة القيادة</h3>
+            <p>إذا ارتكبت مخالفات عديدة أو لم تعد مؤهلاً للقيادة لأسباب أخرى، قد تُعلَن رخصتك لاغيةً وباطلة. لن يُسمح لك بعد ذلك بقيادة المركبات الآلية التي تستلزم رخصة. يحق لك مع ذلك ركوب الدراجات، والتنقل راكباً، وقيادة المركبات التي لا تستلزم رخصة. وقد يقتصر الإلغاء على فئة واحدة فحسب، فيظل حقك في الفئات الأخرى قائماً.</p>
+        </div>
     </div>
-    <img
-      src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg"
-      alt="الصورة 1"
-      class="custom-centered-image"
-    />
-    <h2>إنفاذ سلوك القيادة</h2>
-    <p>
-      إذا وُجِدتَ مخالفًا لقوانين المرور، فقد تُصادَر رخصة قيادتك. وهذا يعني أنّ الشرطة ستأخذ رخصتك وتُحيلها إلى النيابة العامة، التي ستقرّر (خلال 10 أيام) ما إذا كانت ستحتفظ بالرخصة أم تُعيدها إليك. وفي كلتا الحالتين قد يُحال الأمر إلى قاضٍ لاتّخاذ القرار النهائي، وعندها قد تُغرَّم و/أو تُمنَع من القيادة. ولن يُسمح لك بقيادة مركبة آلية طوال مدة منعك.
-    </p>
-    <p>
-      واستنادًا إلى سلوكك، قد تقع مصادرة رخصة قيادتك إذا:
-    </p>
-    <ul>
-      <li>تجاوزتَ الحدّ الأقصى للسرعة بـ 50 كم/س أو أكثر؛</li>
-      <li>تسبّبتَ بإعاقة أو وضعٍ خطِر.</li>
+
+    <img src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg" alt="تطبيق قانون المرور" class="custom-centered-image"/>
+
+    <h2>تطبيق قواعد سلوك القيادة</h2>
+    <p>في حال ثبوت المخالفة، قد تُصادَر رخصتك؛ إذ تحيلها الشرطة إلى المدعي العام الذي يُقرِّر في غضون 10 أيام إبقاءها أو إعادتها. وقد يُصدر القاضي الحكم النهائي المتضمن غرامة مالية و/أو حرماناً من القيادة.</p>
+    <p>يجوز مصادرة الرخصة إذا:</p>
+    <ul class="prose-list">
+        <li>تجاوزت حد السرعة بمقدار 50 كم/س أو أكثر؛</li>
+        <li>تسببت في إعاقة حركة المرور أو موقف خطر.</li>
     </ul>
-    <p>
-      وقد تُبلَّغ المخالفة أيضًا إلى CBR (المكتب المركزي لكفاءة القيادة)، الذي سيُحدّد عندها أهليتك لمواصلة القيادة.
-    </p>
-    <div class="important-words2">
-      <p>
-        يرمز CBR إلى Centraal Bureau Rijvaardigheidsbewijzen، أي «المكتب المركزي لكفاءة القيادة». وهو الذي يقرّر ما إذا كنتَ مؤهّلًا للحصول على رخصة القيادة. كما يقرّر ما إذا كنتَ ستحتفظ برخصتك عندما تكون أهليتك أو مهاراتك محلّ شك. ويُشرف CBR على اختبارات النظري والقيادة العملية. وهناك فرع آخر هو BNOR؛ فإذا رسبتَ في اختبار القيادة أربع مرّات متتالية، فسيُجري تقييمًا أعمق لتحديد قدراتك في القيادة.
-      </p>
+    <p>قد يُبلَّغ عن المخالفة أيضاً إلى هيئة CBR (المكتب المركزي لكفاءة القيادة)، التي ستُحدِّد مدى أهليتك لمواصلة القيادة.</p>
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <p>اختصار CBR يرمز إلى <strong style="color:var(--accent-light);font-family:'Outfit',sans-serif">Centraal Bureau Rijvaardigheidsbewijzen</strong>، أي المكتب المركزي لكفاءة القيادة. يُقرِّر هذا المكتب ما إذا كنت مؤهلاً للحصول على رخصة القيادة والاحتفاظ بها حين تُشكَّك في أهليتك. يُشرف CBR على اختبارَي النظرية والقيادة العملية. أما الجهة الفرعية BNOR، فتتولى التحقيق في قدراتك القيادية إذا رسبت في اختبار القيادة أربع مرات متتالية.</p>
     </div>
-    <p>قد يُبلَّغ CBR إذا كنتَ:</p>
-    <ul>
-      <li>
-        تلازم المركبة التي أمامك على الطريق السريع (لا تحافظ على مسافةٍ كافية عن المركبة التي أمامك)؛
-      </li>
-      <li>تقطع الطريق على مستخدمين آخرين؛</li>
-      <li>تجتاز إشارةً حمراء؛</li>
-      <li>تتجاوز الحدّ الأقصى للسرعة بأكثر من 50 كم/س في الظروف العادية؛</li>
-      <li>
-        تتجاوز الحدّ الأقصى للسرعة بأكثر من 30 كم/س أثناء أعمال الطريق.
-      </li>
+    <p>قد تُخطَر هيئة CBR إذا:</p>
+    <ul class="prose-list">
+        <li>لاحقت مركبة عن مسافة غير آمنة على الطريق السريع؛</li>
+        <li>قطعت الطريق على مستخدمين آخرين؛</li>
+        <li>اجتزت إشارة ضوء أحمر؛</li>
+        <li>تجاوزت حد السرعة بأكثر من 50 كم/س في الظروف العادية؛</li>
+        <li>تجاوزت حد السرعة بأكثر من 30 كم/س في مناطق أعمال الطريق.</li>
     </ul>
-    <h2>القيادة أثناء المنع</h2>
-    <p>
-      يُعدّ تشغيل مركبةٍ آلية أثناء منعك من القيادة جريمةً جنائية. وينطبق ذلك أيضًا إذا شغّلت مركبةً تتطلّب رخصة وكانت رخصتك مُبطلة.
-    </p>
-   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">العودة إلى النظرة العامة</a>"
 
+    <h2>القيادة خلال فترة الحرمان</h2>
+    <p>يُعدُّ تشغيل مركبة آلية خلال فترة الحرمان من القيادة جريمةً جنائية. وينطبق الأمر ذاته إذا قدت مركبة تستلزم رخصة في حين أُعلنت رخصتك لاغيةً وباطلة.</p>
 
-  
-
-
-
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">العودة إلى النظرة العامة</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+
+/* ═══════════════════════════════════════
+   COLOUR PANEL LOGIC
+═══════════════════════════════════════ */
+const DEFAULTS={
+    'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+    'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+    'card-bg':'#0a1e41','card-border':'#4da6ff',
+    'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
+};
+const PRESETS={
+    default:{...DEFAULTS},
+    light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+    purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
+};
+let state={};
+try{state=JSON.parse(localStorage.getItem('et_colors')||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const colorKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexToRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){
+    const bg=hexToRgb(state['bg-deep']);
+    if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}
+    root.style.setProperty('--accent',state['accent']);
+    root.style.setProperty('--accent-light',state['accent-light']);
+    root.style.setProperty('--red',state['red']);
+    root.style.setProperty('--text-primary',state['text-primary']);
+    root.style.setProperty('--heading-color',state['heading-color']);
+    root.style.setProperty('--text-muted',state['text-muted']);
+    root.style.setProperty('--text-dim',state['text-dim']);
+    const cb=hexToRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+    const cbr=hexToRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
+    document.documentElement.style.fontSize=state['font-size']+'px';
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+    document.querySelector('.orb-1').style.background=state['accent'];
+    document.querySelector('.orb-2').style.background=state['accent-light'];
+    syncUI();try{localStorage.setItem('et_colors',JSON.stringify(state))}catch(e){}
+}
+function syncUI(){
+    colorKeys.forEach(key=>{
+        const hex=state[key]||'#000000';
+        const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';
+        const prev=document.getElementById('prev-'+key);
+        const hexIn=document.getElementById('hex-'+key);
+        const pick=document.getElementById('pick-'+key);
+        if(prev)prev.style.background=safe;
+        if(hexIn)hexIn.value=safe.replace('#','').toUpperCase();
+        if(pick)pick.value=safe;
+    });
+    [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+        const k=id;const sl=document.getElementById(id);const vl=document.getElementById(vid);
+        if(sl)sl.value=state[k];if(vl)vl.textContent=state[k]+'%';
+    });
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+}
+window.openPicker=function(key){const p=document.getElementById('pick-'+key);if(p)p.click()};
+colorKeys.forEach(key=>{
+    const pick=document.getElementById('pick-'+key);
+    const hexIn=document.getElementById('hex-'+key);
+    const prev=document.getElementById('prev-'+key);
+    if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});
+    if(hexIn){
+        hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});
+        hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});
+    }
+});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+    const el=document.getElementById(id);const vl=document.getElementById(vid);
+    if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()});
+});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+
+/* ═══════════════════════════════════════
+   FAB ROW DRAG  (desktop only)
+═══════════════════════════════════════ */
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;
+try{fabPos=JSON.parse(localStorage.getItem('et_fab_pos'))}catch(e){}
+function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){
+    const W=window.innerWidth,H=window.innerHeight;
+    const bw=fabRow.offsetWidth||120,bh=fabRow.offsetHeight||120;
+    x=clamp(x,0,W-bw);y=clamp(y,0,H-bh);
+    fabRow.style.right='unset';fabRow.style.bottom='unset';
+    fabRow.style.top=y+'px';fabRow.style.left=x+'px';
+    fabRow.style.transform='none';
+}
+if(fabPos&&!isMob())setFabPos(fabPos.x,fabPos.y);
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{
+    if(e.target.closest('.fab')&&e.target.tagName==='BUTTON'&&!e.target.classList.contains('fab'))return;
+    fdrag=false;fsx=e.clientX;fsy=e.clientY;
+    const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;
+    document.addEventListener('mousemove',onFabMove);document.addEventListener('mouseup',onFabUp);
+});
+fabRow.addEventListener('touchstart',e=>{
+    if(isMob())return;
+    fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;
+    const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;
+    document.addEventListener('touchmove',onFabMoveT,{passive:false});document.addEventListener('touchend',onFabUpT);
+},{passive:true});
+function onFabMove(e){
+    const dx=e.clientX-fsx,dy=e.clientY-fsy;
+    if(!fdrag&&Math.sqrt(dx*dx+dy*dy)<5)return;
+    fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy);
+}
+function onFabMoveT(e){e.preventDefault();const t=e.touches[0];onFabMove({clientX:t.clientX,clientY:t.clientY})}
+function onFabUp(){
+    document.removeEventListener('mousemove',onFabMove);document.removeEventListener('mouseup',onFabUp);
+    if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem('et_fab_pos',JSON.stringify(fabPos))}catch(e){}}
+    fabRow.style.cursor='';fdrag=false;
+}
+function onFabUpT(){document.removeEventListener('touchmove',onFabMoveT);document.removeEventListener('touchend',onFabUpT);onFabUp()}
+
+/* ═══════════════════════════════════════
+   COLOUR PANEL  OPEN / CLOSE + PANEL DRAG
+═══════════════════════════════════════ */
+const colorPanel=document.getElementById('color-panel');
+const dragHandle=document.getElementById('panel-drag-handle');
+const fabPalette=document.getElementById('fab-palette');
+const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;
+try{panelPos=JSON.parse(localStorage.getItem('et_panel_pos'))}catch(e){}
+function setPanelPos(x,y){
+    const W=window.innerWidth,H=window.innerHeight;
+    const pw=colorPanel.offsetWidth||310,ph=colorPanel.offsetHeight||500;
+    x=clamp(x,0,W-pw);y=clamp(y,0,H-Math.min(ph,H*.85));
+    colorPanel.classList.add('positioned');
+    colorPanel.style.right='unset';colorPanel.style.bottom='unset';
+    colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';
+}
+function openPanelNearFab(){
+    if(isMob())return;
+    const fr=fabRow.getBoundingClientRect();
+    const pw=colorPanel.offsetWidth||310;
+    let px=fr.left-pw-12;if(px<8)px=fr.right+12;
+    let py=fr.top+fr.height/2-(colorPanel.offsetHeight||400)/2;
+    setPanelPos(px,py);panelPos={x:colorPanel.getBoundingClientRect().left,y:colorPanel.getBoundingClientRect().top};
+}
+if(panelPos&&!isMob())setPanelPos(panelPos.x,panelPos.y);
+fabPalette.addEventListener('click',()=>{
+    if(fdrag)return;
+    panelOpen=!panelOpen;
+    colorPanel.classList.toggle('is-open',panelOpen);
+    fabPalette.classList.toggle('active',panelOpen);
+    if(panelOpen&&!isMob()){
+        if(panelPos)setPanelPos(panelPos.x,panelPos.y);else openPanelNearFab();
+    }
+});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{
+    if(!panelOpen)return;
+    if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){
+        panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active');
+    }
+});
+
+/* Panel drag (desktop header) */
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{
+    if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;
+    pdrag=false;psx=e.clientX;psy=e.clientY;
+    const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;
+    document.addEventListener('mousemove',onPanelMove);document.addEventListener('mouseup',onPanelUp);
+});
+function onPanelMove(e){
+    const dx=e.clientX-psx,dy=e.clientY-psy;
+    if(!pdrag&&Math.sqrt(dx*dx+dy*dy)<5)return;
+    pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy);
+}
+function onPanelUp(){
+    document.removeEventListener('mousemove',onPanelMove);document.removeEventListener('mouseup',onPanelUp);
+    if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem('et_panel_pos',JSON.stringify(panelPos))}catch(e){}}
+    dragHandle.style.cursor='grab';pdrag=false;
+}
+
+/* ═══════════════════════════════════════
+   QUIZ ENGINE
+═══════════════════════════════════════ */
+const ALL_QUESTIONS=[
+    {topic:'الطرق',q:'أيٌّ مما يلي يُعدُّ جزءاً من الطريق؟',opts:['مسارات القيادة فقط','الأرصفة ومسارات الدراجات المفصولة بنواف','الممرات الخاصة','مواقف السيارات فقط'],ans:1,exp:'يشمل الطريق كل شيء بين خندقين أو جدارين — الأرصفة ومسارات الدراجات المفصولة بنوافذ أو أرصفة والجسور والأنفاق كلها جزء من الطريق.'},
+    {topic:'الطرق',q:'الجسور والأنفاق تُعدُّ جزءاً من الطريق.',opts:['صحيح','خطأ','الأنفاق فقط','الجسور فقط'],ans:0,exp:'نعم — تُدرج الجسور والأنفاق صراحةً ضمن تعريف الطريق في قانون المرور الهولندي.'},
+    {topic:'الطرق',q:'ما تعريف "الطريق" وفق قانون المرور الهولندي؟',opts:['الطرق السريعة المعبَّدة فقط','أي مسار بين خندقين أو جدارين يمكن لحركة المرور العامة استخدامه','الأراضي الخاصة فقط','أي طريق تحمل لافتة حد سرعة'],ans:1,exp:'الطريق هو أي مسار أو درب — بما فيه الجسور والأنفاق والنوافذ والأرصفة — يمكن لحركة المرور العامة سلوكه سيراً أو مشياً.'},
+    {topic:'قواعد السلوك',q:'أيٌّ مما يلي ليس من الأهداف المعلنة لقواعد السلوك؟',opts:['الحفاظ على سلامة الطرق','الوقاية من الجريمة','تعظيم سرعة المركبات','تقليل الأثر البيئي السلبي لحركة المرور'],ans:2,exp:'تعظيم سرعة المركبات ليس هدفاً معلناً. تهدف القواعد إلى سلامة الطرق وحماية المستخدمين والركاب وضمان صلاحية الطرق وانسياب المرور ومنع الضرر والحد من الأثر البيئي والوقاية من الجريمة.'},
+    {topic:'قواعد السلوك',q:'كم عدد الأهداف العامة المذكورة لقواعد السلوك؟',opts:['5','6','7','8'],ans:2,exp:'ثمة 7 أهداف عامة: سلامة الطرق، حماية المستخدمين والركاب، ضمان صلاحية الطرق، انسياب المرور، منع الإعاقة والأضرار، تقليل الأثر البيئي، والوقاية من الجريمة.'},
+    {topic:'الأشخاص المخوَّلون',q:'من المُخوَّل بتنظيم المرور وطلب الوثائق الرسمية؟',opts:['حراس المعابر فقط','أي مواطن في حالات الطوارئ','أشخاص مُخوَّلون كضباط الشرطة والمدعين العامين','القضاة فقط'],ans:2,exp:'يشمل الأشخاص المُخوَّلون المدعين العامين وضباط الشرطة والشرطة العسكرية وموظفي الضرائب ومسؤولي دائرة المركبات وهيئة تفتيش المرور ومسؤولي Rijkswaterstaat وضباط التحقيق.'},
+    {topic:'الأشخاص المخوَّلون',q:'ما الذي يحق لحراس المعابر القيام به؟',opts:['إيقاف السائقين والتحقق من وثائقهم','إيقاف السائقين فحسب','توجيه حركة المرور بحرية','إصدار المخالفات المالية'],ans:1,exp:'لا يحق لحراس المعابر سوى إيقاف السائقين — وليس لهم صلاحية طلب الوثائق أو أداء مهام تنظيم المرور كما هو الحال لدى الأشخاص المُخوَّلين.'},
+    {topic:'الأشخاص المخوَّلون',q:'مسؤولو أي جهة مُخوَّلون بتنظيم حركة المرور؟',opts:['الخدمة الصحية الوطنية','Rijkswaterstaat (وزارة الممرات المائية والأشغال العامة)','المتاجر المحلية','شركات الأمن الخاصة'],ans:1,exp:'مسؤولو Rijkswaterstaat (وزارة الممرات المائية والأشغال العامة الهولندية) من بين الأشخاص المُخوَّلين الذين يمكنهم تنظيم المرور وطلب الوثائق.'},
+    {topic:'الأشخاص المخوَّلون',q:'هل تملك الشرطة العسكرية صلاحية طلب وثائقك الرسمية؟',opts:['لا، هذه الصلاحية للشرطة المدنية فقط','نعم، الشرطة العسكرية أشخاص مُخوَّلون','في زمن الحرب فقط','على الطرق العسكرية فقط'],ans:1,exp:'الشرطة العسكرية مُدرَجة ضمن الأشخاص المُخوَّلين بموجب قانون المرور الهولندي، ويحق لها إصدار التعليمات وطلب الوثائق الرسمية.'},
+    {topic:'التعاون الإلزامي',q:'أي وثيقة يجب حملها عند القيادة في إطار برنامج 2toDrive؟',opts:['شهادة طبية','بطاقة المشرف','خطاب من البلدية','شهادة لوحة المتعلم الخاصة'],ans:1,exp:'في إطار برنامج 2toDrive (القيادة من سن 17)، يجب حمل بطاقة المشرف إلى جانب رخصة القيادة وشهادة تسجيل المركبة.'},
+    {topic:'التعاون الإلزامي',q:'هل يجوز رفض طلب ضابط شرطة الاطلاع على رخصة قيادتك؟',opts:['نعم إن كان لديك مسوِّغ','لا، لا يجوز الرفض','نعم إن لم يُبرز الضابط شارته','في ساعات الليل فقط'],ans:1,exp:'لا يجوز رفض أي طلب من شخص مُخوَّل للاطلاع على الوثائق المطلوبة كرخصة القيادة أو شهادة التسجيل أو بطاقة المشرف.'},
+    {topic:'التعاون الإلزامي',q:'أي نوع من الاختبارات يجوز للشخص المُخوَّل إلزامك به؟',opts:['اختبار نظري مكتوب للقيادة','فحص الكحول أو المخدرات','اختبار الرؤية','فحص المركبة في عين المكان'],ans:1,exp:'يجوز للشخص المُخوَّل إلزامك بفحص الكحول أو المخدرات، بما يشمل فحص النفَس واختبار تنسيق حركة العينين ووظيفة الكلام وأخذ مسحات اللعاب.'},
+    {topic:'التعاون الإلزامي',q:'متى يُطلب منك إجراء فحص دم؟',opts:['عند طلب أي ضابط','بعد حادث خطير فحسب','إذا رفضت فحص النفَس أو تعذَّر إجراؤه','لا يُطلب ذلك أبداً — الفحص طوعي'],ans:2,exp:'قد يُطلب منك إجراء فحص دم إذا رفضت فحص النفَس أو تعذَّر إجراؤه بسبب حالة طبية مثلاً.'},
+    {topic:'التعاون الإلزامي',q:'يجب حمل بطاقة وقوف ذوي الإعاقة في الحالات التالية:',opts:['عند قيادة أي مركبة','عند قيادة مركبة مجهزة لذوي الإعاقة أو الوقوف في موقفهم','عند الوقوف في وسط المدينة فقط','عند الطلب المسبق'],ans:1,exp:'يجب حمل بطاقة وقوف ذوي الإعاقة عند قيادة مركبة مُجهَّزة لذوي الإعاقة أو الوقوف في موقف مخصص لهم.'},
+    {topic:'Kapstokartikel',q:'ما هي مادة Kapstokartikel؟',opts:['كلمة هولندية تعني رخصة القيادة','المادة الخامسة من قانون المرور — شبكة أمان للسلوك الخطر غير المشمول بالإشارات','نوع من رادارات السرعة','اسم اختبار نظرية القيادة'],ans:1,exp:'Kapstokartikel هي المادة الخامسة من قانون المرور. تحظر على مستخدمي الطريق قيادة المركبة بطريقة تُعيق المرور أو تُسبِّب الخطر، حتى حين لا تحظر الإشارات أو العلامات ذلك مباشرةً.'},
+    {topic:'Kapstokartikel',q:'من يجب ألا يقود مركبته بشكل خطر بموجب المادة الخامسة؟',opts:['السائقون المحترفون فقط','سائقو المركبات الثقيلة فقط','جميع مستخدمي الطريق','سائقو الطرق السريعة فقط'],ans:2,exp:'تسري المادة الخامسة على جميع مستخدمي الطريق — يُحظر على الجميع قيادة مركبة بطريقة تُعيق المرور أو تُشكِّل خطراً عليهم أو على الآخرين.'},
+    {topic:'Kapstokartikel',q:'هل يهم سبب إعاقة حركة المرور بموجب القانون الهولندي؟',opts:['نعم، النية مهمة','لا، السبب غير ذي صلة','فقط إذا أفضى إلى حادث','في المخالفات الأولى فقط'],ans:1,exp:'سبب إعاقة حركة المرور أو التعريض للخطر غير ذي صلة بموجب قواعد السلوك — ما يهم هو السلوك ذاته.'},
+    {topic:'Kapstokartikel',q:'المادة الخامسة تغطي السلوك الخطر الذي:',opts:['مُدرَج صراحةً في إشارات المرور فقط','غير محظور مباشرةً بالإشارات لكنه يُشكِّل خطراً أو إعاقة','ذو صلة بالطرق السريعة فقط','مشمول بمواد أخرى بالفعل'],ans:1,exp:'توفر المادة الخامسة "شبكة أمان" تغطي السلوك الخطر أو المُعيق غير المحظور مباشرةً بإشارات المرور أو علامات الطريق، والذي قد يستوجب الملاحقة القضائية رغم ذلك.'},
+    {topic:'الحوادث',q:'متى يجوز لك مغادرة مسرح الحادث المروري؟',opts:['فوراً إن لم تكن مسؤولاً','بعد تبادل بيانات الاتصال ومعلومات المركبة مع الأطراف المعنية أو الشرطة','بعد 30 دقيقة','بعد الاتصال بشركة التأمين'],ans:1,exp:'بصرف النظر عن المسؤولية، لا يجوز مغادرة المسرح قبل تبادل بيانات الاتصال ومعلومات المركبة مع الأطراف المعنية أو الشرطة.'},
+    {topic:'الحوادث',q:'ماذا يمكن فعله لتخفيف حدة مغادرة مسرح الحادث دون تبادل البيانات؟',opts:['لا شيء — يُعدُّ جريمة تامة دائماً','التوجه طوعاً إلى مركز الشرطة خلال 12 ساعة','إرسال خطاب خلال 24 ساعة','الاتصال بالطوارئ خلال ساعة'],ans:1,exp:'يمكن تخفيف حدة الجريمة بالتوجه طوعاً إلى مركز الشرطة خلال 12 ساعة من وقوع الحادث، ما لم تكن الشرطة قد احتجزتك بوصفك مشتبهاً به قبل ذلك.'},
+    {topic:'الحوادث',q:'مغادرة مسرح الحادث مع إهمال شخص مصاب دون مساعدة:',opts:['جريمة فقط إذا كنت مسبِّب الحادث','جريمة دائماً حتى لو أبلغت الشرطة لاحقاً','مباح إذا اتصلت بالإسعاف','ليست جريمة إذا كان ثمة أشخاص آخرون'],ans:1,exp:'مغادرة مسرح الحادث مع إهمال شخص مصاب دون عون جريمةٌ دائماً — حتى لو أبلغت الشرطة لاحقاً، وبصرف النظر عن مدى تورطك المباشر.'},
+    {topic:'الحوادث',q:'هل أنت ملزَم بتقديم المساعدة في مسرح الحادث حتى لو لم تكن طرفاً مباشراً؟',opts:['لا، الالتزام على الأطراف المباشرة فقط','نعم، أنت ملزَم بتقديم المساعدة عند الحاجة','فقط إذا كنت مؤهلاً طبياً','فقط إذا طلبت الشرطة ذلك'],ans:1,exp:'بصرف النظر عن مدى تورطك المباشر في الحادث، أنت ملزَم بتقديم المساعدة عند الحاجة.'},
+    {topic:'التسابق',q:'إذا ضُبط سائق يتسابق على طريق عام، من يتحمل المسؤولية عن الأضرار؟',opts:['السائق وحده','مالك المركبة وحده','السائق ومالك المركبة معاً','لا أحد — تتكفل شركة التأمين'],ans:2,exp:'إذا ضُبط مستخدم للطريق يتسابق أو يتنافس على الطرق العامة، يكون كلٌّ من السائق ومالك المركبة مسؤولَين عن أي أضرار تنجم.'},
+    {topic:'التسابق',q:'أيٌّ مما يلي مثال على التسابق في الطرق العامة؟',opts:['القيادة بسرعة حد السرعة المقرر','التسارع المفاجئ عند إشارات المرور','التجاوز على طريق سريع','استخدام ضابط السرعة'],ans:1,exp:'التسارع المفاجئ عند إشارات المرور مثال مذكور على التسابق أو التنافس مع السائقين الآخرين على الطرق العامة وهو محظور.'},
+    {topic:'رخصة القيادة',q:'من المُخوَّل بمصادرة رخصة قيادتك على جانب الطريق؟',opts:['أي شخص مُخوَّل','القاضي وحده','ضباط الشرطة وحدهم','هيئة CBR مباشرةً'],ans:2,exp:'ضباط الشرطة مُخوَّلون تحديداً بمصادرة رخصة قيادتك عند ضبط مخالفة، وتُحال الرخصة بعد ذلك إلى المدعي العام.'},
+    {topic:'رخصة القيادة',q:'بعد مصادرة رخصتك، من يقرر إبقاءها أو إعادتها؟',opts:['ضابط الشرطة','هيئة CBR','المدعي العام (خلال 10 أيام)','وزارة النقل'],ans:2,exp:'بعد المصادرة، تُحال الرخصة إلى المدعي العام الذي لديه 10 أيام لتقرير إبقائها أو إعادتها، وقد يُصدر القاضي الحكم النهائي.'},
+    {topic:'رخصة القيادة',q:'ما الحد الأقصى للحرمان من القيادة في الجرائم الخطيرة؟',opts:['سنتان','3 سنوات','5 سنوات','10 سنوات'],ans:2,exp:'قد يمتد الحرمان من القيادة حتى 5 سنوات في الجرائم الخطيرة، بما فيها الوفاة أو الإصابة الناجمة عن القيادة الخطرة أو القيادة تحت تأثير الكحول أو القيادة خلال فترة الحرمان.'},
+    {topic:'رخصة القيادة',q:'كم تدوم مدة الحرمان في المخالفات الأقل خطورة؟',opts:['حتى 6 أشهر','حتى سنة','حتى سنتين','حتى 5 سنوات'],ans:2,exp:'في المخالفات الأقل خطورة، قد يمتد الحرمان حتى سنتين، فيما يبلغ الحد الأقصى 5 سنوات في الجرائم الخطيرة.'},
+    {topic:'رخصة القيادة',q:'ماذا يحدث للعقوبات إذا ارتكبت مخالفة أخرى في وقت قصير؟',opts:['تُخفَّض إلى النصف','تبقى كما هي','قد تتضاعف','تُحوَّل تلقائياً إلى خدمة مجتمعية'],ans:2,exp:'إذا ارتكبت مخالفة أخرى بعد فترة وجيزة من مخالفة سابقة، قد تتضاعف العقوبات بما فيها مدة الحرمان.'},
+    {topic:'رخصة القيادة',q:'ماذا يعني "إلغاء" رخصة القيادة؟',opts:['تُعلَّق رخصتك مؤقتاً','تُعلَن رخصتك لاغيةً باطلةً نهائياً','لا يُسمح لك بعد ذلك بقيادة المركبات التي تستلزم رخصة من تلك الفئة','يجب إعادة اختبار القيادة فوراً'],ans:2,exp:'الإلغاء يعني عدم السماح لك بقيادة المركبات الآلية المشمولة برخصتك. قد يقتصر على فئة واحدة فتظل مؤهلاً للفئات الأخرى. يحق لك ركوب الدراجات والتنقل راكباً وقيادة المركبات التي لا تستلزم رخصة.'},
+    {topic:'رخصة القيادة',q:'هل يمكنك ركوب الدراجة بعد إلغاء رخصة القيادة؟',opts:['لا، تُسحب جميع حقوق التنقل','نعم، ركوب الدراجة لا يزال مباحاً','بإذن خطي فقط','في المناطق الريفية فقط'],ans:1,exp:'الإلغاء لا يمس حقك في ركوب الدراجة أو التنقل راكباً أو قيادة مركبات لا تستلزم رخصة.'},
+    {topic:'CBR',q:'ما مدلول اختصار CBR؟',opts:['المكتب المركزي لتنظيم الطرق','Centraal Bureau Rijvaardigheidsbewijzen (المكتب المركزي لكفاءة القيادة)','مجلس الطرق المركزي','لجنة الطرق البلجيكية'],ans:1,exp:'CBR اختصار لـ Centraal Bureau Rijvaardigheidsbewijzen أي المكتب المركزي لكفاءة القيادة. يُشرف على اختباري النظرية والقيادة العملية ويُقرِّر الأهلية لاستخراج الرخصة.'},
+    {topic:'CBR',q:'ما دور هيئة CBR؟',opts:['إصدار مخالفات السرعة','تحديد ما إذا كنت مؤهلاً للحصول على رخصة القيادة والاحتفاظ بها','بناء طرق جديدة','تحديد حدود السرعة'],ans:1,exp:'تُقرِّر هيئة CBR ما إذا كنت مؤهلاً للحصول على رخصة القيادة والاحتفاظ بها حين تُشكَّك في أهليتك، وتُشرف على اختباري النظرية والقيادة العملية.'},
+    {topic:'CBR',q:'في أي مرحلة تتدخل BNOR (فرع تابع لـ CBR)؟',opts:['بعد أول رسوب في اختبار القيادة','بعد رسوبين متتاليين','بعد أربعة رسوبات متتالية في اختبار القيادة','بعد حادث خطير فحسب'],ans:2,exp:'تتدخل BNOR للتحقيق في قدراتك القيادية إذا رسبت في اختبار القيادة أربع مرات متتالية.'},
+    {topic:'CBR',q:'بكم يتجاوز تجاوز حد السرعة في مناطق أعمال الطريق حدَّ إخطار CBR؟',opts:['20 كم/س','25 كم/س','30 كم/س','50 كم/س'],ans:2,exp:'يجوز إخطار CBR إذا تجاوزت حد السرعة بأكثر من 30 كم/س في مناطق أعمال الطريق (مقارنةً بأكثر من 50 كم/س في الظروف العادية).'},
+    {topic:'CBR',q:'أي سلوك قد يُفضي إلى إخطار CBR؟',opts:['القيادة بالنافذة مفتوحة','ملاحقة مركبة عن مسافة غير آمنة على الطريق السريع','الوقوف على خط أصفر مزدوج','عدم استخدام الإشارات الضوئية'],ans:1,exp:'ملاحقة مركبة عن مسافة غير آمنة على الطريق السريع من السلوكيات التي قد تُفضي إلى إحالة قضيتك إلى CBR.'},
+    {topic:'CBR',q:'هل يمكن إخطار CBR إذا اجتزت إشارة ضوء أحمر؟',opts:['فقط إذا وقع حادث','لا، مخالفات الضوء الأحمر تذهب للمدعي العام فقط','نعم، قد يُفضي ذلك إلى إخطار CBR','على الطرق السريعة فقط'],ans:2,exp:'نعم — اجتياز إشارة الضوء الأحمر من السلوكيات المحددة التي قد تُفضي إلى إخطار CBR لتقييم أهليتك للاستمرار في القيادة.'},
+    {topic:'CBR',q:'في أي حالة يجوز إخطار CBR عند تجاوز حد السرعة بأكثر من 50 كم/س؟',opts:['في مناطق أعمال الطريق فقط','في مناطق المدارس فقط','في الظروف العادية (خارج مناطق أعمال الطريق)','على الطرق السريعة فقط'],ans:2,exp:'في الظروف العادية (خارج مناطق أعمال الطريق)، يجوز إخطار CBR إذا تجاوزت حد السرعة بأكثر من 50 كم/س. وفي مناطق أعمال الطريق يكون الحد الفاصل 30 كم/س.'},
+    {topic:'تطبيق قانون المرور',q:'بكم يتجاوز تجاوز حد السرعة حدَّ مصادرة الشرطة للرخصة؟',opts:['30 كم/س','40 كم/س','50 كم/س','100 كم/س'],ans:2,exp:'تجاوز حد السرعة بـ 50 كم/س أو أكثر من السلوكيات التي قد تُفضي إلى مصادرة رخصة قيادتك.'},
+    {topic:'تطبيق قانون المرور',q:'ماذا يحدث لرخصتك المصادرة بعد وصولها إلى المدعي العام؟',opts:['تُعاد تلقائياً بعد 10 أيام','يُقرِّر المدعي العام خلال 10 أيام إبقاءها أو إعادتها','تُتلَف فوراً','تُرسَل تلقائياً إلى CBR'],ans:1,exp:'يستلم المدعي العام الرخصة المصادرة ولديه 10 أيام لتقرير إبقائها أو إعادتها، وقد يُصدر القاضي الحكم النهائي.'},
+    {topic:'تطبيق قانون المرور',q:'قطع الطريق على مستخدمين آخرين قد يؤدي إلى:',opts:['تحذير غير رسمي فحسب','إخطار هيئة CBR','دورة قيادة إلزامية','لا شيء — ليست مخالفة مُدرَجة'],ans:1,exp:'قطع الطريق على مستخدمين آخرين من السلوكيات المحددة التي قد تُفضي إلى إحالة قضيتك إلى CBR لتقييم أهليتك للقيادة.'},
+    {topic:'الحرمان من القيادة',q:'هل القيادة خلال فترة الحرمان جريمة جنائية؟',opts:['لا، هي مسألة مدنية فقط','نعم، إنها جريمة جنائية','فقط إذا وقع حادث','على الطرق السريعة فقط'],ans:1,exp:'يُعدُّ تشغيل مركبة آلية خلال فترة الحرمان من القيادة جريمةً جنائية بموجب القانون الهولندي.'},
+    {topic:'الحرمان من القيادة',q:'إذا أُعلنت رخصتك لاغية، هل يمكنك قيادة مركبة تستلزم رخصة؟',opts:['نعم، خلال فترة انتقالية','لا — يُعدُّ ذلك جريمة','للأغراض المهنية فقط','بصحبة مشرف فقط'],ans:1,exp:'قيادة مركبة تستلزم رخصة بعد إعلان رخصتك لاغيةً باطلة جريمةٌ جنائية — تماماً كالقيادة خلال فترة الحرمان.'},
+    {topic:'المصطلحات الهولندية',q:'ماذا تعني "APK"؟',opts:['نوع من رخصة القيادة','الفحص الدوري الإلزامي العام للمركبة (مماثل لـ MOT)','نظام علامات الطريق','شهادة مدرسة قيادة هولندية'],ans:1,exp:'APK (Algemene Periodieke Keuring) هو الفحص الدوري الإلزامي العام للمركبة، يعادل فحص MOT في المملكة المتحدة.'},
+    {topic:'المصطلحات الهولندية',q:'ما المقصود بـ "Brommobiel"؟',opts:['دراجة نارية عادية','دراجة آلية ذات ثلاث أو أربع عجلات بهيكل مغلق وحد أقصى للوزن الفارغ 350 كغ','نوع من الدراجات الكهربائية','مركبة بضائع ثقيلة'],ans:1,exp:'Brommobiel (تُعرف أيضاً بالسيارة المصغرة) دراجة آلية ذات ثلاث أو أربع عجلات بهيكل مغلق وحد أقصى للوزن الفارغ 350 كيلوغرام.'},
+    {topic:'المصطلحات الهولندية',q:'ما الحد الأقصى لسرعة تصميم "Snorfiets"؟',opts:['45 كم/س','35 كم/س','25 كم/س','50 كم/س'],ans:2,exp:'Snorfiets دراجة آلية بسرعة تصميمية قصوى تبلغ 25 كم/س، مما يميزها عن Bromfiets التي تصل حتى 45 كم/س.'},
+    {topic:'قواعد السلوك',q:'هل يمكن الملاحقة القضائية على سلوك خطر لا تحظره إشارة مرور محددة؟',opts:['لا — يُلاحَق قضائياً على مخالفات الإشارات الصريحة فقط','نعم — المادة الخامسة (Kapstokartikel) توفر شبكة أمان لذلك','فقط إذا نتج عن ذلك حادث','على الطرق الخاصة فقط'],ans:1,exp:'نعم — تغطي المادة الخامسة من قانون المرور (Kapstokartikel) السلوك الخطر أو المُعيق غير المحظور مباشرةً بالإشارات، وتوفر سنداً قانونياً للملاحقة القضائية.'},
+    {topic:'الحوادث',q:'قاعدة الإبلاغ الطوعي خلال 12 ساعة عند مغادرة مسرح الحادث تسري:',opts:['دائماً بلا استثناء','ما لم تحتجزك الشرطة بوصفك مشتبهاً به قبل ذلك','فقط إذا لم يُصَب أحد','فقط إذا كان الطرف الآخر غير مؤمَّن'],ans:1,exp:'يمكنك الاستفادة من هذا التخفيف بالإبلاغ الطوعي خلال 12 ساعة — ما لم تحتجزك الشرطة بوصفك مشتبهاً به خلال تلك الفترة.'},
+    {topic:'تطبيق قانون المرور',q:'أيٌّ مما يلي لا يستلزم عادةً إخطار CBR؟',opts:['اجتياز إشارة ضوء أحمر','ملاحقة مركبة عن مسافة غير آمنة على طريق سريع','الوقوف على خط أصفر أحادي','تجاوز حد السرعة بأكثر من 50 كم/س'],ans:2,exp:'الوقوف على خط أصفر أحادي مخالفة وقوف وليست من السلوكيات المحددة (القيادة الخطرة، تجاوز 50 كم/س، الضوء الأحمر، الملاحقة، قطع الطريق) التي تستلزم إخطار CBR.'},
+    {topic:'رخصة القيادة',q:'إلغاء رخصة القيادة قد ينطبق على:',opts:['جميع فئات الرخصة في آنٍ واحد','فئة مركبة واحدة فقط مع بقاء الفئات الأخرى سارية','رخصة السيارة (الفئة B) فقط','رخصة المركبات التجارية فقط'],ans:1,exp:'قد يقتصر الإلغاء على فئة مركبة واحدة فحسب، مما يبقي حقك في الفئات الأخرى غير المتأثرة قائماً.'},
+    {topic:'قواعد السلوك',q:'أي جهة تُشرف مباشرةً على اختباري النظرية والقيادة العملية في هولندا؟',opts:['الشرطة','مكتب المدعي العام','CBR','وزارة البنية التحتية'],ans:2,exp:'تُشرف هيئة CBR (Centraal Bureau Rijvaardigheidsbewijzen) مباشرةً على اختباري النظرية والقيادة العملية في هولندا وتُقرِّر أهلية استخراج رخصة القيادة.'},
+];
+
+const QUIZ_SIZE=15;
+let quizQuestions=[],qIndex=0,score=0,answered=[];
+
+const overlay=document.getElementById('quiz-overlay');
+const fabQuiz=document.getElementById('fab-quiz');
+const quizCloseBtn=document.getElementById('quiz-close-btn');
+const startScreen=document.getElementById('quiz-start-screen');
+const qScreen=document.getElementById('quiz-q-screen');
+const resultsScreen=document.getElementById('quiz-results-screen');
+const progressBar=document.getElementById('quiz-progress-bar');
+const quizBadge=document.getElementById('quiz-badge');
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function openQuiz(){overlay.classList.add('is-open');showStartScreen()}
+function closeQuiz(){overlay.classList.remove('is-open')}
+
+fabQuiz.addEventListener('click',()=>{if(fdrag)return;openQuiz()});
+quizCloseBtn.addEventListener('click',closeQuiz);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeQuiz()});
+
+function showStartScreen(){
+    startScreen.style.display='block';
+    qScreen.classList.remove('active');
+    resultsScreen.classList.remove('active');
+    progressBar.style.width='0%';
+    quizBadge.textContent=QUIZ_SIZE+' سؤالاً';
+}
+
+document.getElementById('quiz-start-btn').addEventListener('click',startQuiz);
+
+/* Shuffle the options of a question, return new object with updated ans index */
+function shuffleOptions(q){
+    const indices=[0,1,2,3];
+    for(let i=indices.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [indices[i],indices[j]]=[indices[j],indices[i]];
+    }
+    return {...q, opts:indices.map(i=>q.opts[i]), ans:indices.indexOf(q.ans)};
+}
+
+function startQuiz(){
+    quizQuestions=shuffle(ALL_QUESTIONS).slice(0,QUIZ_SIZE).map(shuffleOptions);
+    qIndex=0;score=0;answered=[];
+    startScreen.style.display='none';
+    resultsScreen.classList.remove('active');
+    qScreen.classList.add('active');
+    renderQuestion();
+}
+
+function renderQuestion(){
+    const q=quizQuestions[qIndex];
+    const letters=['A','B','C','D'];
+    progressBar.style.width=((qIndex/QUIZ_SIZE)*100)+'%';
+    quizBadge.textContent=(qIndex+1)+' / '+QUIZ_SIZE;
+
+    qScreen.innerHTML=`
+        <div class="q-meta">
+            <div class="q-counter">السؤال ${qIndex+1} من ${QUIZ_SIZE}</div>
+            <div class="q-topic">${q.topic}</div>
+        </div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options" id="q-opts">
+            ${q.opts.map((o,i)=>`
+            <button class="q-opt" data-idx="${i}">
+                <span class="opt-letter">${letters[i]}</span>
+                <span>${o}</span>
+            </button>`).join('')}
+        </div>
+        <div class="q-feedback" id="q-feedback"></div>
+        <div class="q-nav" id="q-nav" style="display:none">
+            <button class="btn-primary" id="btn-next">${qIndex<QUIZ_SIZE-1?'السؤال التالي →':'عرض النتائج'}</button>
+        </div>
+    `;
+    document.querySelectorAll('.q-opt').forEach(btn=>{
+        btn.addEventListener('click',()=>selectAnswer(parseInt(btn.dataset.idx)));
+    });
+}
+
+function selectAnswer(chosen){
+    const q=quizQuestions[qIndex];
+    const correct=q.ans;
+    const isCorrect=chosen===correct;
+    if(isCorrect)score++;
+    answered.push({q:q.q,chosen,correct,isCorrect});
+
+    // Lock all buttons
+    document.querySelectorAll('.q-opt').forEach((btn,i)=>{
+        btn.disabled=true;
+        if(i===correct)btn.classList.add('correct');
+        else if(i===chosen&&!isCorrect)btn.classList.add('wrong');
+    });
+
+    // Feedback
+    const fb=document.getElementById('q-feedback');
+    fb.classList.add('show');
+    if(isCorrect){
+        fb.classList.add('fb-correct');
+        fb.innerHTML=`<strong>✅ إجابة صحيحة!</strong>${q.exp}`;
+    } else {
+        fb.classList.add('fb-wrong');
+        fb.innerHTML=`<strong>❌ Incorrect — the correct answer was "${q.opts[correct]}"</strong>${q.exp}`;
+    }
+    document.getElementById('q-nav').style.display='flex';
+    document.getElementById('btn-next').addEventListener('click',nextQuestion);
+}
+
+function nextQuestion(){
+    qIndex++;
+    if(qIndex<QUIZ_SIZE){renderQuestion()}
+    else{showResults()}
+}
+
+function showResults(){
+    progressBar.style.width='100%';
+    quizBadge.textContent='اكتمل!';
+    qScreen.classList.remove('active');
+    resultsScreen.classList.add('active');
+    const pct=Math.round((score/QUIZ_SIZE)*100);
+    let msg='',sub='';
+    if(pct>=90){msg='ممتاز! 🏆';sub='أداء متميز — من الواضح أنك تعرف قواعد السلوك معرفةً تامة!'}
+    else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review the questions you missed and you\'ll be ready for the exam.'}
+    else if(pct>=50){msg='Keep practising 📖';sub='You have a solid foundation, but there are gaps to fill. Re-read the theory and try again.'}
+    else{msg='More study needed 💡';sub='Don\'t worry — read through the page carefully again and retake the quiz. You\'ll improve!'}
+    const wrong=QUIZ_SIZE-score;
+    resultsScreen.innerHTML=`
+        <div class="result-circle">
+            <div class="result-score">${score}</div>
+            <div class="result-total">من ${QUIZ_SIZE}</div>
+        </div>
+        <div class="result-msg">${msg}</div>
+        <div class="result-sub">${sub}</div>
+        <div class="result-breakdown">
+            <div class="rb-chip correct">✅ ${score} صحيح</div>
+            <div class="rb-chip wrong">❌ ${wrong} خطأ</div>
+        </div>
+        <div class="result-actions">
+            <button class="btn-primary" id="btn-retry">🔀 اختبار عشوائي جديد</button>
+            <button class="btn-secondary" id="btn-review">📋 مراجعة الإجابات</button>
+        </div>
+        <div id="review-list" style="margin-top:20px;display:none"></div>
+    `;
+    document.getElementById('btn-retry').addEventListener('click',startQuiz);
+    document.getElementById('btn-review').addEventListener('click',()=>{
+        const rl=document.getElementById('review-list');
+        if(rl.style.display==='none'){
+            rl.style.display='block';
+            rl.innerHTML=answered.map((a,i)=>`
+                <div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}">
+                    <div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div>
+                    <div style="font-family:'Outfit',sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div>
+                    <div style="font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted)">إجابتك: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${quizQuestions[i].opts[a.chosen]}</strong>${!a.isCorrect?`<br>الإجابة الصحيحة: <strong style="color:#6effc0">${quizQuestions[i].opts[a.correct]}</strong>`:''}</div>
+                </div>`).join('');
+            document.getElementById('btn-review').textContent='إخفاء المراجعة';
+        } else {rl.style.display='none';document.getElementById('btn-review').textContent='📋 مراجعة الإجابات'}
+    });
+}
+
+/* ── Init ── */
+applyAll();
+
+})();
+
+/* ── Security ── */
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){
+    if(e.keyCode===123)return false;
+    if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false;
+};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
