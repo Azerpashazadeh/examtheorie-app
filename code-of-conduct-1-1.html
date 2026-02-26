@@ -1,985 +1,1162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>Code of Conduct – ExamTheorie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;
+        --glass-shine:rgba(255,255,255,.06);--red:#e84545;
+        --text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);
+        --text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;
+        --card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22);
+    }
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{
+        font-family:'Outfit',sans-serif;background-color:var(--bg-deep);
+        color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;
+        background-image:
+            radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),
+            radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),
+            radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);
+        transition:background-color .35s,color .35s;
+    }
+    body::before{
+        content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+        background-image:
+            linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);
+        background-size:60px 60px;
+    }
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
 
-        :root {
-            --bg-deep:       #050d1a;
-            --accent:        #1a6cf6;
-            --accent-light:  #4da6ff;
-            --glass-shine:   rgba(255,255,255,0.06);
-            --red:           #e84545;
-            --text-primary:  #e8f0ff;
-            --text-muted:    rgba(180,205,255,0.75);
-            --text-dim:      rgba(140,175,230,0.55);
-            --heading-color: #4da6ff;
-            --card-bg:       rgba(10,30,65,0.55);
-            --card-border:   rgba(77,166,255,0.22);
-        }
+    /* ── Page layout ── */
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
 
-        html, body { width:100%; overflow-x:hidden; scroll-behavior:smooth; }
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;
+        background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;
+        color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:10px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px}
 
-        body {
-            font-family:'Outfit',sans-serif;
-            background-color:var(--bg-deep);
-            color:var(--text-primary);
-            line-height:1.75;
-            min-height:100vh;
-            padding-bottom:120px;
-            background-image:
-                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(26,108,246,.18) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26,108,246,.12) 0%, transparent 55%),
-                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(5,20,60,.9) 0%, transparent 100%);
-            transition:background-color .35s, color .35s;
-        }
-        body::before {
-            content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-            background-image:
-                linear-gradient(rgba(77,166,255,.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(77,166,255,.03) 1px, transparent 1px);
-            background-size:60px 60px;
-        }
-        .orb { position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(90px); opacity:.15; }
-        .orb-1 { width:500px; height:500px; background:var(--accent);       top:-100px; left:-100px; }
-        .orb-2 { width:400px; height:400px; background:var(--accent-light);  bottom:100px; right:-80px; }
+    .glass-card{
+        background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;
+        padding:28px 28px 28px 36px;position:relative;overflow:hidden;
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);margin-bottom:24px;
+        box-shadow:0 4px 24px rgba(0,0,0,.35),inset 0 1px 0 var(--glass-shine);
+    }
+    .glass-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .glass-card .accent-line{position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 4px 4px 0;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .glass-card.red-accent{border-color:rgba(232,69,69,.2)}
+    .glass-card.red-accent .accent-line{background:linear-gradient(180deg,var(--red),#ff8a8a)}
 
-        /* ── Page layout ── */
-        .page-wrapper { position:relative; z-index:1; width:75%; margin:0 auto; padding:50px 20px 20px; }
-        @media(min-width:768px) and (max-width:1024px) { .page-wrapper { width:95%; } }
-        @media(max-width:767px) { .page-wrapper { width:96%; padding:30px 14px; } }
+    .vocab-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:10px}
+    .vocab-list li{padding:13px 16px;background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.12);
+        border-radius:10px;font-family:'Lora',serif;font-size:.92rem;color:var(--text-muted);line-height:1.6}
+    .vocab-list li strong{display:block;font-family:'Outfit',sans-serif;font-weight:600;color:var(--accent-light);
+        font-size:.88rem;letter-spacing:.06em;margin-bottom:3px}
+    .prose-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:6px}
+    .prose-list li{font-family:'Lora',serif;font-size:.95rem;color:var(--text-muted);padding-left:22px;position:relative}
+    .prose-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--accent);box-shadow:0 0 6px rgba(26,108,246,.35)}
+    .sub-section{margin-top:20px;padding-top:18px;border-top:1px solid rgba(77,166,255,.1)}
+    .custom-image,.custom-centered-image{width:100%;height:auto;border-radius:12px;display:block;
+        border:1px solid var(--card-border);margin:16px 0;box-shadow:0 8px 32px rgba(0,0,0,.45)}
+    .custom-centered-image{margin:28px auto}
+    .image-container{display:flex;flex-wrap:wrap;gap:20px;margin:20px 0}
+    .image-container figure{flex:1 1 46%;margin:0}
+    .image-container img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    .image-container figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);text-align:center;margin-top:8px}
+    @media(max-width:550px){.image-container figure{flex:1 1 100%}}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+        background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;
+        border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
 
-        .brand-strip { display:flex; align-items:center; gap:10px; margin-bottom:40px; font-size:.85rem; color:var(--text-dim); letter-spacing:.04em; }
-        .brand-strip .dot { color:var(--accent-light); }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}
+    .page-wrapper>*:nth-child(2){animation-delay:.10s}
+    .page-wrapper>*:nth-child(3){animation-delay:.15s}
+    .page-wrapper>*:nth-child(4){animation-delay:.20s}
+    .page-wrapper>*:nth-child(n+5){animation-delay:.25s}
 
-        h1 {
-            font-family:'Outfit',sans-serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700;
-            background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-            margin-bottom:8px;
-        }
-        h2 {
-            font-family:'Outfit',sans-serif; font-size:clamp(1.1rem,2.5vw,1.45rem); font-weight:600;
-            color:var(--heading-color); margin:48px 0 16px; display:flex; align-items:center; gap:10px;
-        }
-        h2::before { content:''; display:inline-block; width:4px; height:1.2em; flex-shrink:0; border-radius:4px; background:linear-gradient(180deg,var(--accent),var(--accent-light)); }
-        h3 { font-family:'Outfit',sans-serif; font-size:1rem; font-weight:600; color:var(--text-primary); margin-bottom:10px; }
-        p  { font-family:'Lora',serif; font-size:.96rem; color:var(--text-muted); margin-bottom:14px; }
+    /* ═══════════════════════════════════════════════
+       FLOATING FAB ROW  (palette + quiz triggers)
+    ═══════════════════════════════════════════════ */
+    #fab-row{
+        position:fixed;right:20px;top:50%;transform:translateY(-50%);
+        z-index:1100;display:flex;flex-direction:column;gap:10px;
+        touch-action:none;user-select:none;-webkit-user-select:none;
+        max-width:calc(100vw - 24px);
+    }
+    .fab{
+        width:52px;height:52px;border-radius:50%;border:none;cursor:grab;
+        display:flex;align-items:center;justify-content:center;
+        color:#fff;font-size:1.35rem;
+        box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);
+        transition:box-shadow .25s,filter .2s;
+        flex-shrink:0;
+    }
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15);box-shadow:0 6px 28px rgba(26,108,246,.7),0 0 0 3px rgba(77,166,255,.35)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;
+        border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{
+        position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+        background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);
+        color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;
+        padding:4px 10px;border-radius:8px;white-space:nowrap;
+        pointer-events:none;opacity:0;transition:opacity .2s;
+    }
+    .fab:hover .fab-tip{opacity:1}
 
-        .glass-card {
-            background:var(--card-bg); border:1px solid var(--card-border); border-radius:16px;
-            padding:28px 28px 28px 36px; position:relative; overflow:hidden;
-            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-            margin-bottom:24px;
-            box-shadow:0 4px 24px rgba(0,0,0,.35), inset 0 1px 0 var(--glass-shine);
-        }
-        .glass-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%); pointer-events:none; }
-        .glass-card .accent-line { position:absolute; left:0; top:0; width:3px; height:100%; border-radius:0 4px 4px 0; background:linear-gradient(180deg,var(--accent),var(--accent-light)); }
-        .glass-card.red-accent { border-color:rgba(232,69,69,.2); }
-        .glass-card.red-accent .accent-line { background:linear-gradient(180deg,var(--red),#ff8a8a); }
-
-        .vocab-list { list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column; gap:10px; }
-        .vocab-list li { padding:13px 16px; background:rgba(26,108,246,.08); border:1px solid rgba(77,166,255,.12); border-radius:10px; font-family:'Lora',serif; font-size:.92rem; color:var(--text-muted); line-height:1.6; }
-        .vocab-list li strong { display:block; font-family:'Outfit',sans-serif; font-weight:600; color:var(--accent-light); font-size:.88rem; letter-spacing:.06em; margin-bottom:3px; }
-
-        .prose-list { list-style:none; padding:0; margin:0 0 20px; display:flex; flex-direction:column; gap:6px; }
-        .prose-list li { font-family:'Lora',serif; font-size:.95rem; color:var(--text-muted); padding-left:22px; position:relative; }
-        .prose-list li::before { content:''; position:absolute; left:0; top:.62em; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px rgba(26,108,246,.35); }
-
-        .sub-section { margin-top:20px; padding-top:18px; border-top:1px solid rgba(77,166,255,.1); }
-
-        .custom-image, .custom-centered-image {
-            width:100%; height:auto; border-radius:12px; display:block;
-            border:1px solid var(--card-border); margin:16px 0;
-            box-shadow:0 8px 32px rgba(0,0,0,.45);
-        }
-        .custom-centered-image { margin:28px auto; }
-
-        .image-container { display:flex; flex-wrap:wrap; gap:20px; margin:20px 0; }
-        .image-container figure { flex:1 1 46%; margin:0; }
-        .image-container img { width:100%; height:auto; border-radius:12px; border:1px solid var(--card-border); box-shadow:0 6px 24px rgba(0,0,0,.4); }
-        .image-container figcaption { font-family:'Outfit',sans-serif; font-size:.72rem; color:var(--text-dim); text-align:center; margin-top:8px; }
-        @media(max-width:550px) { .image-container figure { flex:1 1 100%; } }
-
-        .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--card-border),transparent); margin:10px 0 32px; }
-
-        .custom-button {
-            display:inline-flex; align-items:center; gap:8px; padding:12px 28px;
-            background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);
-            color:#fff; font-family:'Outfit',sans-serif; font-size:.9rem; font-weight:600;
-            text-decoration:none; border-radius:50px; margin-top:60px;
-            transition:all .3s; box-shadow:0 4px 20px rgba(26,108,246,.45); letter-spacing:.04em;
-        }
-        .custom-button::before { content:'←'; font-size:1.1rem; }
-        .custom-button:hover { transform:translateY(-2px); box-shadow:0 6px 30px rgba(26,108,246,.65); }
-
-        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-        .page-wrapper > * { animation:fadeUp .5s ease both; }
-        .page-wrapper > *:nth-child(1)  { animation-delay:.05s; }
-        .page-wrapper > *:nth-child(2)  { animation-delay:.10s; }
-        .page-wrapper > *:nth-child(3)  { animation-delay:.15s; }
-        .page-wrapper > *:nth-child(4)  { animation-delay:.20s; }
-        .page-wrapper > *:nth-child(n+5){ animation-delay:.25s; }
-
-        /* ════════════════════════════════════════════════════
-           FLOATING DRAGGABLE TRIGGER BUTTON
-        ════════════════════════════════════════════════════ */
-        #palette-trigger {
-            position:fixed;
-            right:20px; top:50%;
-            transform:translateY(-50%);
-            z-index:1100;
-            width:52px; height:52px;
-            border-radius:50%;
-            background:linear-gradient(135deg,var(--accent),var(--accent-light));
-            border:none; cursor:grab;
-            display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 24px rgba(26,108,246,.55), 0 0 0 3px rgba(77,166,255,.18);
-            color:#fff; font-size:1.4rem;
-            user-select:none; -webkit-user-select:none;
-            touch-action:none;
-            /* NO transition on transform — drag handles it live */
-        }
-        #palette-trigger:active  { cursor:grabbing; }
-        #palette-trigger.is-open { box-shadow:0 4px 24px rgba(26,108,246,.55), 0 0 0 3px rgba(77,166,255,.4); }
-
-        /* Pulse ring when closed */
-        #palette-trigger::after {
-            content:''; position:absolute; inset:-4px; border-radius:50%;
-            border:2px solid rgba(77,166,255,.35);
-            animation:triggerPulse 2.5s ease infinite;
+    /* Mobile: fixed bottom-right row, horizontal */
+    @media(max-width:767px){
+        #fab-row{
+            right:0;bottom:16px;top:unset;transform:none;
+            flex-direction:row;
+            width:100%;justify-content:flex-end;
+            padding-right:16px;
             pointer-events:none;
         }
-        #palette-trigger.is-open::after { animation:none; opacity:0; }
-        @keyframes triggerPulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:0;transform:scale(1.35)} }
+        #fab-row .fab{pointer-events:all}
+    }
 
-        /* Tooltip */
-        #palette-trigger .tip {
-            position:absolute; right:calc(100% + 10px); top:50%; transform:translateY(-50%);
-            background:rgba(4,12,28,.9); border:1px solid rgba(77,166,255,.2);
-            color:#fff; font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:500;
-            padding:5px 10px; border-radius:8px; white-space:nowrap;
-            pointer-events:none; opacity:0; transition:opacity .2s;
-        }
-        #palette-trigger:hover .tip { opacity:1; }
+    /* ═══════════════════════════════════════════════
+       COLOUR PANEL  (desktop: draggable float | mobile: fixed bottom sheet)
+    ═══════════════════════════════════════════════ */
+    #color-panel{
+        position:fixed;right:82px;top:50%;
+        transform:translateY(-50%) scale(.95);transform-origin:right center;
+        z-index:1050;width:310px;max-height:82vh;border-radius:18px;
+        overflow:hidden;display:flex;flex-direction:column;
+        background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);
+        backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+        box-shadow:0 12px 50px rgba(0,0,0,.7),0 0 0 1px rgba(77,166,255,.08);
+        opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none;
+    }
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
 
-        /* ════════════════════════════════════════════════════
-           FLOATING DRAGGABLE PANEL
-        ════════════════════════════════════════════════════ */
-        #color-panel {
-            position:fixed;
-            /* default position: just left of trigger, vertically centred — JS overrides */
-            right:82px; top:50%;
-            transform:translateY(-50%) scale(.95);
-            transform-origin:right center;
-            z-index:1050;
-            width:310px;
-            max-height:82vh;
-            border-radius:18px;
-            overflow:hidden;
-            display:flex; flex-direction:column;
-            background:rgba(4,12,30,0.97);
-            border:1px solid rgba(77,166,255,.22);
-            backdrop-filter:blur(32px); -webkit-backdrop-filter:blur(32px);
-            box-shadow:0 12px 50px rgba(0,0,0,.7), 0 0 0 1px rgba(77,166,255,.08);
-            opacity:0; pointer-events:none;
-            transition:opacity .25s, transform .25s;
-            touch-action:none;
+    /* Mobile: fixed bottom sheet — no dragging */
+    @media(max-width:767px){
+        #color-panel{
+            position:fixed!important;left:0!important;right:0!important;bottom:0!important;
+            top:unset!important;width:100%!important;max-height:75vh;
+            border-radius:20px 20px 0 0;transform:translateY(100%)!important;
+            transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .25s!important;
+            opacity:1!important;pointer-events:none;
         }
-        #color-panel.is-open {
-            opacity:1; pointer-events:all;
-            transform:translateY(-50%) scale(1);
-        }
-        /* when JS takes over position (after first drag or open), remove CSS transform */
-        #color-panel.positioned {
-            transform:none !important;
-        }
-        #color-panel.positioned.is-open { opacity:1; pointer-events:all; transform:none !important; }
+        #color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}
+    }
 
-        /* ── Panel drag handle (header) ── */
-        .panel-header {
-            padding:14px 16px 12px;
-            background:rgba(6,18,45,1);
-            border-bottom:1px solid rgba(77,166,255,.12);
-            display:flex; align-items:center; justify-content:space-between;
-            cursor:grab; flex-shrink:0;
-            /* Drag grip dots */
-            background-image:radial-gradient(circle, rgba(77,166,255,.18) 1px, transparent 1px);
-            background-size:6px 6px;
-            background-position:center;
-            background-repeat:repeat;
+    .panel-header{
+        padding:14px 16px 12px;background:rgba(6,18,45,1);
+        border-bottom:1px solid rgba(77,166,255,.12);
+        display:flex;align-items:center;justify-content:space-between;
+        cursor:grab;flex-shrink:0;
+        background-image:radial-gradient(circle,rgba(77,166,255,.16) 1px,transparent 1px);
+        background-size:6px 6px;background-position:center;background-repeat:repeat;
+    }
+    .panel-header:active{cursor:grabbing}
+    /* Mobile: header not draggable — show drag indicator instead */
+    @media(max-width:767px){
+        .panel-header{cursor:default;padding-top:18px}
+        .panel-header::before{
+            content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+            width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3);
         }
-        .panel-header:active { cursor:grabbing; }
-        .panel-header-inner { display:flex; align-items:center; gap:8px; pointer-events:none; }
-        .drag-icon { font-size:.85rem; opacity:.45; }
-        .panel-title { font-family:'Outfit',sans-serif; font-size:.92rem; font-weight:700; color:#fff; letter-spacing:.03em; }
-        .panel-close {
-            width:28px; height:28px; border-radius:8px; border:1px solid rgba(77,166,255,.18);
-            background:transparent; color:rgba(140,175,230,.6); cursor:pointer; font-size:1rem;
-            display:flex; align-items:center; justify-content:center; transition:all .2s; flex-shrink:0;
-        }
-        .panel-close:hover { background:rgba(232,69,69,.15); color:#e84545; border-color:rgba(232,69,69,.3); }
+    }
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.4}
+    @media(max-width:767px){.drag-icon{display:none}}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:20px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
 
-        /* ── Panel scrollable body ── */
-        .panel-body {
-            overflow-y:auto; overflow-x:hidden;
-            flex:1;
-            padding-bottom:20px;
-        }
-        .panel-body::-webkit-scrollbar { width:3px; }
-        .panel-body::-webkit-scrollbar-thumb { background:rgba(77,166,255,.2); border-radius:4px; }
+    .font-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);
+        display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+        color:rgba(140,175,230,.55);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);
+        background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28);border-color:rgba(77,166,255,.38)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;
+        color:rgba(140,175,230,.55);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;
+        font-weight:500;letter-spacing:.04em;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
 
-        /* ── Font size row ── */
-        .font-strip {
-            padding:12px 16px 10px; border-bottom:1px solid rgba(77,166,255,.07);
-            display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.015);
-        }
-        .font-strip-label { font-family:'Outfit',sans-serif; font-size:.7rem; font-weight:600; color:rgba(140,175,230,.55); letter-spacing:.08em; text-transform:uppercase; flex:1; }
-        .fs-btn {
-            width:32px; height:32px; border-radius:8px; border:1px solid rgba(77,166,255,.16);
-            background:rgba(26,108,246,.1); color:var(--accent-light); cursor:pointer;
-            font-family:'Outfit',sans-serif; font-weight:700; transition:all .2s;
-            display:flex; align-items:center; justify-content:center; flex-shrink:0;
-        }
-        .fs-btn:hover { background:rgba(26,108,246,.28); border-color:rgba(77,166,255,.38); }
-        .fs-btn.sml { font-size:.76rem; }
-        .fs-btn.lrg { font-size:1.05rem; }
-        .fs-size-display { min-width:36px; text-align:center; font-family:'Outfit',sans-serif; font-size:.78rem; font-weight:600; color:var(--accent-light); }
-        .fs-reset { padding:3px 9px; border-radius:7px; border:1px solid rgba(77,166,255,.13); background:transparent; color:rgba(140,175,230,.55); cursor:pointer; font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:500; letter-spacing:.04em; transition:all .2s; white-space:nowrap; }
-        .fs-reset:hover { color:var(--accent-light); border-color:rgba(77,166,255,.32); }
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;
+        color:rgba(140,175,230,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.04);color:rgba(180,205,255,.75);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.28);color:#fff}
 
-        /* ── Preset themes ── */
-        .presets-strip { padding:12px 16px 10px; border-bottom:1px solid rgba(77,166,255,.07); }
-        .strip-label { font-family:'Outfit',sans-serif; font-size:.67rem; font-weight:700; color:rgba(140,175,230,.5); letter-spacing:.12em; text-transform:uppercase; margin-bottom:9px; }
-        .preset-row { display:flex; gap:6px; flex-wrap:wrap; }
-        .preset-btn {
-            flex:1 1 auto; padding:6px 8px; border-radius:8px; border:1px solid rgba(255,255,255,.08);
-            background:rgba(255,255,255,.04); color:rgba(180,205,255,.75); cursor:pointer;
-            font-family:'Outfit',sans-serif; font-size:.68rem; font-weight:500; letter-spacing:.02em;
-            transition:all .2s; text-align:center; white-space:nowrap;
-        }
-        .preset-btn:hover { background:rgba(26,108,246,.2); border-color:rgba(77,166,255,.28); color:#fff; }
+    .color-section{padding:13px 16px 0}
+    .section-title{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;
+        color:rgba(140,175,230,.5);letter-spacing:.13em;text-transform:uppercase;
+        margin-bottom:10px;margin-top:2px;display:flex;align-items:center;gap:6px}
+    .section-title::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.28)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+    .color-preview{width:26px;height:26px;border-radius:7px;border:2px solid rgba(255,255,255,.14);
+        cursor:pointer;transition:transform .2s,box-shadow .2s;flex-shrink:0}
+    .color-preview:hover{transform:scale(1.12);box-shadow:0 0 10px rgba(255,255,255,.2)}
+    .color-input-native{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+    .color-hex-input{width:70px;background:rgba(255,255,255,.055);border:1px solid rgba(77,166,255,.14);
+        border-radius:6px;padding:3px 7px;font-family:'Outfit',sans-serif;font-size:.73rem;
+        color:var(--text-muted);text-align:center;letter-spacing:.04em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.42);color:#fff}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);height:3px;cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:30px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;
+        border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.04em;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
 
-        /* ── Color sections ── */
-        .color-section { padding:13px 16px 0; }
-        .section-title {
-            font-family:'Outfit',sans-serif; font-size:.66rem; font-weight:700;
-            color:rgba(140,175,230,.5); letter-spacing:.13em; text-transform:uppercase;
-            margin-bottom:10px; margin-top:2px;
-            display:flex; align-items:center; gap:6px;
-        }
-        .section-title::before { content:''; display:inline-block; width:12px; height:1px; background:rgba(77,166,255,.28); }
+    /* ═══════════════════════════════════════════════
+       QUIZ OVERLAY
+    ═══════════════════════════════════════════════ */
+    #quiz-overlay{
+        position:fixed;inset:0;z-index:2000;
+        background:rgba(2,6,18,.85);
+        backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+        display:flex;align-items:center;justify-content:center;
+        padding:16px;
+        opacity:0;pointer-events:none;transition:opacity .3s;
+    }
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
 
-        .color-row {
-            display:flex; align-items:center; gap:8px;
-            padding:8px 10px; border-radius:9px; margin-bottom:5px;
-            background:rgba(255,255,255,.025); border:1px solid rgba(77,166,255,.055);
-            transition:background .2s;
-        }
-        .color-row:hover { background:rgba(77,166,255,.055); }
-        .color-row-label { font-family:'Outfit',sans-serif; font-size:.8rem; color:var(--text-muted); flex:1; min-width:0; }
-        .color-row-right { display:flex; align-items:center; gap:7px; flex-shrink:0; }
-        .color-preview {
-            width:26px; height:26px; border-radius:7px; border:2px solid rgba(255,255,255,.14);
-            cursor:pointer; transition:transform .2s, box-shadow .2s; flex-shrink:0;
-        }
-        .color-preview:hover { transform:scale(1.12); box-shadow:0 0 10px rgba(255,255,255,.2); }
-        .color-input-native { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
-        .color-hex-input {
-            width:70px; background:rgba(255,255,255,.055); border:1px solid rgba(77,166,255,.14);
-            border-radius:6px; padding:3px 7px; font-family:'Outfit',sans-serif; font-size:.73rem;
-            color:var(--text-muted); text-align:center; letter-spacing:.04em; outline:none; transition:border-color .2s;
-        }
-        .color-hex-input:focus { border-color:rgba(77,166,255,.42); color:#fff; }
+    #quiz-panel{
+        width:100%;max-width:640px;max-height:90vh;
+        background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);
+        border-radius:22px;overflow:hidden;display:flex;flex-direction:column;
+        box-shadow:0 20px 70px rgba(0,0,0,.8),0 0 0 1px rgba(77,166,255,.1);
+        animation:quizIn .35s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
 
-        .opacity-row {
-            display:flex; align-items:center; gap:8px;
-            padding:6px 10px 8px; border-radius:9px; margin-bottom:5px;
-            background:rgba(255,255,255,.025); border:1px solid rgba(77,166,255,.055);
-        }
-        .opacity-row label { font-family:'Outfit',sans-serif; font-size:.78rem; color:var(--text-muted); flex:1; }
-        .opacity-row input[type=range] { flex:2; accent-color:var(--accent-light); height:3px; cursor:pointer; }
-        .opacity-val { font-family:'Outfit',sans-serif; font-size:.73rem; color:var(--accent-light); min-width:30px; text-align:right; }
+    .quiz-header{
+        display:flex;align-items:center;justify-content:space-between;
+        padding:18px 22px 14px;
+        background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);
+        flex-shrink:0;
+    }
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{
+        padding:3px 10px;border-radius:20px;
+        background:linear-gradient(135deg,var(--accent),var(--accent-light));
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em;
+    }
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
 
-        .reset-all-btn {
-            display:block; width:calc(100% - 32px); margin:14px 16px 0;
-            padding:9px; border-radius:9px; border:1px solid rgba(232,69,69,.22);
-            background:rgba(232,69,69,.07); color:#e84545; cursor:pointer;
-            font-family:'Outfit',sans-serif; font-size:.8rem; font-weight:600;
-            letter-spacing:.04em; transition:all .22s; text-align:center;
-        }
-        .reset-all-btn:hover { background:rgba(232,69,69,.17); border-color:rgba(232,69,69,.42); }
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s ease;width:0%}
 
-        /* ── Mobile ── */
-        @media(max-width:767px) {
-            #color-panel {
-                width:92vw;
-                max-height:78vh;
-                right:4vw; bottom:80px; top:unset;
-                transform:scale(.95) !important;
-                transform-origin:bottom right;
-                border-radius:16px;
-            }
-            #color-panel.is-open { transform:scale(1) !important; }
-            #palette-trigger { right:16px; bottom:20px; top:unset; transform:none !important; }
-        }
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+
+    /* Start screen */
+    .quiz-start{text-align:center;padding:20px 10px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .quiz-start .qs-info{
+        display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap;
+    }
+    .qs-chip{
+        display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;
+        background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);
+        font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500;
+    }
+
+    .btn-primary{
+        display:inline-flex;align-items:center;gap:8px;padding:13px 32px;
+        background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;
+        border:none;border-radius:50px;cursor:pointer;
+        box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s;letter-spacing:.03em;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{
+        display:inline-flex;align-items:center;gap:8px;padding:10px 24px;
+        background:rgba(77,166,255,.1);color:var(--accent-light);
+        font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;
+        border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s;
+    }
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+
+    /* Question screen */
+    .quiz-q-screen{display:none}
+    .quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;
+        background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;
+        line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{
+        display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;
+        border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);
+        cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);
+        text-align:left;width:100%;
+    }
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .q-opt .opt-letter{
+        width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);
+        border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;
+    }
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+
+    .q-feedback{
+        margin-top:16px;padding:14px 16px;border-radius:12px;
+        font-family:'Lora',serif;font-size:.88rem;line-height:1.6;
+        display:none;
+    }
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+
+    /* Results screen */
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{
+        width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        border:3px solid var(--accent-light);
+        background:radial-gradient(circle,rgba(26,108,246,.15),transparent);
+        box-shadow:0 0 30px rgba(26,108,246,.3);
+    }
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{
+        display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;
+    }
+    .rb-chip{
+        padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;
+    }
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .rb-chip.skip{background:rgba(140,175,230,.08);border:1px solid rgba(140,175,230,.2);color:var(--text-dim)}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
 <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-    <!-- ═══ DRAGGABLE FLOATING TRIGGER ═══ -->
-    <button id="palette-trigger" title="Customize colours">
-        <span class="tip">Customise</span>
-        🎨
+<!-- ═══ FLOATING FAB ROW ═══ -->
+<div id="fab-row">
+    <button class="fab" id="fab-palette" title="Customise colours">
+        <span class="fab-tip">Colours</span>🎨
     </button>
+    <button class="fab" id="fab-quiz" title="Take the quiz">
+        <span class="fab-tip">Quiz</span>📝
+    </button>
+</div>
 
-    <!-- ═══ DRAGGABLE COLOUR PANEL ═══ -->
-    <div id="color-panel">
-        <!-- Drag handle = header -->
-        <div class="panel-header" id="panel-drag-handle">
-            <div class="panel-header-inner">
-                <span class="drag-icon">⠿</span>
-                <div class="panel-title">🎨 Colour &amp; Text Settings</div>
-            </div>
-            <button class="panel-close" id="panel-close-btn" title="Close">✕</button>
+<!-- ═══ COLOUR PANEL ═══ -->
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner">
+            <span class="drag-icon">⠿</span>
+            <div class="panel-title">🎨 Colour &amp; Text Settings</div>
         </div>
-
-        <div class="panel-body">
-
-            <!-- Font Size -->
-            <div class="font-strip">
-                <div class="font-strip-label">Font Size</div>
-                <button class="fs-btn sml" id="fs-shrink" title="Decrease">a</button>
-                <div class="fs-size-display" id="fs-display">16px</div>
-                <button class="fs-btn lrg" id="fs-grow"   title="Increase">A</button>
-                <button class="fs-reset" id="fs-reset">↺ reset</button>
-            </div>
-
-            <!-- Preset Themes -->
-            <div class="presets-strip">
-                <div class="strip-label">Quick Themes</div>
-                <div class="preset-row">
-                    <button class="preset-btn" data-preset="default">🔵 Default</button>
-                    <button class="preset-btn" data-preset="light">☀️ Light</button>
-                    <button class="preset-btn" data-preset="purple">🟣 Purple</button>
-                    <button class="preset-btn" data-preset="green">🟢 Green</button>
-                    <button class="preset-btn" data-preset="amber">🟡 Amber</button>
-                    <button class="preset-btn" data-preset="contrast">⬛ Contrast</button>
-                </div>
-            </div>
-
-            <!-- Background -->
-            <div class="color-section">
-                <div class="section-title">Background</div>
-                <div class="color-row">
-                    <div class="color-row-label">Page background</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-bg-deep" onclick="openPicker('bg-deep')"></div>
-                        <input class="color-hex-input" id="hex-bg-deep" maxlength="7" spellcheck="false" placeholder="050d1a" />
-                        <input class="color-input-native" type="color" id="pick-bg-deep" />
-                    </div>
-                </div>
-                <div class="opacity-row">
-                    <label>Background opacity</label>
-                    <input type="range" id="opacity-bg" min="0" max="100" value="100" />
-                    <div class="opacity-val" id="opacity-bg-val">100%</div>
-                </div>
-            </div>
-
-            <!-- Accent -->
-            <div class="color-section">
-                <div class="section-title">Accent Colours</div>
-                <div class="color-row">
-                    <div class="color-row-label">Primary accent</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-accent" onclick="openPicker('accent')"></div>
-                        <input class="color-hex-input" id="hex-accent" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-accent" />
-                    </div>
-                </div>
-                <div class="color-row">
-                    <div class="color-row-label">Light accent</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-accent-light" onclick="openPicker('accent-light')"></div>
-                        <input class="color-hex-input" id="hex-accent-light" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-accent-light" />
-                    </div>
-                </div>
-                <div class="color-row">
-                    <div class="color-row-label">Warning / red</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-red" onclick="openPicker('red')"></div>
-                        <input class="color-hex-input" id="hex-red" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-red" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text -->
-            <div class="color-section">
-                <div class="section-title">Text Colours</div>
-                <div class="color-row">
-                    <div class="color-row-label">Main heading (h1)</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-text-primary" onclick="openPicker('text-primary')"></div>
-                        <input class="color-hex-input" id="hex-text-primary" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-text-primary" />
-                    </div>
-                </div>
-                <div class="color-row">
-                    <div class="color-row-label">Section headings</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-heading-color" onclick="openPicker('heading-color')"></div>
-                        <input class="color-hex-input" id="hex-heading-color" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-heading-color" />
-                    </div>
-                </div>
-                <div class="color-row">
-                    <div class="color-row-label">Body text</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-text-muted" onclick="openPicker('text-muted')"></div>
-                        <input class="color-hex-input" id="hex-text-muted" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-text-muted" />
-                    </div>
-                </div>
-                <div class="color-row">
-                    <div class="color-row-label">Subtle / dim text</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-text-dim" onclick="openPicker('text-dim')"></div>
-                        <input class="color-hex-input" id="hex-text-dim" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-text-dim" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cards -->
-            <div class="color-section">
-                <div class="section-title">Cards &amp; Panels</div>
-                <div class="color-row">
-                    <div class="color-row-label">Card background</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-card-bg" onclick="openPicker('card-bg')"></div>
-                        <input class="color-hex-input" id="hex-card-bg" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-card-bg" />
-                    </div>
-                </div>
-                <div class="opacity-row">
-                    <label>Card opacity</label>
-                    <input type="range" id="opacity-card" min="0" max="100" value="55" />
-                    <div class="opacity-val" id="opacity-card-val">55%</div>
-                </div>
-                <div class="color-row">
-                    <div class="color-row-label">Card border</div>
-                    <div class="color-row-right">
-                        <div class="color-preview" id="prev-card-border" onclick="openPicker('card-border')"></div>
-                        <input class="color-hex-input" id="hex-card-border" maxlength="7" spellcheck="false" />
-                        <input class="color-input-native" type="color" id="pick-card-border" />
-                    </div>
-                </div>
-                <div class="opacity-row">
-                    <label>Border opacity</label>
-                    <input type="range" id="opacity-border" min="0" max="100" value="22" />
-                    <div class="opacity-val" id="opacity-border-val">22%</div>
-                </div>
-            </div>
-
-            <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
-
-        </div><!-- /panel-body -->
-    </div><!-- /color-panel -->
-
-
-    <!-- ═══ PAGE CONTENT ═══ -->
-    <div class="page-wrapper">
-        <div class="brand-strip">
-            <span>ExamTheorie</span><span class="dot">›</span>
-            <span>Passenger Car</span><span class="dot">›</span>
-            <span style="color:var(--text-primary)">Code of Conduct</span>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip">
+            <div class="font-strip-label">Font Size</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ reset</button>
         </div>
+        <div class="presets-strip">
+            <div class="strip-label">Quick Themes</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 Default</button>
+                <button class="preset-btn" data-preset="light">☀️ Light</button>
+                <button class="preset-btn" data-preset="purple">🟣 Purple</button>
+                <button class="preset-btn" data-preset="green">🟢 Green</button>
+                <button class="preset-btn" data-preset="amber">🟡 Amber</button>
+                <button class="preset-btn" data-preset="contrast">⬛ Contrast</button>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Background</div>
+            <div class="color-row">
+                <div class="color-row-label">Page background</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-bg-deep" onclick="openPicker('bg-deep')"></div>
+                    <input class="color-hex-input" id="hex-bg-deep" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-bg-deep"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Opacity</label>
+                <input type="range" id="opacity-bg" min="0" max="100" value="100"/>
+                <div class="opacity-val" id="opacity-bg-val">100%</div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Accent Colours</div>
+            <div class="color-row">
+                <div class="color-row-label">Primary accent</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-accent" onclick="openPicker('accent')"></div>
+                    <input class="color-hex-input" id="hex-accent" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-accent"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Light accent</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-accent-light" onclick="openPicker('accent-light')"></div>
+                    <input class="color-hex-input" id="hex-accent-light" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-accent-light"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Warning / red</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-red" onclick="openPicker('red')"></div>
+                    <input class="color-hex-input" id="hex-red" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-red"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Text Colours</div>
+            <div class="color-row">
+                <div class="color-row-label">Main heading (h1)</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-primary" onclick="openPicker('text-primary')"></div>
+                    <input class="color-hex-input" id="hex-text-primary" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-text-primary"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Section headings</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-heading-color" onclick="openPicker('heading-color')"></div>
+                    <input class="color-hex-input" id="hex-heading-color" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-heading-color"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Body text</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-muted" onclick="openPicker('text-muted')"></div>
+                    <input class="color-hex-input" id="hex-text-muted" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-text-muted"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Subtle text</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-text-dim" onclick="openPicker('text-dim')"></div>
+                    <input class="color-hex-input" id="hex-text-dim" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-text-dim"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Cards &amp; Panels</div>
+            <div class="color-row">
+                <div class="color-row-label">Card background</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-card-bg" onclick="openPicker('card-bg')"></div>
+                    <input class="color-hex-input" id="hex-card-bg" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-card-bg"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Card opacity</label>
+                <input type="range" id="opacity-card" min="0" max="100" value="55"/>
+                <div class="opacity-val" id="opacity-card-val">55%</div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Card border</div>
+                <div class="color-row-right">
+                    <div class="color-preview" id="prev-card-border" onclick="openPicker('card-border')"></div>
+                    <input class="color-hex-input" id="hex-card-border" maxlength="7" spellcheck="false"/>
+                    <input class="color-input-native" type="color" id="pick-card-border"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Border opacity</label>
+                <input type="range" id="opacity-border" min="0" max="100" value="22"/>
+                <div class="opacity-val" id="opacity-border-val">22%</div>
+            </div>
+        </div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+    </div>
+</div>
 
-        <h1>Code of Conduct</h1>
-        <div class="section-divider"></div>
+<!-- ═══ QUIZ OVERLAY ═══ -->
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header">
+            <div class="quiz-header-left">
+                <div class="quiz-title">📝 Code of Conduct Quiz</div>
+                <div class="quiz-badge" id="quiz-badge">15 Questions</div>
+            </div>
+            <button class="quiz-close" id="quiz-close-btn">✕</button>
+        </div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body" id="quiz-body">
 
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <h3>Important Dutch Words</h3>
-            <ul class="vocab-list">
-                <li><strong>APK</strong>Same as the MOT, mandatory periodic general inspection of the vehicle.</li>
-                <li><strong>Brommobiel</strong>Moped on three or four wheels with closed bodywork and a maximum unladen weight of 350 kg. Also called microcar.</li>
-                <li><strong>Snorfiets</strong>Moped with a maximum construction speed of 25 km/h.</li>
+            <!-- START SCREEN -->
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚦</span>
+                <h2>Test Your Knowledge</h2>
+                <p>15 randomly selected questions from the Code of Conduct theory. Read the page carefully before starting — each question is based directly on its content.</p>
+                <div class="qs-info">
+                    <div class="qs-chip">📋 15 questions</div>
+                    <div class="qs-chip">🔀 Random order</div>
+                    <div class="qs-chip">✅ Instant feedback</div>
+                </div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
+            </div>
+
+            <!-- QUESTION SCREEN (rendered by JS) -->
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+
+            <!-- RESULTS SCREEN -->
+            <div class="quiz-results" id="quiz-results-screen"></div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="page-wrapper">
+    <div class="brand-strip">
+        <span>ExamTheorie</span><span class="dot">›</span>
+        <span>Passenger Car</span><span class="dot">›</span>
+        <span style="color:var(--text-primary)">Code of Conduct</span>
+    </div>
+    <h1>Code of Conduct</h1>
+    <div class="section-divider"></div>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>Important Dutch Words</h3>
+        <ul class="vocab-list">
+            <li><strong>APK</strong>Same as the MOT, mandatory periodic general inspection of the vehicle.</li>
+            <li><strong>Brommobiel</strong>Moped on three or four wheels with closed bodywork and a maximum unladen weight of 350 kg. Also called microcar.</li>
+            <li><strong>Snorfiets</strong>Moped with a maximum construction speed of 25 km/h.</li>
+        </ul>
+    </div>
+
+    <p>When you participate in traffic, you are required to adhere to certain rules of conduct. These general rules are designed to:</p>
+    <ul class="prose-list">
+        <li>keep roads safe;</li><li>protect road users and passengers;</li>
+        <li>ensure roads remain usable;</li><li>ensure traffic can move freely;</li>
+        <li>prevent or limit hinder and damage;</li>
+        <li>limit the negative impact of traffic on the environment;</li>
+        <li>prevent crime.</li>
+    </ul>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>Roads</h3>
+        <p>All roads and paths that public traffic can drive or walk on. This includes bridges and tunnels. Paths and verges are also considered part of the road.</p>
+        <p>This means that a road can be anything between two ditches or two walls. Pavements are therefore also part of the road, just like cycle paths that are separated from the road itself by a verge or pavement.</p>
+        <img src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png" alt="Road Diagram" class="custom-image"/>
+        <div class="sub-section">
+            <h3>Authorised Person</h3>
+            <p>People authorised to regulate traffic and request official documents. These are:</p>
+            <ul class="prose-list">
+                <li>Public prosecutors</li><li>Police officers</li><li>Military police</li>
+                <li>Civil servants from the government tax service</li>
+                <li>Officials of the Dutch department of motor vehicles and the traffic inspectorate</li>
+                <li>Officials of the Rijkswaterstaat (Dept. of waterways and public works)</li>
+                <li>Investigating officers from various government departments</li>
             </ul>
         </div>
+    </div>
 
-        <p>When you participate in traffic, you are required to adhere to certain rules of conduct. These general rules are designed to:</p>
-        <ul class="prose-list">
-            <li>keep roads safe;</li>
-            <li>protect road users and passengers;</li>
-            <li>ensure roads remain usable;</li>
-            <li>ensure traffic can move freely;</li>
-            <li>prevent or limit hinder and damage;</li>
-            <li>limit the negative impact of traffic on the environment;</li>
-            <li>prevent crime.</li>
-        </ul>
+    <h2>Instructions</h2>
+    <p>Every road user is obliged to follow instructions given by authorised people.<br/>In addition, road users are also required to follow instructions given by crossing guards – who may only stop drivers.</p>
+    <div class="image-container">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg" alt="Crossing guard"/>
+            <figcaption><em>Crossing guards can only stop drivers.</em></figcaption>
+        </figure>
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg" alt="Military police"/>
+            <figcaption><em>Military officers from the Netherlands Royal Military Police may give instructions that you must adhere to. They may also ask to see your official documents.</em></figcaption>
+        </figure>
+    </div>
 
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <h3>Roads</h3>
-            <p>All roads and paths that public traffic can drive or walk on. This includes bridges and tunnels. Paths and verges are also considered part of the road.</p>
-            <p>This means that a road can be anything between two ditches or two walls. Pavements are therefore also part of the road, just like cycle paths that are separated from the road itself by a verge or pavement.</p>
-            <img src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png" alt="Road Diagram" class="custom-image" />
-            <div class="sub-section">
-                <h3>Authorised Person</h3>
-                <p>People authorised to regulate traffic and request official documents. These are:</p>
-                <ul class="prose-list">
-                    <li>Public prosecutors</li><li>Police officers</li><li>Military police</li>
-                    <li>Civil servants from the government tax service</li>
-                    <li>Officials of the Dutch department of motor vehicles and the traffic inspectorate</li>
-                    <li>Officials of the Rijkswaterstaat (Dept. of waterways and public works)</li>
-                    <li>Investigating officers from various government departments</li>
-                </ul>
-            </div>
+    <h2>Mandatory Co-operation</h2>
+    <p>If you are stopped by a police officer or another authorised person, they may ask to see certain documents. These documents must be in your possession at all times, and you may not refuse a request to show them. These documents include:</p>
+    <ul class="prose-list">
+        <li>Your driving licence.</li>
+        <li>The vehicle's registration certificate.</li>
+        <li>The supervisor pass if you are driving under the 2toDrive scheme (driving from 17 years of age).</li>
+        <li>A disabled parking card if you are driving a disabled vehicle or parking in a disabled parking space.</li>
+    </ul>
+    <p>An authorised person may also require you to comply with an alcohol or drug test. This means you have to comply with a breath test, eye co-ordination and speech function test, and saliva swabs for drug detection purposes.</p>
+    <p>You may even be required to submit to a blood test if you refuse a breath test or if it is not possible to do a breath test.</p>
+
+    <h2>Hindering or Endangering</h2>
+    <p>Most rules are detailed in the applicable legislation. You may not drive faster than the speed limit, ignore traffic signs, or drive through red lights. However, many other behaviours could endanger road users or impede traffic flow without being explicitly recorded in legislation. A rule therefore prohibits road users from creating or contributing to dangerous situations. Obstructing or hindering other traffic is also prohibited.</p>
+
+    <div class="glass-card red-accent">
+        <div class="accent-line"></div>
+        <h3>Kapstokartikel</h3>
+        <p style="margin-bottom:0">Article 5 of the Road Traffic Act (also called 'Kapstokartikel') prohibits road users from operating a vehicle in such a way that it hinders traffic or causes danger. This law provides a 'safety net' covering dangerous behaviour not directly prohibited by traffic signs or road markings but for which you may still be prosecuted.</p>
+    </div>
+
+    <h2>Injury or Death At-Fault</h2>
+    <p>In addition to not being allowed to cause hinder or dangerous situations, road users should take care to avoid causing a traffic accident that could injure or kill others.</p>
+
+    <h2>Leaving the Scene of an Accident</h2>
+    <p>Have you been involved in a traffic accident? Then you may not leave the scene until you have exchanged your contact and vehicle information with any other people involved or the police – regardless of whether you were at fault.</p>
+    <p>Leaving the scene without providing your information is a crime. You can mitigate this by voluntarily reporting to a police station within 12 hours of the accident occurring, unless the police arrested you as a suspect before then.</p>
+    <div class="glass-card red-accent">
+        <div class="accent-line"></div>
+        <p style="margin-bottom:0">Leaving the scene while leaving an injured person without aid is always a crime – even if you report to the police later. Regardless of whether you were directly involved, you are obliged to provide help if needed.</p>
+    </div>
+
+    <h2>Racing on the Road</h2>
+    <p>Racing or competing with other drivers on public roads is prohibited. One example is rapidly accelerating at traffic lights. If caught, both the driver and the vehicle owner are liable for any damages.</p>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>Driving Licence Confiscation</h3>
+        <p>Police officers are authorised to confiscate your driving licence if you are caught violating traffic regulations. Your licence will then be forwarded to the public prosecutor.</p>
+        <div class="sub-section">
+            <h3>Driving Disqualification (licence suspended)</h3>
+            <p>Being disqualified means you are not allowed to operate motor carriages for several weeks, months or years. Disqualification may last up to two years for less severe infractions and up to five years for serious offences, including death or injury caused by dangerous driving, driving under the influence of alcohol, or driving while disqualified. If you commit another offence within a short time, penalties may be doubled.</p>
         </div>
-
-        <h2>Instructions</h2>
-        <p>Every road user is obliged to follow instructions given by authorised people.<br />In addition, road users are also required to follow instructions given by crossing guards – who may only stop drivers.</p>
-        <div class="image-container">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg" alt="Crossing guard" />
-                <figcaption><em>Crossing guards can only stop drivers.</em></figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg" alt="Military police" />
-                <figcaption><em>Military officers from the Netherlands Royal Military Police may give instructions that you must adhere to. They may also ask to see your official documents.</em></figcaption>
-            </figure>
+        <div class="sub-section">
+            <h3>Driving Licence Invalidation</h3>
+            <p>If you commit several offences, or are ineligible to drive for other reasons, your licence may be declared invalid. You are no longer permitted to operate motor carriages requiring a licence. You may still cycle, be a passenger, and operate vehicles not requiring a licence. Invalidation may apply to one category only, leaving you eligible for other categories.</p>
         </div>
+    </div>
 
-        <h2>Mandatory Co-operation</h2>
-        <p>If you are stopped by a police officer or another authorised person, they may ask to see certain documents. These documents must be in your possession at all times, and you may not refuse a request to show them. These documents include:</p>
-        <ul class="prose-list">
-            <li>Your driving licence.</li>
-            <li>The vehicle's registration certificate.</li>
-            <li>The supervisor pass if you are driving under the 2toDrive scheme (driving from 17 years of age).</li>
-            <li>A disabled parking card if you are driving a disabled vehicle or parking in a disabled parking space.</li>
-        </ul>
-        <p>An authorised person may also require you to comply with an alcohol or drug test. This means you have to comply with a breath test, eye co-ordination and speech function test, and saliva swabs for drug detection purposes.</p>
-        <p>You may even be required to submit to a blood test if you refuse a breath test or if it is not possible to do a breath test.</p>
+    <img src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg" alt="Traffic enforcement" class="custom-centered-image"/>
 
-        <h2>Hindering or Endangering</h2>
-        <p>Most rules are detailed in the applicable legislation. For example, you may not drive faster than the speed limit, you may not ignore traffic signs, and you may not drive through red lights. However, there are many other behaviours that could endanger other road users or impede the regular flow of traffic that are not explicitly recorded in legislation. A rule is therefore in place prohibiting road users from behaving in such a way as to create or contribute to a dangerous situation on the road. Obstructing or hindering other traffic is also prohibited.</p>
+    <h2>Driving Behaviour Enforcement</h2>
+    <p>If found in violation, your licence may be confiscated. The police forward it to the public prosecutor, who decides within 10 days whether to withhold or return it. A judge may make the final decision, resulting in a fine and/or driving disqualification.</p>
+    <p>Confiscation may happen if you:</p>
+    <ul class="prose-list">
+        <li>exceed the speed limit by 50 km/h or more;</li>
+        <li>cause hinder or a dangerous situation.</li>
+    </ul>
+    <p>The violation may also be reported to the CBR (Central Bureau for Driving Proficiency), who will determine your eligibility to continue driving.</p>
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <p>The abbreviation CBR stands for <strong style="color:var(--accent-light);font-family:'Outfit',sans-serif">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence and whether you keep it when eligibility is called into question. The CBR oversees both theory and driving tests. Another branch is the BNOR; if you fail your driving test four times consecutively, they investigate further to determine your driving capabilities.</p>
+    </div>
+    <p>The CBR may be notified if you:</p>
+    <ul class="prose-list">
+        <li>tailgate on the motorway (not keeping proper distance);</li>
+        <li>cut off other road users;</li>
+        <li>drive through a red light;</li>
+        <li>exceed the speed limit by more than 50 km/h in normal situations;</li>
+        <li>exceed the speed limit by more than 30 km/h where roadworks are underway.</li>
+    </ul>
 
-        <div class="glass-card red-accent">
-            <div class="accent-line"></div>
-            <h3>Kapstokartikel</h3>
-            <p style="margin-bottom:0">Article 5 of the Road Traffic Act (also called 'Kapstokartikel') prohibits road users from operating a vehicle in such a way that it hinders traffic or causes danger to themselves or other road users. This law provides a so-called 'safety net' which covers dangerous behaviour that is not directly prohibited by traffic signs or road markings but still constitutes a hinder or danger and for which you may still be prosecuted.</p>
+    <h2>Driving While Disqualified</h2>
+    <p>Operating a motor carriage while disqualified from driving is a criminal offence. This is also the case if you operate a vehicle requiring a licence and your licence has been declared invalid.</p>
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ═══════════════════════════════════════
+   COLOUR PANEL LOGIC
+═══════════════════════════════════════ */
+const DEFAULTS={
+    'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+    'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+    'card-bg':'#0a1e41','card-border':'#4da6ff',
+    'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
+};
+const PRESETS={
+    default:{...DEFAULTS},
+    light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+    purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
+};
+let state={};
+try{state=JSON.parse(localStorage.getItem('et_colors')||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const colorKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexToRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){
+    const bg=hexToRgb(state['bg-deep']);
+    if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}
+    root.style.setProperty('--accent',state['accent']);
+    root.style.setProperty('--accent-light',state['accent-light']);
+    root.style.setProperty('--red',state['red']);
+    root.style.setProperty('--text-primary',state['text-primary']);
+    root.style.setProperty('--heading-color',state['heading-color']);
+    root.style.setProperty('--text-muted',state['text-muted']);
+    root.style.setProperty('--text-dim',state['text-dim']);
+    const cb=hexToRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+    const cbr=hexToRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
+    document.documentElement.style.fontSize=state['font-size']+'px';
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+    document.querySelector('.orb-1').style.background=state['accent'];
+    document.querySelector('.orb-2').style.background=state['accent-light'];
+    syncUI();try{localStorage.setItem('et_colors',JSON.stringify(state))}catch(e){}
+}
+function syncUI(){
+    colorKeys.forEach(key=>{
+        const hex=state[key]||'#000000';
+        const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';
+        const prev=document.getElementById('prev-'+key);
+        const hexIn=document.getElementById('hex-'+key);
+        const pick=document.getElementById('pick-'+key);
+        if(prev)prev.style.background=safe;
+        if(hexIn)hexIn.value=safe.replace('#','').toUpperCase();
+        if(pick)pick.value=safe;
+    });
+    [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+        const k=id;const sl=document.getElementById(id);const vl=document.getElementById(vid);
+        if(sl)sl.value=state[k];if(vl)vl.textContent=state[k]+'%';
+    });
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+}
+window.openPicker=function(key){const p=document.getElementById('pick-'+key);if(p)p.click()};
+colorKeys.forEach(key=>{
+    const pick=document.getElementById('pick-'+key);
+    const hexIn=document.getElementById('hex-'+key);
+    const prev=document.getElementById('prev-'+key);
+    if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});
+    if(hexIn){
+        hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});
+        hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});
+    }
+});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+    const el=document.getElementById(id);const vl=document.getElementById(vid);
+    if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()});
+});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+
+/* ═══════════════════════════════════════
+   FAB ROW DRAG  (desktop only)
+═══════════════════════════════════════ */
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;
+try{fabPos=JSON.parse(localStorage.getItem('et_fab_pos'))}catch(e){}
+function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){
+    const W=window.innerWidth,H=window.innerHeight;
+    const bw=fabRow.offsetWidth||120,bh=fabRow.offsetHeight||120;
+    x=clamp(x,0,W-bw);y=clamp(y,0,H-bh);
+    fabRow.style.right='unset';fabRow.style.bottom='unset';
+    fabRow.style.top=y+'px';fabRow.style.left=x+'px';
+    fabRow.style.transform='none';
+}
+if(fabPos&&!isMob())setFabPos(fabPos.x,fabPos.y);
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{
+    if(e.target.closest('.fab')&&e.target.tagName==='BUTTON'&&!e.target.classList.contains('fab'))return;
+    fdrag=false;fsx=e.clientX;fsy=e.clientY;
+    const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;
+    document.addEventListener('mousemove',onFabMove);document.addEventListener('mouseup',onFabUp);
+});
+fabRow.addEventListener('touchstart',e=>{
+    if(isMob())return;
+    fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;
+    const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;
+    document.addEventListener('touchmove',onFabMoveT,{passive:false});document.addEventListener('touchend',onFabUpT);
+},{passive:true});
+function onFabMove(e){
+    const dx=e.clientX-fsx,dy=e.clientY-fsy;
+    if(!fdrag&&Math.sqrt(dx*dx+dy*dy)<5)return;
+    fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy);
+}
+function onFabMoveT(e){e.preventDefault();const t=e.touches[0];onFabMove({clientX:t.clientX,clientY:t.clientY})}
+function onFabUp(){
+    document.removeEventListener('mousemove',onFabMove);document.removeEventListener('mouseup',onFabUp);
+    if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem('et_fab_pos',JSON.stringify(fabPos))}catch(e){}}
+    fabRow.style.cursor='';fdrag=false;
+}
+function onFabUpT(){document.removeEventListener('touchmove',onFabMoveT);document.removeEventListener('touchend',onFabUpT);onFabUp()}
+
+/* ═══════════════════════════════════════
+   COLOUR PANEL  OPEN / CLOSE + PANEL DRAG
+═══════════════════════════════════════ */
+const colorPanel=document.getElementById('color-panel');
+const dragHandle=document.getElementById('panel-drag-handle');
+const fabPalette=document.getElementById('fab-palette');
+const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;
+try{panelPos=JSON.parse(localStorage.getItem('et_panel_pos'))}catch(e){}
+function setPanelPos(x,y){
+    const W=window.innerWidth,H=window.innerHeight;
+    const pw=colorPanel.offsetWidth||310,ph=colorPanel.offsetHeight||500;
+    x=clamp(x,0,W-pw);y=clamp(y,0,H-Math.min(ph,H*.85));
+    colorPanel.classList.add('positioned');
+    colorPanel.style.right='unset';colorPanel.style.bottom='unset';
+    colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';
+}
+function openPanelNearFab(){
+    if(isMob())return;
+    const fr=fabRow.getBoundingClientRect();
+    const pw=colorPanel.offsetWidth||310;
+    let px=fr.left-pw-12;if(px<8)px=fr.right+12;
+    let py=fr.top+fr.height/2-(colorPanel.offsetHeight||400)/2;
+    setPanelPos(px,py);panelPos={x:colorPanel.getBoundingClientRect().left,y:colorPanel.getBoundingClientRect().top};
+}
+if(panelPos&&!isMob())setPanelPos(panelPos.x,panelPos.y);
+fabPalette.addEventListener('click',()=>{
+    if(fdrag)return;
+    panelOpen=!panelOpen;
+    colorPanel.classList.toggle('is-open',panelOpen);
+    fabPalette.classList.toggle('active',panelOpen);
+    if(panelOpen&&!isMob()){
+        if(panelPos)setPanelPos(panelPos.x,panelPos.y);else openPanelNearFab();
+    }
+});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{
+    if(!panelOpen)return;
+    if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){
+        panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active');
+    }
+});
+
+/* Panel drag (desktop header) */
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{
+    if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;
+    pdrag=false;psx=e.clientX;psy=e.clientY;
+    const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;
+    document.addEventListener('mousemove',onPanelMove);document.addEventListener('mouseup',onPanelUp);
+});
+function onPanelMove(e){
+    const dx=e.clientX-psx,dy=e.clientY-psy;
+    if(!pdrag&&Math.sqrt(dx*dx+dy*dy)<5)return;
+    pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy);
+}
+function onPanelUp(){
+    document.removeEventListener('mousemove',onPanelMove);document.removeEventListener('mouseup',onPanelUp);
+    if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem('et_panel_pos',JSON.stringify(panelPos))}catch(e){}}
+    dragHandle.style.cursor='grab';pdrag=false;
+}
+
+/* ═══════════════════════════════════════
+   QUIZ ENGINE
+═══════════════════════════════════════ */
+const ALL_QUESTIONS=[
+    // ── Roads & General Rules ──
+    {topic:'Roads',q:'Which of the following is considered part of the road?',opts:['Only the driving lanes','Pavements and cycle paths separated by a verge','Private driveways','Parking lots only'],ans:1,exp:'A road includes everything between two ditches or two walls — pavements, cycle paths separated by a verge or pavement, bridges and tunnels are all part of the road.'},
+    {topic:'Roads',q:'Bridges and tunnels are considered part of the road.',opts:['True','False','Only tunnels','Only bridges'],ans:0,exp:'Yes — bridges and tunnels are explicitly included in the definition of roads under Dutch traffic law.'},
+    {topic:'Roads',q:'What is a "road" under Dutch traffic law?',opts:['Only paved motorways','Any path between two ditches or two walls that public traffic can use','Private land only','Any road with a speed limit sign'],ans:1,exp:'A road is any path or route (including bridges, tunnels, verges and pavements) that public traffic can drive or walk on — essentially anything between two ditches or two walls.'},
+    {topic:'Rules of Conduct',q:'Which of the following is NOT one of the stated purposes of the rules of conduct?',opts:['Keep roads safe','Prevent crime','Maximise vehicle speed','Limit negative environmental impact'],ans:2,exp:'Maximising vehicle speed is not a stated purpose. The rules aim to keep roads safe, protect users, ensure usability, allow free traffic flow, prevent hinder/damage, limit environmental impact, and prevent crime.'},
+    {topic:'Rules of Conduct',q:'How many general purposes are listed for the rules of conduct?',opts:['5','6','7','8'],ans:2,exp:'There are 7 general purposes: road safety, protecting users/passengers, keeping roads usable, free traffic flow, preventing hinder/damage, limiting environmental impact, and preventing crime.'},
+    // ── Authorised Persons ──
+    {topic:'Authorised Persons',q:'Who is authorised to regulate traffic AND request official documents?',opts:['Crossing guards only','Any citizen during an emergency','Authorised persons such as police officers and public prosecutors','Only judges'],ans:2,exp:'Authorised persons include public prosecutors, police officers, military police, civil servants from the tax service, officials of the Dutch DMV/traffic inspectorate, Rijkswaterstaat officials, and investigating officers.'},
+    {topic:'Authorised Persons',q:'Crossing guards are authorised to do which of the following?',opts:['Stop drivers and check documents','Only stop drivers','Direct traffic freely','Issue fines'],ans:1,exp:'Crossing guards may only stop drivers — they are not authorised to request documents or perform other traffic control duties like authorised persons can.'},
+    {topic:'Authorised Persons',q:'Which organisation\'s officials are authorised to regulate traffic?',opts:['The National Health Service','Rijkswaterstaat (Dept. of waterways and public works)','Local supermarkets','Private security firms'],ans:1,exp:'Officials of Rijkswaterstaat (the Dutch department of waterways and public works) are among the authorised persons who can regulate traffic and request documents.'},
+    {topic:'Authorised Persons',q:'Are military police authorised to request your official documents?',opts:['No, only the regular police can','Yes, military police are authorised persons','Only during wartime','Only on military roads'],ans:1,exp:'Military police are listed as authorised persons under Dutch traffic law and may give instructions and request official documents.'},
+    // ── Mandatory Co-operation ──
+    {topic:'Mandatory Co-operation',q:'Which document must you carry when driving under the 2toDrive scheme?',opts:['A medical certificate','The supervisor pass','A letter from the municipality','A special learner plate certificate'],ans:1,exp:'Under the 2toDrive scheme (driving from age 17), you must carry the supervisor pass in addition to your driving licence and vehicle registration certificate.'},
+    {topic:'Mandatory Co-operation',q:'Can you refuse a request from a police officer to show your driving licence?',opts:['Yes, if you have a valid reason','No, you may not refuse','Yes, if the officer does not show a badge','Only during night hours'],ans:1,exp:'You may not refuse a request by any authorised person to show required documents such as your driving licence, registration certificate, or supervisor pass.'},
+    {topic:'Mandatory Co-operation',q:'What type of test can an authorised person require you to take?',opts:['A written driving theory test','An alcohol or drug test','A vision test','A vehicle inspection on the spot'],ans:1,exp:'An authorised person may require you to comply with an alcohol or drug test, including a breath test, eye co-ordination and speech function test, and saliva swabs.'},
+    {topic:'Mandatory Co-operation',q:'When may you be required to submit to a blood test?',opts:['Whenever requested by any officer','Only after a serious accident','If you refuse a breath test or a breath test is not possible','Never — blood tests are voluntary'],ans:2,exp:'A blood test may be required if you refuse a breath test or if it is not possible to perform a breath test (for example, due to a medical condition).'},
+    {topic:'Mandatory Co-operation',q:'A disabled parking card must be in your possession when:',opts:['Driving any vehicle','Driving a disabled vehicle or parking in a disabled parking space','Only when parking downtown','Whenever requested in advance'],ans:1,exp:'You must carry a disabled parking card when driving a disabled vehicle or when parking in a disabled parking space.'},
+    // ── Hindering / Kapstokartikel ──
+    {topic:'Kapstokartikel',q:'What is the "Kapstokartikel"?',opts:['A Dutch word for driving licence','Article 5 of the Road Traffic Act — a safety net for dangerous behaviour not covered by signs','A type of speed camera','The name for the driving theory test'],ans:1,exp:'The "Kapstokartikel" is Article 5 of the Road Traffic Act. It acts as a safety net, prohibiting road users from operating a vehicle in a way that hinders traffic or causes danger — even when not directly prohibited by signs or markings.'},
+    {topic:'Kapstokartikel',q:'Under Article 5, who must not operate a vehicle dangerously?',opts:['Only professional drivers','Only drivers of heavy vehicles','All road users','Only drivers on motorways'],ans:2,exp:'Article 5 applies to all road users — everyone is prohibited from operating a vehicle in a way that hinders traffic or causes danger to themselves or others.'},
+    {topic:'Kapstokartikel',q:'Is the cause or reason for hindering other traffic relevant under Dutch law?',opts:['Yes, intent matters','No, the cause is irrelevant','Only if it leads to an accident','Only for first-time offences'],ans:1,exp:'The cause or reason for hindering or endangering other traffic is irrelevant under the rules of conduct — only the behaviour itself matters.'},
+    {topic:'Kapstokartikel',q:'Article 5 covers dangerous behaviour that is:',opts:['Only explicitly listed in road signs','Not directly prohibited by signs but still constitutes a danger or hinder','Only relevant on motorways','Already covered by other articles'],ans:1,exp:'Article 5 provides a "safety net" covering dangerous or hindering behaviour that is NOT directly prohibited by traffic signs or road markings — but for which you can still be prosecuted.'},
+    // ── Accidents ──
+    {topic:'Accidents',q:'After a traffic accident, when can you leave the scene?',opts:['Immediately if you were not at fault','Only after exchanging contact and vehicle information with others involved or the police','After 30 minutes','After calling your insurance company'],ans:1,exp:'Regardless of fault, you may not leave the scene until you have exchanged contact and vehicle information with any other people involved or the police.'},
+    {topic:'Accidents',q:'What can you do to mitigate leaving an accident scene without exchanging information?',opts:['Nothing — it is always a full crime','Voluntarily report to a police station within 12 hours','Send a letter within 24 hours','Call the emergency services within 1 hour'],ans:1,exp:'You can mitigate the offence by voluntarily reporting to a police station within 12 hours of the accident, unless you were arrested as a suspect before then.'},
+    {topic:'Accidents',q:'Leaving the scene of an accident while an injured person receives no aid is:',opts:['Only a crime if you caused the accident','Always a crime, even if you report to police later','Permitted if you call an ambulance first','Not a crime if someone else is present'],ans:1,exp:'Leaving an injured person without aid at the scene of an accident is ALWAYS a crime — even if you report to the police afterwards, and regardless of whether you were directly involved in the accident.'},
+    {topic:'Accidents',q:'Are you obliged to help at an accident scene even if you were not directly involved?',opts:['No, only directly involved parties must help','Yes, you are obliged to provide help if needed','Only if you are medically trained','Only if asked by the police'],ans:1,exp:'Regardless of whether you were directly involved in the accident, you are obliged to provide help if needed.'},
+    // ── Racing ──
+    {topic:'Racing',q:'If a driver is caught racing on a public road, who is liable for damages?',opts:['Only the driver','Only the vehicle owner','Both the driver and the vehicle owner','Neither — it is covered by insurance'],ans:2,exp:'If a road user is caught racing or competing on public roads, both the driver AND the vehicle owner are liable for any damages caused.'},
+    {topic:'Racing',q:'Which of the following is an example of racing on public roads?',opts:['Driving at the speed limit','Rapidly accelerating at traffic lights','Overtaking on a motorway','Using cruise control'],ans:1,exp:'Rapidly accelerating at traffic lights is cited as an example of racing or competing with other drivers on public roads, which is prohibited.'},
+    // ── Licence Enforcement ──
+    {topic:'Licence',q:'Who is authorised to confiscate your driving licence at the roadside?',opts:['Any authorised person','Only a judge','Only police officers','The CBR directly'],ans:2,exp:'Police officers are specifically authorised to confiscate your driving licence if you are caught violating traffic regulations. It is then forwarded to the public prosecutor.'},
+    {topic:'Licence',q:'After your licence is confiscated, who decides whether to withhold or return it?',opts:['The police officer','The CBR','The public prosecutor (within 10 days)','The Ministry of Transport'],ans:2,exp:'After confiscation, the licence is forwarded to the public prosecutor, who has 10 days to decide whether to withhold it or return it. A judge may ultimately make the final decision.'},
+    {topic:'Licence',q:'What is the maximum driving disqualification for serious offences?',opts:['2 years','3 years','5 years','10 years'],ans:2,exp:'Driving disqualification may last up to 5 years for serious offences, including death or injury caused by dangerous driving, driving under the influence, or driving while disqualified.'},
+    {topic:'Licence',q:'For less severe traffic infractions, how long can driving disqualification last?',opts:['Up to 6 months','Up to 1 year','Up to 2 years','Up to 5 years'],ans:2,exp:'For less severe infractions, driving disqualification can last up to 2 years. The maximum is 5 years for serious offences.'},
+    {topic:'Licence',q:'If you commit another traffic offence within a short time, what happens to your penalties?',opts:['They are reduced by half','They stay the same','They may be doubled','They are automatically converted to community service'],ans:2,exp:'If you commit another offence within a short time of a previous one, the penalties (including disqualification duration) may be doubled.'},
+    {topic:'Licence',q:'What does driving licence "invalidation" mean?',opts:['Your licence is temporarily suspended','Your licence is declared permanently and completely unusable','You are no longer permitted to drive vehicles requiring that licence category','You must retake the driving test immediately'],ans:2,exp:'Invalidation means you are no longer permitted to operate motor carriages for which your licence is required. It may apply to one category only. You can still cycle, be a passenger, or use vehicles that don\'t need a licence.'},
+    {topic:'Licence',q:'After licence invalidation, can you still ride a bicycle?',opts:['No, all transport rights are revoked','Yes, cycling is still permitted','Only with written permission','Only in rural areas'],ans:1,exp:'Invalidation does not affect your right to cycle, be a passenger in a vehicle, or operate vehicles that do not require a driving licence.'},
+    // ── CBR / BNOR ──
+    {topic:'CBR',q:'What does the abbreviation CBR stand for?',opts:['Central Bureau for Road Regulation','Centraal Bureau Rijvaardigheidsbewijzen (Central Bureau for Driving Proficiency)','Central Board of Road Safety','Committee for Belgian Roads'],ans:1,exp:'CBR stands for Centraal Bureau Rijvaardigheidsbewijzen, which translates as the Central Bureau for Driving Proficiency. They oversee theory and driving tests and decide licence eligibility.'},
+    {topic:'CBR',q:'What is the role of the CBR?',opts:['Issuing speeding fines','Deciding whether you qualify for and keep your driving licence','Building new roads','Setting speed limits'],ans:1,exp:'The CBR decides whether you qualify for a driving licence and whether you get to keep it when your eligibility or driving skills are called into question. They also oversee both theory and driving tests.'},
+    {topic:'CBR',q:'At what point does the BNOR (a branch of CBR) get involved?',opts:['After your first driving test failure','After two consecutive test failures','After four consecutive driving test failures','Only after a serious accident'],ans:2,exp:'The BNOR investigates and determines your driving capabilities if you fail your driving test four times consecutively.'},
+    {topic:'CBR',q:'The CBR may be notified if you exceed the speed limit by more than how much where roadworks are underway?',opts:['20 km/h','25 km/h','30 km/h','50 km/h'],ans:2,exp:'The CBR may be notified if you exceed the speed limit by more than 30 km/h where roadworks are underway (compared to more than 50 km/h in normal situations).'},
+    {topic:'CBR',q:'Which behaviour can lead to notification of the CBR?',opts:['Driving with the window open','Tailgating on the motorway','Parking on double yellow lines','Failing to use indicators'],ans:1,exp:'Tailgating on the motorway (not keeping proper distance to the vehicle in front) is one of the behaviours that can lead to your case being reported to the CBR.'},
+    {topic:'CBR',q:'Can the CBR be notified if you drive through a red light?',opts:['Only if an accident occurs','No, red light offences go only to the prosecutor','Yes, driving through a red light can lead to CBR notification','Only on motorways'],ans:2,exp:'Yes — driving through a red light is one of the specific behaviours that may lead to notification of the CBR, who will then assess your continued eligibility to drive.'},
+    {topic:'CBR',q:'The CBR may be notified if you exceed the speed limit by more than 50 km/h in:',opts:['Roadworks zones only','School zones only','Normal (non-roadworks) situations','Only on motorways'],ans:2,exp:'In normal situations (outside roadworks zones), the CBR may be notified if you exceed the speed limit by more than 50 km/h. In roadworks zones, the threshold is lower at 30 km/h.'},
+    // ── Behaviour Enforcement ──
+    {topic:'Enforcement',q:'Your driving licence may be confiscated by police if you exceed the speed limit by at least:',opts:['30 km/h','40 km/h','50 km/h','100 km/h'],ans:2,exp:'Exceeding the speed limit by 50 km/h or more is one of the behaviours that can result in confiscation of your driving licence by police.'},
+    {topic:'Enforcement',q:'What happens to your confiscated licence after the public prosecutor receives it?',opts:['It is automatically returned after 10 days','The public prosecutor decides within 10 days to withhold or return it','It is immediately destroyed','It is sent to the CBR automatically'],ans:1,exp:'The public prosecutor receives the confiscated licence and has 10 days to decide whether to withhold it or return it. A judge may ultimately make the final decision.'},
+    {topic:'Enforcement',q:'Cutting off other road users may result in:',opts:['An informal warning only','Notification of the CBR','A mandatory driving course','Nothing — it is not a listed offence'],ans:1,exp:'Cutting off other road users is one of the specific behaviours that can lead to your case being referred to the CBR, who will assess your driving eligibility.'},
+    // ── Driving While Disqualified ──
+    {topic:'Disqualification',q:'Is driving while disqualified a criminal offence?',opts:['No, it is only a civil matter','Yes, it is a criminal offence','Only if an accident occurs','Only on motorways'],ans:1,exp:'Operating a motor carriage while disqualified from driving is a criminal offence under Dutch law.'},
+    {topic:'Disqualification',q:'If your licence has been declared invalid, can you drive a vehicle that requires a licence?',opts:['Yes, during the transition period','No — this would be a criminal offence','Only for work purposes','Only if accompanied by a supervisor'],ans:1,exp:'Operating a vehicle for which a driving licence is required, when your licence has been declared invalid, is a criminal offence — just like driving while disqualified.'},
+    // ── Dutch Terms ──
+    {topic:'Dutch Terms',q:'What does "APK" refer to?',opts:['A type of driving licence','The mandatory periodic general inspection of a vehicle (same as MOT)','A road marking system','A Dutch driving school certification'],ans:1,exp:'APK (Algemene Periodieke Keuring) is the mandatory periodic general inspection of a vehicle, equivalent to the MOT in the UK.'},
+    {topic:'Dutch Terms',q:'What is a "Brommobiel"?',opts:['A regular motorcycle','A moped on three or four wheels with closed bodywork, max unladen weight 350 kg','A type of electric scooter','A heavy goods vehicle'],ans:1,exp:'A Brommobiel (also called a microcar) is a moped on three or four wheels with closed bodywork and a maximum unladen weight of 350 kg.'},
+    {topic:'Dutch Terms',q:'What is the maximum construction speed of a "Snorfiets"?',opts:['45 km/h','35 km/h','25 km/h','50 km/h'],ans:2,exp:'A Snorfiets is a moped with a maximum construction speed of 25 km/h. This distinguishes it from a Bromfiets, which can go up to 45 km/h.'},
+    // ── Mixed / Edge Cases ──
+    {topic:'Rules of Conduct',q:'Is it possible to be prosecuted for dangerous behaviour even if no specific traffic sign prohibits it?',opts:['No — only explicit sign violations can be prosecuted','Yes — Article 5 (Kapstokartikel) provides a safety net for this','Only if an accident resulted','Only on private roads'],ans:1,exp:'Yes — Article 5 of the Road Traffic Act (Kapstokartikel) covers dangerous or hindering behaviour not directly prohibited by signs, providing a legal safety net for prosecution.'},
+    {topic:'Accidents',q:'The 12-hour voluntary reporting rule for leaving an accident scene applies:',opts:['Always, with no exceptions','Unless the police arrested you as a suspect before then','Only if no one was injured','Only if the other party was uninsured'],ans:1,exp:'You can mitigate the offence of leaving the scene by voluntarily reporting within 12 hours — UNLESS the police arrested you as a suspect before then, in which case this mitigation does not apply.'},
+    {topic:'Enforcement',q:'Which of these does NOT typically trigger a CBR notification?',opts:['Driving through a red light','Tailgating on a motorway','Parking on a single yellow line','Exceeding the speed limit by more than 50 km/h'],ans:2,exp:'Parking on a single yellow line is a parking offence but is not listed among the specific driving behaviours (dangerous driving, speeding by 50+ km/h, red lights, tailgating, cutting off) that trigger a CBR notification.'},
+    {topic:'Licence',q:'Driving licence invalidation can apply to:',opts:['Only all licence categories at once','One vehicle category only, leaving other categories valid','Only car (B category) licences','Only commercial vehicle licences'],ans:1,exp:'Invalidation may apply to one vehicle category only, meaning you can still be eligible to drive vehicles in other categories that were not affected by the invalidation.'},
+    {topic:'Rules of Conduct',q:'Which authority directly oversees both the theory and the practical driving tests in the Netherlands?',opts:['The police','The public prosecutor\'s office','The CBR','The Ministry of Infrastructure'],ans:2,exp:'The CBR (Centraal Bureau Rijvaardigheidsbewijzen) oversees both the theory and practical driving tests in the Netherlands, and decides on driving licence eligibility.'},
+];
+
+const QUIZ_SIZE=15;
+let quizQuestions=[],qIndex=0,score=0,answered=[];
+
+const overlay=document.getElementById('quiz-overlay');
+const fabQuiz=document.getElementById('fab-quiz');
+const quizCloseBtn=document.getElementById('quiz-close-btn');
+const startScreen=document.getElementById('quiz-start-screen');
+const qScreen=document.getElementById('quiz-q-screen');
+const resultsScreen=document.getElementById('quiz-results-screen');
+const progressBar=document.getElementById('quiz-progress-bar');
+const quizBadge=document.getElementById('quiz-badge');
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function openQuiz(){overlay.classList.add('is-open');showStartScreen()}
+function closeQuiz(){overlay.classList.remove('is-open')}
+
+fabQuiz.addEventListener('click',()=>{if(fdrag)return;openQuiz()});
+quizCloseBtn.addEventListener('click',closeQuiz);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeQuiz()});
+
+function showStartScreen(){
+    startScreen.style.display='block';
+    qScreen.classList.remove('active');
+    resultsScreen.classList.remove('active');
+    progressBar.style.width='0%';
+    quizBadge.textContent=QUIZ_SIZE+' Questions';
+}
+
+document.getElementById('quiz-start-btn').addEventListener('click',startQuiz);
+
+/* Shuffle the options of a question, return new object with updated ans index */
+function shuffleOptions(q){
+    const indices=[0,1,2,3];
+    for(let i=indices.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [indices[i],indices[j]]=[indices[j],indices[i]];
+    }
+    return {...q, opts:indices.map(i=>q.opts[i]), ans:indices.indexOf(q.ans)};
+}
+
+function startQuiz(){
+    quizQuestions=shuffle(ALL_QUESTIONS).slice(0,QUIZ_SIZE).map(shuffleOptions);
+    qIndex=0;score=0;answered=[];
+    startScreen.style.display='none';
+    resultsScreen.classList.remove('active');
+    qScreen.classList.add('active');
+    renderQuestion();
+}
+
+function renderQuestion(){
+    const q=quizQuestions[qIndex];
+    const letters=['A','B','C','D'];
+    progressBar.style.width=((qIndex/QUIZ_SIZE)*100)+'%';
+    quizBadge.textContent=(qIndex+1)+' / '+QUIZ_SIZE;
+
+    qScreen.innerHTML=`
+        <div class="q-meta">
+            <div class="q-counter">Question ${qIndex+1} of ${QUIZ_SIZE}</div>
+            <div class="q-topic">${q.topic}</div>
         </div>
-
-        <h2>Injury or Death At-Fault</h2>
-        <p>In addition to not being allowed to cause hinder or dangerous situations, road users should take care to avoid causing a traffic accident that could injure or kill others.</p>
-
-        <h2>Leaving the Scene of an Accident</h2>
-        <p>Have you been involved in a traffic accident? Then you may not leave the scene of the accident until you have exchanged your contact and vehicle information with any other people involved or the police – regardless of whether you were at fault or not.</p>
-        <p>Leaving the scene of an accident without providing your information is a crime. You can mitigate this by voluntarily reporting to a police station within 12 hours from when the accident occurred. Unless the police arrested you as a suspect before then.</p>
-
-        <div class="glass-card red-accent">
-            <div class="accent-line"></div>
-            <p style="margin-bottom:0">Leaving the scene of an accident while leaving an injured person without aid is always a crime – even if you report to the police later. Regardless of whether you were directly involved in the accident or not, you are obliged to provide help if needed.</p>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options" id="q-opts">
+            ${q.opts.map((o,i)=>`
+            <button class="q-opt" data-idx="${i}">
+                <span class="opt-letter">${letters[i]}</span>
+                <span>${o}</span>
+            </button>`).join('')}
         </div>
-
-        <h2>Racing on the Road</h2>
-        <p>Racing or competing with other drivers on public roads is prohibited. One example of this is rapidly accelerating at traffic lights. If a road user is caught doing this, both the driver and the vehicle owner are liable for any damages.</p>
-
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <h3>Driving Licence Confiscation</h3>
-            <p>Police officers are authorised to confiscate your driving licence if you are caught violating traffic regulations. Your licence will then be forwarded to the public prosecutor.</p>
-            <div class="sub-section">
-                <h3>Driving Disqualification (licence suspended)</h3>
-                <p>Being disqualified from driving means you are not allowed to operate motor carriages for several weeks, months or even years. Driving disqualification may last up to two years for less severe infractions and up to five years for serious offences, including death or injury caused by dangerous driving, driving under the influence of alcohol, or driving while disqualified. If you commit another offence within a short time, these penalties may be doubled.</p>
-            </div>
-            <div class="sub-section">
-                <h3>Driving Licence Invalidation</h3>
-                <p>If you commit several offences, or if you are ineligible to drive for other reasons, your driving licence may be declared invalid. This means you are no longer permitted to operate motor carriages for which your licence is required. Your licence may also be invalidated for one vehicle category only, which means you will remain eligible to operate vehicles in other categories.</p>
-            </div>
+        <div class="q-feedback" id="q-feedback"></div>
+        <div class="q-nav" id="q-nav" style="display:none">
+            <button class="btn-primary" id="btn-next">${qIndex<QUIZ_SIZE-1?'Next Question →':'See Results'}</button>
         </div>
+    `;
+    document.querySelectorAll('.q-opt').forEach(btn=>{
+        btn.addEventListener('click',()=>selectAnswer(parseInt(btn.dataset.idx)));
+    });
+}
 
-        <img src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg" alt="Traffic enforcement" class="custom-centered-image" />
+function selectAnswer(chosen){
+    const q=quizQuestions[qIndex];
+    const correct=q.ans;
+    const isCorrect=chosen===correct;
+    if(isCorrect)score++;
+    answered.push({q:q.q,chosen,correct,isCorrect});
 
-        <h2>Driving Behaviour Enforcement</h2>
-        <p>If you are found in violation of traffic laws, your driving licence may be confiscated. This means the police will take your licence and forward it to the public prosecutor, who will then decide (within 10 days) whether to withhold your licence or return it to you. In either case, a judge may be asked to make the final decision, at which point you may be fined and/or disqualified from driving.</p>
-        <p>Based on your behaviour, confiscation of your driving licence may happen if you:</p>
-        <ul class="prose-list">
-            <li>exceed the speed limit by 50 km/h or more;</li>
-            <li>cause hinder or a dangerous situation.</li>
-        </ul>
-        <p>The violation may also be reported to the CBR (Central Bureau for Driving Proficiency), who will then determine your eligibility to continue driving.</p>
+    // Lock all buttons
+    document.querySelectorAll('.q-opt').forEach((btn,i)=>{
+        btn.disabled=true;
+        if(i===correct)btn.classList.add('correct');
+        else if(i===chosen&&!isCorrect)btn.classList.add('wrong');
+    });
 
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <p>The abbreviation CBR stands for <strong style="color:var(--accent-light);font-family:'Outfit',sans-serif">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence and whether you get to keep it when your eligibility is called into question. The CBR oversees both theory and driving tests. Another branch of the CBR is the BNOR; if you fail your driving test four times consecutively, they will investigate further and determine your driving capabilities.</p>
+    // Feedback
+    const fb=document.getElementById('q-feedback');
+    fb.classList.add('show');
+    if(isCorrect){
+        fb.classList.add('fb-correct');
+        fb.innerHTML=`<strong>✅ Correct!</strong>${q.exp}`;
+    } else {
+        fb.classList.add('fb-wrong');
+        fb.innerHTML=`<strong>❌ Incorrect — the correct answer was "${q.opts[correct]}"</strong>${q.exp}`;
+    }
+    document.getElementById('q-nav').style.display='flex';
+    document.getElementById('btn-next').addEventListener('click',nextQuestion);
+}
+
+function nextQuestion(){
+    qIndex++;
+    if(qIndex<QUIZ_SIZE){renderQuestion()}
+    else{showResults()}
+}
+
+function showResults(){
+    progressBar.style.width='100%';
+    quizBadge.textContent='Complete!';
+    qScreen.classList.remove('active');
+    resultsScreen.classList.add('active');
+    const pct=Math.round((score/QUIZ_SIZE)*100);
+    let msg='',sub='';
+    if(pct>=90){msg='Excellent! 🏆';sub='Outstanding performance — you clearly know the Code of Conduct very well!'}
+    else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review the questions you missed and you\'ll be ready for the exam.'}
+    else if(pct>=50){msg='Keep practising 📖';sub='You have a solid foundation, but there are gaps to fill. Re-read the theory and try again.'}
+    else{msg='More study needed 💡';sub='Don\'t worry — read through the page carefully again and retake the quiz. You\'ll improve!'}
+    const wrong=QUIZ_SIZE-score;
+    resultsScreen.innerHTML=`
+        <div class="result-circle">
+            <div class="result-score">${score}</div>
+            <div class="result-total">out of ${QUIZ_SIZE}</div>
         </div>
+        <div class="result-msg">${msg}</div>
+        <div class="result-sub">${sub}</div>
+        <div class="result-breakdown">
+            <div class="rb-chip correct">✅ ${score} Correct</div>
+            <div class="rb-chip wrong">❌ ${wrong} Wrong</div>
+        </div>
+        <div class="result-actions">
+            <button class="btn-primary" id="btn-retry">🔀 New Random Quiz</button>
+            <button class="btn-secondary" id="btn-review">📋 Review Answers</button>
+        </div>
+        <div id="review-list" style="margin-top:20px;display:none"></div>
+    `;
+    document.getElementById('btn-retry').addEventListener('click',startQuiz);
+    document.getElementById('btn-review').addEventListener('click',()=>{
+        const rl=document.getElementById('review-list');
+        if(rl.style.display==='none'){
+            rl.style.display='block';
+            rl.innerHTML=answered.map((a,i)=>`
+                <div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}">
+                    <div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div>
+                    <div style="font-family:'Outfit',sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div>
+                    <div style="font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${quizQuestions[i].opts[a.chosen]}</strong>${!a.isCorrect?`<br>Correct answer: <strong style="color:#6effc0">${quizQuestions[i].opts[a.correct]}</strong>`:''}</div>
+                </div>`).join('');
+            document.getElementById('btn-review').textContent='Hide Review';
+        } else {rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}
+    });
+}
 
-        <p>The CBR may be notified if you:</p>
-        <ul class="prose-list">
-            <li>tailgate on the motorway (you do not keep proper distance to the vehicle in front of you);</li>
-            <li>cut off other road users;</li>
-            <li>drive through a red light;</li>
-            <li>exceed the speed limit by more than 50 km/h in normal situations;</li>
-            <li>exceed the speed limit by more than 30 km/h where roadworks are underway.</li>
-        </ul>
+/* ── Init ── */
+applyAll();
 
-        <h2>Driving While Disqualified</h2>
-        <p>Operating a motor carriage while disqualified from driving is a criminal offence. This is also the case if you operate a vehicle for which a licence is required and your licence has been declared invalid.</p>
+})();
 
-        <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
-    </div><!-- /page-wrapper -->
-
-
-    <script>
-    (function () {
-        'use strict';
-
-        /* ── Defaults ── */
-        const DEFAULTS = {
-            'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
-            'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
-            'card-bg':'#0a1e41','card-border':'#4da6ff',
-            'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
-        };
-        const PRESETS = {
-            default:  {...DEFAULTS},
-            light:    {'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
-            purple:   {'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
-            green:    {'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
-            amber:    {'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
-            contrast: {'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
-        };
-
-        let state = {};
-        try { state = JSON.parse(localStorage.getItem('et_colors') || '{}'); } catch(e){}
-        state = Object.assign({}, DEFAULTS, state);
-
-        const root = document.documentElement;
-        const colorKeys = ['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
-
-        function hexToRgb(h) {
-            const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);
-            return m ? [parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)] : null;
-        }
-
-        function applyAll() {
-            const bg = hexToRgb(state['bg-deep']);
-            if (bg) {
-                const a = state['opacity-bg']/100;
-                root.style.setProperty('--bg-deep', `rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);
-                document.body.style.backgroundColor = `rgba(${bg[0]},${bg[1]},${bg[2]},${a})`;
-            }
-            root.style.setProperty('--accent',        state['accent']);
-            root.style.setProperty('--accent-light',  state['accent-light']);
-            root.style.setProperty('--red',            state['red']);
-            root.style.setProperty('--text-primary',   state['text-primary']);
-            root.style.setProperty('--heading-color',  state['heading-color']);
-            root.style.setProperty('--text-muted',     state['text-muted']);
-            root.style.setProperty('--text-dim',       state['text-dim']);
-            const cb = hexToRgb(state['card-bg']);
-            if (cb) root.style.setProperty('--card-bg', `rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
-            const cbr = hexToRgb(state['card-border']);
-            if (cbr) root.style.setProperty('--card-border', `rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
-
-            document.documentElement.style.fontSize = state['font-size'] + 'px';
-            document.getElementById('fs-display').textContent = state['font-size'] + 'px';
-
-            // Orbs
-            document.querySelector('.orb-1').style.background = state['accent'];
-            document.querySelector('.orb-2').style.background = state['accent-light'];
-
-            syncUI();
-            try { localStorage.setItem('et_colors', JSON.stringify(state)); } catch(e){}
-        }
-
-        function syncUI() {
-            colorKeys.forEach(key => {
-                const hex = state[key] || '#000000';
-                const safe = /^#[0-9a-f]{6}$/i.test(hex) ? hex : '#000000';
-                const prev  = document.getElementById('prev-'+key);
-                const hexIn = document.getElementById('hex-'+key);
-                const pick  = document.getElementById('pick-'+key);
-                if (prev)  prev.style.background = safe;
-                if (hexIn) hexIn.value = safe.replace('#','').toUpperCase();
-                if (pick)  pick.value  = safe;
-            });
-            [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid]) => {
-                const k = id === 'opacity-bg' ? 'opacity-bg' : id === 'opacity-card' ? 'opacity-card' : 'opacity-border';
-                const sl = document.getElementById(id), vl = document.getElementById(vid);
-                if (sl) sl.value = state[k];
-                if (vl) vl.textContent = state[k] + '%';
-            });
-            document.getElementById('fs-display').textContent = state['font-size'] + 'px';
-        }
-
-        window.openPicker = function(key) {
-            const p = document.getElementById('pick-'+key);
-            if (p) p.click();
-        };
-
-        colorKeys.forEach(key => {
-            const pick  = document.getElementById('pick-'+key);
-            const hexIn = document.getElementById('hex-'+key);
-            const prev  = document.getElementById('prev-'+key);
-            if (pick) pick.addEventListener('input', e => {
-                state[key] = e.target.value;
-                if (prev)  prev.style.background = e.target.value;
-                if (hexIn) hexIn.value = e.target.value.replace('#','').toUpperCase();
-                applyAll();
-            });
-            if (hexIn) {
-                hexIn.addEventListener('input', e => {
-                    const v = e.target.value.replace(/[^a-fA-F0-9]/g,'');
-                    if (v.length === 6) {
-                        state[key] = '#'+v;
-                        if (prev) prev.style.background = '#'+v;
-                        if (pick) pick.value = '#'+v;
-                        applyAll();
-                    }
-                });
-                hexIn.addEventListener('keydown', e => { if(e.key==='Enter') e.target.blur(); });
-            }
-        });
-
-        [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid]) => {
-            const el = document.getElementById(id), vl = document.getElementById(vid);
-            if (el) el.addEventListener('input', e => {
-                state[id] = parseInt(e.target.value);
-                if (vl) vl.textContent = e.target.value + '%';
-                applyAll();
-            });
-        });
-
-        document.getElementById('fs-grow').addEventListener('click',   () => { state['font-size'] = Math.min(26,state['font-size']+1); applyAll(); });
-        document.getElementById('fs-shrink').addEventListener('click', () => { state['font-size'] = Math.max(11,state['font-size']-1); applyAll(); });
-        document.getElementById('fs-reset').addEventListener('click',  () => { state['font-size'] = 16; applyAll(); });
-
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const p = PRESETS[btn.dataset.preset];
-                if (p) { state = Object.assign({},p); applyAll(); }
-            });
-        });
-
-        document.getElementById('reset-all-btn').addEventListener('click', () => {
-            state = Object.assign({}, DEFAULTS); applyAll();
-        });
-
-        /* ══════════════════════════════════════════
-           DRAGGABLE TRIGGER BUTTON
-        ══════════════════════════════════════════ */
-        const trigger = document.getElementById('palette-trigger');
-        const panel   = document.getElementById('color-panel');
-        const closeBtn= document.getElementById('panel-close-btn');
-        const dragHandle = document.getElementById('panel-drag-handle');
-
-        // Saved positions
-        let trigPos = null, panelPos = null;
-        try {
-            trigPos  = JSON.parse(localStorage.getItem('et_trig_pos'));
-            panelPos = JSON.parse(localStorage.getItem('et_panel_pos'));
-        } catch(e){}
-
-        function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
-        const isMobile = () => window.innerWidth <= 767;
-
-        function setTriggerPos(x, y) {
-            const W = window.innerWidth, H = window.innerHeight;
-            const bw = trigger.offsetWidth  || 52;
-            const bh = trigger.offsetHeight || 52;
-            x = clamp(x, 0, W - bw);
-            y = clamp(y, 0, H - bh);
-            trigger.style.right   = 'unset';
-            trigger.style.top     = 'unset';
-            trigger.style.transform = 'none';
-            trigger.style.left  = x + 'px';
-            trigger.style.top   = y + 'px';
-            return {x, y};
-        }
-
-        function setPanelPos(x, y) {
-            const W = window.innerWidth, H = window.innerHeight;
-            const pw = panel.offsetWidth  || 310;
-            const ph = panel.offsetHeight || 500;
-            x = clamp(x, 0, W - pw);
-            y = clamp(y, 0, H - Math.min(ph, H * 0.85));
-            panel.classList.add('positioned');
-            panel.style.right  = 'unset';
-            panel.style.bottom = 'unset';
-            panel.style.left = x + 'px';
-            panel.style.top  = y + 'px';
-            return {x, y};
-        }
-
-        // Restore saved trigger position
-        if (trigPos && !isMobile()) {
-            setTriggerPos(trigPos.x, trigPos.y);
-        }
-
-        /* Generic drag factory — works for mouse + touch */
-        function makeDraggable(el, getStartPos, onMove, onEnd) {
-            let dragging = false, startX, startY, startElX, startElY;
-
-            function pointerDown(e) {
-                // Don't drag on interactive children
-                if (e.target !== el && (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.closest('button') || e.target.closest('input'))) return;
-                dragging = false;
-                const pt = e.touches ? e.touches[0] : e;
-                startX = pt.clientX; startY = pt.clientY;
-                const pos = getStartPos();
-                startElX = pos.x; startElY = pos.y;
-                document.addEventListener('mousemove', pointerMove, {passive:false});
-                document.addEventListener('mouseup',   pointerUp);
-                document.addEventListener('touchmove', pointerMove, {passive:false});
-                document.addEventListener('touchend',  pointerUp);
-            }
-
-            function pointerMove(e) {
-                const pt = e.touches ? e.touches[0] : e;
-                const dx = pt.clientX - startX;
-                const dy = pt.clientY - startY;
-                if (!dragging && Math.sqrt(dx*dx+dy*dy) < 5) return;
-                dragging = true;
-                e.preventDefault();
-                onMove(startElX + dx, startElY + dy);
-            }
-
-            function pointerUp(e) {
-                document.removeEventListener('mousemove', pointerMove);
-                document.removeEventListener('mouseup',   pointerUp);
-                document.removeEventListener('touchmove', pointerMove);
-                document.removeEventListener('touchend',  pointerUp);
-                if (dragging) { onEnd(); }
-                else { el._wasDrag = false; }
-                dragging = false;
-            }
-
-            el.addEventListener('mousedown',  pointerDown);
-            el.addEventListener('touchstart', pointerDown, {passive:true});
-
-            return () => dragging; // isDragging getter
-        }
-
-        /* Trigger drag */
-        const isTriggerDragging = makeDraggable(
-            trigger,
-            () => {
-                const r = trigger.getBoundingClientRect();
-                return { x: r.left, y: r.top };
-            },
-            (x, y) => {
-                trigger.style.cursor = 'grabbing';
-                setTriggerPos(x, y);
-            },
-            () => {
-                trigger.style.cursor = 'grab';
-                const r = trigger.getBoundingClientRect();
-                trigPos = { x: r.left, y: r.top };
-                try { localStorage.setItem('et_trig_pos', JSON.stringify(trigPos)); } catch(e){}
-                // Reposition panel relative to trigger if open
-                if (panel.classList.contains('is-open')) repositionPanelNearTrigger();
-            }
-        );
-
-        /* Panel drag (via header) */
-        const isPanelDragging = makeDraggable(
-            dragHandle,
-            () => {
-                const r = panel.getBoundingClientRect();
-                return { x: r.left, y: r.top };
-            },
-            (x, y) => {
-                dragHandle.style.cursor = 'grabbing';
-                setPanelPos(x, y);
-            },
-            () => {
-                dragHandle.style.cursor = 'grab';
-                const r = panel.getBoundingClientRect();
-                panelPos = { x: r.left, y: r.top };
-                try { localStorage.setItem('et_panel_pos', JSON.stringify(panelPos)); } catch(e){}
-            }
-        );
-
-        /* Open panel near trigger */
-        function repositionPanelNearTrigger() {
-            if (isMobile()) return;
-            const tr  = trigger.getBoundingClientRect();
-            const pw  = panel.offsetWidth  || 310;
-            const W   = window.innerWidth;
-            // Try left side first, fallback to right
-            let px = tr.left - pw - 12;
-            if (px < 8) px = tr.right + 12;
-            let py = tr.top + tr.height/2 - (panel.offsetHeight||400)/2;
-            const saved = setPanelPos(px, py);
-            panelPos = saved;
-        }
-
-        /* Toggle panel */
-        let panelOpen = false;
-
-        trigger.addEventListener('click', function(e) {
-            if (isTriggerDragging()) return; // suppress click after drag
-            panelOpen = !panelOpen;
-            panel.classList.toggle('is-open', panelOpen);
-            trigger.classList.toggle('is-open', panelOpen);
-            if (panelOpen) {
-                if (isMobile()) return;
-                // If we have a saved panel pos, use it; otherwise put near trigger
-                if (panelPos) {
-                    setPanelPos(panelPos.x, panelPos.y);
-                } else {
-                    repositionPanelNearTrigger();
-                }
-            }
-        });
-
-        closeBtn.addEventListener('click', () => {
-            panelOpen = false;
-            panel.classList.remove('is-open');
-            trigger.classList.remove('is-open');
-        });
-
-        // Close on outside tap/click
-        document.addEventListener('mousedown', e => {
-            if (!panelOpen) return;
-            if (!panel.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
-                panelOpen = false;
-                panel.classList.remove('is-open');
-                trigger.classList.remove('is-open');
-            }
-        });
-
-        // Restore panel position on load
-        if (panelPos && !isMobile()) {
-            setPanelPos(panelPos.x, panelPos.y);
-        }
-
-        /* ── Init ── */
-        applyAll();
-
-    })();
-
-    /* ── Security ── */
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.onkeydown = function(e) {
-        if (e.keyCode===123) return false;
-        if (e.ctrlKey && e.keyCode==='U'.charCodeAt(0)) return false;
-        if (e.ctrlKey && e.keyCode==='S'.charCodeAt(0)) return false;
-        if (e.ctrlKey && e.shiftKey && ['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode)) return false;
-    };
-    document.addEventListener('selectstart', e => e.preventDefault());
-    document.addEventListener('copy', e => e.preventDefault());
-    </script>
-    <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
+/* ── Security ── */
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){
+    if(e.keyCode===123)return false;
+    if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false;
+};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
+<script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
 </html>
