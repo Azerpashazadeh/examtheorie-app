@@ -1,571 +1,916 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>
-        Dikey Hat Örneği
-    </title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&amp;display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>القيادة تحت تأثير المؤثرات – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;
+        --glass-shine:rgba(255,255,255,.06);--red:#e84545;
+        --text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);
+        --text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;
+        --card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22);
+    }
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{
+        font-family:'Outfit',sans-serif;background-color:var(--bg-deep);
+        color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;
+        background-image:
+            radial-gradient(ellipse 80% 60% at 80% 10%,rgba(26,108,246,.18) 0%,transparent 60%),
+            radial-gradient(ellipse 60% 50% at 20% 80%,rgba(26,108,246,.12) 0%,transparent 55%),
+            radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);
+        transition:background-color .35s,color .35s;
+    }
+    body::before{
+        content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+        background-image:
+            linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);
+        background-size:60px 60px;
+    }
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;right:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;left:-80px}
+
+    /* ── Layout ── */
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;
+        background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;
+        color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:10px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px}
+
+    .glass-card{
+        background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;
+        padding:28px 36px 28px 28px;position:relative;overflow:hidden;
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);margin-bottom:24px;
+        box-shadow:0 4px 24px rgba(0,0,0,.35),inset 0 1px 0 var(--glass-shine);
+    }
+    .glass-card::before{content:'';position:absolute;top:0;right:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .glass-card .accent-line{position:absolute;right:0;top:0;width:3px;height:100%;border-radius:4px 0 0 4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .glass-card.red-accent{border-color:rgba(232,69,69,.2)}
+    .glass-card.red-accent .accent-line{background:linear-gradient(180deg,var(--red),#ff8a8a)}
+
+    .vocab-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:10px}
+    .vocab-list li{padding:13px 16px;background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.12);
+        border-radius:10px;font-family:'Lora',serif;font-size:.92rem;color:var(--text-muted);line-height:1.6}
+    .vocab-list li strong{display:block;font-family:'Outfit',sans-serif;font-weight:600;color:var(--accent-light);
+        font-size:.88rem;letter-spacing:.06em;margin-bottom:3px}
+
+    .prose-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:6px}
+    .prose-list li{font-family:'Lora',serif;font-size:.95rem;color:var(--text-muted);padding-right:22px;position:relative}
+    .prose-list li::before{content:'';position:absolute;right:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--accent);box-shadow:0 0 6px rgba(26,108,246,.35)}
+
+    .dash-list{list-style:none;padding:0;margin:8px 16px 8px 0;display:flex;flex-direction:column;gap:4px}
+    .dash-list li{font-family:'Lora',serif;font-size:.92rem;color:var(--text-muted);padding-right:16px;position:relative}
+    .dash-list li::before{content:'–';position:absolute;right:0;color:var(--accent-light)}
+
+    .enforc-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px}
+    .enforc-list li{padding:16px 28px 16px 20px;background:rgba(26,108,246,.06);
+        border:1px solid rgba(77,166,255,.12);border-radius:12px;position:relative}
+    .enforc-list li::before{content:'';position:absolute;right:0;top:0;width:3px;height:100%;
+        border-radius:0 3px 3px 0;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .enforc-list li strong{display:block;font-family:'Outfit',sans-serif;font-weight:600;
+        color:var(--accent-light);font-size:.9rem;margin-bottom:6px}
+    .enforc-list li p{margin-bottom:6px}
+    .enforc-list li p:last-child{margin-bottom:0}
+
+    .sub-section{margin-top:20px;padding-top:18px;border-top:1px solid rgba(77,166,255,.1)}
+
+    .custom-image,.custom-centered-image{width:100%;height:auto;border-radius:12px;display:block;
+        border:1px solid var(--card-border);margin:16px 0;box-shadow:0 8px 32px rgba(0,0,0,.45)}
+    .custom-centered-image{margin:28px auto}
+
+    .image-container{display:flex;flex-wrap:wrap;gap:20px;margin:20px 0}
+    .image-container figure{flex:1 1 46%;margin:0}
+    .image-container img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    .image-container figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);text-align:center;margin-top:8px}
+    .image-container1{display:flex;justify-content:center;margin:20px 0}
+    .image-container1 figure{width:100%;margin:0;text-align:center}
+    .image-container1 img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    .image-container1 figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);text-align:right;margin-top:8px}
+    @media(max-width:550px){.image-container figure{flex:1 1 100%}}
+
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+        background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;
+        border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'→';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}
+    .page-wrapper>*:nth-child(2){animation-delay:.10s}
+    .page-wrapper>*:nth-child(3){animation-delay:.15s}
+    .page-wrapper>*:nth-child(4){animation-delay:.20s}
+    .page-wrapper>*:nth-child(n+5){animation-delay:.25s}
+
+    /* ══ FAB ROW ══ */
+    #fab-row{
+        position:fixed;left:20px;top:50%;transform:translateY(-50%);
+        z-index:1100;display:flex;flex-direction:column;gap:10px;
+        user-select:none;-webkit-user-select:none;touch-action:none;
+    }
+    @media(max-width:767px){#fab-row{left:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;
+        display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;
+        box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);
+        transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;
+        border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);
+        background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;
+        border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+
+    /* ══ COLOUR PANEL ══ */
+    #color-panel{
+        position:fixed;left:82px;top:50%;
+        transform:translateY(-50%) scale(.95);transform-origin:left center;
+        z-index:1050;width:320px;max-height:85vh;border-radius:18px;
+        overflow:hidden;display:flex;flex-direction:column;
+        background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);
+        backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+        box-shadow:0 12px 50px rgba(0,0,0,.7);
+        opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none;
+    }
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){
+        #color-panel{
+            position:fixed!important;right:0!important;left:0!important;bottom:0!important;
+            top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;
+            transform:translateY(100%)!important;
+            transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;
+            opacity:1!important;pointer-events:none;
         }
+        #color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}
+    }
+    .panel-header{
+        padding:14px 16px 12px;background:rgba(6,18,45,1);
+        border-bottom:1px solid rgba(77,166,255,.12);
+        display:flex;align-items:center;justify-content:space-between;
+        cursor:grab;flex-shrink:0;
+        background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);
+        background-size:6px 6px;background-repeat:repeat;
+    }
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}
+        .panel-header::before{content:'';position:absolute;top:8px;right:50%;transform:translateX(50%);
+            width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}
+        .drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;
+        border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+        color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);
+        background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;
+        color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;
+        font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .section-title{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;
+        margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .section-title::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;
+        border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);
+        opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);
+        border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;
+        color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:left}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;
+        border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
 
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-             
-
-        h1,
-        h2 {
-            color: #a70000;
-        }
-
-        h3 {
-            color: #000000;
-        }
-
-        .important-words1 {
-            background-color: #f9c3ae;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        .important-words2 {
-            background-color: #f9c3ae;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: rgb(201, 17, 17);
-            position: absolute;
-            top: 80px;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-       .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: rgb(201, 17, 17);
-            position: absolute;
-            top: 0px;
-            right: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-}
-
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 20px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: left;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 550px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        /* Bu kisimdaki li-ler kalin bashlikli alt metni olan liste içindir */
-        ul {
-            list-style-type: disc;
-            padding-left: 30px;
-        }
-
-        li {
-            margin-bottom: px;
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: ;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    /* ══ QUIZ OVERLAY ══ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);
+        backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+        padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);
+        border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;
+        display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);
+        animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;
+        background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;
+        background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);
+        font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;
+        background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;
+        cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;
+        background:rgba(77,166,255,.1);color:var(--accent-light);
+        font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;
+        border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}
+    .quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;
+        background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;
+        border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);
+        cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;
+        color:var(--text-muted);text-align:right;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);
+        border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;
+        font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-start;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);
+        box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
-
 <body>
-    <h2>
-        القيادة تحت التأثير
-    </h2>
-    <div class="important-words2">
-        <div class="vertical-line2">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- ═══ FLOATING FAB ROW ═══ -->
+<div id="fab-row">
+    <button class="fab" id="fab-palette" title="تخصيص الألوان">
+        <span class="fab-tip">الألوان</span>🎨
+    </button>
+    <button class="fab" id="fab-quiz" title="ابدأ الاختبار">
+        <span class="fab-tip">اختبار</span>📝
+    </button>
+</div>
+
+<!-- ═══ COLOUR PANEL ═══ -->
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner">
+            <span class="drag-icon">⠿</span>
+            <div class="panel-title">🎨 إعدادات الألوان والنصوص</div>
         </div>
-        <h3>
-            السائقون الجدد
-        </h3>
-        <p>
-            عند حصولك على رخصة القيادة لأول مرة تُعدّ سائقًا جديدًا خلال السنوات الخمس الأولى. وإذا حصلتَ على رخصة
-            درّاجة نارية خفيفة (موبيد) أو رخصة جرّار قبل سنّ 18 عامًا، فتُعدّ سائقًا جديدًا خلال السنوات السبع الأولى.
-            وتُطبَّق قواعد أشدّ قليلًا على السائقين الجدد.
-        </p>
-        <h3>
-            لكل ألف (الألفية)
-        </h3>
-        <p>
-            قيمة (يُشار إليها بالرمز ‰) تُستخدم للدلالة على مستوى الكحول في الدم.
-        </p>
-        <h3>
-            µg/l
-        </h3>
-        <p>
-            في قطاع الضيافة، تُقدَّم الجعة والنبيذ والمشروبات الروحية عادةً في كؤوس قياسية الحجم:
-        </p>
-        <ul>
-            <li>
-                جعة 25 سنتيلتر (كحول 5%)
-            </li>
-            <li>
-                نبيذ 10 سنتيلتر (كحول 12%)
-            </li>
-            <li>
-                مشروبات روحية 3.5 سنتيلتر (كحول 35%)
-            </li>
-        </ul>
-        <p>
-            يضمن ذلك أن يحتوي كأس النبيذ على نفس كمية الكحول الصافي الموجودة في كأس الجعة أو كأس المشروبات الروحية. ولا
-            ينطبق هذا حين لا تُستخدم الكؤوس القياسية، مثل الجعات المتخصّصة والكوكتيلات. ففي هذه الحالات غالبًا ما تكون
-            كمية الكحول الصافي في الكأس أكبر بكثير.
-        </p>
+        <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
+    <div class="panel-body">
+        <div class="font-strip">
+            <div class="font-strip-label">حجم الخط</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ إعادة</button>
+        </div>
+        <div class="presets-strip">
+            <div class="strip-label">السمات السريعة</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 افتراضي</button>
+                <button class="preset-btn" data-preset="light">☀️ فاتح</button>
+                <button class="preset-btn" data-preset="purple">🟣 بنفسجي</button>
+                <button class="preset-btn" data-preset="green">🟢 أخضر</button>
+                <button class="preset-btn" data-preset="amber">🟡 كهرماني</button>
+                <button class="preset-btn" data-preset="contrast">⬛ تباين عالي</button>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">الخلفية</div>
+            <div class="color-row">
+                <div class="color-row-label">خلفية الصفحة</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div>
+                    <input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false" placeholder="050d1a"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>شفافية الخلفية</label>
+                <input type="range" id="opacity-bg" min="0" max="100" value="100"/>
+                <div class="opacity-val" id="opacity-bg-val">100%</div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">ألوان التمييز</div>
+            <div class="color-row">
+                <div class="color-row-label">اللون التمييزي الأساسي</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div>
+                    <input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false" placeholder="1a6cf6"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">اللون التمييزي الفاتح</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div>
+                    <input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false" placeholder="4da6ff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">التحذير / الأحمر</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div>
+                    <input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false" placeholder="e84545"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">ألوان النصوص</div>
+            <div class="color-row">
+                <div class="color-row-label">العنوان الرئيسي (h1)</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div>
+                    <input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false" placeholder="e8f0ff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">عناوين الأقسام</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div>
+                    <input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false" placeholder="4da6ff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">نص الجسم</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div>
+                    <input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false" placeholder="b4cdff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">النصوص الخافتة</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div>
+                    <input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false" placeholder="8cafd6"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">البطاقات واللوحات</div>
+            <div class="color-row">
+                <div class="color-row-label">خلفية البطاقة</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div>
+                    <input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false" placeholder="0a1e41"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>شفافية البطاقة</label>
+                <input type="range" id="opacity-card" min="0" max="100" value="55"/>
+                <div class="opacity-val" id="opacity-card-val">55%</div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">حدود البطاقة</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div>
+                    <input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false" placeholder="4da6ff"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>شفافية الحدود</label>
+                <input type="range" id="opacity-border" min="0" max="100" value="22"/>
+                <div class="opacity-val" id="opacity-border-val">22%</div>
+            </div>
+        </div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ إعادة تعيين جميع الإعدادات</button>
+    </div>
+</div>
+
+<!-- ═══ QUIZ OVERLAY ═══ -->
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header">
+            <div class="quiz-header-left">
+                <div class="quiz-title">📝 اختبار القيادة تحت تأثير المؤثرات</div>
+                <div class="quiz-badge" id="quiz-badge">15 سؤالاً</div>
+            </div>
+            <button class="quiz-close" id="quiz-close-btn">✕</button>
+        </div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body" id="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🍺</span>
+                <h2>اختبر معلوماتك</h2>
+                <p>15 سؤالاً مختاراً عشوائياً من نظرية القيادة تحت تأثير المؤثرات. اقرأ الصفحة بعناية قبل البدء — كل سؤال مباشر من محتواها.</p>
+                <div class="qs-info">
+                    <div class="qs-chip">📋 15 سؤالاً</div>
+                    <div class="qs-chip">🔀 ترتيب عشوائي</div>
+                    <div class="qs-chip">✅ ملاحظات فورية</div>
+                </div>
+                <button class="btn-primary" id="quiz-start-btn">▶ ابدأ الاختبار</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="page-wrapper">
+    <div class="brand-strip">
+        <span>ExamTheorie</span><span class="dot">›</span>
+        <span>سيارة الركاب</span><span class="dot">›</span>
+        <span style="color:var(--text-primary)">القيادة تحت تأثير المؤثرات</span>
+    </div>
+    <h1>القيادة تحت تأثير المؤثرات</h1>
+    <div class="section-divider"></div>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>المصطلحات الهولندية المهمة</h3>
+        <ul class="vocab-list">
+            <li><strong>السائقون الجدد</strong>عند الحصول على رخصة القيادة لأول مرة، تعتبر سائقاً جديداً لمدة خمس سنوات. إذا حصلت على رخصة دراجة نارية أو جرار قبل سن 18، تعتبر سائقاً جديداً لمدة سبع سنوات. تطبق قواعد أكثر صرامة قليلاً على السائقين الجدد.</li>
+            <li><strong>الجزء من الألف</strong>قيمة (مشار إليها بـ ‰) تستخدم للإشارة إلى مستوى الكحول في الدم.</li>
+            <li><strong>ميكروغرام/لتر</strong>وحدة تستخدم لقياس تركيز الكحول في الزفير (ميكروغرام لكل لتر).</li>
+        </ul>
+    </div>
+
+    <p>في قطاع الضيافة، يُقدَّم البيرة والنبيذ والمشروبات الروحية عادةً في أكواب ذات أحجام قياسية:</p>
+    <ul class="prose-list">
+        <li>البيرة 25 سنتيلتر (5% كحول)</li>
+        <li>النبيذ 10 سنتيلتر (12% كحول)</li>
+        <li>المشروبات الروحية 3.5 سنتيلتر (35% كحول)</li>
+    </ul>
+    <p>يضمن ذلك احتواء كأس نبيذ واحد على نفس كمية الكحول النقي الموجودة في كأس بيرة واحد أو كأس مشروب روحي واحد. لا ينطبق ذلك عند عدم استخدام الأكواب القياسية، مثل البيرة الخاصة والكوكتيلات. في هذه الحالات، غالباً ما يكون هناك كمية أكبر بكثير من الكحول النقي في الكأس الواحد.</p>
+
     <div class="image-container1">
         <figure>
-            <img alt="الصورة 1"
-                src="https://static.wixstatic.com/media/4b688f_0fdd95b6c5d14282a8f65097358f4013~mv2.jpg" />
-            <figcaption>
-                <em>
-                    يحتوي كل كأس على كمية متساوية من الكحول الصافي.
-                </em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_0fdd95b6c5d14282a8f65097358f4013~mv2.jpg" alt="الأكواب القياسية"/>
+            <figcaption><em>كل كأس يحتوي على نفس كمية الكحول النقي.</em></figcaption>
         </figure>
     </div>
-    <p>
-        تُعدّ القيادة تحت تأثير الكحول أو المخدّرات أو الأدوية التي تؤثّر في قدرتك على القيادة جريمةً جنائية. وتُطبَّق
-        قيم حدّية معيّنة. وبالنسبة للكحول فهي:
-    </p>
-    <ul>
-        <li>
-            <strong>
-                للسائقين الجدد: الحدّ الأقصى 88 ميكروغرام/لتر أو 0.2 لكل ألف.
-            </strong>
-            <p>
-                يُعادل ذلك تقريبًا من نصف إلى كأسٍ واحد قياسي من الجعة أو النبيذ أو المشروبات الروحية.
-            </p>
-        </li>
-        <li>
-            <strong>
-                للسائقين ذوي الخبرة: الحدّ الأقصى 220 ميكروغرام/لتر أو 0.5 لكل ألف.
-            </strong>
-            <p>
-                يُعادل ذلك نحو 1.5 إلى 2.5 كأسًا قياسيًا من الجعة أو النبيذ أو المشروبات الروحية.
-            </p>
-            <strong>
-                تنطبق هذه القيمة الحدّية أيضًا على راكبي الدراجات!
-            </strong>
-        </li>
-    </ul>
-    <p>
-        تختلف القيم الحدّية للمخدّرات والأدوية باختلاف كلّ مادة. ومع المخدّرات، يُستحسن افتراضُ أنّك بعد «جرعة» واحدة
-        تتجاوز الحدّ غالبًا، وبالتالي يُمنع عليك القيادة. وقد تبقى بعض المخدّرات في الجسم لعدّة أيام.
-    </p>
-    <p>
-        تُعدّ القيادة تحت التأثير المشترك للمخدّرات والكحول جريمةً بغضّ النظر عن الكمية.
-    </p>
+
+    <p>القيادة تحت تأثير الكحول أو المخدرات أو الأدوية التي تؤثر على قدرتك على القيادة جريمة جنائية. تطبق حدود معينة. بالنسبة للكحول، هذه الحدود هي:</p>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>حدود الكحول</h3>
+        <ul class="vocab-list">
+            <li><strong>للسائقين الجدد: الحد الأقصى 88 ميكروغرام/لتر أو 0.2 جزء من الألف</strong>وهذا ما يعادل تقريباً 0.5 إلى 1 كأس قياسي من البيرة أو النبيذ أو المشروبات الروحية.</li>
+            <li><strong>للسائقين ذوي الخبرة: الحد الأقصى 220 ميكروغرام/لتر أو 0.5 جزء من الألف</strong>وهذا ما يعادل تقريباً 1.5 إلى 2.5 كأس قياسي من البيرة أو النبيذ أو المشروبات الروحية. ينطبق هذا الحد أيضاً على راكبي الدراجات!</li>
+        </ul>
+    </div>
+
+    <p>تختلف حدود المخدرات والأدوية حسب نوع المخدر. مع المخدرات، من الأفضل أن تفترض أنه بعد جرعة واحدة تكون قد تجاوزت الحد عموماً وبالتالي لا يُسمح لك بالقيادة. تبقى بعض المخدرات في جسمك لمدة تصل إلى عدة أيام.</p>
+    <p>القيادة تحت تأثير المخدرات والكحول معاً جريمة جنائية بغض النظر عن الكمية.</p>
+
     <div class="image-container">
         <figure>
-            <img alt="الصورة 1"
-                src="https://static.wixstatic.com/media/4b688f_363a4357b25642fd888d4719c2a08c64~mv2.jpg">
-            <figcaption>
-                <em>
-                    تصبح مسؤولًا جنائيًا منذ اللحظة التي تتناول فيها أول كأس من الكحول ثم تشرع بالقيادة.
-                </em>
-            </figcaption>
-            </img>
+            <img src="https://static.wixstatic.com/media/4b688f_363a4357b25642fd888d4719c2a08c64~mv2.jpg" alt="مسؤولية القيادة تحت التأثير"/>
+            <figcaption><em>أنت مسؤول جنائياً من اللحظة التي تتناول فيها أول كأس كحول وتقوم بالقيادة.</em></figcaption>
         </figure>
         <figure>
-            <img alt="الصورة 2"
-                src="https://static.wixstatic.com/media/4b688f_0350da323b1949e197fa94de83e23723~mv2.jpg" />
-            <figcaption>
-                <em>
-                    قد تُحرَم من القيادة لمجرّد إبداء نيتك القيادة تحت التأثير.
-                </em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_0350da323b1949e197fa94de83e23723~mv2.jpg" alt="النية في القيادة"/>
+            <figcaption><em>قد يُمنعك من القيادة مجرد إظهار نيتك في القيادة تحت التأثير.</em></figcaption>
         </figure>
     </div>
-    <div class="important-words2">
-        <div class="vertical-line2">
-        </div>
-        <h3>
-            المركبات
-        </h3>
-        <p>
-            الدراجات الهوائية، الدراجات النارية الخفيفة، مركبات ذوي الإعاقة، الترام، المركبات الآلية، المركبات المجرورة
-            بالخيول، وعربات اليد.
-        </p>
-        <h3>
-            الدراجات النارية الخفيفة (Mopeds)
-        </h3>
-        <p>
-            مركبة آلية على عجلتين أو ثلاث أو أربع، لا يمكنها ولا يجوز لها أن تتجاوز سرعة 45 كم/س (السرعة المصمَّمة)،
-            ومجهّزة بمحرّك احتراقٍ داخلي سعته القصوى 50 سم³ (سي سي) أو محرّك احتراق/كهربائي بقدرة صافية قصوى 4 كيلوواط.
-            ويكون للدراجة ذات الأربع عجلات (brommobiel) وزنٌ فارغ أقلّ من 350 كغ. والدراجات النارية الخفيفة ليست مركبات
-            لذوي الإعاقة.
-        </p>
-        <h3>
-            المركبات الآلية (Motor carriages)
-        </h3>
-        <p>
-            جميع المركبات المُحرّكة بمحرّك. ولا يشترط أن تسير على سكك (مثل القطار أو المترو أو الترام). ولا يشمل ذلك
-            الدراجات ذات المساعدة بالدّواسات. تنبيه: يشمل ذلك حافلات الترولي ودراجات البيديليك السريعة!
-        </p>
-        <h3>
-            حظر القيادة (ممنوع القيادة)
-        </h3>
-        <p>
-            حظرٌ على تشغيل المركبات (بما في ذلك الدراجات الهوائية)، ويمكن فرضه إذا ضُبِطت تقود أو تحاول القيادة تحت
-            تأثير الكحول أو المخدّرات أو الأدوية.
-        </p>
-        <h3>
-            المنع من القيادة (تعليق رخصة القيادة)
-        </h3>
-        <p>
-            منعٌ من قيادة أيّ مركبة آلية لأسابيع أو أشهر أو حتى سنوات. وإذا ضُبِطتَ مخالفًا لأنظمة المرور، فقد يُمنعك
-            وكيل النيابة أو القاضي من القيادة. ولا يزال ركوب الدراجة مسموحًا.
-        </p>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>التعريفات الأساسية</h3>
+        <ul class="vocab-list">
+            <li><strong>المركبات</strong>الدراجات، الدراجات النارية، مركبات المعوقين، الترام، المركبات الآلية، العربات التي تجرها الخيول والعربات اليدوية.</li>
+            <li><strong>الدراجات النارية</strong>مركبة آلية على عجلتين أو ثلاث أو أربع، لا يمكنها ويجب ألا تتجاوز 45 كم/ساعة (السرعة المصممة)، مجهزة بمحرك احتراق داخلي بسعة أقصاها 50 سم³ أو محرك كهربائي بقوة صافية قصوى 4 كيلوواط. الدراجة النارية ذات الأربع عجلات (برومموبيل) يقل وزنها الفارغ عن 350 كجم. الدراجات النارية ليست مركبات معوقين.</li>
+            <li><strong>المركبات الآلية</strong>جميع المركبات المدفوعة بالمحركات. لا يجوز أن تتطلب سككاً للتنقل (مثل القطار أو المترو أو الترام). لا يشمل ذلك الدراجات بمساعدة الدواسات. انتباه: يشمل ذلك الحافلات التي تعمل بالتيار الكهربائي والدراجات الكهربائية السريعة!</li>
+            <li><strong>حظر القيادة (ممنوع من القيادة)</strong>حظر تشغيل المركبات (بما في ذلك الدراجات)، والذي قد يُفرض إذا تم ضبطك تقود أو تحاول القيادة تحت تأثير الكحول أو المخدرات أو الأدوية.</li>
+            <li><strong>سحب رخصة القيادة (تعليق رخصة القيادة)</strong>إيقاف مؤقت من قيادة أي مركبة آلية لمدة عدة أسابيع أو شهور أو حتى سنوات. إذا تم ضبطك تنتهك قواعد المرور، قد يقرر المدعي العام أو القاضي سحب رخصة قيادتك. لا يزال ركوب الدراجة مسموحاً به.</li>
+        </ul>
     </div>
-    <h2>
-        إنفاذ مخالفات القيادة تحت التأثير
-    </h2>
-    <p>
-        إذا قدتَ أو حاولتَ تشغيل مركبة وأنت تحت التأثير، يملك أفراد الشرطة صلاحية اتخاذ إجراءٍ فوري. وقد يتم ذلك عبر
-        الوسائل الآتية:
-    </p>
-    <ul>
+
+    <h2>إنفاذ قانون القيادة تحت التأثير</h2>
+    <p>إذا قمت بالقيادة أو محاولة تشغيل مركبة أثناء التأثير، مخوَّل للشرطة اتخاذ إجراء فوري. قد يتم ذلك عبر الوسائل التالية:</p>
+
+    <ul class="enforc-list">
         <li>
-            <strong>
-                حظر القيادة (ممنوع القيادة)
-            </strong>
-            <p>
-                إنّ التخطيط أو محاولة تشغيل مركبة تحت التأثير يُعدّ مخالفًا للقانون، ما يعني إمكانيةَ حظرك من القيادة
-                قبل أن تدخل السيارة أصلًا. يسري حظر القيادة لعدة ساعات وحتى حدٍّ أقصى يبلغ 24 ساعة. وتعتمد المدة الدقيقة
-                على مدى تجاوزك للحدّ القانوني. ويعني حظر القيادة أنّه لا يجوز لك تشغيل أيّ مركبة إطلاقًا، بما في ذلك
-                الدراجات الهوائية.
-            </p>
+            <strong>حظر القيادة (ممنوع من القيادة)</strong>
+            <p>التخطيط أو محاولة تشغيل مركبة أثناء التأثير مخالف للقانون، مما يعني أنه يمكن منعك من القيادة قبل أن تركب السيارة أصلاً. ينطبق حظر القيادة لعدة ساعات وإلى أقصى حد 24 ساعة. تعتمد المدة الدقيقة على مدى تجاوزك للحد القانوني. يعني حظر القيادة أنه لا يمكنك تشغيل أي مركبة على الإطلاق، بما في ذلك الدراجات.</p>
         </li>
         <li>
-            <strong>
-                المصادرة
-            </strong>
-            <p>
-                إذا أوقفتك الشرطة أثناء القيادة وأظهر اختبار النَّفَس أنك فوق حدود كحول معينة، فستُصادِر الشرطة رخصة
-                قيادتك فورًا. وينطبق ذلك أيضًا إذا كُشِف عن وجود مخدّرات خلال اختبار اللعاب. وبعد مصادرة رخصتك لا يُسمح
-                لك بقيادة مركبة آلية حتى تُعاد إليك. وتكون حدود مصادرة الرخصة بعد مخالفة كحول كما يلي:
-            </p>
+            <strong>المصادرة</strong>
+            <p>إذا تم إيقافك من قبل الشرطة أثناء القيادة وأظهر اختبار النفس أنك فوق حدود الكحول معينة، ستصادر الشرطة رخصة قيادتك على الفور. ينطبق ذلك أيضاً إذا تم اكتشاف المخدرات أثناء اختبار اللعاب. بمجرد مصادرة رخصة قيادتك، لا يُسمح لك بتشغيل مركبة آلية حتى يتم إعادتها إليك. حدود مصادرة رخصتك بعد مخالفة الكحول هي:</p>
             <ul class="dash-list">
-                <li>
-                    350 ميكروغرام/لتر (0.8 لكل ألف) للسائقين الجدد.
-                </li>
-                <li>
-                    570 ميكروغرام/لتر (1.3 لكل ألف) للسائقين ذوي الخبرة.
-                </li>
-                <li>
-                    إذا لم تتعاون أو رفضتَ مثلًا إجراء اختبار النَّفَس أو تقديم عيّنة لُعاب، فيجوز أيضًا مصادرة رخصتك.
-                </li>
+                <li>350 ميكروغرام/لتر (0.8 جزء من الألف) للسائقين الجدد.</li>
+                <li>570 ميكروغرام/لتر (1.3 جزء من الألف) للسائقين ذوي الخبرة.</li>
+                <li>إذا لم تتعاون أو رفضت إجراء اختبار النفس أو تقديم عينة لعاب، قد يتم مصادرة رخصتك أيضاً.</li>
             </ul>
         </li>
         <li>
-            <strong>
-                إخطار CBR
-            </strong>
-            <p>
-                عند تجاوز قيم حدّية معيّنة، ستُبلّغ الشرطة كذلك قضيةَك إلى CBR. وهذه القيم هي:
-            </p>
+            <strong>إشعار CBR</strong>
+            <p>فوق حدود معينة، ستبلغ الشرطة أيضاً عن حالتك إلى CBR. هذه القيم هي:</p>
             <ul class="dash-list">
-                <li>
-                    220 ميكروغرام/لتر (0.5 لكل ألف) للسائقين الجدد.
-                </li>
-                <li>
-                    350 ميكروغرام/لتر (0.8 لكل ألف) للسائقين ذوي الخبرة.
-                </li>
+                <li>220 ميكروغرام/لتر (0.5 جزء من الألف) للسائقين الجدد.</li>
+                <li>350 ميكروغرام/لتر (0.8 جزء من الألف) للسائقين ذوي الخبرة.</li>
             </ul>
         </li>
     </ul>
-    <p>
-        إذا صودرت رخصة قيادتك بسبب القيادة تحت تأثير الكحول، فستُحال رخصتك أيضًا إلى النيابة العامة. وسيُتَّخذ القرار
-        خلال 10 أيام عمّا إذا كانت الرخصة ستُعاد إليك أم لا. وقد يعرض عليك وكيل النيابة صفقةً (تسويةً)؛ فإذا وافقت على
-        شروطها، يُغلق الملفّ. وقد يستلزم الأمر أيضًا المثول أمام المحكمة، حيث يحدّد القاضي الجزاء النهائي.
-    </p>
+
+    <p>إذا تم مصادرة رخصة قيادتك بسبب القيادة تحت تأثير الكحول، سيتم أيضاً إحالة رخصتك إلى المدعي العام. سيقررون، خلال 10 أيام، ما إذا كانت رخصتك ستُعاد إليك. قد يقدم المدعي العام لك صفقة. إذا وافقت على الشروط، سيتم تسوية الأمر. لكن قد يتضمن ذلك أيضاً حضور المحكمة. سيحدد القاضي العقوبة النهائية.</p>
+
     <div class="image-container">
         <figure>
-            <img alt="الصورة 1"
-                src="https://static.wixstatic.com/media/4b688f_120f99ab44bc4571a95f1ca44d047d9a~mv2.jpg" />
-            <figcaption>
-                <em>
-                    يُستخدم اختبار النَّفَس لتحديد تعاطي الكحول. ولا يجوز لك رفض هذا الاختبار.
-                </em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_120f99ab44bc4571a95f1ca44d047d9a~mv2.jpg" alt="اختبار النفس"/>
+            <figcaption><em>يستخدم اختبار النفس لتحديد استهلاك الكحول. لا يجوز لك رفض هذا الاختبار.</em></figcaption>
         </figure>
         <figure>
-            <img alt="الصورة 2"
-                src="https://static.wixstatic.com/media/4b688f_944bea95c792475daeb61e08786578c8~mv2.jpg" />
-            <figcaption>
-                <em>
-                    يُستخدم اختبار اللُّعاب لتحديد تعاطي المخدّرات. ولا يجوز لك رفض هذا الاختبار أيضًا.
-                </em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_944bea95c792475daeb61e08786578c8~mv2.jpg" alt="اختبار اللعاب"/>
+            <figcaption><em>يستخدم اختبار اللعاب لتحديد استهلاك المخدرات. لا يجوز لك رفض هذا الاختبار أيضاً.</em></figcaption>
         </figure>
     </div>
-    <a class="custom-button" href="https://www.examtheorie.nl/ar-test-and-theory-menu" target="_blank">
-        العودة إلى النظرة العامة
-    </a>
 
-     
-
-
-
-
-  
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">العودة إلى النظرة العامة</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+
+/* ══ COLOUR PANEL ══ */
+const DEFAULTS={
+    'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+    'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+    'card-bg':'#0a1e41','card-border':'#4da6ff',
+    'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
+};
+const PRESETS={
+    default:{...DEFAULTS},
+    light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+    purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
+};
+let state={};
+try{state=JSON.parse(localStorage.getItem('et_dui_colors')||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const colorKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexToRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){
+    const bg=hexToRgb(state['bg-deep']);
+    if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}
+    root.style.setProperty('--accent',state['accent']);
+    root.style.setProperty('--accent-light',state['accent-light']);
+    root.style.setProperty('--red',state['red']);
+    root.style.setProperty('--text-primary',state['text-primary']);
+    root.style.setProperty('--heading-color',state['heading-color']);
+    root.style.setProperty('--text-muted',state['text-muted']);
+    root.style.setProperty('--text-dim',state['text-dim']);
+    const cb=hexToRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+    const cbr=hexToRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
+    document.documentElement.style.fontSize=state['font-size']+'px';
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+    document.querySelector('.orb-1').style.background=state['accent'];
+    document.querySelector('.orb-2').style.background=state['accent-light'];
+    syncUI();try{localStorage.setItem('et_dui_colors',JSON.stringify(state))}catch(e){}
+}
+function syncUI(){
+    colorKeys.forEach(key=>{
+        const hex=state[key]||'#000000';
+        const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';
+        const prev=document.getElementById('prev-'+key);
+        const hexIn=document.getElementById('hex-'+key);
+        const pick=document.getElementById('pick-'+key);
+        if(prev)prev.style.background=safe;
+        if(hexIn)hexIn.value=safe.replace('#','').toUpperCase();
+        if(pick)pick.value=safe;
+    });
+    [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+        const sl=document.getElementById(id);const vl=document.getElementById(vid);
+        if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%';
+    });
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+}
+colorKeys.forEach(key=>{
+    const pick=document.getElementById('pick-'+key);
+    const hexIn=document.getElementById('hex-'+key);
+    const prev=document.getElementById('prev-'+key);
+    if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});
+    if(hexIn){
+        hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});
+        hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});
+    }
+});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+    const el=document.getElementById(id);const vl=document.getElementById(vid);
+    if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()});
+});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+
+/* ══ FAB DRAG ══ */
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;
+try{fabPos=JSON.parse(localStorage.getItem('et_dui_fab'))}catch(e){}
+function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+const PAD=8;
+function setFabPos(x,y){
+    const W=window.innerWidth,H=window.innerHeight;
+    const r=fabRow.getBoundingClientRect();
+    const w=r.width||64,h=r.height||120;
+    x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);
+    fabRow.style.left='unset';fabRow.style.bottom='unset';
+    fabRow.style.top=y+'px';fabRow.style.right=x+'px';
+    fabRow.style.transform='none';
+    return{x,y};
+}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{
+    if(isMob())return;
+    const r=fabRow.getBoundingClientRect();
+    if(r.left>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.right<PAD||r.top<PAD)
+        fabPos=setFabPos(window.innerWidth-r.right,r.top);
+});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=window.innerWidth-r.right;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=window.innerWidth-r.right;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex-dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:window.innerWidth-r.right,y:r.top};try{localStorage.setItem('et_dui_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+
+/* ══ PANEL OPEN/CLOSE + PANEL DRAG ══ */
+const colorPanel=document.getElementById('color-panel');
+const dragHandle=document.getElementById('panel-drag-handle');
+const fabPalette=document.getElementById('fab-palette');
+const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;
+try{panelPos=JSON.parse(localStorage.getItem('et_dui_pan'))}catch(e){}
+function setPanelPos(x,y){
+    if(isMob())return;
+    const W=window.innerWidth,H=window.innerHeight;
+    const r=colorPanel.getBoundingClientRect();
+    const w=r.width||320,h=Math.min(r.height||500,H*0.85);
+    x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);
+    colorPanel.classList.add('positioned');
+    colorPanel.style.left='unset';colorPanel.style.bottom='unset';
+    colorPanel.style.right=x+'px';colorPanel.style.top=y+'px';
+    return{x,y};
+}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{
+    if(isMob()||!panelOpen)return;
+    const r=colorPanel.getBoundingClientRect();
+    if(r.left>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.right<PAD||r.top<PAD)
+        panelPos=setPanelPos(window.innerWidth-r.left,r.top);
+});
+fabPalette.addEventListener('click',()=>{
+    if(fdrag)return;
+    panelOpen=!panelOpen;
+    colorPanel.classList.toggle('is-open',panelOpen);
+    fabPalette.classList.toggle('active',panelOpen);
+    if(panelOpen&&!isMob()){
+        if(panelPos){setPanelPos(panelPos.x,panelPos.y)}
+        else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=window.innerWidth-fr.left+12;if(px>PAD+pw)px=window.innerWidth-fr.right-pw-12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}
+    }
+});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=window.innerWidth-r.right;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex-dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:window.innerWidth-r.right,y:r.top};try{localStorage.setItem('et_dui_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+/* ══ QUIZ ══ */
+const ALL_QUESTIONS=[
+    // ── New Drivers & Definitions ──
+    {topic:'السائقون الجدد',q:'كم يُعتبر الشخص "سائقاً جديداً" بعد الحصول على رخصة القيادة لأول مرة؟',opts:['سنتان','3 سنوات','5 سنوات','7 سنوات'],ans:2,exp:'عند الحصول على رخصة القيادة لأول مرة، يُعتبر الشخص سائقاً جديداً لمدة خمس سنوات.'},
+    {topic:'السائقون الجدد',q:'إذا حصلت على رخصة دراجة نارية أو جرار قبل سن 18، كم تكون مدة السائق الجديد؟',opts:['5 سنوات','6 سنوات','7 سنوات','10 سنوات'],ans:2,exp:'إذا حصلت على رخصة دراجة نارية أو جرار قبل سن 18، يُعتبر الشخص سائقاً جديداً لمدة سبع سنوات.'},
+    {topic:'التعريفات',q:'ما الذي يقيسه "الجزء من الألف" (‰) في سياق القيادة؟',opts:['قوة الدواء','مستوى الكحول في الدم','تركيز المخدرات في البول','تأثير زمن رد الفعل'],ans:1,exp:'الجزء من الألف (‰) هو قيمة تُستخدم للإشارة إلى مستوى الكحول في الدم.'},
+    {topic:'التعريفات',q:'أي مما يلي لا يُعتبر مركبة بموجب قانون المرور الهولندي؟',opts:['الدراجات','العربات اليدوية','العربات التي تجرها الخيول','الطائرات'],ans:3,exp:'تشمل المركبات الدراجات والدراجات النارية ومركبات المعوقين والترام والمركبات الآلية والعربات التي تجرها الخيول والعربات اليدوية. لا تشمل الطائرات.'},
+    {topic:'التعريفات',q:'ما هي السرعة المصممة القصوى للدراجة النارية؟',opts:['25 كم/ساعة','35 كم/ساعة','45 كم/ساعة','60 كم/ساعة'],ans:2,exp:'لا يمكن للدراجة النارية ويجب ألا تتجاوز 45 كم/ساعة (السرعة المصممة).'},
+    {topic:'التعريفات',q:'ما هو الوزن الفارغ الأقصى للبرومموبيل (الدراجة النارية ذات الأربع عجلات)؟',opts:['أقل من 250 كجم','أقل من 350 كجم','أقل من 450 كجم','أقل من 500 كجم'],ans:1,exp:'الدراجة النارية ذات الأربع عجلات (برومموبيل) يقل وزنها الفارغ عن 350 كجم.'},
+    {topic:'التعريفات',q:'هل تُصنف الدراجات النارية كمركبات معوقين؟',opts:['نعم','لا','الدراجات النارية ذات الثلاث عجلات فقط','الدراجات النارية الكهربائية فقط'],ans:1,exp:'الدراجات النارية ليست مركبات معوقين صراحة بموجب قانون المرور الهولندي.'},
+    {topic:'التعريفات',q:'أي مما يلي مُدرج في تعريف المركبات الآلية؟',opts:['الدراجات بمساعدة الدواسات','الترام','الحافلات التي تعمل بالتيار الكهربائي','قطارات المترو'],ans:2,exp:'تشمل المركبات الآلية الحافلات التي تعمل بالتيار الكهربائي والدراجات الكهربائية السريعة. لا تشمل الدراجات بمساعدة الدواسات والترام وقطارات المترو.'},
+    {topic:'التعريفات',q:'إذا تلقيت حظر قيادة، هل يمكنك ركوب الدراجة؟',opts:['نعم، يغطي حظر القيادة المركبات الآلية فقط','لا، يغطي حظر القيادة جميع المركبات بما في ذلك الدراجات','في المناطق الريفية فقط','فقط إذا كان برفقة مشرف'],ans:1,exp:'يعني حظر القيادة أنه لا يمكنك تشغيل أي مركبة على الإطلاق، بما في ذلك الدراجات — على عكس سحب رخصة القيادة حيث لا يزال ركوب الدراجة مسموحاً به.'},
+    {topic:'التعريفات',q:'إذا تم سحب رخصة قيادتك، هل يمكنك ركوب الدراجة؟',opts:['لا، جميع المركبات ممنوعة','نعم، لا يزال ركوب الدراجة مسموحاً به','الدراجات الكهربائية فقط','فقط إذا كان لديك تصريح خاص'],ans:1,exp:'ينطبق سحب رخصة القيادة على المركبات الآلية فقط. لا يزال ركوب الدراجة مسموحاً به.'},
+    // ── Alcohol Limits ──
+    {topic:'حدود الكحول',q:'ما هو الحد الأقصى لمستوى الكحول في الدم للسائقين الجدد؟',opts:['0.1 جزء من الألف','0.2 جزء من الألف','0.5 جزء من الألف','0.8 جزء من الألف'],ans:1,exp:'للسائقين الجدد الحد الأقصى هو 88 ميكروغرام/لتر أو 0.2 جزء من الألف، ما يعادل تقريباً 0.5 إلى 1 كأس قياسي.'},
+    {topic:'حدود الكحول',q:'ما هو الحد الأقصى لمستوى الكحول في الدم للسائقين ذوي الخبرة؟',opts:['0.2 جزء من الألف','0.3 جزء من الألف','0.5 جزء من الألف','0.8 جزء من الألف'],ans:2,exp:'للسائقين ذوي الخبرة الحد الأقصى هو 220 ميكروغرام/لتر أو 0.5 جزء من الألف، ما يعادل تقريباً 1.5 إلى 2.5 كأس قياسي.'},
+    {topic:'حدود الكحول',q:'هل ينطبق حد الكحول 0.5 جزء من الألف للسائقين ذوي الخبرة على مستخدمي الطريق الآخرين؟',opts:['المشاة','راكبو الدراجات','راكبو الدراجات النارية فقط','راكبو الخيول'],ans:1,exp:'ينطبق حد 220 ميكروغرام/لتر (0.5 جزء من الألف) أيضاً على راكبي الدراجات.'},
+    {topic:'حدود الكحول',q:'كم يمثل حد الكحول للسائق الجديد تقريباً من الأكواب القياسية؟',opts:['0 كأس — أي كحول ممنوع','0.5 إلى 1 كأس قياسي','1.5 إلى 2.5 كأس قياسي','3 إلى 4 أكواب قياسية'],ans:1,exp:'حد السائق الجديد 88 ميكروغرام/لتر / 0.2 جزء من الألف ما يعادل تقريباً 0.5 إلى 1 كأس قياسي من البيرة أو النبيذ أو المشروبات الروحية.'},
+    {topic:'حدود الكحول',q:'ما هو الحد الأقصى للكحول للسائقين ذوي الخبرة معبراً عنه بالميكروغرام/لتر؟',opts:['88 ميكروغرام/لتر','150 ميكروغرام/لتر','220 ميكروغرام/لتر','350 ميكروغرام/لتر'],ans:2,exp:'الحد للسائقين ذوي الخبرة هو 220 ميكروغرام/لتر، والذي يتوافق مع 0.5 جزء من الألف.'},
+    {topic:'حدود الكحول',q:'هل تضمن أحجام الأكواب القياسية نفس محتوى الكحول لجميع المشروبات؟',opts:['نعم، دائماً','لا — قد تحتوي البيرة الخاصة والكوكتيلات على كمية أكبر بكثير من الكحول','البيرة والنبيذ فقط','في الأماكن المرخصة فقط'],ans:1,exp:'تضمن أحجام الأكواب القياسية محتوى متساوٍ من الكحول النقي للبيرة والنبيذ والمشروبات الروحية العادية. ومع ذلك، غالباً ما تحتوي البيرة الخاصة والكوكتيلات على كمية أكبر بكثير من الكحول النقي في الكأس الواحد.'},
+    // ── Drugs ──
+    {topic:'المخدرات والأدوية',q:'بعد جرعة واحدة من المخدرات، هل تُعتبر عموماً فوق حد القيادة؟',opts:['لا، يعتمد على المخدر','نعم، من الأفضل أن تفترض أنك فوق الحد','فقط إذا شعرت بتأثير','المخدرات القوية فقط'],ans:1,exp:'مع المخدرات، من الأفضل أن تفترض أنه بعد جرعة واحدة تكون عموماً فوق الحد ولا يُسمح لك بالقيادة.'},
+    {topic:'المخدرات والأدوية',q:'كم يمكن أن تبقى بعض المخدرات قابلة للكشف في جسمك؟',opts:['بضع ساعات','حتى 12 ساعة','حتى عدة أيام','حتى أسبوع واحد'],ans:2,exp:'تبقى بعض المخدرات في جسمك لمدة تصل إلى عدة أيام، مما يعني أنك قد تكون لا تزال فوق الحد بعد وقت طويل من الاستهلاك.'},
+    {topic:'المخدرات والأدوية',q:'هل جريمة جنائية القيادة تحت تأثير المخدرات والكحول معاً؟',opts:['فقط إذا تجاوزت الحدود الفردية','نعم، بغض النظر عن الكمية','فقط إذا كنت متورطاً في حادث','للسائقين الجدد فقط'],ans:1,exp:'القيادة تحت تأثير المخدرات والكحول معاً جريمة جنائية بغض النظر عن كمية أي من المواد.'},
+    // ── DUI Enforcement ──
+    {topic:'الإنفاذ',q:'ما هي المدة القصوى لحظر القيادة المفروض على جانب الطريق؟',opts:['6 ساعات','12 ساعة','24 ساعة','48 ساعة'],ans:2,exp:'ينطبق حظر القيادة لعدة ساعات وإلى أقصى حد 24 ساعة. تعتمد المدة الدقيقة على مدى تجاوزك للحد القانوني.'},
+    {topic:'الإنفاذ',q:'هل يمكن منعك من القيادة قبل أن تركب السيارة أصلاً؟',opts:['لا، يجب أن يتم ضبطك أثناء القيادة','نعم — التخطيط أو محاولة القيادة تحت التأثير كافٍ','فقط إذا كان لديك سابقة','فقط إذا شهدت الشرطة عليك تشرب'],ans:1,exp:'التخطيط أو محاولة تشغيل مركبة أثناء التأثير مخالف للقانون. يمكن منعك من القيادة قبل أن تركب السيارة أصلاً.'},
+    {topic:'الإنفاذ',q:'عند أي مستوى كحول ستصادر الشرطة رخصة السائق الجديد؟',opts:['88 ميكروغرام/لتر (0.2 جزء من الألف)','220 ميكروغرام/لتر (0.5 جزء من الألف)','350 ميكروغرام/لتر (0.8 جزء من الألف)','570 ميكروغرام/لتر (1.3 جزء من الألف)'],ans:2,exp:'عتبة المصادرة للسائقين الجدد هي 350 ميكروغرام/لتر (0.8 جزء من الألف).'},
+    {topic:'الإنفاذ',q:'عند أي مستوى كحول ستصادر الشرطة رخصة السائق ذي الخبرة؟',opts:['220 ميكروغرام/لتر (0.5 جزء من الألف)','350 ميكروغرام/لتر (0.8 جزء من الألف)','570 ميكروغرام/لتر (1.3 جزء من الألف)','700 ميكروغرام/لتر (1.6 جزء من الألف)'],ans:2,exp:'عتبة المصادرة للسائقين ذوي الخبرة هي 570 ميكروغرام/لتر (1.3 جزء من الألف).'},
+    {topic:'الإنفاذ',q:'ماذا يحدث إذا رفضت إجراء اختبار النفس أو تقديم عينة لعاب؟',opts:['لا شيء — من حقك الرفض','قد يتم مصادرة رخصتك أيضاً','تتلقى فقط تحذيراً','يجب أن تدفع غرامة في الحال'],ans:1,exp:'إذا لم تتعاون أو رفضت إجراء اختبار النفس أو تقديم عينة لعاب، قد يتم مصادرة رخصتك أيضاً.'},
+    {topic:'الإنفاذ',q:'عند أي مستوى كحول يتم إبلاغ CBR للسائقين الجدد؟',opts:['88 ميكروغرام/لتر (0.2 جزء من الألف)','220 ميكروغرام/لتر (0.5 جزء من الألف)','350 ميكروغرام/لتر (0.8 جزء من الألف)','570 ميكروغرام/لتر (1.3 جزء من الألف)'],ans:1,exp:'تبلغ الشرطة CBR عندما يصل السائق الجديد إلى 220 ميكروغرام/لتر (0.5 جزء من الألف).'},
+    {topic:'الإنفاذ',q:'عند أي مستوى كحول يتم إبلاغ CBR للسائقين ذوي الخبرة؟',opts:['220 ميكروغرام/لتر (0.5 جزء من الألف)','350 ميكروغرام/لتر (0.8 جزء من الألف)','570 ميكروغرام/لتر (1.3 جزء من الألف)','700 ميكروغرام/لتر (1.6 جزء من الألف)'],ans:1,exp:'تبلغ الشرطة CBR عندما يصل السائق ذو الخبرة إلى 350 ميكروغرام/لتر (0.8 جزء من الألف).'},
+    {topic:'الإنفاذ',q:'ما الذي يمكن أن يؤدي أيضاً إلى مصادرة الرخصة بالإضافة إلى تجاوز حدود الكحول؟',opts:['السرعة الزائدة فقط','اكتشاف المخدرات أثناء اختبار اللعاب','القيادة بدون تأمين','عبور الإشارة الحمراء'],ans:1,exp:'إذا تم اكتشاف المخدرات أثناء اختبار اللعاب، ستصادر الشرطة رخصة قيادتك على الفور أيضاً.'},
+    {topic:'الإنفاذ',q:'بعد المصادرة بسبب القيادة تحت التأثير، من يقرر ما إذا كانت الرخصة ستُعاد إليك؟',opts:['ضابط الشرطة','CBR','المدعي العام، خلال 10 أيام','القاضي على الفور'],ans:2,exp:'عندما يتم مصادرة الرخصة بسبب القيادة تحت التأثير، يتم إحالتها إلى المدعي العام الذي يقرر خلال 10 أيام ما إذا كانت ستُعاد إليك.'},
+    {topic:'الإنفاذ',q:'ماذا قد يقدم المدعي العام بدلاً من الذهاب إلى المحكمة؟',opts:['دورة قيادة','صفقة إقرار بالذنب','الخدمة المجتمعية فقط','رخصة مؤقتة'],ans:1,exp:'قد يقدم المدعي العام لك صفقة إقرار بالذنب. إذا وافقت على الشروط، سيتم تسوية الأمر دون الذهاب إلى المحكمة.'},
+    {topic:'الإنفاذ',q:'من يحدد العقوبة النهائية إذا ذهبت قضية القيادة تحت التأثير إلى المحكمة؟',opts:['المدعي العام','CBR','ضابط الشرطة الذي أوقفك','القاضي'],ans:3,exp:'إذا ذهبت القضية إلى المحكمة، سيحدد القاضي العقوبة النهائية.'},
+    // ── Standard Glasses ──
+    {topic:'الأكواب القياسية',q:'ما حجم كأس البيرة القياسي في هولندا؟',opts:['15 سنتيلتر','20 سنتيلتر','25 سنتيلتر','33 سنتيلتر'],ans:2,exp:'كأس البيرة القياسي هو 25 سنتيلتر بمحتوى كحول 5%.'},
+    {topic:'الأكواب القياسية',q:'ما نسبة الكحول في كأس النبيذ القياسي؟',opts:['5%','8%','12%','15%'],ans:2,exp:'كأس النبيذ القياسي هو 10 سنتيلتر بمحتوى كحول 12%.'},
+    {topic:'الأكواب القياسية',q:'ما حجم كأس المشروب الروحي القياسي؟',opts:['2 سنتيلتر','3.5 سنتيلتر','5 سنتيلتر','7 سنتيلتر'],ans:1,exp:'كأس المشروب الروحي القياسي هو 3.5 سنتيلتر بمحتوى كحول 35%.'},
+];
+
+const QUIZ_SIZE=15;
+let quizQuestions=[],qIndex=0,score=0,answered=[];
+const overlay=document.getElementById('quiz-overlay');
+const fabQuiz=document.getElementById('fab-quiz');
+const quizCloseBtn=document.getElementById('quiz-close-btn');
+const startScreen=document.getElementById('quiz-start-screen');
+const qScreen=document.getElementById('quiz-q-screen');
+const resultsScreen=document.getElementById('quiz-results-screen');
+const progressBar=document.getElementById('quiz-progress-bar');
+const quizBadge=document.getElementById('quiz-badge');
+
+fabQuiz.addEventListener('click',()=>{if(fdrag)return;overlay.classList.add('is-open');showStartScreen()});
+quizCloseBtn.addEventListener('click',()=>overlay.classList.remove('is-open'));
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('is-open')});
+
+function showStartScreen(){startScreen.style.display='block';qScreen.classList.remove('active');resultsScreen.classList.remove('active');progressBar.style.width='0%';quizBadge.textContent=QUIZ_SIZE+' سؤالاً'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQuiz);
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function shuffleOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,opts:idx.map(i=>q.opts[i]),ans:idx.indexOf(q.ans)}}
+
+function startQuiz(){
+    quizQuestions=shuffle(ALL_QUESTIONS).slice(0,QUIZ_SIZE).map(shuffleOpts);
+    qIndex=0;score=0;answered=[];
+    startScreen.style.display='none';resultsScreen.classList.remove('active');qScreen.classList.add('active');
+    renderQuestion();
+}
+function renderQuestion(){
+    const q=quizQuestions[qIndex];const L=['أ','ب','ج','د'];
+    progressBar.style.width=((qIndex/QUIZ_SIZE)*100)+'%';quizBadge.textContent=(qIndex+1)+' / '+QUIZ_SIZE;
+    qScreen.innerHTML=`
+        <div class="q-meta"><div class="q-counter">السؤال ${qIndex+1} من ${QUIZ_SIZE}</div><div class="q-topic">${q.topic}</div></div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options">${q.opts.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div>
+        <div class="q-feedback" id="q-feedback"></div>
+        <div class="q-nav" id="q-nav" style="display:none"><button class="btn-primary" id="btn-next">${qIndex<QUIZ_SIZE-1?'السؤال التالي ←':'عرض النتائج'}</button></div>`;
+    qScreen.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(parseInt(btn.dataset.idx))));
+}
+function selectAnswer(chosen){
+    const q=quizQuestions[qIndex];const correct=q.ans;const isCorrect=chosen===correct;
+    if(isCorrect)score++;answered.push({q:q.q,chosen,correct,isCorrect,opts:q.opts});
+    qScreen.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===correct)btn.classList.add('correct');else if(i===chosen&&!isCorrect)btn.classList.add('wrong')});
+    const fb=document.getElementById('q-feedback');fb.classList.add('show');
+    fb.classList.add(isCorrect?'fb-correct':'fb-wrong');
+    fb.innerHTML=`<strong>${isCorrect?'✅ صحيح!':'❌ خطأ — الإجابة الصحيحة: "'+q.opts[correct]+'"'}</strong>${q.exp}`;
+    document.getElementById('q-nav').style.display='flex';
+    document.getElementById('btn-next').addEventListener('click',()=>{qIndex++;qIndex<QUIZ_SIZE?renderQuestion():showResults()});
+}
+function showResults(){
+    progressBar.style.width='100%';quizBadge.textContent='اكتمل!';
+    qScreen.classList.remove('active');resultsScreen.classList.add('active');
+    const pct=Math.round((score/QUIZ_SIZE)*100);
+    let msg='',sub='';
+    if(pct>=90){msg='ممتاز! 🏆';sub='أداء رائع — لديك فهم واضح لقواعد القيادة تحت التأثير!'}
+    else if(pct>=70){msg='أحسنت! 👍';sub:'معرفة جيدة. راجع الأسئلة التي أخطأت فيها وستكون جاهزاً للامتحان.'}
+    else if(pct>=50){msg:'واصل التدريب 📖';sub='لديك أساس متين لكن هناك فجوات. أعد قراءة النظرية وحاول مرة أخرى.'}
+    else{msg:'تحتاج إلى مزيد من الدراسة 💡';sub='لا تقلق — اقرأ الصفحة بعناية مرة أخرى وأعد الاختبار!'}
+    resultsScreen.innerHTML=`
+        <div class="result-circle"><div class="result-score">${score}</div><div class="result-total">من ${QUIZ_SIZE}</div></div>
+        <div class="result-msg">${msg}</div><div class="result-sub">${sub}</div>
+        <div class="result-breakdown"><div class="rb-chip correct">✅ ${score} صحيح</div><div class="rb-chip wrong">❌ ${QUIZ_SIZE-score} خطأ</div></div>
+        <div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 اختبار عشوائي جديد</button><button class="btn-secondary" id="btn-review">📋 مراجعة الإجابات</button></div>
+        <div id="review-list" style="margin-top:20px;display:none"></div>`;
+    document.getElementById('btn-retry').addEventListener('click',startQuiz);
+    document.getElementById('btn-review').addEventListener('click',()=>{
+        const rl=document.getElementById('review-list');
+        if(rl.style.display==='none'){
+            rl.style.display='block';
+            rl.innerHTML=answered.map((a,i)=>`
+                <div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}">
+                    <div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} س${i+1}</div>
+                    <div style="font-family:'Outfit',sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div>
+                    <div style="font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted)">إجابتك: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>الصحيح: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div>
+                </div>`).join('');
+            document.getElementById('btn-review').textContent='إخفاء المراجعة';
+        }else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 مراجعة الإجابات'}
+    });
+}
+
+applyAll();
+})();
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){
+    if(e.keyCode===123)return false;
+    if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false;
+};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
