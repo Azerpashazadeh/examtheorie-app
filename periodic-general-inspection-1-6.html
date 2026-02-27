@@ -78,7 +78,8 @@
 
     .notice-card{background:rgba(224,123,0,.08);border:1px solid rgba(224,123,0,.25);border-radius:14px;
         padding:20px 24px;margin-bottom:24px;position:relative;overflow:hidden}
-    .notice-card::before{content:'⚠️';position:absolute;top:16px;right:18px;font-size:1.4rem;opacity:.5}
+    .notice-card-inner{display:flex;gap:14px;align-items:flex-start}
+    .notice-card-icon{font-size:1.4rem;opacity:.7;flex-shrink:0;line-height:1.4;margin-top:2px}
     .notice-card p{font-family:'Lora',serif;font-size:.92rem;color:rgba(255,220,140,.85);margin:0;line-height:1.7}
 
     .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
@@ -443,7 +444,10 @@
     <p>Nowadays, enforcement is facilitated by a national registration system. This means you will automatically be fined if you are late having your vehicle inspected.</p>
 
     <div class="notice-card">
-        <p>An APK approval does not automatically mean a vehicle has been sufficiently maintained. While the APK checks a number of important technical elements, not everything is covered. There is also no guarantee of the vehicle's condition after a month. In addition to the APK, drivers are advised to have passenger cars serviced at a garage at least annually — especially if the vehicle is older. Always seek advice from a professional if you experience issues or error messages or if you suspect something might be wrong with the vehicle.</p>
+        <div class="notice-card-inner">
+            <span class="notice-card-icon">⚠️</span>
+            <p>An APK approval does not automatically mean a vehicle has been sufficiently maintained. While the APK checks a number of important technical elements, not everything is covered. There is also no guarantee of the vehicle's condition after a month. In addition to the APK, drivers are advised to have passenger cars serviced at a garage at least annually — especially if the vehicle is older. Always seek advice from a professional if you experience issues or error messages or if you suspect something might be wrong with the vehicle.</p>
+        </div>
     </div>
 
     <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
