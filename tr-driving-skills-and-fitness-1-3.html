@@ -1,347 +1,858 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Sürücülük Becerileri ve Sağlık Durumu – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;
+        --glass-shine:rgba(255,255,255,.06);--red:#e84545;
+        --text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);
+        --text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;
+        --card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22);
+    }
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{
+        font-family:'Outfit',sans-serif;background-color:var(--bg-deep);
+        color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;
+        background-image:
+            radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),
+            radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),
+            radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);
+        transition:background-color .35s,color .35s;
+    }
+    body::before{
+        content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+        background-image:
+            linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);
+        background-size:60px 60px;
+    }
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
 
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
+    /* ── Layout ── */
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
 
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;
+        background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;
+        color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:10px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px}
 
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
+    .glass-card{
+        background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;
+        padding:28px 28px 28px 36px;position:relative;overflow:hidden;
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);margin-bottom:24px;
+        box-shadow:0 4px 24px rgba(0,0,0,.35),inset 0 1px 0 var(--glass-shine);
+    }
+    .glass-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .glass-card .accent-line{position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 4px 4px 0;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .glass-card.red-accent{border-color:rgba(232,69,69,.2)}
+    .glass-card.red-accent .accent-line{background:linear-gradient(180deg,var(--red),#ff8a8a)}
 
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
+    .vocab-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:10px}
+    .vocab-list li{padding:13px 16px;background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.12);
+        border-radius:10px;font-family:'Lora',serif;font-size:.92rem;color:var(--text-muted);line-height:1.6}
+    .vocab-list li strong{display:block;font-family:'Outfit',sans-serif;font-weight:600;color:var(--accent-light);
+        font-size:.88rem;letter-spacing:.06em;margin-bottom:3px}
 
-         
+    .prose-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:6px}
+    .prose-list li{font-family:'Lora',serif;font-size:.95rem;color:var(--text-muted);padding-left:22px;position:relative}
+    .prose-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--accent);box-shadow:0 0 6px rgba(26,108,246,.35)}
 
-        h1,
-        h2 {
-            color: #a70000;
-        }
+    .enforc-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:14px}
+    .enforc-list li{padding:16px 20px 16px 28px;background:rgba(26,108,246,.06);
+        border:1px solid rgba(77,166,255,.12);border-radius:12px;position:relative}
+    .enforc-list li::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;
+        border-radius:3px 0 0 3px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .enforc-list li strong{display:block;font-family:'Outfit',sans-serif;font-weight:600;
+        color:var(--accent-light);font-size:.9rem;margin-bottom:6px}
+    .enforc-list li p{margin-bottom:4px}
+    .enforc-list li p:last-child{margin-bottom:0}
 
-        h3 {
-            color: #000000;
-        }
+    .sub-section{margin-top:20px;padding-top:18px;border-top:1px solid rgba(77,166,255,.1)}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
 
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
+    .image-container{display:flex;flex-wrap:wrap;gap:20px;margin:20px 0}
+    .image-container figure{flex:1 1 46%;margin:0}
+    .image-container img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    .image-container figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);text-align:center;margin-top:8px}
+    .image-container1{display:flex;justify-content:center;margin:20px 0}
+    .image-container1 figure{width:100%;margin:0;text-align:center}
+    .image-container1 img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+    .image-container1 figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);text-align:left;margin-top:8px}
+    @media(max-width:550px){.image-container figure{flex:1 1 100%}}
 
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+        background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;
+        border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
 
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}
+    .page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(4){animation-delay:.20s}
+    .page-wrapper>*:nth-child(n+5){animation-delay:.25s}
 
-        .important-words1 {
-            background-color: #f9c3ae;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
+    /* ══ FAB ROW ══ */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);
+        z-index:1100;display:flex;flex-direction:column;gap:10px;
+        user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;
+        display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;
+        box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);
+        transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;
+        border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+        background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;
+        border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
 
-        .important-words2 {
-            background-color: #f9c3ae;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
+    /* ══ COLOUR PANEL ══ */
+    #color-panel{
+        position:fixed;right:82px;top:50%;
+        transform:translateY(-50%) scale(.95);transform-origin:right center;
+        z-index:1050;width:320px;max-height:85vh;border-radius:18px;
+        overflow:hidden;display:flex;flex-direction:column;
+        background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);
+        backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+        box-shadow:0 12px 50px rgba(0,0,0,.7);
+        opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none;
+    }
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){
+        #color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;
+            top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;
+            transform:translateY(100%)!important;
+            transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;
+            opacity:1!important;pointer-events:none}
+        #color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}
+    }
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);
+        border-bottom:1px solid rgba(77,166,255,.12);
+        display:flex;align-items:center;justify-content:space-between;
+        cursor:grab;flex-shrink:0;
+        background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);
+        background-size:6px 6px;background-repeat:repeat}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}
+        .panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+            width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}
+        .drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;
+        border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+        color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);
+        background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;
+        color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;
+        font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .section-title{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;
+        margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .section-title::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;
+        border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);
+        opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);
+        border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;
+        color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;
+        border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
 
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: rgb(201, 17, 17);
-            position: absolute;
-            top: 80px;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: rgb(201, 17, 17);
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 20px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 100%;
-            margin: 0;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 550px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 10px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            /* width: 100%; /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-         /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    /* ══ QUIZ ══ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);
+        backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+        padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);
+        border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;
+        display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);
+        animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;
+        background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;
+        background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);
+        font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;
+        background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;
+        cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;
+        background:rgba(77,166,255,.1);color:var(--accent-light);
+        font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;
+        border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;
+        background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;
+        border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);
+        cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;
+        color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);
+        border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;
+        font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);
+        box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
-
 <body>
-    <h2>Sürüş becerileri ve sürüşe uygunluk</h2>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
-        <h3>Sürüş becerileri</h3>
-        <p>
-            Bir aracı kullanma yeteneği. Bu, esas olarak bir aracı ne kadar yetkin şekilde kullanabildiğinize ve aracı ne kadar iyi kontrol ettiğinize bağlıdır. Alkol ve uyuşturucu kullanımı sürüş becerilerini bozabilir.
-        </p>
-        <h3>Sürüşe uygunluk</h3>
-        <p>
-            Bir aracı kullanmaya fiziksel veya zihinsel olarak uygun olma durumu. Uzuvlar veya nörolojik durumlarla ilgili sorunlar gibi fiziksel veya zihinsel bozukluklar, sürüşe uygunluğunuzu etkileyebilir.
-        </p>
+<!-- ═══ FLOATING FAB ROW ═══ -->
+<div id="fab-row">
+    <button class="fab" id="fab-palette" title="Renkleri özelleştir">
+        <span class="fab-tip">Renkler</span>🎨
+    </button>
+    <button class="fab" id="fab-quiz" title="Sınava gir">
+        <span class="fab-tip">Quiz</span>📝
+    </button>
+</div>
+
+<!-- ═══ COLOUR PANEL ═══ -->
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner">
+            <span class="drag-icon">⠿</span>
+            <div class="panel-title">🎨 Renk &amp; Metin Ayarları</div>
+        </div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip">
+            <div class="font-strip-label">Yazı Boyutu</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ sıfırla</button>
+        </div>
+        <div class="presets-strip">
+            <div class="strip-label">Hızlı Temalar</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 Varsayılan</button>
+                <button class="preset-btn" data-preset="light">☀️ Açık</button>
+                <button class="preset-btn" data-preset="purple">🟣 Mor</button>
+                <button class="preset-btn" data-preset="green">🟢 Yeşil</button>
+                <button class="preset-btn" data-preset="amber">🟡 Amber</button>
+                <button class="preset-btn" data-preset="contrast">⬛ Kontrast</button>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Arka Plan</div>
+            <div class="color-row">
+                <div class="color-row-label">Sayfa arka planı</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div>
+                    <input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false" placeholder="050d1a"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Arka plan opaklığı</label>
+                <input type="range" id="opacity-bg" min="0" max="100" value="100"/>
+                <div class="opacity-val" id="opacity-bg-val">100%</div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Vurgu Renkleri</div>
+            <div class="color-row">
+                <div class="color-row-label">Birincil vurgu</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div>
+                    <input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false" placeholder="1a6cf6"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Açık vurgu</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div>
+                    <input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false" placeholder="4da6ff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Uyarı / kırmızı</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div>
+                    <input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false" placeholder="e84545"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Metin Renkleri</div>
+            <div class="color-row">
+                <div class="color-row-label">Ana başlık (h1)</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div>
+                    <input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false" placeholder="e8f0ff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Bölüm başlıkları</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div>
+                    <input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false" placeholder="4da6ff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Gövde metni</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div>
+                    <input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false" placeholder="b4cdff"/>
+                </div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Soluk metin</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div>
+                    <input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false" placeholder="8cafd6"/>
+                </div>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Kartlar &amp; Paneller</div>
+            <div class="color-row">
+                <div class="color-row-label">Kart arka planı</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div>
+                    <input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false" placeholder="0a1e41"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Kart opaklığı</label>
+                <input type="range" id="opacity-card" min="0" max="100" value="55"/>
+                <div class="opacity-val" id="opacity-card-val">55%</div>
+            </div>
+            <div class="color-row">
+                <div class="color-row-label">Kart kenarlığı</div>
+                <div class="color-row-right">
+                    <div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div>
+                    <input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false" placeholder="4da6ff"/>
+                </div>
+            </div>
+            <div class="opacity-row">
+                <label>Kenarlık opaklığı</label>
+                <input type="range" id="opacity-border" min="0" max="100" value="22"/>
+                <div class="opacity-val" id="opacity-border-val">22%</div>
+            </div>
+        </div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+
+<!-- ═══ QUIZ OVERLAY ═══ -->
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header">
+            <div class="quiz-header-left">
+                <div class="quiz-title">📝 Sürücülük Becerileri &amp; Sağlık Durumu Testi</div>
+                <div class="quiz-badge" id="quiz-badge">15 Soru</div>
+            </div>
+            <button class="quiz-close" id="quiz-close-btn">✕</button>
+        </div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body" id="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🧠</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Sürücülük Becerileri ve Sağlık Durumu teorisinden rastgele seçilmiş 15 soru. Başlamadan önce sayfayı dikkatlice okuyun — her soru doğrudan içerikten alınmaktadır.</p>
+                <div class="qs-info">
+                    <div class="qs-chip">📋 15 soru</div>
+                    <div class="qs-chip">🔀 Rastgele sıra</div>
+                    <div class="qs-chip">✅ Anlık geri bildirim</div>
+                </div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Testi Başlat</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="page-wrapper">
+    <div class="brand-strip">
+        <span>ExamTheorie</span><span class="dot">›</span>
+        <span>Binek Araç</span><span class="dot">›</span>
+        <span style="color:var(--text-primary)">Sürücülük Becerileri ve Sağlık Durumu</span>
+    </div>
+    <h1>Sürücülük Becerileri ve Sağlık Durumu</h1>
+    <div class="section-divider"></div>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>Temel Tanımlar</h3>
+        <ul class="vocab-list">
+            <li><strong>Sürücülük becerileri</strong>Bir aracı kullanabilme yeteneği. Bu yetenek, esas itibarıyla araç kullanmadaki yetkinliğiniz ve araç üzerindeki kontrolünüzü ne ölçüde koruduğunuzla belirlenir. Alkol ve uyuşturucu kullanımı sürücülük becerilerini olumsuz etkileyebilir.</li>
+            <li><strong>Araç kullanmaya yatkınlık</strong>Bir aracı kullanmak için gereken fiziksel ya da zihinsel uygunluk. Uzuv sorunları veya nörolojik rahatsızlıklar gibi fiziksel ya da zihinsel bozukluklar, araç kullanmaya yatkınlığınızı olumsuz etkileyebilir.</li>
+        </ul>
     </div>
 
-    <p>
-        Bir polis memuru veya yetkili bir kişi tarafından durdurulup sürüşe uygun olmadığınız değerlendirilirse, memur veya yetkili kişi ehliyetinize el koyabilir. Bu, dikkatsiz sürüş ya da alkol, uyuşturucu veya ilaçların etkisi altında olduğunuzun açıkça görülmesi nedeniyle olabilir. Ancak, fiziksel veya zihinsel olarak sağlıksız görünmeniz durumunda da bu olabilir. Sürüş becerileri ve sürüşe uygunluk yaşla birlikte de düşebilir.
-    </p>
+    <p>Bir polis memuru veya yetkili başka bir kişi tarafından durdurulduğunuzda, ilgili kişi sizi araç kullanmaya uygunsuz bulursa ehliyetinize el koyabilir. Bu durum; dikkatsiz sürüş nedeniyle ya da alkol, uyuşturucu veya ilaç etkisi altında olduğunuzun açıkça belli olduğu durumlarda söz konusu olabilir. Fiziksel veya zihinsel açıdan rahatsız görünmeniz hâlinde de aynı işlem uygulanabilir. Sürücülük becerileri ve araç kullanmaya yatkınlık, yaşla birlikte de azalabilir.</p>
 
-    <p>
-        Ehliyetinize yukarıdaki nedenlerden biriyle el konulursa, bu durum CBR'ye rapor edilir. CBR, sürüşe devam etme uygunluğunuzu nasıl belirleyeceğine karar verecektir. İşbirliği zorunludur. Bu sürece katılmayı reddederseniz, ehliyetiniz geçersiz sayılır.
-    </p>
+    <p>Ehliyetinize yukarıdaki nedenlerden biri gerekçesiyle el konulursa bu durum CBR'a bildirilir. CBR, araç kullanmaya devam etme yeterliliğinizi nasıl belirleyeceğine karar verir. Bu sürece katılım zorunludur. Sürece katılmayı reddederseniz ehliyetiniz geçersiz ilan edilir.</p>
 
     <div class="image-container">
         <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_b3b030a3d0d54d6c9638cb890c681133~mv2.jpg" alt="Görsel 1"
-                class="custom-centered-image" />
-            <figcaption><em>Sürüş yeteneğinizle ilgili şüpheler varsa, bağımsız bir uzmanın muayenesine tabi tutulabilirsiniz. İşbirliği yapmayı reddederseniz, ehliyetiniz geçersiz sayılır.</em></figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_b3b030a3d0d54d6c9638cb890c681133~mv2.jpg" alt="CBR muayenesi"/>
+            <figcaption><em>Sürüş yeteneğiniz konusunda herhangi bir şüphe oluşursa bağımsız bir uzman tarafından muayene edilebilirsiniz. Sürece katılmayı reddederseniz ehliyetiniz geçersiz ilan edilir.</em></figcaption>
         </figure>
     </div>
 
-    <h2>CBR kursu veya tıbbi muayene</h2>
-    <p>CBR, sürüş becerilerinizi veya uygunluğunuzu belirlemek için çeşitli seçenekler sunmaktadır:</p>
+    <h2>CBR Kursu veya Tıbbi Muayene</h2>
+    <p>CBR, sürüş yeterliliğinizi veya yeteneğinizi belirlemek için çeşitli seçeneklere sahiptir:</p>
 
-    <ul>
+    <ul class="enforc-list">
         <li>
-            <strong>Sürüş uygunluğu için tıbbi muayene</strong>
-            <p>Bağımsız bir uzman tarafından yapılan, oftalmolog, nörolog veya kardiyolog gibi uzmanlar tarafından gerçekleştirilen bir muayenedir.</p>
+            <strong>Araç kullanmaya yatkınlığın tıbbi muayenesi</strong>
+            <p>Göz doktoru, nörolog veya kardiyolog gibi bağımsız bir uzman tarafından gerçekleştirilen muayene.</p>
         </li>
         <li>
-            <strong>Sürüş becerilerini veya uygunluğunu incelemek için sürüş testi</strong>
-            <p>Bu test, tıbbi muayeneden sonra yapılabilir. Yanınızda özel olarak eğitilmiş bir denetçiyle sürüş yaparak sürüşe devam etmenin mantıklı olup olmadığı belirlenir. Duruma bağlı olarak, bu test bir ders aracıyla veya kendi aracınızla yapılabilir.</p>
-        </li>
-    </ul>
-
-    <p>
-        CBR ayrıca zorunlu bir kurs uygulayabilir. Bu, alkol veya uyuşturucu kullanımına yönelik kursları içerir:
-    </p>
-
-    <ul>
-        <li>
-            <strong>LEMA (Hafif Eğitici Önlem Alkol ve Trafik)</strong>
-            <p>Alkol etkisi altında sürüşle ilgili olarak tutuklanan sürücülere uygulanır. Bu, yeni sürücüler için 0,5-0,8 promil (220-350 μg/l) ve deneyimli sürücüler için 0,8-1,0 promil (350-440 μg/l) arasında bir kan alkol seviyesidir.</p>
-        </li>
-        <li>
-            <strong>EMA (Eğitici Önlem Alkol ve Trafik)</strong>
-            <p>Daha yüksek bir kan alkol seviyesi olan sürücülere veya alkol etkisi altında sürüşten ikinci kez yakalanan sürücülere uygulanır.</p>
-        <li>
-            <strong>EMD (Eğitici Önlem Uyuşturucu ve Trafik)</strong>
-            <p>Trafikte uyuşturucu kullanımı kanıtlanan sürücülere uygulanır.</p>
+            <strong>Sürücülük becerisi veya yatkınlığını değerlendiren sürüş sınavı</strong>
+            <p>Bu sınav, tıbbi muayenenin ardından uygulanabilir. Araç kullanmaya devam etmenizin uygun olup olmadığını belirlemek amacıyla özel eğitimli bir sınav görevlisiyle birlikte araç kullanırsınız. Koşullara bağlı olarak bu sınav, sürüş okulu aracıyla ya da kendi aracınızla yapılabilir.</p>
         </li>
     </ul>
 
-    <p>
-        Hız yapma ve diğer antisosyal davranışlarla ilgili kurslar da mevcuttur:
-    </p>
+    <p>CBR ayrıca zorunlu bir kurs da uygulayabilir. Bu kurslar arasında alkol veya uyuşturucuyla ilgili olanlar şunlardır:</p>
 
-    <ul>
+    <ul class="enforc-list">
         <li>
-            <strong>LEMG (Hafif Eğitici Önlem Davranış ve Trafik)</strong>
-            <p>Hız yapma nedeniyle uygulanır. Bu, izin verilen hızdan 50-59 km/h daha hızlı sürmeniz durumunda geçerlidir (şantiyelerde 30 km/h'den itibaren bile).</p>
+            <strong>LEMA (Alkol ve Trafik – Hafif Eğitici Tedbir)</strong>
+            <p>Alkol etkisinde araç kullanma nedeniyle gözaltına alınan sürücülere uygulanır. Yeni sürücüler için 0,5–0,8 per mille (220–350 μg/l) kan alkol düzeyi, deneyimli sürücüler için ise 0,8–1,0 per mille (350–440 μg/l) kan alkol düzeyi bu kapsamda değerlendirilir.</p>
         </li>
         <li>
-            <strong>EMG (Eğitici Önlem Davranış ve Trafik)</strong>
-            <p>Araba takip etme, diğer sürücülerin önüne kırma, kırmızı ışıkta geçme veya izin verilen hızdan 60 km/h daha hızlı sürme gibi antisosyal ve tehlikeli davranışlar için uygulanır.</p>
+            <strong>EMA (Alkol ve Trafik – Eğitici Tedbir)</strong>
+            <p>Daha yüksek kan alkol düzeyine sahip olan ya da alkol etkisinde araç kullanmaktan ikinci kez yakalanan sürücülere uygulanır.</p>
+        </li>
+        <li>
+            <strong>EMD (Uyuşturucu ve Trafik – Eğitici Tedbir)</strong>
+            <p>Trafikte uyuşturucu kullanımının kanıtlanması hâlinde uygulanır.</p>
         </li>
     </ul>
 
-    <p>
-        Bu alkol, uyuşturucu ve davranış kursları zorunludur ve tamamen sizin masraflarınıza tabidir. Bu kursun yanı sıra genellikle (önemli) bir ceza da alırsınız. Kursu (tamamını) almaz veya ödemezseniz, ehliyetiniz geçersiz hale gelir.
-    </p>
+    <p>Hız ihlali ve diğer toplum düzenini bozucu davranışlarla ilgili kurslar ise şunlardır:</p>
 
-     <a href="https://www.examtheorie.nl/tr-test-and-theory-menu" class="custom-button" target="_blank">Geri Dön</a>
-    
+    <ul class="enforc-list">
+        <li>
+            <strong>LEMG (Davranış ve Trafik – Hafif Eğitici Tedbir)</strong>
+            <p>Hız ihlali nedeniyle uygulanır. İzin verilen hızı 50 ile 59 km/s arasında aşmanız hâlinde geçerlidir (yol yapım alanlarında 30 km/s üzerinden itibaren).</p>
+        </li>
+        <li>
+            <strong>EMG (Davranış ve Trafik – Eğitici Tedbir)</strong>
+            <p>Takip mesafesini korumama, diğer sürücüleri sollama gibi tehlikeli manevralar, kırmızı ışık ihlali veya izin verilen hızı 60 km/s ve üzerinde aşma gibi toplum düzenini bozucu ve tehlikeli davranışlar nedeniyle uygulanır.</p>
+        </li>
+    </ul>
 
+    <p>Bu alkol, uyuşturucu ve davranış kursları zorunlu olup tüm masraflar tamamen size aittir. Bu kursa ek olarak genellikle (önemli miktarda) bir para cezası da verilir. Kursu (tamamen) tamamlamaz veya bedelini ödemezseniz ehliyetiniz geçersiz ilan edilir.</p>
 
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Genel bakışa dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+
+/* ══ COLOUR PANEL ══ */
+const DEFAULTS={
+    'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+    'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+    'card-bg':'#0a1e41','card-border':'#4da6ff',
+    'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
+};
+const PRESETS={
+    default:{...DEFAULTS},
+    light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+    purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
+};
+let state={};
+try{state=JSON.parse(localStorage.getItem('et_dsf_colors')||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const colorKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexToRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){
+    const bg=hexToRgb(state['bg-deep']);
+    if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}
+    root.style.setProperty('--accent',state['accent']);
+    root.style.setProperty('--accent-light',state['accent-light']);
+    root.style.setProperty('--red',state['red']);
+    root.style.setProperty('--text-primary',state['text-primary']);
+    root.style.setProperty('--heading-color',state['heading-color']);
+    root.style.setProperty('--text-muted',state['text-muted']);
+    root.style.setProperty('--text-dim',state['text-dim']);
+    const cb=hexToRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+    const cbr=hexToRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
+    document.documentElement.style.fontSize=state['font-size']+'px';
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+    document.querySelector('.orb-1').style.background=state['accent'];
+    document.querySelector('.orb-2').style.background=state['accent-light'];
+    syncUI();try{localStorage.setItem('et_dsf_colors',JSON.stringify(state))}catch(e){}
+}
+function syncUI(){
+    colorKeys.forEach(key=>{
+        const hex=state[key]||'#000000';
+        const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';
+        const prev=document.getElementById('prev-'+key);
+        const hexIn=document.getElementById('hex-'+key);
+        const pick=document.getElementById('pick-'+key);
+        if(prev)prev.style.background=safe;
+        if(hexIn)hexIn.value=safe.replace('#','').toUpperCase();
+        if(pick)pick.value=safe;
+    });
+    [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+        const sl=document.getElementById(id);const vl=document.getElementById(vid);
+        if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%';
+    });
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+}
+colorKeys.forEach(key=>{
+    const pick=document.getElementById('pick-'+key);
+    const hexIn=document.getElementById('hex-'+key);
+    const prev=document.getElementById('prev-'+key);
+    if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});
+    if(hexIn){
+        hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});
+        hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});
+    }
+});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+    const el=document.getElementById(id);const vl=document.getElementById(vid);
+    if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()});
+});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+
+/* ══ FAB DRAG ══ */
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;
+try{fabPos=JSON.parse(localStorage.getItem('et_dsf_fab'))}catch(e){}
+function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+const PAD=8;
+function setFabPos(x,y){
+    const W=window.innerWidth,H=window.innerHeight;
+    const r=fabRow.getBoundingClientRect();
+    const w=r.width||64,h=r.height||120;
+    x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);
+    fabRow.style.right='unset';fabRow.style.bottom='unset';
+    fabRow.style.top=y+'px';fabRow.style.left=x+'px';
+    fabRow.style.transform='none';
+    return{x,y};
+}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{
+    if(isMob())return;
+    const r=fabRow.getBoundingClientRect();
+    if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)
+        fabPos=setFabPos(r.left,r.top);
+});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem('et_dsf_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+
+/* ══ PANEL OPEN/CLOSE + DRAG ══ */
+const colorPanel=document.getElementById('color-panel');
+const dragHandle=document.getElementById('panel-drag-handle');
+const fabPalette=document.getElementById('fab-palette');
+const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;
+try{panelPos=JSON.parse(localStorage.getItem('et_dsf_pan'))}catch(e){}
+function setPanelPos(x,y){
+    if(isMob())return;
+    const W=window.innerWidth,H=window.innerHeight;
+    const r=colorPanel.getBoundingClientRect();
+    const w=r.width||320,h=Math.min(r.height||500,H*0.85);
+    x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);
+    colorPanel.classList.add('positioned');
+    colorPanel.style.right='unset';colorPanel.style.bottom='unset';
+    colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';
+    return{x,y};
+}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{
+    if(isMob()||!panelOpen)return;
+    const r=colorPanel.getBoundingClientRect();
+    if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)
+        panelPos=setPanelPos(r.left,r.top);
+});
+fabPalette.addEventListener('click',()=>{
+    if(fdrag)return;
+    panelOpen=!panelOpen;
+    colorPanel.classList.toggle('is-open',panelOpen);
+    fabPalette.classList.toggle('active',panelOpen);
+    if(panelOpen&&!isMob()){
+        if(panelPos){setPanelPos(panelPos.x,panelPos.y)}
+        else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}
+    }
+});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem('et_dsf_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+/* ══ QUIZ ══ */
+const ALL_QUESTIONS=[
+    // ── Tanımlar ──
+    {topic:'Tanımlar',q:'"Sürücülük becerileri" öncelikli olarak neyi ifade eder?',opts:['Trafik kuralları bilgisi','Araç kullanabilme ve araç üzerindeki kontrolü koruma yeteneği','Yalnızca tepki süresi','Yol işaretleri bilgisi'],ans:1,exp:'Sürücülük becerileri, bir aracı kullanabilme yeteneğini ifade eder; esas olarak araç kullanmadaki yetkinliğiniz ve araç üzerindeki kontrolünüzü ne ölçüde koruduğunuzla belirlenir.'},
+    {topic:'Tanımlar',q:'Aşağıdakilerden hangisi sürücülük becerilerini olumsuz etkileyebilir?',opts:['Güneş gözlüğü takmak','Alkol ve uyuşturucu kullanımı','Daha yeni bir araç kullanmak','GPS cihazı kullanmak'],ans:1,exp:'Alkol ve uyuşturucu kullanımı sürücülük becerilerini olumsuz etkileyebilir.'},
+    {topic:'Tanımlar',q:'"Araç kullanmaya yatkınlık" neyi ifade eder?',opts:['Teori sınavını geçmek','Araç kullanmak için gereken fiziksel veya zihinsel uygunluk','Geçerli araç muayenesine sahip olmak','Doğru hızda araç kullanmak'],ans:1,exp:'Araç kullanmaya yatkınlık, bir aracı kullanmak için gereken fiziksel ya da zihinsel uygunluk anlamına gelir. Uzuv sorunları veya nörolojik rahatsızlıklar bu yatkınlığı olumsuz etkileyebilir.'},
+    {topic:'Tanımlar',q:'Aşağıdakilerden hangisi araç kullanmaya yatkınlığınızı etkileyebilir?',opts:['Aracınızın rengi','Nörolojik rahatsızlıklar veya uzuv sorunları','Aracınızın motor hacmi','Günün saati'],ans:1,exp:'Uzuv sorunları veya nörolojik rahatsızlıklar gibi fiziksel ya da zihinsel bozukluklar araç kullanmaya yatkınlığınızı olumsuz etkileyebilir.'},
+    // ── Ehliyet El Koyma ──
+    {topic:'Ehliyet El Koyma',q:'Sizi araç kullanmaya uygunsuz bulduğunda ehliyetinize kim el koyabilir?',opts:['Herhangi bir vatandaş','Yalnızca hakim','Polis memuru veya yetkili kişi','Doğrudan CBR'],ans:2,exp:'Bir polis memuru veya yetkili başka bir kişi tarafından durdurulduğunuzda, sizi araç kullanmaya uygunsuz bulursa ehliyetinize el koyabilir.'},
+    {topic:'Ehliyet El Koyma',q:'Aşağıdakilerden hangisi sağlık gerekçesiyle ehliyet müsaderesine yol açabilir?',opts:['Çok yavaş araç kullanmak','Fiziksel veya zihinsel açıdan rahatsız görünmek','Tescilsiz araç kullanmak','Sinyal vermemek'],ans:1,exp:'Ehliyet müsaderesi yalnızca alkol/uyuşturucu nedeniyle değil, fiziksel veya zihinsel açıdan rahatsız görünmeniz hâlinde de uygulanabilir.'},
+    {topic:'Ehliyet El Koyma',q:'Sürücülük becerileri ve araç kullanmaya yatkınlık yaşla birlikte azalabilir mi?',opts:['Hayır, deneyim bunu tamamen telafi eder','Evet, yaşla birlikte azalabilir','Yalnızca 80 yaş üstü sürücülerde','Yalnızca tıbbi bir tanı konulursa'],ans:1,exp:'Sürücülük becerileri ve araç kullanmaya yatkınlık yaşla birlikte de azalabilir; bu da ehliyete el konulma gerekçelerinden biridir.'},
+    {topic:'Ehliyet El Koyma',q:'Sağlık gerekçesiyle ehliyetinize el konulduğunda kim bilgilendirilir?',opts:['Ulaştırma Bakanlığı','Sigorta şirketiniz','CBR','Yalnızca savcı'],ans:2,exp:'Ehliyetinize sağlık gerekçesiyle el konulursa bu durum CBR\'a bildirilir; CBR, araç kullanmaya devam etme yeterliliğinizi nasıl belirleyeceğine karar verir.'},
+    {topic:'Ehliyet El Koyma',q:'CBR\'ın yatkınlık değerlendirmesine katılmayı reddederseniz ne olur?',opts:['Yalnızca para cezası alırsınız','Ehliyetiniz geçici olarak askıya alınır','Ehliyetiniz geçersiz ilan edilir','Hiçbir şey — katılım isteğe bağlıdır'],ans:2,exp:'CBR sürecine katılım zorunludur. Katılmayı reddederseniz ehliyetiniz geçersiz ilan edilir.'},
+    // ── CBR Muayeneleri ──
+    {topic:'CBR Muayeneleri',q:'Araç kullanmaya yatkınlığın tıbbi muayenesini hangi tür uzman gerçekleştirebilir?',opts:['Sürüş eğitmeni','Göz doktoru, nörolog veya kardiyolog','Polis memuru','CBR yöneticisi'],ans:1,exp:'Araç kullanmaya yatkınlığın tıbbi muayenesi, göz doktoru, nörolog veya kardiyolog gibi bağımsız bir uzman tarafından gerçekleştirilir.'},
+    {topic:'CBR Muayeneleri',q:'Yatkınlığı değerlendiren sürüş sınavı kendi aracınızla yapılabilir mi?',opts:['Asla — her zaman sürüş okulu aracıyla yapılır','Her zaman kendi aracınızla yapılır','Koşullara bağlı olarak sürüş okulu aracıyla veya kendi aracınızla yapılabilir','Yalnızca otomatik araçla yapılır'],ans:2,exp:'Koşullara bağlı olarak sürücülük becerisi veya yatkınlığını değerlendiren sınav, sürüş okulu aracıyla ya da kendi aracınızla yapılabilir.'},
+    {topic:'CBR Muayeneleri',q:'Araç kullanmaya yatkınlığın tıbbi muayenesinin ardından ne gelebilir?',opts:['Anında para cezası','Teori sınavının yeniden alınması','Beceri veya yatkınlığı değerlendiren sürüş sınavı','Otomatik ehliyet iptali'],ans:2,exp:'Sürücülük becerisi veya yatkınlığını değerlendiren sürüş sınavı, tıbbi muayenenin ardından uygulanabilir.'},
+    // ── CBR Kursları ──
+    {topic:'CBR Kursları',q:'LEMA neyin kısaltmasıdır?',opts:['Motorlu Kaza Hukuki Muayenesi','Alkol ve Trafik – Hafif Eğitici Tedbir','Ehliyet Değerlendirme ve Tıbbi Değerlendirme','Alkol için Sınırlı Acil Tedbir'],ans:1,exp:'LEMA, "Alkol ve Trafik – Hafif Eğitici Tedbir" ifadesinin kısaltmasıdır.'},
+    {topic:'CBR Kursları',q:'LEMA yeni sürücülere hangi kan alkol düzeyinde uygulanır?',opts:['0,2–0,5 per mille','0,5–0,8 per mille','0,8–1,0 per mille','1,0 per mille üzeri'],ans:1,exp:'LEMA, yeni sürücüler için 0,5–0,8 per mille (220–350 μg/l) kan alkol düzeyinde uygulanır.'},
+    {topic:'CBR Kursları',q:'LEMA deneyimli sürücülere hangi kan alkol düzeyinde uygulanır?',opts:['0,5–0,8 per mille','0,8–1,0 per mille','1,0–1,3 per mille','1,3 per mille üzeri'],ans:1,exp:'LEMA, deneyimli sürücüler için 0,8–1,0 per mille (350–440 μg/l) kan alkol düzeyinde uygulanır.'},
+    {topic:'CBR Kursları',q:'EMA neyin kısaltmasıdır?',opts:['Kaza İçin Acil Tedbir','Alkol ve Trafik – Eğitici Tedbir','Muayene ve Tıbbi Değerlendirme','Alkol için Genişletilmiş Tedbir'],ans:1,exp:'EMA, "Alkol ve Trafik – Eğitici Tedbir" ifadesinin kısaltmasıdır.'},
+    {topic:'CBR Kursları',q:'EMA kursu hangi durumlarda uygulanır?',opts:['Yalnızca yeni sürücülere','Daha yüksek kan alkol düzeyine sahip veya alkol etkisinde araç kullanmaktan ikinci kez yakalanan sürücülere','Tüm ilk kez DUI suçlularına','Yalnızca uyuşturucu da tespit edilirse'],ans:1,exp:'EMA, daha yüksek kan alkol düzeyine sahip olan ya da alkol etkisinde araç kullanmaktan ikinci kez yakalanan sürücülere uygulanır.'},
+    {topic:'CBR Kursları',q:'EMD neyin kısaltmasıdır?',opts:['Sürüş Eğitici Tedbiri','Uyuşturucu ve Trafik – Eğitici Tedbir','Motor Yetersizliği Muayenesi','Acil Tıbbi Tespit'],ans:1,exp:'EMD, "Uyuşturucu ve Trafik – Eğitici Tedbir" ifadesinin kısaltmasıdır.'},
+    {topic:'CBR Kursları',q:'EMD kursu hangi durumda uygulanır?',opts:['Alkol ihlallerinde','Trafikte uyuşturucu kullanımının kanıtlanması hâlinde','Yalnızca hız ihlallerinde','Toplum düzenini bozucu davranışlarda'],ans:1,exp:'EMD, trafikte uyuşturucu kullanımının kanıtlanması hâlinde uygulanır.'},
+    {topic:'CBR Kursları',q:'LEMG neyin kısaltmasıdır?',opts:['Motor Rehberliği Hukuki Eğitimi','Davranış ve Trafik – Hafif Eğitici Tedbir','Ehliyet Değerlendirme ve Tıbbi Rehber','Genel Sınırlı Acil Tedbir'],ans:1,exp:'LEMG, "Davranış ve Trafik – Hafif Eğitici Tedbir" ifadesinin kısaltmasıdır.'},
+    {topic:'CBR Kursları',q:'LEMG kursu hangi suç nedeniyle uygulanır?',opts:['Trafikte uyuşturucu kullanımı','Toplum düzenini bozucu davranış','İzin verilen hızı 50 ile 59 km/s arasında aşmak','Alkol etkisinde araç kullanmak'],ans:2,exp:'LEMG, hız ihlali nedeniyle uygulanır; özellikle izin verilen hızı 50 ile 59 km/s arasında aşmanız hâlinde geçerlidir (yol yapım alanlarında 30 km/s üzerinden itibaren).'},
+    {topic:'CBR Kursları',q:'Yol yapım alanlarında LEMG hangi hız aşımından itibaren uygulanır?',opts:['Sınırı 20 km/s aşmaktan itibaren','Sınırı 30 km/s aşmaktan itibaren','Sınırı 40 km/s aşmaktan itibaren','Sınırı 50 km/s aşmaktan itibaren'],ans:1,exp:'LEMG, yol yapım alanlarında hız sınırını 30 km/s aşmaktan itibaren uygulanır.'},
+    {topic:'CBR Kursları',q:'EMG neyin kısaltmasıdır?',opts:['Genel Eğitici Tedbir','Davranış ve Trafik – Eğitici Tedbir','Acil Motor Rehberi','Yönetim İçin Uygulama Tedbiri'],ans:1,exp:'EMG, "Davranış ve Trafik – Eğitici Tedbir" ifadesinin kısaltmasıdır.'},
+    {topic:'CBR Kursları',q:'EMG kursunu hangi davranışlar tetikleyebilir?',opts:['Küçük park ihlalleri','Takip mesafesini korumama, tehlikeli sollama, kırmızı ışık ihlali veya 60 km/s üzeri hız aşımı','Yalnızca hız ihlalleri','Yalnızca alkol kaynaklı suçlar'],ans:1,exp:'EMG; takip mesafesini korumama, diğer sürücüleri tehlikeli biçimde sollama, kırmızı ışık ihlali veya izin verilen hızı 60 km/s ve üzerinde aşma gibi toplum düzenini bozucu ve tehlikeli davranışlar nedeniyle uygulanır.'},
+    {topic:'CBR Kursları',q:'EMG hangi hız aşımından itibaren tetiklenebilir?',opts:['Sınırı 30 km/s aşmaktan itibaren','Sınırı 50 km/s aşmaktan itibaren','Sınırı 60 km/s aşmaktan itibaren','Sınırı 70 km/s aşmaktan itibaren'],ans:2,exp:'EMG, izin verilen hızı 60 km/s ve üzerinde aşmaktan itibaren tetiklenebilir.'},
+    // ── Kurs Sonuçları ──
+    {topic:'Kurs Sonuçları',q:'Zorunlu CBR kurslarının masrafları kime aittir?',opts:['Devlete','Sigorta şirketinize','Size — tamamen kendi masrafınıza','CBR masrafları karşılar'],ans:2,exp:'Bu alkol, uyuşturucu ve davranış kursları zorunlu olup tüm masraflar tamamen size aittir.'},
+    {topic:'Kurs Sonuçları',q:'Zorunlu kursun yanı sıra genellikle ne daha alırsınız?',opts:['Yalnızca sürüş yasağı','(Önemli miktarda) bir para cezası','Ehliyetinize puan eklenmesi','Toplum hizmeti'],ans:1,exp:'Zorunlu kursun yanı sıra genellikle (önemli miktarda) bir para cezası da verilir.'},
+    {topic:'Kurs Sonuçları',q:'Zorunlu kursu tam olarak tamamlamazsanız ne olur?',opts:['Hiçbir şey — kurs isteğe bağlıdır','Küçük bir idari ücret ödersiniz','Ehliyetiniz geçersiz ilan edilir','Sürüş teorisi sınavını yeniden almak zorunda kalırsınız'],ans:2,exp:'Kursu tam olarak tamamlamaz veya bedelini ödemezseniz ehliyetiniz geçersiz ilan edilir.'},
+    {topic:'Kurs Sonuçları',q:'Zorunlu kursun bedelini ödemezseniz ne olur?',opts:['Borç yalnızca icra takibine devredilir','Ehliyetiniz geçersiz ilan edilir','Uyarı mektubu alırsınız','Tekrar durdurulana kadar hiçbir şey olmaz'],ans:1,exp:'Zorunlu kursun bedelini ödemezseniz ehliyetiniz geçersiz ilan edilir.'},
+];
+
+const QUIZ_SIZE=15;
+let quizQuestions=[],qIndex=0,score=0,answered=[];
+const overlay=document.getElementById('quiz-overlay');
+const fabQuiz=document.getElementById('fab-quiz');
+const quizCloseBtn=document.getElementById('quiz-close-btn');
+const startScreen=document.getElementById('quiz-start-screen');
+const qScreen=document.getElementById('quiz-q-screen');
+const resultsScreen=document.getElementById('quiz-results-screen');
+const progressBar=document.getElementById('quiz-progress-bar');
+const quizBadge=document.getElementById('quiz-badge');
+
+fabQuiz.addEventListener('click',()=>{if(fdrag)return;overlay.classList.add('is-open');showStartScreen()});
+quizCloseBtn.addEventListener('click',()=>overlay.classList.remove('is-open'));
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('is-open')});
+
+function showStartScreen(){startScreen.style.display='block';qScreen.classList.remove('active');resultsScreen.classList.remove('active');progressBar.style.width='0%';quizBadge.textContent=QUIZ_SIZE+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQuiz);
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function shuffleOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,opts:idx.map(i=>q.opts[i]),ans:idx.indexOf(q.ans)}}
+
+function startQuiz(){
+    quizQuestions=shuffle(ALL_QUESTIONS).slice(0,QUIZ_SIZE).map(shuffleOpts);
+    qIndex=0;score=0;answered=[];
+    startScreen.style.display='none';resultsScreen.classList.remove('active');qScreen.classList.add('active');
+    renderQuestion();
+}
+function renderQuestion(){
+    const q=quizQuestions[qIndex];const L=['A','B','C','D'];
+    progressBar.style.width=((qIndex/QUIZ_SIZE)*100)+'%';quizBadge.textContent=(qIndex+1)+' / '+QUIZ_SIZE;
+    qScreen.innerHTML=`
+        <div class="q-meta"><div class="q-counter">Soru ${qIndex+1} / ${QUIZ_SIZE}</div><div class="q-topic">${q.topic}</div></div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options">${q.opts.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div>
+        <div class="q-feedback" id="q-feedback"></div>
+        <div class="q-nav" id="q-nav" style="display:none"><button class="btn-primary" id="btn-next">${qIndex<QUIZ_SIZE-1?'Sonraki Soru →':'Sonuçları Gör'}</button></div>`;
+    qScreen.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(parseInt(btn.dataset.idx))));
+}
+function selectAnswer(chosen){
+    const q=quizQuestions[qIndex];const correct=q.ans;const isCorrect=chosen===correct;
+    if(isCorrect)score++;answered.push({q:q.q,chosen,correct,isCorrect,opts:q.opts});
+    qScreen.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===correct)btn.classList.add('correct');else if(i===chosen&&!isCorrect)btn.classList.add('wrong')});
+    const fb=document.getElementById('q-feedback');fb.classList.add('show');
+    fb.classList.add(isCorrect?'fb-correct':'fb-wrong');
+    fb.innerHTML=`<strong>${isCorrect?'✅ Doğru!':'❌ Yanlış — doğru cevap: "'+q.opts[correct]+'"'}</strong>${q.exp}`;
+    document.getElementById('q-nav').style.display='flex';
+    document.getElementById('btn-next').addEventListener('click',()=>{qIndex++;qIndex<QUIZ_SIZE?renderQuestion():showResults()});
+}
+function showResults(){
+    progressBar.style.width='100%';quizBadge.textContent='Tamamlandı!';
+    qScreen.classList.remove('active');resultsScreen.classList.add('active');
+    const pct=Math.round((score/QUIZ_SIZE)*100);
+    let msg='',sub='';
+    if(pct>=90){msg='Mükemmel! 🏆';sub='Olağanüstü — bu konuyu gerçekten çok iyi bildiğiniz açık!'}
+    else if(pct>=70){msg='Aferin! 👍';sub='İyi bir bilgi düzeyi. Kaçırdığınız soruları gözden geçirin ve tam hazır olun.'}
+    else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Sağlam bir temel var ama bazı eksikler mevcut. Teorik bilgileri tekrar okuyun ve yeniden deneyin.'}
+    else{msg='Daha fazla çalışma gerekiyor 💡';sub='Üzülmeyin — sayfayı dikkatlice tekrar okuyun ve testi yeniden girin!'}
+    resultsScreen.innerHTML=`
+        <div class="result-circle"><div class="result-score">${score}</div><div class="result-total">${QUIZ_SIZE} üzerinden</div></div>
+        <div class="result-msg">${msg}</div><div class="result-sub">${sub}</div>
+        <div class="result-breakdown"><div class="rb-chip correct">✅ ${score} Doğru</div><div class="rb-chip wrong">❌ ${QUIZ_SIZE-score} Yanlış</div></div>
+        <div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Yeni Rastgele Test</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div>
+        <div id="review-list" style="margin-top:20px;display:none"></div>`;
+    document.getElementById('btn-retry').addEventListener('click',startQuiz);
+    document.getElementById('btn-review').addEventListener('click',()=>{
+        const rl=document.getElementById('review-list');
+        if(rl.style.display==='none'){
+            rl.style.display='block';
+            rl.innerHTML=answered.map((a,i)=>`
+                <div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}">
+                    <div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div>
+                    <div style="font-family:'Outfit',sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div>
+                    <div style="font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div>
+                </div>`).join('');
+            document.getElementById('btn-review').textContent='İncelemeyi Gizle';
+        }else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}
+    });
+}
+
+applyAll();
+})();
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){
+    if(e.keyCode===123)return false;
+    if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false;
+};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
-
 </html>
-
