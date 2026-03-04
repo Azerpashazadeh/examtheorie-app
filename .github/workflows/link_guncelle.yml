@@ -1,0 +1,59 @@
+name: HTML Link Guncelleyici
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Repoyu Klonla
+        uses: actions/checkout@v4
+
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Linkleri Guncelle
+        run: |
+          python -c "
+          import os
+          import re
+
+          base_url = 'https://azerpashazadeh.github.io/sorularveresimler'
+          dil_map = {'en': 'englishjsons', 'tr': 'turkishjsons', 'nl': 'dutchjsons', 'ar': 'arabicjsons'}
+          tipler = ['radio', 'fillblank', 'checkbox', 'resimsech', 'dragdrop']
+
+          for filename in os.listdir('.'):
+              match = re.match(r'test-(\d+)-(en|tr|nl|ar)\.html', filename)
+              if match:
+                  test_no = int(match.group(1))
+                  dil_kodu = match.group(2)
+                  
+                  if test_no >= 7:
+                      print(f'Guncelleniyor: {filename}')
+                      with open(filename, 'r', encoding='utf-8') as f:
+                          content = f.read()
+
+                      klasor = dil_map[dil_kodu]
+                      
+                      for i, tip in enumerate(tipler):
+                          new_link = f'{base_url}/test{test_no}/{klasor}/test{test_no}-{tip}{dil_kodu}.json'
+                          pattern = r'(const t' + str(i+1) + r'Questions\s*=\s*await\s*fetchQuestionsS3\(\s*\")[^\"]+(\",\s*\d+\s*,?\s*\);)'
+                          replacement = r'\1' + new_link + r'\2'
+                          content = re.sub(pattern, replacement, content)
+
+                      with open(filename, 'w', encoding='utf-8') as f:
+                          f.write(content)
+          "
+
+      - name: Degisiklikleri Commit Et ve Pushla
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add .
+          git commit -m "Test 7 ve sonrasi icin linkler examtheorie-app icinde guncellendi" || echo "Degisiklik yok"
+          git push
