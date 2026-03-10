@@ -1,1144 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Driving Behaviour at Intersections – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-         
-
-        h1,
-        h2 {
-            color: #009669;
-        }
-
-        h3 {
-            color: #000000;
-            margin-bottom: -8px;
-            margin-top: -8px;
-
-        }
-
-        .gh3 {
-            color: #009669;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #BEE3D5;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-        .important-words2 {
-            background-color: #BEE3D5;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-        
-
-        .important-words6 {
-            background-color: #BEE3D5;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            
-        }
-
-
-        .container {
-    display: flex;
-    align-items: flex-start; /* Metni resmin üst kenarıyla hizalar */
-    margin-bottom: 30px; /* Her bir konteyner arasında boşluk */
-    gap: 30px; /* Resim ve metin arasındaki mesafeyi sabit tutar */
-}
-
-.container figure {
-    margin: 0;
-    flex: 0 0 auto; /* Resmin genişliğini içeriğine göre ayarlar ve büyüyüp küçülmesini engeller */
-    text-align: center; /* Açıklamaları resmin altında ortalamak için */
-    min-width: 50px; /* Resmin minimum genişliği */
-    max-width: 100px; /* Resmin maksimum genişliği */
-}
-
-
-.container figure img {
-    width: 100%; /* Resmin figure elemanını tamamen doldurmasını sağlar */
-    height: auto;
-    display: block;
-    max-width: 100%; /* Resmin kapsayıcıdan taşmasını engeller */
-   }
-
-.container .heading-primary {
-    margin-top: 0; /* Başlığın üstünde boşluk olmamasını sağlar */
-}
-
-.container > div {
-    flex: 1; /* Metin içeriğinin kalan alanı kaplamasını sağlar */
-}
-
-.container figcaption {
-    margin-top: 5px; /* Resim ile açıklama arasında boşluk */
-    font-style: italic; /* Açıklamaları vurgulamak için */
-}
-
-
-
-
-
-        p {
-            max-width: 98%;
-           
-        }
-        .image {
-            width: 100px; /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px; /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #BEE3D5;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-            
-        }
-
-       
-
-        .important-words3 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 img {
-            width: 90%;
-            height: auto;
-            margin-right: -202px;
-            margin-left: 10px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-
-
-
-
-        /* Masaüstü için 2 sütun düzeni */
-        .image-container8 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* İki sütun yapısı */
-            gap: 10px;
-        }
-
-        .image-block8 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-block8 img {
-            width: 100%;
-            max-width: 600px;
-            /* Resim genişliği sınırlanabilir */
-            height: auto;
-        }
-
-        .image-block8 figcaption {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.6em;
-            /* Yazı boyutunu küçültmek için */
-        }
-
-        /* Açıklamalı resimler için yüksekliği ayarlama */
-        .image-block8:nth-child(6n) figcaption,
-        .image-block8:nth-child(8n) figcaption {
-            min-height: 20px;
-            /* Açıklamalar için minimum yükseklik */
-        }
-
-        /* Mobil görünüm için sıralama ayarı */
-        @media (max-width: 650px) {
-            .image-container8 {
-                grid-template-columns: 1fr;
-                /* Mobilde tek sütun */
-                grid-template-areas:
-                    "image1"
-                    "image5"
-                    "image2"
-                    "image6"
-                    "image3"
-                    "image7"
-                    "image4"
-                    "image8";
-                /* İstenilen sıralama */
-            }
-
-            /* Her resim bloğuna grid area tanımlaması */
-            .image-block8:nth-child(1) {
-                grid-area: image1;
-            }
-
-            .image-block8:nth-child(2) {
-                grid-area: image2;
-            }
-
-            .image-block8:nth-child(3) {
-                grid-area: image5;
-            }
-
-            .image-block8:nth-child(4) {
-                grid-area: image6;
-            }
-
-            .image-block8:nth-child(5) {
-                grid-area: image3;
-            }
-
-            .image-block8:nth-child(6) {
-                grid-area: image4;
-            }
-
-            .image-block8:nth-child(7) {
-                grid-area: image7;
-            }
-
-            .image-block8:nth-child(8) {
-                grid-area: image8;
-            }
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #009669;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #009669;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container20 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container20 figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            margin-top: 15px;
-
-        }
-
-        .image-container20 img {
-            width: 100%;
-            height: auto;
-            margin-top: 0;
-
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-
-        }
-
-        .image-container20 figcaption {
-            font-size: 0.8em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-        }
-   
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-
-
-        .image-text-container {
-    display: flex;
-    align-items: flex-start; /* Metni resmin üst kenarıyla hizalar */
-    margin-bottom: 30px; /* Her bir konteyner arasında boşluk */
-    gap: 30px; /* Resim ve metin arasındaki mesafeyi sabit tutar */
-}
-
-.image-text-container figure {
-    margin: 0;
-    flex: 0 0 49%; /* Resmin genişliğini ekranın %50'sine ayarlar */
-}
-
-.image-text-container img {
-    width: 100%; /* Resmin konteynerini tamamen doldurmasını sağlar */
-    height: auto;
-    display: block;
-}
-
-.image-text-container .text-content {
-    flex: 1; /* Metin içeriğinin kalan alanı kaplamasını sağlar */
-}
-
-@media (max-width: 767px) {
-    .image-text-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px; /* Mobilde resim ve metin arasındaki boşluk */
-    }
-
-    .image-text-container figure,
-    .image-text-container .text-content {
-        flex: 1 1 auto; /* Mobilde esnek hale gelir */
-    }
-}
-
-
-
-
-
-
-
-.text-content {
-    flex: px; /* Metin içeriği alanını genişlet */
-    font-size: 16px;
-    
-   
-}
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        table thead th {
-            background-color: #E0EDCB;
-            color: #333;
-            padding: 12px;
-        }
-
-        table tbody td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table tbody td.first-column {
-            background-color: #E0EDCB;
-            /* Sol sütun rengi */
-            font-weight: bold;
-            /* Yazıları kalın yapma */
-        }
-
-        
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        .image-container20 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px; /* Resimler arasında boşluk için */
-}
-
-.image-container20 figure {
-    flex: 1 1 calc(25% - 10px); /* Masaüstü: Resimleri dört sütun olarak hizalar */
-    max-width: calc(25% - 10px);
-    box-sizing: border-box;
-}
-
-@media screen and (max-width: 768px) {
-    .image-container20 figure {
-        flex: 1 1 calc(50% - 10px); /* Mobil: Resimleri iki sütun olarak hizalar */
-        max-width: calc(50% - 10px);
-    }
-}
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* def card */
+    .def-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:18px 20px 18px 24px;margin:18px 0 26px;position:relative;overflow:hidden;backdrop-filter:blur(14px)}
+    .def-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent-light));border-radius:0 3px 3px 0}
+    .def-card h3{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--accent-light);margin-bottom:5px;margin-top:14px;letter-spacing:.04em;text-transform:uppercase}
+    .def-card h3:first-child{margin-top:0}
+    .def-card p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0 0 6px;line-height:1.55}
+
+    /* 4-col intersection type grid */
+    .photo-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 26px}
+    @media(max-width:640px){.photo-grid-4{grid-template-columns:repeat(2,1fr)}}
+    .photo-grid-4 figure,.photo-grid-2 figure{margin:0}
+    .photo-grid-4 img,.photo-grid-2 img{width:100%;height:auto;border-radius:11px;border:1px solid var(--card-border);box-shadow:0 4px 18px rgba(0,0,0,.4);display:block}
+    .photo-grid-4 figcaption,.photo-grid-2 figcaption{font-family:'Outfit',sans-serif;font-size:.68rem;color:var(--text-dim);text-align:center;margin-top:6px;font-style:italic;line-height:1.35}
+
+    /* 2-col photo grid */
+    .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 26px}
+    @media(max-width:550px){.photo-grid-2{grid-template-columns:1fr}}
+
+    /* exception list */
+    .exception-list{display:flex;flex-direction:column;gap:10px;margin:12px 0 22px}
+    .exc-item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:12px;background:rgba(245,166,35,.07);border:1px solid rgba(245,166,35,.2);backdrop-filter:blur(10px)}
+    .exc-item .ei-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+    .exc-item .ei-text{font-family:'Lora',serif;font-size:.86rem;color:var(--text-muted);line-height:1.55}
+
+    /* B-sign rows list */
+    .sign-list{display:flex;flex-direction:column;gap:0;margin:16px 0 22px}
+    .sign-row{display:flex;align-items:flex-start;gap:16px;padding:16px 18px;border-bottom:1px solid rgba(77,166,255,.08);background:var(--card-bg);backdrop-filter:blur(12px);transition:background .2s}
+    .sign-row:first-child{border-radius:14px 14px 0 0}
+    .sign-row:last-child{border-radius:0 0 14px 14px;border-bottom:none}
+    .sign-row:hover{background:rgba(26,108,246,.1)}
+    .sign-row-img{width:60px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px}
+    .sign-row-img img{width:52px;height:auto}
+    .sign-row-img .sr-code{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;color:var(--accent-light);letter-spacing:.08em}
+    .sign-row-body{flex:1}
+    .sign-row-body h3{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--text-primary);margin-bottom:5px}
+    .sign-row-body p{font-family:'Lora',serif;font-size:.84rem;color:var(--text-muted);margin:0;line-height:1.55}
+    .sign-row-body p strong{color:var(--text-primary)}
+    .sign-row-divider{height:1px;background:rgba(77,166,255,.12);margin:4px 0}
+    .sign-group-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.4);letter-spacing:.14em;text-transform:uppercase;padding:14px 18px 6px;background:rgba(26,108,246,.04);border:1px solid rgba(77,166,255,.08);border-bottom:none}
+    .sign-group-label:first-child{border-radius:14px 14px 0 0}
+
+    /* B6 vs B7 compare */
+    .compare-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 24px}
+    @media(max-width:500px){.compare-cards{grid-template-columns:1fr}}
+    .cmp-card{border-radius:13px;padding:14px 16px;backdrop-filter:blur(12px)}
+    .cmp-card.blue{background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.22)}
+    .cmp-card.red{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.22)}
+    .cmp-card .cmp-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;margin-bottom:6px}
+    .cmp-card.blue .cmp-title{color:var(--accent-light)}
+    .cmp-card.red .cmp-title{color:#ffaaaa}
+    .cmp-card p{font-family:'Lora',serif;font-size:.82rem;color:var(--text-muted);margin:0;line-height:1.5}
+
+    /* scenario image-text cards */
+    .scenario-list{display:flex;flex-direction:column;gap:16px;margin:14px 0 26px}
+    .scenario-card{display:flex;gap:16px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;backdrop-filter:blur(12px);align-items:stretch}
+    @media(max-width:560px){.scenario-card{flex-direction:column}}
+    .scenario-card img{width:180px;min-width:180px;object-fit:cover;display:block}
+    @media(max-width:560px){.scenario-card img{width:100%;min-width:unset;height:180px}}
+    .scenario-card .sc-body{flex:1;padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
+    .scenario-card .sc-num{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:var(--accent-light);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+    .scenario-card .sc-text{font-family:'Lora',serif;font-size:.86rem;color:var(--text-muted);margin:0;line-height:1.6}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    /* COLOUR PANEL */
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
-
 <body>
-    <h1>Driving behaviour at intersections</h1>
-    <p>Different rules apply for when you encounter other traffic at intersections. With these rules, it is important
-        that you understand the difference between road users (all traffic, including pedestrians) and drivers (all
-        traffic without pedestrians). In addition, it is important that you understand the difference between traffic on
-        the intersecting road and traffic on the same road.</p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Colours</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Quiz</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Colour &amp; Text Settings</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Font Size</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ reset</button></div>
+        <div class="presets-strip"><div class="strip-label">Quick Themes</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Default</button><button class="preset-btn" data-preset="light">☀️ Light</button><button class="preset-btn" data-preset="purple">🟣 Purple</button><button class="preset-btn" data-preset="green">🟢 Green</button><button class="preset-btn" data-preset="amber">🟡 Amber</button><button class="preset-btn" data-preset="contrast">⬛ Contrast</button></div></div>
+        <div class="color-section"><div class="stp">Background</div><div class="color-row"><div class="color-row-label">Page background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Background opacity</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Accent Colours</div><div class="color-row"><div class="color-row-label">Primary accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Light accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Warning / red</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Text Colours</div><div class="color-row"><div class="color-row-label">Main heading</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Section headings</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Body text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Subtle text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Cards &amp; Panels</div><div class="color-row"><div class="color-row-label">Card background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Card opacity</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Card border</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Border opacity</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🚦 Intersections Quiz</div><div class="quiz-badge" id="quiz-badge">22 Questions</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚦</span>
+                <h2>Test Your Knowledge</h2>
+                <p>Questions on intersection types, right of way on equivalent roads, exceptions (tram, unpaved), and priority signs B-1 through B-7.</p>
+                <div class="qs-info"><div class="qs-chip">📋 22 questions</div><div class="qs-chip">🔀 Random order</div><div class="qs-chip">✅ Instant feedback</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
 
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Traffic Rules</span><span class="dot">›</span><span style="color:var(--text-primary)">Driving Behaviour at Intersections</span></div>
+    <h1>Driving Behaviour at Intersections</h1>
+    <div class="section-divider"></div>
+
+    <p>Different rules apply for when you encounter other traffic at intersections. It is important to understand the difference between <strong>road users</strong> (all traffic, including pedestrians) and <strong>drivers</strong> (all traffic without pedestrians). In addition, understand the difference between traffic on the <strong>intersecting road</strong> and traffic on the <strong>same road</strong>.</p>
+
+    <!-- Definitions -->
+    <div class="def-card">
         <h3>Intersection</h3>
-        <p>
-            Intersection or junction of roads. At an intersection it is possible to change direction. This means that
-            you can turn left or right.
-            Intersections can be designed in many different ways.
-        </p>
-
+        <p>Intersection or junction of roads. At an intersection it is possible to change direction — you can turn left or right. Intersections can be designed in many different ways.</p>
+        <h3>Intersecting Road</h3>
+        <p>A road that crosses the road you are on. This does not always have to be at 90 degrees — it can also be oblique, such as at a Y-junction.</p>
+        <h3>The Same Road</h3>
+        <p>The road you are on. Traffic on the same road approaches from behind or the front — whether pedestrians on the pavement or drivers on the carriageway. On a roundabout, all traffic following the roundabout is on the same road.</p>
+        <h3>Giving Way</h3>
+        <p>Allowing the drivers involved to proceed without hindrance. The driver who has priority must have the idea that they have priority — they must be able to drive unhindered.</p>
+        <h3>Priority Triangles (Shark's Teeth)</h3>
+        <p>White triangles on the road. Usually used with, but sometimes also without, sign B-6. In both cases, these triangles mean you must give right of way to drivers on the intersecting road.</p>
     </div>
 
-    <div>
-        <div class="image-container20">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Normal intersection</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>T-junction</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>Y-junction or fork</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>Bayonet intersection</figcaption>
-            </figure>
+    <!-- Intersection types -->
+    <div class="photo-grid-4">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg" alt="Normal intersection"/><figcaption>Normal intersection</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg" alt="T-junction"/><figcaption>T-junction</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg" alt="Y-junction"/><figcaption>Y-junction or fork</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg" alt="Bayonet intersection"/><figcaption>Bayonet intersection</figcaption></figure>
+    </div>
+
+    <!-- Intersecting road photos -->
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg" alt="Intersecting road"/><figcaption>Compared to the white lesson car, the coloured part is the intersecting road.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg" alt="Y-junction intersecting"/><figcaption>Compared to the white lesson car, the coloured part of the Y-junction is the crossing road.</figcaption></figure>
+    </div>
+
+    <!-- Same road photos -->
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg" alt="Same road"/><figcaption>All these road users are on the same road (coloured part).</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg" alt="Roundabout same road"/><figcaption>On a roundabout, the circular stretch counts as "the same road". The lesson car and cyclist are therefore on the same road.</figcaption></figure>
+    </div>
+
+    <!-- ── Giving way ── -->
+    <h2>Giving Way</h2>
+    <p>If priority at an intersection is not regulated by signs, road markings, or traffic lights, these are known as <strong>equivalent roads</strong>. On equivalent roads, drivers give right of way to drivers from the right.</p>
+    <p>You do not have to give a pedestrian priority — they are not classed as drivers.</p>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg" alt="Cyclist from right has priority"/><figcaption>The cyclist coming from the right has priority over the lesson car.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg" alt="Pedestrian not a driver"/><figcaption>The pedestrian from the right is not a driver and must therefore let the lesson car pass.</figcaption></figure>
+    </div>
+
+    <p>There are two exceptions to this rule:</p>
+
+    <div class="exception-list">
+        <div class="exc-item"><div class="ei-icon">🚃</div><div class="ei-text"><strong>Trams always have priority.</strong> Drivers give priority to tram drivers, regardless of direction.</div></div>
+        <div class="exc-item"><div class="ei-icon">🛤️</div><div class="ei-text"><strong>Unpaved roads.</strong> Drivers on unpaved roads give right of way to drivers from both left and right on a paved road.</div></div>
+    </div>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg" alt="Tram priority"/><figcaption>The lesson car coming from the right must give right of way to the tram coming from the left.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg" alt="Unpaved road"/><figcaption>The lesson car comes from an unpaved road and must give right of way to the driver on the paved road.</figcaption></figure>
+    </div>
+
+    <!-- ── Priority signs ── -->
+    <h2>Priority Indicated by Signs or Road Markings</h2>
+    <p>If right of way at an intersection is controlled by signs or road markings, the "right has priority" rule is then irrelevant. Various signs regulate the priority.</p>
+
+    <!-- Sign list -->
+    <div class="sign-list">
+        <div class="sign-group-label">🟡 Being given right of way — Priority Road</div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_71ed77b3f56847e399c1547a5a7a12eb~mv2.png" alt="B-1"/><div class="sr-code">B-1</div></div>
+            <div class="sign-row-body"><h3>Priority Road</h3><p>You are on a priority road. Crossing drivers must give you priority. This sign is repeated within built-up areas <em>before</em> every intersection, and outside built-up areas <em>after</em> every intersection — indicating whether you are inside or outside a built-up area.</p></div>
+        </div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_5b541bedc0ca4d048fa80dbbdcb7ab99~mv2.png" alt="B-2"/><div class="sr-code">B-2</div></div>
+            <div class="sign-row-body"><h3>End of Priority Road</h3><p>The B-2 sign indicates the end of the priority road. After this sign, the normal priority rules apply.</p></div>
+        </div>
+        <div class="sign-group-label">🟡 Being given right of way — Priority Intersection</div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_6cba878b84114d19a45e0cc897401bc1~mv2.png" alt="B-3"/><div class="sr-code">B-3</div></div>
+            <div class="sign-row-body"><h3>Priority Intersection — Two Side Roads</h3><p>You must be given priority. The thick arrow = your road. The cross marks = side roads. Side roads on both left and right. <strong>B-3, B-4 and B-5 only apply to the intersection you are approaching.</strong></p></div>
+        </div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_6386b91bf4af48eba2b76f5598bde178~mv2.png" alt="B-4"/><div class="sr-code">B-4</div></div>
+            <div class="sign-row-body"><h3>Priority Intersection — Side Road on the Left</h3><p>One side road on the left. You must be given priority by the crossing drivers from that side road.</p></div>
+        </div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_964195d9ac754a918b0dc4f4599a29a9~mv2.png" alt="B-5"/><div class="sr-code">B-5</div></div>
+            <div class="sign-row-body"><h3>Priority Intersection — Side Road on the Right</h3><p>One side road on the right. You must be given priority by the crossing drivers from that side road.</p></div>
+        </div>
+        <div class="sign-group-label">🔴 Giving right of way</div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_4b2a0103cec54e10a8de7f43100c00bf~mv2.png" alt="B-6"/><div class="sr-code">B-6</div></div>
+            <div class="sign-row-body"><h3>Give Way</h3><p>You must give priority to drivers on the intersecting road. <strong>Stopping is not mandatory</strong> — as long as you can give priority to the crossing drivers. Always combined with priority triangles (shark's teeth).</p></div>
+        </div>
+        <div class="sign-row">
+            <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_31408e28c07947ec9589ca27a9d12799~mv2.png" alt="B-7"/><div class="sr-code">B-7</div></div>
+            <div class="sign-row-body"><h3>Stop — Give Way</h3><p>You must give priority to drivers on the intersecting road. <strong>Stopping is always mandatory</strong> — even if you have seen there are no drivers on the intersecting road. Applied at intersections with poor visibility or high accident risk. Always combined with a stop line.</p></div>
         </div>
     </div>
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
-        <h3>Intersecting road</h3>
-        <p>
-            This is a road that crosses the road you are on. This does not always have to be at an angle of 90 degrees (perpendicular). It can also be a road that is more oblique to the road you are on, such as at a Y-junction.
-        </p>
 
-    </div>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Compared to the white lesson car, the coloured part is the intersecting road.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>Compared to the white lesson car, the coloured part of the Y-junction is the crossing road.</figcaption>
-            </figure>
+    <div class="compare-cards">
+        <div class="cmp-card blue">
+            <div class="cmp-title">B-6 — Give Way Triangle</div>
+            <p>Stop only if needed. Always comes with <strong>priority triangles</strong> on the road surface.</p>
+        </div>
+        <div class="cmp-card red">
+            <div class="cmp-title">B-7 — STOP Sign</div>
+            <p>Always stop — even if the road is clear. Always comes with a <strong>stop line</strong> on the road surface.</p>
         </div>
     </div>
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
-        <h3>The same road</h3>
-        <p>
-            This is the road you are on. Traffic on the same road approaches you from behind or from the front. It does not matter whether these are pedestrians on the pavement or on the verge, or drivers of passenger cars on the carriageway. If you drive on a roundabout, all traffic that also follows this roundabout is traffic on the same road.
-        </p>
 
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg" alt="B-6 with priority triangles"/><figcaption>The B-6 sign is always combined with priority triangles.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg" alt="B-7 with stop line"/><figcaption>The B-7 sign is always combined with a stop line.</figcaption></figure>
     </div>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>All these road users are on the same road (coloured part).</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg"
-                    alt="Seat belt warning light">
-                <figcaption>On a roundabout, the circular stretch of road counts as “the same road”. The lesson car and the cyclist are therefore on the same road.</figcaption>
-            </figure>
+
+    <p>These signs and markings are also <strong>only intended for drivers</strong>. Pedestrians are not subject to these priority rules.</p>
+
+    <!-- ── Examples ── -->
+    <h2>Examples</h2>
+
+    <div class="scenario-list">
+        <div class="scenario-card">
+            <img src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg" alt="Scenario 1"/>
+            <div class="sc-body"><div class="sc-num">Scenario 1 — B-6 + Priority Triangles</div><p class="sc-text">When approaching sign B-6 and priority triangles, give priority to drivers on the intersecting road. Here, a horse-drawn vehicle comes from the left on the intersecting road. The lesson car must give right of way to this driver.</p></div>
+        </div>
+        <div class="scenario-card">
+            <img src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg" alt="Scenario 2"/>
+            <div class="sc-body"><div class="sc-num">Scenario 2 — Pedestrian at Priority Triangles</div><p class="sc-text">The lesson car is approaching priority triangles. The pedestrian on the intersecting road must wait for the lesson car — the lesson car only has to give priority to <strong>drivers</strong>, not pedestrians.</p></div>
+        </div>
+        <div class="scenario-card">
+            <img src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg" alt="Scenario 3"/>
+            <div class="sc-body"><div class="sc-num">Scenario 3 — B-7 Stop Sign + Pedestrian</div><p class="sc-text">The pedestrian must wait for the lesson car. Due to the B-7 stop sign, the lesson car must stop — but can immediately drive away if no drivers come from left or right. A pedestrian is not a driver.</p></div>
+        </div>
+        <div class="scenario-card">
+            <img src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg" alt="Scenario 4"/>
+            <div class="sc-body"><div class="sc-num">Scenario 4 — Tram at Regulated Intersection</div><p class="sc-text">Tram drivers always have priority at an equivalent intersection. However, as soon as signs and road markings regulate the priority, the tram driver must follow these. Here, the tram driver must wait for the lesson car.</p></div>
         </div>
     </div>
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
-        <h3>Giving way</h3>
-        <p>
-            Allows the drivers involved to proceed without hindrance. This means that the driver who has priority must also have the idea that he has priority. This driver must be able to drive unhindered.
-        </p>
 
-    </div>
-    <h2>
-        Giving way
-    </h2>
-    <p>
-        If the priority at an intersection is not regulated by signs, markings on the road surface or traffic lights, these are known as equivalent roads. On equivalent roads, drivers give right of way to drivers from the right.
-    </p>
-    <p>
-        You do not have to give a pedestrian priority, because they are not classed as drivers.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>The cyclist coming from the right has priority over the lesson car.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>The pedestrian coming from the right is not a driver and must therefore let the lesson car pass.</figcaption>
-            </figure>
-        </div>
-    </div>
-    <p>
-        There are two exceptions to this rule:
-    </p>
-    <ul>
-        <li>
-            Drivers give priority to tram drivers.
-        </li>
-        <li>
-            Drivers on unpaved roads give right of way to drivers from the left and right on a paved road.
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>The lesson car coming from the right must give right of way to the tram coming from the left.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>The lesson car comes from an unpaved road and must give right of way to the driver on the paved road.</figcaption>
-            </figure>
-        </div>
-    </div>
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
-        <h3>Priority triangles (Shark’s teeth)</h3>
-        <p>
-            White triangles on the road. These are usually used with, but sometimes also without, sign B-6. In both cases, these triangles mean that you must give right of way to drivers on the intersecting road.
-        </p>
-
-    </div>
-    <h2>
-        Priority indicated by signs or road markings
-    </h2>
-<p>
-    If right of way at an intersection is controlled by signs or markings on the road surface, the priority rule that drivers from the right have right of way is then irrelevant. There are various signs that regulate the priority.
-</p>
-<div class="important-words6">
-    <div class="vertical-line2"></div>
-
-   
-    
-
-    <div class="container">
-        <div>
-            <h3 class="heading-primary"><strong>Being given right of way - priority road</strong></h3>
-            <p>
-                The B-1 sign indicates that you are on a priority road. You must be given priority by the crossing drivers. This sign is repeated within the built-up area before and outside the built-up area after every intersection. That way you can tell from these signs whether you are driving inside or outside built-up areas.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_71ed77b3f56847e399c1547a5a7a12eb~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-1</figcaption>
-        </figure>
-    </div>
-    
-    <div class="container">
-        <div>
-            <p>
-                The B-2 sign indicates the end of this priority road. After this sign the normal priority rules apply.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_5b541bedc0ca4d048fa80dbbdcb7ab99~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-2</figcaption>
-        </figure>
-    </div>
-    
-    <div class="container">
-        <div>
-            <h3 class="heading-primary"><strong>Being given right of way - priority intersection</strong></h3>
-            <p>
-                The B-3 sign indicates a priority intersection. You must be given priority by the crossing drivers. The thick arrow indicates the road you are driving on. The cross marks indicate the side roads. In this case, there are side roads on both the left and the right. This sign, as well as the B-4 and B-5 sign, only apply to the intersection you are approaching.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_6cba878b84114d19a45e0cc897401bc1~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-3</figcaption>
-        </figure>
-    </div>
-    
-    <div class="container">
-        <div>
-            <p>
-                The B-4 sign indicates a priority intersection. In this case there is one side road on the left. You must be given priority by the crossing drivers from that side road.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_6386b91bf4af48eba2b76f5598bde178~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-4</figcaption>
-        </figure>
-    </div>
-    
-    <div class="container">
-        <div>
-            <p>
-                The B-5 sign indicates a priority intersection. In this case there is one side road on the right. You must be given priority by the crossing drivers from that side road.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_964195d9ac754a918b0dc4f4599a29a9~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-5</figcaption>
-        </figure>
-    </div>
-    
-    <div class="container">
-        <div>
-            <h3 class="heading-primary"><strong>Giving right of way</strong></h3>
-            <p>
-                The B-6 sign indicates that you must give priority to drivers on the intersecting road. It may be that this intersection is a priority road, but it may also be a priority intersection. Stopping is not mandatory, as long as you are able to give priority to the crossing drivers.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_4b2a0103cec54e10a8de7f43100c00bf~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-6</figcaption>
-        </figure>
-    </div>
-    
-    <div class="container">
-        <div>
-            <p>
-                The B-7 sign indicates that you must give priority to drivers on the intersecting road. It may be that this intersection is a priority road, but it may also be a priority intersection. In this case, stopping is <strong>always</strong> mandatory! These signs are applied at intersections where there is poor visibility, or a high accident risk.
-            </p>
-        </div>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_31408e28c07947ec9589ca27a9d12799~mv2.png" alt="Örnek Resim" class="image">
-            <figcaption>B-7</figcaption>
-        </figure>
-    </div>
-    
-
-
-
-
-
-
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
 </div>
-<p>
-    The difference between these two signs is that you always have to stop at the “STOP” sign. Even if you have seen that there are no drivers on the intersecting road. In addition, the sign B-6 is always combined with priority triangles and the sign B-7 with a stop line.
-</p>
-<div>
-    <div class="images-container5">
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg"
-                alt="Warning side-airbag malfunction">
-            <figcaption>The B-6 sign is always combined with priority triangles.</figcaption>
-        </figure>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg"
-                alt="Seat belt warning light">
-            <figcaption>The B-7 sign is always combined with a stop line.</figcaption>
-        </figure>
-    </div>
-</div>
-<p>
-    These signs and markings are also only intended for drivers. Pedestrians are not subject to these priority rules.
-</p>
-<h2>
-    Examples
-</h2>
-<div class="image-text-container">
-    <figure>
-        <img src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg"
-            alt="Sigorta Kartı" />
-        <figcaption><em></em></figcaption>
-    </figure>
-    <div class="text-content">
-        
-        <p>When approaching sign B-6 and priority triangles, give priority to drivers on the intersecting road. In this case, a horse-drawn vehicle comes from the left on the intersecting road. The lesson car must give right of way to this driver.</p>
-    </div>
-</div>
-<div class="image-text-container">
-    <figure>
-        <img src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg"
-            alt="Sigorta Kartı" />
-        <figcaption><em></em></figcaption>
-    </figure>
-    <div class="text-content">
-        
-        <p>In this case, the lesson car is also approaching priority triangles. The pedestrian on the intersecting road must wait for the lesson car. The lesson car only has to give drivers priority and no pedestrians on the priority triangles.</p>
-    </div>
-</div>
-<div class="image-text-container">
-    <figure>
-        <img src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg"
-            alt="Sigorta Kartı" />
-        <figcaption><em></em></figcaption>
-    </figure>
-    <div class="text-content">
-        
-        <p>Here, too, the pedestrian must wait for the lesson car. This is approaching a stop sign with stop line. Due to the stop sign, the lesson car must stop, but can immediately drive away if no drivers come from the left or right. A pedestrian is not a driver.</p>
-    </div>
-</div>
-<div class="image-text-container">
-    <figure>
-        <img src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg"
-            alt="Sigorta Kartı" />
-        <figcaption><em></em></figcaption>
-    </figure>
-    <div class="text-content">
-        
-        <p>Tram drivers always have priority at an equivalent intersection. As soon as there are signs and road markings that regulate the priority, the tram driver must follow these. In this case, the tram driver must wait for the lesson car.</p>
-    </div>
-</div>
-
-    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
-    overview</a>
-
-  
-
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_ix2';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+    {t:'Key Concepts',q:'What is the difference between "road users" and "drivers"?',o:['Road users are only drivers; pedestrians are excluded','Road users include all traffic (including pedestrians); drivers are all traffic without pedestrians','Drivers include pedestrians; road users do not','There is no difference — the terms are interchangeable'],a:1,e:'Road users = all traffic including pedestrians. Drivers = all traffic without pedestrians. This distinction matters for priority rules.'},
+    {t:'Key Concepts',q:'What is an intersecting road?',o:['Always a road that meets yours at exactly 90 degrees','A road that crosses the road you are on — not necessarily at 90 degrees','A road that is parallel to yours','Only the road to the right of your direction of travel'],a:1,e:'An intersecting road crosses the road you are on. This does not have to be perpendicular — it can also be oblique, such as at a Y-junction.'},
+    {t:'Key Concepts',q:'You are driving on a roundabout. Is the cyclist ahead of you on the same road or the intersecting road?',o:['Intersecting road — they are going a different direction','Same road — all traffic following the roundabout is on the same road','It depends on which exit they are taking','It depends on whether there is a cycle lane'],a:1,e:'On a roundabout, the circular stretch of road counts as "the same road". All traffic following the roundabout is therefore on the same road.'},
+    {t:'Key Concepts',q:'What does "giving way" mean?',o:['Stopping completely and waiting for all traffic to pass','Allowing the drivers involved to proceed without hindrance — the driver with priority must feel they have priority','Sounding your horn to signal you are giving way','Turning on your hazard lights when yielding'],a:1,e:'Giving way means allowing the drivers involved to proceed without hindrance. The driver who has priority must also have the idea that he has priority and must be able to drive unhindered.'},
+    {t:'Equivalent Roads',q:'At an intersection with no signs, markings, or traffic lights, who has priority?',o:['The driver who arrived first','Drivers give right of way to drivers from the right','Drivers give right of way to drivers from the left','The driver on the wider road'],a:1,e:'On equivalent roads (no signs, markings, or traffic lights), drivers give right of way to drivers from the right.'},
+    {t:'Equivalent Roads',q:'A pedestrian approaches from your right on an equivalent intersection. Must you give them priority?',o:['Yes — all road users from the right have priority','No — pedestrians are not classed as drivers; the right-of-way rule only applies between drivers','Yes, but only if they are on a zebra crossing','Only if they are already crossing'],a:1,e:'You do not have to give a pedestrian priority, because they are not classed as drivers. The right-of-way rule on equivalent roads applies only to drivers.'},
+    {t:'Exceptions',q:'At an equivalent intersection, a tram approaches from your left. What applies?',o:['You have priority — the tram comes from the left','The tram has priority — drivers always give priority to tram drivers','Neither — trams are exempt from priority rules','Only if there are tracks on the road'],a:1,e:'Drivers give priority to tram drivers — this is an exception to the right-from-right rule. The tram always has priority at equivalent intersections, regardless of direction.'},
+    {t:'Exceptions',q:'You are on an unpaved road and approach an intersection with a paved road. What must you do?',o:['Apply the right-from-right rule as normal','Give right of way to drivers from both left and right on the paved road','Take priority because you arrived first','Only yield to drivers from your left'],a:1,e:'Drivers on unpaved roads give right of way to drivers from the left and right on a paved road — regardless of direction.'},
+    {t:'Exceptions',q:'There are signs regulating priority at an intersection. A tram approaches — does it automatically have priority?',o:['Yes — trams always have absolute priority','No — once signs regulate priority, the tram driver must follow those signs too','Yes, but only outside built-up areas','Only if it is a designated tram priority zone'],a:1,e:'Trams always have priority at equivalent intersections. But as soon as signs and markings regulate priority, the tram driver must follow those rules as well.'},
+    {t:'Priority Triangles',q:'What are priority triangles (shark\'s teeth)?',o:['Red triangles warning of a sharp corner ahead','White triangles on the road meaning you must give right of way to drivers on the intersecting road','Yellow diamonds indicating you have priority','Blue triangles indicating a tram lane'],a:1,e:'Priority triangles (shark\'s teeth) are white triangles on the road. They mean you must give right of way to drivers on the intersecting road — whether used with B-6 or without it.'},
+    {t:'Priority Signs',q:'What does the B-1 sign indicate?',o:['You must give way to drivers on the intersecting road','You are on a priority road — crossing drivers must give you priority','The end of a priority road','A priority intersection ahead'],a:1,e:'The B-1 sign indicates you are on a priority road. You must be given priority by crossing drivers. It is repeated before each intersection inside built-up areas, and after each intersection outside.'},
+    {t:'Priority Signs',q:'What does the B-2 sign indicate?',o:['Start of a priority road','Priority intersection ahead','End of the priority road — normal priority rules apply after this sign','You must stop and give way'],a:2,e:'The B-2 sign indicates the end of the priority road. After this sign, normal priority rules apply.'},
+    {t:'Priority Signs',q:'What does the thick arrow on sign B-3 represent?',o:['The direction with the most traffic','The road you are driving on','The direction you must take','The intersecting road with priority'],a:1,e:'On B-3 (and B-4, B-5), the thick arrow indicates the road you are driving on. The cross marks indicate side roads.'},
+    {t:'Priority Signs',q:'To how many intersections do signs B-3, B-4, and B-5 apply?',o:['All intersections along the road','Until the next B-2 sign','Only to the specific intersection you are approaching','To the next three intersections'],a:2,e:'Signs B-3, B-4, and B-5 only apply to the intersection you are approaching — not to any further intersections.'},
+    {t:'Priority Signs',q:'What does the B-4 sign indicate?',o:['Side road on the right — you must give way','Side road on the left — you must be given priority from that side road','Side roads on both sides — you have priority','Stop and give way to all traffic'],a:1,e:'The B-4 sign indicates a priority intersection with one side road on the left. You must be given priority by crossing drivers from that side road.'},
+    {t:'Priority Signs',q:'What does the B-6 sign require?',o:['Stop completely and wait','Give priority to drivers on the intersecting road — stopping is not mandatory as long as you can give priority','Give priority only to drivers from the right','Flash your headlights before proceeding'],a:1,e:'B-6 requires you to give priority to drivers on the intersecting road. Stopping is not mandatory, as long as you are able to give priority to the crossing drivers.'},
+    {t:'Priority Signs',q:'What does the B-7 (STOP) sign require compared to B-6?',o:['Both require a full stop','B-7 requires a full stop always; B-6 requires stopping only if needed','B-6 requires a full stop always; B-7 only if needed','Neither requires a stop if the road is clear'],a:1,e:'At B-7, stopping is always mandatory — even if you can see there are no drivers on the intersecting road. At B-6, stopping is not mandatory as long as you can give priority.'},
+    {t:'Priority Signs',q:'B-6 is always combined with which road marking?',o:['A stop line','Priority triangles (shark\'s teeth)','A broken white line','A solid yellow line'],a:1,e:'Sign B-6 is always combined with priority triangles (shark\'s teeth) on the road surface.'},
+    {t:'Priority Signs',q:'B-7 is always combined with which road marking?',o:['Priority triangles (shark\'s teeth)','A broken centre line','A stop line','A yellow cross marking'],a:2,e:'Sign B-7 (STOP) is always combined with a stop line on the road surface.'},
+    {t:'Priority Signs',q:'Where are B-7 signs typically applied?',o:['On all priority roads','At intersections with poor visibility or a high accident risk','On motorway slip roads only','At pedestrian crossings'],a:1,e:'B-7 signs are applied at intersections where there is poor visibility or a high accident risk — hence the mandatory stop requirement.'},
+    {t:'Examples',q:'You approach B-6 triangles. A horse-drawn cart comes from the left on the intersecting road. What do you do?',o:['Proceed — the cart comes from the left','Give way — a horse-drawn cart is a driver on the intersecting road','Sound your horn and proceed','The cart is not a driver; proceed without giving way'],a:1,e:'A horse-drawn vehicle is a driver. At B-6 priority triangles you must give priority to all drivers on the intersecting road — regardless of which side they come from.'},
+    {t:'Examples',q:'You approach B-6 priority triangles. A pedestrian is waiting on the intersecting road. What do you do?',o:['Stop and wait for the pedestrian to cross','Proceed — priority signs only apply between drivers, and pedestrians are not drivers','Sound your horn to warn them','Give way only if they have started crossing'],a:1,e:'Priority signs and markings are only intended for drivers. Pedestrians are not subject to these priority rules — you only need to give way to drivers at B-6 triangles.'},
+];
+const QS=22;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Questions'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Question ${qI+1} of ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Next Question →':'See Results'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Correct!':'❌ Incorrect — correct answer: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Complete!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Excellent! 🏆';sub='You have mastered intersection priority rules!'}else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review what you missed to be fully prepared.'}else if(pct>=50){msg='Keep practising 📖';sub='Re-read the rules and try again — you\'re getting there.'}else{msg='More study needed 💡';sub='Study the page carefully and retake the quiz!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">out of ${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Correct</div><div class="rb-chip wrong">❌ ${QS-sc} Wrong</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 New Random Quiz</button><button class="btn-secondary" id="btn-review">📋 Review Answers</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Correct: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='Hide Review'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
