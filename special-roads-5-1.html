@@ -1,969 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Special Roads – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-         
-
-
-         /* Video için özel kapsayıcı */
-         .video-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%; /* Tam ekran genişliği */
-      padding: 10px; /* Kenar boşlukları */
-      box-sizing: border-box;
-      margin-top: 25px;
-    }
-
-    .video-container {
-      width: 100%; /* Video oynatıcının genişliği ekranın %98'ini kapsar */
-      max-width: 1400px; /* Büyük ekranlarda maksimum genişlik */
-      aspect-ratio: 16 / 9; /* En-boy oranını korur */
-      position: relative;
-    }
-
-    video {
-      width: 100%; /* Video kapsayıcı genişliğini tamamen doldurur */
-      height: auto; /* Oranları korur */
-      border: 2px solid #ccc; /* Çerçeve */
-      border-radius: 10px; /* Köşeleri yuvarlama */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-    }
-        h1,
-        h2 {
-            color: #0093C3;
-        }
-
-        h3 {
-            color: #000000;
-            margin-bottom: -8px;
-            margin-top: -8px;
-
-        }
-
-        .gh3 {
-            color: #0093C3;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #BEE3D5;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-        .important-words2 {
-            background-color: #BEE3D5;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-
-        .important-words6 {
-            background-color: #BEE3D5;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #BEE3D5;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.9em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-
-
-        .important-words3 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 img {
-            width: 90%;
-            height: auto;
-            margin-right: -202px;
-            margin-left: 10px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-
-
-
-
-        /* Masaüstü için 2 sütun düzeni */
-        .image-container8 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* İki sütun yapısı */
-            gap: 10px;
-        }
-
-        .image-block8 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-block8 img {
-            width: 100%;
-            max-width: 600px;
-            /* Resim genişliği sınırlanabilir */
-            height: auto;
-        }
-
-        .image-block8 figcaption {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.6em;
-            /* Yazı boyutunu küçültmek için */
-        }
-
-        /* Açıklamalı resimler için yüksekliği ayarlama */
-        .image-block8:nth-child(6n) figcaption,
-        .image-block8:nth-child(8n) figcaption {
-            min-height: 20px;
-            /* Açıklamalar için minimum yükseklik */
-        }
-
-        /* Mobil görünüm için sıralama ayarı */
-        @media (max-width: 650px) {
-            .image-container8 {
-                grid-template-columns: 1fr;
-                /* Mobilde tek sütun */
-                grid-template-areas:
-                    "image1"
-                    "image5"
-                    "image2"
-                    "image6"
-                    "image3"
-                    "image7"
-                    "image4"
-                    "image8";
-                /* İstenilen sıralama */
-            }
-
-            /* Her resim bloğuna grid area tanımlaması */
-            .image-block8:nth-child(1) {
-                grid-area: image1;
-            }
-
-            .image-block8:nth-child(2) {
-                grid-area: image2;
-            }
-
-            .image-block8:nth-child(3) {
-                grid-area: image5;
-            }
-
-            .image-block8:nth-child(4) {
-                grid-area: image6;
-            }
-
-            .image-block8:nth-child(5) {
-                grid-area: image3;
-            }
-
-            .image-block8:nth-child(6) {
-                grid-area: image4;
-            }
-
-            .image-block8:nth-child(7) {
-                grid-area: image7;
-            }
-
-            .image-block8:nth-child(8) {
-                grid-area: image8;
-            }
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #009669;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #009669;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            margin-top: 15px;
-
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-
-        }
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-        .image-text-container {
-            display: flex;
-            /* Görüntü ve metni yan yana koymak için */
-            flex-direction: row;
-            align-items: flex-start;
-            gap: -30px;
-
-        }
-
-        .image-text-container img {
-            max-width: 100%;
-            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
-            height: auto;
-            /* Görselin oranlarını koru */
-            width: 440px;
-            /* Görseli küçültmek için sabit bir genişlik */
-            margin-left: -40px;
-            /* Görsel ile sol kenar arasındaki boşluk */
-
-
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        table thead th {
-            background-color: #E0EDCB;
-            color: #333;
-            padding: 12px;
-        }
-
-        table tbody td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table tbody td.first-column {
-            background-color: #E0EDCB;
-            /* Sol sütun rengi */
-            font-weight: bold;
-            /* Yazıları kalın yapma */
-        }
-
-
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    ul{margin:0 0 18px 0;padding-left:0;list-style:none}
+    ul li{font-family:'Lora',serif;font-size:.93rem;color:var(--text-muted);padding:7px 0 7px 22px;position:relative;line-height:1.65;border-bottom:1px solid rgba(77,166,255,.07)}
+    ul li:last-child{border-bottom:none}
+    ul li::before{content:'›';position:absolute;left:4px;top:7px;color:var(--accent-light);font-weight:700;font-size:1rem}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* speed compare */
+    .speed-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 24px}
+    @media(max-width:480px){.speed-row{grid-template-columns:1fr}}
+    .speed-card{border-radius:14px;padding:16px 18px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+    .speed-card.motorway{background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.25)}
+    .speed-card.autoweg{background:rgba(0,180,140,.06);border:1px solid rgba(0,220,160,.2)}
+    .speed-card .sc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .speed-card .sc-icon{font-size:1.5rem}
+    .speed-card .sc-label{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+    .speed-card.motorway .sc-label{color:var(--accent-light)}
+    .speed-card.autoweg .sc-label{color:#4dffc3}
+    .speed-card .sc-speed{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:800;line-height:1;margin-bottom:4px}
+    .speed-card.motorway .sc-speed{color:#fff}
+    .speed-card.autoweg .sc-speed{color:#4dffc3}
+    .speed-card .sc-min{font-family:'Outfit',sans-serif;font-size:.74rem;color:var(--text-dim)}
+    .speed-card p{font-family:'Lora',serif;font-size:.82rem;color:var(--text-muted);margin:6px 0 0;line-height:1.5}
+
+    /* photo grid 2 & 3 */
+    .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 22px}
+    .photo-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0 22px}
+    @media(max-width:600px){.photo-grid-3{grid-template-columns:1fr 1fr}}
+    @media(max-width:550px){.photo-grid-2{grid-template-columns:1fr}}
+    @media(max-width:380px){.photo-grid-3{grid-template-columns:1fr}}
+    .photo-grid-2 figure,.photo-grid-3 figure{margin:0}
+    .photo-grid-2 img,.photo-grid-3 img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 4px 20px rgba(0,0,0,.4);display:block}
+    .photo-grid-2 figcaption,.photo-grid-3 figcaption{font-family:'Outfit',sans-serif;font-size:.7rem;color:var(--text-dim);text-align:center;margin-top:7px;font-style:italic;line-height:1.4}
+
+    /* red prohibition list */
+    .prohibit-list{background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.2);border-radius:13px;padding:14px 18px 14px 22px;margin:14px 0 22px;position:relative;overflow:hidden}
+    .prohibit-list::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,var(--red),#ff6b6b);border-radius:0 3px 3px 0}
+    .prohibit-list .pl-title{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+    .prohibit-list ul{margin:0}
+    .prohibit-list ul li{font-family:'Lora',serif;font-size:.88rem;color:rgba(255,180,180,.8);padding:5px 0 5px 20px;border-color:rgba(232,69,69,.1)}
+    .prohibit-list ul li::before{content:'✕';color:var(--red);font-size:.75rem;top:6px}
+
+    /* amber tip */
+    .tip-amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2);border-radius:12px;padding:12px 16px 12px 20px;margin:12px 0 20px;position:relative;overflow:hidden}
+    .tip-amber::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,#f5a623,#ffd166);border-radius:0 3px 3px 0}
+    .tip-amber p{font-family:'Lora',serif;font-size:.86rem;color:rgba(255,220,120,.85);margin:0;line-height:1.6}
+    .tip-amber p strong{color:#fff}
+
+    /* info blue */
+    .info-blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22);border-radius:13px;padding:13px 18px 13px 22px;margin:14px 0 22px;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+    .info-blue::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent-light));border-radius:0 3px 3px 0}
+    .info-blue p{font-family:'Lora',serif;font-size:.87rem;color:var(--text-muted);margin:0;line-height:1.6}
+    .info-blue p strong{color:var(--text-primary)}
+
+    /* rush-hour sign row */
+    .rush-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 22px}
+    @media(max-width:480px){.rush-row{grid-template-columns:1fr}}
+    .rush-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(12px)}
+    .rush-card img{width:100%;max-width:140px;height:auto;margin:0 auto 10px;display:block;border-radius:8px}
+    .rush-card .rc-label{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--text-muted)}
+
+    /* erf rules */
+    .erf-rules{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:16px 20px;margin:14px 0 22px;backdrop-filter:blur(12px)}
+    .erf-rules ul{margin:0}
+    .erf-rules ul li{font-size:.9rem}
+
+    /* sign pair */
+    .sign-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 22px}
+    @media(max-width:400px){.sign-pair{grid-template-columns:1fr}}
+    .sign-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(12px)}
+    .sign-tile img{width:80px;height:auto;margin:0 auto 8px;display:block}
+    .sign-tile .st-code{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;color:var(--accent-light);letter-spacing:.08em;margin-bottom:3px}
+    .sign-tile .st-desc{font-family:'Lora',serif;font-size:.78rem;color:var(--text-muted);line-height:1.4}
+
+    /* video */
+    .video-wrap{margin:20px 0 8px;border-radius:14px;overflow:hidden;border:1px solid var(--card-border);background:#000;box-shadow:0 6px 28px rgba(0,0,0,.5)}
+    .video-wrap video{width:100%;display:block;max-height:420px}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
-
 <body>
-    <h1>Special roads</h1>
-    <p>While driving on public roads you will come across different types of roads. Some are wider and others narrower.
-        In addition, you can and may drive much faster on one road than on the other. Adapted rules apply on a number of
-        roads.</p>
-    <p>
-        The main special roads with adapted rules are:
-    </p>
-
-
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_54a5e85f1c0a4817becdb81ead1b3675~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Motorway</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_2947e71262464a81bfe87d099a1c1c6c~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Autoweg</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_df47360c5f634c6d844205abde01ce2b~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Erf</figcaption>
-            </figure>
-
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Colours</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Quiz</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Colour &amp; Text Settings</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Font Size</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ reset</button></div>
+        <div class="presets-strip"><div class="strip-label">Quick Themes</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Default</button><button class="preset-btn" data-preset="light">☀️ Light</button><button class="preset-btn" data-preset="purple">🟣 Purple</button><button class="preset-btn" data-preset="green">🟢 Green</button><button class="preset-btn" data-preset="amber">🟡 Amber</button><button class="preset-btn" data-preset="contrast">⬛ Contrast</button></div></div>
+        <div class="color-section"><div class="stp">Background</div><div class="color-row"><div class="color-row-label">Page background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Background opacity</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Accent Colours</div><div class="color-row"><div class="color-row-label">Primary accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Light accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Warning / red</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Text Colours</div><div class="color-row"><div class="color-row-label">Main heading</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Section headings</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Body text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Subtle text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Cards &amp; Panels</div><div class="color-row"><div class="color-row-label">Card background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Card opacity</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Card border</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Border opacity</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🛣️ Special Roads Quiz</div><div class="quiz-badge" id="quiz-badge">20 Questions</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🛣️</span>
+                <h2>Test Your Knowledge</h2>
+                <p>Questions on motorways, autowegen, speed requirements, prohibited actions, rush-hour lanes, and erf rules.</p>
+                <div class="qs-info"><div class="qs-chip">📋 20 questions</div><div class="qs-chip">🔀 Random order</div><div class="qs-chip">✅ Instant feedback</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
         </div>
     </div>
-    <h2>
-        Motorways and autowegen
-    </h2>
+</div>
 
-    <p>
-        The maximum allowed speed on a motorway is 130 km/h. On an autoweg this is 100 km/h. These speeds are only valid
-        <strong>if no other speed is specified.</strong> On these roads it is dangerous to drive much slower than other
-        traffic. Therefore, not all vehicles are allowed to drive on these roads:
-    </p>
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Traffic Rules</span><span class="dot">›</span><span style="color:var(--text-primary)">Special Roads</span></div>
+    <h1>Special Roads</h1>
+    <div class="section-divider"></div>
+
+    <p>While driving on public roads you will come across different types of roads. Some are wider and others narrower. In addition, you can and may drive much faster on one road than on the other. Adapted rules apply on a number of roads.</p>
+    <p>The main special roads with adapted rules are:</p>
+
+    <div class="photo-grid-3">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_54a5e85f1c0a4817becdb81ead1b3675~mv2.png" alt="Motorway sign"/><figcaption>Motorway</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_2947e71262464a81bfe87d099a1c1c6c~mv2.png" alt="Autoweg sign"/><figcaption>Autoweg</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_df47360c5f634c6d844205abde01ce2b~mv2.png" alt="Erf sign"/><figcaption>Erf</figcaption></figure>
+    </div>
+
+    <!-- ── Motorways & Autowegen ── -->
+    <h2>Motorways and Autowegen</h2>
+
+    <div class="speed-row">
+        <div class="speed-card motorway">
+            <div class="sc-top"><span class="sc-icon">🛣️</span><div class="sc-label">Motorway</div></div>
+            <div class="sc-speed">130 km/h</div>
+            <div class="sc-min">Min. required speed: <strong>60 km/h</strong> capability</div>
+            <p>If no other speed is specified. Driving much slower than traffic is dangerous.</p>
+        </div>
+        <div class="speed-card autoweg">
+            <div class="sc-top"><span class="sc-icon">🚗</span><div class="sc-label">Autoweg</div></div>
+            <div class="sc-speed">100 km/h</div>
+            <div class="sc-min">Min. required speed: <strong>50 km/h</strong> capability</div>
+            <p>If no other speed is specified. Only motor vehicles that can and may reach this speed.</p>
+        </div>
+    </div>
+
     <ul>
-        <li>
-            <p>Only motor vehicles that <span class="inline">can</span> and <span class="inline">may</span> drive at
-                least 50 km/h are allowed to use the autoweg.</p>
-        </li>
-        <li>
-            Only motor vehicles that <span class="inline">can</span> and <span class="inline">may</span> drive at least
-            60 km/h are allowed to use the motorway.</span>
-        </li>
+        <li>Only motor vehicles that <strong>can</strong> and <strong>may</strong> drive at least 50 km/h are allowed to use the autoweg.</li>
+        <li>Only motor vehicles that <strong>can</strong> and <strong>may</strong> drive at least 60 km/h are allowed to use the motorway.</li>
     </ul>
-    <p>
-        You may therefore not ride a moped on an autoweg or motorway, even if it has been upgraded and can therefore
-        reach 50 or 60 km/h, as mopeds have a speed limit of 45 km/h.
-    </p>
-    <p>
-        If a passenger car cannot exceed 40 km/h due to technical problems, it also may not enter an autoweg or
-        motorway, even if the vehicle is allowed to drive faster than 60 km/h.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_0fb942432f8c4a73a250e8ad9a706cf1~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Many autowegen can be recognized by the green axis line, the line in the middle of the road.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_5deeb026f14341a1b3e293d2c968b6ff~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>Motorways consist of several lanes and (almost) always have a hard shoulder.</figcaption>
-            </figure>
-        </div>
-    </div>
-    <p>
-        There is <strong>no minimum required speed</strong> on an autoweg or motorway itself. The speed you should drive
-        on a motorway or autoweg mainly depends on the crowds and the speed of the rest of the traffic.
-    </p>
-    <p>
-        On a quiet motorway, most drivers maintain a speed of between 80 and 130 km/h. If you drive your passenger car
-        at a speed of 60 km/h, you are a danger on the road. This is not permitted by Article 5 of the Road Traffic Act.
-    </p>
-    <p>
-        A number of other rules have also been made to keep it safe on the motorway and autoweg. For example, you may
-        not:
-    </p>
-    <ul>
-        <li>
-            make a U-turn or reverse;
-        </li>
-        <li>
-            stop on the carriageway (involuntarily stopping due to traffic is allowed);
-        </li>
-        <li>
-            drive or wait on the hard shoulder, emergency refuge areas, or in the verge, except in emergencies.
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_2f9f97c6fb094733ac9b2b5aa3c389a1~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Making a U-turn on an autoweg is prohibited and also very dangerous.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_045135d7ce9342cd85f4c72252233e25~mv2.jpg"
-                    alt="Seat belt warning light">
-                <figcaption>Reversing on an autoweg or motorway is not allowed. Not even if you do this on the hard
-                    shoulder. You are not allowed to drive here except in an emergency.</figcaption>
-            </figure>
-        </div>
-    </div>
-    <p>
-        Another rule on the motorway is that you are not allowed to drive everywhere with a vehicle combination (for
-        example a passenger car with trailer) of more than seven meters in length. You may only drive on the two
-        rightmost lanes. Unless you have to use a different lane to be able to pre-sort. This rule also applies to
-        drivers of a lorry.
-    </p>
-    <h2>
-        Rush-hour lane
-    </h2>
-    <p>
-        On the motorway, you will regularly encounter rush-hour lanes. This can be an extra lane on the left side of the
-        carriageway, but it can also be that the hard shoulder is in use as an extra lane. Signs next to the road and
-        matrix signs above the lanes indicate whether or not this rush-hour lane is open. Do you see a red cross above a
-        lane? Then you are not allowed to drive on this lane. Also pay attention to the maximum speed limit. This can
-        change as soon as the rush-hour lane is open.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_10e6553716e94abc82cf2b54aeaf1939~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Rush-hour lane open</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_24d1cdb7bcbe48b59c15858768f54176~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Clear rush-hour lane</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9c5207cc8f7445179a24289db1d863df~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>End of rush-hour lane</figcaption>
-            </figure>
 
-        </div>
+    <div class="tip-amber">
+        <p>💡 You may not ride a moped on an autoweg or motorway — even if it has been upgraded to reach 50 or 60 km/h — because mopeds have a legal speed limit of <strong>45 km/h</strong>. Likewise, if a passenger car cannot exceed 40 km/h due to technical problems, it may not enter, even if it is normally permitted to drive faster.</p>
     </div>
 
-    <div class="video-wrapper">
-        <div class="video-container">
-          <video controls poster="https://static.wixstatic.com/media/4b688f_f1845b6465c74a25a78890542aec01ff~mv2.png">
-            <!-- Video kaynakları -->
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_0fb942432f8c4a73a250e8ad9a706cf1~mv2.jpg" alt="Autoweg with green axis line"/><figcaption>Many autowegen can be recognised by the green axis line — the line in the middle of the road.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_5deeb026f14341a1b3e293d2c968b6ff~mv2.jpg" alt="Motorway with multiple lanes and hard shoulder"/><figcaption>Motorways consist of several lanes and (almost) always have a hard shoulder.</figcaption></figure>
+    </div>
+
+    <div class="info-blue">
+        <p>ℹ There is <strong>no minimum required speed</strong> on an autoweg or motorway itself. However, driving at 60 km/h on a quiet motorway where others maintain 80–130 km/h is dangerous and prohibited under Article 5 of the Road Traffic Act.</p>
+    </div>
+
+    <p>A number of rules apply to keep motorways and autowegen safe. You may <strong>not</strong>:</p>
+
+    <div class="prohibit-list">
+        <div class="pl-title">🚫 Prohibited on motorway / autoweg</div>
+        <ul>
+            <li>Make a U-turn or reverse</li>
+            <li>Stop on the carriageway (involuntary stopping due to traffic is allowed)</li>
+            <li>Drive or wait on the hard shoulder, emergency refuge areas, or in the verge — except in emergencies</li>
+        </ul>
+    </div>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_2f9f97c6fb094733ac9b2b5aa3c389a1~mv2.jpg" alt="U-turn prohibited on autoweg"/><figcaption>Making a U-turn on an autoweg is prohibited and also very dangerous.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_045135d7ce9342cd85f4c72252233e25~mv2.jpg" alt="Reversing on motorway prohibited"/><figcaption>Reversing on an autoweg or motorway is not allowed — not even on the hard shoulder, which may only be used in emergencies.</figcaption></figure>
+    </div>
+
+    <p>On the motorway, a vehicle combination (e.g. passenger car with trailer) of more than <strong>7 metres in length</strong> may only drive in the <strong>two rightmost lanes</strong> — unless a different lane is needed to pre-sort. This rule also applies to lorry drivers.</p>
+
+    <!-- ── Rush-hour lane ── -->
+    <h2>Rush-Hour Lane</h2>
+    <p>On the motorway you will regularly encounter rush-hour lanes — either an extra lane on the left side of the carriageway, or the hard shoulder used as an extra lane. Signs next to the road and matrix signs above lanes indicate whether the rush-hour lane is open.</p>
+
+    <div class="rush-row">
+        <div class="rush-card"><img src="https://static.wixstatic.com/media/4b688f_10e6553716e94abc82cf2b54aeaf1939~mv2.png" alt="Rush-hour lane open"/><div class="rc-label">Rush-hour lane open</div></div>
+        <div class="rush-card"><img src="https://static.wixstatic.com/media/4b688f_24d1cdb7bcbe48b59c15858768f54176~mv2.png" alt="Rush-hour lane clear"/><div class="rc-label">Clear rush-hour lane</div></div>
+        <div class="rush-card"><img src="https://static.wixstatic.com/media/4b688f_9c5207cc8f7445179a24289db1d863df~mv2.png" alt="End of rush-hour lane"/><div class="rc-label">End of rush-hour lane</div></div>
+    </div>
+
+    <div class="info-blue">
+        <p>⚠ If you see a <strong>red cross</strong> above a lane, you are not allowed to drive on that lane. Also pay attention to the maximum speed limit — it can change as soon as the rush-hour lane opens.</p>
+    </div>
+
+    <div class="video-wrap">
+        <video controls poster="https://static.wixstatic.com/media/4b688f_f1845b6465c74a25a78890542aec01ff~mv2.png">
             <source src="https://video.wixstatic.com/video/4b688f_f17f4e233378442c91af2921d22dd5aa/480p/mp4/file.mp4" type="video/mp4">
-            <source src="video_dosyaniz.webm" type="video/webm">
-            
-            <!-- Altyazılar -->
-            <track src="altyazi_tr.vtt" kind="subtitles" srclang="nl" label="Dutch">
             <track src="altyazi_en.vtt" kind="subtitles" srclang="en" label="English">
-            
-            
-            Tarayıcınız bu videoyu desteklemiyor. Lütfen farklı bir tarayıcı kullanın.
-          </video>
+        </video>
+    </div>
+    <p style="font-size:.82rem;color:var(--text-dim);margin-top:6px;font-family:'Outfit',sans-serif;">📹 Note: The video is in Dutch, but you can turn on the English subtitles by clicking the CC button.</p>
+
+    <!-- ── Erf ── -->
+    <h2>Erf</h2>
+    <p>It is often thought that pedestrians have right of way on an erf. This is not the case. Within the erf, the <strong>same priority rules apply as on normal roads</strong>. The entrances and exits are usually designed as an entrance or exit construction — when entering or exiting, drivers must give way to all other traffic, including pedestrians.</p>
+
+    <div class="sign-pair">
+        <div class="sign-tile">
+            <img src="https://static.wixstatic.com/media/4b688f_df47360c5f634c6d844205abde01ce2b~mv2.png" alt="G-5 Erf"/>
+            <div class="st-code">G-5</div>
+            <div class="st-desc">Erf — residential zone with adapted rules</div>
         </div>
-      </div>
-
-<p>
-    Note: The video is in Dutch, but you can turn on the English subtitles by clicking the CC button.
-</p>
-<h2>
-    Erf
-</h2>
-<p>
-    It is often thought that pedestrians have right of way on an erf. This is not the case. Within the erf, the same priority rules apply as on normal roads. The entrances and exits of an erf are usually designed as an entrance or exit construction. When entering a entrance construction and driving out of an exit construction, drivers must give way to all other traffic. This also includes pedestrians.
-</p>
-<div>
-    <div class="images-container5">
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_df47360c5f634c6d844205abde01ce2b~mv2.png"
-                alt="Warning side-airbag malfunction">
-            <figcaption>G-5 Erf</figcaption>
-        </figure>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_d8fff2e7c6a7481090ceaf1df2933419~mv2.png"
-                alt="Seat belt warning light">
-            <figcaption>G-6
-                End of the erf</figcaption>
-        </figure>
+        <div class="sign-tile">
+            <img src="https://static.wixstatic.com/media/4b688f_d8fff2e7c6a7481090ceaf1df2933419~mv2.png" alt="G-6 End of erf"/>
+            <div class="st-code">G-6</div>
+            <div class="st-desc">End of the erf</div>
+        </div>
     </div>
-</div>
-<p>
-    There are a few other rules within an erf:
-</p>
-<ul>
-    <li>
-        Pedestrians are allowed to use the road across the entire width. So they do not have to walk on the side of the road. This is because there are no pavements within an erf.
-    </li>
-    <li>
-        The speed limit for drivers is 15 km/h.
-    </li>
-    <li>
-        Drivers of a motor vehicle may only park in places that are designated as parking places. This is usually due to a sign with a P, or a P on the road surface. It is not allowed to park outside the parking places.
-    </li>
-</ul>
-<div>
-    <div class="images-container5">
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_7c98acd2575c4ed1bf334da5134dedb4~mv2.jpg"
-                alt="Warning side-airbag malfunction">
-            <figcaption>In an erf, pedestrians are allowed to use the entire width of the road.</figcaption>
-        </figure>
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_2f574663fb994ebe9cdb9813d941379e~mv2.jpg"
-                alt="Seat belt warning light">
-            <figcaption>In most cases you drive in and out of an erf via an entrance or exit construction.</figcaption>
-        </figure>
+
+    <p>There are a few other rules within an erf:</p>
+
+    <div class="erf-rules">
+        <ul>
+            <li>Pedestrians are allowed to use the road across the <strong>entire width</strong> — they do not have to walk on the side of the road, as there are no pavements within an erf.</li>
+            <li>The speed limit for drivers is <strong>15 km/h</strong>.</li>
+            <li>Drivers of a motor vehicle may only park in places <strong>designated as parking places</strong> (marked by a P sign or P on the road surface). Parking outside these places is not allowed.</li>
+        </ul>
     </div>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_7c98acd2575c4ed1bf334da5134dedb4~mv2.jpg" alt="Pedestrians use full road width in erf"/><figcaption>In an erf, pedestrians are allowed to use the entire width of the road.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_2f574663fb994ebe9cdb9813d941379e~mv2.jpg" alt="Erf entrance construction"/><figcaption>In most cases you drive in and out of an erf via an entrance or exit construction.</figcaption></figure>
+    </div>
+
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
 </div>
-
-
-
-   <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
-    overview</a>
-
-  
-
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_sr';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+    {t:'Speed Limits',q:'What is the maximum speed on a motorway if no other speed is specified?',o:['100 km/h','120 km/h','130 km/h','150 km/h'],a:2,e:'The maximum allowed speed on a motorway is 130 km/h, if no other speed is specified.'},
+    {t:'Speed Limits',q:'What is the maximum speed on an autoweg if no other speed is specified?',o:['80 km/h','100 km/h','120 km/h','130 km/h'],a:1,e:'The maximum allowed speed on an autoweg is 100 km/h, if no other speed is specified.'},
+    {t:'Access Rules',q:'What is the minimum speed a vehicle must be capable of to use the autoweg?',o:['30 km/h','40 km/h','50 km/h','60 km/h'],a:2,e:'Only motor vehicles that can and may drive at least 50 km/h are allowed on the autoweg.'},
+    {t:'Access Rules',q:'What is the minimum speed a vehicle must be capable of to use the motorway?',o:['40 km/h','50 km/h','60 km/h','80 km/h'],a:2,e:'Only motor vehicles that can and may drive at least 60 km/h are allowed on the motorway.'},
+    {t:'Access Rules',q:'A moped has been upgraded and can technically reach 55 km/h. May it use the autoweg?',o:['Yes — it can now reach 50 km/h','Yes — upgraded mopeds are allowed','No — mopeds have a legal speed limit of 45 km/h regardless of upgrades','Only during off-peak hours'],a:2,e:'A moped may not use the autoweg even if upgraded. Mopeds have a legal speed limit of 45 km/h, which is below the 50 km/h minimum.'},
+    {t:'Access Rules',q:'A passenger car cannot exceed 40 km/h due to technical problems. May it use the autoweg?',o:['Yes — passenger cars are always allowed','Yes — if the driver drives carefully','No — it cannot reach the 50 km/h minimum','Only if it uses hazard lights'],a:2,e:'If a passenger car cannot exceed 40 km/h due to technical problems, it may not enter the autoweg, even if the vehicle is normally allowed to drive faster.'},
+    {t:'Prohibited Actions',q:'Which of the following is NOT allowed on a motorway or autoweg?',o:['Driving in the right lane','Making a U-turn','Overtaking on the right if traffic is moving slowly','Using cruise control'],a:1,e:'Making a U-turn is prohibited on motorways and autowegen. It is also very dangerous.'},
+    {t:'Prohibited Actions',q:'May you stop on the carriageway of a motorway?',o:['Yes — if you indicate first','No — stopping is not allowed; only involuntary stopping due to traffic is permitted','Yes — briefly for no more than 2 minutes','Yes — if you stay in the right lane'],a:1,e:'You may not stop on the carriageway of a motorway. Involuntary stopping due to traffic is an exception.'},
+    {t:'Prohibited Actions',q:'When may you use the hard shoulder on a motorway?',o:['Whenever you want to drive faster','Only in emergencies','When the road is busy','To overtake slow traffic'],a:1,e:'You may not drive or wait on the hard shoulder except in emergencies.'},
+    {t:'Prohibited Actions',q:'May you reverse on the hard shoulder of a motorway?',o:['Yes — the hard shoulder is not the carriageway','No — reversing is not allowed anywhere on a motorway, including the hard shoulder','Only if the exit is very close','Only if no one is behind you'],a:1,e:'Reversing on a motorway or autoweg is not allowed anywhere — not even on the hard shoulder, which may only be used in emergencies.'},
+    {t:'Vehicle Combinations',q:'A passenger car with a trailer is more than 7 metres long. Which lanes may it use on a motorway?',o:['Only the rightmost lane','The two rightmost lanes (or a different lane to pre-sort)','Any lane — there is no restriction for cars with trailers','Only the left lane to maintain speed'],a:1,e:'Vehicle combinations longer than 7 metres may only drive in the two rightmost lanes on a motorway, unless a different lane is needed to pre-sort.'},
+    {t:'Rush-Hour Lane',q:'What does a red cross above a motorway lane mean?',o:['Drive with caution — slow traffic ahead','Maximum speed is reduced','You are not allowed to drive on that lane','Rush-hour lane is about to open'],a:2,e:'A red cross above a lane means you are not allowed to drive on that lane.'},
+    {t:'Rush-Hour Lane',q:'What is a rush-hour lane?',o:['A dedicated lane for emergency vehicles','An extra lane that opens during peak hours — either on the left or by using the hard shoulder','A separate road for buses and taxis','A lane reserved for vehicles above 100 km/h'],a:1,e:'A rush-hour lane is an extra lane on the left side of the carriageway, or the hard shoulder used as an extra lane, which opens during peak times.'},
+    {t:'Rush-Hour Lane',q:'What should you pay attention to when a rush-hour lane opens?',o:['Nothing changes','The speed limit may change as soon as the rush-hour lane opens','You must move to the far right lane','You must reduce speed to 70 km/h'],a:1,e:'Also pay attention to the maximum speed limit — it can change as soon as the rush-hour lane opens.'},
+    {t:'Erf',q:'Do pedestrians have right of way on an erf?',o:['Yes — pedestrians always have priority on an erf','No — within an erf the same priority rules apply as on normal roads','Yes — but only within marked pedestrian zones','Only on the pavement'],a:1,e:'It is often thought that pedestrians have right of way on an erf, but this is not the case. The same priority rules apply as on normal roads.'},
+    {t:'Erf',q:'What is the speed limit for drivers within an erf?',o:['10 km/h','15 km/h','20 km/h','30 km/h'],a:1,e:'The speed limit for drivers within an erf is 15 km/h.'},
+    {t:'Erf',q:'Where may pedestrians walk within an erf?',o:['Only on the pavement','Only on the right side of the road','Across the entire width of the road — there are no pavements in an erf','Only in designated pedestrian areas'],a:2,e:'Pedestrians are allowed to use the road across the entire width within an erf, as there are no pavements.'},
+    {t:'Erf',q:'Where may motor vehicle drivers park within an erf?',o:['Anywhere on the road as long as they do not block traffic','Only in places designated as parking places (P sign or P on the road surface)','On the right side of the road','Anywhere except in front of entrances'],a:1,e:'Within an erf, drivers may only park in designated parking places, marked by a P sign or P on the road surface.'},
+    {t:'Erf',q:'What sign indicates the beginning of an erf?',o:['G-4','G-5','G-6','G-7'],a:1,e:'Sign G-5 indicates the beginning of an erf. Sign G-6 indicates the end.'},
+    {t:'Erf',q:'When entering an erf via an entrance construction, who must you give way to?',o:['Only motor vehicles','All other traffic — including pedestrians','Only vehicles coming from the right','Only cyclists'],a:1,e:'When entering or exiting an erf via an entrance or exit construction, drivers must give way to all other traffic, including pedestrians.'},
+];
+const QS=20;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Questions'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Question ${qI+1} of ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Next Question →':'See Results'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Correct!':'❌ Incorrect — correct answer: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Complete!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Excellent! 🏆';sub='You know the special road rules well!'}else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review what you missed.'}else if(pct>=50){msg='Keep practising 📖';sub='Re-read the page and try again.'}else{msg='More study needed 💡';sub='Review the rules carefully and retake the quiz!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">out of ${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Correct</div><div class="rb-chip wrong">❌ ${QS-sc} Wrong</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 New Random Quiz</button><button class="btn-secondary" id="btn-review">📋 Review Answers</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Correct: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='Hide Review'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
