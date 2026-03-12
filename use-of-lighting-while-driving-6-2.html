@@ -1,1115 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Use of Lighting While Driving – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-         
-
-        h1,
-        h2 {
-            color: #035EB1;
-        }
-
-
-
-        .gh3 {
-            color: #035EB1;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #D7DCEF;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #D7DCEF;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattın pozisyonunu ayarlamak için */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-          
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 90px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-        .important-words6 {
-            background-color: #D7DCEF;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #D7DCEF;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-
-
-        .important-words3 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 img {
-            width: 90%;
-            height: auto;
-            margin-right: -202px;
-            margin-left: 10px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-
-
-
-
-        /* Masaüstü için 2 sütun düzeni */
-        .image-container8 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* İki sütun yapısı */
-            gap: 10px;
-        }
-
-        .image-block8 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-block8 img {
-            width: 100%;
-            max-width: 600px;
-            /* Resim genişliği sınırlanabilir */
-            height: auto;
-        }
-
-        .image-block8 figcaption {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.6em;
-            /* Yazı boyutunu küçültmek için */
-        }
-
-        /* Açıklamalı resimler için yüksekliği ayarlama */
-        .image-block8:nth-child(6n) figcaption,
-        .image-block8:nth-child(8n) figcaption {
-            min-height: 20px;
-            /* Açıklamalar için minimum yükseklik */
-        }
-
-        /* Mobil görünüm için sıralama ayarı */
-        @media (max-width: 650px) {
-            .image-container8 {
-                grid-template-columns: 1fr;
-                /* Mobilde tek sütun */
-                grid-template-areas:
-                    "image1"
-                    "image5"
-                    "image2"
-                    "image6"
-                    "image3"
-                    "image7"
-                    "image4"
-                    "image8";
-                /* İstenilen sıralama */
-            }
-
-            /* Her resim bloğuna grid area tanımlaması */
-            .image-block8:nth-child(1) {
-                grid-area: image1;
-            }
-
-            .image-block8:nth-child(2) {
-                grid-area: image2;
-            }
-
-            .image-block8:nth-child(3) {
-                grid-area: image5;
-            }
-
-            .image-block8:nth-child(4) {
-                grid-area: image6;
-            }
-
-            .image-block8:nth-child(5) {
-                grid-area: image3;
-            }
-
-            .image-block8:nth-child(6) {
-                grid-area: image4;
-            }
-
-            .image-block8:nth-child(7) {
-                grid-area: image7;
-            }
-
-            .image-block8:nth-child(8) {
-                grid-area: image8;
-            }
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #035EB1;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #035EB1;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            margin-top: 15px;
-
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-
-        }
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-        .image-text-container {
-            display: flex;
-            /* Görüntü ve metni yan yana koymak için */
-            flex-direction: row;
-            align-items: flex-start;
-            gap: -30px;
-
-        }
-
-        .image-text-container img {
-            max-width: 100%;
-            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
-            height: auto;
-            /* Görselin oranlarını koru */
-            width: 440px;
-            /* Görseli küçültmek için sabit bir genişlik */
-            margin-left: -40px;
-            /* Görsel ile sol kenar arasındaki boşluk */
-
-
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        table thead th {
-            background-color: #E0EDCB;
-            color: #333;
-            padding: 12px;
-        }
-
-        table tbody td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table tbody td.first-column {
-            background-color: #E0EDCB;
-            /* Sol sütun rengi */
-            font-weight: bold;
-            /* Yazıları kalın yapma */
-        }
-
-
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 10px;
-            margin-bottom: 5px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* lighting overview grid */
+    .light-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:14px 0 28px}
+    @media(max-width:720px){.light-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:380px){.light-grid{grid-template-columns:1fr}}
+    .light-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 10px;text-align:center;backdrop-filter:blur(12px)}
+    .light-tile .lt-icon{font-size:1.6rem;margin-bottom:6px}
+    .light-tile .lt-name{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;color:var(--accent-light);margin-bottom:4px;line-height:1.2}
+    .light-tile .lt-when{font-family:'Lora',serif;font-size:.68rem;color:var(--text-muted);line-height:1.3}
+
+    /* light info card */
+    .light-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 18px;margin:12px 0 18px;display:flex;align-items:flex-start;gap:14px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+    .light-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .light-card.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .light-card.yellow::before{background:linear-gradient(180deg,#e0a800,#ffd166)}
+    .light-card.red-c::before{background:linear-gradient(180deg,#e84545,#ff8888)}
+    .light-card.green-c::before{background:linear-gradient(180deg,#00b882,#4dffc3)}
+    .light-card .lc-icon{font-size:1.9rem;flex-shrink:0;margin-top:2px}
+    .light-card .lc-body .lc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;margin-bottom:6px}
+    .light-card.blue .lc-body .lc-title{color:var(--accent-light)}
+    .light-card.yellow .lc-body .lc-title{color:#ffd166}
+    .light-card.red-c .lc-body .lc-title{color:#ff8888}
+    .light-card.green-c .lc-body .lc-title{color:#4dffc3}
+    .light-card .lc-body p{font-family:'Lora',serif;font-size:.86rem;color:var(--text-muted);margin:0 0 6px;line-height:1.6}
+    .light-card .lc-body p:last-child{margin:0}
+    .light-card .lc-body p strong{color:var(--text-primary)}
+
+    /* not-allowed pill list */
+    .not-allowed{background:rgba(232,69,69,.05);border:1px solid rgba(232,69,69,.18);border-radius:11px;padding:11px 14px 11px 14px;margin:8px 0 16px}
+    .not-allowed .na-title{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#ff8888;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+    .not-allowed ul{margin:0;padding:0;list-style:none}
+    .not-allowed ul li{font-family:'Lora',serif;font-size:.84rem;color:rgba(255,180,180,.85);padding:4px 0 4px 18px;position:relative;border-bottom:1px solid rgba(232,69,69,.06);line-height:1.45}
+    .not-allowed ul li:last-child{border-bottom:none}
+    .not-allowed ul li::before{content:'✕';position:absolute;left:0;color:#ff8888;font-weight:700;font-size:.76rem}
+
+    /* fog rule box */
+    .fog-rule{background:rgba(180,120,40,.07);border:1px solid rgba(245,180,50,.2);border-radius:11px;padding:11px 14px;margin:8px 0 16px;display:flex;align-items:flex-start;gap:10px}
+    .fog-rule .fr-icon{font-size:1.3rem;flex-shrink:0}
+    .fog-rule p{font-family:'Lora',serif;font-size:.84rem;color:rgba(255,220,120,.85);margin:0;line-height:1.55}
+    .fog-rule p strong{color:#fff}
+
+    /* photo grids */
+    .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0 20px}
+    @media(max-width:550px){.photo-grid-2{grid-template-columns:1fr}}
+    .photo-single figure,.photo-grid-2 figure{margin:0}
+    .photo-single{margin:12px 0 20px}
+    .photo-single figure{max-width:460px}
+    .photo-single img,.photo-grid-2 img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 4px 20px rgba(0,0,0,.4);display:block}
+    .photo-single figcaption,.photo-grid-2 figcaption{font-family:'Outfit',sans-serif;font-size:.7rem;color:var(--text-dim);text-align:center;margin-top:6px;font-style:italic;line-height:1.35}
+
+    /* rear fog 50m rule */
+    .fifty-card{background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.2);border-radius:12px;padding:13px 16px;margin:10px 0 18px;display:flex;align-items:center;gap:14px}
+    .fifty-card .fc-num{font-family:'Outfit',sans-serif;font-size:2.4rem;font-weight:800;color:#ff8888;line-height:1;flex-shrink:0}
+    .fifty-card .fc-text{font-family:'Lora',serif;font-size:.86rem;color:rgba(255,180,180,.85);line-height:1.55}
+    .fifty-card .fc-text strong{color:#fff}
+
+    /* day/night def */
+    .daynight-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 22px}
+    @media(max-width:420px){.daynight-row{grid-template-columns:1fr}}
+    .dn-card{border-radius:12px;padding:13px 15px;backdrop-filter:blur(12px);text-align:center}
+    .dn-card.day{background:rgba(245,200,50,.07);border:1px solid rgba(245,200,50,.2)}
+    .dn-card.night{background:rgba(26,50,120,.2);border:1px solid rgba(77,120,255,.25)}
+    .dn-card .dn-icon{font-size:1.8rem;margin-bottom:6px}
+    .dn-card .dn-label{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;margin-bottom:4px}
+    .dn-card.day .dn-label{color:#ffd166}
+    .dn-card.night .dn-label{color:#8cb0ff}
+    .dn-card p{font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted);margin:0;line-height:1.4}
+
+    /* callouts */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
-
 <body>
-    <h1>Use of lighting while driving</h1>
-    <p>
-        Vehicle lighting is intended to aid visibility in the dark, and above all to be seen better by others. Sometimes
-        lighting is mandatory and sometimes not. However, drivers are advised to use appropriate lighting both during
-        the day and at night.
-    </p>
-    <div class="important-words1">
-        <div class="vertical-line2"></div>
-        <h3>Day</h3>
-        <p>
-            The period between sunrise and sunset.
-        </p>
-        <h3>Night</h3>
-        <p>
-            The period between sunset and sunrise.
-        </p>
-
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Colours</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Quiz</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Colour &amp; Text Settings</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
-    <h2>
-        Dipped headlights
-    </h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
-
-                <p>
-                    Dipped headlights is white or yellow lighting on the front of the vehicle and illuminates a good
-                    portion of the road in front of the vehicle. It does not shine straight forward and is not normally
-                    blinding. Dipped headlights are always permitted.
-                </p>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Font Size</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ reset</button></div>
+        <div class="presets-strip"><div class="strip-label">Quick Themes</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Default</button><button class="preset-btn" data-preset="light">☀️ Light</button><button class="preset-btn" data-preset="purple">🟣 Purple</button><button class="preset-btn" data-preset="green">🟢 Green</button><button class="preset-btn" data-preset="amber">🟡 Amber</button><button class="preset-btn" data-preset="contrast">⬛ Contrast</button></div></div>
+        <div class="color-section"><div class="stp">Background</div><div class="color-row"><div class="color-row-label">Page background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Background opacity</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Accent Colours</div><div class="color-row"><div class="color-row-label">Primary accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Light accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Warning / red</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Text Colours</div><div class="color-row"><div class="color-row-label">Main heading</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Section headings</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Body text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Subtle text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Cards &amp; Panels</div><div class="color-row"><div class="color-row-label">Card background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Card opacity</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Card border</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Border opacity</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">💡 Vehicle Lighting Quiz</div><div class="quiz-badge" id="quiz-badge">24 Questions</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">💡</span>
+                <h2>Test Your Knowledge</h2>
+                <p>Questions on dipped headlights, daytime running lights, full-beam, fog lights, rear fog lights, brake lights, and more.</p>
+                <div class="qs-info"><div class="qs-chip">📋 24 questions</div><div class="qs-chip">🔀 Random order</div><div class="qs-chip">✅ Instant feedback</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
             </div>
-            <img src="https://static.wixstatic.com/media/4b688f_28a85b546110446480d643461cabf231~mv2.png"
-                alt="Örnek Resim" class="image1">
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
         </div>
     </div>
-    <p>
-        The use of dipped headlights is mandatory during the day in poor visibility and at night. This applies to
-        drivers of motor vehicles, all types of mopeds and drivers of motorised disabled vehicles. You also turn on the
-        dipped headlights well before entering a tunnel.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_a7add78c241d463abf490de0095ba238~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Dipped headlights illuminate a good portion of the road in front of the vehicle without
-                    blinding oncoming traffic.
-                </figcaption>
-            </figure>
+</div>
 
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Traffic Rules</span><span class="dot">›</span><span style="color:var(--text-primary)">Use of Lighting While Driving</span></div>
+    <h1>Use of Lighting While Driving</h1>
+    <div class="section-divider"></div>
 
+    <p>Vehicle lighting aids visibility in the dark and — above all — helps you be seen by others. Sometimes lighting is mandatory, sometimes not. Drivers are advised to use appropriate lighting both day and night.</p>
 
+    <div class="daynight-row">
+        <div class="dn-card day"><div class="dn-icon">☀️</div><div class="dn-label">Day</div><p>The period between sunrise and sunset.</p></div>
+        <div class="dn-card night"><div class="dn-icon">🌙</div><div class="dn-label">Night</div><p>The period between sunset and sunrise.</p></div>
+    </div>
+
+    <div class="light-grid">
+        <div class="light-tile"><div class="lt-icon">🔆</div><div class="lt-name">Dipped Headlights</div><div class="lt-when">Mandatory at night &amp; poor visibility</div></div>
+        <div class="light-tile"><div class="lt-icon">🟡</div><div class="lt-name">Daytime Running Lights</div><div class="lt-when">Auto-on; off when other lights on</div></div>
+        <div class="light-tile"><div class="lt-icon">💡</div><div class="lt-name">Full-Beam</div><div class="lt-when">Only when no oncoming/close traffic</div></div>
+        <div class="light-tile"><div class="lt-icon">🌫️</div><div class="lt-name">Front Fog Lights</div><div class="lt-when">Only in fog, snow or heavy rain</div></div>
+        <div class="light-tile"><div class="lt-icon">🔴</div><div class="lt-name">Rear Fog Light</div><div class="lt-when">Only when visibility &lt; 50 m (fog/snow)</div></div>
+        <div class="light-tile"><div class="lt-icon">🔅</div><div class="lt-name">Sidelights</div><div class="lt-when">Between OFF &amp; dipped; rarely used</div></div>
+        <div class="light-tile"><div class="lt-icon">🔴</div><div class="lt-name">Rear Lights</div><div class="lt-when">On whenever front lights are on</div></div>
+        <div class="light-tile"><div class="lt-icon">🛑</div><div class="lt-name">Brake Lights</div><div class="lt-when">Active when brake pedal is pressed</div></div>
+    </div>
+
+    <!-- Dipped headlights -->
+    <h2>🔆 Dipped Headlights</h2>
+    <div class="light-card blue">
+        <div class="lc-icon">🔆</div>
+        <div class="lc-body">
+            <div class="lc-title">Dipped Headlights</div>
+            <p>White or yellow lighting at the front of the vehicle, illuminating a good portion of the road without blinding oncoming traffic. <strong>Always permitted.</strong></p>
+            <p><strong>Mandatory</strong> during the day in poor visibility and at night. Applies to motor vehicle drivers, all types of mopeds, and motorised disabled vehicle drivers.</p>
+            <p>Switch on dipped headlights <strong>well before entering a tunnel</strong>.</p>
         </div>
     </div>
-    <h2>
-        Daytime running lights
-    </h2>
-    <p>
-        Daytime running lights are available on all new passenger cars. In many cases, daytime running lights consist of
-        LED lighting next to, under or around the headlamp. Daytime running lights may only be used if dipped headlights
-        are not mandatory and if no other front lighting is switched on.
-    </p>
-    <p>
-        In most passenger cars, the daytime running lights are on when the light switch is turned off. As soon as you
-        switch on other lighting, the daytime running lights switch off automatically.
-    </p>
-    <p>
-        Daytime running lights aim to ensure vehicles always remain clearly visible, even when the dipped headlights are
-        not switched on. The disadvantage of older passenger cars is that the rear lights are not always lit together
-        with the daytime running lights. This results in poorer rear visibility. With new passenger cars, it is
-        mandatory that the taillights are lit together with the daytime running lights.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_90f817aebc984256b0a50cc66347739c~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Daytime running lights mainly make the vehicle visible and illuminate a smaller portion of
-                    the road in front of the vehicle.
-                </figcaption>
-            </figure>
+    <div class="photo-single"><figure><img src="https://static.wixstatic.com/media/4b688f_a7add78c241d463abf490de0095ba238~mv2.jpg" alt="Dipped headlights"/><figcaption>Dipped headlights illuminate a good portion of the road in front without blinding oncoming traffic.</figcaption></figure></div>
 
-
-
+    <!-- Daytime running lights -->
+    <h2>🟡 Daytime Running Lights</h2>
+    <div class="light-card yellow">
+        <div class="lc-icon">🟡</div>
+        <div class="lc-body">
+            <div class="lc-title">Daytime Running Lights (DRL)</div>
+            <p>Available on all new passenger cars — often LED lighting next to, under, or around the headlamp. May only be used if <strong>dipped headlights are not mandatory</strong> and <strong>no other front lighting is switched on</strong>.</p>
+            <p>In most cars, DRL is on when the light switch is at OFF. When other lighting is switched on, DRL switches off automatically.</p>
+            <p><strong>Older cars:</strong> rear lights may not illuminate together with DRL — reducing rear visibility. <strong>New cars:</strong> mandatory that taillights are lit together with DRL.</p>
         </div>
     </div>
-    <h2>
-        Full-beam headlights
-    </h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
+    <div class="photo-single"><figure><img src="https://static.wixstatic.com/media/4b688f_90f817aebc984256b0a50cc66347739c~mv2.jpg" alt="Daytime running lights"/><figcaption>Daytime running lights mainly make the vehicle visible and illuminate only a small portion of the road ahead.</figcaption></figure></div>
 
-                <p>
-                    If there is insufficient visibility with only dipped headlights, you can use full-beam headlights
-                    instead. Full-beam is not allowed:
-                </p>
-            </div>
-            <img src="https://static.wixstatic.com/media/4b688f_140d0e7e4dba43f58f3b1a90d2f0d022~mv2.png"
-                alt="Örnek Resim" class="image1">
+    <!-- Full-beam -->
+    <h2>💡 Full-Beam Headlights</h2>
+    <div class="light-card blue">
+        <div class="lc-icon">💡</div>
+        <div class="lc-body">
+            <div class="lc-title">Full-Beam</div>
+            <p>Use full-beam when dipped headlights give insufficient visibility. Full-beam shines straight ahead and can quickly blind others.</p>
         </div>
     </div>
-    <ul>
-        <li>
-            <p>
-                During the day;
-            </p>
-        </li>
-        <li>
-            <p>
-                When encountering other road users;
-            </p>
-        </li>
-        <li>
-            <p>
-                When driving closely behind another vehicle.
-            </p>
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1f0ce996236e45d88348502b57c769b9~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Full-beam headlights illuminate much more of the road and the surrounding area. The bright
-                    beam blinds oncoming traffic. Also, drivers of vehicles driving in front of you can be blinded.
-                </figcaption>
-            </figure>
+    <div class="not-allowed">
+        <div class="na-title">✕ Full-Beam NOT Allowed When</div>
+        <ul>
+            <li>During the day</li>
+            <li>When encountering other road users (oncoming traffic)</li>
+            <li>When driving closely behind another vehicle</li>
+            <li>In bad weather — heavy rain, snow or fog (you will blind yourself)</li>
+        </ul>
+    </div>
+    <div class="photo-single"><figure><img src="https://static.wixstatic.com/media/4b688f_1f0ce996236e45d88348502b57c769b9~mv2.jpg" alt="Full-beam headlights"/><figcaption>Full-beam illuminates much more of the road — but blinds oncoming traffic and drivers of vehicles ahead.</figcaption></figure></div>
+    <div class="callout blue">
+        <span class="callout-title">💡 Blinded by Full-Beam?</span>
+        <p>If an oncoming vehicle blinds you with full-beam, <strong>flash your own full-beam</strong> to warn them. If a vehicle behind you is using full-beam, use the <strong>dimming mirror</strong> (fold the rearview mirror to the dimming position). Many modern cars have an automatically dimming mirror.</p>
+    </div>
+    <div class="photo-single"><figure><img src="https://static.wixstatic.com/media/4b688f_65b2ade345334c019a0767a3734bd0b7~mv2.jpg" alt="Dimming rearview mirror"/><figcaption>If blinded by lighting from behind, set the rearview mirror to the dim position using the lever underneath. Some cars dim automatically.</figcaption></figure></div>
 
-
-
+    <!-- Front fog lights -->
+    <h2>🌫️ Front Fog Lights</h2>
+    <div class="light-card yellow">
+        <div class="lc-icon">🌫️</div>
+        <div class="lc-body">
+            <div class="lc-title">Front Fog Lights</div>
+            <p>Only use when visibility is <strong>severely obstructed by fog, snow or rain</strong>. They face downwards and are not blinding, but only illuminate close to the car.</p>
+            <p>Can be used alongside <strong>dipped headlights or sidelights</strong>. In very dense fog, even dipped headlights can have a blinding effect — they are therefore <strong>not mandatory</strong> when using fog lights.</p>
+            <p>Not all passenger cars are equipped with front fog lights.</p>
         </div>
     </div>
-    <p>
-        In addition, the use of full-beam headlights is unwise in bad weather conditions such as heavy rain, snow or
-        fog. In that case, you are very likely to be blinded by your own lighting.
-    </p>
-    <p>
-        Full-beam headlights are bright lights that shine straight ahead. That is why they quickly blind. If you are
-        blinded by oncoming traffic with full-beam headlights, flash your full-beam to warn them.
-    </p>
-    <p>
-        If you are bothered by the full-beam headlights of a vehicle driving behind you, it is difficult to warn this
-        driver. However, you can use the dimming mirror yourself, by folding the rearview mirror into the dimming
-        position. Many luxury passenger cars nowadays have an automatically dimming rearview mirror. With some passenger
-        cars even the wing mirrors dim.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_65b2ade345334c019a0767a3734bd0b7~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>If you are blinded by lighting from vehicles behind you, you can set the rearview mirror to
-                    the dim position using the lever underneath. In some passenger cars, the rearview mirror dims
-                    automatically.
-                </figcaption>
-            </figure>
+    <div class="photo-single"><figure><img src="https://static.wixstatic.com/media/4b688f_16eac050f3c2449abddd56b88d09ed7d~mv2.jpg" alt="Front fog lights"/><figcaption>Front fog lights illuminate just in front of the vehicle. Because the lamps are low, they partly shine under the fog banks.</figcaption></figure></div>
 
-
-
+    <!-- Rear fog light -->
+    <h2>🔴 Rear Fog Light</h2>
+    <div class="light-card red-c">
+        <div class="lc-icon">🔴</div>
+        <div class="lc-body">
+            <div class="lc-title">Rear Fog Light</div>
+            <p>One or two bright red lamps at the rear — very bright and sometimes confused with brake lights. Because of this brightness, only use when <strong>visibility is less than 50 metres</strong>.</p>
+            <p>Only permitted in <strong>fog or snow</strong>. <strong>Not</strong> during rainfall — it will blind traffic behind you.</p>
+            <p>A dashboard warning light illuminates when the rear fog light is on, so you cannot accidentally leave it on.</p>
         </div>
     </div>
-    <h2>
-        Front fog lights
-    </h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
+    <div class="fifty-card">
+        <div class="fc-num">50 m</div>
+        <div class="fc-text"><strong>How to judge 50 metres:</strong> Reflector posts along the road are usually 50 metres apart. If you pass one post and can only just see the next one, switch on the rear fog light.</div>
+    </div>
+    <div class="fog-rule">
+        <div class="fr-icon">🌧️</div>
+        <p><strong>Rain only?</strong> Do NOT use the rear fog light during rainfall — it is only permitted in fog or snow.</p>
+    </div>
 
-                <p>
-                    As the name says, this lighting is mainly intended for use during fog. They should only be used if
-                    visibility is severely obstructed by fog, snow or rain. In addition to fog light, you can use either
-                    dipped headlights or sidelights. In very dense fog, even dipped headlights can have a blinding
-                    effect and are therefore not mandatory with fog lights.
-                </p>
-            </div>
-            <img src="https://static.wixstatic.com/media/4b688f_b89d36dfee89427aba9416d0dd167307~mv2.png"
-                alt="Örnek Resim" class="image1">
+    <!-- Sidelights -->
+    <h2>🔅 Sidelights</h2>
+    <div class="light-card blue">
+        <div class="lc-icon">🔅</div>
+        <div class="lc-body">
+            <div class="lc-title">Sidelights (Parking Lights)</div>
+            <p>White or yellow front lamps providing very little light. Located between the OFF position and dipped headlights on the light switch. Can be used in combination with front fog lights. Seldom used otherwise — usually the same as parking lights.</p>
         </div>
     </div>
-    <p>
-        Front fog lights face downwards and are therefore not blinding. The disadvantage is that the light only shines
-        close to the passenger car. Not all passenger cars are equipped with a front fog light.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_16eac050f3c2449abddd56b88d09ed7d~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Front fog light illuminates the road just in front of the vehicle. Because the lamps are
-                    low, they partly shine through under the fog banks.
-                </figcaption>
-            </figure>
+    <div class="photo-single"><figure><img src="https://static.wixstatic.com/media/4b688f_6acab0eaa996470295e6fae089048a7e~mv2.jpg" alt="Sidelights"/><figcaption>Sidelights emit very little light. They are mostly the same lights as parking lights.</figcaption></figure></div>
 
-
-
+    <!-- Rear lights, number plate, brake, reverse -->
+    <h2>🔴 Rear Lights &amp; Number Plate Lighting</h2>
+    <div class="light-card red-c">
+        <div class="lc-icon">🔴</div>
+        <div class="lc-body">
+            <div class="lc-title">Rear Lights</div>
+            <p>Normal red lamps at the back. Must be on whenever <strong>full-beam, dipped headlights, sidelights or fog lights</strong> are on at the front. Less bright than brake lights or rear fog light. On new cars, they also illuminate with daytime running lights.</p>
         </div>
     </div>
-    <h2>
-        Rear fog lights
-    </h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
-
-                <p>
-                    Rear fog lights consist of one or two bright red lamps at the rear of the passenger car. Because
-                    these are very bright, they are sometimes confused with the brake light. Because the rear fog light
-                    is so bright, it should only be used if visibility is very poor. This is when the visibility is less
-                    than 50 metres.
-                </p>
-            </div>
-            <img src="https://static.wixstatic.com/media/4b688f_3085c92373664e3fb3214cade99bfa42~mv2.png"
-                alt="Örnek Resim" class="image1">
+    <div class="light-card blue">
+        <div class="lc-icon">🔡</div>
+        <div class="lc-body">
+            <div class="lc-title">Number Plate Lighting</div>
+            <p>White lighting illuminating the rear number plate. Must be lit whenever full-beam, dipped headlights, sidelights or fog lights are switched on at the front — same conditions as rear lights.</p>
         </div>
     </div>
-    <p>
-        Reflector posts along the road are usually 50 metres apart. If you drive past a reflector post and you only see
-        the next post after that, you can switch on your rear fog light.
-    </p>
-    <p>
-        It is also important to know that this is only allowed in fog or snow. During rainfall, the use of a rear fog
-        light is not allowed as it can blind traffic behind you. A warning light in the dashboard will come on when you
-        turn on the rear fog light. This way you cannot accidentally have it switched on.
-    </p>
-    <h2>
-        Sidelights
-    </h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
 
-                <p>
-                    Sidelights provide little light. They are white or yellow lamps on the front of the vehicle. In most
-                    passenger cars, the light switch has the sidelights between the “OFF” position and the dipped
-                    headlights. As already mentioned, sidelights can be used in combination with front fog lights.
-                </p>
-            </div>
-            <img src="https://static.wixstatic.com/media/4b688f_6c768180634d45e0a8e2f2e89f62af78~mv2.png"
-                alt="Örnek Resim" class="image1">
+    <h2>🛑 Brake Lights</h2>
+    <div class="light-card red-c">
+        <div class="lc-icon">🛑</div>
+        <div class="lc-body">
+            <div class="lc-title">Brake Lights</div>
+            <p>Three bright red lamps that activate as soon as the brake pedal is pressed. The third brake light is typically at the top or bottom centre of the rear window.</p>
+            <p>Because brake lights are very bright, unnecessary braking can cause a <strong>startle response</strong> in following traffic. Release the gas in time and maintain sufficient distance to avoid unnecessary braking.</p>
         </div>
     </div>
-    <p>
-        Besides that, sidelights are seldom used. Usually the sidelights are the same as the parking light.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_6acab0eaa996470295e6fae089048a7e~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Sidelights emit little light. They are mostly the same lights as parking lights.
-                </figcaption>
-            </figure>
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_3dfb46f9b6624ed7a3e60141983da55d~mv2.jpg" alt="Brake lights"/><figcaption>Brake lights are important for communication in traffic. Unnecessary use causes irritation for traffic behind you.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_ae8b82f2a11a427c927197f5a7d196a7~mv2.jpg" alt="Reverse light"/><figcaption>The reverse light warns road users behind the vehicle that it is about to drive backwards.</figcaption></figure>
+    </div>
 
-
-
+    <h2>⬜ Reverse Lights</h2>
+    <div class="light-card green-c">
+        <div class="lc-icon">⬜</div>
+        <div class="lc-body">
+            <div class="lc-title">Reverse Lights</div>
+            <p>White or yellow lights at the rear that activate when <strong>reverse gear</strong> is selected. They warn traffic behind you that the vehicle is about to drive backwards. A car may have one or two reversing lights.</p>
         </div>
     </div>
-    <h2>
-        Rear lights
-    </h2>
-    <p>
-        These are the normal red lamps on the back of the passenger car. These should always be on when full-beam or
-        dipped headlights, sidelights or fog lights are on at the front. These lights are normally not blinding and less
-        bright than the brake lights and rear fog light. With the latest passenger cars, this lighting also lights up
-        when the daytime running lights are on.
-    </p>
-    <h2>
-        Number plate lighting
-    </h2>
-    <p>
-        This white lighting illuminates the number plate at the rear. Just like the rear light, the number plate
-        lighting must also be lit if full-beam or dipped headlights, sidelights or fog lights are switched on at the
-        front.
-    </p>
-    <h2>
-        Brake lights
-    </h2>
-    <p>
-        The brake light consists of three bright red lamps that light up as soon as you use the brake pedal. The third
-        brake light is usually located at the top or bottom centre of the rear window. Because brake lights are so
-        bright, you should try to brake as little as possible unnecessarily. Every time the brake lights come on, this
-        can cause a startle response from the traffic behind you. So, make sure you release your gas in time and keep
-        sufficient distance.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_3dfb46f9b6624ed7a3e60141983da55d~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Brake lights are important for communication in traffic. Because they are so bright, they
-                    can cause irritation when used unnecessarily.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_ae8b82f2a11a427c927197f5a7d196a7~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>The reverse light warns road users behind the vehicle that it is going to reverse.
-                </figcaption>
-            </figure>
 
+    <!-- Special, other, trailer -->
+    <h2>✨ Special Lighting</h2>
+    <p>Additional lighting may be used alongside dipped headlights or front fog lights. For example, modern cars increasingly have <strong>cornering lights</strong> — lighting that turns with the steering to illuminate the edge of a bend in the dark.</p>
 
+    <h2>⚙️ Other / Modified Lighting</h2>
+    <div class="callout amber">
+        <span class="callout-title">⚠ Adding or Changing Lighting</span>
+        <p>Adding extra lighting or replacing standard lighting (e.g. with xenon or LED lamps) is <strong>not always permitted</strong> and is not something you can simply do yourself. Always seek advice from someone with <strong>professional knowledge</strong>. Not all lighting sold commercially is road-legal for passenger cars.</p>
+    </div>
 
+    <h2>🚛 Trailer Lighting</h2>
+    <div class="light-card blue">
+        <div class="lc-icon">🚛</div>
+        <div class="lc-body">
+            <div class="lc-title">Trailer Lighting Requirements</div>
+            <p>A trailer must provide lighting during the day in poor visibility and at night — just like the towing vehicle. Required lighting: <strong>red rear lights</strong>, <strong>number plate lighting</strong>, and <strong>white sidelights at the front</strong>.</p>
+            <p>Front sidelights are only required on trailers <strong>wider than 1.60 metres</strong>.</p>
         </div>
     </div>
-    <h2>
-        Reverse lights
-    </h2>
-    <p>
-        These are the white or yellow lights on the back of a passenger car that come on as soon as you put the
-        passenger car in reverse gear. These are intended to warn traffic behind you that you will be driving backwards.
-        A passenger car can be equipped with one or two reversing lights.
-    </p>
-    <h2>
-        Special lighting
-    </h2>
-    <p>
-        In addition to all this lighting, other light may also be used during the use of dipped headlights or fog light
-        at the front. For example, modern passenger cars are increasingly equipped with cornering lights. This lighting
-        turns in the corner, or switches on as soon as you start steering. It makes the edges of the bend more visible
-        in the dark.
-    </p>
-    <h2>
-        Other lighting
-    </h2>
-    <p>
-        Adding extra lighting to a vehicle is not always allowed. Replacing the normal lighting with xenon lamps or LED
-        lighting is not something you can easily do yourself. If you still want to add more lighting to your vehicle or
-        change lighting, get advice from someone with professional knowledge. Certainly, not all lighting that is sold
-        is allowed on passenger cars.
-    </p>
-    <h2>
-        Trailer lighting
-    </h2>
-    <p>
-        Just like the towing vehicle, a trailer must provide lighting during the day in poor visibility and at night.
-        This lighting consists of red rear lights, lighting of the number plate and white sidelights at the front. These
-        sidelights only need to be present on trailers wider than 1.60 metres.
-    </p>
 
- <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
-    overview</a>
-
-  
-
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_ltg';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+    {t:'Dipped Headlights',q:'When is the use of dipped headlights mandatory?',o:['Only at night','During the day in poor visibility AND at night','Only on motorways','Only when visibility is less than 200 metres'],a:1,e:'Dipped headlights are mandatory during the day in poor visibility and at night. This applies to motor vehicle drivers, all types of mopeds, and motorised disabled vehicle drivers.'},
+    {t:'Dipped Headlights',q:'When should you switch on dipped headlights before entering a tunnel?',o:['Immediately inside the tunnel entrance','Well before entering the tunnel','Only if the tunnel is longer than 500 metres','Only at night'],a:1,e:'You should switch on dipped headlights well before entering a tunnel to ensure you are visible and can see clearly as you enter.'},
+    {t:'Dipped Headlights',q:'Are dipped headlights always permitted to use?',o:['No — only at night','No — only in poor visibility','Yes — dipped headlights are always permitted','Only on roads without street lighting'],a:2,e:'Dipped headlights are always permitted. They illuminate the road without blinding oncoming traffic.'},
+    {t:'Daytime Running Lights',q:'When may daytime running lights (DRL) be used?',o:['At all times, even when dipped headlights are on','Only if dipped headlights are not mandatory and no other front lighting is switched on','Only on motorways during the day','Only when it is raining'],a:1,e:'DRL may only be used if dipped headlights are not mandatory and if no other front lighting is switched on. When other lighting is activated, DRL switches off automatically.'},
+    {t:'Daytime Running Lights',q:'What is a disadvantage of older cars with daytime running lights?',o:['DRL uses too much electricity','The rear lights may not illuminate together with DRL, reducing rear visibility','DRL blinds oncoming traffic','Older cars cannot have DRL fitted'],a:1,e:'On older cars, the rear lights are not always lit together with the daytime running lights. This results in poorer rear visibility. New cars must have taillights lit together with DRL.'},
+    {t:'Full-Beam',q:'In which three situations is full-beam NOT allowed?',o:['During the day, when encountering other road users, and when driving closely behind another vehicle','Only at night and in fog','On motorways, in tunnels, and at junctions','Only when visibility is good'],a:0,e:'Full-beam is not allowed during the day, when encountering other road users, or when driving closely behind another vehicle. It is also unwise in bad weather (rain, snow, fog) as you may blind yourself.'},
+    {t:'Full-Beam',q:'Why is using full-beam in heavy rain or fog unwise?',o:['It uses too much electricity','You are likely to be blinded by your own lighting reflecting off the rain or fog','It blinds oncoming traffic in those conditions specifically','It is not allowed by law in rain'],a:1,e:'In bad weather such as heavy rain, snow or fog, using full-beam is unwise because the light reflects off the precipitation and you are very likely to blind yourself.'},
+    {t:'Full-Beam',q:'An oncoming car is blinding you with full-beam. What should you do?',o:['Stop your car immediately','Flash your own full-beam to warn the driver','Slow down and drive on the right verge','Turn on your hazard lights'],a:1,e:'If you are blinded by oncoming full-beam headlights, flash your own full-beam briefly to warn the other driver.'},
+    {t:'Full-Beam',q:'A vehicle behind you has full-beam on and it bothers you. What can you do?',o:['Flash your own full-beam at them via the mirrors','Use the dimming position of the rearview mirror','Sound the horn to warn them','Speed up to create distance'],a:1,e:'If bothered by full-beam from behind, use the dimming mirror by folding the rearview mirror to the dimming position. Many modern cars have automatically dimming mirrors.'},
+    {t:'Front Fog Lights',q:'When should you use front fog lights?',o:['At night when there is no street lighting','Only when visibility is severely obstructed by fog, snow or rain','Whenever it is raining','As a substitute for dipped headlights'],a:1,e:'Front fog lights should only be used when visibility is severely obstructed by fog, snow or rain. They are not intended for general use.'},
+    {t:'Front Fog Lights',q:'In very dense fog, are dipped headlights mandatory when using front fog lights?',o:['Yes — always mandatory','No — in very dense fog, dipped headlights can have a blinding effect and are therefore not mandatory when using fog lights','Yes — but only on motorways','Only at night'],a:1,e:'In very dense fog, even dipped headlights can have a blinding effect. They are therefore not mandatory when front fog lights are in use.'},
+    {t:'Front Fog Lights',q:'What can you use alongside front fog lights?',o:['Full-beam headlights only','Rear fog lights only','Dipped headlights or sidelights','No other lighting is permitted'],a:2,e:'In addition to front fog lights, you can use either dipped headlights or sidelights.'},
+    {t:'Rear Fog Light',q:'At what visibility distance may you switch on the rear fog light?',o:['Less than 100 metres','Less than 50 metres','Less than 200 metres','Less than 30 metres'],a:1,e:'The rear fog light should only be used when visibility is less than 50 metres. Reflector posts along the road are usually 50 metres apart — use this as a guide.'},
+    {t:'Rear Fog Light',q:'May you use the rear fog light during heavy rainfall?',o:['Yes — whenever visibility is poor','No — the rear fog light is only permitted in fog or snow, not rainfall. It can blind traffic behind you.','Yes — but only on motorways','Only if visibility is less than 50 metres'],a:1,e:'During rainfall, use of the rear fog light is not allowed as it can blind traffic behind you. It is only permitted in fog or snow.'},
+    {t:'Rear Fog Light',q:'How do you know if your rear fog light is accidentally left on?',o:['A warning sound plays','A dashboard warning light illuminates when the rear fog light is on','The speedometer flashes','The rear lights blink'],a:1,e:'A dashboard warning light illuminates when the rear fog light is on, so you cannot accidentally leave it switched on.'},
+    {t:'Sidelights',q:'What is the position of the sidelights on a light switch?',o:['After the dipped headlights position','Between the OFF position and the dipped headlights','Between dipped headlights and full-beam','At the same position as the hazard lights'],a:1,e:'In most passenger cars, the light switch has the sidelights positioned between the OFF position and the dipped headlights.'},
+    {t:'Rear Lights',q:'When must the rear lights be switched on?',o:['Only at night','Whenever full-beam, dipped headlights, sidelights or fog lights are on at the front','Only when the hazard lights are on','Only in poor visibility'],a:1,e:'Rear lights must always be on when full-beam or dipped headlights, sidelights or fog lights are switched on at the front.'},
+    {t:'Number Plate Lighting',q:'When must number plate lighting be switched on?',o:['Only at night','At the same time as rear lights — whenever front lighting is on','Only on motorways','Only when rear fog light is on'],a:1,e:'Number plate lighting must be lit whenever full-beam, dipped headlights, sidelights or fog lights are switched on at the front — the same conditions as rear lights.'},
+    {t:'Brake Lights',q:'How many brake lights does a car have, and where is the third one typically located?',o:['Two, one on each side at the rear','Three — the third is typically at the top or bottom centre of the rear window','Four — one at each corner','Two — both at the top of the rear window'],a:1,e:'Brake lights consist of three bright red lamps. The third brake light is usually located at the top or bottom centre of the rear window.'},
+    {t:'Brake Lights',q:'Why should you avoid unnecessary braking?',o:['It wears out the brake pads faster','Brake lights are very bright and unnecessary activation causes a startle response in following traffic','It increases fuel consumption','It activates the hazard lights automatically'],a:1,e:'Brake lights are very bright. Every unnecessary activation can cause a startle response in following traffic, which may lead to sudden braking behind you.'},
+    {t:'Reverse Lights',q:'When do reverse lights automatically switch on?',o:['When the hazard lights are on','When reverse gear is selected','When the parking brake is applied','When the car slows below 5 km/h'],a:1,e:'Reverse lights (white or yellow, at the rear) switch on automatically as soon as reverse gear is selected. They warn traffic behind that the vehicle is about to drive backwards.'},
+    {t:'Trailer',q:'What lighting is required on a trailer?',o:['Only red rear lights','Red rear lights, number plate lighting, and white sidelights at the front (sidelights only required if trailer is wider than 1.60 m)','Only red rear lights and number plate lighting','All the same lighting as the towing vehicle'],a:1,e:'A trailer requires red rear lights, number plate lighting, and white front sidelights. The front sidelights are only required on trailers wider than 1.60 metres.'},
+    {t:'General',q:'You want to replace your standard headlights with xenon lamps. What should you do?',o:['Replace them yourself — it is always permitted','Check whether it is legally permitted and seek advice from a professional — not all modifications are road-legal','Only replace them if the car is older than 10 years','It is always prohibited to change any lighting'],a:1,e:'Adding or replacing lighting (e.g. with xenon or LED lamps) is not always allowed and is not something you can easily do yourself. Always seek advice from someone with professional knowledge.'},
+    {t:'General',q:'Which lighting must trailer wider than 1.60 metres have at the front?',o:['Red front lights','Full-beam headlights','White sidelights','Yellow fog lights'],a:2,e:'Trailers wider than 1.60 metres must have white sidelights at the front. Narrower trailers do not require front sidelights.'},
+];
+const QS=24;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Questions'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Question ${qI+1} of ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Next Question →':'See Results'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Correct!':'❌ Incorrect — correct answer: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Complete!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Excellent! 🏆';sub='Perfect lighting knowledge!'}else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review what you missed.'}else if(pct>=50){msg='Keep practising 📖';sub='Re-read the page and try again.'}else{msg='More study needed 💡';sub='Review the lighting rules and retake the quiz!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">out of ${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Correct</div><div class="rb-chip wrong">❌ ${QS-sc} Wrong</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 New Random Quiz</button><button class="btn-secondary" id="btn-review">📋 Review Answers</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Correct: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='Hide Review'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
