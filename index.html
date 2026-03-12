@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
     <script>
-        // CDN yüklenemezse unpkg'den yükle
         if (typeof supabase === 'undefined') {
             document.write('<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"><\/script>');
         }
@@ -154,7 +153,6 @@
         }
         .mob-auth { display:flex; gap:8px; margin-top:4px; }
         .mob-auth button { flex:1; padding:12px; font-size:13px; border-radius:12px; }
-        /* Mobil menüdeki butonların görünmesini zorla */
         #mobSigninBtn, #mobSignupBtn {
             display:flex !important;
             align-items:center;
@@ -167,6 +165,8 @@
             display:flex; align-items:center; justify-content:center;
             text-align:center; padding:130px 20px 80px;
         }
+        /* Arapça hero metni sola hizala (RTL'de sola = sağ taraf) */
+        body.ar .hero { text-align:right; }
         .hero-inner { max-width:800px; animation:fadeUp 1s ease both; }
         .hero-badge {
             display:inline-flex; align-items:center; gap:8px;
@@ -185,8 +185,9 @@
             font-size:clamp(15px,2.2vw,21px); color:rgba(255,255,255,0.88);
             max-width:680px; margin:0 auto 44px; line-height:1.7; font-weight:300;
         }
-        .hero-slogan strong { color:var(--cyan); font-weight:700; }
+        body.ar .hero-slogan { margin:0 auto 44px; text-align:right; }
         .hero-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        body.ar .hero-cta { justify-content:flex-end; }
         .btn-hero-p {
             padding:16px 44px; font-size:16px; border-radius:20px;
             background:linear-gradient(135deg,var(--cyan),var(--blue));
@@ -224,7 +225,7 @@
             font-size:clamp(32px,5vw,54px); font-weight:900;
             text-align:center; color:white; margin-bottom:56px;
         }
-        body.ar .sec-head { font-family:'Noto Sans Arabic',serif; }
+        body.ar .sec-head { font-family:'Noto Sans Arabic',serif; text-align:right; }
         .feat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
         .feat-card { padding:36px 28px; border-radius:24px; transition:all .3s; }
         .feat-card:hover { transform:translateY(-8px); background:rgba(255,255,255,0.12); }
@@ -237,12 +238,14 @@
         .how-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:56px; }
         .how-card { padding:32px 24px; border-radius:22px; text-align:center; transition:all .3s; }
         .how-card:hover { transform:translateY(-6px); background:rgba(255,255,255,0.12); }
+        body.ar .how-card { text-align:right; }
         .how-step {
             width:50px; height:50px; border-radius:50%; margin:0 auto 16px;
             background:linear-gradient(135deg,var(--cyan),var(--blue));
             display:flex; align-items:center; justify-content:center;
             font-size:20px; font-weight:900; box-shadow:0 8px 22px rgba(0,100,255,0.4);
         }
+        body.ar .how-step { margin:0 auto 16px; }
         .how-title { font-size:17px; font-weight:700; margin-bottom:9px; }
         .how-desc  { font-size:13.5px; color:rgba(255,255,255,0.68); line-height:1.6; }
 
@@ -261,6 +264,7 @@
             border-radius:50%; background:rgba(255,255,255,0.1);
             border:1px solid rgba(255,255,255,0.15); transition:all .3s; z-index:2001; line-height:1;
         }
+        body.ar .overlay-close { right:auto; left:26px; }
         .overlay-close:hover { background:rgba(255,255,255,0.2); transform:rotate(90deg); }
         .pricing-grid {
             width:100%; max-width:1200px;
@@ -321,6 +325,7 @@
             display:flex; align-items:flex-start; gap:8px; line-height:1.4;
         }
         .p-features li::before { content:'✓'; color:var(--cyan); font-weight:700; flex-shrink:0; margin-top:1px; }
+        body.ar .p-features li { flex-direction:row-reverse; text-align:right; }
 
         /* ══ PASSENGER CAR OVERLAY ══ */
         .pc-overlay {
@@ -343,6 +348,7 @@
             border-radius:50%; background:rgba(255,255,255,0.1);
             border:1px solid rgba(255,255,255,0.15); transition:all .3s; z-index:2001; line-height:1;
         }
+        body.ar .pc-close { right:auto; left:26px; }
         .pc-close:hover { background:rgba(255,255,255,0.2); transform:rotate(90deg); }
 
         .pc-inner {
@@ -368,6 +374,7 @@
             gap:24px;
             align-items:start;
         }
+        body.ar .pc-layout { direction:rtl; }
 
         .pc-right { position:sticky; top:100px; }
 
@@ -467,6 +474,7 @@
             font-size:11px; color:rgba(255,255,255,0.45);
             text-align:right;
         }
+        body.ar .test-progress-label { text-align:left; }
 
         /* ── ACCORDION ── */
         .acc-container { display:flex; flex-direction:column; gap:10px; }
@@ -527,6 +535,7 @@
             text-decoration:none; color:white;
             transition:all .22s;
         }
+        body.ar .acc-cell { flex-direction:row-reverse; text-align:right; }
         .acc-cell:hover {
             background:rgba(255,255,255,0.11);
             border-color:rgba(255,255,255,0.22);
@@ -584,6 +593,7 @@
             display:flex; align-items:center; justify-content:center;
             border-radius:50%; transition:all .25s; line-height:1;
         }
+        body.ar .m-close { right:auto; left:16px; }
         .m-close:hover { background:rgba(255,255,255,0.1); color:white; transform:rotate(90deg); }
         .m-title {
             font-family:'Playfair Display',serif; font-size:36px; font-weight:900;
@@ -597,6 +607,8 @@
             border:1px solid rgba(255,255,255,0.18);
             background:rgba(255,255,255,0.06); color:white;
             font-size:14px; font-family:'Poppins',sans-serif; transition:all .25s;
+            /* Input her zaman LTR — e-posta/şifre alanları için */
+            direction:ltr; text-align:left;
         }
         .f-inp:focus { outline:none; background:rgba(255,255,255,0.1); border-color:var(--cyan); box-shadow:0 0 16px rgba(0,212,255,0.22); }
         .f-inp::placeholder { color:rgba(255,255,255,0.32); }
@@ -625,7 +637,6 @@
         .m-foot a { color:var(--cyan); font-weight:600; cursor:pointer; }
         .m-foot a:hover { text-decoration:underline; }
 
-        /* Auth mesaj kutusu */
         .auth-msg {
             display:none; padding:11px 14px; border-radius:11px;
             font-size:13px; font-weight:500; margin-bottom:16px;
@@ -635,7 +646,6 @@
         .auth-msg.success { background:rgba(0,212,100,0.15); border:1px solid rgba(0,212,100,0.35); color:#4dffaa; display:block; }
         .auth-msg.info    { background:rgba(0,180,255,0.15); border:1px solid rgba(0,180,255,0.35); color:#7dd8ff; display:block; }
 
-        /* Google butonu */
         .google-btn {
             display:flex; align-items:center; justify-content:center; gap:8px;
             font-size:14px !important; font-weight:600 !important;
@@ -647,7 +657,6 @@
         @media(max-width:1060px) {
             .nav-center { display:none; }
             .hamburger  { display:flex; }
-            /* Sadece navbar içindeki butonları gizle, mobil menüdekiler değil */
             .nav-right .btn-signin, .nav-right .btn-signup { display:none; }
             .navbar { overflow:visible; }
         }
@@ -672,8 +681,8 @@
             position:relative; z-index:1; text-align:center;
             padding:36px 20px; color:rgba(255,255,255,0.4); font-size:13px;
         }
+        body.ar .footer { text-align:center; }
 
-        /* ── User display in navbar ── */
         .user-chip {
             display:none; align-items:center; gap:8px;
             padding:6px 14px; border-radius:13px;
@@ -687,7 +696,6 @@
 </head>
 <body>
 
-<!-- ═══════════ NOSCRIPT UYARISI ═══════════ -->
 <noscript>
     <div style="
         position:fixed; inset:0; z-index:99999;
@@ -729,14 +737,11 @@
             <span class="lang-opt"        data-lang="nl">NL</span>
             <span class="lang-opt"        data-lang="ar">AR</span>
         </div>
-
-        <!-- ✅ FIX 1: Sadece tek bir kullanıcı chip + tek Sign In butonu -->
         <div class="user-chip" id="userChip">
             👤 <span id="userName"></span>
         </div>
         <button class="btn-signin" id="signinBtn" onclick="openModal('si')">Sign In</button>
         <button class="btn-signup" id="signupBtn" data-i18n="nav_signup" onclick="openModal('su')">Sign Up</button>
-
         <div class="hamburger" id="hbg" onclick="toggleMenu()">
             <span></span><span></span><span></span>
         </div>
@@ -751,7 +756,6 @@
         <span class="lang-opt"        data-lang="nl">NL</span>
         <span class="lang-opt"        data-lang="ar">AR</span>
     </div>
-    <!-- Giriş yapılmışsa kullanıcı adı göster -->
     <div id="mobUserInfo" style="display:none; padding:10px 14px; border-radius:12px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); color:var(--cyan); font-size:13px; font-weight:600;">
         👤 <span id="mobUserName"></span>
     </div>
@@ -1144,6 +1148,7 @@
         <div class="m-foot"><a onclick="switchModal('fp','si')" data-i18n="fp_back">← Back to Sign In</a></div>
     </div>
 </div>
+
 <div class="modal-bg" id="su-modal">
     <div class="auth-box glass-strong">
         <div class="m-close" onclick="closeModal('su')">×</div>
@@ -1638,25 +1643,39 @@ let currentLang = 'en';
 
 function applyLang(lang) {
     if (!lang || !I18N[lang]) return;
-    
+
     currentLang = lang;
-    
-    // UI'ı güncelle
+
+    /* ✅ Arabic RTL fix — body'ye 'ar' class'ı ekle/kaldır */
+    document.body.classList.toggle('ar', lang === 'ar');
+
+    /* Metinleri güncelle */
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (I18N[lang][key]) el.textContent = I18N[lang][key];
     });
-    
-    // Dil seçeneklerini güncelle
+
+    /* Hero slogan — HTML içerebilir */
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (I18N[lang][key]) el.innerHTML = I18N[lang][key];
+    });
+
+    /* Input placeholder'ları güncelle */
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (I18N[lang][key]) el.placeholder = I18N[lang][key];
+    });
+
+    /* Dil seçeneklerini güncelle */
     document.querySelectorAll('.lang-opt').forEach(o =>
         o.classList.toggle('active', o.getAttribute('data-lang') === lang)
     );
-    
+
     localStorage.setItem('et_lang', lang);
     buildTestButtons();
-    updateNavbarUser(); // Sign In / Sign Out butonunu dile göre yenile
-    
-    // Progress'i sync et (eğer kullanıcı giriş yapmışsa)
+    updateNavbarUser();
+
     if (currentUser) {
         fetchProgressFromSupabase();
     }
@@ -1716,6 +1735,7 @@ async function startPayment(planId, planName, amount) {
         btn.textContent = originalText;
     }
 }
+
 function openPassengerCar()   { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
 function closePassengerCar()  { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
 function openModal(id)        { if(id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id+'-modal').classList.add('active'); document.body.style.overflow='hidden'; }
@@ -1761,16 +1781,14 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         detectSessionInUrl: true,
         flowType: 'implicit',
         lock: function(name, acquireTimeout, fn) { return fn(); },
-        // Session timeout'u uzat
-        maxSessionTimeout: 60 * 60 * 24 * 7, // 7 gün
-        // Token refresh frekansını artır
-        refreshTokenThreshold: 60 * 5, // 5 dakika
+        maxSessionTimeout: 60 * 60 * 24 * 7,
+        refreshTokenThreshold: 60 * 5,
     }
 });
 
 let currentUser = null;
-let currentPlanId = null;        // Kullanıcının aktif plan id'si
-let accessibleGroups = [];       // Kullanıcının erişebildiği grup id'leri: ['tests','theory']
+let currentPlanId = null;
+let accessibleGroups = [];
 
 /* ─── NAVBAR GÜNCELLE ─── */
 function updateNavbarUser() {
@@ -1788,7 +1806,6 @@ function updateNavbarUser() {
         const firstName = fullName.split(' ')[0];
         const name = firstName.length > 12 ? firstName.substring(0, 12) + '…' : firstName;
 
-        // Desktop
         nameSpan.textContent = name;
         chip.classList.add('visible');
         signinBtn.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
@@ -1796,19 +1813,17 @@ function updateNavbarUser() {
         signinBtn.disabled = false;
         if (signupBtn) signupBtn.style.display = 'none';
 
-        // Mobil — kullanıcı adı göster, Sign In/Up gizle
         if (mobUserInfo) { mobUserInfo.style.display = 'block'; }
         if (mobUserName) { mobUserName.textContent = name; }
-        if (mobSignin)   { 
-            mobSignin.textContent = I18N[currentLang]?.nav_signout || 'Sign Out'; 
-            mobSignin.onclick = signOut;  // signOut içinde closeMob() çağrılacak
+        if (mobSignin)   {
+            mobSignin.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
+            mobSignin.onclick = signOut;
             mobSignin.style.display = '';
             mobSignin.disabled = false;
         }
         if (mobSignup)   { mobSignup.style.display = 'none'; }
 
     } else {
-        // Desktop
         chip.classList.remove('visible');
         nameSpan.textContent = '';
         signinBtn.textContent = I18N[currentLang]?.nav_signin || 'Sign In';
@@ -1816,11 +1831,10 @@ function updateNavbarUser() {
         signinBtn.disabled = false;
         if (signupBtn) signupBtn.style.display = '';
 
-        // Mobil
         if (mobUserInfo) { mobUserInfo.style.display = 'none'; }
         if (mobUserName) { mobUserName.textContent = ''; }
-        if (mobSignin)   { 
-            mobSignin.textContent = I18N[currentLang]?.nav_signin || 'Sign In'; 
+        if (mobSignin)   {
+            mobSignin.textContent = I18N[currentLang]?.nav_signin || 'Sign In';
             mobSignin.onclick = () => { openModal('si'); closeMob(); };
             mobSignin.style.display = '';
             mobSignin.disabled = false;
@@ -1830,7 +1844,7 @@ function updateNavbarUser() {
 }
 
 /* ─── AUTH MESAJ YARDIMCILARI ─── */
-function setMsg(modalId, text, type) { // type: 'error' | 'success' | 'info'
+function setMsg(modalId, text, type) {
     const el = document.getElementById(modalId + '-msg');
     if (!el) return;
     el.textContent = text;
@@ -1867,7 +1881,6 @@ async function handleSignIn(e) {
         return;
     }
 
-    // Başarılı giriş — hemen kapat ve UI güncelle
     if (data?.session?.user) {
         currentUser = data.session.user;
         closeModal('si');
@@ -1906,15 +1919,12 @@ async function handleSignUp(e) {
         return;
     }
 
-    // Supabase bazen zaten kayıtlı kullanıcıyı hata vermeden döndürür
-    // data.user var ama identities boşsa = zaten kayıtlı
     if (data?.user && data.user.identities && data.user.identities.length === 0) {
         setMsg('su', I18N[currentLang]?.err_already_member || '✉️ This email is already registered. Try signing in instead.', 'info');
         setTimeout(() => switchModal('su', 'si'), 2200);
         return;
     }
 
-    // Başarılı kayıt + session var → hemen giriş yap
     if (data?.session?.user) {
         currentUser = data.session.user;
         closeModal('su');
@@ -1924,7 +1934,6 @@ async function handleSignUp(e) {
         return;
     }
 
-    // Session yok ama user var → email doğrulama gerekiyor (nadir)
     if (data?.user && !data.session) {
         setMsg('su', I18N[currentLang]?.msg_verify_email || '✅ Registration successful! Check your email and click the verification link.', 'success');
     }
@@ -1932,7 +1941,6 @@ async function handleSignUp(e) {
 
 /* ─── ŞİFREMİ UNUTTUM ─── */
 function showForgotPassword() {
-    // Si modalındaki e-postayı fp modala taşı
     const siEmail = document.getElementById('si-email').value;
     switchModal('si', 'fp');
     setTimeout(function() {
@@ -1957,7 +1965,6 @@ async function handleForgotPassword(e) {
         setMsg('fp', I18N[currentLang]?.fp_err || 'Could not send reset email. Please check the address and try again.', 'error');
     } else {
         setMsg('fp', I18N[currentLang]?.fp_sent || '✅ Reset link sent! Check your email inbox.', 'success');
-        // 3 saniye sonra Sign In'e dön
         setTimeout(function() { switchModal('fp', 'si'); }, 3000);
     }
 }
@@ -1986,7 +1993,6 @@ async function handleNewPassword(e) {
     setMsg('np', I18N[currentLang]?.np_success || '✅ Password updated! You are now signed in.', 'success');
     setTimeout(function() {
         closeModal('np');
-        // Formu temizle
         document.getElementById('np-pass').value = '';
         document.getElementById('np-pass2').value = '';
     }, 2000);
@@ -2011,7 +2017,6 @@ async function signOut() {
     if (mobSignin) mobSignin.disabled = true;
 
     try {
-        // Supabase signOut'u 3 saniye timeout ile çalıştır
         await Promise.race([
             _supabase.auth.signOut(),
             new Promise(function(resolve) { setTimeout(resolve, 0); })
@@ -2020,22 +2025,18 @@ async function signOut() {
         console.error('❌ Çıkış hatası:', err);
     }
 
-    // Hata olsa da olmasa da state temizle
     currentUser      = null;
     currentPlanId    = null;
     accessibleGroups = [];
 
-    // localStorage temizle
     Object.keys(localStorage).forEach(function(k) {
         if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k);
     });
 
-    // URL temizle
     if (window.location.hash || window.location.search.includes('token')) {
         window.history.replaceState(null, '', window.location.pathname);
     }
 
-    // UI güncelle
     updateNavbarUser();
     buildTestButtons();
     closeMob();
@@ -2050,12 +2051,8 @@ async function checkAuth() {
 
         if (error) {
             console.error('❌ Session alınamadı:', error);
-            currentUser = null;
-            currentPlanId = null;
-            accessibleGroups = [];
-            updateNavbarUser();
-            buildTestButtons();
-            return;
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            updateNavbarUser(); buildTestButtons(); return;
         }
 
         if (session?.user) {
@@ -2063,40 +2060,30 @@ async function checkAuth() {
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons();
         } else {
-            currentUser = null;
-            currentPlanId = null;
-            accessibleGroups = [];
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
             buildTestButtons();
         }
         updateNavbarUser();
 
     } catch (err) {
         console.error('❌ Auth kontrolü hatası:', err);
-        currentUser = null;
-        currentPlanId = null;
-        accessibleGroups = [];
-        updateNavbarUser();
-        buildTestButtons();
+        currentUser = null; currentPlanId = null; accessibleGroups = [];
+        updateNavbarUser(); buildTestButtons();
     }
 }
 
 /* ─── KULLANICININ ERİŞİM BİLGİSİNİ ÇEK ─── */
 async function fetchUserAccess() {
-    // currentUser yoksa session'dan almayı dene
     if (!currentUser) {
         const { data: { session } } = await _supabase.auth.getSession();
         if (session?.user) {
             currentUser = session.user;
-            console.log('fetchUserAccess: sessiondan user alindi:', currentUser.id);
         } else {
-            console.log('❌ fetchUserAccess: currentUser yok, session da yok');
             currentPlanId = null; accessibleGroups = []; return;
         }
     }
 
-    console.log('🔍 fetchUserAccess: fetch ile sorgu atılıyor, user:', currentUser.id);
     try {
-        // Supabase JS client yerine direkt fetch ile sorgula (initialize deadlock bypass)
         const res = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
             {
@@ -2107,32 +2094,26 @@ async function fetchUserAccess() {
             }
         );
         const data = await res.json();
-        console.log('📦 fetchUserAccess sonucu:', JSON.stringify(data));
 
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
-            console.log('✅ Aktif plan:', data[0].plan_name, '| Erişim:', accessibleGroups);
         } else {
-            currentPlanId    = null;
-            accessibleGroups = [];
-            console.log('ℹ️ Aktif plan yok');
+            currentPlanId = null; accessibleGroups = [];
         }
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
-        currentPlanId = null;
-        accessibleGroups = [];
+        currentPlanId = null; accessibleGroups = [];
     }
 }
 
 /* ─── İÇERİĞE ERİŞİM KONTROLÜ ─── */
-// groupId: 'tests' | 'theory' | 'all'
 function canAccess(groupId) {
     if (accessibleGroups.includes('all')) return true;
     return accessibleGroups.includes(groupId);
 }
 
-/* ─── TEST AÇ — ERİŞİM KONTROLLÜ ─── */
+/* ─── TEST AÇ ─── */
 function openTest(testNum) {
     const lang = currentLang || 'en';
     if (!currentUser) { openModal('si'); return; }
@@ -2140,27 +2121,18 @@ function openTest(testNum) {
     window.open(`${QUIZ_BASE}/test-${testNum}-${lang}.html`, '_blank');
 }
 
-/* ─── TEORİ LİNKİ AÇ — DİL + ERİŞİM KONTROLLÜ ─── */
+/* ─── TEORİ LİNKİ AÇ ─── */
 function openTheoryLink(url) {
     if (!currentUser) { openModal('si'); return; }
     if (!canAccess('theory')) { showPaywall('theory'); return; }
 
-    // URL yapısı: https://oefenen.examtheorie.nl/code-of-conduct-1-1.html
-    // TR için:    https://oefenen.examtheorie.nl/tr-code-of-conduct-1-1.html
-    // NL için:    https://oefenen.examtheorie.nl/nl-code-of-conduct-1-1.html
-    // AR için:    https://oefenen.examtheorie.nl/ar-code-of-conduct-1-1.html
-
     const lang = currentLang || 'en';
     let finalUrl = url;
-
-    // URL'den base ve dosya adını ayır
-    // Mevcut dil önekini temizle (tr-, nl-, ar-)
     const cleanUrl = url.replace(/\/(tr-|nl-|ar-)([^/]+\.html)$/, '/$2');
 
     if (lang === 'en') {
         finalUrl = cleanUrl;
     } else {
-        // Dosya adının başına dil önekini ekle
         finalUrl = cleanUrl.replace(/\/([^/]+\.html)$/, `/${lang}-$1`);
     }
 
@@ -2169,7 +2141,6 @@ function openTheoryLink(url) {
 
 /* ─── PAYWALL ─── */
 function showPaywall(groupId) {
-    // Paywall mesajını gruba göre özelleştir
     const msgEl = document.getElementById('paywall-group-msg');
     if (msgEl) {
         const isTests  = groupId === 'tests';
@@ -2200,7 +2171,6 @@ async function fetchProgressFromSupabase() {
             const data = await res.json();
             const completedTests = (data || []).map(r => r.test_number);
             localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
-            console.log(`✅ Progress (${lang}):`, completedTests);
         }
     } catch (err) {
         console.error('❌ Supabase ilerlemesi alınırken hata:', err);
@@ -2209,7 +2179,6 @@ async function fetchProgressFromSupabase() {
 
 /* ─── NOTIFICATION SYSTEM ─── */
 function showNotification(message, type = 'info') {
-    // Notification container oluştur veya mevcut olanı al
     let container = document.getElementById('notification-container');
     if (!container) {
         container = document.createElement('div');
@@ -2223,14 +2192,14 @@ function showNotification(message, type = 'info') {
         `;
         document.body.appendChild(container);
     }
-    
+
     const notification = document.createElement('div');
     const colors = {
         error: 'rgba(255,60,60,0.9)',
         success: 'rgba(0,212,100,0.9)',
         info: 'rgba(0,180,255,0.9)'
     };
-    
+
     notification.style.cssText = `
         background: ${colors[type] || colors.info};
         color: white;
@@ -2244,11 +2213,10 @@ function showNotification(message, type = 'info') {
         animation: slideInRight 0.3s ease;
         backdrop-filter: blur(10px);
     `;
-    
+
     notification.textContent = message;
     container.appendChild(notification);
-    
-    // 5 saniye sonra kaldır
+
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => {
@@ -2259,9 +2227,8 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// CSS animasyonları ekle
-const style = document.createElement('style');
-style.textContent = `
+const notifStyle = document.createElement('style');
+notifStyle.textContent = `
     @keyframes slideInRight {
         from { transform: translateX(100%); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
@@ -2271,7 +2238,7 @@ style.textContent = `
         to { transform: translateX(100%); opacity: 0; }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(notifStyle);
 
 /* ─── PROGRESS — SUPABASE'E KAYDET ─── */
 async function saveProgressToSupabase(testNum, lang) {
@@ -2279,7 +2246,6 @@ async function saveProgressToSupabase(testNum, lang) {
     lang = lang || currentLang || 'en';
 
     try {
-        console.log(`💾 Saving progress for user ${currentUser.id}, test ${testNum}, lang ${lang}`);
         const res = await fetch(
             'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress',
             {
@@ -2299,7 +2265,6 @@ async function saveProgressToSupabase(testNum, lang) {
             showNotification('Progress could not be saved.', 'error');
             return false;
         }
-        console.log(`✅ Test ${testNum} (${lang}) kaydedildi`);
         return true;
     } catch (err) {
         console.error('❌ Unexpected error saving progress:', err);
@@ -2308,50 +2273,30 @@ async function saveProgressToSupabase(testNum, lang) {
     }
 }
 
-/* ─── POSTMESSAGE (Quiz tamamlandı) ─── */
+/* ─── POSTMESSAGE ─── */
 window.addEventListener('message', async function(e) {
-    // Esnek origin kontrolü - tüm examtheorie.nl subdomain'lerini kabul et
-    const allowedOrigins = [
-        'https://azerpashazadeh.github.io',
-        'https://oefenen.examtheorie.nl',
-        'https://www.examtheorie.nl',
-        'https://examtheorie.nl'
-    ];
-    
-    // Wildcard kontrol - examtheorie.nl içeren her origin'i kabul et
-    const isAllowed = allowedOrigins.includes(e.origin) || 
-                   e.origin.includes('examtheorie.nl') ||
-                   e.origin.includes('oefenen.examtheorie.nl');
-    
-    if (!isAllowed) {
-        console.warn('❌ Blocked message from origin:', e.origin);
-        return;
-    }
-    
+    const isAllowed = ['https://azerpashazadeh.github.io','https://oefenen.examtheorie.nl','https://www.examtheorie.nl','https://examtheorie.nl'].includes(e.origin)
+                   || e.origin.includes('examtheorie.nl');
+    if (!isAllowed) return;
+
     const d = e.data || {};
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
-    
-    console.log(`📩 Test ${d.testNumber} (${d.lang}) tamamlandı - Origin: ${e.origin}`);
-    
-    // Local storage'a kaydet
+
     markCompleted(d.lang, d.testNumber);
     buildTestButtons();
-    
+
     if (!currentUser) {
         showNotification('Please sign in to save your progress.', 'info');
         setTimeout(() => openModal('si'), 2000);
         return;
     }
-    
-    // Supabase'e kaydet
+
     const saved = await saveProgressToSupabase(d.testNumber, d.lang);
     if (saved) {
-        // Başarılı kayıttan sonra progress'i yeniden çek
         await fetchProgressFromSupabase();
         buildTestButtons();
         showNotification(`Test ${d.testNumber} completed successfully!`, 'success');
     } else {
-        console.warn('⚠️ Supabase kaydı başarısız oldu, local storage kullanılıyor');
         showNotification('Progress saved locally. Will sync when you sign in.', 'info');
     }
 });
@@ -2362,7 +2307,6 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
 
     try {
         if (event === 'PASSWORD_RECOVERY') {
-            // Şifre sıfırlama linkiyle dönen kullanıcı — yeni şifre modalını aç
             currentUser = session?.user || null;
             updateNavbarUser();
             if (window.location.hash) {
@@ -2373,19 +2317,16 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
         }
 
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            // Sadece gerçekten kullanıcı değiştiyse güncelle
             if (!currentUser || currentUser.id !== session.user.id) {
-                console.log('👤 New user detected:', session.user.id);
                 currentUser = session.user;
                 await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
                 buildTestButtons();
                 updateNavbarUser();
             } else {
-                console.log('🔄 Same user — checking payment param');
                 currentUser = session.user;
                 updateNavbarUser();
             }
-            // Ödeme sonrası dönüşte: webhook geç gelebilir, tekrar tekrar dene
+
             const _urlParams = new URLSearchParams(window.location.search);
             if (_urlParams.get('payment') === 'success') {
                 const pollForPlan = async (attemptsLeft) => {
@@ -2398,15 +2339,13 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                     buildTestButtons();
                     if (currentPlanId) {
                         showNotification('✅ Payment successful! Your plan is now active.', 'success');
-                        console.log('✅ Plan aktifleşti!');
                     } else {
-                        console.log('⏳ Plan henüz yok, tekrar deneniyor... (' + attemptsLeft + ')');
                         pollForPlan(attemptsLeft - 1);
                     }
                 };
-                pollForPlan(8); // 8 deneme x 2 saniye = 16 saniye max
+                pollForPlan(8);
             }
-            
+
             if (window.location.hash) {
                 window.history.replaceState(null, '', window.location.pathname + window.location.search);
             }
@@ -2416,40 +2355,28 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             }
 
         } else if (event === 'INITIAL_SESSION' && !session) {
-            // Oturum yok — misafir görünümü
-            currentUser      = null;
-            currentPlanId    = null;
-            accessibleGroups = [];
-            updateNavbarUser();
-            buildTestButtons();
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            updateNavbarUser(); buildTestButtons();
 
         } else if (event === 'SIGNED_OUT') {
             if (currentUser !== null) {
-                currentUser      = null;
-                currentPlanId    = null;
-                accessibleGroups = [];
-                // Sadece progress verilerini temizle, dil ayarlarını koru
+                currentUser = null; currentPlanId = null; accessibleGroups = [];
                 Object.keys(localStorage).forEach(k => {
                     if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) {
                         localStorage.removeItem(k);
                     }
                 });
-                updateNavbarUser();
-                buildTestButtons();
+                updateNavbarUser(); buildTestButtons();
             }
-            console.log('✅ Çıkış eventi işlendi');
 
         } else if (event === 'TOKEN_REFRESHED' && session?.user) {
-            console.log('🔄 Token yenilendi');
-            // Token yenilendiğinde sadece kullanıcıyı güncelle, gereksiz fetch yapma
             if (currentUser?.id !== session.user.id) {
                 currentUser = session.user;
                 await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-                updateNavbarUser();
-                buildTestButtons();
+                updateNavbarUser(); buildTestButtons();
             } else {
                 currentUser = session.user;
-                updateNavbarUser(); // Sadece navbar'ı güncelle
+                updateNavbarUser();
             }
         }
 
@@ -2458,39 +2385,28 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
     }
 });
 
-/* ─── SEKMEYE DÖNÜNCE GÜNCELLE ─── */
+/* ─── SEKMEYE DÖNÜNCE ─── */
 let lastFocusUpdate = 0;
-const FOCUS_THROTTLE = 3000; // 3 saniyaya düşür
+const FOCUS_THROTTLE = 3000;
 
 window.addEventListener('focus', async () => {
     const now = Date.now();
-    if (now - lastFocusUpdate < FOCUS_THROTTLE) {
-        console.log('🔄 Focus event throttled');
-        return;
-    }
+    if (now - lastFocusUpdate < FOCUS_THROTTLE) return;
     lastFocusUpdate = now;
-    
+
     if (currentUser) {
         try {
-            // Session'ı kontrol et
             const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
             if (sessionError || !sessionData?.session) {
-                console.warn('⚠️ Session expired on focus, attempting refresh...');
                 const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
                 if (refreshError || !refreshData?.session?.user) {
-                    console.error('❌ Session refresh failed on focus');
-                    currentUser = null;
-                    currentPlanId = null;
-                    accessibleGroups = [];
-                    updateNavbarUser();
-                    buildTestButtons();
+                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    updateNavbarUser(); buildTestButtons();
                     showNotification('Session expired. Please sign in again.', 'info');
                     return;
                 }
                 currentUser = refreshData.session.user;
-                console.log('✅ Session refreshed on focus');
             }
-            
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons();
         } catch (err) {
@@ -2502,42 +2418,31 @@ window.addEventListener('focus', async () => {
 });
 
 /* ─── PERİYODİK SESSION CHECK ─── */
-// Her 1 dakikada bir session'ı kontrol et (önce 2 dakikaydı)
 setInterval(async () => {
     if (currentUser) {
         try {
             const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
             if (sessionError || !sessionData?.session) {
-                console.warn('⚠️ Session expired during periodic check, attempting refresh...');
                 const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
                 if (refreshError || !refreshData?.session?.user) {
-                    console.warn('⚠️ Session could not be refreshed during periodic check');
-                    currentUser = null;
-                    currentPlanId = null;
-                    accessibleGroups = [];
-                    updateNavbarUser();
-                    buildTestButtons();
+                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    updateNavbarUser(); buildTestButtons();
                     showNotification('Session expired. Please sign in again.', 'info');
                 } else {
                     currentUser = refreshData.session.user;
-                    console.log('✅ Session refreshed during periodic check');
                 }
             }
         } catch (err) {
             console.error('❌ Periodic session check error:', err);
         }
     }
-}, 1 * 60 * 1000); // 1 dakika
-
-/* ─── MODAL KAPANINCA FORMU TEMİZLE ─── */
-/* Modal dışına tıklayınca kapanmaz — sadece X butonu ile kapanır */
+}, 1 * 60 * 1000);
 
 /* ─── INIT ─── */
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
 
-    // Ödeme başarılı mı kontrol et
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
@@ -2547,19 +2452,16 @@ window.addEventListener('DOMContentLoaded', async () => {
         const maxAttempts = 10;
         const planInterval = setInterval(async () => {
             attempts++;
-            console.log(`⏳ Plan kontrol ediliyor... Deneme ${attempts}/${maxAttempts}`);
             await fetchUserAccess();
             if (currentPlanId) {
                 clearInterval(planInterval);
-                buildTestButtons();
-                updateNavbarUser();
+                buildTestButtons(); updateNavbarUser();
                 showNotification('✅ Plan activated! Enjoy your studies.', 'success');
-                console.log('✅ Plan aktifleşti!');
             } else if (attempts >= maxAttempts) {
                 clearInterval(planInterval);
                 showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
             }
-        }, 2000); // Her 2 saniyede bir kontrol
+        }, 2000);
     }
 
     const reason = params.get('reason');
@@ -2570,8 +2472,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         setTimeout(() => showPaywall(group), 600);
     }
     if (reason) {
-        const clean = window.location.pathname;
-        window.history.replaceState(null, '', clean);
+        window.history.replaceState(null, '', window.location.pathname);
     }
 });
 </script>
