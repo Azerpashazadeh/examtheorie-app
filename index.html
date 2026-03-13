@@ -397,6 +397,42 @@
         .p-features li::before { content:'✓'; color:var(--cyan); font-weight:700; flex-shrink:0; margin-top:1px; }
         body.ar .p-features li { flex-direction:row-reverse; text-align:right; }
 
+
+        /* ══ ALL TESTS COMPLETED BANNER ══ */
+        .all-done-banner {
+            width:100%; margin-top:20px;
+            background:rgba(0,212,100,0.1);
+            border:1px solid rgba(0,212,100,0.3);
+            border-radius:18px; padding:22px 26px;
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:14px;
+            animation:fadeUp .5s ease;
+        }
+        .all-done-left { display:flex; align-items:center; gap:14px; }
+        .all-done-icon { font-size:36px; line-height:1; }
+        .all-done-title {
+            font-size:16px; font-weight:700; color:white; margin-bottom:4px;
+        }
+        .all-done-sub {
+            font-size:12.5px; color:rgba(255,255,255,0.55); line-height:1.5;
+        }
+        .btn-reset-progress {
+            padding:11px 26px; border-radius:13px;
+            background:rgba(0,212,100,0.2);
+            border:1px solid rgba(0,212,100,0.5);
+            color:#4dffaa; font-family:'Poppins',sans-serif;
+            font-weight:700; font-size:13px; cursor:pointer;
+            transition:all .25s; white-space:nowrap;
+        }
+        .btn-reset-progress:hover {
+            background:rgba(0,212,100,0.35);
+            border-color:rgba(0,212,100,0.8);
+            transform:translateY(-2px);
+        }
+        .btn-reset-progress:disabled {
+            opacity:0.5; cursor:not-allowed; transform:none;
+        }
+
         /* ══ PASSENGER CAR OVERLAY ══ */
         .pc-overlay {
             position:fixed; inset:0;
@@ -1358,6 +1394,12 @@ const I18N = {
     daily_days_label:"day",
     daily_days_label_p:"days",
     daily_tags:["","","","","","","","","",""],
+    all_done_title:"🎉 All 50 Tests Completed!",
+    all_done_sub:"You've completed every test. Reset to start fresh and practice again.",
+    btn_reset:"Reset & Start Over",
+    reset_confirm:"Are you sure? All your test progress will be deleted and you'll start from Test 1.",
+    reset_success:"✅ Progress reset! You can start from Test 1 again.",
+    reset_error:"Could not reset progress. Please try again.",
     err_field_required:"Please fill in all fields.",
     err_email_invalid:"Please enter a valid email address.",
     err_pass_short:"Password must be at least 6 characters.",
@@ -1468,6 +1510,12 @@ const I18N = {
     daily_days_label:"gün",
     daily_days_label_p:"gün",
     daily_tags:["","","","","","","","","",""],
+    all_done_title:"🎉 50 Testin Tamamı Bitti!",
+    all_done_sub:"Tüm testleri tamamladın. Sıfırla ve baştan pratik yap.",
+    btn_reset:"Sıfırla ve Başa Dön",
+    reset_confirm:"Emin misin? Tüm test ilerlemen silinecek ve Test 1'den başlayacaksın.",
+    reset_success:"✅ İlerleme sıfırlandı! Test 1'den tekrar başlayabilirsin.",
+    reset_error:"İlerleme sıfırlanamadı. Lütfen tekrar dene.",
     err_field_required:"Lütfen tüm alanları doldurun.",
     err_email_invalid:"Lütfen geçerli bir e-posta adresi girin.",
     err_pass_short:"Şifre en az 6 karakter olmalıdır.",
@@ -1571,6 +1619,12 @@ const I18N = {
     daily_days_label:"dag",
     daily_days_label_p:"dagen",
     daily_tags:["","","","","","","","","",""],
+    all_done_title:"🎉 Alle 50 Toetsen Voltooid!",
+    all_done_sub:"Je hebt alle toetsen voltooid. Reset en begin opnieuw.",
+    btn_reset:"Reset & Opnieuw Beginnen",
+    reset_confirm:"Weet je het zeker? Al je voortgang wordt verwijderd en je begint bij Toets 1.",
+    reset_success:"✅ Voortgang gereset! Je kunt opnieuw beginnen bij Toets 1.",
+    reset_error:"Kon voortgang niet resetten. Probeer het opnieuw.",
     err_field_required:"Vul alle velden in.",
     err_email_invalid:"Voer een geldig e-mailadres in.",
     err_pass_short:"Wachtwoord moet minimaal 6 tekens bevatten.",
@@ -1675,6 +1729,12 @@ const I18N = {
     daily_days_label:"يوم",
     daily_days_label_p:"أيام",
     daily_tags:["","","","","","","","","",""],
+    all_done_title:"🎉 اكتملت جميع الاختبارات الـ 50!",
+    all_done_sub:"لقد أكملت جميع الاختبارات. أعد التعيين وابدأ من جديد.",
+    btn_reset:"إعادة التعيين والبدء من جديد",
+    reset_confirm:"هل أنت متأكد؟ ستُحذف جميع بياناتك وستبدأ من الاختبار الأول.",
+    reset_success:"✅ تمت إعادة التعيين! يمكنك البدء من الاختبار الأول مجدداً.",
+    reset_error:"تعذّرت إعادة التعيين. يرجى المحاولة مرة أخرى.",
     err_field_required:"يرجى ملء جميع الحقول.",
     err_email_invalid:"يرجى إدخال بريد إلكتروني صحيح.",
     err_pass_short:"يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
@@ -1775,6 +1835,33 @@ function buildTestButtons() {
         grid.appendChild(btn);
     }
     updateProgress(lang);
+
+    // Tüm 50 test tamamlandıysa banner göster
+    const allDone = getCompleted(lang).length >= TOTAL_TESTS;
+    let banner = document.getElementById('allDoneBanner');
+    if (allDone) {
+        if (!banner) {
+            banner = document.createElement('div');
+            banner.id = 'allDoneBanner';
+            banner.className = 'all-done-banner';
+            grid.parentNode.appendChild(banner);
+        }
+        const t = I18N[currentLang] || I18N['en'];
+        banner.innerHTML = `
+            <div class="all-done-left">
+                <div class="all-done-icon">🏆</div>
+                <div>
+                    <div class="all-done-title">${t.all_done_title || '🎉 All 50 Tests Completed!'}</div>
+                    <div class="all-done-sub">${t.all_done_sub || 'Reset to start fresh and practice again.'}</div>
+                </div>
+            </div>
+            <button class="btn-reset-progress" id="btnResetProgress" onclick="resetAllProgress()">
+                ${t.btn_reset || 'Reset & Start Over'}
+            </button>
+        `;
+    } else {
+        if (banner) banner.remove();
+    }
 }
 
 function updateProgress(lang) {
@@ -2445,6 +2532,56 @@ async function fetchProgressFromSupabase() {
     } catch (err) {
         console.error('❌ Supabase ilerlemesi alınırken hata:', err);
     }
+}
+
+
+/* ─── TÜM İLERLEMEYİ SIFIRLA ─── */
+async function resetAllProgress() {
+    const t = I18N[currentLang] || I18N['en'];
+    const confirmed = confirm(t.reset_confirm || 'Are you sure? All your test progress will be deleted.');
+    if (!confirmed) return;
+
+    const btn = document.getElementById('btnResetProgress');
+    if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
+
+    // 1. localStorage temizle
+    const allLangs = ['en', 'tr', 'nl', 'ar'];
+    allLangs.forEach(lang => {
+        localStorage.removeItem(`et_completed_${lang}`);
+        localStorage.removeItem(`et_progress_${lang}`);
+    });
+
+    // 2. Supabase'den sil (giriş yapmışsa)
+    if (currentUser) {
+        try {
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                    }
+                }
+            );
+            if (!res.ok) {
+                const err = await res.text();
+                console.error('❌ Progress silinemedi:', err);
+                showNotification(t.reset_error || 'Could not reset progress. Please try again.', 'error');
+                if (btn) { btn.disabled = false; btn.textContent = t.btn_reset || 'Reset & Start Over'; }
+                return;
+            }
+        } catch (err) {
+            console.error('❌ Reset hatası:', err);
+            showNotification(t.reset_error || 'Could not reset progress. Please try again.', 'error');
+            if (btn) { btn.disabled = false; btn.textContent = t.btn_reset || 'Reset & Start Over'; }
+            return;
+        }
+    }
+
+    // 3. UI güncelle
+    buildTestButtons();
+    showNotification(t.reset_success || '✅ Progress reset! You can start from Test 1 again.', 'success');
 }
 
 /* ─── NOTIFICATION SYSTEM ─── */
