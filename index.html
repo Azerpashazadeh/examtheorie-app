@@ -1837,9 +1837,13 @@ function buildTestButtons() {
     updateProgress(lang);
 
     // Tüm 50 test tamamlandıysa banner göster
-    const allDone = getCompleted(lang).length >= TOTAL_TESTS;
+    // Herhangi bir dilde 50 tamamsa göster (dil bağımsız)
+    const allLangsCheck = ['en', 'tr', 'nl', 'ar'];
+    const allDone = allLangsCheck.some(l => getCompleted(l).length >= TOTAL_TESTS);
+    // Reset hakkı kullanılmışsa banner gösterme
+    const canReset = allDone && !currentResetUsed && currentUser;
     let banner = document.getElementById('allDoneBanner');
-    if (allDone) {
+    if (canReset) {
         if (!banner) {
             banner = document.createElement('div');
             banner.id = 'allDoneBanner';
@@ -2022,6 +2026,8 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
 let currentUser = null;
 let currentPlanId = null;
 let accessibleGroups = [];
+let currentResetUsed = false;  // aktif planda sıfırlama hakkı kullanıldı mı
+let currentActivePlanRowId = null; // aktif user_plans satırının id'si
 
 /* ─── NAVBAR GÜNCELLE ─── */
 function updateNavbarUser() {
@@ -2436,17 +2442,18 @@ async function fetchUserAccess() {
         if (session?.user) {
             currentUser = session.user;
         } else {
-            currentPlanId = null; accessibleGroups = []; return;
+            currentPlanId = null; accessibleGroups = []; currentResetUsed = false; return;
         }
     }
 
     try {
+        // user_access view'ından erişim bilgisi
         const res = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
             {
                 headers: {
-                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs',
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs`,
+                    'apikey': supabaseKey,
+                    'Authorization': `Bearer ${supabaseKey}`,
                 }
             }
         );
@@ -2455,12 +2462,31 @@ async function fetchUserAccess() {
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
+
+            // Aktif planda reset_used kontrolü — en son aktif planı çek
+            const planRes = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true&expires_at=gt.${new Date().toISOString()}&order=created_at.desc&limit=1&select=id,reset_used`,
+                {
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                    }
+                }
+            );
+            const planData = await planRes.json();
+            if (planData && planData.length > 0) {
+                currentResetUsed = planData[0].reset_used === true;
+                currentActivePlanRowId = planData[0].id;
+            } else {
+                currentResetUsed = false;
+                currentActivePlanRowId = null;
+            }
         } else {
-            currentPlanId = null; accessibleGroups = [];
+            currentPlanId = null; accessibleGroups = []; currentResetUsed = false; currentActivePlanRowId = null;
         }
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
-        currentPlanId = null; accessibleGroups = [];
+        currentPlanId = null; accessibleGroups = []; currentResetUsed = false;
     }
 }
 
@@ -2579,7 +2605,28 @@ async function resetAllProgress() {
         }
     }
 
-    // 3. UI güncelle
+    // 3. user_plans'ta reset_used = true yap
+    if (currentActivePlanRowId) {
+        try {
+            await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?id=eq.${currentActivePlanRowId}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ reset_used: true })
+                }
+            );
+            currentResetUsed = true;
+        } catch (err) {
+            console.error('❌ reset_used güncellenemedi:', err);
+        }
+    }
+
+    // 4. UI güncelle
     buildTestButtons();
     showNotification(t.reset_success || '✅ Progress reset! You can start from Test 1 again.', 'success');
 }
