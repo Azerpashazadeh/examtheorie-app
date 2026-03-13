@@ -243,6 +243,82 @@
         .how-title { font-size:17px; font-weight:700; margin-bottom:9px; }
         .how-desc  { font-size:13.5px; color:rgba(255,255,255,0.68); line-height:1.6; }
 
+        /* ══ DAILY PICKER ══ */
+        .daily-picker-wrap {
+            width:100%; max-width:1200px;
+            background:rgba(18,24,40,0.78);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            border:1px solid rgba(0,212,255,0.25);
+            border-radius:22px; padding:26px 28px 24px;
+            margin-bottom:20px;
+            box-shadow:0 12px 40px rgba(0,100,255,0.2);
+        }
+        .daily-picker-top {
+            display:flex; align-items:center; justify-content:space-between;
+            margin-bottom:18px; flex-wrap:wrap; gap:10px;
+        }
+        .daily-picker-title {
+            font-size:16px; font-weight:700; color:white;
+            display:flex; align-items:center; gap:8px;
+        }
+        .daily-new-badge {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            font-size:10px; font-weight:700; padding:3px 10px;
+            border-radius:20px; color:white; letter-spacing:.3px;
+        }
+        .daily-picker-sub { font-size:13px; color:rgba(255,255,255,0.5); }
+        .day-btns {
+            display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;
+        }
+        .day-btn {
+            width:48px; height:48px; border-radius:12px;
+            border:1px solid rgba(255,255,255,0.15);
+            background:rgba(255,255,255,0.06);
+            color:rgba(255,255,255,0.7); font-size:13px; font-weight:700;
+            cursor:pointer; transition:all .2s; position:relative;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:2px;
+        }
+        .day-btn:hover { background:rgba(255,255,255,0.12); color:white; border-color:rgba(255,255,255,0.3); }
+        .day-btn.active {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            border-color:transparent; color:white;
+            box-shadow:0 4px 16px rgba(0,100,255,0.5);
+            transform:translateY(-2px);
+        }
+        .day-btn .day-tag {
+            font-size:8px; font-weight:600; color:rgba(255,255,255,0.6);
+            text-transform:uppercase; letter-spacing:.3px; line-height:1;
+        }
+        .day-btn.active .day-tag { color:rgba(255,255,255,0.85); }
+        .daily-bottom {
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:14px;
+            padding-top:18px; border-top:1px solid rgba(255,255,255,0.1);
+        }
+        .daily-price-block { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+        .daily-price-main { font-size:42px; font-weight:800; color:white; line-height:1; }
+        .daily-price-main span { font-size:22px; font-weight:600; vertical-align:super; margin-right:2px; }
+        .daily-price-per { font-size:14px; color:rgba(255,255,255,0.5); }
+        .daily-price-per strong { color:var(--cyan); font-weight:700; }
+        .btn-daily-buy {
+            padding:14px 36px; border-radius:15px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            border:none; color:white; font-family:'Poppins',sans-serif;
+            font-weight:700; font-size:15px; cursor:pointer;
+            box-shadow:0 8px 26px rgba(0,100,255,0.4); transition:all .25s;
+        }
+        .btn-daily-buy:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,100,255,0.6); }
+        .btn-daily-buy:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+        .daily-divider {
+            width:100%; max-width:1200px;
+            display:flex; align-items:center; gap:16px; margin-bottom:20px;
+        }
+        .daily-divider::before, .daily-divider::after {
+            content:''; flex:1; height:1px; background:rgba(255,255,255,0.12);
+        }
+        .daily-divider-text { font-size:13px; color:rgba(255,255,255,0.35); white-space:nowrap; }
+
         /* ══ PRICING OVERLAY ══ */
         .pricing-overlay {
             position:fixed; inset:0;
@@ -833,7 +909,34 @@
 <!-- ═══════════ PRICING OVERLAY ═══════════ -->
 <div class="pricing-overlay" id="pricing-ol">
     <div class="overlay-close" onclick="closePricing()">×</div>
-    <h2 class="sec-head" data-i18n="price_head" style="margin-bottom:44px;"></h2>
+    <h2 class="sec-head" data-i18n="price_head" style="margin-bottom:28px;"></h2>
+
+    <!-- ── GÜNLÜK PICKER ── -->
+    <div class="daily-picker-wrap">
+        <div class="daily-picker-top">
+            <div>
+                <div class="daily-picker-title">
+                    <span data-i18n="daily_title">⚡ Daily Access</span>
+                    <span class="daily-new-badge" data-i18n="daily_badge">NEW</span>
+                </div>
+                <div class="daily-picker-sub" data-i18n="daily_sub">Choose 1–10 days. Pay only for what you need.</div>
+            </div>
+        </div>
+        <div class="day-btns" id="dayBtns"></div>
+        <div class="daily-bottom">
+            <div class="daily-price-block">
+                <div class="daily-price-main"><span>€</span><span id="dailyPrice">3.00</span></div>
+                <div class="daily-price-per"><strong id="dailyPerDay">€3.00 / day</strong> &nbsp;·&nbsp; <span id="dailyDaysLabel">1 day</span></div>
+            </div>
+            <button class="btn-daily-buy" id="btnDailyBuy" data-i18n="daily_btn" onclick="startDailyPayment(event)">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- ── AYIRICI ── -->
+    <div class="daily-divider">
+        <span class="daily-divider-text" data-i18n="daily_or">— or choose a standard package —</span>
+    </div>
+
     <div class="pricing-grid">
         <div class="p-card">
             <div class="flag-corner"></div>
@@ -1246,6 +1349,15 @@ const I18N = {
     np_btn:"Save New Password", np_match_err:"Passwords do not match.",
     np_success:"✅ Password updated! You are now signed in.",
     np_err:"Could not update password. Please try again.",
+    daily_title:"⚡ Daily Access",
+    daily_badge:"NEW",
+    daily_sub:"Choose 1–10 days. Pay only for what you need.",
+    daily_btn:"Buy Now",
+    daily_or:"— or choose a standard package —",
+    daily_per:"/ day",
+    daily_days_label:"day",
+    daily_days_label_p:"days",
+    daily_tags:["","","Weekend","","","","Recommended","","",""],
     err_field_required:"Please fill in all fields.",
     err_email_invalid:"Please enter a valid email address.",
     err_pass_short:"Password must be at least 6 characters.",
@@ -1347,6 +1459,15 @@ const I18N = {
     np_btn:"Şifremi Kaydet", np_match_err:"Şifreler eşleşmiyor.",
     np_success:"✅ Şifre güncellendi! Giriş yapıldı.",
     np_err:"Şifre güncellenemedi. Lütfen tekrar dene.",
+    daily_title:"⚡ Günlük Erişim",
+    daily_badge:"YENİ",
+    daily_sub:"1-10 gün arası seç. Sadece ihtiyacın kadar öde.",
+    daily_btn:"Satın Al",
+    daily_or:"— veya standart paket seç —",
+    daily_per:"/ gün",
+    daily_days_label:"gün",
+    daily_days_label_p:"gün",
+    daily_tags:["","","Hafta sonu","","","","Öne çıkar","","",""],
     err_field_required:"Lütfen tüm alanları doldurun.",
     err_email_invalid:"Lütfen geçerli bir e-posta adresi girin.",
     err_pass_short:"Şifre en az 6 karakter olmalıdır.",
@@ -1441,6 +1562,15 @@ const I18N = {
     np_btn:"Wachtwoord Opslaan", np_match_err:"Wachtwoorden komen niet overeen.",
     np_success:"✅ Wachtwoord bijgewerkt! Je bent nu ingelogd.",
     np_err:"Kon wachtwoord niet bijwerken. Probeer het opnieuw.",
+    daily_title:"⚡ Dagelijks Toegang",
+    daily_badge:"NIEUW",
+    daily_sub:"Kies 1–10 dagen. Betaal alleen wat je nodig hebt.",
+    daily_btn:"Koop Nu",
+    daily_or:"— of kies een standaardpakket —",
+    daily_per:"/ dag",
+    daily_days_label:"dag",
+    daily_days_label_p:"dagen",
+    daily_tags:["","","Weekend","","","","Aanbevolen","","",""],
     err_field_required:"Vul alle velden in.",
     err_email_invalid:"Voer een geldig e-mailadres in.",
     err_pass_short:"Wachtwoord moet minimaal 6 tekens bevatten.",
@@ -1536,6 +1666,15 @@ const I18N = {
     np_btn:"حفظ كلمة المرور", np_match_err:"كلمتا المرور غير متطابقتين.",
     np_success:"✅ تم تحديث كلمة المرور! أنت الآن مسجّل الدخول.",
     np_err:"تعذّر تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
+    daily_title:"⚡ وصول يومي",
+    daily_badge:"جديد",
+    daily_sub:"اختر من 1 إلى 10 أيام. ادفع فقط ما تحتاجه.",
+    daily_btn:"اشتر الآن",
+    daily_or:"— أو اختر باقة قياسية —",
+    daily_per:"/ يوم",
+    daily_days_label:"يوم",
+    daily_days_label_p:"أيام",
+    daily_tags:["","","عطلة نهاية الأسبوع","","","","الأفضل","","",""],
     err_field_required:"يرجى ملء جميع الحقول.",
     err_email_invalid:"يرجى إدخال بريد إلكتروني صحيح.",
     err_pass_short:"يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
@@ -1688,6 +1827,7 @@ function applyLang(lang) {
     if (currentUser) {
         fetchProgressFromSupabase();
     }
+    buildDayButtons();
 }
 
 document.querySelectorAll('.lang-opt').forEach(opt =>
@@ -1700,11 +1840,11 @@ function toggleAcc(btn) {
 }
 
 /* ─── OVERLAYS & MODALS ─── */
-function openPricing()        { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; }
+function openPricing()        { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; buildDayButtons(); }
 function closePricing()       { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow=''; }
 
 /* ─── ÖDEME BAŞLAT ─── */
-async function startPayment(planId, planName, amount) {
+async function startPayment(planId, planName, amount, days) {
     if (!currentUser) { openModal('si'); return; }
 
     const btn = event.target;
@@ -1713,19 +1853,16 @@ async function startPayment(planId, planName, amount) {
     btn.textContent = '⏳ Processing...';
 
     try {
+        const body = { planId, planName, amount, userId: currentUser.id, userEmail: currentUser.email };
+        if (days) body.days = days;
+
         const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${supabaseKey}`
             },
-            body: JSON.stringify({
-                planId,
-                planName,
-                amount,
-                userId: currentUser.id,
-                userEmail: currentUser.email
-            })
+            body: JSON.stringify(body)
         });
 
         const data = await res.json();
@@ -2038,6 +2175,97 @@ async function handleNewPassword(e) {
         document.getElementById('np-pass').value = '';
         document.getElementById('np-pass2').value = '';
     }, 2000);
+}
+
+/* ─── GÜNLÜK ÖDEME ─── */
+const DAILY_PRICES = [
+    { days:1, price:'3.00',  perDay:'3.00' },
+    { days:2, price:'4.49',  perDay:'2.25' },
+    { days:3, price:'5.99',  perDay:'2.00' },
+    { days:4, price:'6.99',  perDay:'1.75' },
+    { days:5, price:'7.99',  perDay:'1.60' },
+    { days:6, price:'8.99',  perDay:'1.50' },
+    { days:7, price:'9.49',  perDay:'1.36' },
+    { days:8, price:'9.99',  perDay:'1.25' },
+    { days:9, price:'10.99', perDay:'1.22' },
+    { days:10,price:'11.49', perDay:'1.15' },
+];
+let selectedDays = 1;
+
+function buildDayButtons() {
+    const container = document.getElementById('dayBtns');
+    if (!container) return;
+    const t = I18N[currentLang] || I18N['en'];
+    const tags = t.daily_tags || [];
+    container.innerHTML = '';
+    DAILY_PRICES.forEach((p, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'day-btn' + (p.days === selectedDays ? ' active' : '');
+        const tag = tags[i] || '';
+        btn.innerHTML = p.days + (tag ? `<span class="day-tag">${tag}</span>` : '');
+        btn.onclick = () => selectDay(p.days);
+        container.appendChild(btn);
+    });
+    updateDailyPriceDisplay();
+}
+
+function selectDay(days) {
+    selectedDays = days;
+    document.querySelectorAll('.day-btn').forEach((b, i) => {
+        b.classList.toggle('active', DAILY_PRICES[i].days === days);
+    });
+    updateDailyPriceDisplay();
+}
+
+function updateDailyPriceDisplay() {
+    const t = I18N[currentLang] || I18N['en'];
+    const p = DAILY_PRICES.find(x => x.days === selectedDays) || DAILY_PRICES[0];
+    const priceEl = document.getElementById('dailyPrice');
+    const perEl   = document.getElementById('dailyPerDay');
+    const lblEl   = document.getElementById('dailyDaysLabel');
+    if (priceEl) priceEl.textContent = p.price;
+    if (perEl)   perEl.innerHTML = `<strong>€${p.perDay} ${t.daily_per || '/ day'}</strong>`;
+    if (lblEl)   lblEl.textContent = `${p.days} ${p.days === 1 ? (t.daily_days_label || 'day') : (t.daily_days_label_p || 'days')}`;
+}
+
+async function startDailyPayment(e) {
+    if (!currentUser) { openModal('si'); return; }
+    const p = DAILY_PRICES.find(x => x.days === selectedDays) || DAILY_PRICES[0];
+    const t = I18N[currentLang] || I18N['en'];
+    const planName = `${selectedDays}-${t.daily_days_label_p || 'Day'} Access`;
+
+    const btn = document.getElementById('btnDailyBuy');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳';
+
+    try {
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${supabaseKey}` },
+            body: JSON.stringify({
+                planId: 'daily',
+                planName,
+                amount: p.price,
+                days: selectedDays,
+                userId: currentUser.id,
+                userEmail: currentUser.email
+            })
+        });
+        const data = await res.json();
+        if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('❌ Payment error: ' + (data.error || 'Unknown error'));
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    } catch (err) {
+        console.error('Daily payment error:', err);
+        alert('❌ Connection error. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
 }
 
 /* ─── GOOGLE İLE GİRİŞ ─── */
