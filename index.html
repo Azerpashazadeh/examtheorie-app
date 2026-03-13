@@ -1113,9 +1113,9 @@
         <div class="m-close" onclick="closeModal('si')">×</div>
         <h2 class="m-title" data-i18n="si_title"></h2>
         <div class="auth-msg" id="si-msg"></div>
-        <form onsubmit="handleSignIn(event)">
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="si-email" class="f-inp" data-i18n-ph="f_email_ph" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="si-pass" class="f-inp" placeholder="••••••••" autocomplete="current-password" required></div>
+        <form onsubmit="handleSignIn(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="si-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="si-pass" class="f-inp" placeholder="••••••••" autocomplete="current-password"></div>
             <div style="text-align:right;margin-top:-8px;margin-bottom:12px;">
                 <a onclick="showForgotPassword()" style="font-size:12px;color:rgba(255,255,255,0.6);cursor:pointer;text-decoration:underline;" data-i18n="forgot_pass">Forgot password?</a>
             </div>
@@ -1135,8 +1135,8 @@
         <div class="m-close" onclick="closeModal('fp')">×</div>
         <h2 class="m-title" data-i18n="fp_title">Reset Password</h2>
         <div class="auth-msg" id="fp-msg"></div>
-        <form onsubmit="handleForgotPassword(event)">
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="fp-email" class="f-inp" data-i18n-ph="f_email_ph" required></div>
+        <form onsubmit="handleForgotPassword(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="fp-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
             <button type="submit" class="btn-submit" id="fp-btn" data-i18n="fp_btn">Send Reset Link</button>
         </form>
         <div class="m-foot"><a onclick="switchModal('fp','si')" data-i18n="fp_back">← Back to Sign In</a></div>
@@ -1148,10 +1148,10 @@
         <div class="m-close" onclick="closeModal('su')">×</div>
         <h2 class="m-title" data-i18n="su_title"></h2>
         <div class="auth-msg" id="su-msg"></div>
-        <form onsubmit="handleSignUp(event)">
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_name"></label><input type="text" id="su-name" class="f-inp" data-i18n-ph="f_name_ph" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="su-email" class="f-inp" data-i18n-ph="f_email_ph" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" minlength="6" required></div>
+        <form onsubmit="handleSignUp(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_name"></label><input type="text" id="su-name" class="f-inp" data-i18n-ph="f_name_ph"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="su-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
             <button type="submit" class="btn-submit" id="su-btn" data-i18n="su_title"></button>
         </form>
         <div class="m-div" data-i18n="f_or"></div>
@@ -1168,9 +1168,9 @@
         <div class="m-close" onclick="closeModal('np')">×</div>
         <h2 class="m-title" data-i18n="np_title">Set New Password</h2>
         <div class="auth-msg" id="np-msg"></div>
-        <form onsubmit="handleNewPassword(event)">
-            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" minlength="6" required></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" autocomplete="new-password" minlength="6" required></div>
+        <form onsubmit="handleNewPassword(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
             <button type="submit" class="btn-submit" id="np-btn" data-i18n="np_btn">Save New Password</button>
         </form>
     </div>
@@ -1243,6 +1243,9 @@ const I18N = {
     np_btn:"Save New Password", np_match_err:"Passwords do not match.",
     np_success:"✅ Password updated! You are now signed in.",
     np_err:"Could not update password. Please try again.",
+    err_field_required:"Please fill in all fields.",
+    err_email_invalid:"Please enter a valid email address.",
+    err_pass_short:"Password must be at least 6 characters.",
     a1:"Legislation", a2:"Vehicle Knowledge", a3:"Using the Road",
     a4:"Priority and Giving Way",
     a5:"Special Roads, Road Sections, Road Users and Manoeuvres",
@@ -1341,6 +1344,9 @@ const I18N = {
     np_btn:"Şifremi Kaydet", np_match_err:"Şifreler eşleşmiyor.",
     np_success:"✅ Şifre güncellendi! Giriş yapıldı.",
     np_err:"Şifre güncellenemedi. Lütfen tekrar dene.",
+    err_field_required:"Lütfen tüm alanları doldurun.",
+    err_email_invalid:"Lütfen geçerli bir e-posta adresi girin.",
+    err_pass_short:"Şifre en az 6 karakter olmalıdır.",
     a1:"Mevzuat", a2:"Araç Bilgisi", a3:"Yolda Kullanım",
     a4:"Öncelik ve Yol Verme",
     a5:"Özel Yollar, Yol Kesimleri, Yol Kullanıcıları ve Manevralar",
@@ -1432,6 +1438,9 @@ const I18N = {
     np_btn:"Wachtwoord Opslaan", np_match_err:"Wachtwoorden komen niet overeen.",
     np_success:"✅ Wachtwoord bijgewerkt! Je bent nu ingelogd.",
     np_err:"Kon wachtwoord niet bijwerken. Probeer het opnieuw.",
+    err_field_required:"Vul alle velden in.",
+    err_email_invalid:"Voer een geldig e-mailadres in.",
+    err_pass_short:"Wachtwoord moet minimaal 6 tekens bevatten.",
     a1:"Wetgeving", a2:"Voertuigkennis", a3:"Weggebruik",
     a4:"Voorrang en Doorlaten",
     a5:"Bijzondere Wegen, Weggedeelten en Manoeuvres",
@@ -1524,6 +1533,9 @@ const I18N = {
     np_btn:"حفظ كلمة المرور", np_match_err:"كلمتا المرور غير متطابقتين.",
     np_success:"✅ تم تحديث كلمة المرور! أنت الآن مسجّل الدخول.",
     np_err:"تعذّر تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
+    err_field_required:"يرجى ملء جميع الحقول.",
+    err_email_invalid:"يرجى إدخال بريد إلكتروني صحيح.",
+    err_pass_short:"يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
     a1:"التشريعات", a2:"معرفة المركبة", a3:"استخدام الطريق",
     a4:"الأولوية والتنازل",
     a5:"الطرق الخاصة والمناورات",
@@ -1861,7 +1873,14 @@ async function handleSignIn(e) {
     clearMsg('si');
     const email = document.getElementById('si-email').value.trim();
     const pass  = document.getElementById('si-pass').value;
-    if (!email || !pass) return;
+    if (!email || !pass) {
+        setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
 
     setBtnLoading('si-btn', true);
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
@@ -1891,7 +1910,18 @@ async function handleSignUp(e) {
     const name  = document.getElementById('su-name').value.trim();
     const email = document.getElementById('su-email').value.trim();
     const pass  = document.getElementById('su-pass').value;
-    if (!name || !email || !pass) return;
+    if (!name || !email || !pass) {
+        setMsg('su', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('su', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
+    if (pass.length < 6) {
+        setMsg('su', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error');
+        return;
+    }
 
     setBtnLoading('su-btn', true);
     const { data, error } = await _supabase.auth.signUp({
@@ -1947,7 +1977,14 @@ async function handleForgotPassword(e) {
     e.preventDefault();
     clearMsg('fp');
     const email = document.getElementById('fp-email').value.trim();
-    if (!email) return;
+    if (!email) {
+        setMsg('fp', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('fp', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
 
     setBtnLoading('fp-btn', true);
     const { error } = await _supabase.auth.resetPasswordForEmail(email, {
@@ -1970,6 +2007,14 @@ async function handleNewPassword(e) {
     const pass  = document.getElementById('np-pass').value;
     const pass2 = document.getElementById('np-pass2').value;
 
+    if (!pass || !pass2) {
+        setMsg('np', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (pass.length < 6) {
+        setMsg('np', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error');
+        return;
+    }
     if (pass !== pass2) {
         setMsg('np', I18N[currentLang]?.np_match_err || 'Passwords do not match.', 'error');
         return;
