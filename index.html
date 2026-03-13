@@ -573,12 +573,14 @@
         .modal-bg {
             position:fixed; inset:0; background:rgba(0,0,0,0.75);
             backdrop-filter:blur(6px); z-index:3000;
-            display:none; align-items:center; justify-content:center; padding:20px;
+            display:none; align-items:center; justify-content:center;
+            padding:16px;
         }
         .modal-bg.active { display:flex; }
         .auth-box {
-            width:100%; max-width:430px; padding:46px 38px 42px;
-            border-radius:28px; position:relative;
+            width:100%; max-width:430px;
+            padding:clamp(18px, 3.5vh, 46px) clamp(18px, 4vw, 38px) clamp(18px, 3.5vh, 42px);
+            border-radius:clamp(16px, 2vh, 28px); position:relative;
             animation:slideUp .35s ease;
         }
         .m-close {
@@ -590,14 +592,15 @@
         body.ar .m-close { right:auto; left:16px; }
         .m-close:hover { background:rgba(255,255,255,0.1); color:white; transform:rotate(90deg); }
         .m-title {
-            font-family:'Playfair Display',serif; font-size:36px; font-weight:900;
-            text-align:center; margin-bottom:28px;
+            font-family:'Playfair Display',serif;
+            font-size:clamp(20px, 4vh, 36px); font-weight:900;
+            text-align:center; margin-bottom:clamp(10px, 2vh, 28px);
         }
         body.ar .m-title { font-family:'Noto Sans Arabic',serif; }
-        .f-grp { margin-bottom:18px; }
+        .f-grp { margin-bottom:clamp(8px, 1.6vh, 18px); }
         .f-lbl { display:block; color:rgba(255,255,255,0.72); margin-bottom:7px; font-size:12.5px; font-weight:600; }
         .f-inp {
-            width:100%; padding:13px 16px; border-radius:13px;
+            width:100%; padding:clamp(8px, 1.4vh, 13px) 16px; border-radius:13px;
             border:1px solid rgba(255,255,255,0.18);
             background:rgba(255,255,255,0.06); color:white;
             font-size:14px; font-family:'Poppins',sans-serif; transition:all .25s;
@@ -607,7 +610,7 @@
         .f-inp:focus { outline:none; background:rgba(255,255,255,0.1); border-color:var(--cyan); box-shadow:0 0 16px rgba(0,212,255,0.22); }
         .f-inp::placeholder { color:rgba(255,255,255,0.32); }
         .btn-submit {
-            width:100%; padding:14px; border-radius:15px;
+            width:100%; padding:clamp(9px, 1.5vh, 14px); border-radius:15px;
             background:linear-gradient(135deg,var(--cyan),var(--blue));
             color:white; border:none; font-size:15px; font-weight:700;
             font-family:'Poppins',sans-serif; cursor:pointer; margin-top:6px;
@@ -615,25 +618,25 @@
         }
         .btn-submit:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,100,255,0.58); }
         .m-div {
-            display:flex; align-items:center; margin:20px 0;
+            display:flex; align-items:center; margin:clamp(10px, 1.8vh, 20px) 0;
             color:rgba(255,255,255,0.38); font-size:12.5px;
         }
         .m-div::before,.m-div::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.14); }
         .m-div::before { margin-right:12px; } .m-div::after { margin-left:12px; }
         .soc-row { display:flex; gap:10px; }
         .soc-btn {
-            flex:1; padding:11px; border-radius:12px;
+            flex:1; padding:clamp(7px, 1.3vh, 11px); border-radius:12px;
             background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
             color:white; font-size:15px; font-weight:700; cursor:pointer; transition:all .25s;
         }
         .soc-btn:hover { background:rgba(255,255,255,0.14); transform:translateY(-2px); }
-        .m-foot { text-align:center; margin-top:20px; font-size:13px; color:rgba(255,255,255,0.58); }
+        .m-foot { text-align:center; margin-top:clamp(10px, 1.8vh, 20px); font-size:13px; color:rgba(255,255,255,0.58); }
         .m-foot a { color:var(--cyan); font-weight:600; cursor:pointer; }
         .m-foot a:hover { text-decoration:underline; }
 
         .auth-msg {
-            display:none; padding:11px 14px; border-radius:11px;
-            font-size:13px; font-weight:500; margin-bottom:16px;
+            display:none; padding:9px 14px; border-radius:11px;
+            font-size:13px; font-weight:500; margin-bottom:clamp(8px, 1.4vh, 16px);
             text-align:center; line-height:1.45;
         }
         .auth-msg.error   { background:rgba(255,60,60,0.15); border:1px solid rgba(255,60,60,0.35); color:#ff8080; display:block; }
