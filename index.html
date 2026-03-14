@@ -2603,37 +2603,26 @@ async function resetAllProgress() {
             return;
         }
 
-        // 4. reset_used = true — önce Supabase'den aktif plan ID'sini taze çek
-        const planRes = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true&expires_at=gt.${new Date().toISOString()}&order=created_at.desc&limit=1&select=id`,
-            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+        // 4. reset_used = true — kullanıcının session token'ıyla PATCH yap
+        const { data: { session } } = await _supabase.auth.getSession();
+        const userToken = session?.access_token || supabaseKey;
+
+        const patchRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true`,
+            {
+                method: 'PATCH',
+                headers: {
+                    'apikey': supabaseKey,
+                    'Authorization': `Bearer ${userToken}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'return=representation'
+                },
+                body: JSON.stringify({ reset_used: true })
+            }
         );
-        const planData = await planRes.json();
-        const activePlanId = planData?.[0]?.id || currentActivePlanRowId;
-
-        console.log('🔍 Aktif plan ID:', activePlanId);
-
-        if (activePlanId) {
-            const patchRes = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?id=eq.${activePlanId}`,
-                {
-                    method: 'PATCH',
-                    headers: {
-                        'apikey': supabaseKey,
-                        'Authorization': `Bearer ${supabaseKey}`,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=representation'
-                    },
-                    body: JSON.stringify({ reset_used: true })
-                }
-            );
-            const patchData = await patchRes.json();
-            console.log('✅ PATCH sonucu:', patchData);
-            currentResetUsed = true;
-            currentActivePlanRowId = activePlanId;
-        } else {
-            console.warn('⚠️ Aktif plan bulunamadı, reset_used yazılamadı');
-        }
+        const patchData = await patchRes.json();
+        console.log('✅ PATCH sonucu:', patchData);
+        currentResetUsed = true;
 
         // 5. Supabase'den güncel progress çek — localStorage ile senkronize et
         await fetchProgressFromSupabase();
