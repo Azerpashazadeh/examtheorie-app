@@ -2212,45 +2212,40 @@ async function signInWithGoogle() {
     if (error) alert('❌ Google login error: ' + error.message);
 }
 
-/* ── FIX 2+5: ÇIKIŞ — Promise.race kaldırıldı, localStorage temizleme güvenli ── */
+/* ── ÇIKIŞ — UI her zaman güncellenir, network hatası engellemez ── */
 async function signOut() {
-    const signinBtn = document.getElementById('signinBtn');
-    const mobSignin = document.getElementById('mobSigninBtn');
-    if (signinBtn) signinBtn.disabled = true;
-    if (mobSignin) mobSignin.disabled = true;
-
-    try {
-        /* ✅ FIX 2: Promise.race(timeout=0) kaldırıldı, düzgün await kullanılıyor */
-        await _supabase.auth.signOut();
-    } catch (err) {
-        console.error('❌ Sign out error:', err);
-    }
-
+    /* 1. UI'yi hemen sıfırla — kullanıcı donup kalmaz */
     currentUser      = null;
     currentPlanId    = null;
     accessibleGroups = [];
     _isFetchingData  = false;
 
-    /* ✅ FIX 5: Sadece uygulama verilerini temizle, Supabase token'larına dokunma */
-    Object.keys(localStorage).forEach(function(k) {
-        if (k.startsWith('et_completed_') || k.startsWith('et_progress_') || k.startsWith('et_lang') === false && k.startsWith('et_')) {
-            localStorage.removeItem(k);
-        }
-    });
-    /* Sadece progress anahtarlarını temizle, dil tercihini koru */
+    updateNavbarUser();
+    buildTestButtons();
+    closeMob();
+
+    /* 2. Progress anahtarlarını temizle, dil tercihini koru */
     ['en','tr','nl','ar'].forEach(l => {
         localStorage.removeItem(`et_completed_${l}`);
         localStorage.removeItem(`et_progress_${l}`);
     });
 
-    /* URL'deki hash/token artıklarını temizle */
+    /* 3. URL artıklarını temizle */
     if (window.location.hash || window.location.search.includes('token')) {
         window.history.replaceState(null, '', window.location.pathname);
     }
 
-    updateNavbarUser();
-    buildTestButtons();
-    closeMob();
+    /* 4. Supabase çıkışını arka planda yap — 4 sn timeout */
+    try {
+        await Promise.race([
+            _supabase.auth.signOut(),
+            new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 4000))
+        ]);
+    } catch (err) {
+        /* Timeout veya network hatası — UI zaten sıfırlandı, sessizce geç */
+        console.warn('⚠️ signOut background error (UI already reset):', err.message);
+    }
+
     console.log('✅ Signed out successfully');
 }
 
