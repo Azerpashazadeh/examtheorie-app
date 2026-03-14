@@ -397,41 +397,6 @@
         .p-features li::before { content:'✓'; color:var(--cyan); font-weight:700; flex-shrink:0; margin-top:1px; }
         body.ar .p-features li { flex-direction:row-reverse; text-align:right; }
 
-        /* ══ ALL TESTS COMPLETED BANNER ══ */
-        .all-done-banner {
-            width:100%; margin-top:20px;
-            background:rgba(0,212,100,0.1);
-            border:1px solid rgba(0,212,100,0.3);
-            border-radius:18px; padding:22px 26px;
-            display:flex; align-items:center; justify-content:space-between;
-            flex-wrap:wrap; gap:14px;
-            animation:fadeUp .5s ease;
-        }
-        .all-done-left { display:flex; align-items:center; gap:14px; }
-        .all-done-icon { font-size:36px; line-height:1; }
-        .all-done-title {
-            font-size:16px; font-weight:700; color:white; margin-bottom:4px;
-        }
-        .all-done-sub {
-            font-size:12.5px; color:rgba(255,255,255,0.55); line-height:1.5;
-        }
-        .btn-reset-progress {
-            padding:11px 26px; border-radius:13px;
-            background:rgba(0,212,100,0.2);
-            border:1px solid rgba(0,212,100,0.5);
-            color:#4dffaa; font-family:'Poppins',sans-serif;
-            font-weight:700; font-size:13px; cursor:pointer;
-            transition:all .25s; white-space:nowrap;
-        }
-        .btn-reset-progress:hover {
-            background:rgba(0,212,100,0.35);
-            border-color:rgba(0,212,100,0.8);
-            transform:translateY(-2px);
-        }
-        .btn-reset-progress:disabled {
-            opacity:0.5; cursor:not-allowed; transform:none;
-        }
-
         /* ══ PASSENGER CAR OVERLAY ══ */
         .pc-overlay {
             position:fixed; inset:0;
@@ -715,6 +680,7 @@
             border:1px solid rgba(255,255,255,0.18);
             background:rgba(255,255,255,0.06); color:white;
             font-size:14px; font-family:'Poppins',sans-serif; transition:all .25s;
+            /* Input her zaman LTR — e-posta/şifre alanları için */
             direction:ltr; text-align:left;
         }
         .f-inp:focus { outline:none; background:rgba(255,255,255,0.1); border-color:var(--cyan); box-shadow:0 0 16px rgba(0,212,255,0.22); }
@@ -804,12 +770,26 @@
 <body>
 
 <noscript>
-    <div style="position:fixed;inset:0;z-index:99999;background:rgba(0,8,25,0.97);display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;text-align:center;padding:30px;">
+    <div style="
+        position:fixed; inset:0; z-index:99999;
+        background:rgba(0,8,25,0.97);
+        display:flex; align-items:center; justify-content:center;
+        font-family:'Poppins',sans-serif; text-align:center; padding:30px;
+    ">
         <div style="max-width:480px;">
-            <div style="font-size:64px;margin-bottom:20px;">⚠️</div>
-            <h2 style="color:#fff;font-size:24px;font-weight:800;margin-bottom:16px;">JavaScript Required</h2>
-            <p style="color:rgba(255,255,255,0.7);font-size:15px;line-height:1.7;margin-bottom:24px;">This site requires JavaScript to work properly. Please enable JavaScript in your browser settings and refresh the page.</p>
-            <p style="color:rgba(255,255,255,0.4);font-size:13px;">🇹🇷 Bu site JavaScript gerektiriyor.<br>🇳🇱 Deze site vereist JavaScript.<br>🇸🇦 يتطلب هذا الموقع JavaScript.</p>
+            <div style="font-size:64px; margin-bottom:20px;">⚠️</div>
+            <h2 style="color:#fff; font-size:24px; font-weight:800; margin-bottom:16px;">
+                JavaScript Required
+            </h2>
+            <p style="color:rgba(255,255,255,0.7); font-size:15px; line-height:1.7; margin-bottom:24px;">
+                This site requires JavaScript to work properly. 
+                Please enable JavaScript in your browser settings and refresh the page.
+            </p>
+            <p style="color:rgba(255,255,255,0.4); font-size:13px;">
+                🇹🇷 Bu site JavaScript gerektiriyor. Lütfen tarayıcı ayarlarından JavaScript'i etkinleştirin.<br>
+                🇳🇱 Deze site vereist JavaScript. Schakel JavaScript in via uw browserinstellingen.<br>
+                🇸🇦 يتطلب هذا الموقع JavaScript. يرجى تفعيله من إعدادات المتصفح.
+            </p>
         </div>
     </div>
 </noscript>
@@ -849,7 +829,7 @@
         <span class="lang-opt"        data-lang="nl">NL</span>
         <span class="lang-opt"        data-lang="ar">AR</span>
     </div>
-    <div id="mobUserInfo" style="display:none;padding:10px 14px;border-radius:12px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);color:var(--cyan);font-size:13px;font-weight:600;">
+    <div id="mobUserInfo" style="display:none; padding:10px 14px; border-radius:12px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); color:var(--cyan); font-size:13px; font-weight:600;">
         👤 <span id="mobUserName"></span>
     </div>
     <button class="mob-link" data-i18n="nav_car"    onclick="openPassengerCar();closeMob()">🚗 Passenger Car</button>
@@ -895,9 +875,21 @@
 <section class="feat-sec" id="feat-sec">
     <h2 class="sec-head" data-i18n="feat_head"></h2>
     <div class="feat-grid">
-        <div class="feat-card glass"><div class="feat-icon">🎯</div><h3 class="feat-title" data-i18n="f1t"></h3><p class="feat-desc" data-i18n="f1d"></p></div>
-        <div class="feat-card glass"><div class="feat-icon">🌍</div><h3 class="feat-title" data-i18n="f2t"></h3><p class="feat-desc" data-i18n="f2d"></p></div>
-        <div class="feat-card glass"><div class="feat-icon">📊</div><h3 class="feat-title" data-i18n="f3t"></h3><p class="feat-desc" data-i18n="f3d"></p></div>
+        <div class="feat-card glass">
+            <div class="feat-icon">🎯</div>
+            <h3 class="feat-title" data-i18n="f1t"></h3>
+            <p  class="feat-desc"  data-i18n="f1d"></p>
+        </div>
+        <div class="feat-card glass">
+            <div class="feat-icon">🌍</div>
+            <h3 class="feat-title" data-i18n="f2t"></h3>
+            <p  class="feat-desc"  data-i18n="f2d"></p>
+        </div>
+        <div class="feat-card glass">
+            <div class="feat-icon">📊</div>
+            <h3 class="feat-title" data-i18n="f3t"></h3>
+            <p  class="feat-desc"  data-i18n="f3d"></p>
+        </div>
     </div>
 </section>
 
@@ -918,6 +910,8 @@
 <div class="pricing-overlay" id="pricing-ol">
     <div class="overlay-close" onclick="closePricing()">×</div>
     <h2 class="sec-head" data-i18n="price_head" style="margin-bottom:28px;"></h2>
+
+    <!-- ── GÜNLÜK PICKER ── -->
     <div class="daily-picker-wrap">
         <div class="daily-picker-top">
             <div>
@@ -937,9 +931,12 @@
             <button class="btn-daily-buy" id="btnDailyBuy" data-i18n="daily_btn" onclick="startDailyPayment(event)">Buy Now</button>
         </div>
     </div>
+
+    <!-- ── AYIRICI ── -->
     <div class="daily-divider">
         <span class="daily-divider-text" data-i18n="daily_or">— or choose a standard package —</span>
     </div>
+
     <div class="pricing-grid">
         <div class="p-card">
             <div class="flag-corner"></div>
@@ -1005,13 +1002,17 @@
 <div class="pc-overlay" id="pc-ol">
     <div class="pc-close" onclick="closePassengerCar()">×</div>
     <div class="pc-inner">
+
         <div class="pc-header">
             <h2 data-i18n="nav_car">Passenger Car</h2>
             <p data-i18n="pc_sub">Select a chapter below to study theory or start a practice test.</p>
         </div>
+
         <div class="pc-layout">
+            <!-- LEFT: Accordion -->
             <div class="pc-left">
                 <div class="acc-container" id="accordion">
+
                     <div class="acc-item g1">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">1</div>
@@ -1035,6 +1036,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g2">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">2</div>
@@ -1054,6 +1056,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g3">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">3</div>
@@ -1074,6 +1077,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g4">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">4</div>
@@ -1088,10 +1092,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g5">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">5</div>
-                            <span class="acc-label" data-i18n="a5">Special Roads &amp; Manoeuvres</span>
+                            <span class="acc-label" data-i18n="a5">Special Roads & Manoeuvres</span>
                             <span class="acc-arrow">▼</span>
                         </button>
                         <div class="acc-body">
@@ -1105,10 +1110,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g6">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">6</div>
-                            <span class="acc-label" data-i18n="a6">Drive Safely &amp; Emergency Response</span>
+                            <span class="acc-label" data-i18n="a6">Drive Safely & Emergency Response</span>
                             <span class="acc-arrow">▼</span>
                         </button>
                         <div class="acc-body">
@@ -1124,6 +1130,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g7">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">7</div>
@@ -1155,10 +1162,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="acc-item g8">
                         <button class="acc-header" onclick="toggleAcc(this)">
                             <div class="acc-num">8</div>
-                            <span class="acc-label" data-i18n="a8">Responsible Traffic &amp; Eco-Safe Driving</span>
+                            <span class="acc-label" data-i18n="a8">Responsible Traffic & Eco-Safe Driving</span>
                             <span class="acc-arrow">▼</span>
                         </button>
                         <div class="acc-body">
@@ -1179,17 +1187,28 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+
+            <!-- RIGHT: Test Buttons Panel -->
             <div class="pc-right">
                 <div class="test-panel">
-                    <div class="test-panel-title"><span>📝</span><span data-i18n="test_panel_title">CBR Exam Tests</span></div>
-                    <div class="test-panel-sub" data-i18n="test_panel_sub">Complete tests in order. Each test unlocks the next one.</div>
-                    <div class="test-progress-bar"><div class="test-progress-fill" id="testProgressFill" style="width:2%"></div></div>
+                    <div class="test-panel-title">
+                        <span>📝</span>
+                        <span data-i18n="test_panel_title">CBR Exam Tests</span>
+                    </div>
+                    <div class="test-panel-sub" data-i18n="test_panel_sub">
+                        Complete tests in order. Each test unlocks the next one.
+                    </div>
+                    <div class="test-progress-bar">
+                        <div class="test-progress-fill" id="testProgressFill" style="width:2%"></div>
+                    </div>
                     <div class="test-progress-label" id="testProgressLabel">1 / 50 completed</div>
                     <div class="test-btn-grid" id="testBtnGrid"></div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -1216,6 +1235,7 @@
     </div>
 </div>
 
+<!-- ═══════════ ŞİFRE SIFIRLAMA MODAL ═══════════ -->
 <div class="modal-bg" id="fp-modal">
     <div class="auth-box glass-strong">
         <div class="m-close" onclick="closeModal('fp')">×</div>
@@ -1237,7 +1257,7 @@
         <form onsubmit="handleSignUp(event)" novalidate>
             <div class="f-grp"><label class="f-lbl" data-i18n="f_name"></label><input type="text" id="su-name" class="f-inp" data-i18n-ph="f_name_ph"></div>
             <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="su-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
             <button type="submit" class="btn-submit" id="su-btn" data-i18n="su_title"></button>
         </form>
         <div class="m-div" data-i18n="f_or"></div>
@@ -1248,19 +1268,21 @@
     </div>
 </div>
 
+<!-- ═══════════ YENİ ŞİFRE MODAL ═══════════ -->
 <div class="modal-bg" id="np-modal">
     <div class="auth-box glass-strong">
         <div class="m-close" onclick="closeModal('np')">×</div>
         <h2 class="m-title" data-i18n="np_title">Set New Password</h2>
         <div class="auth-msg" id="np-msg"></div>
         <form onsubmit="handleNewPassword(event)" novalidate>
-            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password"></div>
-            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" autocomplete="new-password"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
             <button type="submit" class="btn-submit" id="np-btn" data-i18n="np_btn">Save New Password</button>
         </form>
     </div>
 </div>
 
+<!-- ═══════════ PAYWALL MODAL ═══════════ -->
 <div class="modal-bg" id="paywall-modal">
     <div class="auth-box glass-strong" style="max-width:460px;text-align:center;padding:40px 32px;">
         <div class="m-close" onclick="closePaywall()">×</div>
@@ -1317,7 +1339,6 @@ const I18N = {
     paywall_desc_theory:"To access theory materials, you need a Premium plan or higher.",
     paywall_btn:"View Packages", paywall_note:"One-time payment • No subscription",
     err_wrong_pass:"Incorrect email or password. Please try again.",
-    err_not_verified:"✉️ Please verify your email first. Check your inbox and click the verification link.",
     err_already_member:"✉️ This email is already registered. Try signing in instead.",
     msg_verify_email:"✅ Registration successful! Check your email and click the verification link.",
     forgot_pass:"Forgot password?",
@@ -1328,17 +1349,15 @@ const I18N = {
     np_btn:"Save New Password", np_match_err:"Passwords do not match.",
     np_success:"✅ Password updated! You are now signed in.",
     np_err:"Could not update password. Please try again.",
-    daily_title:"⚡ Daily Access", daily_badge:"NEW",
+    daily_title:"⚡ Daily Access",
+    daily_badge:"NEW",
     daily_sub:"Choose 1–10 days. Pay only for what you need.",
-    daily_btn:"Buy Now", daily_or:"— or choose a standard package —",
-    daily_per:"/ day", daily_days_label:"day", daily_days_label_p:"days",
+    daily_btn:"Buy Now",
+    daily_or:"— or choose a standard package —",
+    daily_per:"/ day",
+    daily_days_label:"day",
+    daily_days_label_p:"days",
     daily_tags:["","","","","","","","","",""],
-    all_done_title:"🎉 All 50 Tests Completed!",
-    all_done_sub:"You've completed every test. Reset to start fresh and practice again.",
-    btn_reset:"Reset & Start Over",
-    reset_confirm:"Are you sure? All your test progress will be deleted and you'll start from Test 1.",
-    reset_success:"✅ Progress reset! You can start from Test 1 again.",
-    reset_error:"Could not reset progress. Please try again.",
     err_field_required:"Please fill in all fields.",
     err_email_invalid:"Please enter a valid email address.",
     err_pass_short:"Password must be at least 6 characters.",
@@ -1430,7 +1449,6 @@ const I18N = {
     paywall_desc_theory:"Teori içeriklerine erişmek için Premium veya üstü bir plan gerekiyor.",
     paywall_btn:"Paketleri Gör", paywall_note:"Tek seferlik ödeme • Abonelik yok",
     err_wrong_pass:"E-posta veya şifre hatalı. Lütfen tekrar deneyin.",
-    err_not_verified:"✉️ Lütfen önce e-postanı doğrula. Gelen kutunu kontrol et ve doğrulama linkine tıkla.",
     err_already_member:"✉️ Bu e-posta zaten kayıtlı. Giriş yapmayı deneyin.",
     msg_verify_email:"✅ Kayıt başarılı! E-postanı kontrol et ve doğrulama linkine tıkla.",
     forgot_pass:"Şifremi unuttum",
@@ -1441,17 +1459,15 @@ const I18N = {
     np_btn:"Şifremi Kaydet", np_match_err:"Şifreler eşleşmiyor.",
     np_success:"✅ Şifre güncellendi! Giriş yapıldı.",
     np_err:"Şifre güncellenemedi. Lütfen tekrar dene.",
-    daily_title:"⚡ Günlük Erişim", daily_badge:"YENİ",
+    daily_title:"⚡ Günlük Erişim",
+    daily_badge:"YENİ",
     daily_sub:"1-10 gün arası seç. Sadece ihtiyacın kadar öde.",
-    daily_btn:"Satın Al", daily_or:"— veya standart paket seç —",
-    daily_per:"/ gün", daily_days_label:"gün", daily_days_label_p:"gün",
+    daily_btn:"Satın Al",
+    daily_or:"— veya standart paket seç —",
+    daily_per:"/ gün",
+    daily_days_label:"gün",
+    daily_days_label_p:"gün",
     daily_tags:["","","","","","","","","",""],
-    all_done_title:"🎉 50 Testin Tamamı Bitti!",
-    all_done_sub:"Tüm testleri tamamladın. Sıfırla ve baştan pratik yap.",
-    btn_reset:"Sıfırla ve Başa Dön",
-    reset_confirm:"Emin misin? Tüm test ilerlemen silinecek ve Test 1'den başlayacaksın.",
-    reset_success:"✅ İlerleme sıfırlandı! Test 1'den tekrar başlayabilirsin.",
-    reset_error:"İlerleme sıfırlanamadı. Lütfen tekrar dene.",
     err_field_required:"Lütfen tüm alanları doldurun.",
     err_email_invalid:"Lütfen geçerli bir e-posta adresi girin.",
     err_pass_short:"Şifre en az 6 karakter olmalıdır.",
@@ -1536,7 +1552,6 @@ const I18N = {
     paywall_desc_theory:"Voor theoriemateriaal heb je een Premium abonnement of hoger nodig.",
     paywall_btn:"Bekijk Pakketten", paywall_note:"Eenmalige betaling • Geen abonnement",
     err_wrong_pass:"Onjuist e-mailadres of wachtwoord. Probeer het opnieuw.",
-    err_not_verified:"✉️ Verifieer eerst je e-mailadres. Controleer je inbox en klik op de verificatielink.",
     err_already_member:"✉️ Dit e-mailadres is al geregistreerd. Probeer in te loggen.",
     msg_verify_email:"✅ Registratie geslaagd! Controleer je e-mail en klik op de verificatielink.",
     forgot_pass:"Wachtwoord vergeten?",
@@ -1547,17 +1562,15 @@ const I18N = {
     np_btn:"Wachtwoord Opslaan", np_match_err:"Wachtwoorden komen niet overeen.",
     np_success:"✅ Wachtwoord bijgewerkt! Je bent nu ingelogd.",
     np_err:"Kon wachtwoord niet bijwerken. Probeer het opnieuw.",
-    daily_title:"⚡ Dagelijks Toegang", daily_badge:"NIEUW",
+    daily_title:"⚡ Dagelijks Toegang",
+    daily_badge:"NIEUW",
     daily_sub:"Kies 1–10 dagen. Betaal alleen wat je nodig hebt.",
-    daily_btn:"Koop Nu", daily_or:"— of kies een standaardpakket —",
-    daily_per:"/ dag", daily_days_label:"dag", daily_days_label_p:"dagen",
+    daily_btn:"Koop Nu",
+    daily_or:"— of kies een standaardpakket —",
+    daily_per:"/ dag",
+    daily_days_label:"dag",
+    daily_days_label_p:"dagen",
     daily_tags:["","","","","","","","","",""],
-    all_done_title:"🎉 Alle 50 Toetsen Voltooid!",
-    all_done_sub:"Je hebt alle toetsen voltooid. Reset en begin opnieuw.",
-    btn_reset:"Reset & Opnieuw Beginnen",
-    reset_confirm:"Weet je het zeker? Al je voortgang wordt verwijderd en je begint bij Toets 1.",
-    reset_success:"✅ Voortgang gereset! Je kunt opnieuw beginnen bij Toets 1.",
-    reset_error:"Kon voortgang niet resetten. Probeer het opnieuw.",
     err_field_required:"Vul alle velden in.",
     err_email_invalid:"Voer een geldig e-mailadres in.",
     err_pass_short:"Wachtwoord moet minimaal 6 tekens bevatten.",
@@ -1643,7 +1656,6 @@ const I18N = {
     paywall_desc_theory:"للوصول إلى مواد النظرية، تحتاج إلى باقة بريميوم أو أعلى.",
     paywall_btn:"عرض الباقات", paywall_note:"دفعة واحدة • بدون اشتراك",
     err_wrong_pass:"البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
-    err_not_verified:"✉️ يرجى التحقق من بريدك الإلكتروني أولاً. تحقق من صندوق الوارد وانقر على رابط التحقق.",
     err_already_member:"✉️ هذا البريد الإلكتروني مسجل بالفعل. جرّب تسجيل الدخول.",
     msg_verify_email:"✅ تم التسجيل بنجاح! تحقق من بريدك الإلكتروني وانقر على رابط التحقق.",
     forgot_pass:"نسيت كلمة المرور؟",
@@ -1654,17 +1666,15 @@ const I18N = {
     np_btn:"حفظ كلمة المرور", np_match_err:"كلمتا المرور غير متطابقتين.",
     np_success:"✅ تم تحديث كلمة المرور! أنت الآن مسجّل الدخول.",
     np_err:"تعذّر تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
-    daily_title:"⚡ وصول يومي", daily_badge:"جديد",
+    daily_title:"⚡ وصول يومي",
+    daily_badge:"جديد",
     daily_sub:"اختر من 1 إلى 10 أيام. ادفع فقط ما تحتاجه.",
-    daily_btn:"اشتر الآن", daily_or:"— أو اختر باقة قياسية —",
-    daily_per:"/ يوم", daily_days_label:"يوم", daily_days_label_p:"أيام",
+    daily_btn:"اشتر الآن",
+    daily_or:"— أو اختر باقة قياسية —",
+    daily_per:"/ يوم",
+    daily_days_label:"يوم",
+    daily_days_label_p:"أيام",
     daily_tags:["","","","","","","","","",""],
-    all_done_title:"🎉 اكتملت جميع الاختبارات الـ 50!",
-    all_done_sub:"لقد أكملت جميع الاختبارات. أعد التعيين وابدأ من جديد.",
-    btn_reset:"إعادة التعيين والبدء من جديد",
-    reset_confirm:"هل أنت متأكد؟ ستُحذف جميع بياناتك وستبدأ من الاختبار الأول.",
-    reset_success:"✅ تمت إعادة التعيين! يمكنك البدء من الاختبار الأول مجدداً.",
-    reset_error:"تعذّرت إعادة التعيين. يرجى المحاولة مرة أخرى.",
     err_field_required:"يرجى ملء جميع الحقول.",
     err_email_invalid:"يرجى إدخال بريد إلكتروني صحيح.",
     err_pass_short:"يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
@@ -1715,14 +1725,24 @@ const TOTAL_TESTS = 50;
 const QUIZ_BASE   = 'https://oefenen.examtheorie.nl';
 
 function lsKey(lang) { return `et_completed_${lang}`; }
-function getCompleted(lang) { return JSON.parse(localStorage.getItem(lsKey(lang)) || '[]'); }
+
+function getCompleted(lang) {
+    return JSON.parse(localStorage.getItem(lsKey(lang)) || '[]');
+}
 function markCompleted(lang, testNum) {
     const stored = getCompleted(lang);
-    if (!stored.includes(testNum)) { stored.push(testNum); localStorage.setItem(lsKey(lang), JSON.stringify(stored)); }
+    if (!stored.includes(testNum)) {
+        stored.push(testNum);
+        localStorage.setItem(lsKey(lang), JSON.stringify(stored));
+    }
 }
-function isCompleted(lang, testNum) { return getCompleted(lang).includes(testNum); }
+function isCompleted(lang, testNum) {
+    return getCompleted(lang).includes(testNum);
+}
 function getNextTest(lang) {
-    for (let i = 1; i <= TOTAL_TESTS; i++) { if (!isCompleted(lang, i)) return i; }
+    for (let i = 1; i <= TOTAL_TESTS; i++) {
+        if (!isCompleted(lang, i)) return i;
+    }
     return null;
 }
 
@@ -1738,49 +1758,23 @@ function buildTestButtons() {
         const btn = document.createElement('button');
         btn.className   = 'test-btn';
         btn.textContent = i;
+
         if (isCompleted(lang, i)) {
             btn.classList.add('completed', 'locked');
-            btn.title = `Test ${i} — Completed ✓`;
+            btn.title   = `Test ${i} — Completed ✓`;
             btn.onclick = null;
         } else if (i === next) {
             btn.classList.add('active-test');
-            btn.title = `Test ${i} — Click to start!`;
+            btn.title   = `Test ${i} — Click to start!`;
             btn.onclick = () => openTest(i);
         } else {
             btn.classList.add('locked');
-            btn.title = `Test ${i} — Complete Test ${i-1} first`;
-            btn.onclick = () => alert(`🔒 Test ${i} locked. Complete Test ${i-1} first.`);
+            btn.title   = `Test ${i} — Complete Test ${i-1} first`;
+            btn.onclick = () => alert(`🔒 Test ${i} kilitli. Önce Test ${i-1}'i tamamlayın.`);
         }
         grid.appendChild(btn);
     }
     updateProgress(lang);
-
-    const allLangsCheck = ['en', 'tr', 'nl', 'ar'];
-    const allDone = allLangsCheck.some(l => getCompleted(l).length >= TOTAL_TESTS);
-    const canReset = allDone && !currentResetUsed && currentUser;
-    let banner = document.getElementById('allDoneBanner');
-    if (canReset) {
-        if (!banner) {
-            banner = document.createElement('div');
-            banner.id = 'allDoneBanner';
-            banner.className = 'all-done-banner';
-            grid.parentNode.appendChild(banner);
-        }
-        const t = I18N[currentLang] || I18N['en'];
-        banner.innerHTML = `
-            <div class="all-done-left">
-                <div class="all-done-icon">🏆</div>
-                <div>
-                    <div class="all-done-title">${t.all_done_title || '🎉 All 50 Tests Completed!'}</div>
-                    <div class="all-done-sub">${t.all_done_sub || 'Reset to start fresh and practice again.'}</div>
-                </div>
-            </div>
-            <button class="btn-reset-progress" id="btnResetProgress" onclick="resetAllProgress()">
-                ${t.btn_reset || 'Reset & Start Over'}
-            </button>`;
-    } else {
-        if (banner) banner.remove();
-    }
 }
 
 function updateProgress(lang) {
@@ -1797,27 +1791,42 @@ let currentLang = 'en';
 
 function applyLang(lang) {
     if (!lang || !I18N[lang]) return;
+
     currentLang = lang;
+
+    /* ✅ Arabic RTL fix — body'ye 'ar' class'ı ekle/kaldır */
     document.body.classList.toggle('ar', lang === 'ar');
+
+    /* Metinleri güncelle */
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (I18N[lang][key]) el.textContent = I18N[lang][key];
     });
+
+    /* Hero slogan — HTML içerebilir */
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
         const key = el.getAttribute('data-i18n-html');
         if (I18N[lang][key]) el.innerHTML = I18N[lang][key];
     });
+
+    /* Input placeholder'ları güncelle */
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
         const key = el.getAttribute('data-i18n-ph');
         if (I18N[lang][key]) el.placeholder = I18N[lang][key];
     });
+
+    /* Dil seçeneklerini güncelle */
     document.querySelectorAll('.lang-opt').forEach(o =>
         o.classList.toggle('active', o.getAttribute('data-lang') === lang)
     );
+
     localStorage.setItem('et_lang', lang);
     buildTestButtons();
     updateNavbarUser();
-    if (currentUser) { fetchProgressFromSupabase(); }
+
+    if (currentUser) {
+        fetchProgressFromSupabase();
+    }
     buildDayButtons();
 }
 
@@ -1826,22 +1835,58 @@ document.querySelectorAll('.lang-opt').forEach(opt =>
 );
 
 /* ─── ACCORDION ─── */
-function toggleAcc(btn) { btn.closest('.acc-item').classList.toggle('open'); }
+function toggleAcc(btn) {
+    btn.closest('.acc-item').classList.toggle('open');
+}
 
 /* ─── OVERLAYS & MODALS ─── */
-function openPricing()       { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; buildDayButtons(); }
-function closePricing()      { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow=''; }
-function openPassengerCar()  { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
-function closePassengerCar() { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
-function openModal(id)       { if(id==='refer'){alert('Refer Friends feature coming soon!');return;} document.getElementById(id+'-modal').classList.add('active'); document.body.style.overflow='hidden'; }
-function closeModal(id) {
-    document.getElementById(id+'-modal').classList.remove('active');
-    document.body.style.overflow='';
-    const btn = document.getElementById(id+'-btn');
-    if (btn) { btn.disabled=false; btn.style.opacity='1'; }
-    clearMsg(id);
+function openPricing()        { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; buildDayButtons(); }
+function closePricing()       { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow=''; }
+
+/* ─── ÖDEME BAŞLAT ─── */
+async function startPayment(planId, planName, amount, days) {
+    if (!currentUser) { openModal('si'); return; }
+
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳ Processing...';
+
+    try {
+        const body = { planId, planName, amount, userId: currentUser.id, userEmail: currentUser.email };
+        if (days) body.days = days;
+
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${supabaseKey}`
+            },
+            body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+
+        if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('❌ Payment error: ' + (data.error || 'Unknown error'));
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    } catch (err) {
+        console.error('Payment error:', err);
+        alert('❌ Connection error. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
 }
-function switchModal(a,b) { closeModal(a); setTimeout(()=>openModal(b),100); }
+
+function openPassengerCar()   { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
+function closePassengerCar()  { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
+function openModal(id)        { if(id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id+'-modal').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeModal(id)       { document.getElementById(id+'-modal').classList.remove('active'); document.body.style.overflow=''; }
+function switchModal(a,b)     { closeModal(a); setTimeout(()=>openModal(b),100); }
 
 function toggleMenu() {
     document.getElementById('hbg').classList.toggle('open');
@@ -1856,22 +1901,23 @@ document.addEventListener('click', e => {
     const mob = document.getElementById('mob-menu');
     if (!nav.contains(e.target) && !mob.contains(e.target)) closeMob();
 });
+
 function scrollToSec(id) { document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); }
+
 document.addEventListener('keydown', e => {
-    if (e.key==='Escape') {
+    if (e.key === 'Escape') {
         closePricing(); closePassengerCar();
         closeModal('si'); closeModal('su'); closeModal('fp'); closeModal('np');
-        closePaywall(); document.body.style.overflow='';
+        closePaywall();
+        document.body.style.overflow = '';
     }
 });
 
 /* ═══════════════════════════════════════════════════════
-   SUPABASE — DÜZELTILMIŞ AUTH SİSTEMİ
+   SUPABASE — TAM SİSTEM
 ═══════════════════════════════════════════════════════ */
 const supabaseUrl = 'https://rvbcsakzfadhtlfeigus.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
-
-/* ── FIX 1: lock fonksiyonu async/await ile düzeltildi ── */
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
     auth: {
         storage: window.localStorage,
@@ -1880,98 +1926,100 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         autoRefreshToken: true,
         detectSessionInUrl: true,
         flowType: 'implicit',
-        lock: async function(name, acquireTimeout, fn) { return await fn(); }, // ✅ FIX 1
+        lock: function(name, acquireTimeout, fn) { return fn(); },
+        maxSessionTimeout: 60 * 60 * 24 * 7,
+        refreshTokenThreshold: 60 * 5,
     }
 });
 
-let currentUser        = null;
-let currentPlanId      = null;
-let accessibleGroups   = [];
-let currentResetUsed   = false;
-let currentActivePlanRowId = null;
-
-/* ── FIX 4: Paralel fetch'leri önlemek için flag ── */
-let _isFetchingData = false;
+let currentUser = null;
+let currentPlanId = null;
+let accessibleGroups = [];
 
 /* ─── NAVBAR GÜNCELLE ─── */
 function updateNavbarUser() {
-    const chip        = document.getElementById('userChip');
-    const nameSpan    = document.getElementById('userName');
-    const signinBtn   = document.getElementById('signinBtn');
-    const signupBtn   = document.getElementById('signupBtn');
-    const mobSignin   = document.getElementById('mobSigninBtn');
-    const mobSignup   = document.getElementById('mobSignupBtn');
-    const mobUserInfo = document.getElementById('mobUserInfo');
-    const mobUserName = document.getElementById('mobUserName');
+    const chip         = document.getElementById('userChip');
+    const nameSpan     = document.getElementById('userName');
+    const signinBtn    = document.getElementById('signinBtn');
+    const signupBtn    = document.getElementById('signupBtn');
+    const mobSignin    = document.getElementById('mobSigninBtn');
+    const mobSignup    = document.getElementById('mobSignupBtn');
+    const mobUserInfo  = document.getElementById('mobUserInfo');
+    const mobUserName  = document.getElementById('mobUserName');
 
     if (currentUser) {
-        const fullName  = (currentUser.user_metadata?.full_name || currentUser.email || '').split('@')[0];
+        const fullName = (currentUser.user_metadata?.full_name || currentUser.email || '').split('@')[0];
         const firstName = fullName.split(' ')[0];
-        const name      = firstName.length > 12 ? firstName.substring(0,12)+'…' : firstName;
+        const name = firstName.length > 12 ? firstName.substring(0, 12) + '…' : firstName;
+
         nameSpan.textContent = name;
         chip.classList.add('visible');
         signinBtn.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
-        signinBtn.onclick  = signOut;
+        signinBtn.onclick = signOut;
         signinBtn.disabled = false;
-        if (signupBtn)   signupBtn.style.display   = 'none';
-        if (mobUserInfo) mobUserInfo.style.display  = 'block';
-        if (mobUserName) mobUserName.textContent    = name;
+        if (signupBtn) signupBtn.style.display = 'none';
+
+        if (mobUserInfo) { mobUserInfo.style.display = 'block'; }
+        if (mobUserName) { mobUserName.textContent = name; }
         if (mobSignin)   {
             mobSignin.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
-            mobSignin.onclick  = signOut;
+            mobSignin.onclick = signOut;
             mobSignin.style.display = '';
             mobSignin.disabled = false;
         }
-        if (mobSignup) mobSignup.style.display = 'none';
+        if (mobSignup)   { mobSignup.style.display = 'none'; }
+
     } else {
         chip.classList.remove('visible');
         nameSpan.textContent = '';
         signinBtn.textContent = I18N[currentLang]?.nav_signin || 'Sign In';
-        signinBtn.onclick  = () => openModal('si');
+        signinBtn.onclick = () => openModal('si');
         signinBtn.disabled = false;
-        if (signupBtn)   signupBtn.style.display   = '';
-        if (mobUserInfo) mobUserInfo.style.display  = 'none';
-        if (mobUserName) mobUserName.textContent    = '';
+        if (signupBtn) signupBtn.style.display = '';
+
+        if (mobUserInfo) { mobUserInfo.style.display = 'none'; }
+        if (mobUserName) { mobUserName.textContent = ''; }
         if (mobSignin)   {
             mobSignin.textContent = I18N[currentLang]?.nav_signin || 'Sign In';
-            mobSignin.onclick  = () => { openModal('si'); closeMob(); };
+            mobSignin.onclick = () => { openModal('si'); closeMob(); };
             mobSignin.style.display = '';
             mobSignin.disabled = false;
         }
-        if (mobSignup) mobSignup.style.display = '';
+        if (mobSignup)   { mobSignup.style.display = ''; }
     }
 }
 
 /* ─── AUTH MESAJ YARDIMCILARI ─── */
 function setMsg(modalId, text, type) {
-    const el = document.getElementById(modalId+'-msg');
+    const el = document.getElementById(modalId + '-msg');
     if (!el) return;
     el.textContent = text;
-    el.className   = 'auth-msg '+type;
+    el.className = 'auth-msg ' + type;
 }
 function clearMsg(modalId) {
-    const el = document.getElementById(modalId+'-msg');
-    if (el) { el.textContent=''; el.className='auth-msg'; }
+    const el = document.getElementById(modalId + '-msg');
+    if (el) { el.textContent = ''; el.className = 'auth-msg'; }
 }
 function setBtnLoading(btnId, loading) {
     const btn = document.getElementById(btnId);
     if (!btn) return;
-    btn.disabled    = loading;
+    btn.disabled = loading;
     btn.style.opacity = loading ? '0.7' : '1';
 }
 
-/* ─── FIX 3+4: E-POSTA İLE GİRİŞ ─── */
+/* ─── E-POSTA İLE GİRİŞ YAP ─── */
 async function handleSignIn(e) {
     e.preventDefault();
     clearMsg('si');
     const email = document.getElementById('si-email').value.trim();
     const pass  = document.getElementById('si-pass').value;
-
     if (!email || !pass) {
-        setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error'); return;
+        setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-        setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error'); return;
+        setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
     }
 
     setBtnLoading('si-btn', true);
@@ -1979,28 +2027,20 @@ async function handleSignIn(e) {
     setBtnLoading('si-btn', false);
 
     if (error) {
-        let msg;
-        const errLower = error.message.toLowerCase();
-        if (errLower.includes('invalid login') || errLower.includes('invalid_credentials') || errLower.includes('invalid email or password')) {
-            msg = I18N[currentLang]?.err_wrong_pass || 'Incorrect email or password. Please try again.';
-        } else if (errLower.includes('email not confirmed') || errLower.includes('not confirmed')) {
-            /* ✅ FIX 3: E-posta doğrulanmamış kullanıcıya açık mesaj */
-            msg = I18N[currentLang]?.err_not_verified || '✉️ Please verify your email first. Check your inbox.';
-        } else {
-            msg = error.message;
-        }
+        const msg = error.message.includes('Invalid login') || error.message.includes('invalid_credentials')
+            ? (I18N[currentLang]?.err_wrong_pass || 'Incorrect email or password. Please try again.')
+            : error.message;
         setMsg('si', msg, 'error');
         return;
     }
 
-    /* ✅ FIX 3: session null ise (doğrulanmamış) kontrol */
-    if (!data?.session?.user) {
-        setMsg('si', I18N[currentLang]?.err_not_verified || '✉️ Please verify your email first. Check your inbox.', 'info');
-        return;
+    if (data?.session?.user) {
+        currentUser = data.session.user;
+        closeModal('si');
+        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        updateNavbarUser();
+        buildTestButtons();
     }
-
-    /* Başarılı giriş — onAuthStateChange halleder, burada tekrar fetch yapmıyoruz */
-    closeModal('si');
 }
 
 /* ─── E-POSTA İLE KAYIT OL ─── */
@@ -2010,15 +2050,17 @@ async function handleSignUp(e) {
     const name  = document.getElementById('su-name').value.trim();
     const email = document.getElementById('su-email').value.trim();
     const pass  = document.getElementById('su-pass').value;
-
     if (!name || !email || !pass) {
-        setMsg('su', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error'); return;
+        setMsg('su', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-        setMsg('su', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error'); return;
+        setMsg('su', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
     }
     if (pass.length < 6) {
-        setMsg('su', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error'); return;
+        setMsg('su', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error');
+        return;
     }
 
     setBtnLoading('su-btn', true);
@@ -2029,10 +2071,12 @@ async function handleSignUp(e) {
     setBtnLoading('su-btn', false);
 
     if (error) {
-        const isAlreadyReg = error.message.includes('already registered') || error.message.includes('User already registered') || error.message.includes('already exists');
-        if (isAlreadyReg) {
+        const isAlreadyRegistered = error.message.includes('already registered')
+            || error.message.includes('User already registered')
+            || error.message.includes('already exists');
+        if (isAlreadyRegistered) {
             setMsg('su', I18N[currentLang]?.err_already_member || '✉️ This email is already registered. Try signing in instead.', 'info');
-            setTimeout(() => switchModal('su','si'), 2200);
+            setTimeout(() => switchModal('su', 'si'), 2200);
         } else {
             setMsg('su', error.message, 'error');
         }
@@ -2041,26 +2085,28 @@ async function handleSignUp(e) {
 
     if (data?.user && data.user.identities && data.user.identities.length === 0) {
         setMsg('su', I18N[currentLang]?.err_already_member || '✉️ This email is already registered. Try signing in instead.', 'info');
-        setTimeout(() => switchModal('su','si'), 2200);
+        setTimeout(() => switchModal('su', 'si'), 2200);
         return;
     }
 
-    /* Oturum açıldıysa (email doğrulama kapalıysa) */
     if (data?.session?.user) {
+        currentUser = data.session.user;
         closeModal('su');
-        return; /* onAuthStateChange SIGNED_IN halleder */
+        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        updateNavbarUser();
+        buildTestButtons();
+        return;
     }
 
-    /* Doğrulama e-postası gönderildi */
     if (data?.user && !data.session) {
-        setMsg('su', I18N[currentLang]?.msg_verify_email || '✅ Registration successful! Check your email.', 'success');
+        setMsg('su', I18N[currentLang]?.msg_verify_email || '✅ Registration successful! Check your email and click the verification link.', 'success');
     }
 }
 
 /* ─── ŞİFREMİ UNUTTUM ─── */
 function showForgotPassword() {
     const siEmail = document.getElementById('si-email').value;
-    switchModal('si','fp');
+    switchModal('si', 'fp');
     setTimeout(function() {
         const fpEmail = document.getElementById('fp-email');
         if (fpEmail && siEmail) fpEmail.value = siEmail;
@@ -2071,8 +2117,14 @@ async function handleForgotPassword(e) {
     e.preventDefault();
     clearMsg('fp');
     const email = document.getElementById('fp-email').value.trim();
-    if (!email) { setMsg('fp', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error'); return; }
-    if (!/\S+@\S+\.\S+/.test(email)) { setMsg('fp', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email.', 'error'); return; }
+    if (!email) {
+        setMsg('fp', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('fp', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
 
     setBtnLoading('fp-btn', true);
     const { error } = await _supabase.auth.resetPasswordForEmail(email, {
@@ -2081,10 +2133,10 @@ async function handleForgotPassword(e) {
     setBtnLoading('fp-btn', false);
 
     if (error) {
-        setMsg('fp', I18N[currentLang]?.fp_err || 'Could not send reset email.', 'error');
+        setMsg('fp', I18N[currentLang]?.fp_err || 'Could not send reset email. Please check the address and try again.', 'error');
     } else {
-        setMsg('fp', I18N[currentLang]?.fp_sent || '✅ Reset link sent!', 'success');
-        setTimeout(function() { switchModal('fp','si'); }, 3000);
+        setMsg('fp', I18N[currentLang]?.fp_sent || '✅ Reset link sent! Check your email inbox.', 'success');
+        setTimeout(function() { switchModal('fp', 'si'); }, 3000);
     }
 }
 
@@ -2094,17 +2146,30 @@ async function handleNewPassword(e) {
     clearMsg('np');
     const pass  = document.getElementById('np-pass').value;
     const pass2 = document.getElementById('np-pass2').value;
-    if (!pass || !pass2) { setMsg('np', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error'); return; }
-    if (pass.length < 6) { setMsg('np', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error'); return; }
-    if (pass !== pass2)  { setMsg('np', I18N[currentLang]?.np_match_err || 'Passwords do not match.', 'error'); return; }
+
+    if (!pass || !pass2) {
+        setMsg('np', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (pass.length < 6) {
+        setMsg('np', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error');
+        return;
+    }
+    if (pass !== pass2) {
+        setMsg('np', I18N[currentLang]?.np_match_err || 'Passwords do not match.', 'error');
+        return;
+    }
 
     setBtnLoading('np-btn', true);
     const { error } = await _supabase.auth.updateUser({ password: pass });
     setBtnLoading('np-btn', false);
 
-    if (error) { setMsg('np', I18N[currentLang]?.np_err || 'Could not update password.', 'error'); return; }
+    if (error) {
+        setMsg('np', I18N[currentLang]?.np_err || 'Could not update password. Please try again.', 'error');
+        return;
+    }
 
-    setMsg('np', I18N[currentLang]?.np_success || '✅ Password updated!', 'success');
+    setMsg('np', I18N[currentLang]?.np_success || '✅ Password updated! You are now signed in.', 'success');
     setTimeout(function() {
         closeModal('np');
         document.getElementById('np-pass').value = '';
@@ -2114,91 +2179,92 @@ async function handleNewPassword(e) {
 
 /* ─── GÜNLÜK ÖDEME ─── */
 const DAILY_PRICES = [
-    {days:1,price:'3.00',perDay:'3.00'},{days:2,price:'4.49',perDay:'2.25'},
-    {days:3,price:'5.99',perDay:'2.00'},{days:4,price:'6.99',perDay:'1.75'},
-    {days:5,price:'7.99',perDay:'1.60'},{days:6,price:'8.99',perDay:'1.50'},
-    {days:7,price:'9.49',perDay:'1.36'},{days:8,price:'9.99',perDay:'1.25'},
-    {days:9,price:'10.99',perDay:'1.22'},{days:10,price:'11.49',perDay:'1.15'},
+    { days:1, price:'3.00',  perDay:'3.00' },
+    { days:2, price:'4.49',  perDay:'2.25' },
+    { days:3, price:'5.99',  perDay:'2.00' },
+    { days:4, price:'6.99',  perDay:'1.75' },
+    { days:5, price:'7.99',  perDay:'1.60' },
+    { days:6, price:'8.99',  perDay:'1.50' },
+    { days:7, price:'9.49',  perDay:'1.36' },
+    { days:8, price:'9.99',  perDay:'1.25' },
+    { days:9, price:'10.99', perDay:'1.22' },
+    { days:10,price:'11.49', perDay:'1.15' },
 ];
 let selectedDays = 3;
 
 function buildDayButtons() {
     const container = document.getElementById('dayBtns');
     if (!container) return;
-    const t    = I18N[currentLang] || I18N['en'];
+    const t = I18N[currentLang] || I18N['en'];
     const tags = t.daily_tags || [];
     container.innerHTML = '';
-    DAILY_PRICES.forEach((p,i) => {
+    DAILY_PRICES.forEach((p, i) => {
         const btn = document.createElement('button');
-        btn.className = 'day-btn'+(p.days===selectedDays?' active':'');
-        const tag = tags[i]||'';
-        btn.innerHTML = p.days+(tag?`<span class="day-tag">${tag}</span>`:'');
+        btn.className = 'day-btn' + (p.days === selectedDays ? ' active' : '');
+        const tag = tags[i] || '';
+        btn.innerHTML = p.days + (tag ? `<span class="day-tag">${tag}</span>` : '');
         btn.onclick = () => selectDay(p.days);
         container.appendChild(btn);
     });
     updateDailyPriceDisplay();
 }
+
 function selectDay(days) {
     selectedDays = days;
-    document.querySelectorAll('.day-btn').forEach((b,i) => { b.classList.toggle('active', DAILY_PRICES[i].days===days); });
+    document.querySelectorAll('.day-btn').forEach((b, i) => {
+        b.classList.toggle('active', DAILY_PRICES[i].days === days);
+    });
     updateDailyPriceDisplay();
 }
-function updateDailyPriceDisplay() {
-    const t  = I18N[currentLang]||I18N['en'];
-    const p  = DAILY_PRICES.find(x=>x.days===selectedDays)||DAILY_PRICES[0];
-    const el1 = document.getElementById('dailyPrice');
-    const el2 = document.getElementById('dailyPerDay');
-    const el3 = document.getElementById('dailyDaysLabel');
-    if (el1) el1.textContent = p.price;
-    if (el2) el2.innerHTML   = `<strong>€${p.perDay} ${t.daily_per||'/ day'}</strong>`;
-    if (el3) el3.textContent = `${p.days} ${p.days===1?(t.daily_days_label||'day'):(t.daily_days_label_p||'days')}`;
-}
 
-/* ─── ÖDEME BAŞLAT ─── */
-async function startPayment(planId, planName, amount, days) {
-    if (!currentUser) { openModal('si'); return; }
-    const btn = event.target;
-    const originalText = btn.textContent;
-    btn.disabled = true; btn.textContent = '⏳ Processing...';
-    try {
-        const body = {planId, planName, amount, userId:currentUser.id, userEmail:currentUser.email};
-        if (days) body.days = days;
-        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
-            method:'POST',
-            headers:{'Content-Type':'application/json','Authorization':`Bearer ${supabaseKey}`},
-            body: JSON.stringify(body)
-        });
-        const data = await res.json();
-        if (data.paymentUrl) { window.location.href = data.paymentUrl; }
-        else { alert('❌ Payment error: '+(data.error||'Unknown error')); btn.disabled=false; btn.textContent=originalText; }
-    } catch (err) {
-        console.error('Payment error:', err);
-        alert('❌ Connection error. Please try again.');
-        btn.disabled=false; btn.textContent=originalText;
-    }
+function updateDailyPriceDisplay() {
+    const t = I18N[currentLang] || I18N['en'];
+    const p = DAILY_PRICES.find(x => x.days === selectedDays) || DAILY_PRICES[0];
+    const priceEl = document.getElementById('dailyPrice');
+    const perEl   = document.getElementById('dailyPerDay');
+    const lblEl   = document.getElementById('dailyDaysLabel');
+    if (priceEl) priceEl.textContent = p.price;
+    if (perEl)   perEl.innerHTML = `<strong>€${p.perDay} ${t.daily_per || '/ day'}</strong>`;
+    if (lblEl)   lblEl.textContent = `${p.days} ${p.days === 1 ? (t.daily_days_label || 'day') : (t.daily_days_label_p || 'days')}`;
 }
 
 async function startDailyPayment(e) {
     if (!currentUser) { openModal('si'); return; }
-    const p  = DAILY_PRICES.find(x=>x.days===selectedDays)||DAILY_PRICES[0];
-    const t  = I18N[currentLang]||I18N['en'];
-    const planName = `${selectedDays}-${t.daily_days_label_p||'Day'} Access`;
+    const p = DAILY_PRICES.find(x => x.days === selectedDays) || DAILY_PRICES[0];
+    const t = I18N[currentLang] || I18N['en'];
+    const planName = `${selectedDays}-${t.daily_days_label_p || 'Day'} Access`;
+
     const btn = document.getElementById('btnDailyBuy');
     const originalText = btn.textContent;
-    btn.disabled=true; btn.textContent='⏳';
+    btn.disabled = true;
+    btn.textContent = '⏳';
+
     try {
         const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
-            method:'POST',
-            headers:{'Content-Type':'application/json','Authorization':`Bearer ${supabaseKey}`},
-            body: JSON.stringify({planId:'daily',planName,amount:p.price,days:selectedDays,userId:currentUser.id,userEmail:currentUser.email})
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${supabaseKey}` },
+            body: JSON.stringify({
+                planId: 'daily',
+                planName,
+                amount: p.price,
+                days: selectedDays,
+                userId: currentUser.id,
+                userEmail: currentUser.email
+            })
         });
         const data = await res.json();
-        if (data.paymentUrl) { window.location.href = data.paymentUrl; }
-        else { alert('❌ Payment error: '+(data.error||'Unknown error')); btn.disabled=false; btn.textContent=originalText; }
+        if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('❌ Payment error: ' + (data.error || 'Unknown error'));
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
     } catch (err) {
         console.error('Daily payment error:', err);
         alert('❌ Connection error. Please try again.');
-        btn.disabled=false; btn.textContent=originalText;
+        btn.disabled = false;
+        btn.textContent = originalText;
     }
 }
 
@@ -2209,128 +2275,109 @@ async function signInWithGoogle() {
         provider: 'google',
         options: { redirectTo: cleanUrl }
     });
-    if (error) alert('❌ Google login error: ' + error.message);
+    if (error) alert('❌ Google giriş hatası: ' + error.message);
 }
 
-/* ── ÇIKIŞ — UI her zaman güncellenir, network hatası engellemez ── */
+/* ─── ÇIKIŞ ─── */
 async function signOut() {
-    /* 1. UI'yi hemen sıfırla — kullanıcı donup kalmaz */
+    const signinBtn = document.getElementById('signinBtn');
+    const mobSignin = document.getElementById('mobSigninBtn');
+
+    if (signinBtn) signinBtn.disabled = true;
+    if (mobSignin) mobSignin.disabled = true;
+
+    try {
+        await Promise.race([
+            _supabase.auth.signOut(),
+            new Promise(function(resolve) { setTimeout(resolve, 0); })
+        ]);
+    } catch (err) {
+        console.error('❌ Çıkış hatası:', err);
+    }
+
     currentUser      = null;
     currentPlanId    = null;
     accessibleGroups = [];
-    _isFetchingData  = false;
+
+    Object.keys(localStorage).forEach(function(k) {
+        if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k);
+    });
+
+    if (window.location.hash || window.location.search.includes('token')) {
+        window.history.replaceState(null, '', window.location.pathname);
+    }
 
     updateNavbarUser();
     buildTestButtons();
     closeMob();
 
-    /* 2. Progress anahtarlarını temizle, dil tercihini koru */
-    ['en','tr','nl','ar'].forEach(l => {
-        localStorage.removeItem(`et_completed_${l}`);
-        localStorage.removeItem(`et_progress_${l}`);
-    });
-
-    /* 3. URL artıklarını temizle */
-    if (window.location.hash || window.location.search.includes('token')) {
-        window.history.replaceState(null, '', window.location.pathname);
-    }
-
-    /* 4. Supabase çıkışını arka planda yap — 4 sn timeout */
-    try {
-        await Promise.race([
-            _supabase.auth.signOut(),
-            new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 4000))
-        ]);
-    } catch (err) {
-        /* Timeout veya network hatası — UI zaten sıfırlandı, sessizce geç */
-        console.warn('⚠️ signOut background error (UI already reset):', err.message);
-    }
-
-    console.log('✅ Signed out successfully');
+    console.log('✅ Çıkış yapıldı');
 }
 
 /* ─── AUTH KONTROLÜ ─── */
 async function checkAuth() {
     try {
         const { data: { session }, error } = await _supabase.auth.getSession();
+
         if (error) {
-            console.error('❌ Session error:', error);
-            currentUser=null; currentPlanId=null; accessibleGroups=[];
+            console.error('❌ Session alınamadı:', error);
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
             updateNavbarUser(); buildTestButtons(); return;
         }
+
         if (session?.user) {
             currentUser = session.user;
-            await loadUserData();
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons();
         } else {
-            currentUser=null; currentPlanId=null; accessibleGroups=[];
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
             buildTestButtons();
         }
         updateNavbarUser();
-    } catch (err) {
-        console.error('❌ checkAuth error:', err);
-        currentUser=null; currentPlanId=null; accessibleGroups=[];
-        updateNavbarUser(); buildTestButtons();
-    }
-}
 
-/* ── FIX 4: Tek noktadan veri yükleme — paralel çağrıları önler ── */
-async function loadUserData() {
-    if (_isFetchingData) return;
-    _isFetchingData = true;
-    try {
-        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-        buildTestButtons();
-    } finally {
-        _isFetchingData = false;
+    } catch (err) {
+        console.error('❌ Auth kontrolü hatası:', err);
+        currentUser = null; currentPlanId = null; accessibleGroups = [];
+        updateNavbarUser(); buildTestButtons();
     }
 }
 
 /* ─── KULLANICININ ERİŞİM BİLGİSİNİ ÇEK ─── */
 async function fetchUserAccess() {
     if (!currentUser) {
-        const { data:{session} } = await _supabase.auth.getSession();
-        if (session?.user) { currentUser = session.user; }
-        else { currentPlanId=null; accessibleGroups=[]; currentResetUsed=false; return; }
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session?.user) {
+            currentUser = session.user;
+        } else {
+            currentPlanId = null; accessibleGroups = []; return;
+        }
     }
 
     try {
-        /* ✅ FIX 7: Tutarlı auth yöntemi — supabase client üzerinden */
-        const { data, error } = await _supabase
-            .from('user_access')
-            .select('plan_id,plan_name,expires_at,group_id')
-            .eq('user_id', currentUser.id);
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
+            {
+                headers: {
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs`,
+                }
+            }
+        );
+        const data = await res.json();
 
-        if (!error && data && data.length > 0) {
+        if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
         } else {
-            currentPlanId=null; accessibleGroups=[];
+            currentPlanId = null; accessibleGroups = [];
         }
     } catch (err) {
-        console.error('❌ fetchUserAccess error:', err.message);
-        currentPlanId=null; accessibleGroups=[];
+        console.error('❌ Erişim bilgisi alınırken hata:', err.message);
+        currentPlanId = null; accessibleGroups = [];
     }
-
-    /* reset_used çek */
-    try {
-        const { data: planData } = await _supabase
-            .from('user_plans')
-            .select('id,reset_used')
-            .eq('user_id', currentUser.id)
-            .eq('is_active', true)
-            .order('created_at', { ascending:false })
-            .limit(1);
-
-        if (planData && planData.length > 0) {
-            currentResetUsed       = planData[0].reset_used===true;
-            currentActivePlanRowId = planData[0].id;
-        } else {
-            currentResetUsed=false; currentActivePlanRowId=null;
-        }
-    } catch(e) { currentResetUsed=false; }
 }
 
-/* ─── ERİŞİM KONTROLÜ ─── */
+/* ─── İÇERİĞE ERİŞİM KONTROLÜ ─── */
 function canAccess(groupId) {
     if (accessibleGroups.includes('all')) return true;
     return accessibleGroups.includes(groupId);
@@ -2348,11 +2395,17 @@ function openTest(testNum) {
 function openTheoryLink(url) {
     if (!currentUser) { openModal('si'); return; }
     if (!canAccess('theory')) { showPaywall('theory'); return; }
+
     const lang = currentLang || 'en';
     let finalUrl = url;
     const cleanUrl = url.replace(/\/(tr-|nl-|ar-)([^/]+\.html)$/, '/$2');
-    if (lang === 'en') { finalUrl = cleanUrl; }
-    else { finalUrl = cleanUrl.replace(/\/([^/]+\.html)$/, `/${lang}-$1`); }
+
+    if (lang === 'en') {
+        finalUrl = cleanUrl;
+    } else {
+        finalUrl = cleanUrl.replace(/\/([^/]+\.html)$/, `/${lang}-$1`);
+    }
+
     window.open(finalUrl, '_blank');
 }
 
@@ -2360,316 +2413,337 @@ function openTheoryLink(url) {
 function showPaywall(groupId) {
     const msgEl = document.getElementById('paywall-group-msg');
     if (msgEl) {
-        const T = I18N[currentLang]||I18N['en'];
-        msgEl.textContent = groupId==='tests' ? (T.paywall_desc_tests||T.paywall_desc) : (T.paywall_desc_theory||T.paywall_desc);
+        const isTests  = groupId === 'tests';
+        const T = I18N[currentLang] || I18N['en'];
+        msgEl.textContent = isTests
+            ? (T.paywall_desc_tests  || T.paywall_desc)
+            : (T.paywall_desc_theory || T.paywall_desc);
     }
     document.getElementById('paywall-modal').classList.add('active');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow = 'hidden';
 }
 function closePaywall() {
     document.getElementById('paywall-modal').classList.remove('active');
-    document.body.style.overflow='';
+    document.body.style.overflow = '';
 }
 
 /* ─── PROGRESS — SUPABASE'DEN ÇEK ─── */
 async function fetchProgressFromSupabase() {
     if (!currentUser) return;
-    const allLangs = ['en','tr','nl','ar'];
+    const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
         for (const lang of allLangs) {
-            const { data, error } = await _supabase
-                .from('user_progress')
-                .select('test_number')
-                .eq('user_id', currentUser.id)
-                .eq('language', lang);
-            if (error) continue;
-            const completedTests = (data||[]).map(r=>r.test_number);
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
+            const completedTests = (data || []).map(r => r.test_number);
             localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
         }
     } catch (err) {
-        console.error('❌ fetchProgressFromSupabase error:', err);
-    }
-}
-
-/* ─── TÜM İLERLEMEYİ SIFIRLA ─── */
-async function resetAllProgress() {
-    const t         = I18N[currentLang]||I18N['en'];
-    const confirmed = confirm(t.reset_confirm||'Are you sure?');
-    if (!confirmed) return;
-
-    const btn = document.getElementById('btnResetProgress');
-    if (btn) { btn.disabled=true; btn.textContent='⏳'; }
-
-    const allLangs = ['en','tr','nl','ar'];
-    allLangs.forEach(lang => {
-        localStorage.removeItem(`et_completed_${lang}`);
-        localStorage.removeItem(`et_progress_${lang}`);
-    });
-    buildTestButtons();
-
-    if (!currentUser) { showNotification(t.reset_success||'✅ Progress reset!','success'); return; }
-
-    try {
-        const { error: delError } = await _supabase
-            .from('user_progress')
-            .delete()
-            .eq('user_id', currentUser.id);
-
-        if (delError) {
-            console.error('❌ Delete progress error:', delError);
-            showNotification(t.reset_error||'Could not reset progress.','error');
-            if (btn) { btn.disabled=false; btn.textContent=t.btn_reset||'Reset & Start Over'; }
-            return;
-        }
-
-        /* reset_used güncelle */
-        await _supabase
-            .from('user_plans')
-            .update({ reset_used: true })
-            .eq('user_id', currentUser.id)
-            .eq('is_active', true);
-
-        currentResetUsed = true;
-        await fetchProgressFromSupabase();
-        buildTestButtons();
-        showNotification(t.reset_success||'✅ Progress reset!','success');
-    } catch (err) {
-        console.error('❌ Reset error:', err);
-        showNotification(t.reset_error||'Could not reset progress.','error');
-        if (btn) { btn.disabled=false; btn.textContent=t.btn_reset||'Reset & Start Over'; }
+        console.error('❌ Supabase ilerlemesi alınırken hata:', err);
     }
 }
 
 /* ─── NOTIFICATION SYSTEM ─── */
-function showNotification(message, type='info') {
+function showNotification(message, type = 'info') {
     let container = document.getElementById('notification-container');
     if (!container) {
         container = document.createElement('div');
         container.id = 'notification-container';
-        container.style.cssText = 'position:fixed;top:100px;right:20px;z-index:9999;max-width:350px;';
+        container.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 350px;
+        `;
         document.body.appendChild(container);
     }
+
     const notification = document.createElement('div');
-    const colors = {error:'rgba(255,60,60,0.9)',success:'rgba(0,212,100,0.9)',info:'rgba(0,180,255,0.9)'};
-    notification.style.cssText = `background:${colors[type]||colors.info};color:white;padding:14px 18px;border-radius:12px;margin-bottom:10px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.3);animation:slideInRight .3s ease;backdrop-filter:blur(10px);`;
+    const colors = {
+        error: 'rgba(255,60,60,0.9)',
+        success: 'rgba(0,212,100,0.9)',
+        info: 'rgba(0,180,255,0.9)'
+    };
+
+    notification.style.cssText = `
+        background: ${colors[type] || colors.info};
+        color: white;
+        padding: 14px 18px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        animation: slideInRight 0.3s ease;
+        backdrop-filter: blur(10px);
+    `;
+
     notification.textContent = message;
     container.appendChild(notification);
+
     setTimeout(() => {
-        notification.style.animation = 'slideOutRight .3s ease';
-        setTimeout(() => { if (notification.parentNode) notification.parentNode.removeChild(notification); }, 300);
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
     }, 5000);
 }
 
 const notifStyle = document.createElement('style');
-notifStyle.textContent = '@keyframes slideInRight{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}@keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:0}}';
+notifStyle.textContent = `
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
 document.head.appendChild(notifStyle);
 
 /* ─── PROGRESS — SUPABASE'E KAYDET ─── */
 async function saveProgressToSupabase(testNum, lang) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
+
     try {
-        const { error } = await _supabase
-            .from('user_progress')
-            .upsert({ user_id:currentUser.id, test_number:testNum, language:lang }, { onConflict:'user_id,test_number,language' });
-        if (error) { console.error('❌ saveProgress error:', error); showNotification('Progress could not be saved.','error'); return false; }
+        const res = await fetch(
+            'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress',
+            {
+                method: 'POST',
+                headers: {
+                    'apikey': supabaseKey,
+                    'Authorization': `Bearer ${supabaseKey}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'resolution=merge-duplicates'
+                },
+                body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
+            }
+        );
+        if (!res.ok) {
+            const err = await res.text();
+            console.error('❌ Progress kaydedilemedi:', err);
+            showNotification('Progress could not be saved.', 'error');
+            return false;
+        }
         return true;
     } catch (err) {
-        console.error('❌ saveProgress unexpected error:', err);
-        showNotification('Unexpected error. Please try again.','error');
+        console.error('❌ Unexpected error saving progress:', err);
+        showNotification('Unexpected error occurred. Please try again.', 'error');
         return false;
     }
 }
 
 /* ─── POSTMESSAGE ─── */
 window.addEventListener('message', async function(e) {
-    const isAllowed = ['https://azerpashazadeh.github.io','https://oefenen.examtheorie.nl','https://www.examtheorie.nl','https://examtheorie.nl'].includes(e.origin) || e.origin.includes('examtheorie.nl');
+    const isAllowed = ['https://azerpashazadeh.github.io','https://oefenen.examtheorie.nl','https://www.examtheorie.nl','https://examtheorie.nl'].includes(e.origin)
+                   || e.origin.includes('examtheorie.nl');
     if (!isAllowed) return;
+
     const d = e.data || {};
-    if (d.action!=='testCompleted'||!d.testNumber||!d.lang) return;
+    if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
+
     markCompleted(d.lang, d.testNumber);
     buildTestButtons();
+
     if (!currentUser) {
-        showNotification('Please sign in to save your progress.','info');
-        setTimeout(() => openModal('si'), 2000); return;
+        showNotification('Please sign in to save your progress.', 'info');
+        setTimeout(() => openModal('si'), 2000);
+        return;
     }
+
     const saved = await saveProgressToSupabase(d.testNumber, d.lang);
     if (saved) {
         await fetchProgressFromSupabase();
         buildTestButtons();
-        showNotification(`Test ${d.testNumber} completed successfully!`,'success');
+        showNotification(`Test ${d.testNumber} completed successfully!`, 'success');
     } else {
-        showNotification('Progress saved locally. Will sync when you sign in.','info');
+        showNotification('Progress saved locally. Will sync when you sign in.', 'info');
     }
 });
 
-/* ── FIX 4+8: AUTH STATE DEĞİŞİKLİKLERİ — çift fetch önlendi ── */
+/* ─── AUTH STATE DEĞİŞİKLİKLERİ ─── */
 _supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('🔄 Auth event:', event);
+
     try {
         if (event === 'PASSWORD_RECOVERY') {
             currentUser = session?.user || null;
             updateNavbarUser();
-            /* ✅ FIX 8: Sadece recovery hash'ini temizle, OAuth token'larına dokunma */
-            if (window.location.hash && window.location.hash.includes('type=recovery')) {
+            if (window.location.hash) {
                 window.history.replaceState(null, '', window.location.pathname);
             }
             setTimeout(function() { openModal('np'); }, 300);
             return;
         }
 
-        if (event === 'SIGNED_IN' && session?.user) {
-            /* ✅ FIX 4: Aynı kullanıcıysa gereksiz fetch yapma */
-            if (currentUser && currentUser.id === session.user.id) {
+        if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
+            if (!currentUser || currentUser.id !== session.user.id) {
+                currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                buildTestButtons();
+                updateNavbarUser();
+            } else {
                 currentUser = session.user;
                 updateNavbarUser();
-                /* Hash temizle (sadece auth hash'ı) */
-                if (window.location.hash && (window.location.hash.includes('access_token') || window.location.hash.includes('refresh_token'))) {
-                    window.history.replaceState(null, '', window.location.pathname + window.location.search);
-                }
-                closeModal('si'); closeModal('su');
-                return;
             }
-            currentUser = session.user;
-            await loadUserData();
-            updateNavbarUser();
-            if (window.location.hash) {
-                window.history.replaceState(null, '', window.location.pathname + window.location.search);
-            }
-            closeModal('si'); closeModal('su');
 
-            /* Ödeme sonrası plan kontrolü */
             const _urlParams = new URLSearchParams(window.location.search);
             if (_urlParams.get('payment') === 'success') {
                 const pollForPlan = async (attemptsLeft) => {
-                    if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.','success'); return; }
-                    await new Promise(r => setTimeout(r,2000));
+                    if (attemptsLeft <= 0) {
+                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
+                        return;
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
                     await fetchUserAccess();
                     buildTestButtons();
-                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.','success'); }
-                    else { pollForPlan(attemptsLeft-1); }
+                    if (currentPlanId) {
+                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                    } else {
+                        pollForPlan(attemptsLeft - 1);
+                    }
                 };
                 pollForPlan(8);
             }
-            return;
-        }
 
-        /* ✅ FIX 4: INITIAL_SESSION — SIGNED_IN ile çakışmayı önle */
-        if (event === 'INITIAL_SESSION') {
-            if (session?.user) {
-                if (!currentUser) {
-                    currentUser = session.user;
-                    await loadUserData();
-                    updateNavbarUser();
-                }
-            } else {
-                currentUser=null; currentPlanId=null; accessibleGroups=[];
-                updateNavbarUser(); buildTestButtons();
+            if (window.location.hash) {
+                window.history.replaceState(null, '', window.location.pathname + window.location.search);
             }
-            return;
-        }
+            if (event === 'SIGNED_IN') {
+                closeModal('si');
+                closeModal('su');
+            }
 
-        if (event === 'SIGNED_OUT') {
+        } else if (event === 'INITIAL_SESSION' && !session) {
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            updateNavbarUser(); buildTestButtons();
+
+        } else if (event === 'SIGNED_OUT') {
             if (currentUser !== null) {
-                currentUser=null; currentPlanId=null; accessibleGroups=[]; _isFetchingData=false;
+                currentUser = null; currentPlanId = null; accessibleGroups = [];
+                Object.keys(localStorage).forEach(k => {
+                    if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) {
+                        localStorage.removeItem(k);
+                    }
+                });
                 updateNavbarUser(); buildTestButtons();
             }
-            return;
-        }
 
-        if (event === 'TOKEN_REFRESHED' && session?.user) {
-            currentUser = session.user;
-            updateNavbarUser();
-            return;
+        } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+            if (currentUser?.id !== session.user.id) {
+                currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                updateNavbarUser(); buildTestButtons();
+            } else {
+                currentUser = session.user;
+                updateNavbarUser();
+            }
         }
 
     } catch (err) {
-        console.error('❌ onAuthStateChange error:', err);
+        console.error('❌ Auth state değişim hatası:', err);
     }
 });
 
-/* ── FIX 6: Sekmeye dönünce — throttle korundu, periyodik check ile çakışma önlendi ── */
-let lastFocusUpdate    = 0;
-let lastPeriodicCheck  = 0;
-const FOCUS_THROTTLE   = 5000;  /* 5 saniye */
-const PERIODIC_THROTTLE = 60000; /* 60 saniye */
+/* ─── SEKMEYE DÖNÜNCE ─── */
+let lastFocusUpdate = 0;
+const FOCUS_THROTTLE = 3000;
 
 window.addEventListener('focus', async () => {
     const now = Date.now();
     if (now - lastFocusUpdate < FOCUS_THROTTLE) return;
     lastFocusUpdate = now;
-    if (!currentUser) { buildTestButtons(); return; }
-    try {
-        const { data:sd, error:se } = await _supabase.auth.getSession();
-        if (se || !sd?.session) {
-            const { data:rd, error:re } = await _supabase.auth.refreshSession();
-            if (re || !rd?.session?.user) {
-                currentUser=null; currentPlanId=null; accessibleGroups=[];
-                updateNavbarUser(); buildTestButtons();
-                showNotification('Session expired. Please sign in again.','info'); return;
+
+    if (currentUser) {
+        try {
+            const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+            if (sessionError || !sessionData?.session) {
+                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+                if (refreshError || !refreshData?.session?.user) {
+                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    updateNavbarUser(); buildTestButtons();
+                    showNotification('Session expired. Please sign in again.', 'info');
+                    return;
+                }
+                currentUser = refreshData.session.user;
             }
-            currentUser = rd.session.user;
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons();
+        } catch (err) {
+            console.error('❌ Focus update error:', err);
         }
-        await loadUserData();
-    } catch (err) { console.error('❌ focus update error:', err); }
+    } else {
+        buildTestButtons();
+    }
 });
 
-/* ── FIX 6: Periyodik check — throttle eklendi, focus ile çakışma önlendi ── */
+/* ─── PERİYODİK SESSION CHECK ─── */
 setInterval(async () => {
-    const now = Date.now();
-    if (now - lastPeriodicCheck < PERIODIC_THROTTLE) return;
-    if (now - lastFocusUpdate   < FOCUS_THROTTLE)    return; /* Focus az önce çalıştıysa atla */
-    lastPeriodicCheck = now;
-
-    if (!currentUser) return;
-    try {
-        const { data:sd, error:se } = await _supabase.auth.getSession();
-        if (se || !sd?.session) {
-            const { data:rd, error:re } = await _supabase.auth.refreshSession();
-            if (re || !rd?.session?.user) {
-                currentUser=null; currentPlanId=null; accessibleGroups=[];
-                updateNavbarUser(); buildTestButtons();
-                showNotification('Session expired. Please sign in again.','info');
-            } else {
-                currentUser = rd.session.user;
-                updateNavbarUser();
+    if (currentUser) {
+        try {
+            const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+            if (sessionError || !sessionData?.session) {
+                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+                if (refreshError || !refreshData?.session?.user) {
+                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    updateNavbarUser(); buildTestButtons();
+                    showNotification('Session expired. Please sign in again.', 'info');
+                } else {
+                    currentUser = refreshData.session.user;
+                }
             }
+        } catch (err) {
+            console.error('❌ Periodic session check error:', err);
         }
-    } catch (err) { console.error('❌ periodic session check error:', err); }
-}, 30000); /* 30 saniyede bir çalış ama throttle ile engellenir */
+    }
+}, 1 * 60 * 1000);
 
 /* ─── INIT ─── */
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
 
-    const params  = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
         window.history.replaceState(null, '', window.location.pathname);
-        showNotification('⏳ Payment received, activating your plan...','info');
+        showNotification('⏳ Payment received, activating your plan...', 'info');
         let attempts = 0;
+        const maxAttempts = 10;
         const planInterval = setInterval(async () => {
             attempts++;
             await fetchUserAccess();
             if (currentPlanId) {
                 clearInterval(planInterval);
                 buildTestButtons(); updateNavbarUser();
-                showNotification('✅ Plan activated! Enjoy your studies.','success');
-            } else if (attempts >= 10) {
+                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
+            } else if (attempts >= maxAttempts) {
                 clearInterval(planInterval);
-                showNotification('ℹ️ Please refresh the page if content is not visible.','info');
+                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
             }
         }, 2000);
     }
 
     const reason = params.get('reason');
-    if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
-    else if (reason === 'plan') {
+    if (reason === 'login') {
+        setTimeout(() => openModal('si'), 600);
+    } else if (reason === 'plan') {
         const group = window.location.href.includes('test-') ? 'tests' : 'theory';
         setTimeout(() => showPaywall(group), 600);
     }
-    if (reason) window.history.replaceState(null, '', window.location.pathname);
+    if (reason) {
+        window.history.replaceState(null, '', window.location.pathname);
+    }
 });
 </script>
 </body>
