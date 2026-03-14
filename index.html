@@ -1385,9 +1385,14 @@ async function fetchResetUsed() {
             { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
         );
         const data = await res.json();
-        // Herhangi bir satırda reset_used=false varsa hak mevcuttur
-        const hasUnused = data && data.some(row => row.reset_used === false);
-        resetUsed = !hasUnused;
+        // Satır yoksa (yeni kullanıcı) → hak mevcut
+        // Satır varsa → herhangi birinde reset_used=false varsa hak mevcut
+        if (!data || data.length === 0) {
+            resetUsed = false;
+        } else {
+            const hasUnused = data.some(row => row.reset_used === false);
+            resetUsed = !hasUnused;
+        }
     } catch(err) {
         console.error('❌ reset_used alinamadi:', err);
         resetUsed = false;
