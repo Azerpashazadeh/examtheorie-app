@@ -2446,21 +2446,14 @@ async function fetchUserAccess() {
         }
     }
 
-    // Her zaman session token kullan — RLS için gerekli
-    let userToken = supabaseKey;
     try {
-        const sessionResult = await _supabase.auth.getSession();
-        userToken = sessionResult?.data?.session?.access_token || supabaseKey;
-    } catch(e) {}
-
-    try {
-        // user_access view'ından erişim bilgisi
+        // user_access view'ından erişim bilgisi — orijinal çalışan kod
         const res = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
             {
                 headers: {
                     'apikey': supabaseKey,
-                    'Authorization': `Bearer ${userToken}`,
+                    'Authorization': `Bearer ${supabaseKey}`,
                 }
             }
         );
@@ -2469,31 +2462,33 @@ async function fetchUserAccess() {
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
-
-            // Aktif planda reset_used kontrolü — session token ile oku
-            const planRes = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true&order=created_at.desc&limit=1&select=id,reset_used`,
-                {
-                    headers: {
-                        'apikey': supabaseKey,
-                        'Authorization': `Bearer ${userToken}`,
-                    }
-                }
-            );
-            const planData = await planRes.json();
-            if (planData && planData.length > 0) {
-                currentResetUsed       = planData[0].reset_used === true;
-                currentActivePlanRowId = planData[0].id;
-            } else {
-                currentResetUsed       = false;
-                currentActivePlanRowId = null;
-            }
         } else {
-            currentPlanId = null; accessibleGroups = []; currentResetUsed = false; currentActivePlanRowId = null;
+            currentPlanId = null; accessibleGroups = [];
         }
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
-        currentPlanId = null; accessibleGroups = []; currentResetUsed = false;
+        currentPlanId = null; accessibleGroups = [];
+    }
+
+    // reset_used'ı Supabase client ile ayrıca çek
+    try {
+        const { data: planData } = await _supabase
+            .from('user_plans')
+            .select('id, reset_used')
+            .eq('user_id', currentUser.id)
+            .eq('is_active', true)
+            .order('created_at', { ascending: false })
+            .limit(1);
+
+        if (planData && planData.length > 0) {
+            currentResetUsed       = planData[0].reset_used === true;
+            currentActivePlanRowId = planData[0].id;
+        } else {
+            currentResetUsed       = false;
+            currentActivePlanRowId = null;
+        }
+    } catch(e) {
+        currentResetUsed = false;
     }
 }
 
