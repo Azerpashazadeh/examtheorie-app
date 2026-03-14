@@ -1381,11 +1381,13 @@ async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
         const res = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used&limit=1`,
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used`,
             { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
         );
         const data = await res.json();
-        resetUsed = (data && data.length > 0) ? !!data[0].reset_used : false;
+        // Herhangi bir satırda reset_used=false varsa hak mevcuttur
+        const hasUnused = data && data.some(row => row.reset_used === false);
+        resetUsed = !hasUnused;
     } catch(err) {
         console.error('❌ reset_used alinamadi:', err);
         resetUsed = false;
@@ -1437,9 +1439,9 @@ async function executeReset() {
         );
         if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
 
-        /* 2) user_plans tablosunda reset_used = true yap */
+        /* 2) user_plans tablosunda reset_used=false olan satırı true yap */
         const patchRes = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`,
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`,
             {
                 method:'PATCH',
                 headers:{
