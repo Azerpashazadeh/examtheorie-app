@@ -2570,65 +2570,83 @@ async function resetAllProgress() {
     const btn = document.getElementById('btnResetProgress');
     if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
 
-    // 1. localStorage temizle
     const allLangs = ['en', 'tr', 'nl', 'ar'];
+
+    // 1. localStorage temizle — anında UI için
     allLangs.forEach(lang => {
         localStorage.removeItem(`et_completed_${lang}`);
         localStorage.removeItem(`et_progress_${lang}`);
     });
 
-    // 2. Supabase'den sil (giriş yapmışsa)
-    if (currentUser) {
-        try {
-            const res = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
-                {
-                    method: 'DELETE',
-                    headers: {
-                        'apikey': supabaseKey,
-                        'Authorization': `Bearer ${supabaseKey}`,
-                    }
-                }
-            );
-            if (!res.ok) {
-                const err = await res.text();
-                console.error('❌ Progress silinemedi:', err);
-                showNotification(t.reset_error || 'Could not reset progress. Please try again.', 'error');
-                if (btn) { btn.disabled = false; btn.textContent = t.btn_reset || 'Reset & Start Over'; }
-                return;
+    // 2. Anında butonları güncelle — refresh gerekmeden
+    buildTestButtons();
+
+    if (!currentUser) {
+        showNotification(t.reset_success || '✅ Progress reset!', 'success');
+        return;
+    }
+
+    try {
+        // 3. Supabase user_progress temizle
+        const delRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
+            {
+                method: 'DELETE',
+                headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` }
             }
-        } catch (err) {
-            console.error('❌ Reset hatası:', err);
+        );
+        if (!delRes.ok) {
+            const err = await delRes.text();
+            console.error('❌ Progress silinemedi:', err);
             showNotification(t.reset_error || 'Could not reset progress. Please try again.', 'error');
             if (btn) { btn.disabled = false; btn.textContent = t.btn_reset || 'Reset & Start Over'; }
             return;
         }
-    }
 
-    // 3. user_plans'ta reset_used = true yap
-    if (currentActivePlanRowId) {
-        try {
-            await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?id=eq.${currentActivePlanRowId}`,
+        // 4. reset_used = true — önce Supabase'den aktif plan ID'sini taze çek
+        const planRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true&expires_at=gt.${new Date().toISOString()}&order=created_at.desc&limit=1&select=id`,
+            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+        );
+        const planData = await planRes.json();
+        const activePlanId = planData?.[0]?.id || currentActivePlanRowId;
+
+        console.log('🔍 Aktif plan ID:', activePlanId);
+
+        if (activePlanId) {
+            const patchRes = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?id=eq.${activePlanId}`,
                 {
                     method: 'PATCH',
                     headers: {
                         'apikey': supabaseKey,
                         'Authorization': `Bearer ${supabaseKey}`,
                         'Content-Type': 'application/json',
+                        'Prefer': 'return=representation'
                     },
                     body: JSON.stringify({ reset_used: true })
                 }
             );
+            const patchData = await patchRes.json();
+            console.log('✅ PATCH sonucu:', patchData);
             currentResetUsed = true;
-        } catch (err) {
-            console.error('❌ reset_used güncellenemedi:', err);
+            currentActivePlanRowId = activePlanId;
+        } else {
+            console.warn('⚠️ Aktif plan bulunamadı, reset_used yazılamadı');
         }
-    }
 
-    // 4. UI güncelle
-    buildTestButtons();
-    showNotification(t.reset_success || '✅ Progress reset! You can start from Test 1 again.', 'success');
+        // 5. Supabase'den güncel progress çek — localStorage ile senkronize et
+        await fetchProgressFromSupabase();
+
+        // 6. Butonları tekrar güncelle — Supabase'den gelen temiz veriyle
+        buildTestButtons();
+        showNotification(t.reset_success || '✅ Progress reset! You can start from Test 1 again.', 'success');
+
+    } catch (err) {
+        console.error('❌ Reset hatası:', err);
+        showNotification(t.reset_error || 'Could not reset progress. Please try again.', 'error');
+        if (btn) { btn.disabled = false; btn.textContent = t.btn_reset || 'Reset & Start Over'; }
+    }
 }
 
 /* ─── NOTIFICATION SYSTEM ─── */
