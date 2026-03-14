@@ -1976,7 +1976,13 @@ async function startPayment(planId, planName, amount, days) {
 function openPassengerCar()   { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
 function closePassengerCar()  { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
 function openModal(id)        { if(id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id+'-modal').classList.add('active'); document.body.style.overflow='hidden'; }
-function closeModal(id)       { document.getElementById(id+'-modal').classList.remove('active'); document.body.style.overflow=''; }
+function closeModal(id) {
+    document.getElementById(id+'-modal').classList.remove('active');
+    document.body.style.overflow='';
+    const btn = document.getElementById(id+'-btn');
+    if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+    clearMsg(id);
+}
 function switchModal(a,b)     { closeModal(a); setTimeout(()=>openModal(b),100); }
 
 function toggleMenu() {
