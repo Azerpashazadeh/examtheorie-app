@@ -2446,6 +2446,13 @@ async function fetchUserAccess() {
         }
     }
 
+    // Her zaman session token kullan — RLS için gerekli
+    let userToken = supabaseKey;
+    try {
+        const sessionResult = await _supabase.auth.getSession();
+        userToken = sessionResult?.data?.session?.access_token || supabaseKey;
+    } catch(e) {}
+
     try {
         // user_access view'ından erişim bilgisi
         const res = await fetch(
@@ -2453,7 +2460,7 @@ async function fetchUserAccess() {
             {
                 headers: {
                     'apikey': supabaseKey,
-                    'Authorization': `Bearer ${supabaseKey}`,
+                    'Authorization': `Bearer ${userToken}`,
                 }
             }
         );
@@ -2463,22 +2470,22 @@ async function fetchUserAccess() {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
 
-            // Aktif planda reset_used kontrolü — en son aktif planı çek
+            // Aktif planda reset_used kontrolü — session token ile oku
             const planRes = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true&expires_at=gt.${new Date().toISOString()}&order=created_at.desc&limit=1&select=id,reset_used`,
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true&order=created_at.desc&limit=1&select=id,reset_used`,
                 {
                     headers: {
                         'apikey': supabaseKey,
-                        'Authorization': `Bearer ${supabaseKey}`,
+                        'Authorization': `Bearer ${userToken}`,
                     }
                 }
             );
             const planData = await planRes.json();
             if (planData && planData.length > 0) {
-                currentResetUsed = planData[0].reset_used === true;
+                currentResetUsed       = planData[0].reset_used === true;
                 currentActivePlanRowId = planData[0].id;
             } else {
-                currentResetUsed = false;
+                currentResetUsed       = false;
                 currentActivePlanRowId = null;
             }
         } else {
@@ -2608,9 +2615,7 @@ async function resetAllProgress() {
         try {
             const sessionResult = await _supabase.auth.getSession();
             userToken = sessionResult?.data?.session?.access_token || supabaseKey;
-        } catch(e) { console.warn('session alınamadı:', e); }
-
-        console.log('🔑 token var mı:', userToken !== supabaseKey);
+        } catch(e) {}
 
         const patchRes = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true`,
@@ -2620,15 +2625,14 @@ async function resetAllProgress() {
                     'apikey': supabaseKey,
                     'Authorization': `Bearer ${userToken}`,
                     'Content-Type': 'application/json',
-                    'Prefer': 'return=representation'
-                },
-                body: JSON.stringify({ reset_used: true })
+                }
             }
         );
-        console.log('📡 PATCH status:', patchRes.status);
-        const patchText = await patchRes.text();
-        console.log('📡 PATCH response:', patchText);
-        currentResetUsed = true;
+        if (patchRes.ok) {
+            currentResetUsed = true;
+        } else {
+            console.error('❌ reset_used yazılamadı:', patchRes.status);
+        }
 
         // 5. Supabase'den güncel progress çek — localStorage ile senkronize et
         await fetchProgressFromSupabase();
