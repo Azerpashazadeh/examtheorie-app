@@ -1,1094 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Beaconing – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-         
-
-        h1,
-        h2 {
-            color: #972B90;
-        }
-
-
-
-        .gh3 {
-            color: #972B90;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-           
-
-            min-height: 125px;
-          
-
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Resmin konumlandırılmasını sağlayacak */
-            overflow: hidden;
-            /* İçerik taşmasını önler */
-        }
-
-        .important-words1 p {
-            margin-right: 175px;
-            /* Resmin genişliğine göre sağdan boşluk bırakır */
-        }
-
-        .important-words1 .side-image {
-            position: absolute;
-            right: 10px;
-            /* Sağdan 20px mesafe */
-            top: 50%;
-            /* Dikeyde ortalama için */
-            transform: translateY(-50%);
-            /* Gerçek dikey ortalama */
-            max-height: auto;
-            /* Resmin divi taşmasını önlemek için */
-            width: 170px;
-            /* Resim genişliği (isteğe göre ayarlanabilir) */
-            height: auto;
-            /* Oranları korumak için */
-        }
-
-
-        .important-words10 {
-           
-            min-height: 125px;
-            padding: 0px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Resmin konumlandırılmasını sağlayacak */
-            overflow: hidden;
-            /* İçerik taşmasını önler */
-        }
-
-        .important-words10 p {
-            margin-right: 100px;
-            /* Resmin genişliğine göre sağdan boşluk bırakır */
-        }
-
-        .important-words10 .side-image {
-            position: absolute;
-            right: 10px;
-            /* Sağdan 20px mesafe */
-            top: 50%;
-            /* Dikeyde ortalama için */
-            transform: translateY(-50%);
-            /* Gerçek dikey ortalama */
-            max-height: auto;
-            /* Resmin divi taşması önlemek için */
-            width: 68px;
-            /* Resim genişliği (isteğe göre ayarlanabilir) */
-            height: auto;
-            /* Oranları korumak için */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattın pozisyonunu ayarlamak için */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 65px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-        .important-words6 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #D9C0DD;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 600px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-        .images-container7 {
-            display: grid;
-            gap: 20px;
-            /* Resimler arasındaki boşluk */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        /* Tarayıcı genişliği 1024px'den büyükse 4 sütun 3 satır */
-        @media (min-width: 1025px) {
-            .images-container7 {
-                grid-template-columns: repeat(5, 1fr);
-                grid-auto-rows: auto;
-            }
-        }
-
-        /* Tarayıcı genişliği 1024px veya daha küçükse 3 sütun 4 satır */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .images-container7 {
-                grid-template-columns: repeat(4, 1fr);
-                grid-auto-rows: auto;
-            }
-        }
-
-        /* Tarayıcı genişliği 768px veya daha küçükse 2 sütun 6 satır */
-        @media (max-width: 768px) and (min-width: 481px) {
-            .images-container7 {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: auto;
-            }
-        }
-
-        /* Tarayıcı genişliği 480px veya daha küçükse tek sütun 12 satır */
-        @media (max-width: 480px) {
-            .images-container7 {
-                grid-template-columns: 1fr;
-                grid-auto-rows: auto;
-            }
-        }
-
-        .images-container7 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-        }
-
-        .images-container7 img {
-            width: 70%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container7 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #972B90;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #972B90;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-        /* Genel tablo stilleri */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-            word-break: break-all;
-            /* Kelimeleri harflere ayırır */
-        }
-
-        /* Başlık hücrelerine stil */
-        th {
-            background-color: #d3b5d8;
-            font-weight: bold;
-        }
-
-        /* Responsive ayar: Küçük ekranlarda tablo küçülsün */
-        @media (max-width: 768px) {
-
-            th,
-            td {
-                padding: 5px;
-                font-size: 12px;
-                /* Küçük ekranlarda yazı küçülsün */
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            th,
-            td {
-                font-size: 10px;
-                /* Daha da küçük ekranlar için yazı boyutu */
-            }
-        }
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    p strong{color:var(--text-primary)}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* info card with side image */
+    .side-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 20px;backdrop-filter:blur(12px);display:flex;align-items:flex-start;gap:16px}
+    .side-card img{height:80px;width:auto;object-fit:contain;flex-shrink:0}
+    .side-card p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0;line-height:1.55}
+    .side-card p strong{color:var(--text-primary)}
+
+    /* hecto image standalone */
+    .center-img{display:flex;justify-content:flex-start;margin:12px 0 20px}
+    .center-img img{height:90px;width:auto;object-fit:contain}
+
+    /* sign grid 3-col */
+    .sign-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 22px}
+    @media(max-width:560px){.sign-grid-3{grid-template-columns:repeat(2,1fr)}}
+    .sg-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 10px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .sg-card img{max-height:80px;max-width:100%;object-fit:contain}
+    .sg-card .sgc-code{font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:800;color:var(--accent-light);letter-spacing:.05em}
+    .sg-card .sgc-label{font-family:'Lora',serif;font-size:.75rem;color:var(--text-muted);line-height:1.3}
+
+    /* level crossing diagram */
+    .lc-diagram{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 22px;backdrop-filter:blur(12px);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .lc-diagram img{height:100px;width:auto;object-fit:contain;flex-shrink:0}
+    .lc-diagram .lcd-text p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0 0 6px;line-height:1.5}
+    .lc-diagram .lcd-text p strong{color:var(--text-primary)}
+
+    /* reflector card */
+    .reflector-card{background:rgba(10,20,50,.6);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 22px;backdrop-filter:blur(12px);display:flex;align-items:center;gap:16px}
+    .reflector-card img{height:80px;width:auto;object-fit:contain;flex-shrink:0}
+    .reflector-card .rc-body p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0 0 5px;line-height:1.5}
+    .reflector-card .rc-body p strong{color:var(--text-primary)}
+    .r-red{color:#ff6b6b!important;font-weight:700}
+    .r-white{color:#e8f0ff!important;font-weight:700}
+
+    /* bw signage grid */
+    .bw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 10px}
+    @media(max-width:500px){.bw-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* yellow temp signs */
+    .yellow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 18px}
+    @media(max-width:500px){.yellow-grid{grid-template-columns:repeat(2,1fr)}}
+    .yg-card{background:rgba(245,200,10,.06);border:1px solid rgba(245,200,10,.18);border-radius:12px;padding:12px 10px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .yg-card img{max-height:74px;max-width:100%;object-fit:contain}
+    .yg-card .ygc-code{font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:800;color:#ffd166;letter-spacing:.05em}
+    .yg-card .ygc-label{font-family:'Lora',serif;font-size:.73rem;color:rgba(255,220,120,.85);line-height:1.3}
+
+    /* callout */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+
+    /* DRIP images */
+    .drip-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 18px}
+    @media(max-width:500px){.drip-row{grid-template-columns:1fr}}
+    .drip-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:10px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .drip-card img{max-height:100px;max-width:100%;object-fit:contain}
+    .drip-card p{font-family:'Lora',serif;font-size:.73rem;color:var(--text-muted);margin:0;line-height:1.35}
+
+    /* DRIP abbrev table */
+    .abbrev-table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--card-bg);border-radius:12px;overflow:hidden;border:1px solid var(--card-border)}
+    .abbrev-table th,.abbrev-table td{padding:7px 12px;font-family:'Outfit',sans-serif;font-size:.78rem;border-bottom:1px solid rgba(77,166,255,.07);text-align:left}
+    .abbrev-table th{color:var(--text-primary);font-weight:600;background:rgba(26,108,246,.08)}
+    .abbrev-table td{color:var(--accent-light);font-weight:700;letter-spacing:.04em}
+    .abbrev-table tr:last-child th,.abbrev-table tr:last-child td{border-bottom:none}
+
+    /* pictogram grid */
+    .pict-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0 22px}
+    @media(max-width:640px){.pict-grid{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:440px){.pict-grid{grid-template-columns:repeat(3,1fr)}}
+    .pt-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:9px 6px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+    .pt-tile img{height:50px;width:auto;object-fit:contain}
+    .pt-tile .ptt-label{font-family:'Lora',serif;font-size:.68rem;color:var(--text-muted);line-height:1.2}
+
+    /* dot beacon strip */
+    .dot-strip{display:flex;align-items:center;gap:14px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 16px;margin:12px 0 18px;backdrop-filter:blur(12px)}
+    .dot-strip img{height:60px;width:auto;object-fit:contain;flex-shrink:0}
+    .dot-strip p{font-family:'Lora',serif;font-size:.84rem;color:var(--text-muted);margin:0;line-height:1.5}
+    .dot-strip p strong{color:var(--text-primary)}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 </head>
-
 <body>
-    <h1>Beaconing
-    </h1>
-    <p>
-        Beaconing includes signs that provide information about the course of the road and points you should pay special
-        attention to.
-    </p>
-    <h2>
-        Hectometre signs
-    </h2>
-    <p>
-        Hectometre signs are located along motorways, autowegen and larger provincial roads. They are meant to quickly
-        see where you are. This can be vital if there is an accident. In that case, you can tell the breakdown or
-        emergency service where you are. Hectometre signs are each one hectometre apart. So that is one sign per 100
-        metres. All these signs have their own number, which indicates the distance in kilometres from the beginning of
-        the road. This is called the hectometre number.
-    </p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Colours</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Quiz</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Colour &amp; Text Settings</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Font Size</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ reset</button></div>
+        <div class="presets-strip"><div class="strip-label">Quick Themes</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Default</button><button class="preset-btn" data-preset="light">☀️ Light</button><button class="preset-btn" data-preset="purple">🟣 Purple</button><button class="preset-btn" data-preset="green">🟢 Green</button><button class="preset-btn" data-preset="amber">🟡 Amber</button><button class="preset-btn" data-preset="contrast">⬛ Contrast</button></div></div>
+        <div class="color-section"><div class="stp">Background</div><div class="color-row"><div class="color-row-label">Page background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Background opacity</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Accent Colours</div><div class="color-row"><div class="color-row-label">Primary accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Light accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Warning / red</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Text Colours</div><div class="color-row"><div class="color-row-label">Main heading</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Section headings</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Body text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Subtle text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Cards &amp; Panels</div><div class="color-row"><div class="color-row-label">Card background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Card opacity</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Card border</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Border opacity</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🛣️ Beaconing Quiz</div><div class="quiz-badge" id="quiz-badge">10 Questions</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🛣️</span>
+                <h2>Test Your Knowledge</h2>
+                <p>Questions on hectometre signs, exit/chevron signs, hard shoulders, level crossing markers, reflector posts, DRIP, and signage.</p>
+                <div class="qs-info"><div class="qs-chip">📋 10 questions</div><div class="qs-chip">🔀 Random order</div><div class="qs-chip">✅ Instant feedback</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
 
+<!-- PAGE CONTENT -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Traffic Signs</span><span class="dot">›</span><span style="color:var(--text-primary)">Beaconing</span></div>
+    <h1>Beaconing</h1>
+    <div class="section-divider"></div>
+    <p>Beaconing includes signs that provide information about the <strong>course of the road</strong> and points you should pay special attention to.</p>
 
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_024f50b054c141238898af1a66818215~mv2.png"
-                    alt="Warning side-airbag malfunction">
+    <!-- HECTOMETRE SIGNS -->
+    <h2>📏 Hectometre Signs</h2>
+    <p>Hectometre signs are located along motorways, autowegen and larger provincial roads. They let you quickly identify your location — vital in accidents or emergencies. One sign every <strong>100 metres</strong>, each with its own number showing the distance in km from the start of the road.</p>
+    <div class="center-img"><img src="https://static.wixstatic.com/media/4b688f_024f50b054c141238898af1a66818215~mv2.png" alt="Hectometre sign"/></div>
+    <div class="side-card">
+        <img src="https://static.wixstatic.com/media/4b688f_ea7cc40a89b84e2dab57a1e274ab64ac~mv2.png" alt="Hectometre ramp letter"/>
+        <p>A <strong>letter in the bottom right corner</strong> means you are on a <strong>ramp, acceleration or deceleration lane</strong> — not on the main carriageway of the motorway or autoweg.</p>
+    </div>
+    <div class="side-card">
+        <img src="https://static.wixstatic.com/media/4b688f_856c521d7ff0408a87f7bacecada31df~mv2.png" alt="Hectometre speed limit"/>
+        <p>The <strong>speed limit</strong> is often shown on top of the hectometre sign along autowegen and motorways. Note: these do <strong>not apply</strong> if a different speed is shown by normal signs or electronic matrix signs alongside or above the road.</p>
+    </div>
 
+    <!-- EXIT + CHEVRON SIGNS -->
+    <h2>🔀 Exit Signs and Chevron Signs</h2>
+    <p>You need to decide your route before the deceleration lane ends or the road splits. A <strong>"UIT" (exit)</strong> sign marks the end of a deceleration lane. A <strong>chevron sign</strong> marks a fork of equivalent flow roads (e.g. two motorways splitting). A fork is not an exit.</p>
+    <div class="sign-grid-3">
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_98228fe0f87042649e5cc64b9622510c~mv2.png" alt="BB-01"/><div class="sgc-code">BB-01</div><div class="sgc-label">Exit sign — exit from a motorway</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_54a67d600d174241aa6a59bd3bccc706~mv2.png" alt="BB-02"/><div class="sgc-code">BB-02</div><div class="sgc-label">Exit sign — exit from an autoweg</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_322e8af76fc0414ca8c363502f66e586~mv2.png" alt="BB-03"/><div class="sgc-code">BB-03</div><div class="sgc-label">Chevron sign — fork of equivalent flow roads (not an exit)</div></div>
+    </div>
 
-            </figure>
+    <!-- HARD SHOULDER + SHORT ACCELERATION -->
+    <h2>⚠️ Missing Hard Shoulders &amp; Short Acceleration Lanes</h2>
+    <p>Hard shoulders may be narrowed or absent under viaducts, on bridges and in tunnels. A sign with <strong>oblique black lines</strong> indicates this. Short acceleration lanes (under 200 m) and emergency lay-bys are indicated with their own signs.</p>
+    <div class="sign-grid-3">
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_38f755096a834e41ab9ccf384ec8d428~mv2.png" alt="BB-04"/><div class="sgc-code">BB-04</div><div class="sgc-label">End or narrowing of hard shoulder</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_2b7cbf09dec44e2c88c8db0fc82f55ea~mv2.png" alt="BB-05"/><div class="sgc-code">BB-05</div><div class="sgc-label">Short acceleration lane (shorter than 200 m)</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_99e833e6cc2c40e3b576f19493d949a7~mv2.png" alt="BB-06"/><div class="sgc-code">BB-06</div><div class="sgc-label">Emergency lay-by — use only in emergencies</div></div>
+    </div>
 
-
+    <!-- LEVEL CROSSING MARKERS -->
+    <h2>🚂 Level Crossing and Bridge Markings</h2>
+    <div class="lc-diagram">
+        <img src="https://static.wixstatic.com/media/4b688f_de401e52d69e47e2b4aa0331b457116d~mv2.png" alt="Level crossing markers"/>
+        <div class="lcd-text">
+            <p>Diagonal red lines indicate the distance to a level crossing or movable bridge. <strong>Each red line = 80 metres.</strong></p>
+            <p>3 lines = ~240 m away · 2 lines = ~160 m · 1 line = ~80 m</p>
+            <p>The lines always point <strong>downward towards the carriageway</strong>, indicating which side to pass the sign on.</p>
         </div>
     </div>
 
-    <div class="important-words1">
-        <p>
-            In addition to these data, hectometre signs can also be provided with a letter in the bottom right corner.
-            This means that you are driving on a ramp/acceleration or exit/deceleration lane from the autoweg/motorway
-            and
-            not on the main carriageway.
-        </p>
-        <img src="https://static.wixstatic.com/media/4b688f_ea7cc40a89b84e2dab57a1e274ab64ac~mv2.png"
-            alt="Example Image" class="side-image">
-    </div>
-
-
-    <div class="important-words1">
-        <p>
-            The speed limit is also often placed on top of the hectometre sign along autowegen and motorways. Please
-            note that these do not apply if a different speed is indicated next to or above the road with normal signs
-            or
-            electronic matrix signs.
-        </p>
-        <img src="https://static.wixstatic.com/media/4b688f_856c521d7ff0408a87f7bacecada31df~mv2.png"
-            alt="Example Image" class="side-image">
-    </div>
-
-    <h2>
-        Exit signs and chevron signs
-    </h2>
-    <p>
-        When driving on an autoweg or motorway, it is important that you can see in advance where the deceleration lane
-        ends, or where the road splits. After all, you have to make the decision about where to go well before then.
-        That is why there is a sign “UIT” (exit) at the end of the deceleration lane and the chevron sign at a fork of
-        equivalent flow roads (e.g. autowegen or motorways).
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_98228fe0f87042649e5cc64b9622510c~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BB-01<br>
-                    Exit sign<br>
-                    Exit from a motorway</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_54a67d600d174241aa6a59bd3bccc706~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BB-02<br>
-                    Exit sign<br>
-                    Exit from an autoweg</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_322e8af76fc0414ca8c363502f66e586~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BB-03<br>
-                    Chevron sign<br>
-                    Fork of equivalent flow roads (e.g. autowegen or motorways) A fork is not an exit.</figcaption>
-
-            </figure>
-
-
-        </div>
-    </div>
-    <h2>
-        Missing hard shoulders and shortened acceleration lanes
-    </h2>
-    <p>
-        There is a hard shoulder along motorways. In some places, this hard shoulder can be narrowed or even completely
-        gone. For example under viaducts, on bridges and in tunnels. Because this means that you can no longer swerve to
-        the right in case of an emergency, this is indicated by a sign with oblique black lines.
-    </p>
-    <p>
-        If an acceleration lane is shorter than normal, this is also indicated by a sign. Often a short acceleration
-        lane is the result of a narrowed or missing hard shoulder.
-    </p>
-    <p>
-        If there are emergency lay-bys (refuges) instead of a hard shoulder, these are sometimes indicated with a lay-by
-        sign. You can find these along provincial roads such as 80km roads and autowegen.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_38f755096a834e41ab9ccf384ec8d428~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BB-04<br>
-                    End or narrowing hard shoulder</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_2b7cbf09dec44e2c88c8db0fc82f55ea~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BB-05<br>
-                    Short acceleration lane (shorter than 200 metres)</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_99e833e6cc2c40e3b576f19493d949a7~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BB-06<br>
-                    Emergency lay-by Use only in emergencies</figcaption>
-
-            </figure>
-
-
-        </div>
-    </div>
-    <h2>
-        Level crossing and bridge markings
-    </h2>
-    <p>
-        To indicate a level crossing or movable bridge in time, signs are placed along the road that indicate in about
-        how many meters you can expect to see a level crossing or bridge. The number of diagonal red lines on the sign
-        indicates how far you are from the level crossing. Each line represents 80 metres. The lines also indicate on
-        which side you should pass the sign. The lines always point down towards the carriageway.
-    </p>
-
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_de401e52d69e47e2b4aa0331b457116d~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Every red line represents 80 metres.</figcaption>
-
-
-            </figure>
-
-
-        </div>
-    </div>
-    <h2>
-        Reflector posts
-    </h2>
-    <div class="important-words10">
-        <p>Reflector posts are intended to indicate the shoulders and sides of the road. By looking at these poles you can
-            see the curves earlier in the dark. On the <strong>right side</strong> of the road you can find posts with
-            <strong> red</strong> retro-reflectors.
-            On the <strong>left side</strong> of the road you can find posts with <strong>white</strong> retro-reflectors.
-            You can remember this by
-            remembering that on your side of the road (the right side) you mainly see red taillights. On the left side of
-            the road you mainly see the white headlights of the oncoming traffic.
-        </p>
-    
-        <img src="https://static.wixstatic.com/media/4b688f_051a37ce3f0e4e54b52e0708a29e55ea~mv2.png"
-            alt="Example Image" class="side-image">
-    </div>
-
-
-
-
-
-
-
-    <h2>
-        Signage
-    </h2>
-    <p>
-        To find your way more easily in areas where you are unfamiliar, there are several signs that can help you. For
-        example, the signs “Doorgaand verkeer” (through traffic) point you to the through area access roads. The signs
-        P-route or P-ring point you to the parking spaces that are usually on the edge of the city center. The signs
-        that show an alternative route (an U with a number) are fixed signs. As soon as there are traffic jams or
-        closures on a flow road, the traffic information service can indicate via which alternative route you can avoid
-        these traffic jams or closures. You will therefore find these signs in places where this type of problem occurs
-        more often.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_79bf4cf0ce164307a8fac5f3c1a087c3~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BW-100<br>
-                    Route motorised through traffic, follow arrow</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_297dabc4f6b347ab847677a214f05927~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BW-204<br>
-                    Parking, follow route</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_bff1cd56e3424e76adc9eb708126d725~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>BW-207<br>
-                    Alternative route, follow arrow</figcaption>
-
-            </figure>
-
-
-        </div>
-    </div>
-    <p>
-        Yellow signs are always temporary signs, for example during roadworks. For example, they can indicate that it is
-        best for reaching a city or village to follow a certain number or letter.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_0b53edb9b27741629d319f3801b6d798~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>T-113<br>
-                    Information about the detour route to follow</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_62ac6f479dfd45f0b7715001538ed668~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>T-201<br>
-                    Indication sign on the detour route</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9a355a542e3743a2a5de88e6d1808c90~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>OB-501<br>
-                    Detour route (not mandatory)</figcaption>
-
-            </figure>
-
-
-        </div>
-    </div>
-    <h2>
-        Dynamic route information panel (DRIP)
-    </h2>
-    <p>
-        A DRIP is placed next to the road and shows traffic information to drivers. The purpose of a DRIP is, among
-        other things, to improve traffic flows and reduce traffic jams. There are several messages that can be displayed
-        on the DRIP such as:
-    </p>
-    <ul>
-        <li>
-            <p>
-                Current travel times or delays on the route;
-            </p>
-        </li>
-        <li>
-            <p>
-                Parking information such as empty spaces;
-            </p>
-        </li>
-        <li>
-            <p>
-                Unforeseen circumstances such as traffic jams (marked in red), road closures, accidents, diversions,
-                extreme weather conditions or bridge openings;
-            </p>
-        </li>
-        <li>
-            <p>
-                Information at events such as routes and parking facilities;
-            </p>
-        </li>
-        <li>
-            <p>
-                National or regional messages or announcements, such as campaign texts.
-            </p>
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_242151f33d8b4a5989989a1374c88c87~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>This DRIP shows how many traffic jams you encounter on the possible routes.</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b47acce02ef444c5997cafab16abd64c~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>The DRIP on the top shows information about an accident.<br>
-                    The DRIP beneath shows how much normal and extra traveling time you can expect on the different
-                    routes.</figcaption>
-
-            </figure>
-
-
+    <!-- REFLECTOR POSTS -->
+    <h2>🔴 Reflector Posts</h2>
+    <div class="reflector-card">
+        <img src="https://static.wixstatic.com/media/4b688f_051a37ce3f0e4e54b52e0708a29e55ea~mv2.png" alt="Reflector posts"/>
+        <div class="rc-body">
+            <p>Reflector posts mark the <strong>shoulders and edges of the road</strong>, helping you see curves earlier in the dark.</p>
+            <p><span class="r-red">Right side</span> — posts with <span class="r-red">red</span> retro-reflectors (like red taillights of vehicles ahead)</p>
+            <p><span class="r-white">Left side</span> — posts with <span class="r-white">white</span> retro-reflectors (like white headlights of oncoming traffic)</p>
         </div>
     </div>
 
-    <div class="important-words1">
-        <p>
-            When no message is shown on a DRIP, it is usual to show a point (interference dot). In this way, a road user
-            sees that the panel is in use and is not defective.
-        </p>
-        <img src="https://static.wixstatic.com/media/4b688f_704f30ea1366479e8c4433fcfc745e43~mv2.png"
-            alt="Example Image" class="side-image">
+    <!-- SIGNAGE BW/T -->
+    <h2>🗺️ Signage — Routes &amp; Diversions</h2>
+    <p><strong>BW signs</strong> help you navigate: through traffic, parking routes (P-ring), and alternative routes (U + number) that are fixed but only activated when needed due to traffic jams or closures.</p>
+    <div class="bw-grid">
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_79bf4cf0ce164307a8fac5f3c1a087c3~mv2.png" alt="BW-100"/><div class="sgc-code">BW-100</div><div class="sgc-label">Route for motorised through traffic — follow arrow</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_297dabc4f6b347ab847677a214f05927~mv2.png" alt="BW-204"/><div class="sgc-code">BW-204</div><div class="sgc-label">Parking — follow route</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_bff1cd56e3424e76adc9eb708126d725~mv2.png" alt="BW-207"/><div class="sgc-code">BW-207</div><div class="sgc-label">Alternative route — follow arrow</div></div>
+    </div>
+    <div class="callout amber">
+        <span class="callout-title">🟡 Yellow signs — always temporary</span>
+        <p>Yellow signs are used during roadworks or temporary situations. They indicate detour routes by number or letter.</p>
+    </div>
+    <div class="yellow-grid">
+        <div class="yg-card"><img src="https://static.wixstatic.com/media/4b688f_0b53edb9b27741629d319f3801b6d798~mv2.png" alt="T-113"/><div class="ygc-code">T-113</div><div class="ygc-label">Information about the detour route to follow</div></div>
+        <div class="yg-card"><img src="https://static.wixstatic.com/media/4b688f_62ac6f479dfd45f0b7715001538ed668~mv2.png" alt="T-201"/><div class="ygc-code">T-201</div><div class="ygc-label">Indication sign on the detour route</div></div>
+        <div class="yg-card"><img src="https://static.wixstatic.com/media/4b688f_9a355a542e3743a2a5de88e6d1808c90~mv2.png" alt="OB-501"/><div class="ygc-code">OB-501</div><div class="ygc-label">Detour route (not mandatory)</div></div>
     </div>
 
-    <p>
-        Because space on a DRIP is limited, abbreviations and icons are used. The following abbreviations are used:
-    </p>
-
-    <table>
-        <tr>
-            <th>minutes</th>
-            <td>min</td>
-            <th>junction</th>
-            <td>knp</td>
-        </tr>
-        <tr>
-            <th>hour</th>
-            <td>h</td>
-            <th>intersection</th>
-            <td>krp</td>
-        </tr>
-        <tr>
-            <th>direction</th>
-            <td>ri</td>
-            <th>alley (laan)</th>
-            <td>ln</td>
-        </tr>
-        <tr>
-            <th>north</th>
-            <td>N</td>
-            <th>square</th>
-            <td>pln</td>
-        </tr>
-        <tr>
-            <th>east</th>
-            <td>O</td>
-            <th>street</th>
-            <td>str</td>
-        </tr>
-        <tr>
-            <th>south</th>
-            <td>Z</td>
-            <th>boulevard</th>
-            <td>blvd</td>
-        </tr>
-        <tr>
-            <th>west</th>
-            <td>W</td>
-            <th>tunnel</th>
-            <td>tnl</td>
-        </tr>
-        <tr>
-            <th>kilometre</th>
-            <td>km</td>
-            <th>road</th>
-            <td>wg</td>
-        </tr>
+    <!-- DRIP -->
+    <h2>🖥️ Dynamic Route Information Panel (DRIP)</h2>
+    <p>A DRIP is placed next to the road to show traffic information. It can display travel times and delays, parking availability, accidents (in red), weather, event information, and campaign messages.</p>
+    <div class="drip-row">
+        <div class="drip-card"><img src="https://static.wixstatic.com/media/4b688f_242151f33d8b4a5989989a1374c88c87~mv2.png" alt="DRIP traffic jams"/><p>Shows number of traffic jams on possible routes</p></div>
+        <div class="drip-card"><img src="https://static.wixstatic.com/media/4b688f_b47acce02ef444c5997cafab16abd64c~mv2.png" alt="DRIP accident"/><p>Top: accident info. Bottom: normal and extra travel time per route</p></div>
+    </div>
+    <div class="dot-strip">
+        <img src="https://static.wixstatic.com/media/4b688f_704f30ea1366479e8c4433fcfc745e43~mv2.png" alt="DRIP dot"/>
+        <p>When no message is shown, the DRIP displays an <strong>interference dot</strong>. This tells road users the panel is working — not broken.</p>
+    </div>
+    <p>Because space is limited, the DRIP uses <strong>abbreviations</strong>:</p>
+    <table class="abbrev-table">
+        <tr><th>minutes</th><td>min</td><th>junction</th><td>knp</td></tr>
+        <tr><th>hour</th><td>h</td><th>intersection</th><td>krp</td></tr>
+        <tr><th>direction</th><td>ri</td><th>alley (laan)</th><td>ln</td></tr>
+        <tr><th>north</th><td>N</td><th>square</th><td>pln</td></tr>
+        <tr><th>east</th><td>O</td><th>street</th><td>str</td></tr>
+        <tr><th>south</th><td>Z</td><th>boulevard</th><td>blvd</td></tr>
+        <tr><th>west</th><td>W</td><th>tunnel</th><td>tnl</td></tr>
+        <tr><th>kilometre</th><td>km</td><th>road</th><td>wg</td></tr>
     </table>
+    <p>City names are also abbreviated — e.g. <strong>Utrecht → Utr</strong>, <strong>Rotterdam → Rdam</strong>. Traffic jams are shown in <strong>red</strong>.</p>
 
-
-
-
-
-    <p>
-        City names can also be abbreviated. For example,<strong> Utrecht</strong> is shortened to <strong>Utr</strong>
-        and <strong>Rotterdam</strong> to <strong>Rdam.</strong>
-    </p>
-    <p>
-        When a route is shown it can be provided with icons (such as a bridge or a tunnel) or a red colour to indicate a
-        traffic jam.
-    </p>
-    <h2>
-        Pictograms in signs
-    </h2>
-    <p>
-        Just like on the DRIP, pictograms can also appear on signs. The most important ones are explained below:
-    </p>
-
-    <div>
-        <div class="images-container7">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1affdcee459e44b3888f576020a49fa7~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Junction</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_e12a23f4d4854b41b36ce471715922d6~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Exit</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_060c3a9876f046288d511a229c5573a5~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Viaduct/bridge</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_13b0e0c8d30945d89360bd55819d28ac~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Tunnel</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_559369160c444d788ef65d366c19d0b1~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Airport</figcaption>
-
-            </figure>
-
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_a157a34b25184b7e98bebb869155e77a~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Business park</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b1ece72518544629a352b3689ffd8ace~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Parking route</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_86866a025b304020b337e8bfa3495504~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Ring road (bypass) around a city</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b434201131a64d659f9912fed8cf025a~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Parking and travelling (railway station)</figcaption>
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_c1ee7613840b42e7ae805846854f9ee1~mv2.png"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Hospital</figcaption>
-
-            </figure>
-
-        </div>
+    <!-- PICTOGRAMS -->
+    <h2>🔷 Pictograms in Signs</h2>
+    <p>Pictograms appear on both DRIPs and physical direction signs.</p>
+    <div class="pict-grid">
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_1affdcee459e44b3888f576020a49fa7~mv2.png" alt="junction"/><div class="ptt-label">Junction</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_e12a23f4d4854b41b36ce471715922d6~mv2.png" alt="exit"/><div class="ptt-label">Exit</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_060c3a9876f046288d511a229c5573a5~mv2.png" alt="viaduct"/><div class="ptt-label">Viaduct / bridge</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_13b0e0c8d30945d89360bd55819d28ac~mv2.png" alt="tunnel"/><div class="ptt-label">Tunnel</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_559369160c444d788ef65d366c19d0b1~mv2.png" alt="airport"/><div class="ptt-label">Airport</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_a157a34b25184b7e98bebb869155e77a~mv2.png" alt="business park"/><div class="ptt-label">Business park</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_b1ece72518544629a352b3689ffd8ace~mv2.png" alt="parking route"/><div class="ptt-label">Parking route</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_86866a025b304020b337e8bfa3495504~mv2.png" alt="ring road"/><div class="ptt-label">Ring road (bypass)</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_b434201131a64d659f9912fed8cf025a~mv2.png" alt="P+R"/><div class="ptt-label">P+R (railway station)</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_c1ee7613840b42e7ae805846854f9ee1~mv2.png" alt="hospital"/><div class="ptt-label">Hospital</div></div>
     </div>
 
- <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to
-    overview</a>
-
-  
-
+    <a href="https://www.examtheorie.nl/eng-test-and-theory-menu" class="custom-button" target="_blank">Back to overview</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_beacon';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+{t:'Hectometre Signs',q:'Why are hectometre signs important in an emergency?',o:['They indicate the nearest service area','They show the maximum speed for emergency vehicles','They help you tell the breakdown or emergency service exactly where you are on the road','They indicate the distance to the next exit'],a:2,e:'Hectometre signs are placed every 100 metres along motorways, autowegen and provincial roads. In an accident or emergency, you can use the number on the sign to tell the exact location to emergency services.'},
+{t:'Hectometre Signs',q:'A hectometre sign has a letter in the bottom right corner. What does this mean?',o:['You are driving on the main carriageway','You are on a ramp, acceleration lane, or deceleration lane — not the main carriageway','The speed limit shown does not apply here','You are approaching a rest area'],a:1,e:'A letter in the bottom right corner of a hectometre sign indicates you are on a ramp, acceleration lane or exit/deceleration lane from the motorway or autoweg, not on the main carriageway.'},
+{t:'Exit/Chevron',q:'What is the difference between BB-01/BB-02 (exit signs) and BB-03 (chevron sign)?',o:['BB-01/02 are for motorways; BB-03 is for non-motorways','BB-01/02 mark the end of a deceleration lane (an exit); BB-03 marks a fork where two equivalent flow roads split — not an exit','BB-01/02 are mandatory; BB-03 is advisory only','They are used interchangeably'],a:1,e:'BB-01 and BB-02 mark the end of a deceleration lane — an actual exit from a motorway or autoweg. BB-03 (chevron sign) marks a fork where two equivalent flow roads (e.g. two motorways) split. A fork is not an exit.'},
+{t:'Hard Shoulder',q:'What does sign BB-04 warn you about?',o:['A short acceleration lane of less than 200 metres','The end or narrowing of the hard shoulder — you can no longer swerve right in an emergency','An emergency lay-by for use in breakdowns','A construction zone with reduced speed'],a:1,e:'BB-04 warns that the hard shoulder is ending or narrowing. This is common under viaducts, on bridges and in tunnels. Since you can no longer swerve to the right in an emergency, this is an important warning.'},
+{t:'Level Crossing Markers',q:'You see a level crossing marker with 2 red diagonal lines. Approximately how far are you from the level crossing?',o:['About 80 metres','About 160 metres','About 240 metres','About 320 metres'],a:1,e:'Each red diagonal line on a level crossing marker represents 80 metres. Two lines means you are approximately 160 metres from the level crossing (or movable bridge).'},
+{t:'Reflector Posts',q:'What colour are the retro-reflectors on the RIGHT side of the road?',o:['White — matching the headlights of oncoming traffic','Red — matching the taillights of vehicles driving in the same direction as you','Yellow — to distinguish from road markings','Green — to indicate safe road edges'],a:1,e:'On the right side of the road, reflector posts have red retro-reflectors. This matches the red taillights of vehicles ahead. On the left side, posts have white reflectors, matching the white headlights of oncoming traffic.'},
+{t:'DRIP',q:'What is the purpose of the interference dot shown on a DRIP when no message is displayed?',o:['It indicates a traffic jam is ahead','It shows the panel is in use and not defective','It is a calibration mark used by traffic engineers','It indicates the DRIP is offline for maintenance'],a:1,e:'When no message is shown on a DRIP, an interference dot is displayed to show road users that the panel is working and not broken or switched off.'},
+{t:'DRIP Abbreviations',q:'On a DRIP you see "ri Z". What does this mean?',o:['Road closed — wait','Direction south','Right of way south','Reduced speed zone'],a:1,e:'"ri" is the abbreviation for "richting" (direction) and "Z" stands for "Zuid" (south). So "ri Z" means "direction south".'},
+{t:'Signage',q:'What does a yellow detour sign (T-113) indicate?',o:['A permanent alternative route','A temporary detour route — yellow signs are always temporary, for example during roadworks','A recommended but optional scenic route','A route reserved for construction vehicles'],a:1,e:'Yellow signs are always temporary, used for example during roadworks. T-113 provides information about the detour route to follow. They indicate the best way to reach a city or village using a number or letter to follow.'},
+{t:'Signage',q:'BW-207 shows a "U" with a number. What type of route does this indicate?',o:['A one-way street','An alternative route — fixed signs that are only activated when needed due to traffic jams or road closures','A route reserved for buses and emergency vehicles','A cycling route through the city'],a:1,e:'BW-207 indicates an alternative route (shown with a U and a number). These are fixed signs placed where traffic problems occur regularly. The traffic information service activates them when needed to help drivers avoid jams or closures.'},
+];
+const QS=10;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Questions'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Question ${qI+1} of ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Next Question →':'See Results'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Correct!':'❌ Incorrect — correct answer: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Complete!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Excellent! 🏆';sub='Perfect beaconing knowledge!'}else if(pct>=70){msg='Well done! 👍';sub='Good. Review what you missed.'}else if(pct>=50){msg='Keep practising 📖';sub='Re-read the page and try again.'}else{msg='More study needed 💡';sub='Review hectometre, reflector posts and DRIP!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">out of ${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Correct</div><div class="rb-chip wrong">❌ ${QS-sc} Wrong</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Retry Quiz</button><button class="btn-secondary" id="btn-review">📋 Review Answers</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Correct: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='Hide Review'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
