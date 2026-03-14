@@ -2603,9 +2603,14 @@ async function resetAllProgress() {
             return;
         }
 
-        // 4. reset_used = true — kullanıcının session token'ıyla PATCH yap
-        const { data: { session } } = await _supabase.auth.getSession();
-        const userToken = session?.access_token || supabaseKey;
+        // 4. reset_used = true — session token ile PATCH
+        let userToken = supabaseKey;
+        try {
+            const sessionResult = await _supabase.auth.getSession();
+            userToken = sessionResult?.data?.session?.access_token || supabaseKey;
+        } catch(e) { console.warn('session alınamadı:', e); }
+
+        console.log('🔑 token var mı:', userToken !== supabaseKey);
 
         const patchRes = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&is_active=eq.true`,
@@ -2620,8 +2625,9 @@ async function resetAllProgress() {
                 body: JSON.stringify({ reset_used: true })
             }
         );
-        const patchData = await patchRes.json();
-        console.log('✅ PATCH sonucu:', patchData);
+        console.log('📡 PATCH status:', patchRes.status);
+        const patchText = await patchRes.text();
+        console.log('📡 PATCH response:', patchText);
         currentResetUsed = true;
 
         // 5. Supabase'den güncel progress çek — localStorage ile senkronize et
