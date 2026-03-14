@@ -1375,6 +1375,7 @@ const RESET_I18N = {
 
 /* ─── Reset durumu ─── */
 let resetUsed = false;
+let _bannerShownThisSession = false; // banner bu oturumda zaten gösterildiyse tekrar gösterme
 
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
@@ -1396,8 +1397,10 @@ function checkAllTestsCompleted(lang) {
 }
 
 function showResetBanner() {
-    if (resetUsed) return;
-    if (!currentUser) return;
+    if (resetUsed) return;                  // Supabase'de hak kullanılmış
+    if (!currentUser) return;               // Giriş yok
+    if (_bannerShownThisSession) return;    // Bu oturumda zaten gösterildi
+    _bannerShownThisSession = true;
     const lang = currentLang || 'en';
     const t = RESET_I18N[lang] || RESET_I18N['en'];
     const g = id => document.getElementById(id);
@@ -1453,6 +1456,7 @@ async function executeReset() {
 
         /* 4) Bellek içi durumu güncelle */
         resetUsed = true;
+        _bannerShownThisSession = true; // ikinci tur için banner bir daha çıkmasın
 
         /* 5) Test butonlarını anında yenile */
         buildTestButtons();
