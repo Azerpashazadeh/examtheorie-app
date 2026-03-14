@@ -1937,9 +1937,14 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* YENİ: 50 test tamamlandıysa ve hak varsa banner göster */
+    /* YENİ: 50 test tamamlandıysa — önce Supabase'den resetUsed çek, sonra karar ver */
     if (next === null && checkAllTestsCompleted(lang)) {
-        setTimeout(() => showResetBanner(), 400);
+        fetchResetUsed().then(() => {
+            if (!resetUsed && !_bannerShownThisSession) {
+                _bannerShownThisSession = true;
+                setTimeout(() => showResetBanner(), 400);
+            }
+        });
     }
 }
 
@@ -2440,10 +2445,13 @@ window.addEventListener('message', async function(e) {
     markCompleted(d.lang, d.testNumber);
     buildTestButtons();
 
-    /* YENİ: 50 test bitti mi kontrol et */
+    /* 50 test bitti mi kontrol et */
     if (checkAllTestsCompleted(d.lang)) {
         await fetchResetUsed();
-        showResetBanner();
+        if (!resetUsed && !_bannerShownThisSession) {
+            _bannerShownThisSession = true;
+            showResetBanner();
+        }
     }
 
     if (!currentUser) {
