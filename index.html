@@ -1388,10 +1388,9 @@ async function fetchResetUsed() {
             // Satır yoksa reset hakkı kullanılmamış sayılır
             resetUsed = false;
         } else {
-            // Tüm satırların reset_used=true olması gerekiyor hakkın kullanılmış sayılması için
-            // Herhangi biri true ise (ve hiçbiri false/null değilse) → kullanılmış
-            const allTrue = data.every(row => row.reset_used === true);
-            resetUsed = allTrue;
+            // Herhangi bir planda reset_used=false varsa kullanıcı reset yapabilir
+            const hasAnyFalse = data.some(row => row.reset_used === false);
+            resetUsed = !hasAnyFalse; // false hakkı varsa kullanılabilir demektir
         }
         console.log('✅ fetchResetUsed →', resetUsed, data);
     } catch(err) {
@@ -1444,7 +1443,7 @@ async function executeReset() {
         if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
 
         /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
-        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`;
+        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`;
         console.log('🔧 PATCH URL:', patchUrl);
         const patchRes = await fetch(patchUrl, {
                 method:'PATCH',
@@ -1915,6 +1914,31 @@ function getNextTest(lang) {
         if (!isCompleted(lang, i)) return i;
     }
     return null;
+}
+
+/* ─── YENİ PLAN SATIN ALMA SONRASI TEMİZLİK ─── */
+async function clearProgressOnNewPlan() {
+    if (!currentUser) return;
+    try {
+        /* 1) user_progress tablosunu temizle */
+        const delRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
+            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}` } }
+        );
+        if (!delRes.ok && delRes.status !== 204) {
+            console.error('❌ Progress temizlenemedi:', delRes.status);
+        }
+        
+        /* 2) LocalStorage tüm diller için temizle */
+        ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
+        
+        /* 3) Test butonlarını yenile */
+        buildTestButtons();
+        
+        console.log('✅ Yeni plan sonrası progress temizlendi');
+    } catch(err) {
+        console.error('❌ Progress temizleme hatası:', err);
+    }
 }
 
 /* ─── TEST BUTTONS — reset banner entegre ─── */
@@ -2494,7 +2518,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                     await new Promise(r => setTimeout(r, 2000));
                     await fetchUserAccess();
                     buildTestButtons();
-                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); }
+                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); await clearProgressOnNewPlan(); }
                     else { pollForPlan(attemptsLeft - 1); }
                 };
                 pollForPlan(8);
@@ -2566,8 +2590,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const planInterval = setInterval(async () => {
             attempts++;
             await fetchUserAccess();
-            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
-            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
+            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); await clearProgressOnNewPlan(); }
+            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh page if content is not visible.', 'info'); }
         }, 2000);
     }
     const reason = params.get('reason');
