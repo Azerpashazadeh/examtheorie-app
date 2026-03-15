@@ -1315,7 +1315,7 @@
                 <div class="rb-stat-label" id="rbStatLabel3">Free Reset</div>
             </div>
         </div>
-        <button class="btn-reset-now"    id="btnResetNow"   onclick="handleReset()">🔄 Reset &amp; Start Again</button>
+        <button class="btn-reset-now"    id="btnResetNow"   onclick="executeReset()">🔄 Reset &amp; Start Again</button>
         <button class="btn-reset-close"  id="btnResetClose" onclick="closeResetBanner()">Maybe later</button>
         <div class="reset-warning" id="resetWarning">
             <strong>⚠️ One-time use:</strong> After resetting, your progress will be cleared.
@@ -1373,105 +1373,117 @@ const RESET_I18N = {
     }
 };
 
-/* ════════════════════════════════════════════════
-   RESET BANNER — Supabase JS client ile temiz mantik
-   ════════════════════════════════════════════════ */
-let userPlans = []; // Kullanicinin tum planlari
+/* ─── Reset durumu ─── */
+let resetUsed = false;
+
+async function fetchResetUsed() {
+    if (!currentUser) { resetUsed = false; return; }
+    try {
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used`,
+            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+        );
+        const data = await res.json();
+        if (!data || data.length === 0) {
+            // Satır yoksa reset hakkı kullanılmamış sayılır
+            resetUsed = false;
+        } else {
+            // Tüm satırların reset_used=true olması gerekiyor hakkın kullanılmış sayılması için
+            // Herhangi biri true ise (ve hiçbiri false/null değilse) → kullanılmış
+            const allTrue = data.every(row => row.reset_used === true);
+            resetUsed = allTrue;
+        }
+        console.log('✅ fetchResetUsed →', resetUsed, data);
+    } catch(err) {
+        console.error('❌ reset_used alinamadi:', err);
+        resetUsed = false;
+    }
+}
 
 function checkAllTestsCompleted(lang) {
     return getCompleted(lang || currentLang || 'en').length >= TOTAL_TESTS;
 }
 
-/* Banner DOM'u goster/gizle — tum kontrol burada */
-async function checkProgressAndBanner() {
-    const banner = document.getElementById('reset-banner');
-    if (!banner) return;
-    if (!currentUser) { banner.style.display = 'none'; return; }
-
-    // Herhangi bir planda reset_used=FALSE var mi?
-    const hasUnusedReset = userPlans.some(p => p.reset_used === false);
-
-    // Tamamlanan test sayisi (localStorage)
-    const completedCount = getCompleted(currentLang || 'en').length;
-
-    console.log('📊 checkProgressAndBanner:', { completedCount, hasUnusedReset, userPlans });
-
-    if (completedCount >= TOTAL_TESTS && hasUnusedReset) {
-        // Mevcut banner icerigi varsa doldur (glassmorphism banner)
-        const t = RESET_I18N[currentLang || 'en'] || RESET_I18N['en'];
-        const g = id => document.getElementById(id);
-        if (g('rbTitle'))      g('rbTitle').textContent      = t.title;
-        if (g('rbSub'))        g('rbSub').innerHTML          = t.sub;
-        if (g('rbStatLabel1')) g('rbStatLabel1').textContent = t.stat1;
-        if (g('rbStatLabel2')) g('rbStatLabel2').textContent = t.stat2;
-        if (g('rbStatLabel3')) g('rbStatLabel3').textContent = t.stat3;
-        if (g('btnResetNow'))  { g('btnResetNow').textContent = t.btnReset; g('btnResetNow').disabled = false; }
-        if (g('btnResetClose')) g('btnResetClose').textContent = t.btnClose;
-        const warn = g('resetWarning');
-        if (warn) warn.innerHTML = t.warning;
-        // Hem glassmorphism hem de fallback banner'i goster
-        const glassEl = document.getElementById('reset-banner');
-        if (glassEl) { glassEl.classList.add('active'); document.body.style.overflow = 'hidden'; }
-    } else {
-        const glassEl = document.getElementById('reset-banner');
-        if (glassEl) { glassEl.classList.remove('active'); document.body.style.overflow = ''; }
-    }
+function showResetBanner() {
+    if (resetUsed) return;
+    if (!currentUser) return;
+    const lang = currentLang || 'en';
+    const t = RESET_I18N[lang] || RESET_I18N['en'];
+    const g = id => document.getElementById(id);
+    g('rbTitle').textContent       = t.title;
+    g('rbSub').innerHTML           = t.sub;
+    g('rbStatLabel1').textContent  = t.stat1;
+    g('rbStatLabel2').textContent  = t.stat2;
+    g('rbStatLabel3').textContent  = t.stat3;
+    g('btnResetNow').textContent   = t.btnReset;
+    g('btnResetClose').textContent = t.btnClose;
+    const warn = document.getElementById('resetWarning');
+    if (warn) warn.innerHTML = t.warning;
+    g('reset-banner').classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
 function closeResetBanner() {
-    const el = document.getElementById('reset-banner');
-    if (el) { el.classList.remove('active'); el.style.display = ''; }
+    document.getElementById('reset-banner').classList.remove('active');
     document.body.style.overflow = '';
 }
 
-async function handleReset() {
-    if (!currentUser) return;
+async function executeReset() {
+    if (!currentUser || resetUsed) return;
+    const lang = currentLang || 'en';
+    const t = RESET_I18N[lang] || RESET_I18N['en'];
     const btn = document.getElementById('btnResetNow');
-    if (btn) { btn.disabled = true; btn.textContent = '⏳...'; }
-
+    btn.disabled = true;
+    btn.textContent = t.resetting;
     try {
-        // 1. user_progress sil
-        const { error: delError } = await _supabase
-            .from('user_progress')
-            .delete()
-            .eq('user_id', currentUser.id);
-        if (delError) throw delError;
-        console.log('✅ user_progress silindi');
+        /* 1) user_progress tablosunu temizle */
+        const delRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
+            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}` } }
+        );
+        if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
 
-        // 2. reset_used=FALSE olan ilk plani bul ve TRUE yap
-        const planToUpdate = userPlans.find(p => p.reset_used === false);
-        console.log('🔧 Plan to update:', planToUpdate);
-        if (planToUpdate) {
-            const { error: updError, data: updData } = await _supabase
-                .from('user_plans')
-                .update({ reset_used: true })
-                .eq('id', planToUpdate.id)
-                .select();
-            if (updError) throw updError;
-            console.log('✅ user_plans guncellendi:', updData);
+        /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
+        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`;
+        console.log('🔧 PATCH URL:', patchUrl);
+        const patchRes = await fetch(patchUrl, {
+                method:'PATCH',
+                headers:{
+                    'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}`,
+                    'Content-Type':'application/json', 'Prefer':'return=representation'
+                },
+                body: JSON.stringify({ reset_used: true })
+            }
+        );
+        const patchData = await patchRes.json().catch(() => null);
+        console.log('🔧 PATCH status:', patchRes.status);
+        console.log('🔧 PATCH response:', JSON.stringify(patchData));
+        if (!patchRes.ok && patchRes.status !== 204) {
+            throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
         }
 
-        // 3. LocalStorage temizle
+        /* 3) LocalStorage tüm diller için temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        // 4. userPlans guncelle (lokal)
-        if (planToUpdate) {
-            const idx = userPlans.findIndex(p => p.id === planToUpdate.id);
-            if (idx !== -1) userPlans[idx].reset_used = true;
-        }
+        /* 4) Bellek içi durumu güncelle */
+        resetUsed = true;
 
-        // 5. UI guncelle
-        closeResetBanner();
+        /* 5) Test butonlarını anında yenile */
         buildTestButtons();
-        showNotification('✅ İlerleme sıfırlandı! Testler yeniden açıldı.', 'success');
 
-        // 6. Supabase'den taze veri cek
-        await fetchUserAccess();
+        /* 6) Geri bildirim ve banner kapat */
+        btn.textContent = t.done;
+        btn.style.background = 'linear-gradient(135deg,#00d46a,#00a050)';
+        setTimeout(() => {
+            closeResetBanner();
+            showNotification(t.done, 'success');
+        }, 1600);
 
-    } catch (err) {
+    } catch(err) {
         console.error('❌ Reset hatasi:', err);
-        if (btn) { btn.disabled = false; btn.textContent = '🔄 Reset & Start Again'; }
-        showNotification('❌ Sıfırlama hatası: ' + err.message, 'error');
+        btn.disabled = false;
+        btn.textContent = t.btnReset;
+        showNotification('❌ Reset failed. Please try again.', 'error');
     }
 }
 
@@ -1935,9 +1947,11 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* 50 test tamamlandıysa — banner kontrolü */
+    /* 50 test tamamlandıysa — resetUsed zaten güncel olmalı (fetchResetUsed önceden çağrıldı) */
     if (next === null && checkAllTestsCompleted(lang)) {
-        setTimeout(() => checkProgressAndBanner(), 400);
+        if (!resetUsed) {
+            setTimeout(() => showResetBanner(), 400);
+        }
     }
 }
 
@@ -2292,7 +2306,7 @@ async function signOut() {
     if (signinBtn) signinBtn.disabled = true;
     if (mobSignin) mobSignin.disabled = true;
     try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
-    currentUser = null; currentPlanId = null; accessibleGroups = []; userPlans = [];
+    currentUser = null; currentPlanId = null; accessibleGroups = []; resetUsed = false;
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
     if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
     updateNavbarUser(); buildTestButtons(); closeMob();
@@ -2310,42 +2324,30 @@ async function checkAuth() {
     } catch (err) { console.error('❌ Auth kontrolü hatası:', err); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); }
 }
 
-/* ─── ERİŞİM BİLGİSİ ─── */
+/* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre ─── */
 async function fetchUserAccess() {
     if (!currentUser) {
         const { data: { session } } = await _supabase.auth.getSession();
         if (session?.user) { currentUser = session.user; }
-        else { currentPlanId = null; accessibleGroups = []; userPlans = []; return; }
+        else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
-        // 1) user_access: erisim gruplarini cek
-        const { data: accessData, error: accessErr } = await _supabase
-            .from('user_access')
-            .select('plan_id, plan_name, expires_at, group_id')
-            .eq('user_id', currentUser.id);
-        if (!accessErr && accessData && accessData.length > 0) {
-            currentPlanId    = accessData[0].plan_id;
-            accessibleGroups = [...new Set(accessData.map(r => r.group_id))];
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
+            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+        );
+        const data = await res.json();
+        if (data && data.length > 0) {
+            currentPlanId    = data[0].plan_id;
+            accessibleGroups = [...new Set(data.map(r => r.group_id))];
         } else {
             currentPlanId = null; accessibleGroups = [];
         }
-        // 2) user_plans: reset_used durumu icin tum planlari cek
-        const { data: plansData, error: plansErr } = await _supabase
-            .from('user_plans')
-            .select('id, plan_id, reset_used, expires_at')
-            .eq('user_id', currentUser.id);
-        if (!plansErr) {
-            userPlans = plansData || [];
-        } else {
-            console.error('❌ user_plans alinamadi:', plansErr.message);
-            userPlans = [];
-        }
-        console.log('✅ fetchUserAccess:', { currentPlanId, accessibleGroups, userPlans });
-        // 3) Banner durumunu kontrol et
-        await checkProgressAndBanner();
+        /* YENİ: reset_used durumunu çek */
+        await fetchResetUsed();
     } catch (err) {
-        console.error('❌ fetchUserAccess hatasi:', err.message);
-        currentPlanId = null; accessibleGroups = []; userPlans = [];
+        console.error('❌ Erişim bilgisi alınırken hata:', err.message);
+        currentPlanId = null; accessibleGroups = [];
     }
 }
 
@@ -2396,16 +2398,16 @@ async function fetchProgressFromSupabase() {
     const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
         for (const lang of allLangs) {
-            const { data, error } = await _supabase
-                .from('user_progress')
-                .select('test_number')
-                .eq('user_id', currentUser.id)
-                .eq('language', lang);
-            if (error) { console.error('❌ Progress alinamadi:', error); continue; }
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
             const completedTests = (data || []).map(r => r.test_number);
             localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
         }
-    } catch (err) { console.error('❌ fetchProgressFromSupabase hatasi:', err); }
+    } catch (err) { console.error('❌ Supabase ilerlemesi alınırken hata:', err); }
 }
 
 /* ─── NOTIFICATION ─── */
@@ -2434,12 +2436,14 @@ async function saveProgressToSupabase(testNum, lang) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
     try {
-        const { error } = await _supabase
-            .from('user_progress')
-            .upsert({ user_id: currentUser.id, test_number: testNum, language: lang }, { onConflict: 'user_id,test_number,language' });
-        if (error) { console.error('❌ Progress kaydedilemedi:', error); showNotification('Progress could not be saved.', 'error'); return false; }
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress', {
+            method: 'POST',
+            headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+            body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
+        });
+        if (!res.ok) { const err = await res.text(); console.error('❌ Progress kaydedilemedi:', err); showNotification('Progress could not be saved.', 'error'); return false; }
         return true;
-    } catch (err) { console.error('❌ saveProgressToSupabase hatasi:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
+    } catch (err) { console.error('❌ Unexpected error saving progress:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
 }
 
 /* ─── POSTMESSAGE — reset banner kontrolü eklendi ─── */
@@ -2450,6 +2454,9 @@ window.addEventListener('message', async function(e) {
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
     markCompleted(d.lang, d.testNumber);
+
+    /* reset_used durumunu önceden çek — buildTestButtons ve showResetBanner doğru karar versin */
+    if (currentUser) await fetchResetUsed();
 
     buildTestButtons();
 
