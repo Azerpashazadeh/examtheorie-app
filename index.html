@@ -1384,15 +1384,16 @@ async function fetchResetUsed() {
             { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
         );
         const data = await res.json();
-        // Satır yoksa (yeni kullanıcı) → hak mevcut
-        // Satır varsa → herhangi birinde reset_used=false varsa hak mevcut
         if (!data || data.length === 0) {
+            // Satır yoksa reset hakkı kullanılmamış sayılır
             resetUsed = false;
         } else {
-            // NULL veya false → hak mevcut, sadece true → hak kullanılmış
-            const hasUnused = data.some(row => row.reset_used === false || row.reset_used === null);
-            resetUsed = !hasUnused;
+            // Tüm satırların reset_used=true olması gerekiyor hakkın kullanılmış sayılması için
+            // Herhangi biri true ise (ve hiçbiri false/null değilse) → kullanılmış
+            const allTrue = data.every(row => row.reset_used === true);
+            resetUsed = allTrue;
         }
+        console.log('✅ fetchResetUsed →', resetUsed, data);
     } catch(err) {
         console.error('❌ reset_used alinamadi:', err);
         resetUsed = false;
@@ -1461,11 +1462,16 @@ async function executeReset() {
             throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
         }
 
+        /* 2b) Supabase'den tekrar çekerek PATCH'in yazıldığını doğrula */
+        await fetchResetUsed();
+        if (!resetUsed) {
+            throw new Error('reset_used Supabase tarafından kaydedilmedi. Lütfen tekrar deneyin.');
+        }
+
         /* 3) LocalStorage tüm diller için temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 4) Bellek içi durumu güncelle */
-        resetUsed = true;
+        /* 4) Bellek içi durum fetchResetUsed tarafından zaten true yapıldı */
 
         /* 5) Test butonlarını anında yenile */
         buildTestButtons();
@@ -2080,8 +2086,7 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
-        flowType: 'implicit',
-        lock: function(name, acquireTimeout, fn) { return fn(); },
+        flowType: 'pkce',
         maxSessionTimeout: 60 * 60 * 24 * 7,
         refreshTokenThreshold: 60 * 5,
     }
@@ -2292,9 +2297,14 @@ async function startDailyPayment(e) {
 
 /* ─── GOOGLE ─── */
 async function signInWithGoogle() {
+    const btns = document.querySelectorAll('.google-btn');
+    btns.forEach(b => { b.disabled = true; b.style.opacity = '0.65'; b.textContent = '⏳ Redirecting...'; });
     const cleanUrl = window.location.origin + window.location.pathname;
     const { error } = await _supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: cleanUrl } });
-    if (error) alert('❌ Google giriş hatası: ' + error.message);
+    if (error) {
+        btns.forEach(b => { b.disabled = false; b.style.opacity = ''; b.textContent = 'G  Google'; });
+        alert('❌ Google giriş hatası: ' + error.message);
+    }
 }
 
 /* ─── ÇIKIŞ ─── */
