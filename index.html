@@ -2409,12 +2409,12 @@ async function fetchProgressFromSupabase() {
     const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
         for (const lang of allLangs) {
-            const res = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
-                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-            );
-            if (!res.ok) continue;
-            const data = await res.json();
+            const { data, error } = await _supabase
+                .from('user_progress')
+                .select('test_number')
+                .eq('user_id', currentUser.id)
+                .eq('language', lang);
+            if (error) { console.error('❌ Progress alinamadi:', lang, error); continue; }
             const completedTests = (data || []).map(r => r.test_number);
             localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
         }
@@ -2447,12 +2447,11 @@ async function saveProgressToSupabase(testNum, lang) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
     try {
-        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress', {
-            method: 'POST',
-            headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
-            body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
-        });
-        if (!res.ok) { const err = await res.text(); console.error('❌ Progress kaydedilemedi:', err); showNotification('Progress could not be saved.', 'error'); return false; }
+        const { error } = await _supabase
+            .from('user_progress')
+            .upsert({ user_id: currentUser.id, test_number: testNum, language: lang }, { onConflict: 'user_id,test_number,language' });
+        if (error) { console.error('❌ Progress kaydedilemedi:', error); showNotification('Progress could not be saved.', 'error'); return false; }
+        console.log('✅ Progress kaydedildi: test', testNum, lang);
         return true;
     } catch (err) { console.error('❌ Unexpected error saving progress:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
 }
