@@ -1389,7 +1389,8 @@ async function fetchResetUsed() {
         if (!data || data.length === 0) {
             resetUsed = false;
         } else {
-            const hasUnused = data.some(row => row.reset_used === false);
+            // NULL veya false → hak mevcut, sadece true → hak kullanılmış
+            const hasUnused = data.some(row => row.reset_used === false || row.reset_used === null);
             resetUsed = !hasUnused;
         }
     } catch(err) {
@@ -1441,8 +1442,8 @@ async function executeReset() {
         );
         if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
 
-        /* 2) user_plans tablosunda reset_used=false olan satırı true yap */
-        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=is.false`;
+        /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
+        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`;
         console.log('🔧 PATCH URL:', patchUrl);
         const patchRes = await fetch(patchUrl, {
                 method:'PATCH',
