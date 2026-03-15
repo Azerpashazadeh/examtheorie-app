@@ -1439,7 +1439,7 @@ async function executeReset() {
         /* 1) reset_used=false olan planları bul */
         const { data: openPlans, error: plansErr } = await _supabase
             .from('user_plans')
-            .select('id, reset_used, plan_type')
+            .select('id')
             .eq('user_id', currentUser.id)
             .eq('reset_used', false);
         console.log('🔍 executeReset - open plans:', openPlans, 'error:', plansErr);
@@ -1458,14 +1458,14 @@ async function executeReset() {
         if (delErr) throw delErr;
         console.log('✅ user_progress silindi');
 
-        /* 3) Her açık planı TRUE yap (id bazlı) */
+        /* 3) Açık planları id bazlı TRUE yap */
         for (const plan of openPlans) {
             const { data: updData, error: updErr } = await _supabase
                 .from('user_plans')
                 .update({ reset_used: true })
                 .eq('id', plan.id)
                 .select();
-            console.log(`🔧 Plan ${plan.id} update:`, updData, 'error:', updErr);
+            console.log('🔧 plan update:', plan.id, updData, updErr);
             if (updErr) throw updErr;
         }
 
