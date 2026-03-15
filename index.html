@@ -1379,21 +1379,20 @@ let resetUsed = false;
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
-        const { data, error } = await _supabase
-            .from('user_plans')
-            .select('id, reset_used, plan_type')
-            .eq('user_id', currentUser.id);
-        console.log('🔍 fetchResetUsed - user_plans data:', data, 'error:', error);
-        if (error) throw error;
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used`,
+            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+        );
+        const data = await res.json();
+        // Satır yoksa (yeni kullanıcı) → hak mevcut
+        // Satır varsa → herhangi birinde reset_used=false varsa hak mevcut
         if (!data || data.length === 0) {
             resetUsed = false;
-            console.log('🔍 fetchResetUsed - No plans found, resetUsed = false');
         } else {
-            const hasAnyFalse = data.some(row => row.reset_used === false);
-            resetUsed = !hasAnyFalse;
-            console.log('🔍 fetchResetUsed - hasAnyFalse:', hasAnyFalse, 'resetUsed:', resetUsed);
+            // NULL veya false → hak mevcut, sadece true → hak kullanılmış
+            const hasUnused = data.some(row => row.reset_used === false || row.reset_used === null);
+            resetUsed = !hasUnused;
         }
-        console.log('✅ fetchResetUsed →', resetUsed, data);
     } catch(err) {
         console.error('❌ reset_used alinamadi:', err);
         resetUsed = false;
@@ -1436,47 +1435,42 @@ async function executeReset() {
     btn.disabled = true;
     btn.textContent = t.resetting;
     try {
-        /* 1) reset_used=false olan planları bul */
-        const { data: openPlans, error: plansErr } = await _supabase
-            .from('user_plans')
-            .select('id')
-            .eq('user_id', currentUser.id)
-            .eq('reset_used', false);
-        console.log('🔍 executeReset - open plans:', openPlans, 'error:', plansErr);
-        if (plansErr) throw plansErr;
-        if (!openPlans || openPlans.length === 0) {
-            resetUsed = true;
-            closeResetBanner();
-            return;
+        /* 1) user_progress tablosunu temizle */
+        const delRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
+            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}` } }
+        );
+        if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
+
+        /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
+        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`;
+        console.log('🔧 PATCH URL:', patchUrl);
+        const patchRes = await fetch(patchUrl, {
+                method:'PATCH',
+                headers:{
+                    'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}`,
+                    'Content-Type':'application/json', 'Prefer':'return=representation'
+                },
+                body: JSON.stringify({ reset_used: true })
+            }
+        );
+        const patchData = await patchRes.json().catch(() => null);
+        console.log('🔧 PATCH status:', patchRes.status);
+        console.log('🔧 PATCH response:', JSON.stringify(patchData));
+        if (!patchRes.ok && patchRes.status !== 204) {
+            throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
         }
 
-        /* 2) user_progress sil */
-        const { error: delErr } = await _supabase
-            .from('user_progress')
-            .delete()
-            .eq('user_id', currentUser.id);
-        if (delErr) throw delErr;
-        console.log('✅ user_progress silindi');
-
-        /* 3) Açık planları id bazlı TRUE yap */
-        for (const plan of openPlans) {
-            const { data: updData, error: updErr } = await _supabase
-                .from('user_plans')
-                .update({ reset_used: true })
-                .eq('id', plan.id)
-                .select();
-            console.log('🔧 plan update:', plan.id, updData, updErr);
-            if (updErr) throw updErr;
-        }
-
-        /* 4) LocalStorage temizle */
+        /* 3) LocalStorage tüm diller için temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 5) Bellek içi güncelle */
+        /* 4) Bellek içi durumu güncelle */
         resetUsed = true;
 
-        /* 6) UI güncelle */
+        /* 5) Test butonlarını anında yenile */
         buildTestButtons();
+
+        /* 6) Geri bildirim ve banner kapat */
         btn.textContent = t.done;
         btn.style.background = 'linear-gradient(135deg,#00d46a,#00a050)';
         setTimeout(() => {
@@ -1488,7 +1482,7 @@ async function executeReset() {
         console.error('❌ Reset hatasi:', err);
         btn.disabled = false;
         btn.textContent = t.btnReset;
-        showNotification('❌ Reset failed: ' + err.message, 'error');
+        showNotification('❌ Reset failed. Please try again.', 'error');
     }
 }
 
@@ -1922,31 +1916,6 @@ function getNextTest(lang) {
     return null;
 }
 
-/* ─── YENİ PLAN SATIN ALMA SONRASI TEMİZLİK ─── */
-async function clearProgressOnNewPlan() {
-    if (!currentUser) return;
-    try {
-        /* 1) user_progress tablosunu temizle */
-        const delRes = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
-            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}` } }
-        );
-        if (!delRes.ok && delRes.status !== 204) {
-            console.error('❌ Progress temizlenemedi:', delRes.status);
-        }
-        
-        /* 2) LocalStorage tüm diller için temizle */
-        ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
-        
-        /* 3) Test butonlarını yenile */
-        buildTestButtons();
-        
-        console.log('✅ Yeni plan sonrası progress temizlendi');
-    } catch(err) {
-        console.error('❌ Progress temizleme hatası:', err);
-    }
-}
-
 /* ─── TEST BUTTONS — reset banner entegre ─── */
 function buildTestButtons() {
     const lang = currentLang || 'en';
@@ -1977,11 +1946,14 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* 50 test tamamlandıysa — resetUsed zaten güncel olmalı (fetchResetUsed önceden çağrıldı) */
+    /* 50 test tamamlandıysa — Supabase'den resetUsed çek, sonra karar ver */
     if (next === null && checkAllTestsCompleted(lang)) {
-        if (!resetUsed) {
-            setTimeout(() => showResetBanner(), 400);
-        }
+        if (resetUsed) return; // zaten kullanılmış, fetch etmeye gerek yok
+        fetchResetUsed().then(() => {
+            if (!resetUsed) {
+                setTimeout(() => showResetBanner(), 400);
+            }
+        });
     }
 }
 
@@ -2108,7 +2080,8 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
-        flowType: 'pkce',
+        flowType: 'implicit',
+        lock: function(name, acquireTimeout, fn) { return fn(); },
         maxSessionTimeout: 60 * 60 * 24 * 7,
         refreshTokenThreshold: 60 * 5,
     }
@@ -2319,14 +2292,9 @@ async function startDailyPayment(e) {
 
 /* ─── GOOGLE ─── */
 async function signInWithGoogle() {
-    const btns = document.querySelectorAll('.google-btn');
-    btns.forEach(b => { b.disabled = true; b.style.opacity = '0.65'; b.textContent = '⏳ Redirecting...'; });
     const cleanUrl = window.location.origin + window.location.pathname;
     const { error } = await _supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: cleanUrl } });
-    if (error) {
-        btns.forEach(b => { b.disabled = false; b.style.opacity = ''; b.textContent = 'G  Google'; });
-        alert('❌ Google giriş hatası: ' + error.message);
-    }
+    if (error) alert('❌ Google giriş hatası: ' + error.message);
 }
 
 /* ─── ÇIKIŞ ─── */
@@ -2336,7 +2304,7 @@ async function signOut() {
     if (signinBtn) signinBtn.disabled = true;
     if (mobSignin) mobSignin.disabled = true;
     try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
-    currentUser = null; currentPlanId = null; accessibleGroups = []; resetUsed = false;
+    currentUser = null; currentPlanId = null; accessibleGroups = [];
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
     if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
     updateNavbarUser(); buildTestButtons(); closeMob();
@@ -2484,11 +2452,12 @@ window.addEventListener('message', async function(e) {
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
     markCompleted(d.lang, d.testNumber);
-
-    /* reset_used durumunu önceden çek — buildTestButtons ve showResetBanner doğru karar versin */
-    if (currentUser) await fetchResetUsed();
-
     buildTestButtons();
+
+    if (checkAllTestsCompleted(d.lang)) {
+        await fetchResetUsed();
+        if (!resetUsed) showResetBanner();
+    }
 
     if (!currentUser) {
         showNotification('Please sign in to save your progress.', 'info');
@@ -2496,7 +2465,7 @@ window.addEventListener('message', async function(e) {
         return;
     }
     const saved = await saveProgressToSupabase(d.testNumber, d.lang);
-    if (saved) { await fetchProgressFromSupabase(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
+    if (saved) { await fetchProgressFromSupabase(); buildTestButtons(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
     else { showNotification('Progress saved locally. Will sync when you sign in.', 'info'); }
 });
 
@@ -2524,7 +2493,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                     await new Promise(r => setTimeout(r, 2000));
                     await fetchUserAccess();
                     buildTestButtons();
-                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); await clearProgressOnNewPlan(); }
+                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); }
                     else { pollForPlan(attemptsLeft - 1); }
                 };
                 pollForPlan(8);
@@ -2596,8 +2565,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const planInterval = setInterval(async () => {
             attempts++;
             await fetchUserAccess();
-            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); await clearProgressOnNewPlan(); }
-            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh page if content is not visible.', 'info'); }
+            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
+            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
         }, 2000);
     }
     const reason = params.get('reason');
