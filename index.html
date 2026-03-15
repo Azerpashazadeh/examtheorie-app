@@ -1462,16 +1462,11 @@ async function executeReset() {
             throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
         }
 
-        /* 2b) Supabase'den tekrar çekerek PATCH'in yazıldığını doğrula */
-        await fetchResetUsed();
-        if (!resetUsed) {
-            throw new Error('reset_used Supabase tarafından kaydedilmedi. Lütfen tekrar deneyin.');
-        }
-
         /* 3) LocalStorage tüm diller için temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 4) Bellek içi durum fetchResetUsed tarafından zaten true yapıldı */
+        /* 4) Bellek içi durumu güncelle */
+        resetUsed = true;
 
         /* 5) Test butonlarını anında yenile */
         buildTestButtons();
@@ -1952,14 +1947,11 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* 50 test tamamlandıysa — Supabase'den resetUsed çek, sonra karar ver */
+    /* 50 test tamamlandıysa — resetUsed zaten güncel olmalı (fetchResetUsed önceden çağrıldı) */
     if (next === null && checkAllTestsCompleted(lang)) {
-        if (resetUsed) return; // zaten kullanılmış, fetch etmeye gerek yok
-        fetchResetUsed().then(() => {
-            if (!resetUsed) {
-                setTimeout(() => showResetBanner(), 400);
-            }
-        });
+        if (!resetUsed) {
+            setTimeout(() => showResetBanner(), 400);
+        }
     }
 }
 
@@ -2314,7 +2306,7 @@ async function signOut() {
     if (signinBtn) signinBtn.disabled = true;
     if (mobSignin) mobSignin.disabled = true;
     try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
-    currentUser = null; currentPlanId = null; accessibleGroups = [];
+    currentUser = null; currentPlanId = null; accessibleGroups = []; resetUsed = false;
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
     if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
     updateNavbarUser(); buildTestButtons(); closeMob();
@@ -2462,12 +2454,11 @@ window.addEventListener('message', async function(e) {
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
     markCompleted(d.lang, d.testNumber);
-    buildTestButtons();
 
-    if (checkAllTestsCompleted(d.lang)) {
-        await fetchResetUsed();
-        if (!resetUsed) showResetBanner();
-    }
+    /* reset_used durumunu önceden çek — buildTestButtons ve showResetBanner doğru karar versin */
+    if (currentUser) await fetchResetUsed();
+
+    buildTestButtons();
 
     if (!currentUser) {
         showNotification('Please sign in to save your progress.', 'info');
@@ -2475,7 +2466,7 @@ window.addEventListener('message', async function(e) {
         return;
     }
     const saved = await saveProgressToSupabase(d.testNumber, d.lang);
-    if (saved) { await fetchProgressFromSupabase(); buildTestButtons(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
+    if (saved) { await fetchProgressFromSupabase(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
     else { showNotification('Progress saved locally. Will sync when you sign in.', 'info'); }
 });
 
