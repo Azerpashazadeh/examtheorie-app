@@ -1379,25 +1379,19 @@ let resetUsed = false;
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
-        const res = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=id,reset_used,plan_type`,
-            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-        );
-        const data = await res.json();
-        console.log('🔍 fetchResetUsed - user_plans data:', data);
-        console.log('🔍 fetchResetUsed - User ID:', currentUser.id);
-        console.log('🔍 fetchResetUsed - Response status:', res.status);
-        
+        const { data, error } = await _supabase
+            .from('user_plans')
+            .select('id, reset_used, plan_type')
+            .eq('user_id', currentUser.id);
+        console.log('🔍 fetchResetUsed - user_plans data:', data, 'error:', error);
+        if (error) throw error;
         if (!data || data.length === 0) {
-            // Satır yoksa reset hakkı kullanılmamış sayılır
             resetUsed = false;
             console.log('🔍 fetchResetUsed - No plans found, resetUsed = false');
         } else {
-            // Herhangi bir planda reset_used=false varsa kullanıcı reset yapabilir
             const hasAnyFalse = data.some(row => row.reset_used === false);
-            resetUsed = !hasAnyFalse; // false hakkı varsa kullanılabilir demektir
+            resetUsed = !hasAnyFalse;
             console.log('🔍 fetchResetUsed - hasAnyFalse:', hasAnyFalse, 'resetUsed:', resetUsed);
-            console.log('🔍 fetchResetUsed - Plan details:', data.map(p => ({id: p.id, plan: p.plan_type, reset_used: p.reset_used})));
         }
         console.log('✅ fetchResetUsed →', resetUsed, data);
     } catch(err) {
@@ -1442,67 +1436,47 @@ async function executeReset() {
     btn.disabled = true;
     btn.textContent = t.resetting;
     try {
-        /* 1) user_progress tablosunu temizle */
-        const delRes = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
-            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}` } }
-        );
-        if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
-
-        /* 2) Mevcut planları kontrol et */
-        const checkRes = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=id,reset_used,plan_type`,
-            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-        );
-        const checkData = await checkRes.json();
-        console.log('🔍 executeReset - Mevcut user_plans:', checkData);
-        
-        if (!checkData || checkData.length === 0) {
-            console.log('🔍 executeReset - Hiçbir plan bulunamadı');
-            throw new Error('Kullanıcı planı bulunamadı');
-        }
-        
-        /* 3) Sadece reset_used=false olan planları güncelle */
-        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`;
-        console.log('🔧 PATCH URL:', patchUrl);
-        console.log('🔧 User ID:', currentUser.id);
-        console.log('🔧 Request body:', JSON.stringify({ reset_used: true }));
-        
-        const patchRes = await fetch(patchUrl, {
-                method:'PATCH',
-                headers:{
-                    'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}`,
-                    'Content-Type':'application/json', 'Prefer':'return=representation'
-                },
-                body: JSON.stringify({ reset_used: true })
-            }
-        );
-        const patchData = await patchRes.json().catch(() => null);
-        console.log('🔧 PATCH status:', patchRes.status);
-        console.log('🔧 PATCH response:', JSON.stringify(patchData));
-        console.log('🔧 PATCH headers:', Object.fromEntries(patchRes.headers.entries()));
-        
-        if (!patchRes.ok && patchRes.status !== 204) {
-            console.error('❌ PATCH error details:', {
-                status: patchRes.status,
-                statusText: patchRes.statusText,
-                response: patchData
-            });
-            throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
-        } else {
-            console.log('✅ reset_used başarıyla güncellendi');
+        /* 1) reset_used=false olan planları bul */
+        const { data: openPlans, error: plansErr } = await _supabase
+            .from('user_plans')
+            .select('id, reset_used, plan_type')
+            .eq('user_id', currentUser.id)
+            .eq('reset_used', false);
+        console.log('🔍 executeReset - open plans:', openPlans, 'error:', plansErr);
+        if (plansErr) throw plansErr;
+        if (!openPlans || openPlans.length === 0) {
+            resetUsed = true;
+            closeResetBanner();
+            return;
         }
 
-        /* 3) LocalStorage tüm diller için temizle */
+        /* 2) user_progress sil */
+        const { error: delErr } = await _supabase
+            .from('user_progress')
+            .delete()
+            .eq('user_id', currentUser.id);
+        if (delErr) throw delErr;
+        console.log('✅ user_progress silindi');
+
+        /* 3) Her açık planı TRUE yap (id bazlı) */
+        for (const plan of openPlans) {
+            const { data: updData, error: updErr } = await _supabase
+                .from('user_plans')
+                .update({ reset_used: true })
+                .eq('id', plan.id)
+                .select();
+            console.log(`🔧 Plan ${plan.id} update:`, updData, 'error:', updErr);
+            if (updErr) throw updErr;
+        }
+
+        /* 4) LocalStorage temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 4) Bellek içi durumu güncelle */
+        /* 5) Bellek içi güncelle */
         resetUsed = true;
 
-        /* 5) Test butonlarını anında yenile */
+        /* 6) UI güncelle */
         buildTestButtons();
-
-        /* 6) Geri bildirim ve banner kapat */
         btn.textContent = t.done;
         btn.style.background = 'linear-gradient(135deg,#00d46a,#00a050)';
         setTimeout(() => {
@@ -1514,7 +1488,7 @@ async function executeReset() {
         console.error('❌ Reset hatasi:', err);
         btn.disabled = false;
         btn.textContent = t.btnReset;
-        showNotification('❌ Reset failed. Please try again.', 'error');
+        showNotification('❌ Reset failed: ' + err.message, 'error');
     }
 }
 
