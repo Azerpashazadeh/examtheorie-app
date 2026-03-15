@@ -1375,7 +1375,6 @@ const RESET_I18N = {
 
 /* ─── Reset durumu ─── */
 let resetUsed = false;
-let _bannerShownThisSession = false; // banner bu oturumda zaten gösterildiyse tekrar gösterme
 
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
@@ -1404,10 +1403,8 @@ function checkAllTestsCompleted(lang) {
 }
 
 function showResetBanner() {
-    if (resetUsed) return;                  // Supabase'de hak kullanılmış
-    if (!currentUser) return;               // Giriş yok
-    if (_bannerShownThisSession) return;    // Bu oturumda zaten gösterildi
-    _bannerShownThisSession = true;
+    if (resetUsed) return;
+    if (!currentUser) return;
     const lang = currentLang || 'en';
     const t = RESET_I18N[lang] || RESET_I18N['en'];
     const g = id => document.getElementById(id);
@@ -1463,7 +1460,6 @@ async function executeReset() {
 
         /* 4) Bellek içi durumu güncelle */
         resetUsed = true;
-        _bannerShownThisSession = true; // ikinci tur için banner bir daha çıkmasın
 
         /* 5) Test butonlarını anında yenile */
         buildTestButtons();
@@ -1944,11 +1940,10 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* YENİ: 50 test tamamlandıysa — önce Supabase'den resetUsed çek, sonra karar ver */
+    /* 50 test tamamlandıysa — Supabase'den resetUsed çek, sonra karar ver */
     if (next === null && checkAllTestsCompleted(lang)) {
         fetchResetUsed().then(() => {
-            if (!resetUsed && !_bannerShownThisSession) {
-                _bannerShownThisSession = true;
+            if (!resetUsed) {
                 setTimeout(() => showResetBanner(), 400);
             }
         });
@@ -2452,13 +2447,9 @@ window.addEventListener('message', async function(e) {
     markCompleted(d.lang, d.testNumber);
     buildTestButtons();
 
-    /* 50 test bitti mi kontrol et */
     if (checkAllTestsCompleted(d.lang)) {
         await fetchResetUsed();
-        if (!resetUsed && !_bannerShownThisSession) {
-            _bannerShownThisSession = true;
-            showResetBanner();
-        }
+        if (!resetUsed) showResetBanner();
     }
 
     if (!currentUser) {
