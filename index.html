@@ -1376,24 +1376,31 @@ const RESET_I18N = {
 /* ─── Reset durumu ─── */
 let resetUsed = false;
 
+/* ─── AUTH TOKEN YARDIMCISI ─── */
+async function getAuthToken() {
+    const { data: { session } } = await _supabase.auth.getSession();
+    return session?.access_token || supabaseKey;
+}
+
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
+        const _token = await getAuthToken();
         const res = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used`,
-            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${_token}` } }
         );
         const data = await res.json();
+        console.log('🔍 fetchResetUsed raw data:', JSON.stringify(data));
         if (!data || data.length === 0) {
-            // Satır yoksa reset hakkı kullanılmamış sayılır
             resetUsed = false;
         } else {
-            // Tüm satırların reset_used=true olması gerekiyor hakkın kullanılmış sayılması için
-            // Herhangi biri true ise (ve hiçbiri false/null değilse) → kullanılmış
-            const allTrue = data.every(row => row.reset_used === true);
-            resetUsed = allTrue;
+            // Herhangi bir satırda reset_used=true ise → hak kullanılmış
+            // String "true" ve boolean true her ikisini de yakala
+            const anyTrue = data.some(row => row.reset_used === true || row.reset_used === 'true');
+            resetUsed = anyTrue;
         }
-        console.log('✅ fetchResetUsed →', resetUsed, data);
+        console.log('✅ fetchResetUsed → resetUsed =', resetUsed);
     } catch(err) {
         console.error('❌ reset_used alinamadi:', err);
         resetUsed = false;
@@ -1439,17 +1446,18 @@ async function executeReset() {
         /* 1) user_progress tablosunu temizle */
         const delRes = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
-            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}` } }
+            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${await getAuthToken()}` } }
         );
         if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
 
         /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
+        const _patchToken = await getAuthToken();
         const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`;
         console.log('🔧 PATCH URL:', patchUrl);
         const patchRes = await fetch(patchUrl, {
                 method:'PATCH',
                 headers:{
-                    'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}`,
+                    'apikey':supabaseKey, 'Authorization':`Bearer ${_patchToken}`,
                     'Content-Type':'application/json', 'Prefer':'return=representation'
                 },
                 body: JSON.stringify({ reset_used: true })
@@ -1462,11 +1470,18 @@ async function executeReset() {
             throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
         }
 
-        /* 3) LocalStorage tüm diller için temizle */
+        /* 2b) Supabase RLS sessiz basarisizligini yakala */
+        await fetchResetUsed();
+        console.log('🔧 Post-PATCH resetUsed =', resetUsed);
+        if (!resetUsed) {
+            console.warn('PATCH sonrasi reset_used hala false — RLS sorunu olabilir, bellek ici true yapiliyor');
+            resetUsed = true;
+        }
+
+        /* 3) LocalStorage tum diller icin temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 4) Bellek içi durumu güncelle */
-        resetUsed = true;
+        /* 4) Bellek ici zaten true */
 
         /* 5) Test butonlarını anında yenile */
         buildTestButtons();
@@ -2334,7 +2349,7 @@ async function fetchUserAccess() {
     try {
         const res = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
-            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${await getAuthToken()}` } }
         );
         const data = await res.json();
         if (data && data.length > 0) {
@@ -2400,7 +2415,7 @@ async function fetchProgressFromSupabase() {
         for (const lang of allLangs) {
             const res = await fetch(
                 `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
-                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${await getAuthToken()}` } }
             );
             if (!res.ok) continue;
             const data = await res.json();
@@ -2438,7 +2453,7 @@ async function saveProgressToSupabase(testNum, lang) {
     try {
         const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress', {
             method: 'POST',
-            headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+            headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${await getAuthToken()}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
             body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
         });
         if (!res.ok) { const err = await res.text(); console.error('❌ Progress kaydedilemedi:', err); showNotification('Progress could not be saved.', 'error'); return false; }
