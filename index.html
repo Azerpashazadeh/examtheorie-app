@@ -1443,7 +1443,7 @@ async function executeReset() {
 
         /* 2) user_plans tablosunda reset_used=false olan satırı true yap */
         const patchRes = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`,
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=is.false`,
             {
                 method:'PATCH',
                 headers:{
@@ -1453,7 +1453,11 @@ async function executeReset() {
                 body: JSON.stringify({ reset_used: true })
             }
         );
-        if (!patchRes.ok && patchRes.status !== 204) throw new Error('reset_used guncellenemedi');
+        if (!patchRes.ok && patchRes.status !== 204) {
+            const errText = await patchRes.text();
+            console.error('❌ PATCH hatası:', patchRes.status, errText);
+            throw new Error('reset_used guncellenemedi: ' + errText);
+        }
 
         /* 3) LocalStorage tüm diller için temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
@@ -1942,6 +1946,7 @@ function buildTestButtons() {
 
     /* 50 test tamamlandıysa — Supabase'den resetUsed çek, sonra karar ver */
     if (next === null && checkAllTestsCompleted(lang)) {
+        if (resetUsed) return; // zaten kullanılmış, fetch etmeye gerek yok
         fetchResetUsed().then(() => {
             if (!resetUsed) {
                 setTimeout(() => showResetBanner(), 400);
