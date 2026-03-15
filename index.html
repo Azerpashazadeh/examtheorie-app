@@ -1384,13 +1384,19 @@ async function fetchResetUsed() {
             { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
         );
         const data = await res.json();
+        console.log('🔍 fetchResetUsed - Raw data:', data);
+        console.log('🔍 fetchResetUsed - User ID:', currentUser.id);
+        console.log('🔍 fetchResetUsed - Response status:', res.status);
+        
         if (!data || data.length === 0) {
             // Satır yoksa reset hakkı kullanılmamış sayılır
             resetUsed = false;
+            console.log('🔍 fetchResetUsed - No plans found, resetUsed = false');
         } else {
             // Herhangi bir planda reset_used=false varsa kullanıcı reset yapabilir
             const hasAnyFalse = data.some(row => row.reset_used === false);
             resetUsed = !hasAnyFalse; // false hakkı varsa kullanılabilir demektir
+            console.log('🔍 fetchResetUsed - hasAnyFalse:', hasAnyFalse, 'resetUsed:', resetUsed);
         }
         console.log('✅ fetchResetUsed →', resetUsed, data);
     } catch(err) {
@@ -1445,6 +1451,9 @@ async function executeReset() {
         /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
         const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`;
         console.log('🔧 PATCH URL:', patchUrl);
+        console.log('🔧 User ID:', currentUser.id);
+        console.log('🔧 Request body:', JSON.stringify({ reset_used: true }));
+        
         const patchRes = await fetch(patchUrl, {
                 method:'PATCH',
                 headers:{
@@ -1457,8 +1466,17 @@ async function executeReset() {
         const patchData = await patchRes.json().catch(() => null);
         console.log('🔧 PATCH status:', patchRes.status);
         console.log('🔧 PATCH response:', JSON.stringify(patchData));
+        console.log('🔧 PATCH headers:', Object.fromEntries(patchRes.headers.entries()));
+        
         if (!patchRes.ok && patchRes.status !== 204) {
+            console.error('❌ PATCH error details:', {
+                status: patchRes.status,
+                statusText: patchRes.statusText,
+                response: patchData
+            });
             throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
+        } else {
+            console.log('✅ reset_used başarıyla güncellendi');
         }
 
         /* 3) LocalStorage tüm diller için temizle */
