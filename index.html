@@ -1382,27 +1382,32 @@ async function getAuthToken() {
     return session?.access_token || supabaseKey;
 }
 
+/*
+ * fetchResetUsed:
+ * user_plans tablosunda kullanicinin herhangi bir satirinda
+ * reset_used = FALSE varsa → resetUsed = false (banner gosterilebilir)
+ * Tum satirlar TRUE ise → resetUsed = true (banner gosterilmez)
+ */
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
-        const _token = await getAuthToken();
+        const token = await getAuthToken();
         const res = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used`,
-            { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${_token}` } }
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=id,reset_used`,
+            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${token}` } }
         );
         const data = await res.json();
-        console.log('🔍 fetchResetUsed raw data:', JSON.stringify(data));
-        if (!data || data.length === 0) {
+        console.log('🔍 fetchResetUsed raw:', JSON.stringify(data));
+        if (!Array.isArray(data) || data.length === 0) {
             resetUsed = false;
         } else {
-            // Herhangi bir satırda reset_used=true ise → hak kullanılmış
-            // String "true" ve boolean true her ikisini de yakala
-            const anyTrue = data.some(row => row.reset_used === true || row.reset_used === 'true');
-            resetUsed = anyTrue;
+            // Herhangi bir satirda reset_used FALSE/NULL varsa banner gosterilebilir
+            const hasUnused = data.some(row => row.reset_used === false || row.reset_used === null);
+            resetUsed = !hasUnused;
         }
-        console.log('✅ fetchResetUsed → resetUsed =', resetUsed);
+        console.log('✅ resetUsed =', resetUsed);
     } catch(err) {
-        console.error('❌ reset_used alinamadi:', err);
+        console.error('❌ fetchResetUsed hata:', err);
         resetUsed = false;
     }
 }
@@ -1436,57 +1441,70 @@ function closeResetBanner() {
 }
 
 async function executeReset() {
-    if (!currentUser || resetUsed) return;
+    if (!currentUser) return;
     const lang = currentLang || 'en';
     const t = RESET_I18N[lang] || RESET_I18N['en'];
     const btn = document.getElementById('btnResetNow');
     btn.disabled = true;
     btn.textContent = t.resetting;
+
     try {
-        /* 1) user_progress tablosunu temizle */
+        const token = await getAuthToken();
+
+        /* 1) reset_used=FALSE olan plan ID-lerini bul */
+        const plansRes = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false&select=id`,
+            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${token}` } }
+        );
+        const openPlans = await plansRes.json();
+        console.log('🔍 Open plans (reset_used=false):', JSON.stringify(openPlans));
+
+        if (!Array.isArray(openPlans) || openPlans.length === 0) {
+            // Zaten hepsi true — banner kapatalim
+            resetUsed = true;
+            closeResetBanner();
+            return;
+        }
+
+        /* 2) user_progress sil */
         const delRes = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}`,
-            { method:'DELETE', headers:{ 'apikey':supabaseKey, 'Authorization':`Bearer ${await getAuthToken()}` } }
+            { method: 'DELETE', headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${token}` } }
         );
-        if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
+        if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi: ' + delRes.status);
+        console.log('✅ user_progress silindi');
 
-        /* 2) user_plans tablosunda bu kullanıcının tüm satırlarını reset_used=true yap */
-        const _patchToken = await getAuthToken();
-        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}`;
-        console.log('🔧 PATCH URL:', patchUrl);
-        const patchRes = await fetch(patchUrl, {
-                method:'PATCH',
-                headers:{
-                    'apikey':supabaseKey, 'Authorization':`Bearer ${_patchToken}`,
-                    'Content-Type':'application/json', 'Prefer':'return=representation'
-                },
-                body: JSON.stringify({ reset_used: true })
-            }
-        );
-        const patchData = await patchRes.json().catch(() => null);
-        console.log('🔧 PATCH status:', patchRes.status);
-        console.log('🔧 PATCH response:', JSON.stringify(patchData));
-        if (!patchRes.ok && patchRes.status !== 204) {
-            throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
+        /* 3) Bulunan her acik plani tek tek TRUE yap (id bazli — en guvenli) */
+        for (const plan of openPlans) {
+            const pRes = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?id=eq.${plan.id}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=representation'
+                    },
+                    body: JSON.stringify({ reset_used: true })
+                }
+            );
+            const pData = await pRes.json().catch(() => null);
+            console.log(`🔧 PATCH plan id=${plan.id} status=${pRes.status}`, JSON.stringify(pData));
+            if (!pRes.ok && pRes.status !== 204) throw new Error(`Plan ${plan.id} guncellenemedi`);
         }
 
-        /* 2b) Supabase RLS sessiz basarisizligini yakala */
+        /* 4) Supabase dogrulama */
         await fetchResetUsed();
-        console.log('🔧 Post-PATCH resetUsed =', resetUsed);
-        if (!resetUsed) {
-            console.warn('PATCH sonrasi reset_used hala false — RLS sorunu olabilir, bellek ici true yapiliyor');
-            resetUsed = true;
-        }
+        console.log('🔧 Post-reset resetUsed =', resetUsed);
+        // Bellek ici kesin true yap (dogrulama gecikmesine karsi)
+        resetUsed = true;
 
-        /* 3) LocalStorage tum diller icin temizle */
+        /* 5) LocalStorage temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 4) Bellek ici zaten true */
-
-        /* 5) Test butonlarını anında yenile */
+        /* 6) UI guncelle */
         buildTestButtons();
-
-        /* 6) Geri bildirim ve banner kapat */
         btn.textContent = t.done;
         btn.style.background = 'linear-gradient(135deg,#00d46a,#00a050)';
         setTimeout(() => {
@@ -1498,7 +1516,7 @@ async function executeReset() {
         console.error('❌ Reset hatasi:', err);
         btn.disabled = false;
         btn.textContent = t.btnReset;
-        showNotification('❌ Reset failed. Please try again.', 'error');
+        showNotification('❌ Reset failed: ' + err.message, 'error');
     }
 }
 
