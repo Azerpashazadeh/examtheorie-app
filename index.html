@@ -1379,33 +1379,12 @@ let resetUsed = false;
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
-        // Önce user_plans tablosunu dene
-        let res = await fetch(
+        const res = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=id,reset_used,plan_type`,
             { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
         );
-        let data = await res.json();
+        const data = await res.json();
         console.log('🔍 fetchResetUsed - user_plans data:', data);
-        
-        // Eğer user_plans boşsa, user_access tablosunu kontrol et
-        if (!data || data.length === 0) {
-            console.log('🔍 fetchResetUsed - user_plans boş, user_access kontrol ediliyor...');
-            res = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at`,
-                { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-            );
-            data = await res.json();
-            console.log('🔍 fetchResetUsed - user_access data:', data);
-            
-            // user_access tablosunda reset_used yoksa, varsayılan olarak false kabul et
-            if (data && data.length > 0) {
-                resetUsed = false; // user_access tablosunda reset tracking yok, varsayılan olarak reset hakkı var
-                console.log('🔍 fetchResetUsed - user_access kullanılıyor, resetUsed = false');
-                return;
-            }
-        }
-        
-        console.log('🔍 fetchResetUsed - Raw data:', data);
         console.log('🔍 fetchResetUsed - User ID:', currentUser.id);
         console.log('🔍 fetchResetUsed - Response status:', res.status);
         
@@ -1470,7 +1449,7 @@ async function executeReset() {
         );
         if (!delRes.ok && delRes.status !== 204) throw new Error('Progress silinemedi');
 
-        /* 2) Önce mevcut planları kontrol et */
+        /* 2) Mevcut planları kontrol et */
         const checkRes = await fetch(
             `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=id,reset_used,plan_type`,
             { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
@@ -1478,54 +1457,40 @@ async function executeReset() {
         const checkData = await checkRes.json();
         console.log('🔍 executeReset - Mevcut user_plans:', checkData);
         
-        // Eğer user_plans boşsa, user_access tablosunu kontrol et
         if (!checkData || checkData.length === 0) {
-            console.log('🔍 executeReset - user_plans boş, user_access kontrol ediliyor...');
-            const accessRes = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at`,
-                { headers:{ 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-            );
-            const accessData = await accessRes.json();
-            console.log('🔍 executeReset - user_access data:', accessData);
-            
-            if (accessData && accessData.length > 0) {
-                console.log('🔍 executeReset - user_access kullanılıyor, reset tracking yapılamıyor');
-                // user_access tablosunda reset_used yok, sadece progress temizle
-                console.log('✅ Progress temizlendi (reset tracking yok)');
-            } else {
-                console.log('🔍 executeReset - Hiçbir plan bulunamadı');
+            console.log('🔍 executeReset - Hiçbir plan bulunamadı');
+            throw new Error('Kullanıcı planı bulunamadı');
+        }
+        
+        /* 3) Sadece reset_used=false olan planları güncelle */
+        const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`;
+        console.log('🔧 PATCH URL:', patchUrl);
+        console.log('🔧 User ID:', currentUser.id);
+        console.log('🔧 Request body:', JSON.stringify({ reset_used: true }));
+        
+        const patchRes = await fetch(patchUrl, {
+                method:'PATCH',
+                headers:{
+                    'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}`,
+                    'Content-Type':'application/json', 'Prefer':'return=representation'
+                },
+                body: JSON.stringify({ reset_used: true })
             }
+        );
+        const patchData = await patchRes.json().catch(() => null);
+        console.log('🔧 PATCH status:', patchRes.status);
+        console.log('🔧 PATCH response:', JSON.stringify(patchData));
+        console.log('🔧 PATCH headers:', Object.fromEntries(patchRes.headers.entries()));
+        
+        if (!patchRes.ok && patchRes.status !== 204) {
+            console.error('❌ PATCH error details:', {
+                status: patchRes.status,
+                statusText: patchRes.statusText,
+                response: patchData
+            });
+            throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
         } else {
-            /* 3) Sadece reset_used=false olan planları güncelle */
-            const patchUrl = `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&reset_used=eq.false`;
-            console.log('🔧 PATCH URL:', patchUrl);
-            console.log('🔧 User ID:', currentUser.id);
-            console.log('🔧 Request body:', JSON.stringify({ reset_used: true }));
-            
-            const patchRes = await fetch(patchUrl, {
-                    method:'PATCH',
-                    headers:{
-                        'apikey':supabaseKey, 'Authorization':`Bearer ${supabaseKey}`,
-                        'Content-Type':'application/json', 'Prefer':'return=representation'
-                    },
-                    body: JSON.stringify({ reset_used: true })
-                }
-            );
-            const patchData = await patchRes.json().catch(() => null);
-            console.log('🔧 PATCH status:', patchRes.status);
-            console.log('🔧 PATCH response:', JSON.stringify(patchData));
-            console.log('🔧 PATCH headers:', Object.fromEntries(patchRes.headers.entries()));
-            
-            if (!patchRes.ok && patchRes.status !== 204) {
-                console.error('❌ PATCH error details:', {
-                    status: patchRes.status,
-                    statusText: patchRes.statusText,
-                    response: patchData
-                });
-                throw new Error('reset_used guncellenemedi: ' + JSON.stringify(patchData));
-            } else {
-                console.log('✅ reset_used başarıyla güncellendi');
-            }
+            console.log('✅ reset_used başarıyla güncellendi');
         }
 
         /* 3) LocalStorage tüm diller için temizle */
