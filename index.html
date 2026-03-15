@@ -1379,16 +1379,12 @@ let resetUsed = false;
 async function fetchResetUsed() {
     if (!currentUser) { resetUsed = false; return; }
     try {
-        const { data, error } = await _supabase
-            .from('user_plans')
-            .select('reset_used, expires_at')
-            .eq('user_id', currentUser.id);
-        if (error) throw error;
-        console.log('📋 fetchResetUsed - planlar:', data);
-        if (!data || data.length === 0) {
-            resetUsed = false;
-            return;
-        }
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used,expires_at`,
+            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+        );
+        const data = await res.json();
+        if (!data || data.length === 0) { resetUsed = false; return; }
         // Sadece aktif (süresi dolmamış) planlara bak
         const now = new Date().toISOString();
         const activePlans = data.filter(row => !row.expires_at || row.expires_at > now);
@@ -1396,7 +1392,6 @@ async function fetchResetUsed() {
         // Aktif planlardan herhangi birinde reset_used=false/null varsa hak mevcut
         const hasUnused = activePlans.some(row => row.reset_used === false || row.reset_used === null);
         resetUsed = !hasUnused;
-        console.log('🔑 Reset durumu:', resetUsed ? 'HAK YOK' : 'HAK VAR', '| Aktif planlar:', activePlans.length);
     } catch(err) {
         console.error('❌ reset_used alinamadi:', err);
         resetUsed = false;
@@ -2409,12 +2404,12 @@ async function fetchProgressFromSupabase() {
     const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
         for (const lang of allLangs) {
-            const { data, error } = await _supabase
-                .from('user_progress')
-                .select('test_number')
-                .eq('user_id', currentUser.id)
-                .eq('language', lang);
-            if (error) { console.error('❌ Progress alinamadi:', lang, error); continue; }
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
             const completedTests = (data || []).map(r => r.test_number);
             localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
         }
@@ -2447,11 +2442,12 @@ async function saveProgressToSupabase(testNum, lang) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
     try {
-        const { error } = await _supabase
-            .from('user_progress')
-            .upsert({ user_id: currentUser.id, test_number: testNum, language: lang }, { onConflict: 'user_id,test_number,language' });
-        if (error) { console.error('❌ Progress kaydedilemedi:', error); showNotification('Progress could not be saved.', 'error'); return false; }
-        console.log('✅ Progress kaydedildi: test', testNum, lang);
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress', {
+            method: 'POST',
+            headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+            body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
+        });
+        if (!res.ok) { const err = await res.text(); console.error('❌ Progress kaydedilemedi:', err); showNotification('Progress could not be saved.', 'error'); return false; }
         return true;
     } catch (err) { console.error('❌ Unexpected error saving progress:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
 }
