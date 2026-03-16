@@ -2035,6 +2035,7 @@ async function startPayment(planId, planName, amount, days) {
         });
         const data = await res.json();
         if (data.paymentUrl) {
+            localStorage.setItem('et_payment_pending', '1'); // Mollie'den dönünce onAuthStateChange okur
             window.location.href = data.paymentUrl;
         } else {
             alert('❌ Payment error: ' + (data.error || 'Unknown error'));
@@ -2293,7 +2294,7 @@ async function startDailyPayment(e) {
             body: JSON.stringify({ planId: 'daily', planName, amount: p.price, days: selectedDays, userId: currentUser.id, userEmail: currentUser.email })
         });
         const data = await res.json();
-        if (data.paymentUrl) { window.location.href = data.paymentUrl; }
+        if (data.paymentUrl) { localStorage.setItem('et_payment_pending', '1'); window.location.href = data.paymentUrl; }
         else { alert('❌ Payment error: ' + (data.error || 'Unknown error')); btn.disabled = false; btn.textContent = originalText; }
     } catch (err) {
         console.error('Daily payment error:', err);
@@ -2492,25 +2493,34 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            const sessionId = session.access_token; // her oturum için benzersiz
-            // Aynı token ile daha önce işlem yapıldıysa sadece modal kapat, tekrar çekme
+            const sessionId = session.access_token;
+
+            // SIGNED_IN: duplicate kontrolü — aynı token ile zaten işlem yapıldıysa sadece modal kapat
+            // INITIAL_SESSION: sayfa yenileme veya Mollie dönüşü — her zaman çalışsın, guard yok
             if (event === 'SIGNED_IN' && _lastHandledSessionId === sessionId) {
-                console.log('⏭️ Same session already handled, skipping duplicate SIGNED_IN');
+                console.log('⏭️ Duplicate SIGNED_IN, skipping');
                 closeModal('si'); closeModal('su');
                 return;
             }
             _lastHandledSessionId = sessionId;
             currentUser = session.user;
-            // URL parametresini fetchUserAccess'ten ÖNCE oku — DOMContentLoaded onu silmiş olabilir
-            const _isPaymentReturn = new URLSearchParams(window.location.search).get('payment') === 'success';
-            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-            buildTestButtons(); updateNavbarUser();
+
+            // localStorage flag'i ile ödeme dönüşü tespit et
+            const _isPaymentReturn = localStorage.getItem('et_payment_pending') === '1';
             if (_isPaymentReturn) {
-                // Ödeme dönüşü: user_progress ve localStorage temizle, ardından plan aktif olana kadar polling yap
+                // Ödeme dönüşü: ÖNCE Supabase ve localStorage'ı temizle
+                localStorage.removeItem('et_payment_pending');
                 await _supabase.from('user_progress').delete().eq('user_id', currentUser.id);
                 ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
                 _resetFetchPromise = null;
-                buildTestButtons(); // temizlenmiş haliyle hemen güncelle
+            }
+
+            // Temizleme SONRASI güncel veriyi çek
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons(); updateNavbarUser();
+
+            if (_isPaymentReturn) {
+                // Plan Supabase webhook'u ile yazılıyor, biraz gecikebilir — polling yap
                 const pollForPlan = async (attemptsLeft) => {
                     if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success'); return; }
                     await new Promise(r => setTimeout(r, 2000));
@@ -2521,6 +2531,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 };
                 pollForPlan(8);
             }
+
             if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
             if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
         } else if (event === 'INITIAL_SESSION' && !session) {
@@ -2583,7 +2594,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
-        // Ödeme dönüşü: URL'yi hemen temizle, geri kalanı onAuthStateChange halleder
+        // Ödeme dönüşü: flag'i localStorage'a kaydet, URL'yi temizle, onAuthStateChange halleder
+        localStorage.setItem('et_payment_pending', '1');
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
     }
