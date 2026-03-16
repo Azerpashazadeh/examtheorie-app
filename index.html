@@ -2341,7 +2341,7 @@ async function fetchUserAccess() {
     }
     try {
         const now = new Date().toISOString();
-        // user_access View yerine direkt tablolardan sorgula (View cache sorununu önler)
+        // user_plans'a direkt sorgula (View cache sorununu önler, JWT ile RLS doğru çalışır)
         const { data: plans, error: plansErr } = await _supabase
             .from('user_plans')
             .select('plan_id, expires_at')
@@ -2360,16 +2360,15 @@ async function fetchUserAccess() {
         // En son aktif planın plan_id'si
         currentPlanId = plans[0].plan_id;
 
-        // Bu planların group_id'lerini group_plans'dan çek
-        const planIds = [...new Set(plans.map(r => r.plan_id))];
-        const { data: groups, error: groupsErr } = await _supabase
-            .from('group_plans')
+        // group_id için user_access View'ını kullan (UNRESTRICTED — RLS yok, postgres rolüyle çalışır)
+        const { data: accessRows, error: accessErr } = await _supabase
+            .from('user_access')
             .select('group_id')
-            .in('plan_id', planIds);
-        if (groupsErr) throw groupsErr;
+            .eq('user_id', currentUser.id);
+        if (accessErr) throw accessErr;
 
-        accessibleGroups = groups && groups.length > 0
-            ? [...new Set(groups.map(r => r.group_id))]
+        accessibleGroups = accessRows && accessRows.length > 0
+            ? [...new Set(accessRows.map(r => r.group_id))]
             : [];
 
         await fetchResetUsed();
