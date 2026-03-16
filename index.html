@@ -14,7 +14,7 @@
     
     <title>ExamTheorie — CBR Theory</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <script src="/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
     <script>
         if (typeof supabase === 'undefined') {
             document.write('<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"><\/script>');
@@ -2035,7 +2035,6 @@ async function startPayment(planId, planName, amount, days) {
         });
         const data = await res.json();
         if (data.paymentUrl) {
-            localStorage.setItem('et_payment_pending', '1'); // Mollie'den dönünce onAuthStateChange okur
             window.location.href = data.paymentUrl;
         } else {
             alert('❌ Payment error: ' + (data.error || 'Unknown error'));
@@ -2095,6 +2094,9 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         autoRefreshToken: true,
         detectSessionInUrl: true,
         flowType: 'implicit',
+        lock: function(name, acquireTimeout, fn) { return fn(); },
+        maxSessionTimeout: 60 * 60 * 24 * 7,
+        refreshTokenThreshold: 60 * 5,
     }
 });
 
@@ -2291,7 +2293,7 @@ async function startDailyPayment(e) {
             body: JSON.stringify({ planId: 'daily', planName, amount: p.price, days: selectedDays, userId: currentUser.id, userEmail: currentUser.email })
         });
         const data = await res.json();
-        if (data.paymentUrl) { localStorage.setItem('et_payment_pending', '1'); window.location.href = data.paymentUrl; }
+        if (data.paymentUrl) { window.location.href = data.paymentUrl; }
         else { alert('❌ Payment error: ' + (data.error || 'Unknown error')); btn.disabled = false; btn.textContent = originalText; }
     } catch (err) {
         console.error('Daily payment error:', err);
@@ -2340,37 +2342,17 @@ async function fetchUserAccess() {
         else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
-        const now = new Date().toISOString();
-        // user_plans'a direkt sorgula (View cache sorununu önler, JWT ile RLS doğru çalışır)
-        const { data: plans, error: plansErr } = await _supabase
-            .from('user_plans')
-            .select('plan_id, expires_at')
-            .eq('user_id', currentUser.id)
-            .gt('expires_at', now)
-            .not('plan_id', 'is', null)
-            .order('created_at', { ascending: false });
-        if (plansErr) throw plansErr;
-
-        if (!plans || plans.length === 0) {
-            currentPlanId = null; accessibleGroups = [];
-            await fetchResetUsed();
-            return;
-        }
-
-        // En son aktif planın plan_id'si
-        currentPlanId = plans[0].plan_id;
-
-        // group_id için user_access View'ını kullan (UNRESTRICTED — RLS yok, postgres rolüyle çalışır)
-        const { data: accessRows, error: accessErr } = await _supabase
+        const { data, error } = await _supabase
             .from('user_access')
-            .select('group_id')
+            .select('plan_id, plan_name, expires_at, group_id')
             .eq('user_id', currentUser.id);
-        if (accessErr) throw accessErr;
-
-        accessibleGroups = accessRows && accessRows.length > 0
-            ? [...new Set(accessRows.map(r => r.group_id))]
-            : [];
-
+        if (error) throw error;
+        if (data && data.length > 0) {
+            currentPlanId    = data[0].plan_id;
+            accessibleGroups = [...new Set(data.map(r => r.group_id))];
+        } else {
+            currentPlanId = null; accessibleGroups = [];
+        }
         await fetchResetUsed();
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
@@ -2519,34 +2501,20 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             }
             _lastHandledSessionId = sessionId;
             currentUser = session.user;
-
-            // localStorage flag ile ödeme dönüşü tespit et (URL zaten silinmiş olabilir)
-            const _isPaymentReturn = localStorage.getItem('et_payment_pending') === '1';
-            if (_isPaymentReturn) {
-                // Ödeme dönüşü: ÖNCE Supabase ve localStorage'ı temizle
-                localStorage.removeItem('et_payment_pending');
-                await _supabase.from('user_progress').delete().eq('user_id', currentUser.id);
-                ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
-                _resetFetchPromise = null;
-            }
-
-            // Temizleme SONRASI güncel veriyi çek
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons(); updateNavbarUser();
-
-            if (_isPaymentReturn) {
-                buildTestButtons(); // temizlenmiş haliyle tekrar güncelle
+            const _urlParams = new URLSearchParams(window.location.search);
+            if (_urlParams.get('payment') === 'success') {
                 const pollForPlan = async (attemptsLeft) => {
                     if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success'); return; }
                     await new Promise(r => setTimeout(r, 2000));
                     await fetchUserAccess();
                     buildTestButtons();
-                    if (currentPlanId) { showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
+                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); }
                     else { pollForPlan(attemptsLeft - 1); }
                 };
                 pollForPlan(8);
             }
-
             if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
             if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
         } else if (event === 'INITIAL_SESSION' && !session) {
@@ -2609,10 +2577,16 @@ window.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
-        // Ödeme dönüşü: flag set et, URL temizle, geri kalanı onAuthStateChange halleder
-        localStorage.setItem('et_payment_pending', '1');
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
+        let attempts = 0;
+        const maxAttempts = 10;
+        const planInterval = setInterval(async () => {
+            attempts++;
+            await fetchUserAccess();
+            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
+            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
+        }, 2000);
     }
     const reason = params.get('reason');
     if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
