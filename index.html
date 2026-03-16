@@ -14,10 +14,10 @@
     
     <title>ExamTheorie — CBR Theory</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
     <script>
         if (typeof supabase === 'undefined') {
-            document.write('<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"><\/script>');
+            document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"><\/script>');
         }
     </script>
     <style>
@@ -2087,9 +2087,27 @@ document.addEventListener('keydown', e => {
 ═══════════════════════════════════════════════════════ */
 const supabaseUrl = 'https://rvbcsakzfadhtlfeigus.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
+// Cookie tabanlı storage — Edge/Safari Tracking Prevention'a karşı
+const _cookieStorage = {
+    getItem: (key) => {
+        const match = document.cookie.match(new RegExp('(^| )' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : null;
+    },
+    setItem: (key, value) => {
+        const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
+        document.cookie = key + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+        // localStorage'a da yaz (fallback)
+        try { localStorage.setItem(key, value); } catch(e) {}
+    },
+    removeItem: (key) => {
+        document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        try { localStorage.removeItem(key); } catch(e) {}
+    }
+};
+
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
     auth: {
-        storage: window.localStorage,
+        storage: _cookieStorage,
         storageKey: 'sb-rvbcsakzfadhtlfeigus-auth-token',
         persistSession: true,
         autoRefreshToken: true,
