@@ -2335,11 +2335,21 @@ async function checkAuth() {
 }
 
 /* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre ─── */
-async function fetchUserAccess() {
-    if (!currentUser) {
-        const { data: { session } } = await _supabase.auth.getSession();
-        if (session?.user) { currentUser = session.user; }
-        else { currentPlanId = null; accessibleGroups = []; return; }
+async function fetchUserAccess(forceRefresh = false) {
+    // forceRefresh=true: Mollie gibi dış yönlendirmelerden sonra token'ı zorla yenile.
+    // Aksi halde currentUser set edilmişse session kontrolünü atla.
+    if (forceRefresh || !currentUser) {
+        try {
+            const { data: rd, error: re } = await _supabase.auth.refreshSession();
+            if (!re && rd?.session?.user) {
+                currentUser = rd.session.user;
+            } else if (!currentUser) {
+                currentPlanId = null; accessibleGroups = []; return;
+            }
+            // forceRefresh ama refresh başarısız olsa bile currentUser varsa devam et
+        } catch(e) {
+            if (!currentUser) { currentPlanId = null; accessibleGroups = []; return; }
+        }
     }
     try {
         const { data, error } = await _supabase
@@ -2490,33 +2500,10 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            if (!currentUser || currentUser.id !== session.user.id) {
-                // Yeni kullanıcı veya farklı kullanıcı — tam fetch yap
-                currentUser = session.user;
-                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-                buildTestButtons();
-                updateNavbarUser();
-            } else {
-                // Aynı kullanıcı (ör. ödeme sonrası döndü) — progress + access her zaman güncelle
-                currentUser = session.user;
-                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-                buildTestButtons();
-                updateNavbarUser();
-            }
-            // payment polling: DOMContentLoaded zaten hallediyor, burada sadece
-            // onAuthStateChange'in DOMContentLoaded'dan önce tetiklendiği edge case'i yakala
-            const _urlParams = new URLSearchParams(window.location.search);
-            if (_urlParams.get('payment') === 'success' && event === 'INITIAL_SESSION') {
-                const pollForPlan = async (attemptsLeft) => {
-                    if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success'); return; }
-                    await new Promise(r => setTimeout(r, 2000));
-                    await fetchUserAccess();
-                    buildTestButtons();
-                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); }
-                    else { pollForPlan(attemptsLeft - 1); }
-                };
-                pollForPlan(8);
-            }
+            currentUser = session.user;
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons();
+            updateNavbarUser();
             if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
             if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
         } else if (event === 'INITIAL_SESSION' && !session) {
@@ -2589,10 +2576,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         const maxAttempts = 10;
         const planInterval = setInterval(async () => {
             attempts++;
-            await fetchUserAccess();
+            // forceRefresh=true: Mollie'den dönen token'ı her seferinde yenile
+            await fetchUserAccess(true);
             if (currentPlanId) {
                 clearInterval(planInterval);
-                await fetchProgressFromSupabase(); // ← plan aktif olunca progress de senkronize et
+                await fetchProgressFromSupabase();
                 buildTestButtons(); updateNavbarUser();
                 showNotification('✅ Plan activated! Enjoy your studies.', 'success');
             } else if (attempts >= maxAttempts) {
