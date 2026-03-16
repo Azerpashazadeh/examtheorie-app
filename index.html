@@ -1,978 +1,2750 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code of Conduct – ExamTheorie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300 ;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg-deep:       #050d1a;
-            --bg-mid:        #071428;
-            --blue-primary:  #1a6cf6;
-            --blue-light:    #4da6ff;
-            --blue-glow:     rgba(26, 108, 246, 0.35);
-            --blue-subtle:   rgba(77, 166, 255, 0.12);
-            --glass-bg:      rgba(10, 30, 65, 0.55);
-            --glass-border:  rgba(77, 166, 255, 0.22);
-            --glass-shine:   rgba(255, 255, 255, 0.06);
-            --red-accent:    #e84545;
-            --red-glow:      rgba(232, 69, 69, 0.3);
-            --text-primary:  #e8f0ff;
-            --text-muted:    rgba(200, 220, 255, 1);
-            --text-dim:      rgba(140, 175, 230, 0.55);
-        }
-
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.75;
-            min-height: 100vh;
-            padding-bottom: 100px;
-            background-image:
-                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(26, 108, 246, 0.18) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26, 108, 246, 0.12) 0%, transparent 55%),
-                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(5, 20, 60, 0.9) 0%, transparent 100%);
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(77, 166, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(77, 166, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-            filter: blur(90px);
-            opacity: 0.15;
-        }
-        .orb-1 { width: 500px; height: 500px; background: var(--blue-primary); top: -100px; left: -100px; }
-        .orb-2 { width: 400px; height: 400px; background: var(--blue-light);   bottom: 100px; right: -80px; }
-
-        .page-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 75%;
-            margin: 0 auto;
-            padding: 50px 20px 20px;
-        }
-        @media (min-width: 768px) and (max-width: 1024px) { .page-wrapper { width: 95%; } }
-        @media (max-width: 767px) { .page-wrapper { width: 96%; padding: 30px 14px; } }
-
-        /* Breadcrumb */
-        .brand-strip {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 40px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            letter-spacing: 0.04em;
-        }
-        .brand-strip .dot { color: var(--blue-light); }
-
-        /* Headings */
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 30%, var(--blue-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-            font-weight: 600;
-            color: var(--blue-light);
-            margin: 48px 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 1.2em;
-            background: linear-gradient(180deg, var(--blue-primary), var(--blue-light));
-            border-radius: 4px;
-            flex-shrink: 0;
-        }
-
-        h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: 0.02em;
-        }
-
-        p {
-            font-family: 'Lora', serif;
-            font-size: 0.96rem;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-        }
-
-        /* Glass cards */
-        .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 28px 28px 28px 36px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            margin-bottom: 24px;
-            box-shadow:
-                0 4px 24px rgba(0, 0, 0, 0.35),
-                inset 0 1px 0 var(--glass-shine);
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .glass-card .accent-line {
-            position: absolute;
-            left: 0; top: 0;
-            width: 3px; height: 100%;
-            background: linear-gradient(180deg, var(--blue-primary) 0%, var(--blue-light) 100%);
-            border-radius: 0 4px 4px 0;
-        }
-
-        /* Red accent variant */
-        .glass-card.red-accent .accent-line {
-            background: linear-gradient(180deg, var(--red-accent) 0%, #ff8a8a 100%);
-        }
-        .glass-card.red-accent {
-            border-color: rgba(232, 69, 69, 0.2);
-            box-shadow:
-                0 4px 24px rgba(0, 0, 0, 0.35),
-                0 0 30px rgba(232, 69, 69, 0.06),
-                inset 0 1px 0 var(--glass-shine);
-        }
-
-        /* Vocab list inside glass card */
-        .vocab-list {
-            list-style: none;
-            padding: 0;
-            margin: 12px 0 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .vocab-list li {
-            padding: 13px 16px;
-            background: rgba(26, 108, 246, 0.08);
-            border: 1px solid rgba(77, 166, 255, 0.12);
-            border-radius: 10px;
-            font-family: 'Lora', serif;
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .vocab-list li strong {
-            display: block;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            color: var(--blue-light);
-            font-size: 0.88rem;
-            letter-spacing: 0.06em;
-            margin-bottom: 3px;
-        }
-
-        /* Prose bullet list */
-        .prose-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .prose-list li {
-            font-family: 'Lora', serif;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            padding-left: 22px;
-            position: relative;
-        }
-        .prose-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.62em;
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--blue-primary);
-            box-shadow: 0 0 6px var(--blue-glow);
-        }
-
-        /* Sub section divider inside glass card */
-        .sub-section {
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(77, 166, 255, 0.1);
-        }
-
-        /* Images */
-        .custom-image,
-        .custom-centered-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            display: block;
-            margin: 16px 0;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-        }
-        .custom-centered-image { margin: 28px auto; }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .image-container figure { flex: 1 1 46%; margin: 0; }
-        .image-container img {
-            width: 100%; height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 6px 24px rgba(0,0,0,0.4);
-        }
-        .image-container figcaption {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            text-align: center;
-            margin-top: 8px;
-            letter-spacing: 0.02em;
-        }
-        @media (max-width: 550px) { .image-container figure { flex: 1 1 100%; } }
-
-        /* Divider */
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
-            margin: 10px 0 32px;
-        }
-
-        /* Back button */
-        .custom-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            background: linear-gradient(135deg, var(--blue-primary) 0%, #1250c4 100%);
-            color: #ffffff;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 60px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(26, 108, 246, 0.45);
-            letter-spacing: 0.04em;
-        }
-        .custom-button::before { content: '←'; font-size: 1.1rem; }
-        .custom-button:hover {
-            background: linear-gradient(135deg, #2d7ef8 0%, #1a5de0 100%);
-            box-shadow: 0 6px 30px rgba(26, 108, 246, 0.65);
-            transform: translateY(-2px);
-        }
-
-        /* Page entry animation */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .page-wrapper > * {
-            animation: fadeUp 0.5s ease both;
-        }
-        .page-wrapper > *:nth-child(1)  { animation-delay: 0.05s; }
-        .page-wrapper > *:nth-child(2)  { animation-delay: 0.10s; }
-        .page-wrapper > *:nth-child(3)  { animation-delay: 0.15s; }
-        .page-wrapper > *:nth-child(4)  { animation-delay: 0.20s; }
-        .page-wrapper > *:nth-child(5)  { animation-delay: 0.25s; }
-        .page-wrapper > *:nth-child(6)  { animation-delay: 0.30s; }
-        .page-wrapper > *:nth-child(n+7){ animation-delay: 0.35s; }
-
-        /* ═══════════════════════════════════════
-           FLOATING TOOLBAR
-        ═══════════════════════════════════════ */
-        .toolbar {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            background: rgba(5, 15, 35, 0.75);
-            border: 1px solid rgba(77, 166, 255, 0.25);
-            border-radius: 20px;
-            padding: 14px 10px;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            box-shadow:
-                0 8px 32px rgba(0,0,0,0.5),
-                inset 0 1px 0 rgba(255,255,255,0.06);
-        }
-
-        .toolbar-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: rgba(140, 175, 230, 0.5);
-            text-transform: uppercase;
-            margin-bottom: 2px;
-            text-align: center;
-        }
-
-        .toolbar-divider {
-            width: 28px;
-            height: 1px;
-            background: rgba(77, 166, 255, 0.15);
-            margin: 6px 0;
-        }
-
-        /* Font size buttons */
-        .font-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            border: 1px solid rgba(77, 166, 255, 0.15);
-            background: rgba(26, 108, 246, 0.1);
-            color: var(--blue-light);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            user-select: none;
-            -webkit-user-select: none;
-            line-height: 1;
-        }
-        .font-btn:hover {
-            background: rgba(26, 108, 246, 0.25);
-            border-color: rgba(77, 166, 255, 0.45);
-            box-shadow: 0 0 10px rgba(26, 108, 246, 0.3);
-        }
-        .font-btn.small-a { font-size: 0.8rem; }
-        .font-btn.big-a   { font-size: 1.15rem; }
-
-        /* Font size reset */
-        .font-reset {
-            font-size: 0.65rem;
-            width: 36px;
-            height: 22px;
-            border-radius: 7px;
-            border: 1px solid rgba(77, 166, 255, 0.12);
-            background: transparent;
-            color: rgba(140, 175, 230, 0.55);
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            transition: all 0.2s;
-            text-align: center;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-        .font-reset:hover { color: var(--blue-light); border-color: rgba(77,166,255,0.3); }
-
-        /* Color swatches */
-        .swatch {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease;
-            position: relative;
-            flex-shrink: 0;
-        }
-        .swatch:hover { transform: scale(1.15); }
-        .swatch.active {
-            border-color: #ffffff;
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.3), 0 0 10px rgba(255,255,255,0.2);
-        }
-
-        /* Theme: default blue-dark */
-        .swatch-blue    { background: radial-gradient(circle at 35% 35%, #4da6ff, #1a6cf6); }
-        /* Theme: deep purple */
-        .swatch-purple  { background: radial-gradient(circle at 35% 35%, #b07fff, #6b2fff); }
-        /* Theme: emerald */
-        .swatch-green   { background: radial-gradient(circle at 35% 35%, #4dffc3, #00b882); }
-        /* Theme: warm amber */
-        .swatch-amber   { background: radial-gradient(circle at 35% 35%, #ffd166, #e07b00); }
-        /* Theme: light / white */
-        .swatch-light   { background: radial-gradient(circle at 35% 35%, #e8f0ff, #b0c4e8); border-color: rgba(0,0,0,0.15); }
-        /* Theme: high contrast */
-        .swatch-contrast { background: radial-gradient(circle at 35% 35%, #ffffff, #000000); }
-        /* Theme: paper / reading mode */
-        .swatch-paper   { background: radial-gradient(circle at 35% 35%, #fafaf5, #e8e8e0); border-color: rgba(0,0,0,0.2); }
-
-        /* ── Theme: Purple ── */
-        body.theme-purple {
-            --bg-deep:       #0d0520;
-            --bg-mid:        #130730;
-            --blue-primary:  #6b2fff;
-            --blue-light:    #b07fff;
-            --blue-glow:     rgba(107, 47, 255, 0.35);
-            --blue-subtle:   rgba(176, 127, 255, 0.12);
-            --glass-bg:      rgba(30, 10, 70, 0.55);
-            --glass-border:  rgba(176, 127, 255, 0.22);
-            --text-primary:  #f0e8ff;
-            --text-muted:    rgba(230, 210, 255, 0.9);
-            --text-dim:      rgba(175, 150, 230, 0.55);
-        }
-        body.theme-purple { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(107, 47, 255, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(107, 47, 255, 0.12) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(20, 5, 50, 0.9) 0%, transparent 100%);
-        }
-        body.theme-purple .orb-1 { background: #6b2fff; }
-        body.theme-purple .orb-2 { background: #b07fff; }
-
-        /* ── Theme: Green ── */
-        body.theme-green {
-            --bg-deep:       #021510;
-            --bg-mid:        #031f16;
-            --blue-primary:  #00b882;
-            --blue-light:    #4dffc3;
-            --blue-glow:     rgba(0, 184, 130, 0.35);
-            --blue-subtle:   rgba(77, 255, 195, 0.12);
-            --glass-bg:      rgba(0, 35, 25, 0.55);
-            --glass-border:  rgba(77, 255, 195, 0.22);
-            --text-primary:  #e0fff4;
-            --text-muted:    rgba(180, 255, 220, 0.9);
-            --text-dim:      rgba(120, 210, 170, 0.55);
-        }
-        body.theme-green { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0, 184, 130, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(0, 184, 130, 0.12) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(2, 20, 14, 0.9) 0%, transparent 100%);
-        }
-        body.theme-green .orb-1 { background: #00b882; }
-        body.theme-green .orb-2 { background: #4dffc3; }
-
-        /* ── Theme: Amber ── */
-        body.theme-amber {
-            --bg-deep:       #150a00;
-            --bg-mid:        #201000;
-            --blue-primary:  #e07b00;
-            --blue-light:    #ffd166;
-            --blue-glow:     rgba(224, 123, 0, 0.35);
-            --blue-subtle:   rgba(255, 209, 102, 0.12);
-            --glass-bg:      rgba(40, 20, 0, 0.55);
-            --glass-border:  rgba(255, 209, 102, 0.22);
-            --text-primary:  #fff8e8;
-            --text-muted:    rgba(255, 235, 180, 0.9);
-            --text-dim:      rgba(210, 175, 100, 0.55);
-        }
-        body.theme-amber { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(224, 123, 0, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(224, 123, 0, 0.12) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(25, 12, 0, 0.9) 0%, transparent 100%);
-        }
-        body.theme-amber .orb-1 { background: #e07b00; }
-        body.theme-amber .orb-2 { background: #ffd166; }
-
-        /* ── Theme: Light ── */
-        body.theme-light {
-            --bg-deep:       #f0f4ff;
-            --bg-mid:        #e4ecff;
-            --blue-primary:  #1a6cf6;
-            --blue-light:    #0050cc;
-            --blue-glow:     rgba(26, 108, 246, 0.2);
-            --blue-subtle:   rgba(26, 108, 246, 0.08);
-            --glass-bg:      rgba(255, 255, 255, 0.65);
-            --glass-border:  rgba(26, 108, 246, 0.18);
-            --glass-shine:   rgba(255, 255, 255, 0.9);
-            --text-primary:  #0a1a3a;
-            --text-muted:    rgba(30, 60, 120, 0.95);
-            --text-dim:      rgba(60, 100, 180, 0.55);
-        }
-        body.theme-light { background-image:
-            radial-gradient(ellipse 80% 60% at 20% 10%, rgba(26, 108, 246, 0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26, 108, 246, 0.06) 0%, transparent 55%),
-            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(220, 230, 255, 0.9) 0%, transparent 100%);
-        }
-        body.theme-light::before {
-            background-image:
-                linear-gradient(rgba(26, 108, 246, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(26, 108, 246, 0.04) 1px, transparent 1px);
-        }
-        body.theme-light .orb-1 { background: #4da6ff; opacity: 0.1; }
-        body.theme-light .orb-2 { background: #1a6cf6; opacity: 0.08; }
-        body.theme-light h1 {
-            background: linear-gradient(135deg, #0a1a3a 30%, #1a6cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        body.theme-light .toolbar {
-            background: rgba(240, 244, 255, 0.85);
-            border-color: rgba(26, 108, 246, 0.2);
-        }
-
-        /* ── Theme: High Contrast ── */
-        body.theme-contrast {
-            --bg-deep:       #000000;
-            --bg-mid:        #0a0a0a;
-            --blue-primary:  #ffffff;
-            --blue-light:    #ffff00;
-            --blue-glow:     rgba(255, 255, 0, 0.3);
-            --blue-subtle:   rgba(255, 255, 0, 0.1);
-            --glass-bg:      rgba(0, 0, 0, 0.85);
-            --glass-border:  rgba(255, 255, 0, 0.4);
-            --glass-shine:   rgba(255, 255, 255, 0.05);
-            --text-primary:  #ffffff;
-            --text-muted:    #eeeeee;
-            --text-dim:      #aaaaaa;
-        }
-        body.theme-contrast { background-image: none; }
-        body.theme-contrast::before { display: none; }
-        body.theme-contrast .orb { display: none; }
-        body.theme-contrast h1 {
-            background: linear-gradient(135deg, #ffffff 30%, #ffff00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        body.theme-contrast .glass-card {
-            border-width: 2px;
-        }
-
-        /* ── Theme: Paper (Okuma Modu) ── */
-        body.theme-paper {
-            --bg-deep:       #f5f5f0;
-            --bg-mid:        #ebebe5;
-            --blue-primary:  #5c5c5c;
-            --blue-light:    #8b7355;
-            --blue-glow:     rgba(139, 115, 85, 0.2);
-            --blue-subtle:   rgba(139, 115, 85, 0.08);
-            --glass-bg:      rgba(255, 255, 255, 0.8);
-            --glass-border:  rgba(139, 115, 85, 0.15);
-            --glass-shine:   rgba(255, 255, 255, 0.9);
-            --red-accent:    #c45c5c;
-            --red-glow:      rgba(196, 92, 92, 0.2);
-            --text-primary:  #0a0a0a;
-            --text-muted:    #2a2a2a;
-            --text-dim:      #5a5a5a;
-        }
-        body.theme-paper { 
-            background-image: none;
-            background-color: #f5f5f0;
-        }
-        body.theme-paper::before { 
-            background-image:
-                linear-gradient(rgba(139, 115, 85, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 115, 85, 0.03) 1px, transparent 1px);
-        }
-        body.theme-paper .orb { display: none; }
-        body.theme-paper h1 {
-            background: linear-gradient(135deg, #0a0a0a 30%, #5c5c5c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        body.theme-paper h2 {
-            color: #5c5c5c;
-        }
-        body.theme-paper h2::before {
-            background: linear-gradient(180deg, #5c5c5c, #8b7355);
-        }
-        body.theme-paper h3 {
-            color: #0a0a0a;
-        }
-        body.theme-paper .glass-card .accent-line {
-            background: linear-gradient(180deg, #5c5c5c 0%, #8b7355 100%);
-        }
-        body.theme-paper .vocab-list li {
-            background: rgba(139, 115, 85, 0.06);
-            border-color: rgba(139, 115, 85, 0.12);
-        }
-        body.theme-paper .vocab-list li strong {
-            color: #5c5c5c;
-        }
-        body.theme-paper .prose-list li::before {
-            background: #5c5c5c;
-            box-shadow: 0 0 6px rgba(139, 115, 85, 0.3);
-        }
-        body.theme-paper .glass-card.red-accent .accent-line {
-            background: linear-gradient(180deg, #c45c5c 0%, #d48585 100%);
-        }
-        body.theme-paper .custom-button {
-            background: linear-gradient(135deg, #5c5c5c 0%, #3a3a3a 100%);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        body.theme-paper .custom-button:hover {
-            background: linear-gradient(135deg, #6a6a6a 0%, #4a4a4a 100%);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-        }
-        body.theme-paper .toolbar {
-            background: rgba(245, 245, 240, 0.9);
-            border-color: rgba(139, 115, 85, 0.2);
-        }
-        body.theme-paper .font-btn {
-            background: rgba(139, 115, 85, 0.1);
-            border-color: rgba(139, 115, 85, 0.2);
-            color: #5c5c5c;
-        }
-        body.theme-paper .font-btn:hover {
-            background: rgba(139, 115, 85, 0.2);
-            border-color: rgba(139, 115, 85, 0.4);
-            box-shadow: 0 0 10px rgba(139, 115, 85, 0.2);
-        }
-        body.theme-paper .font-reset {
-            color: #5a5a5a;
-            border-color: rgba(139, 115, 85, 0.15);
-        }
-        body.theme-paper .font-reset:hover {
-            color: #5c5c5c;
-            border-color: rgba(139, 115, 85, 0.3);
-        }
-        body.theme-paper .toolbar-label {
-            color: #5a5a5a;
-        }
-        body.theme-paper .toolbar-divider {
-            background: rgba(139, 115, 85, 0.15);
-        }
-        body.theme-paper .brand-strip .dot {
-            color: #8b7355;
-        }
-        body.theme-paper .section-divider {
-            background: linear-gradient(90deg, transparent, rgba(139, 115, 85, 0.2), transparent);
-        }
-        body.theme-paper .sub-section {
-            border-top-color: rgba(139, 115, 85, 0.1);
-        }
-        body.theme-paper .image-container figcaption {
-            color: #5a5a5a;
-        }
-
-        /* Mobile: toolbar moves to bottom - FIXED */
-        @media (max-width: 767px) {
-            .toolbar {
-                right: unset;
-                top: unset;
-                bottom: 16px;
-                left: 50%;
-                transform: translateX(-50%);
-                flex-direction: row;
-                border-radius: 50px;
-                padding: 10px 16px;
-                gap: 8px;
-                max-width: 96%;  /* Ekranın %96'sından fazla olamaz */
-                width: auto;     /* İçeriğe göre genişlik */
-                box-sizing: border-box;
-            }
-            .toolbar-label { display: none; }
-            .toolbar-divider {
-                width: 1px;
-                height: 28px;
-                margin: 0 4px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
-    <!-- ═══ FLOATING TOOLBAR ═══ -->
-    <div class="toolbar" id="toolbar">
-
-        <!-- Font size -->
-        <div class="toolbar-label">size</div>
-        <button class="font-btn small-a" id="btn-shrink" title="Küçült (Decrease font)">a</button>
-        <button class="font-btn big-a"   id="btn-grow"   title="Büyüt (Increase font)">A</button>
-        <button class="font-reset"       id="btn-reset-font" title="Varsayılan boyut">reset</button>
-
-        <div class="toolbar-divider"></div>
-
-        <!-- Colour palette -->
-        <div class="toolbar-label">renk</div>
-        <div class="swatch swatch-blue    active" data-theme=""         title="Mavi (Default)"></div>
-        <div class="swatch swatch-purple"          data-theme="purple"  title="Mor / Purple"></div>
-        <div class="swatch swatch-green"           data-theme="green"   title="Yeşil / Emerald"></div>
-        <div class="swatch swatch-amber"           data-theme="amber"   title="Amber / Turuncu"></div>
-        <div class="swatch swatch-light"           data-theme="light"   title="Açık / Light"></div>
-        <div class="swatch swatch-contrast"        data-theme="contrast" title="Yüksek Kontrast"></div>
-        <div class="swatch swatch-paper"           data-theme="paper"   title="Kağıt / Paper"></div>
-
-    </div>
-
-    <div class="page-wrapper">
-
-        <!-- Breadcrumb -->
-        <div class="brand-strip">
-            <span>ExamTheorie</span>
-            <span class="dot">›</span>
-            <span>Passenger Car</span>
-            <span class="dot">›</span>
-            <span style="color: var(--text-primary);">Code of Conduct</span>
-        </div>
-
-        <h1>Code of Conduct</h1>
-        <div class="section-divider"></div>
-
-        <!-- Important Dutch Words -->
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <h3>Important Dutch Words</h3>
-            <ul class="vocab-list">
-                <li>
-                    <strong>APK</strong>
-                    Same as the MOT, mandatory periodic general inspection of the vehicle.
-                </li>
-                <li>
-                    <strong>Brommobiel</strong>
-                    Moped on three or four wheels with closed bodywork and a maximum unladen weight of 350 kg. Also called microcar.
-                </li>
-                <li>
-                    <strong>Snorfiets</strong>
-                    Moped with a maximum construction speed of 25 km/h.
-                </li>
-            </ul>
-        </div>
-
-        <p>When you participate in traffic, you are required to adhere to certain rules of conduct. These general rules are designed to:</p>
-        <ul class="prose-list">
-            <li>keep roads safe;</li>
-            <li>protect road users and passengers;</li>
-            <li>ensure roads remain usable;</li>
-            <li>ensure traffic can move freely;</li>
-            <li>prevent or limit hinder and damage;</li>
-            <li>limit the negative impact of traffic on the environment;</li>
-            <li>prevent crime.</li>
-        </ul>
-
-        <!-- Roads & Authorised Person -->
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <h3>Roads</h3>
-            <p>All roads and paths that public traffic can drive or walk on. This includes bridges and tunnels. Paths and verges are also considered part of the road.</p>
-            <p>This means that a road can be anything between two ditches or two walls. Pavements are therefore also part of the road, just like cycle paths that are separated from the road itself by a verge or pavement.</p>
-            <img src="https://static.wixstatic.com/media/4b688f_ffc0c43ab20d4112aef2e929ec14696e~mv2.png " alt="Road Diagram" class="custom-image" />
-            <div class="sub-section">
-                <h3>Authorised Person</h3>
-                <p>People authorised to regulate traffic and request official documents. These are:</p>
-                <ul class="prose-list">
-                    <li>Public prosecutors</li>
-                    <li>Police officers</li>
-                    <li>Military police</li>
-                    <li>Civil servants from the government tax service</li>
-                    <li>Officials of the Dutch department of motor vehicles and the traffic inspectorate</li>
-                    <li>Officials of the Rijkswaterstaat (Dept. of waterways and public works)</li>
-                    <li>Investigating officers from various government departments</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2>Instructions</h2>
-        <p>Every road user is obliged to follow instructions given by authorised people.<br />In addition, road users are also required to follow instructions given by crossing guards – who may only stop drivers.</p>
-
-        <div class="image-container">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1af13132881f40deba479c89714d2c4e~mv2.jpg " alt="Crossing guard" />
-                <figcaption><em>Crossing guards can only stop drivers.</em></figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1f140c45c2784d57b105cae1d0c66b00~mv2.jpg " alt="Military police" />
-                <figcaption><em>Military officers from the Netherlands Royal Military Police may give instructions that you must adhere to. They may also ask to see your official documents.</em></figcaption>
-            </figure>
-        </div>
-
-        <h2>Mandatory Co-operation</h2>
-        <p>If you are stopped by a police officer or another authorised person, they may ask to see certain documents. These documents must be in your possession at all times, and you may not refuse a request to show them. These documents include:</p>
-        <ul class="prose-list">
-            <li>Your driving licence.</li>
-            <li>The vehicle's registration certificate.</li>
-            <li>The supervisor pass if you are driving under the 2toDrive scheme (driving from 17 years of age).</li>
-            <li>A disabled parking card if you are driving a disabled vehicle or parking in a disabled parking space.</li>
-        </ul>
-        <p>An authorised person may also require you to comply with an alcohol or drug test. This means you have to comply with a breath test, eye co-ordination and speech function test, and saliva swabs for drug detection purposes.</p>
-        <p>You may even be required to submit to a blood test if you refuse a breath test or if it is not possible to do a breath test.</p>
-
-        <h2>Hindering or Endangering</h2>
-        <p>Most rules are detailed in the applicable legislation. For example, you may not drive faster than the speed limit, you may not ignore traffic signs, and you may not drive through red lights. However, there are many other behaviours that could endanger other road users or impede the regular flow of traffic that are not explicitly recorded in legislation. A rule is therefore in place prohibiting road users from behaving in such a way as to create or contribute to a dangerous situation on the road. Obstructing or hindering other traffic is also prohibited. The cause of or reason for these behaviours is irrelevant.</p>
-
-        <div class="glass-card red-accent">
-            <div class="accent-line"></div>
-            <h3>Kapstokartikel</h3>
-            <p style="margin-bottom:0;">Article 5 of the Road Traffic Act (also called 'Kapstokartikel') prohibits road users from operating a vehicle in such a way that it hinders traffic or causes danger to themselves or other road users. This law provides a so-called 'safety net' which covers dangerous behaviour that is not directly prohibited by traffic signs or road markings but still constitutes a hinder or danger and for which you may still be prosecuted.</p>
-        </div>
-
-        <h2>Injury or Death At-Fault</h2>
-        <p>In addition to not being allowed to cause hinder or dangerous situations, road users should take care to avoid causing a traffic accident that could injure or kill others.</p>
-
-        <h2>Leaving the Scene of an Accident</h2>
-        <p>Have you been involved in a traffic accident? Then you may not leave the scene of the accident until you have exchanged your contact and vehicle information with any other people involved or the police – regardless of whether you were at fault or not.</p>
-        <p>Leaving the scene of an accident without providing your information is a crime. You can mitigate this by voluntarily reporting to a police station within 12 hours from when the accident occurred. Unless the police arrested you as a suspect before then.</p>
-
-        <div class="glass-card red-accent">
-            <div class="accent-line"></div>
-            <p style="margin-bottom:0;">Leaving the scene of an accident while leaving an injured person without aid is always a crime – even if you report to the police later. Regardless of whether you were directly involved in the accident or not, you are obliged to provide help if needed.</p>
-        </div>
-
-        <h2>Racing on the Road</h2>
-        <p>Racing or competing with other drivers on public roads is prohibited. One example of this is rapidly accelerating at traffic lights. If a road user is caught doing this, both the driver and the vehicle owner are liable for any damages.</p>
-
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <h3>Driving Licence Confiscation</h3>
-            <p>Police officers are authorised to confiscate your driving licence if you are caught violating traffic regulations. Your licence will then be forwarded to the public prosecutor.</p>
-            <div class="sub-section">
-                <h3>Driving Disqualification (licence suspended)</h3>
-                <p>Being disqualified from driving means you are not allowed to operate motor carriages for several weeks, months or even years. If you are caught violating traffic regulations, a public prosecutor or judge may disqualify you from driving. Driving disqualification may last up to two years for less severe infractions and up to five years for serious offences. The latter includes death or injury caused by dangerous driving, driving under the influence of alcohol, and driving while disqualified. If you commit another offence within a short time, these penalties may be doubled.</p>
-            </div>
-            <div class="sub-section">
-                <h3>Driving Licence Invalidation</h3>
-                <p>If you commit several offences, or if you are ineligible to drive for other reasons, your driving licence may be declared invalid. This means you are no longer permitted to operate motor carriages for which your licence is required. You will still be permitted to cycle, be a passenger in a vehicle, and operate vehicles that do not require a driving licence. Your licence may also be invalidated for one vehicle category only, which means you will remain eligible to operate vehicles in other categories.</p>
-            </div>
-        </div>
-
-        <img src="https://static.wixstatic.com/media/4b688f_f8ec58ada61a4f80817ec8b888ad80d0~mv2.jpg " alt="Traffic enforcement" class="custom-centered-image" />
-
-        <h2>Driving Behaviour Enforcement</h2>
-        <p>If you are found in violation of traffic laws, your driving licence may be confiscated. This means the police will take your licence and forward it to the public prosecutor, who will then decide (within 10 days) whether to withhold your licence or return it to you. In either case, a judge may be asked to make the final decision, at which point you may be fined and/or disqualified from driving. You will no longer be permitted to drive a motor carriage for the duration of your disqualification.</p>
-        <p>Based on your behaviour, confiscation of your driving licence may happen if you:</p>
-        <ul class="prose-list">
-            <li>exceed the speed limit by 50 km/h or more;</li>
-            <li>cause hinder or a dangerous situation.</li>
-        </ul>
-        <p>The violation may also be reported to the CBR (Central Bureau for Driving Proficiency), who will then determine your eligibility to continue driving.</p>
-
-        <div class="glass-card">
-            <div class="accent-line"></div>
-            <p>The abbreviation CBR stands for <strong style="color: var(--blue-light); font-family: 'Outfit', sans-serif;">Centraal Bureau Rijvaardigheidsbewijzen</strong>, or Central Bureau for Driving Proficiency. They decide whether you qualify for a driving licence. They also decide whether you get to keep your driving licence when your eligibility or driving skills are called into question. The CBR oversees both theory and driving tests. Another branch of the CBR is the BNOR; if you fail your driving test four times consecutively, they will investigate further and determine your driving capabilities.</p>
-        </div>
-
-        <p>The CBR may be notified if you:</p>
-        <ul class="prose-list">
-            <li>tailgate on the motorway (you do not keep proper distance to the vehicle in front of you);</li>
-            <li>cut off other road users;</li>
-            <li>drive through a red light;</li>
-            <li>exceed the speed limit by more than 50 km/h in normal situations;</li>
-            <li>exceed the speed limit by more than 30 km/h where roadworks are underway.</li>
-        </ul>
-
-        <h2>Driving While Disqualified</h2>
-        <p>Operating a motor carriage while disqualified from driving is a criminal offence. This is also the case if you operate a vehicle for which a licence is required and your licence has been declared invalid.</p>
-
-        <a href="https://www.examtheorie.nl/eng-test-and-theory-menu " class="custom-button" target="_blank">Back to overview</a>
-
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script>
-        /* ─── Toolbar Logic ─── */
-        (function () {
-            const body        = document.body;
-            const swatches    = document.querySelectorAll('.swatch');
-            const btnGrow     = document.getElementById('btn-grow');
-            const btnShrink   = document.getElementById('btn-shrink');
-            const btnReset    = document.getElementById('btn-reset-font');
-
-            // Font size state
-            const BASE_SIZE   = 16;   // px
-            const STEP        = 1;    // px per click
-            const MIN_SIZE    = 12;
-            const MAX_SIZE    = 24;
-            let currentSize   = BASE_SIZE;
-
-            function applyFontSize(size) {
-                currentSize = Math.min(MAX_SIZE, Math.max(MIN_SIZE, size));
-                document.documentElement.style.fontSize = currentSize + 'px';
-                try { localStorage.setItem('et_fontsize', currentSize); } catch(e){}
-            }
-
-            btnGrow.addEventListener('click',   () => applyFontSize(currentSize + STEP));
-            btnShrink.addEventListener('click', () => applyFontSize(currentSize - STEP));
-            btnReset.addEventListener('click',  () => applyFontSize(BASE_SIZE));
-
-            // Restore saved font size
-            try {
-                const saved = parseInt(localStorage.getItem('et_fontsize'));
-                if (saved && saved >= MIN_SIZE && saved <= MAX_SIZE) applyFontSize(saved);
-            } catch(e) {}
-
-            // Theme switcher
-            const THEMES = ['', 'purple', 'green', 'amber', 'light', 'contrast', 'paper'];
-
-            function applyTheme(theme) {
-                THEMES.forEach(t => { if (t) body.classList.remove('theme-' + t); });
-                if (theme) body.classList.add('theme-' + theme);
-                swatches.forEach(s => s.classList.toggle('active', s.dataset.theme === theme));
-                try { localStorage.setItem('et_theme', theme); } catch(e) {}
-            }
-
-            swatches.forEach(s => {
-                s.addEventListener('click', () => applyTheme(s.dataset.theme));
-            });
-
-            // Restore saved theme
-            try {
-                const saved = localStorage.getItem('et_theme');
-                if (saved !== null) applyTheme(saved);
-            } catch(e) {}
-        })();
-
-        /* ─── Security ─── */
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function (e) {
-            if (e.keyCode == 123) return false;
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_6jm5rxLMNvCVxPkVcfxxxDYxEF6GEgZEAwsUVW0hqZn', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-01-30'
+    })
+</script>
     
+    <title>ExamTheorie — CBR Theory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <script>
+        if (typeof supabase === 'undefined') {
+            document.write('<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"><\/script>');
+        }
+    </script>
+    <style>
+        :root {
+            --cyan: #00d4ff;
+            --blue: #0066ff;
+            --glass-blur: blur(22px) saturate(180%);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+
+        body {
+            font-family:'Poppins',sans-serif;
+            min-height:100vh;
+            overflow-x:hidden;
+            background:url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center fixed;
+            background-size:cover;
+            color:white;
+        }
+        body.ar { font-family:'Noto Sans Arabic','Poppins',sans-serif; direction:rtl; }
+        body::before {
+            content:''; position:fixed; inset:0;
+            background:rgba(0,8,25,0.55); z-index:0;
+        }
+
+        .glass {
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:var(--glass-blur);
+            -webkit-backdrop-filter:var(--glass-blur);
+            border:1px solid rgba(255,255,255,0.15);
+        }
+        .glass-strong {
+            background:rgba(255,255,255,0.13);
+            backdrop-filter:blur(28px) saturate(200%);
+            -webkit-backdrop-filter:blur(28px) saturate(200%);
+            border:1px solid rgba(255,255,255,0.2);
+            box-shadow:0 25px 60px rgba(0,0,0,0.5),inset 0 0 30px rgba(255,255,255,0.05);
+        }
+
+        /* ══ NAVBAR ══ */
+        .navbar {
+            position:fixed; top:14px; left:50%; transform:translateX(-50%);
+            width:calc(100% - 32px); max-width:1260px; height:70px;
+            z-index:1000; border-radius:20px;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:0 24px; gap:12px;
+        }
+        .logo {
+            font-family:'Playfair Display',serif; font-size:24px; font-weight:900;
+            white-space:nowrap; flex-shrink:0;
+            background:linear-gradient(135deg,#fff 30%,var(--cyan));
+            -webkit-background-clip:text; background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+        .logo span {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            -webkit-background-clip:text; background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+        .nav-center {
+            display:flex; align-items:center; gap:4px; flex:1; justify-content:center;
+        }
+        .nav-link {
+            color:rgba(255,255,255,0.82); text-decoration:none;
+            font-size:13.5px; font-weight:500; padding:8px 13px; border-radius:12px;
+            white-space:nowrap; transition:all .25s; cursor:pointer; border:none;
+            background:transparent; font-family:inherit;
+        }
+        .nav-link:hover { color:#fff; background:rgba(255,255,255,0.1); }
+        .nav-right { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+        .lang-switcher {
+            display:flex; gap:2px; padding:4px; border-radius:14px; flex-shrink:0;
+        }
+        .lang-opt {
+            padding:6px 12px; border-radius:10px; cursor:pointer;
+            color:rgba(255,255,255,0.5); font-weight:700; font-size:12.5px;
+            transition:all .25s; white-space:nowrap; user-select:none;
+        }
+        .lang-opt:hover { color:rgba(255,255,255,0.9); }
+        .lang-opt.active {
+            color:#fff; background:rgba(0,212,255,0.28);
+            box-shadow:0 0 10px rgba(0,212,255,0.35);
+        }
+        .btn-signin {
+            padding:8px 18px; border-radius:13px;
+            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+            color:white; font-family:'Poppins',sans-serif; font-weight:600;
+            font-size:13px; cursor:pointer; white-space:nowrap; transition:all .25s;
+        }
+        .btn-signin:hover { background:rgba(255,255,255,0.18); transform:translateY(-1px); }
+        .btn-signup {
+            padding:8px 18px; border-radius:13px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            border:none; color:white; font-family:'Poppins',sans-serif;
+            font-weight:700; font-size:13px; cursor:pointer; white-space:nowrap;
+            box-shadow:0 6px 20px rgba(0,100,255,0.4); transition:all .25s;
+        }
+        .btn-signup:hover { box-shadow:0 10px 28px rgba(0,100,255,0.6); transform:translateY(-2px); }
+        .hamburger {
+            display:none; flex-direction:column; gap:5px; cursor:pointer;
+            padding:8px; border-radius:10px;
+            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);
+            flex-shrink:0; z-index:1001;
+        }
+        .hamburger span {
+            display:block; width:20px; height:2px;
+            background:white; border-radius:2px; transition:all .3s;
+        }
+        .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+        .hamburger.open span:nth-child(2) { opacity:0; }
+        .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+        .mobile-menu {
+            position:fixed; top:88px; left:10px; right:10px;
+            border-radius:18px; z-index:999; padding:16px;
+            display:none; flex-direction:column; gap:7px;
+            max-height:calc(100vh - 100px); overflow-y:auto;
+        }
+        .mobile-menu.open { display:flex; }
+        .mob-link {
+            padding:13px 16px; border-radius:12px;
+            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+            color:rgba(255,255,255,0.85); font-size:14px; font-weight:500;
+            cursor:pointer; transition:all .2s; font-family:inherit; text-align:left;
+            width:100%;
+        }
+        body.ar .mob-link { text-align:right; }
+        .mob-link:hover { background:rgba(255,255,255,0.12); color:#fff; }
+        .mob-lang-row { display:flex; gap:5px; flex-wrap:wrap; }
+        .mob-lang-row .lang-opt {
+            flex:1; text-align:center;
+            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+            border-radius:11px; padding:9px 6px;
+        }
+        .mob-auth { display:flex; gap:8px; margin-top:4px; }
+        .mob-auth button { flex:1; padding:12px; font-size:13px; border-radius:12px; }
+        #mobSigninBtn, #mobSignupBtn {
+            display:flex !important;
+            align-items:center;
+            justify-content:center;
+        }
+
+        /* ══ HERO ══ */
+        .hero {
+            position:relative; z-index:1; min-height:100vh;
+            display:flex; align-items:center; justify-content:center;
+            text-align:center; padding:130px 20px 80px;
+        }
+        .hero-inner { max-width:800px; animation:fadeUp 1s ease both; }
+        .hero-badge {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:7px 20px; border-radius:30px; font-size:13px;
+            font-weight:600; color:var(--cyan); margin-bottom:26px;
+        }
+        .hero-title {
+            font-family:'Playfair Display',serif;
+            font-size:clamp(38px,7vw,80px); font-weight:900; line-height:1.08;
+            margin-bottom:18px;
+            background:linear-gradient(135deg,#fff 40%,var(--cyan));
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        body.ar .hero-title { font-family:'Noto Sans Arabic',serif; }
+        .hero-slogan {
+            font-size:clamp(15px,2.2vw,21px); color:rgba(255,255,255,0.88);
+            max-width:680px; margin:0 auto 44px; line-height:1.7; font-weight:300;
+        }
+        .hero-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .btn-hero-p {
+            padding:16px 44px; font-size:16px; border-radius:20px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            color:white; border:none; font-family:'Poppins',sans-serif;
+            font-weight:700; cursor:pointer;
+            box-shadow:0 12px 36px rgba(0,100,255,0.5); transition:all .3s;
+        }
+        .btn-hero-p:hover { transform:translateY(-4px); box-shadow:0 18px 48px rgba(0,100,255,0.65); }
+        .btn-hero-s {
+            padding:16px 44px; font-size:16px; border-radius:20px;
+            background:rgba(255,255,255,0.1); color:white;
+            border:2px solid rgba(255,255,255,0.3);
+            font-family:'Poppins',sans-serif; font-weight:700;
+            cursor:pointer; transition:all .3s;
+        }
+        .btn-hero-s:hover { background:rgba(255,255,255,0.18); transform:translateY(-4px); }
+
+        /* ══ STATS ══ */
+        .stats-sec { position:relative; z-index:1; padding:0 20px 80px; }
+        .stats-wrap { max-width:900px; margin:0 auto; border-radius:26px; padding:46px 36px; }
+        .stats-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:28px; text-align:center;
+        }
+        .stat-n {
+            font-size:clamp(36px,5vw,56px); font-weight:900; margin-bottom:8px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .stat-l { font-size:14px; color:rgba(255,255,255,0.75); font-weight:500; }
+
+        /* ══ FEATURES ══ */
+        .feat-sec { position:relative; z-index:1; padding:80px 20px; max-width:1200px; margin:0 auto; }
+        .sec-head {
+            font-family:'Playfair Display',serif;
+            font-size:clamp(32px,5vw,54px); font-weight:900;
+            text-align:center; color:white; margin-bottom:56px;
+        }
+        body.ar .sec-head { font-family:'Noto Sans Arabic',serif; text-align:center; }
+        .feat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+        .feat-card { padding:36px 28px; border-radius:24px; transition:all .3s; }
+        .feat-card:hover { transform:translateY(-8px); background:rgba(255,255,255,0.12); }
+        .feat-icon { font-size:50px; margin-bottom:16px; }
+        .feat-title { font-size:21px; font-weight:700; margin-bottom:11px; }
+        .feat-desc { font-size:14.5px; color:rgba(255,255,255,0.7); line-height:1.65; }
+
+        /* ══ HOW IT WORKS ══ */
+        .how-sec { position:relative; z-index:1; padding:80px 20px; max-width:1100px; margin:0 auto; }
+        .how-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:56px; }
+        .how-card { padding:32px 24px; border-radius:22px; text-align:center; transition:all .3s; }
+        .how-card:hover { transform:translateY(-6px); background:rgba(255,255,255,0.12); }
+        .how-step {
+            width:50px; height:50px; border-radius:50%; margin:0 auto 16px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            display:flex; align-items:center; justify-content:center;
+            font-size:20px; font-weight:900; box-shadow:0 8px 22px rgba(0,100,255,0.4);
+        }
+        .how-title { font-size:17px; font-weight:700; margin-bottom:9px; }
+        .how-desc  { font-size:13.5px; color:rgba(255,255,255,0.68); line-height:1.6; }
+
+        /* ══ DAILY PICKER ══ */
+        .daily-picker-wrap {
+            width:100%; max-width:1200px;
+            background:rgba(18,24,40,0.78);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            border:1px solid rgba(0,212,255,0.25);
+            border-radius:22px; padding:26px 28px 24px;
+            margin-bottom:20px;
+            box-shadow:0 12px 40px rgba(0,100,255,0.2);
+        }
+        .daily-picker-top {
+            display:flex; align-items:center; justify-content:space-between;
+            margin-bottom:18px; flex-wrap:wrap; gap:10px;
+        }
+        .daily-picker-title {
+            font-size:16px; font-weight:700; color:white;
+            display:flex; align-items:center; gap:8px;
+        }
+        .daily-new-badge {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            font-size:10px; font-weight:700; padding:3px 10px;
+            border-radius:20px; color:white; letter-spacing:.3px;
+        }
+        .daily-picker-sub { font-size:13px; color:rgba(255,255,255,0.5); }
+        .day-btns {
+            display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;
+        }
+        .day-btn {
+            width:48px; height:48px; border-radius:12px;
+            border:1px solid rgba(255,255,255,0.15);
+            background:rgba(255,255,255,0.06);
+            color:rgba(255,255,255,0.7); font-size:13px; font-weight:700;
+            cursor:pointer; transition:all .2s; position:relative;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:2px;
+        }
+        .day-btn:hover { background:rgba(255,255,255,0.12); color:white; border-color:rgba(255,255,255,0.3); }
+        .day-btn.active {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            border-color:transparent; color:white;
+            box-shadow:0 4px 16px rgba(0,100,255,0.5);
+            transform:translateY(-2px);
+        }
+        .day-btn .day-tag {
+            font-size:8px; font-weight:600; color:rgba(255,255,255,0.6);
+            text-transform:uppercase; letter-spacing:.3px; line-height:1;
+        }
+        .day-btn.active .day-tag { color:rgba(255,255,255,0.85); }
+        .daily-bottom {
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:14px;
+            padding-top:18px; border-top:1px solid rgba(255,255,255,0.1);
+        }
+        .daily-price-block { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+        .daily-price-main { font-size:42px; font-weight:800; color:white; line-height:1; }
+        .daily-price-main span { font-size:22px; font-weight:600; vertical-align:super; margin-right:2px; }
+        .daily-price-per { font-size:14px; color:rgba(255,255,255,0.5); }
+        .daily-price-per strong { color:var(--cyan); font-weight:700; }
+        .btn-daily-buy {
+            padding:14px 36px; border-radius:15px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            border:none; color:white; font-family:'Poppins',sans-serif;
+            font-weight:700; font-size:15px; cursor:pointer;
+            box-shadow:0 8px 26px rgba(0,100,255,0.4); transition:all .25s;
+        }
+        .btn-daily-buy:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,100,255,0.6); }
+        .btn-daily-buy:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+        .daily-divider {
+            width:100%; max-width:1200px;
+            display:flex; align-items:center; gap:16px; margin-bottom:20px;
+        }
+        .daily-divider::before, .daily-divider::after {
+            content:''; flex:1; height:1px; background:rgba(255,255,255,0.12);
+        }
+        .daily-divider-text { font-size:13px; color:rgba(255,255,255,0.35); white-space:nowrap; }
+
+        /* ══ PRICING OVERLAY ══ */
+        .pricing-overlay {
+            position:fixed; inset:0;
+            background:rgba(0,8,25,0.9); backdrop-filter:blur(8px);
+            z-index:2000; display:none; flex-direction:column;
+            align-items:center; padding:100px 20px 60px; overflow-y:auto;
+        }
+        .pricing-overlay.active { display:flex; }
+        .overlay-close {
+            position:fixed; top:22px; right:26px; font-size:32px; color:white;
+            cursor:pointer; width:46px; height:46px;
+            display:flex; align-items:center; justify-content:center;
+            border-radius:50%; background:rgba(255,255,255,0.1);
+            border:1px solid rgba(255,255,255,0.15); transition:all .3s; z-index:2001; line-height:1;
+        }
+        body.ar .overlay-close { right:auto; left:26px; }
+        .overlay-close:hover { background:rgba(255,255,255,0.2); transform:rotate(90deg); }
+        .pricing-grid {
+            width:100%; max-width:1200px;
+            display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+        }
+        .p-card {
+            border-radius:20px; padding:26px 20px 30px;
+            display:flex; flex-direction:column; position:relative; overflow:hidden;
+            background:rgba(18,24,40,0.78);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            border:1px solid rgba(255,255,255,0.12);
+            box-shadow:0 18px 48px rgba(0,0,0,0.5);
+            transition:all .35s;
+        }
+        .p-card:hover { transform:translateY(-8px); border-color:rgba(0,212,255,0.3); }
+        .p-card.popular { border-color:rgba(0,212,255,0.5); box-shadow:0 18px 56px rgba(0,100,255,0.35); }
+        .pop-badge {
+            position:absolute; top:14px; left:50%; transform:translateX(-50%);
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            padding:4px 16px; border-radius:20px;
+            font-size:10.5px; font-weight:700; letter-spacing:.4px; white-space:nowrap;
+        }
+        .flag-corner {
+            position:absolute; top:0; left:0; width:52px; height:52px;
+            overflow:hidden; border-radius:20px 0 0 0;
+        }
+        .flag-corner::before {
+            content:'🇬🇧'; position:absolute; top:-4px; left:-4px;
+            font-size:40px; transform:rotate(-15deg);
+        }
+        .p-name { margin-top:30px; font-size:18px; font-weight:700; margin-bottom:3px; }
+        .p-sub  { font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:20px; }
+        .p-amount { font-size:46px; font-weight:800; line-height:1; margin-bottom:4px; }
+        .p-amount span { font-size:24px; font-weight:600; vertical-align:super; margin-right:2px; }
+        .p-valid { font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:22px; }
+        .buy-row { display:flex; align-items:center; gap:10px; margin-bottom:24px; }
+        .btn-buy {
+            flex:1; padding:12px; border-radius:50px;
+            background:transparent; border:2px solid rgba(255,255,255,0.65);
+            color:white; font-family:'Poppins',sans-serif; font-weight:700;
+            font-size:14px; cursor:pointer; transition:all .3s;
+        }
+        .btn-buy:hover { background:white; color:#111; }
+        .p-card.popular .btn-buy {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            border:none; box-shadow:0 6px 20px rgba(0,100,255,0.4);
+        }
+        .p-card.popular .btn-buy:hover { box-shadow:0 10px 30px rgba(0,100,255,0.6); transform:translateY(-2px); }
+        .ideal { width:42px; height:42px; border-radius:9px; background:white; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center;
+            font-size:10px; font-weight:900; color:#cc0066; letter-spacing:-.5px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.3);
+        }
+        .p-divider { height:1px; background:rgba(255,255,255,0.1); margin-bottom:18px; }
+        .p-features { list-style:none; display:flex; flex-direction:column; gap:9px; }
+        .p-features li {
+            font-size:13px; color:rgba(255,255,255,0.78);
+            display:flex; align-items:flex-start; gap:8px; line-height:1.4;
+        }
+        .p-features li::before { content:'✓'; color:var(--cyan); font-weight:700; flex-shrink:0; margin-top:1px; }
+        body.ar .p-features li { flex-direction:row-reverse; text-align:right; }
+
+        /* ══ PASSENGER CAR OVERLAY ══ */
+        .pc-overlay {
+            position:fixed; inset:0;
+            background:url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center;
+            background-size:cover;
+            z-index:2000; display:none; flex-direction:column;
+            overflow-y:auto;
+        }
+        .pc-overlay::before {
+            content:''; position:fixed; inset:0;
+            background:rgba(0,8,25,0.65); z-index:0;
+        }
+        .pc-overlay.active { display:flex; }
+
+        .pc-close {
+            position:fixed; top:22px; right:26px; font-size:28px; color:white;
+            cursor:pointer; width:46px; height:46px;
+            display:flex; align-items:center; justify-content:center;
+            border-radius:50%; background:rgba(255,255,255,0.1);
+            border:1px solid rgba(255,255,255,0.15); transition:all .3s; z-index:2001; line-height:1;
+        }
+        body.ar .pc-close { right:auto; left:26px; }
+        .pc-close:hover { background:rgba(255,255,255,0.2); transform:rotate(90deg); }
+
+        .pc-inner {
+            position:relative; z-index:1;
+            width:100%; max-width:1400px;
+            margin:0 auto; padding:100px 24px 80px;
+        }
+
+        .pc-header { text-align:center; margin-bottom:36px; }
+        .pc-header h2 {
+            font-family:'Playfair Display',serif;
+            font-size:clamp(28px,4vw,46px); font-weight:900;
+            background:linear-gradient(135deg,#fff 40%,var(--cyan));
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+            margin-bottom:8px;
+        }
+        body.ar .pc-header h2 { font-family:'Noto Sans Arabic',serif; }
+        .pc-header p { color:rgba(255,255,255,0.6); font-size:14px; }
+
+        .pc-layout {
+            display:grid;
+            grid-template-columns:1fr 340px;
+            gap:24px;
+            align-items:start;
+        }
+        body.ar .pc-layout { direction:rtl; }
+
+        .pc-right { position:sticky; top:100px; }
+
+        .test-panel {
+            border-radius:22px; padding:22px 18px;
+            background:rgba(10,20,50,0.7);
+            backdrop-filter:blur(24px) saturate(180%);
+            -webkit-backdrop-filter:blur(24px) saturate(180%);
+            border:1px solid rgba(255,255,255,0.13);
+            box-shadow:0 20px 50px rgba(0,0,0,0.5);
+        }
+        .test-panel-title {
+            font-size:14px; font-weight:700;
+            color:rgba(255,255,255,0.9);
+            margin-bottom:6px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .test-panel-title span { font-size:18px; }
+        .test-panel-sub {
+            font-size:11.5px; color:rgba(255,255,255,0.4);
+            margin-bottom:16px; line-height:1.5;
+        }
+
+        .test-btn-grid {
+            display:grid;
+            grid-template-columns:repeat(5,1fr);
+            gap:6px;
+            margin-bottom:18px;
+        }
+
+        .test-btn {
+            aspect-ratio:1;
+            border-radius:10px;
+            border:none;
+            font-family:'Poppins',sans-serif;
+            font-size:11px;
+            font-weight:700;
+            cursor:pointer;
+            transition:all .25s;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .test-btn.locked {
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            color:rgba(255,255,255,0.18);
+            cursor:not-allowed;
+        }
+        .test-btn.locked::after {
+            content:'🔒'; font-size:9px;
+            position:absolute; bottom:3px; right:3px;
+        }
+
+        .test-btn.active-test {
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            color:white;
+            box-shadow:0 4px 16px rgba(0,100,255,0.5);
+            border:none;
+            animation:pulsebtn 2s infinite;
+        }
+        .test-btn.active-test:hover {
+            transform:scale(1.08);
+            box-shadow:0 6px 22px rgba(0,100,255,0.7);
+        }
+
+        .test-btn.completed {
+            background:rgba(0,212,255,0.1);
+            border:1px solid rgba(0,212,255,0.3);
+            color:var(--cyan);
+            cursor:default;
+        }
+        .test-btn.completed::after {
+            content:'✓'; font-size:8px;
+            position:absolute; bottom:2px; right:4px; color:var(--cyan);
+        }
+
+        @keyframes pulsebtn {
+            0%,100% { box-shadow:0 4px 16px rgba(0,100,255,0.5); }
+            50% { box-shadow:0 4px 24px rgba(0,212,255,0.8); }
+        }
+
+        .test-progress-bar {
+            height:6px; border-radius:3px;
+            background:rgba(255,255,255,0.08);
+            overflow:hidden; margin-bottom:10px;
+        }
+        .test-progress-fill {
+            height:100%; border-radius:3px;
+            background:linear-gradient(90deg,var(--cyan),var(--blue));
+            transition:width .4s ease;
+        }
+        .test-progress-label {
+            font-size:11px; color:rgba(255,255,255,0.45);
+            text-align:right;
+        }
+        body.ar .test-progress-label { text-align:left; }
+
+        /* ── ACCORDION ── */
+        .acc-container { display:flex; flex-direction:column; gap:10px; }
+
+        .acc-item {
+            border-radius:16px; overflow:hidden;
+            background:rgba(255,255,255,0.06);
+            backdrop-filter:blur(18px) saturate(160%);
+            -webkit-backdrop-filter:blur(18px) saturate(160%);
+            border:1px solid rgba(255,255,255,0.12);
+            box-shadow:0 6px 20px rgba(0,0,0,0.2);
+            transition:border-color .3s;
+        }
+        .acc-item:hover { border-color:rgba(255,255,255,0.2); }
+
+        .acc-header {
+            width:100%; padding:0 20px; height:66px;
+            display:flex; align-items:center; gap:14px;
+            cursor:pointer; border:none; background:transparent;
+            color:white; font-family:'Poppins',sans-serif; font-size:14px;
+            font-weight:600; text-align:left; transition:background .25s;
+        }
+        body.ar .acc-header { text-align:right; flex-direction:row-reverse; }
+        .acc-header:hover { background:rgba(255,255,255,0.05); }
+
+        .acc-num {
+            width:42px; height:42px; border-radius:50%; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center;
+            font-size:18px; font-weight:900;
+            box-shadow:0 4px 12px rgba(0,0,0,0.3);
+        }
+        .acc-label { flex:1; }
+        .acc-arrow {
+            margin-left:auto; font-size:11px; color:rgba(255,255,255,0.45);
+            transition:transform .35s ease; flex-shrink:0;
+        }
+        body.ar .acc-arrow { margin-left:0; margin-right:auto; }
+        .acc-item.open .acc-arrow { transform:rotate(180deg); }
+        .acc-item.open .acc-header { background:rgba(255,255,255,0.06); }
+
+        .acc-body {
+            max-height:0; overflow:hidden;
+            transition:max-height .45s cubic-bezier(0.4,0,0.2,1);
+        }
+        .acc-item.open .acc-body { max-height:3000px; }
+
+        .acc-grid {
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:7px; padding:10px 12px 14px;
+        }
+
+        .acc-cell {
+            border-radius:12px; min-height:58px; cursor:pointer;
+            display:flex; align-items:center; padding:10px 12px; gap:10px;
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.09);
+            text-decoration:none; color:white;
+            transition:all .22s;
+        }
+        body.ar .acc-cell { flex-direction:row-reverse; text-align:right; }
+        .acc-cell:hover {
+            background:rgba(255,255,255,0.11);
+            border-color:rgba(255,255,255,0.22);
+            transform:translateY(-2px);
+        }
+        .cell-num {
+            font-size:14px; font-weight:800; flex-shrink:0;
+            min-width:32px; text-align:center;
+        }
+        .cell-label { font-size:12px; color:rgba(255,255,255,0.82); line-height:1.3; }
+
+        .g1 .acc-num { background:rgba(238,46,48,0.3); color:#ff8080; }
+        .g2 .acc-num { background:rgba(255,206,13,0.22); color:#ffe066; }
+        .g3 .acc-num { background:rgba(140,198,63,0.22); color:#aedd60; }
+        .g4 .acc-num { background:rgba(10,170,123,0.22); color:#44eebb; }
+        .g5 .acc-num { background:rgba(0,173,238,0.22); color:#66d8ff; }
+        .g6 .acc-num { background:rgba(21,96,173,0.3); color:#88aaff; }
+        .g7 .acc-num { background:rgba(152,54,151,0.28); color:#dd88ff; }
+        .g8 .acc-num { background:rgba(238,28,124,0.28); color:#ff88cc; }
+        .g1 .cell-num { color:#ff8080; }
+        .g2 .cell-num { color:#ffe066; }
+        .g3 .cell-num { color:#aedd60; }
+        .g4 .cell-num { color:#44eebb; }
+        .g5 .cell-num { color:#66d8ff; }
+        .g6 .cell-num { color:#88aaff; }
+        .g7 .cell-num { color:#dd88ff; }
+        .g8 .cell-num { color:#ff88cc; }
+
+        @media(max-width:900px) {
+            .pc-layout { grid-template-columns:1fr; }
+            .pc-right { position:relative; top:0; order:-1; }
+            .test-btn-grid { grid-template-columns:repeat(10,1fr); }
+            .acc-grid { grid-template-columns:repeat(2,1fr); }
+        }
+        @media(max-width:600px) {
+            .test-btn-grid { grid-template-columns:repeat(5,1fr); }
+            .acc-grid { grid-template-columns:1fr; }
+        }
+
+        /* ══ AUTH MODALS ══ */
+        .modal-bg {
+            position:fixed; inset:0; background:rgba(0,0,0,0.75);
+            backdrop-filter:blur(6px); z-index:3000;
+            display:none; align-items:center; justify-content:center;
+            padding:16px;
+        }
+        .modal-bg.active { display:flex; }
+        .auth-box {
+            width:100%; max-width:430px;
+            padding:clamp(18px, 3.5vh, 46px) clamp(18px, 4vw, 38px) clamp(18px, 3.5vh, 42px);
+            border-radius:clamp(16px, 2vh, 28px); position:relative;
+            animation:slideUp .35s ease;
+        }
+        .m-close {
+            position:absolute; top:16px; right:16px; font-size:26px;
+            color:rgba(255,255,255,0.65); cursor:pointer; width:36px; height:36px;
+            display:flex; align-items:center; justify-content:center;
+            border-radius:50%; transition:all .25s; line-height:1;
+        }
+        body.ar .m-close { right:auto; left:16px; }
+        .m-close:hover { background:rgba(255,255,255,0.1); color:white; transform:rotate(90deg); }
+        .m-title {
+            font-family:'Playfair Display',serif;
+            font-size:clamp(20px, 4vh, 36px); font-weight:900;
+            text-align:center; margin-bottom:clamp(10px, 2vh, 28px);
+        }
+        body.ar .m-title { font-family:'Noto Sans Arabic',serif; }
+        .f-grp { margin-bottom:clamp(8px, 1.6vh, 18px); }
+        .f-lbl { display:block; color:rgba(255,255,255,0.72); margin-bottom:7px; font-size:12.5px; font-weight:600; }
+        .f-inp {
+            width:100%; padding:clamp(8px, 1.4vh, 13px) 16px; border-radius:13px;
+            border:1px solid rgba(255,255,255,0.18);
+            background:rgba(255,255,255,0.06); color:white;
+            font-size:14px; font-family:'Poppins',sans-serif; transition:all .25s;
+            /* Input her zaman LTR — e-posta/şifre alanları için */
+            direction:ltr; text-align:left;
+        }
+        .f-inp:focus { outline:none; background:rgba(255,255,255,0.1); border-color:var(--cyan); box-shadow:0 0 16px rgba(0,212,255,0.22); }
+        .f-inp::placeholder { color:rgba(255,255,255,0.32); }
+        .btn-submit {
+            width:100%; padding:clamp(9px, 1.5vh, 14px); border-radius:15px;
+            background:linear-gradient(135deg,var(--cyan),var(--blue));
+            color:white; border:none; font-size:15px; font-weight:700;
+            font-family:'Poppins',sans-serif; cursor:pointer; margin-top:6px;
+            box-shadow:0 8px 26px rgba(0,100,255,0.4); transition:all .25s;
+        }
+        .btn-submit:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,100,255,0.58); }
+        .m-div {
+            display:flex; align-items:center; margin:clamp(10px, 1.8vh, 20px) 0;
+            color:rgba(255,255,255,0.38); font-size:12.5px;
+        }
+        .m-div::before,.m-div::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.14); }
+        .m-div::before { margin-right:12px; } .m-div::after { margin-left:12px; }
+        .soc-row { display:flex; gap:10px; }
+        .soc-btn {
+            flex:1; padding:clamp(7px, 1.3vh, 11px); border-radius:12px;
+            background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+            color:white; font-size:15px; font-weight:700; cursor:pointer; transition:all .25s;
+        }
+        .soc-btn:hover { background:rgba(255,255,255,0.14); transform:translateY(-2px); }
+        .m-foot { text-align:center; margin-top:clamp(10px, 1.8vh, 20px); font-size:13px; color:rgba(255,255,255,0.58); }
+        .m-foot a { color:var(--cyan); font-weight:600; cursor:pointer; }
+        .m-foot a:hover { text-decoration:underline; }
+
+        .auth-msg {
+            display:none; padding:9px 14px; border-radius:11px;
+            font-size:13px; font-weight:500; margin-bottom:clamp(8px, 1.4vh, 16px);
+            text-align:center; line-height:1.45;
+        }
+        .auth-msg.error   { background:rgba(255,60,60,0.15); border:1px solid rgba(255,60,60,0.35); color:#ff8080; display:block; }
+        .auth-msg.success { background:rgba(0,212,100,0.15); border:1px solid rgba(0,212,100,0.35); color:#4dffaa; display:block; }
+        .auth-msg.info    { background:rgba(0,180,255,0.15); border:1px solid rgba(0,180,255,0.35); color:#7dd8ff; display:block; }
+
+        .google-btn {
+            display:flex; align-items:center; justify-content:center; gap:8px;
+            font-size:14px !important; font-weight:600 !important;
+        }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes slideUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+
+        @media(max-width:1060px) {
+            .nav-center { display:none; }
+            .hamburger  { display:flex; }
+            .nav-right .btn-signin, .nav-right .btn-signup { display:none; }
+            .navbar { overflow:visible; }
+        }
+        @media(max-width:700px) {
+            .stats-grid   { grid-template-columns:repeat(2,1fr); }
+            .pricing-grid { grid-template-columns:repeat(2,1fr); }
+            .navbar { 
+                width:calc(100% - 20px); 
+                padding:0 12px; 
+                overflow:visible;
+            }
+            .nav-right { gap:6px; overflow:visible; }
+            .lang-switcher { display:none; }
+        }
+        @media(max-width:480px) {
+            .pricing-grid { grid-template-columns:1fr; max-width:360px; margin:0 auto; }
+            .navbar { padding:0 12px; height:60px; top:8px; }
+            .logo   { font-size:18px; }
+        }
+
+        .footer {
+            position:relative; z-index:1; text-align:center;
+            padding:36px 20px; color:rgba(255,255,255,0.4); font-size:13px;
+        }
+        body.ar .footer { text-align:center; }
+
+        .user-chip {
+            display:none; align-items:center; gap:8px;
+            padding:6px 14px; border-radius:13px;
+            background:rgba(0,212,255,0.15);
+            border:1px solid rgba(0,212,255,0.3);
+            font-size:13px; font-weight:600; color:var(--cyan);
+            white-space:nowrap;
+        }
+        .user-chip.visible { display:flex; }
+    </style>
+</head>
+<body>
+
+<noscript>
+    <div style="
+        position:fixed; inset:0; z-index:99999;
+        background:rgba(0,8,25,0.97);
+        display:flex; align-items:center; justify-content:center;
+        font-family:'Poppins',sans-serif; text-align:center; padding:30px;
+    ">
+        <div style="max-width:480px;">
+            <div style="font-size:64px; margin-bottom:20px;">⚠️</div>
+            <h2 style="color:#fff; font-size:24px; font-weight:800; margin-bottom:16px;">
+                JavaScript Required
+            </h2>
+            <p style="color:rgba(255,255,255,0.7); font-size:15px; line-height:1.7; margin-bottom:24px;">
+                This site requires JavaScript to work properly. 
+                Please enable JavaScript in your browser settings and refresh the page.
+            </p>
+            <p style="color:rgba(255,255,255,0.4); font-size:13px;">
+                🇹🇷 Bu site JavaScript gerektiriyor. Lütfen tarayıcı ayarlarından JavaScript'i etkinleştirin.<br>
+                🇳🇱 Deze site vereist JavaScript. Schakel JavaScript in via uw browserinstellingen.<br>
+                🇸🇦 يتطلب هذا الموقع JavaScript. يرجى تفعيله من إعدادات المتصفح.
+            </p>
+        </div>
+    </div>
+</noscript>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar glass" id="navbar">
+    <div class="logo">Exam<span>Theorie</span></div>
+    <div class="nav-center">
+        <button class="nav-link" data-i18n="nav_car"    onclick="openPassengerCar()">Passenger Car</button>
+        <button class="nav-link" data-i18n="nav_prices" onclick="openPricing()">Package Prices</button>
+        <button class="nav-link" data-i18n="nav_refer"  onclick="openModal('refer')">Refer Friends</button>
+        <button class="nav-link" data-i18n="nav_how"    onclick="scrollToSec('how-sec')">How It Works?</button>
+    </div>
+    <div class="nav-right">
+        <div class="lang-switcher glass" id="ls-desktop">
+            <span class="lang-opt active" data-lang="en">EN</span>
+            <span class="lang-opt"        data-lang="tr">TR</span>
+            <span class="lang-opt"        data-lang="nl">NL</span>
+            <span class="lang-opt"        data-lang="ar">AR</span>
+        </div>
+        <div class="user-chip" id="userChip">
+            👤 <span id="userName"></span>
+        </div>
+        <button class="btn-signin" id="signinBtn" onclick="openModal('si')">Sign In</button>
+        <button class="btn-signup" id="signupBtn" data-i18n="nav_signup" onclick="openModal('su')">Sign Up</button>
+        <div class="hamburger" id="hbg" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu glass-strong" id="mob-menu">
+    <div class="mob-lang-row" id="ls-mobile">
+        <span class="lang-opt active" data-lang="en">EN</span>
+        <span class="lang-opt"        data-lang="tr">TR</span>
+        <span class="lang-opt"        data-lang="nl">NL</span>
+        <span class="lang-opt"        data-lang="ar">AR</span>
+    </div>
+    <div id="mobUserInfo" style="display:none; padding:10px 14px; border-radius:12px; background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.2); color:var(--cyan); font-size:13px; font-weight:600;">
+        👤 <span id="mobUserName"></span>
+    </div>
+    <button class="mob-link" data-i18n="nav_car"    onclick="openPassengerCar();closeMob()">🚗 Passenger Car</button>
+    <button class="mob-link" data-i18n="nav_prices" onclick="openPricing();closeMob()">💰 Package Prices</button>
+    <button class="mob-link" data-i18n="nav_refer"  onclick="openModal('refer');closeMob()">🎁 Refer Friends</button>
+    <button class="mob-link" data-i18n="nav_how"    onclick="scrollToSec('how-sec');closeMob()">❓ How It Works?</button>
+    <div class="mob-auth" id="mobAuthRow">
+        <button class="btn-signin" id="mobSigninBtn" onclick="openModal('si');closeMob()">Sign In</button>
+        <button class="btn-signup" id="mobSignupBtn" data-i18n="nav_signup" onclick="openModal('su');closeMob()">Sign Up</button>
+    </div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero-sec">
+    <div class="hero-inner">
+        <div class="hero-badge glass">
+            <span>🇳🇱</span>
+            <span data-i18n="badge"></span>
+            <span>🏆</span>
+        </div>
+        <h1 class="hero-title" data-i18n="hero_title"></h1>
+        <p  class="hero-slogan" data-i18n-html="hero_slogan"></p>
+        <div class="hero-cta">
+            <button class="btn-hero-p" data-i18n="btn_start"></button>
+            <button class="btn-hero-s" data-i18n="btn_prices" onclick="openPricing()"></button>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ STATS ═══════════ -->
+<section class="stats-sec">
+    <div class="stats-wrap glass-strong">
+        <div class="stats-grid">
+            <div><div class="stat-n">10K+</div><div class="stat-l" data-i18n="s1"></div></div>
+            <div><div class="stat-n">95%</div> <div class="stat-l" data-i18n="s2"></div></div>
+            <div><div class="stat-n">50+</div>  <div class="stat-l" data-i18n="s3"></div></div>
+            <div><div class="stat-n">4</div>    <div class="stat-l" data-i18n="s4"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section class="feat-sec" id="feat-sec">
+    <h2 class="sec-head" data-i18n="feat_head"></h2>
+    <div class="feat-grid">
+        <div class="feat-card glass">
+            <div class="feat-icon">🎯</div>
+            <h3 class="feat-title" data-i18n="f1t"></h3>
+            <p  class="feat-desc"  data-i18n="f1d"></p>
+        </div>
+        <div class="feat-card glass">
+            <div class="feat-icon">🌍</div>
+            <h3 class="feat-title" data-i18n="f2t"></h3>
+            <p  class="feat-desc"  data-i18n="f2d"></p>
+        </div>
+        <div class="feat-card glass">
+            <div class="feat-icon">📊</div>
+            <h3 class="feat-title" data-i18n="f3t"></h3>
+            <p  class="feat-desc"  data-i18n="f3d"></p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section class="how-sec" id="how-sec">
+    <h2 class="sec-head" data-i18n="how_head"></h2>
+    <div class="how-grid">
+        <div class="how-card glass"><div class="how-step">1</div><h3 class="how-title" data-i18n="h1t"></h3><p class="how-desc" data-i18n="h1d"></p></div>
+        <div class="how-card glass"><div class="how-step">2</div><h3 class="how-title" data-i18n="h2t"></h3><p class="how-desc" data-i18n="h2d"></p></div>
+        <div class="how-card glass"><div class="how-step">3</div><h3 class="how-title" data-i18n="h3t"></h3><p class="how-desc" data-i18n="h3d"></p></div>
+        <div class="how-card glass"><div class="how-step">4</div><h3 class="how-title" data-i18n="h4t"></h3><p class="how-desc" data-i18n="h4d"></p></div>
+    </div>
+</section>
+
+<footer class="footer"><p>© 2026 ExamTheorie · Built for CBR success</p></footer>
+
+<!-- ═══════════ PRICING OVERLAY ═══════════ -->
+<div class="pricing-overlay" id="pricing-ol">
+    <div class="overlay-close" onclick="closePricing()">×</div>
+    <h2 class="sec-head" data-i18n="price_head" style="margin-bottom:28px;"></h2>
+
+    <!-- ── GÜNLÜK PICKER ── -->
+    <div class="daily-picker-wrap">
+        <div class="daily-picker-top">
+            <div>
+                <div class="daily-picker-title">
+                    <span data-i18n="daily_title">⚡ Daily Access</span>
+                    <span class="daily-new-badge" data-i18n="daily_badge">NEW</span>
+                </div>
+                <div class="daily-picker-sub" data-i18n="daily_sub">Choose 1–10 days. Pay only for what you need.</div>
+            </div>
+        </div>
+        <div class="day-btns" id="dayBtns"></div>
+        <div class="daily-bottom">
+            <div class="daily-price-block">
+                <div class="daily-price-main"><span>€</span><span id="dailyPrice">3.00</span></div>
+                <div class="daily-price-per"><strong id="dailyPerDay">€3.00 / day</strong> &nbsp;·&nbsp; <span id="dailyDaysLabel">1 day</span></div>
+            </div>
+            <button class="btn-daily-buy" id="btnDailyBuy" data-i18n="daily_btn" onclick="startDailyPayment(event)">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- ── AYIRICI ── -->
+    <div class="daily-divider">
+        <span class="daily-divider-text" data-i18n="daily_or">— or choose a standard package —</span>
+    </div>
+
+    <div class="pricing-grid">
+        <div class="p-card">
+            <div class="flag-corner"></div>
+            <div class="p-name" data-i18n="p1n"></div>
+            <div class="p-sub"  data-i18n="p1s"></div>
+            <div class="p-amount"><span>€</span>14.99</div>
+            <div class="p-valid" data-i18n="p1v"></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(1,'Basic','14.99')">Buy now</button><div class="ideal">iD</div></div>
+            <div class="p-divider"></div>
+            <ul class="p-features">
+                <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
+                <li data-i18n="pf_3"></li><li data-i18n="pf_4"></li>
+                <li data-i18n="pf1_5"></li><li data-i18n="pf1_6"></li>
+            </ul>
+        </div>
+        <div class="p-card popular">
+            <div class="flag-corner"></div>
+            <div class="pop-badge">⭐ MOST POPULAR</div>
+            <div class="p-name" style="margin-top:50px;" data-i18n="p2n"></div>
+            <div class="p-sub"  data-i18n="p2s"></div>
+            <div class="p-amount"><span>€</span>24.99</div>
+            <div class="p-valid" data-i18n="p2v"></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(2,'Premium','24.99')">Buy now</button><div class="ideal">iD</div></div>
+            <div class="p-divider"></div>
+            <ul class="p-features">
+                <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
+                <li data-i18n="pf_3"></li><li data-i18n="pf_4"></li>
+                <li data-i18n="pf2_5"></li><li data-i18n="pf2_6"></li>
+            </ul>
+        </div>
+        <div class="p-card">
+            <div class="flag-corner"></div>
+            <div class="p-name" data-i18n="p3n"></div>
+            <div class="p-sub"  data-i18n="p3s"></div>
+            <div class="p-amount"><span>€</span>34.99</div>
+            <div class="p-valid" data-i18n="p3v"></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(3,'Pro','34.99')">Buy now</button><div class="ideal">iD</div></div>
+            <div class="p-divider"></div>
+            <ul class="p-features">
+                <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
+                <li data-i18n="pf_3"></li><li data-i18n="pf_4"></li>
+                <li data-i18n="pf3_5"></li><li data-i18n="pf3_6"></li>
+            </ul>
+        </div>
+        <div class="p-card">
+            <div class="flag-corner"></div>
+            <div class="p-name" data-i18n="p4n"></div>
+            <div class="p-sub"  data-i18n="p4s"></div>
+            <div class="p-amount"><span>€</span>58.99</div>
+            <div class="p-valid" data-i18n="p4v"></div>
+            <div class="buy-row"><button class="btn-buy" data-i18n="buy" onclick="startPayment(4,'Ultimate','58.99')">Buy now</button><div class="ideal">iD</div></div>
+            <div class="p-divider"></div>
+            <ul class="p-features">
+                <li data-i18n="pf_1"></li><li data-i18n="pf_2"></li>
+                <li data-i18n="pf_3"></li><li data-i18n="pf_4"></li>
+                <li data-i18n="pf4_5"></li><li data-i18n="pf4_6"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ PASSENGER CAR OVERLAY ═══════════ -->
+<div class="pc-overlay" id="pc-ol">
+    <div class="pc-close" onclick="closePassengerCar()">×</div>
+    <div class="pc-inner">
+
+        <div class="pc-header">
+            <h2 data-i18n="nav_car">Passenger Car</h2>
+            <p data-i18n="pc_sub">Select a chapter below to study theory or start a practice test.</p>
+        </div>
+
+        <div class="pc-layout">
+            <!-- LEFT: Accordion -->
+            <div class="pc-left">
+                <div class="acc-container" id="accordion">
+
+                    <div class="acc-item g1">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">1</div>
+                            <span class="acc-label" data-i18n="a1">Legislation</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/code-of-conduct-1-1.html`);return false;"><span class="cell-num">1.1</span><span class="cell-label" data-i18n="a1_1">Code of conduct</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-under-the-influence-1-2.html`);return false;"><span class="cell-num">1.2</span><span class="cell-label" data-i18n="a1_2">Driving under the influence</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-skills-and-fitness-1-3.html`);return false;"><span class="cell-num">1.3</span><span class="cell-label" data-i18n="a1_3">Driving skills and fitness</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/vehicle-requirements-1-4.html`);return false;"><span class="cell-num">1.4</span><span class="cell-label" data-i18n="a1_4">Vehicle requirements</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/registration-requirement-1-5.html`);return false;"><span class="cell-num">1.5</span><span class="cell-label" data-i18n="a1_5">Registration requirement</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/periodic-general-inspection-1-6.html`);return false;"><span class="cell-num">1.6</span><span class="cell-label" data-i18n="a1_6">Periodic general inspection</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/motor-carriage-mandatory-insurance-1-7.html`);return false;"><span class="cell-num">1.7</span><span class="cell-label" data-i18n="a1_7">Mandatory insurance</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-licence-requirement-1-8.html`);return false;"><span class="cell-num">1.8</span><span class="cell-label" data-i18n="a1_8">Driving licence requirement</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-licence-validity-1-9.html`);return false;"><span class="cell-num">1.9</span><span class="cell-label" data-i18n="a1_9">Driving licence validity</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/2-to-drive-scheme-1-10.html`);return false;"><span class="cell-num">1.10</span><span class="cell-label" data-i18n="a1_10">2toDrive scheme</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/scope-of-driving-licence-b-1-11.html`);return false;"><span class="cell-num">1.11</span><span class="cell-label" data-i18n="a1_11">Scope of driving licence B</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/how-does-the-final-test-work-1-12.html`);return false;"><span class="cell-num">1.12</span><span class="cell-label" data-i18n="a1_12">How does the final test work?</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g2">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">2</div>
+                            <span class="acc-label" data-i18n="a2">Vehicle Knowledge</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/vehicle-requirements-2-1.html`);return false;"><span class="cell-num">2.1</span><span class="cell-label" data-i18n="a2_1">Vehicle requirements</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/general-requirements-part-1-2-2.html`);return false;"><span class="cell-num">2.2</span><span class="cell-label" data-i18n="a2_2">General requirements – part 1</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/general-requirements-part-2-2-3.html`);return false;"><span class="cell-num">2.3</span><span class="cell-label" data-i18n="a2_3">General requirements – part 2</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/general-requirements-part-3-2-4.html`);return false;"><span class="cell-num">2.4</span><span class="cell-label" data-i18n="a2_4">General requirements – part 3</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/general-requirements-part-4-2-5.html`);return false;"><span class="cell-num">2.5</span><span class="cell-label" data-i18n="a2_5">General requirements – part 4</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/use-requirements-2-6.html`);return false;"><span class="cell-num">2.6</span><span class="cell-label" data-i18n="a2_6">Use requirements</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/permanent-requirements-for-trailers-2-7.html`);return false;"><span class="cell-num">2.7</span><span class="cell-label" data-i18n="a2_7">Permanent requirements for trailers</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/trailer-use-requirements-2-8.html`);return false;"><span class="cell-num">2.8</span><span class="cell-label" data-i18n="a2_8">Trailer use requirements</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g3">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">3</div>
+                            <span class="acc-label" data-i18n="a3">Using the Road</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/road-users-3-1.html`);return false;"><span class="cell-num">3.1</span><span class="cell-label" data-i18n="a3_1">Road users</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/roads-section-3-2.html`);return false;"><span class="cell-num">3.2</span><span class="cell-label" data-i18n="a3_2">Road sections</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/overtaking-3-3.html`);return false;"><span class="cell-num">3.3</span><span class="cell-label" data-i18n="a3_3">Overtaking</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/ai-jac-3-4.html`);return false;"><span class="cell-num">3.4</span><span class="cell-label" data-i18n="a3_4">Approaching intersections</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/pre-sorting-aiwt-3-5.html`);return false;"><span class="cell-num">3.5</span><span class="cell-label" data-i18n="a3_5">Pre-sorting and indicating</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/speed-limits-3-6.html`);return false;"><span class="cell-num">3.6</span><span class="cell-label" data-i18n="a3_6">Speed limits</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/stopping-and-parking-part1-3-7.html`);return false;"><span class="cell-num">3.7</span><span class="cell-label" data-i18n="a3_7">Stopping and parking – part 1</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/stopping-and-parking-part-2-3-8.html`);return false;"><span class="cell-num">3.8</span><span class="cell-label" data-i18n="a3_8">Stopping and parking – part 2</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-with-a-trailer-3-9.html`);return false;"><span class="cell-num">3.9</span><span class="cell-label" data-i18n="a3_9">Driving with a trailer</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g4">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">4</div>
+                            <span class="acc-label" data-i18n="a4">Priority and Giving Way</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-behaviour-at-intersections-4-1.html`);return false;"><span class="cell-num">4.1</span><span class="cell-label" data-i18n="a4_1">Driving behaviour at intersections</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/turning-off-4-2.html`);return false;"><span class="cell-num">4.2</span><span class="cell-label" data-i18n="a4_2">Turning off</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/vulnerable-road-users-4-3.html`);return false;"><span class="cell-num">4.3</span><span class="cell-label" data-i18n="a4_3">Vulnerable road users</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g5">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">5</div>
+                            <span class="acc-label" data-i18n="a5">Special Roads & Manoeuvres</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/special-roads-5-1.html`);return false;"><span class="cell-num">5.1</span><span class="cell-label" data-i18n="a5_1">Special roads</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/roundabouts-5-2.html`);return false;"><span class="cell-num">5.2</span><span class="cell-label" data-i18n="a5_2">Roundabouts</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/special-manoeuvres-5-3.html`);return false;"><span class="cell-num">5.3</span><span class="cell-label" data-i18n="a5_3">Special manoeuvres</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/special-vehicles-part-1-5-4.html`);return false;"><span class="cell-num">5.4</span><span class="cell-label" data-i18n="a5_4">Special vehicles – part 1</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/special-vehicles-part-2-5-5.html`);return false;"><span class="cell-num">5.5</span><span class="cell-label" data-i18n="a5_5">Special vehicles – part 2</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/special-vehicles-part-3-5-6.html`);return false;"><span class="cell-num">5.6</span><span class="cell-label" data-i18n="a5_6">Special vehicles – part 3</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g6">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">6</div>
+                            <span class="acc-label" data-i18n="a6">Drive Safely & Emergency Response</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/communication-in-traffic-6-1.html`);return false;"><span class="cell-num">6.1</span><span class="cell-label" data-i18n="a6_1">Communication in traffic</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/use-of-lighting-while-driving-6-2.html`);return false;"><span class="cell-num">6.2</span><span class="cell-label" data-i18n="a6_2">Use of lighting while driving</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/use-of-lighting-when-stopped-6-3.html`);return false;"><span class="cell-num">6.3</span><span class="cell-label" data-i18n="a6_3">Use of lighting when stopped</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/safe-transport-6-4.html`);return false;"><span class="cell-num">6.4</span><span class="cell-label" data-i18n="a6_4">Safe transport</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/the-use-of-mobile-6-5.html`);return false;"><span class="cell-num">6.5</span><span class="cell-label" data-i18n="a6_5">Use of mobile devices</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/dealing-with-6-6.html`);return false;"><span class="cell-num">6.6</span><span class="cell-label" data-i18n="a6_6">Accidents and breakdowns</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/towing-vehicles-6-7.html`);return false;"><span class="cell-num">6.7</span><span class="cell-label" data-i18n="a6_7">Towing vehicles</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/driving-through-tunnels-6-8.html`);return false;"><span class="cell-num">6.8</span><span class="cell-label" data-i18n="a6_8">Driving through tunnels</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g7">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">7</div>
+                            <span class="acc-label" data-i18n="a7">Traffic Signs and Signals</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/traffic-signage-7-1.html`);return false;"><span class="cell-num">7.1</span><span class="cell-label" data-i18n="a7_1">Traffic signage</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/use-of-traffic-signs-7-2.html`);return false;"><span class="cell-num">7.2</span><span class="cell-label" data-i18n="a7_2">Use of traffic signs</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/traffic-lights-7-3.html`);return false;"><span class="cell-num">7.3</span><span class="cell-label" data-i18n="a7_3">Traffic lights</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/road-surface-markings-7-4.html`);return false;"><span class="cell-num">7.4</span><span class="cell-label" data-i18n="a7_4">Road surface markings</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/following-directives-7-5.html`);return false;"><span class="cell-num">7.5</span><span class="cell-label" data-i18n="a7_5">Following directives</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/traffic-signs-7-6.html`);return false;"><span class="cell-num">7.6</span><span class="cell-label" data-i18n="a7_6">Traffic signs</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-a-7-7.html`);return false;"><span class="cell-num">7.7</span><span class="cell-label" data-i18n="a7_7">Category A</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-b-7-8.html`);return false;"><span class="cell-num">7.8</span><span class="cell-label" data-i18n="a7_8">Category B</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-c-7-9.html`);return false;"><span class="cell-num">7.9</span><span class="cell-label" data-i18n="a7_9">Category C</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-d-7-10.html`);return false;"><span class="cell-num">7.10</span><span class="cell-label" data-i18n="a7_10">Category D</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-e-7-11.html`);return false;"><span class="cell-num">7.11</span><span class="cell-label" data-i18n="a7_11">Category E</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-f-7-12.html`);return false;"><span class="cell-num">7.12</span><span class="cell-label" data-i18n="a7_12">Category F</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-g-7-13.html`);return false;"><span class="cell-num">7.13</span><span class="cell-label" data-i18n="a7_13">Category G</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-h-7-14.html`);return false;"><span class="cell-num">7.14</span><span class="cell-label" data-i18n="a7_14">Category H</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-j-7-15.html`);return false;"><span class="cell-num">7.15</span><span class="cell-label" data-i18n="a7_15">Category J</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-k-7-16.html`);return false;"><span class="cell-num">7.16</span><span class="cell-label" data-i18n="a7_16">Category K</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/meaning-per-category-l-7-17.html`);return false;"><span class="cell-num">7.17</span><span class="cell-label" data-i18n="a7_17">Category L</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/supplementary-plates-7-18.html`);return false;"><span class="cell-num">7.18</span><span class="cell-label" data-i18n="a7_18">Supplementary plates</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/beaconing-7-19.html`);return false;"><span class="cell-num">7.19</span><span class="cell-label" data-i18n="a7_19">Beaconing</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/directives-7-20.html`);return false;"><span class="cell-num">7.20</span><span class="cell-label" data-i18n="a7_20">Directives</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item g8">
+                        <button class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-num">8</div>
+                            <span class="acc-label" data-i18n="a8">Responsible Traffic & Eco-Safe Driving</span>
+                            <span class="acc-arrow">▼</span>
+                        </button>
+                        <div class="acc-body">
+                            <div class="acc-grid">
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/traffic-insight-and-driving-behaviour-8-1.html`);return false;"><span class="cell-num">8.1</span><span class="cell-label" data-i18n="a8_1">Traffic insight and behaviour</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/traffic-behaviour-and-safety-8-2.html`);return false;"><span class="cell-num">8.2</span><span class="cell-label" data-i18n="a8_2">Traffic behaviour and safety</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/maintaining-distance-8-3.html`);return false;"><span class="cell-num">8.3</span><span class="cell-label" data-i18n="a8_3">Maintaining distance</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/weather-conditions-8-4.html`);return false;"><span class="cell-num">8.4</span><span class="cell-label" data-i18n="a8_4">Weather conditions</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/obstacles-to-visibility-8-5.html`);return false;"><span class="cell-num">8.5</span><span class="cell-label" data-i18n="a8_5">Obstacles to visibility</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/limitations-to-field-of-view-8-6.html`);return false;"><span class="cell-num">8.6</span><span class="cell-label" data-i18n="a8_6">Limitations to field of view</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/road-types-8-7.html`);return false;"><span class="cell-num">8.7</span><span class="cell-label" data-i18n="a8_7">Road types</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/inexperienced-vulnerable-road-users-large-vehicles-8-8.html`);return false;"><span class="cell-num">8.8</span><span class="cell-label" data-i18n="a8_8">Vulnerable road users</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/environment-8-9.html`);return false;"><span class="cell-num">8.9</span><span class="cell-label" data-i18n="a8_9">Environment</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/maintenance-and-periodic-checking-8-10.html`);return false;"><span class="cell-num">8.10</span><span class="cell-label" data-i18n="a8_10">Maintenance and checking</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/warning-lights-and-symbols-8-11.html`);return false;"><span class="cell-num">8.11</span><span class="cell-label" data-i18n="a8_11">Warning lights and symbols</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/general-safety-requirements-8-12.html`);return false;"><span class="cell-num">8.12</span><span class="cell-label" data-i18n="a8_12">General safety requirements</span></a>
+                                <a class="acc-cell" href="#" onclick="openTheoryLink(`https://oefenen.examtheorie.nl/advanced-driver-assistance-systems-(ADAS)-8-13.html`);return false;"><span class="cell-num">8.13</span><span class="cell-label" data-i18n="a8_13">ADAS</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT: Test Buttons Panel -->
+            <div class="pc-right">
+                <div class="test-panel">
+                    <div class="test-panel-title">
+                        <span>📝</span>
+                        <span data-i18n="test_panel_title">CBR Exam Tests</span>
+                    </div>
+                    <div class="test-panel-sub" data-i18n="test_panel_sub">
+                        Complete tests in order. Each test unlocks the next one.
+                    </div>
+                    <div class="test-progress-bar">
+                        <div class="test-progress-fill" id="testProgressFill" style="width:2%"></div>
+                    </div>
+                    <div class="test-progress-label" id="testProgressLabel">1 / 50 completed</div>
+                    <div class="test-btn-grid" id="testBtnGrid"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ AUTH MODALS ═══════════ -->
+<div class="modal-bg" id="si-modal">
+    <div class="auth-box glass-strong">
+        <div class="m-close" onclick="closeModal('si')">×</div>
+        <h2 class="m-title" data-i18n="si_title"></h2>
+        <div class="auth-msg" id="si-msg"></div>
+        <form onsubmit="handleSignIn(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="si-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="si-pass" class="f-inp" placeholder="••••••••" autocomplete="current-password"></div>
+            <div style="text-align:right;margin-top:-8px;margin-bottom:12px;">
+                <a onclick="showForgotPassword()" style="font-size:12px;color:rgba(255,255,255,0.6);cursor:pointer;text-decoration:underline;" data-i18n="forgot_pass">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn-submit" id="si-btn" data-i18n="si_title"></button>
+        </form>
+        <div class="m-div" data-i18n="f_or"></div>
+        <div class="soc-row">
+            <button class="soc-btn google-btn" onclick="signInWithGoogle()"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg> Google</button>
+        </div>
+        <div class="m-foot"><span data-i18n="si_no_acc"></span> <a onclick="switchModal('si','su')" data-i18n="nav_signup"></a></div>
+    </div>
+</div>
+
+<!-- ═══════════ ŞİFRE SIFIRLAMA MODAL ═══════════ -->
+<div class="modal-bg" id="fp-modal">
+    <div class="auth-box glass-strong">
+        <div class="m-close" onclick="closeModal('fp')">×</div>
+        <h2 class="m-title" data-i18n="fp_title">Reset Password</h2>
+        <div class="auth-msg" id="fp-msg"></div>
+        <form onsubmit="handleForgotPassword(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="fp-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
+            <button type="submit" class="btn-submit" id="fp-btn" data-i18n="fp_btn">Send Reset Link</button>
+        </form>
+        <div class="m-foot"><a onclick="switchModal('fp','si')" data-i18n="fp_back">← Back to Sign In</a></div>
+    </div>
+</div>
+
+<div class="modal-bg" id="su-modal">
+    <div class="auth-box glass-strong">
+        <div class="m-close" onclick="closeModal('su')">×</div>
+        <h2 class="m-title" data-i18n="su_title"></h2>
+        <div class="auth-msg" id="su-msg"></div>
+        <form onsubmit="handleSignUp(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_name"></label><input type="text" id="su-name" class="f-inp" data-i18n-ph="f_name_ph"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_email"></label><input type="email" id="su-email" class="f-inp" data-i18n-ph="f_email_ph"></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="f_pass"></label><input type="password" id="su-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
+            <button type="submit" class="btn-submit" id="su-btn" data-i18n="su_title"></button>
+        </form>
+        <div class="m-div" data-i18n="f_or"></div>
+        <div class="soc-row">
+            <button class="soc-btn google-btn" onclick="signInWithGoogle()"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg> Google</button>
+        </div>
+        <div class="m-foot"><span data-i18n="su_have_acc"></span> <a onclick="switchModal('su','si')" data-i18n="nav_signin"></a></div>
+    </div>
+</div>
+
+<!-- ═══════════ YENİ ŞİFRE MODAL ═══════════ -->
+<div class="modal-bg" id="np-modal">
+    <div class="auth-box glass-strong">
+        <div class="m-close" onclick="closeModal('np')">×</div>
+        <h2 class="m-title" data-i18n="np_title">Set New Password</h2>
+        <div class="auth-msg" id="np-msg"></div>
+        <form onsubmit="handleNewPassword(event)" novalidate>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label">New Password</label><input type="password" id="np-pass" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
+            <div class="f-grp"><label class="f-lbl" data-i18n="np_label2">Confirm Password</label><input type="password" id="np-pass2" class="f-inp" placeholder="••••••••" autocomplete="new-password" ></div>
+            <button type="submit" class="btn-submit" id="np-btn" data-i18n="np_btn">Save New Password</button>
+        </form>
+    </div>
+</div>
+
+<!-- ═══════════ PAYWALL MODAL ═══════════ -->
+<div class="modal-bg" id="paywall-modal">
+    <div class="auth-box glass-strong" style="max-width:460px;text-align:center;padding:40px 32px;">
+        <div class="m-close" onclick="closePaywall()">×</div>
+        <div style="font-size:48px;margin-bottom:16px;">🔒</div>
+        <h2 style="font-size:22px;font-weight:800;margin-bottom:10px;" data-i18n="paywall_title">Premium Access Required</h2>
+        <p id="paywall-group-msg" style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:28px;" data-i18n="paywall_desc"></p>
+        <button class="btn-signup" style="width:100%;padding:14px;font-size:15px;border-radius:14px;" onclick="closePaywall();closePassengerCar();openPricing();" data-i18n="paywall_btn">View Packages</button>
+        <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.4);" data-i18n="paywall_note">One-time payment • No subscription</p>
+    </div>
+</div>
+
+<script>
+/* ─── TRANSLATIONS ─── */
+const I18N = {
+  en:{
+    nav_car:"Passenger Car", nav_prices:"Package Prices",
+    nav_refer:"Refer Friends", nav_how:"How It Works?",
+    nav_signin:"Sign In", nav_signup:"Sign Up", nav_signout:"Sign Out",
+    badge:"Netherlands Driving Theory",
+    hero_title:"LEARN DUTCH CBR THEORY",
+    hero_slogan:'WITH <strong>REAL PRACTICE TESTS</strong> and get fully prepared for the <strong>CBR exam.</strong>',
+    btn_start:"Start Free Today", btn_prices:"View Prices",
+    s1:"Active Students", s2:"Pass Rate", s3:"CBR Exam Tests", s4:"Languages",
+    feat_head:"Why Choose ExamTheorie?",
+    f1t:"Real CBR Exam Tests", f1d:"Practice with 50+ real CBR exam questions updated for 2026.",
+    f2t:"4 Language Support", f2d:"Full access in English, Dutch, Turkish and Arabic.",
+    f3t:"Smart Error Analysis", f3d:"Instant feedback on every wrong answer.",
+    how_head:"How It Works?",
+    h1t:"Choose Your Plan", h1d:"Pick the package that fits your timeline.",
+    h2t:"Study Theory", h2d:"Read updated 2026 CBR theory in your language.",
+    h3t:"Take Practice Tests", h3d:"Simulate the real CBR exam and track your progress.",
+    h4t:"Pass Your Exam", h4d:"Walk in fully prepared. We guarantee it.",
+    price_head:"Package Prices", buy:"Buy now",
+    p1n:"14-Day Full Access", p1s:"Fast Preparation Pack", p1v:"Valid for 14 days",
+    p2n:"30-Day Premium Pass", p2s:"Complete Success Kit", p2v:"Valid for 30 days",
+    p3n:"60-Day Success Plan", p3s:"Comprehensive Training Bundle", p3v:"Valid for 60 days",
+    p4n:"1-Year Ultimate Access", p4s:"Ultimate Pass Guarantee", p4v:"Valid for 12 months",
+    pf_1:"One-Time Payment (No Subscription)", pf_2:"English, NL, TR, AR Access",
+    pf_3:"2026 Updated Theory Materials", pf_4:"50 Real CBR Exam Tests",
+    pf1_5:"Instant Error Analysis", pf1_6:"Mobile & Desktop Access",
+    pf2_5:"Intensive Theory Drills", pf2_6:"Priority Support",
+    pf3_5:"Advanced Learning Algorithm", pf3_6:"Smart Progress Tracking",
+    pf4_5:"Study Until You Pass", pf4_6:"Free Updates for 2026",
+    pc_sub:"Select a chapter to study theory or start a practice test.",
+    test_panel_title:"CBR Exam Tests",
+    test_panel_sub:"Complete tests in order. Each test unlocks the next.",
+    si_title:"Sign In", su_title:"Create Account",
+    f_name:"Full Name", f_name_ph:"John Doe", f_email:"Email",
+    f_email_ph:"your@email.com", f_pass:"Password", f_or:"or continue with",
+    si_no_acc:"No account yet?", su_have_acc:"Already have an account?",
+    paywall_title:"Premium Access Required",
+    paywall_desc:"To access this content, you need an active plan.",
+    paywall_desc_tests:"To take CBR practice tests, you need an active plan.",
+    paywall_desc_theory:"To access theory materials, you need a Premium plan or higher.",
+    paywall_btn:"View Packages", paywall_note:"One-time payment • No subscription",
+    err_wrong_pass:"Incorrect email or password. Please try again.",
+    err_already_member:"✉️ This email is already registered. Try signing in instead.",
+    msg_verify_email:"✅ Registration successful! Check your email and click the verification link.",
+    forgot_pass:"Forgot password?",
+    fp_title:"Reset Password", fp_btn:"Send Reset Link", fp_back:"← Back to Sign In",
+    fp_sent:"✅ Reset link sent! Check your email inbox.",
+    fp_err:"Could not send reset email. Please check the address and try again.",
+    np_title:"Set New Password", np_label:"New Password", np_label2:"Confirm Password",
+    np_btn:"Save New Password", np_match_err:"Passwords do not match.",
+    np_success:"✅ Password updated! You are now signed in.",
+    np_err:"Could not update password. Please try again.",
+    daily_title:"⚡ Daily Access",
+    daily_badge:"NEW",
+    daily_sub:"Choose 1–10 days. Pay only for what you need.",
+    daily_btn:"Buy Now",
+    daily_or:"— or choose a standard package —",
+    daily_per:"/ day",
+    daily_days_label:"day",
+    daily_days_label_p:"days",
+    daily_tags:["","","","","","","","","",""],
+    err_field_required:"Please fill in all fields.",
+    err_email_invalid:"Please enter a valid email address.",
+    err_pass_short:"Password must be at least 6 characters.",
+    a1:"Legislation", a2:"Vehicle Knowledge", a3:"Using the Road",
+    a4:"Priority and Giving Way",
+    a5:"Special Roads, Road Sections, Road Users and Manoeuvres",
+    a6:"Drive the Vehicle Safely and Respond in Emergency Situations",
+    a7:"Traffic Signs and Signals",
+    a8:"Responsible Traffic Participation and Eco-Safe Driving",
+    a1_1:"Code of conduct", a1_2:"Driving under the influence", a1_3:"Driving skills and fitness",
+    a1_4:"Vehicle requirements", a1_5:"Registration requirement", a1_6:"Periodic general inspection (MOT/APK)",
+    a1_7:"Motor carriage mandatory insurance", a1_8:"Driving licence requirement",
+    a1_9:"Driving licence validity", a1_10:"2toDrive scheme",
+    a1_11:"Scope of driving licence B", a1_12:"How does the final test work?",
+    a2_1:"Vehicle requirements", a2_2:"General requirements – part 1",
+    a2_3:"General requirements – part 2", a2_4:"General requirements – part 3",
+    a2_5:"General requirements – part 4", a2_6:"Use requirements",
+    a2_7:"Permanent requirements for trailers", a2_8:"Trailer use requirements",
+    a3_1:"Road users", a3_2:"Road sections", a3_3:"Overtaking",
+    a3_4:"Approaching intersections, junctions and crossings",
+    a3_5:"Pre-sorting and indicating when turning", a3_6:"Speed limits",
+    a3_7:"Stopping and parking – part 1", a3_8:"Stopping and parking – part 2",
+    a3_9:"Driving with a trailer",
+    a4_1:"Driving behaviour at intersections", a4_2:"Turning off",
+    a4_3:"Vulnerable road users",
+    a5_1:"Special roads", a5_2:"Roundabouts", a5_3:"Special manoeuvres",
+    a5_4:"Special vehicles – part 1", a5_5:"Special vehicles – part 2", a5_6:"Special vehicles – part 3",
+    a6_1:"Communication in traffic", a6_2:"Use of lighting while driving",
+    a6_3:"Use of lighting when stopped", a6_4:"Safe transport",
+    a6_5:"Use of mobile communication devices",
+    a6_6:"Dealing with accidents and breakdowns",
+    a6_7:"Towing vehicles", a6_8:"Driving through tunnels",
+    a7_1:"Traffic signage", a7_2:"Use of traffic signs", a7_3:"Traffic lights",
+    a7_4:"Road surface markings", a7_5:"Following directives", a7_6:"Traffic signs",
+    a7_7:"Meaning per category – A", a7_8:"Meaning per category – B",
+    a7_9:"Meaning per category – C", a7_10:"Meaning per category – D",
+    a7_11:"Meaning per category – E", a7_12:"Meaning per category – F",
+    a7_13:"Meaning per category – G", a7_14:"Meaning per category – H",
+    a7_15:"Meaning per category – J", a7_16:"Meaning per category – K",
+    a7_17:"Meaning per category – L", a7_18:"Supplementary plates",
+    a7_19:"Beaconing", a7_20:"Directives",
+    a8_1:"Traffic insight and driving behaviour", a8_2:"Traffic behaviour and safety",
+    a8_3:"Maintaining distance", a8_4:"Weather conditions",
+    a8_5:"Obstacles to visibility", a8_6:"Limitations to field of view",
+    a8_7:"Road types", a8_8:"Inexperienced/vulnerable road users, large vehicles",
+    a8_9:"Environment", a8_10:"Maintenance and periodic checking",
+    a8_11:"Warning lights and symbols", a8_12:"General safety requirements",
+    a8_13:"Advanced Driver Assistance Systems (ADAS)"
+  },
+  tr:{
+    nav_car:"Binek Araç", nav_prices:"Paket Fiyatları",
+    nav_refer:"Arkadaşını Davet Et", nav_how:"Nasıl Çalışır?",
+    nav_signin:"Giriş Yap", nav_signup:"Kayıt Ol", nav_signout:"Çıkış Yap",
+    badge:"Hollanda Ehliyet Teorisi",
+    hero_title:"HOLLANDA CBR TEORİSİ",
+    hero_slogan:'<strong>GERÇEK SORULARLA</strong> çalış, <strong>CBR sınavına</strong> hazır gir.',
+    btn_start:"Ücretsiz Başla", btn_prices:"Fiyatları Gör",
+    s1:"Aktif Öğrenci", s2:"Geçiş Oranı", s3:"CBR Sınav Sorusu", s4:"Dil",
+    feat_head:"Neden ExamTheorie?",
+    f1t:"Gerçek CBR Soruları", f1d:"2026 güncel 50+ CBR sınav sorusuyla pratik yap.",
+    f2t:"4 Dil Desteği", f2d:"Türkçe, İngilizce, Hollandaca ve Arapça tam erişim.",
+    f3t:"Akıllı Hata Analizi", f3d:"Her yanlış cevaba anlık geri bildirim.",
+    how_head:"Nasıl Çalışır?",
+    h1t:"Paket Seç", h1d:"Zaman çizelgene uygun paketi seç.",
+    h2t:"Teori Çalış", h2d:"2026 CBR teorisini kendi dilinde oku.",
+    h3t:"Deneme Sınavı", h3d:"Gerçek CBR sınavını simüle et.",
+    h4t:"Sınavını Geç", h4d:"Hazır gir. Bunu garanti ediyoruz.",
+    price_head:"Paket Fiyatları", buy:"Hemen Al",
+    p1n:"14 Günlük Tam Erişim", p1s:"Hızlı Hazırlık Paketi", p1v:"14 gün geçerli",
+    p2n:"30 Günlük Premium Geçiş", p2s:"Tam Başarı Seti", p2v:"30 gün geçerli",
+    p3n:"60 Günlük Başarı Planı", p3s:"Kapsamlı Eğitim Paketi", p3v:"60 gün geçerli",
+    p4n:"1 Yıllık Sınırsız Erişim", p4s:"Geçiş Garantisi", p4v:"12 ay geçerli",
+    pf_1:"Tek Seferlik Ödeme (Abonelik Yok)", pf_2:"İngilizce, NL, TR, AR Erişimi",
+    pf_3:"2026 Güncel Teori Materyalleri", pf_4:"50 Gerçek CBR Sınavı",
+    pf1_5:"Anlık Hata Analizi", pf1_6:"Mobil & Masaüstü Erişim",
+    pf2_5:"Yoğun Teori Egzersizleri", pf2_6:"Öncelikli Destek",
+    pf3_5:"Gelişmiş Öğrenme Algoritması", pf3_6:"Akıllı İlerleme Takibi",
+    pf4_5:"Geçene Kadar Çalış", pf4_6:"2026 Ücretsiz Güncellemeler",
+    pc_sub:"Teori okumak veya deneme sınavı için bir bölüm seçin.",
+    test_panel_title:"CBR Deneme Sınavları",
+    test_panel_sub:"Testleri sırayla tamamlayın. Her test bir sonrakini açar.",
+    si_title:"Giriş Yap", su_title:"Hesap Oluştur",
+    f_name:"Ad Soyad", f_name_ph:"Adınız Soyadınız", f_email:"E-posta",
+    f_email_ph:"email@adresiniz.com", f_pass:"Şifre", f_or:"veya şununla devam et",
+    si_no_acc:"Hesabın yok mu?", su_have_acc:"Zaten hesabın var mı?",
+    paywall_title:"Premium Erişim Gerekli",
+    paywall_desc:"Bu içeriğe erişmek için aktif bir planınız olması gerekiyor.",
+    paywall_desc_tests:"CBR deneme testlerini çözmek için aktif bir planınız olması gerekiyor.",
+    paywall_desc_theory:"Teori içeriklerine erişmek için Premium veya üstü bir plan gerekiyor.",
+    paywall_btn:"Paketleri Gör", paywall_note:"Tek seferlik ödeme • Abonelik yok",
+    err_wrong_pass:"E-posta veya şifre hatalı. Lütfen tekrar deneyin.",
+    err_already_member:"✉️ Bu e-posta zaten kayıtlı. Giriş yapmayı deneyin.",
+    msg_verify_email:"✅ Kayıt başarılı! E-postanı kontrol et ve doğrulama linkine tıkla.",
+    forgot_pass:"Şifremi unuttum",
+    fp_title:"Şifre Sıfırla", fp_btn:"Sıfırlama Linki Gönder", fp_back:"← Giriş Yap'a Dön",
+    fp_sent:"✅ Sıfırlama linki gönderildi! E-posta kutunu kontrol et.",
+    fp_err:"Sıfırlama e-postası gönderilemedi. Adresi kontrol edip tekrar dene.",
+    np_title:"Yeni Şifre Belirle", np_label:"Yeni Şifre", np_label2:"Şifre Tekrar",
+    np_btn:"Şifremi Kaydet", np_match_err:"Şifreler eşleşmiyor.",
+    np_success:"✅ Şifre güncellendi! Giriş yapıldı.",
+    np_err:"Şifre güncellenemedi. Lütfen tekrar dene.",
+    daily_title:"⚡ Günlük Erişim",
+    daily_badge:"YENİ",
+    daily_sub:"1-10 gün arası seç. Sadece ihtiyacın kadar öde.",
+    daily_btn:"Satın Al",
+    daily_or:"— veya standart paket seç —",
+    daily_per:"/ gün",
+    daily_days_label:"gün",
+    daily_days_label_p:"gün",
+    daily_tags:["","","","","","","","","",""],
+    err_field_required:"Lütfen tüm alanları doldurun.",
+    err_email_invalid:"Lütfen geçerli bir e-posta adresi girin.",
+    err_pass_short:"Şifre en az 6 karakter olmalıdır.",
+    a1:"Mevzuat", a2:"Araç Bilgisi", a3:"Yolda Kullanım",
+    a4:"Öncelik ve Yol Verme",
+    a5:"Özel Yollar, Yol Kesimleri, Yol Kullanıcıları ve Manevralar",
+    a6:"Aracı Güvenli Kullanma ve Acil Durumlarda Müdahale",
+    a7:"Trafik İşaretleri ve Sinyaller",
+    a8:"Sorumlu Trafik Katılımı ve Ekonomik Sürüş",
+    a1_1:"Davranış kuralları", a1_2:"Alkollü araç kullanımı", a1_3:"Sürüş becerileri",
+    a1_4:"Araç gereksinimleri", a1_5:"Tescil zorunluluğu", a1_6:"Periyodik muayene (APK)",
+    a1_7:"Zorunlu sigorta", a1_8:"Sürücü belgesi zorunluluğu",
+    a1_9:"Sürücü belgesi geçerliliği", a1_10:"2toDrive programı",
+    a1_11:"B sınıfı sürücü belgesi kapsamı", a1_12:"Final sınavı nasıl yapılır?",
+    a2_1:"Araç gereksinimleri", a2_2:"Genel gereksinimler – 1",
+    a2_3:"Genel gereksinimler – 2", a2_4:"Genel gereksinimler – 3",
+    a2_5:"Genel gereksinimler – 4", a2_6:"Kullanım gereksinimleri",
+    a2_7:"Römorklara yönelik kalıcı gereksinimler", a2_8:"Römork kullanım gereksinimleri",
+    a3_1:"Yol kullanıcıları", a3_2:"Yol kesimleri", a3_3:"Geçiş",
+    a3_4:"Kavşaklara yaklaşma", a3_5:"Önceden sıralama ve dönüş işareti",
+    a3_6:"Hız sınırları", a3_7:"Durma ve park – 1", a3_8:"Durma ve park – 2",
+    a3_9:"Römorklı araç kullanımı",
+    a4_1:"Kavşaklarda sürüş davranışı", a4_2:"Dönüş", a4_3:"Savunmasız yol kullanıcıları",
+    a5_1:"Özel yollar", a5_2:"Dönel kavşaklar", a5_3:"Özel manevralar",
+    a5_4:"Özel araçlar – 1", a5_5:"Özel araçlar – 2", a5_6:"Özel araçlar – 3",
+    a6_1:"Trafikte iletişim", a6_2:"Seyirde aydınlatma", a6_3:"Duruşta aydınlatma",
+    a6_4:"Güvenli taşıma", a6_5:"Mobil cihaz kullanımı",
+    a6_6:"Kaza ve arızalar", a6_7:"Araç çekme", a6_8:"Tünellerde sürüş",
+    a7_1:"Trafik levhaları", a7_2:"Trafik işaretleri kullanımı", a7_3:"Trafik ışıkları",
+    a7_4:"Yol yüzey işaretlemeleri", a7_5:"Yönergelere uymak", a7_6:"Trafik işaretleri",
+    a7_7:"Kategori A", a7_8:"Kategori B", a7_9:"Kategori C", a7_10:"Kategori D",
+    a7_11:"Kategori E", a7_12:"Kategori F", a7_13:"Kategori G", a7_14:"Kategori H",
+    a7_15:"Kategori J", a7_16:"Kategori K", a7_17:"Kategori L",
+    a7_18:"Ek tabelalar", a7_19:"Yol işaretçileri", a7_20:"Yönergeler",
+    a8_1:"Trafik anlayışı ve sürüş davranışı", a8_2:"Trafik davranışı ve güvenlik",
+    a8_3:"Güvenli takip mesafesi", a8_4:"Hava koşulları",
+    a8_5:"Görüşü engelleyen durumlar", a8_6:"Görüş alanı kısıtlamaları",
+    a8_7:"Yol türleri", a8_8:"Savunmasız yol kullanıcıları ve büyük araçlar",
+    a8_9:"Çevre", a8_10:"Bakım ve periyodik kontrol",
+    a8_11:"Uyarı lambaları ve sembolleri", a8_12:"Genel güvenlik gereksinimleri",
+    a8_13:"Gelişmiş Sürücü Destek Sistemleri (ADAS)"
+  },
+  nl:{
+    nav_car:"Personenwagen", nav_prices:"Pakketprijzen",
+    nav_refer:"Vriend Verwijzen", nav_how:"Hoe Werkt Het?",
+    nav_signin:"Inloggen", nav_signup:"Registreren", nav_signout:"Uitloggen",
+    badge:"Nederlandse Rijtheorie",
+    hero_title:"LEER NEDERLANDSE CBR THEORIE",
+    hero_slogan:'Met <strong>ECHTE OEFENTOETSEN</strong> en wees volledig voorbereid op het <strong>CBR examen.</strong>',
+    btn_start:"Begin Gratis", btn_prices:"Bekijk Prijzen",
+    s1:"Actieve Studenten", s2:"Slagingspercentage", s3:"CBR Examenvragen", s4:"Talen",
+    feat_head:"Waarom ExamTheorie?",
+    f1t:"Echte CBR Examenvragen", f1d:"Oefen met 50+ echte CBR-examenvragen bijgewerkt voor 2026.",
+    f2t:"4 Talen Ondersteuning", f2d:"Volledige toegang in Nederlands, Engels, Turks en Arabisch.",
+    f3t:"Slimme Foutanalyse", f3d:"Directe feedback bij elk fout antwoord.",
+    how_head:"Hoe Werkt Het?",
+    h1t:"Kies Uw Pakket", h1d:"Kies het pakket dat past bij uw tijdlijn.",
+    h2t:"Bestudeer Theorie", h2d:"Lees bijgewerkte 2026 CBR-theorie in uw taal.",
+    h3t:"Maak Oefentoetsen", h3d:"Simuleer het echte CBR-examen.",
+    h4t:"Slaag Voor Uw Examen", h4d:"Loop volledig voorbereid naar binnen.",
+    price_head:"Pakketprijzen", buy:"Koop nu",
+    p1n:"14-Daagse Volledige Toegang", p1s:"Snelle Voorbereidingspakket", p1v:"Geldig voor 14 dagen",
+    p2n:"30-Daagse Premium Pas", p2s:"Compleet Successpakket", p2v:"Geldig voor 30 dagen",
+    p3n:"60-Daags Succesplan", p3s:"Uitgebreide Trainingsbundel", p3v:"Geldig voor 60 dagen",
+    p4n:"1-Jarige Ultieme Toegang", p4s:"Ultieme Slaaggarantie", p4v:"Geldig voor 12 maanden",
+    pf_1:"Eenmalige Betaling (Geen Abonnement)", pf_2:"Engels, NL, TR, AR Toegang",
+    pf_3:"2026 Bijgewerkt Theoriemateriaal", pf_4:"50 Echte CBR-examens",
+    pf1_5:"Directe Foutanalyse", pf1_6:"Mobiele & Desktop Toegang",
+    pf2_5:"Intensieve Theoriedrills", pf2_6:"Prioriteitsondersteuning",
+    pf3_5:"Geavanceerd Leeralgoritme", pf3_6:"Slim Voortgangsvolgen",
+    pf4_5:"Studeren Tot U Slaagt", pf4_6:"Gratis Updates voor 2026",
+    pc_sub:"Selecteer een hoofdstuk of start een oefentoets.",
+    test_panel_title:"CBR Oefentoetsen",
+    test_panel_sub:"Voltooi toetsen op volgorde. Elke toets ontgrendelt de volgende.",
+    si_title:"Inloggen", su_title:"Account Aanmaken",
+    f_name:"Volledige Naam", f_name_ph:"Uw naam", f_email:"E-mail",
+    f_email_ph:"uw@email.nl", f_pass:"Wachtwoord", f_or:"of ga verder met",
+    si_no_acc:"Nog geen account?", su_have_acc:"Heb je al een account?",
+    paywall_title:"Premium Toegang Vereist",
+    paywall_desc:"Om toegang te krijgen tot dit materiaal heb je een actief abonnement nodig.",
+    paywall_desc_tests:"Om CBR oefentoetsen te maken heb je een actief abonnement nodig.",
+    paywall_desc_theory:"Voor theoriemateriaal heb je een Premium abonnement of hoger nodig.",
+    paywall_btn:"Bekijk Pakketten", paywall_note:"Eenmalige betaling • Geen abonnement",
+    err_wrong_pass:"Onjuist e-mailadres of wachtwoord. Probeer het opnieuw.",
+    err_already_member:"✉️ Dit e-mailadres is al geregistreerd. Probeer in te loggen.",
+    msg_verify_email:"✅ Registratie geslaagd! Controleer je e-mail en klik op de verificatielink.",
+    forgot_pass:"Wachtwoord vergeten?",
+    fp_title:"Wachtwoord Resetten", fp_btn:"Resetlink Versturen", fp_back:"← Terug naar Inloggen",
+    fp_sent:"✅ Resetlink verzonden! Controleer je e-mail.",
+    fp_err:"Kon geen reset-e-mail versturen. Controleer het adres en probeer opnieuw.",
+    np_title:"Nieuw Wachtwoord Instellen", np_label:"Nieuw Wachtwoord", np_label2:"Bevestig Wachtwoord",
+    np_btn:"Wachtwoord Opslaan", np_match_err:"Wachtwoorden komen niet overeen.",
+    np_success:"✅ Wachtwoord bijgewerkt! Je bent nu ingelogd.",
+    np_err:"Kon wachtwoord niet bijwerken. Probeer het opnieuw.",
+    daily_title:"⚡ Dagelijks Toegang",
+    daily_badge:"NIEUW",
+    daily_sub:"Kies 1–10 dagen. Betaal alleen wat je nodig hebt.",
+    daily_btn:"Koop Nu",
+    daily_or:"— of kies een standaardpakket —",
+    daily_per:"/ dag",
+    daily_days_label:"dag",
+    daily_days_label_p:"dagen",
+    daily_tags:["","","","","","","","","",""],
+    err_field_required:"Vul alle velden in.",
+    err_email_invalid:"Voer een geldig e-mailadres in.",
+    err_pass_short:"Wachtwoord moet minimaal 6 tekens bevatten.",
+    a1:"Wetgeving", a2:"Voertuigkennis", a3:"Weggebruik",
+    a4:"Voorrang en Doorlaten",
+    a5:"Bijzondere Wegen, Weggedeelten en Manoeuvres",
+    a6:"Het Voertuig Veilig Besturen en Noodsituaties",
+    a7:"Verkeerstekens en Signalen",
+    a8:"Verantwoorde Verkeersdeelname en Eco-Veilig Rijden",
+    a1_1:"Gedragscode", a1_2:"Rijden onder invloed", a1_3:"Rijvaardigheid",
+    a1_4:"Voertuigeisen", a1_5:"Registratieplicht", a1_6:"APK",
+    a1_7:"Verplichte verzekering", a1_8:"Rijbewijsverplichting",
+    a1_9:"Geldigheid rijbewijs", a1_10:"2toDrive regeling",
+    a1_11:"Reikwijdte rijbewijs B", a1_12:"Hoe werkt het theorie-examen?",
+    a2_1:"Voertuigeisen", a2_2:"Algemene eisen – deel 1",
+    a2_3:"Algemene eisen – deel 2", a2_4:"Algemene eisen – deel 3",
+    a2_5:"Algemene eisen – deel 4", a2_6:"Gebruikseisen",
+    a2_7:"Permanente eisen voor aanhangers", a2_8:"Gebruikseisen aanhanger",
+    a3_1:"Weggebruikers", a3_2:"Weggedeelten", a3_3:"Inhalen",
+    a3_4:"Naderen van kruispunten", a3_5:"Voorsorteren en richting aangeven",
+    a3_6:"Snelheidslimieten", a3_7:"Stoppen en parkeren – deel 1",
+    a3_8:"Stoppen en parkeren – deel 2", a3_9:"Rijden met aanhanger",
+    a4_1:"Rijgedrag op kruispunten", a4_2:"Afslaan", a4_3:"Kwetsbare weggebruikers",
+    a5_1:"Bijzondere wegen", a5_2:"Rotondes", a5_3:"Bijzondere manoeuvres",
+    a5_4:"Bijzondere voertuigen – deel 1", a5_5:"deel 2", a5_6:"deel 3",
+    a6_1:"Communicatie in het verkeer", a6_2:"Verlichting rijdend",
+    a6_3:"Verlichting stilstaand", a6_4:"Veilig vervoer",
+    a6_5:"Mobiele apparaten", a6_6:"Ongelukken en pech",
+    a6_7:"Slepen", a6_8:"Rijden door tunnels",
+    a7_1:"Verkeersborden", a7_2:"Gebruik verkeersborden", a7_3:"Verkeerslichten",
+    a7_4:"Wegmarkeringen", a7_5:"Aanwijzingen", a7_6:"Verkeersborden",
+    a7_7:"Categorie A", a7_8:"Categorie B", a7_9:"Categorie C", a7_10:"Categorie D",
+    a7_11:"Categorie E", a7_12:"Categorie F", a7_13:"Categorie G", a7_14:"Categorie H",
+    a7_15:"Categorie J", a7_16:"Categorie K", a7_17:"Categorie L",
+    a7_18:"Onderborden", a7_19:"Bebakening", a7_20:"Aanwijzingen",
+    a8_1:"Verkeersinzicht en rijgedrag", a8_2:"Verkeersgedrag en veiligheid",
+    a8_3:"Afstand houden", a8_4:"Weersomstandigheden",
+    a8_5:"Zichtbelemmering", a8_6:"Beperkt gezichtsveld",
+    a8_7:"Wegtypen", a8_8:"Kwetsbare weggebruikers en grote voertuigen",
+    a8_9:"Milieu", a8_10:"Onderhoud en controle",
+    a8_11:"Waarschuwingslampjes", a8_12:"Algemene veiligheidseisen",
+    a8_13:"ADAS"
+  },
+  ar:{
+    nav_car:"السيارة الخاصة", nav_prices:"أسعار الباقات",
+    nav_refer:"دعوة الأصدقاء", nav_how:"كيف يعمل؟",
+    nav_signin:"تسجيل الدخول", nav_signup:"إنشاء حساب", nav_signout:"تسجيل الخروج",
+    badge:"نظرية القيادة الهولندية",
+    hero_title:"تعلَّم نظرية CBR الهولندية",
+    hero_slogan:'مع <strong>اختبارات تدريبية حقيقية</strong> واستعد تماماً لـ <strong>اختبار CBR.</strong>',
+    btn_start:"ابدأ مجاناً", btn_prices:"عرض الأسعار",
+    s1:"طالب نشط", s2:"معدل النجاح", s3:"أسئلة CBR", s4:"لغات",
+    feat_head:"لماذا ExamTheorie؟",
+    f1t:"أسئلة CBR الحقيقية", f1d:"تدرّب على أكثر من 50 سؤال CBR حقيقي محدّث لعام 2026.",
+    f2t:"دعم 4 لغات", f2d:"وصول كامل بالعربية والإنجليزية والهولندية والتركية.",
+    f3t:"تحليل الأخطاء الذكي", f3d:"ردود فعل فورية على كل إجابة خاطئة.",
+    how_head:"كيف يعمل؟",
+    h1t:"اختر باقتك", h1d:"اختر الباقة المناسبة.",
+    h2t:"ادرس النظرية", h2d:"اقرأ نظرية CBR بلغتك.",
+    h3t:"خذ الاختبارات", h3d:"محاكاة اختبار CBR الحقيقي.",
+    h4t:"اجتز الاختبار", h4d:"ادخل مستعداً تماماً.",
+    price_head:"أسعار الباقات", buy:"اشتر الآن",
+    p1n:"وصول كامل 14 يوم", p1s:"باقة الإعداد السريع", p1v:"صالحة 14 يوماً",
+    p2n:"تصريح بريميوم 30 يوم", p2s:"مجموعة النجاح الكاملة", p2v:"صالحة 30 يوماً",
+    p3n:"خطة النجاح 60 يوم", p3s:"حزمة التدريب الشاملة", p3v:"صالحة 60 يوماً",
+    p4n:"وصول نهائي سنة كاملة", p4s:"ضمان النجاح المطلق", p4v:"صالحة 12 شهراً",
+    pf_1:"دفعة واحدة (بدون اشتراك)", pf_2:"وصول بالإنجليزية والهولندية والتركية والعربية",
+    pf_3:"مواد نظرية محدّثة 2026", pf_4:"50 اختبار CBR حقيقي",
+    pf1_5:"تحليل الأخطاء الفوري", pf1_6:"وصول للجوال وسطح المكتب",
+    pf2_5:"تمارين نظرية مكثفة", pf2_6:"دعم ذو أولوية",
+    pf3_5:"خوارزمية تعلّم متقدمة", pf3_6:"تتبع التقدم الذكي",
+    pf4_5:"ادرس حتى تنجح", pf4_6:"تحديثات مجانية 2026",
+    pc_sub:"اختر فصلاً لدراسة النظرية أو ابدأ اختباراً.",
+    test_panel_title:"اختبارات CBR التجريبية",
+    test_panel_sub:"أكمل الاختبارات بالترتيب. كل اختبار يفتح التالي.",
+    si_title:"تسجيل الدخول", su_title:"إنشاء حساب",
+    f_name:"الاسم الكامل", f_name_ph:"اسمك الكامل", f_email:"البريد الإلكتروني",
+    f_email_ph:"بريدك@الإلكتروني.com", f_pass:"كلمة المرور", f_or:"أو تابع باستخدام",
+    si_no_acc:"ليس لديك حساب؟", su_have_acc:"هل لديك حساب بالفعل؟",
+    paywall_title:"يلزم وصول بريميوم",
+    paywall_desc:"للوصول إلى هذا المحتوى، تحتاج إلى باقة نشطة.",
+    paywall_desc_tests:"لإجراء اختبارات CBR التجريبية، تحتاج إلى باقة نشطة.",
+    paywall_desc_theory:"للوصول إلى مواد النظرية، تحتاج إلى باقة بريميوم أو أعلى.",
+    paywall_btn:"عرض الباقات", paywall_note:"دفعة واحدة • بدون اشتراك",
+    err_wrong_pass:"البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
+    err_already_member:"✉️ هذا البريد الإلكتروني مسجل بالفعل. جرّب تسجيل الدخول.",
+    msg_verify_email:"✅ تم التسجيل بنجاح! تحقق من بريدك الإلكتروني وانقر على رابط التحقق.",
+    forgot_pass:"نسيت كلمة المرور؟",
+    fp_title:"إعادة تعيين كلمة المرور", fp_btn:"إرسال رابط الإعادة", fp_back:"← العودة إلى تسجيل الدخول",
+    fp_sent:"✅ تم إرسال رابط الإعادة! تحقق من بريدك الإلكتروني.",
+    fp_err:"تعذّر إرسال بريد الإعادة. تحقق من العنوان وحاول مجدداً.",
+    np_title:"تعيين كلمة مرور جديدة", np_label:"كلمة المرور الجديدة", np_label2:"تأكيد كلمة المرور",
+    np_btn:"حفظ كلمة المرور", np_match_err:"كلمتا المرور غير متطابقتين.",
+    np_success:"✅ تم تحديث كلمة المرور! أنت الآن مسجّل الدخول.",
+    np_err:"تعذّر تحديث كلمة المرور. يرجى المحاولة مرة أخرى.",
+    daily_title:"⚡ وصول يومي",
+    daily_badge:"جديد",
+    daily_sub:"اختر من 1 إلى 10 أيام. ادفع فقط ما تحتاجه.",
+    daily_btn:"اشتر الآن",
+    daily_or:"— أو اختر باقة قياسية —",
+    daily_per:"/ يوم",
+    daily_days_label:"يوم",
+    daily_days_label_p:"أيام",
+    daily_tags:["","","","","","","","","",""],
+    err_field_required:"يرجى ملء جميع الحقول.",
+    err_email_invalid:"يرجى إدخال بريد إلكتروني صحيح.",
+    err_pass_short:"يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
+    a1:"التشريعات", a2:"معرفة المركبة", a3:"استخدام الطريق",
+    a4:"الأولوية والتنازل",
+    a5:"الطرق الخاصة والمناورات",
+    a6:"القيادة الآمنة وحالات الطوارئ",
+    a7:"إشارات المرور",
+    a8:"المشاركة المسؤولة والقيادة الاقتصادية",
+    a1_1:"قواعد السلوك", a1_2:"القيادة تحت تأثير المخدرات", a1_3:"مهارات القيادة",
+    a1_4:"متطلبات المركبة", a1_5:"متطلبات التسجيل", a1_6:"الفحص الدوري",
+    a1_7:"التأمين الإلزامي", a1_8:"متطلبات رخصة القيادة",
+    a1_9:"صلاحية رخصة القيادة", a1_10:"برنامج 2toDrive",
+    a1_11:"نطاق رخصة B", a1_12:"كيف يعمل الاختبار النهائي؟",
+    a2_1:"متطلبات المركبة", a2_2:"المتطلبات العامة – 1",
+    a2_3:"المتطلبات العامة – 2", a2_4:"المتطلبات العامة – 3",
+    a2_5:"المتطلبات العامة – 4", a2_6:"متطلبات الاستخدام",
+    a2_7:"متطلبات المقطورات الدائمة", a2_8:"متطلبات استخدام المقطورة",
+    a3_1:"مستخدمو الطريق", a3_2:"أقسام الطريق", a3_3:"التجاوز",
+    a3_4:"الاقتراب من التقاطعات", a3_5:"الفرز المسبق والإشارة",
+    a3_6:"حدود السرعة", a3_7:"التوقف والوقوف – 1",
+    a3_8:"التوقف والوقوف – 2", a3_9:"القيادة مع مقطورة",
+    a4_1:"سلوك القيادة عند التقاطعات", a4_2:"الالتفاف", a4_3:"مستخدمو الطريق الضعفاء",
+    a5_1:"الطرق الخاصة", a5_2:"الدوارات", a5_3:"المناورات الخاصة",
+    a5_4:"المركبات الخاصة – 1", a5_5:"المركبات الخاصة – 2", a5_6:"المركبات الخاصة – 3",
+    a6_1:"التواصل في المرور", a6_2:"الإضاءة أثناء القيادة",
+    a6_3:"الإضاءة عند التوقف", a6_4:"النقل الآمن",
+    a6_5:"أجهزة الاتصال المحمولة", a6_6:"الحوادث والأعطال",
+    a6_7:"قطر المركبات", a6_8:"القيادة عبر الأنفاق",
+    a7_1:"لافتات المرور", a7_2:"استخدام إشارات المرور", a7_3:"إشارات ضوئية",
+    a7_4:"علامات الطريق", a7_5:"اتباع التوجيهات", a7_6:"إشارات المرور",
+    a7_7:"الفئة A", a7_8:"الفئة B", a7_9:"الفئة C", a7_10:"الفئة D",
+    a7_11:"الفئة E", a7_12:"الفئة F", a7_13:"الفئة G", a7_14:"الفئة H",
+    a7_15:"الفئة J", a7_16:"الفئة K", a7_17:"الفئة L",
+    a7_18:"الألواح التكميلية", a7_19:"إشارات الطريق", a7_20:"التوجيهات",
+    a8_1:"الإدراك المروري", a8_2:"السلوك المروري والسلامة",
+    a8_3:"الحفاظ على المسافة", a8_4:"الأحوال الجوية",
+    a8_5:"عوائق الرؤية", a8_6:"قيود مجال الرؤية",
+    a8_7:"أنواع الطرق", a8_8:"مستخدمو الطريق الضعفاء والمركبات الكبيرة",
+    a8_9:"البيئة", a8_10:"الصيانة والفحص الدوري",
+    a8_11:"أضواء التحذير والرموز", a8_12:"متطلبات السلامة العامة",
+    a8_13:"ADAS"
+  }
+};
+
+/* ─── TEST PROGRESS ─── */
+const TOTAL_TESTS = 50;
+const QUIZ_BASE   = 'https://oefenen.examtheorie.nl';
+
+function lsKey(lang) { return `et_completed_${lang}`; }
+
+function getCompleted(lang) {
+    return JSON.parse(localStorage.getItem(lsKey(lang)) || '[]');
+}
+function markCompleted(lang, testNum) {
+    const stored = getCompleted(lang);
+    if (!stored.includes(testNum)) {
+        stored.push(testNum);
+        localStorage.setItem(lsKey(lang), JSON.stringify(stored));
+    }
+}
+function isCompleted(lang, testNum) {
+    return getCompleted(lang).includes(testNum);
+}
+function getNextTest(lang) {
+    for (let i = 1; i <= TOTAL_TESTS; i++) {
+        if (!isCompleted(lang, i)) return i;
+    }
+    return null;
+}
+
+/* ─── TEST BUTTONS ─── */
+function buildTestButtons() {
+    const lang = currentLang || 'en';
+    const grid = document.getElementById('testBtnGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const next = getNextTest(lang);
+
+    for (let i = 1; i <= TOTAL_TESTS; i++) {
+        const btn = document.createElement('button');
+        btn.className   = 'test-btn';
+        btn.textContent = i;
+
+        if (isCompleted(lang, i)) {
+            btn.classList.add('completed', 'locked');
+            btn.title   = `Test ${i} — Completed ✓`;
+            btn.onclick = null;
+        } else if (i === next) {
+            btn.classList.add('active-test');
+            btn.title   = `Test ${i} — Click to start!`;
+            btn.onclick = () => openTest(i);
+        } else {
+            btn.classList.add('locked');
+            btn.title   = `Test ${i} — Complete Test ${i-1} first`;
+            btn.onclick = () => alert(`🔒 Test ${i} kilitli. Önce Test ${i-1}'i tamamlayın.`);
+        }
+        grid.appendChild(btn);
+    }
+    updateProgress(lang);
+}
+
+function updateProgress(lang) {
+    const done  = getCompleted(lang || currentLang || 'en').length;
+    const pct   = Math.max(2, Math.round((done / TOTAL_TESTS) * 100));
+    const fill  = document.getElementById('testProgressFill');
+    const label = document.getElementById('testProgressLabel');
+    if (fill)  fill.style.width  = pct + '%';
+    if (label) label.textContent = `${done} / ${TOTAL_TESTS} completed`;
+}
+
+/* ─── LANGUAGE ─── */
+let currentLang = 'en';
+
+function applyLang(lang) {
+    if (!lang || !I18N[lang]) return;
+
+    currentLang = lang;
+
+    /* ✅ Arabic RTL fix — body'ye 'ar' class'ı ekle/kaldır */
+    document.body.classList.toggle('ar', lang === 'ar');
+
+    /* Metinleri güncelle */
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[lang][key]) el.textContent = I18N[lang][key];
+    });
+
+    /* Hero slogan — HTML içerebilir */
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (I18N[lang][key]) el.innerHTML = I18N[lang][key];
+    });
+
+    /* Input placeholder'ları güncelle */
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (I18N[lang][key]) el.placeholder = I18N[lang][key];
+    });
+
+    /* Dil seçeneklerini güncelle */
+    document.querySelectorAll('.lang-opt').forEach(o =>
+        o.classList.toggle('active', o.getAttribute('data-lang') === lang)
+    );
+
+    localStorage.setItem('et_lang', lang);
+    buildTestButtons();
+    updateNavbarUser();
+
+    if (currentUser) {
+        fetchProgressFromSupabase();
+    }
+    buildDayButtons();
+}
+
+document.querySelectorAll('.lang-opt').forEach(opt =>
+    opt.addEventListener('click', () => applyLang(opt.getAttribute('data-lang')))
+);
+
+/* ─── ACCORDION ─── */
+function toggleAcc(btn) {
+    btn.closest('.acc-item').classList.toggle('open');
+}
+
+/* ─── OVERLAYS & MODALS ─── */
+function openPricing()        { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow='hidden'; buildDayButtons(); }
+function closePricing()       { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow=''; }
+
+/* ─── ÖDEME BAŞLAT ─── */
+async function startPayment(planId, planName, amount, days) {
+    if (!currentUser) { openModal('si'); return; }
+
+    const btn = event.target;
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳ Processing...';
+
+    try {
+        const body = { planId, planName, amount, userId: currentUser.id, userEmail: currentUser.email };
+        if (days) body.days = days;
+
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${supabaseKey}`
+            },
+            body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+
+        if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('❌ Payment error: ' + (data.error || 'Unknown error'));
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    } catch (err) {
+        console.error('Payment error:', err);
+        alert('❌ Connection error. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
+}
+
+function openPassengerCar()   { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow='hidden'; buildTestButtons(); }
+function closePassengerCar()  { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow=''; }
+function openModal(id)        { if(id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id+'-modal').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeModal(id)       { document.getElementById(id+'-modal').classList.remove('active'); document.body.style.overflow=''; }
+function switchModal(a,b)     { closeModal(a); setTimeout(()=>openModal(b),100); }
+
+function toggleMenu() {
+    document.getElementById('hbg').classList.toggle('open');
+    document.getElementById('mob-menu').classList.toggle('open');
+}
+function closeMob() {
+    document.getElementById('hbg').classList.remove('open');
+    document.getElementById('mob-menu').classList.remove('open');
+}
+document.addEventListener('click', e => {
+    const nav = document.getElementById('navbar');
+    const mob = document.getElementById('mob-menu');
+    if (!nav.contains(e.target) && !mob.contains(e.target)) closeMob();
+});
+
+function scrollToSec(id) { document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); }
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closePricing(); closePassengerCar();
+        closeModal('si'); closeModal('su'); closeModal('fp'); closeModal('np');
+        closePaywall();
+        document.body.style.overflow = '';
+    }
+});
+
+/* ═══════════════════════════════════════════════════════
+   SUPABASE — TAM SİSTEM
+═══════════════════════════════════════════════════════ */
+const supabaseUrl = 'https://rvbcsakzfadhtlfeigus.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
+    auth: {
+        storage: window.localStorage,
+        storageKey: 'sb-rvbcsakzfadhtlfeigus-auth-token',
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+        flowType: 'implicit',
+        lock: function(name, acquireTimeout, fn) { return fn(); },
+        maxSessionTimeout: 60 * 60 * 24 * 7,
+        refreshTokenThreshold: 60 * 5,
+    }
+});
+
+let currentUser = null;
+let currentPlanId = null;
+let accessibleGroups = [];
+
+/* ─── NAVBAR GÜNCELLE ─── */
+function updateNavbarUser() {
+    const chip         = document.getElementById('userChip');
+    const nameSpan     = document.getElementById('userName');
+    const signinBtn    = document.getElementById('signinBtn');
+    const signupBtn    = document.getElementById('signupBtn');
+    const mobSignin    = document.getElementById('mobSigninBtn');
+    const mobSignup    = document.getElementById('mobSignupBtn');
+    const mobUserInfo  = document.getElementById('mobUserInfo');
+    const mobUserName  = document.getElementById('mobUserName');
+
+    if (currentUser) {
+        const fullName = (currentUser.user_metadata?.full_name || currentUser.email || '').split('@')[0];
+        const firstName = fullName.split(' ')[0];
+        const name = firstName.length > 12 ? firstName.substring(0, 12) + '…' : firstName;
+
+        nameSpan.textContent = name;
+        chip.classList.add('visible');
+        signinBtn.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
+        signinBtn.onclick = signOut;
+        signinBtn.disabled = false;
+        if (signupBtn) signupBtn.style.display = 'none';
+
+        if (mobUserInfo) { mobUserInfo.style.display = 'block'; }
+        if (mobUserName) { mobUserName.textContent = name; }
+        if (mobSignin)   {
+            mobSignin.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
+            mobSignin.onclick = signOut;
+            mobSignin.style.display = '';
+            mobSignin.disabled = false;
+        }
+        if (mobSignup)   { mobSignup.style.display = 'none'; }
+
+    } else {
+        chip.classList.remove('visible');
+        nameSpan.textContent = '';
+        signinBtn.textContent = I18N[currentLang]?.nav_signin || 'Sign In';
+        signinBtn.onclick = () => openModal('si');
+        signinBtn.disabled = false;
+        if (signupBtn) signupBtn.style.display = '';
+
+        if (mobUserInfo) { mobUserInfo.style.display = 'none'; }
+        if (mobUserName) { mobUserName.textContent = ''; }
+        if (mobSignin)   {
+            mobSignin.textContent = I18N[currentLang]?.nav_signin || 'Sign In';
+            mobSignin.onclick = () => { openModal('si'); closeMob(); };
+            mobSignin.style.display = '';
+            mobSignin.disabled = false;
+        }
+        if (mobSignup)   { mobSignup.style.display = ''; }
+    }
+}
+
+/* ─── AUTH MESAJ YARDIMCILARI ─── */
+function setMsg(modalId, text, type) {
+    const el = document.getElementById(modalId + '-msg');
+    if (!el) return;
+    el.textContent = text;
+    el.className = 'auth-msg ' + type;
+}
+function clearMsg(modalId) {
+    const el = document.getElementById(modalId + '-msg');
+    if (el) { el.textContent = ''; el.className = 'auth-msg'; }
+}
+function setBtnLoading(btnId, loading) {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.disabled = loading;
+    btn.style.opacity = loading ? '0.7' : '1';
+}
+
+/* ─── E-POSTA İLE GİRİŞ YAP ─── */
+async function handleSignIn(e) {
+    e.preventDefault();
+    clearMsg('si');
+    const email = document.getElementById('si-email').value.trim();
+    const pass  = document.getElementById('si-pass').value;
+    if (!email || !pass) {
+        setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
+
+    setBtnLoading('si-btn', true);
+    const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
+    setBtnLoading('si-btn', false);
+
+    if (error) {
+        const msg = error.message.includes('Invalid login') || error.message.includes('invalid_credentials')
+            ? (I18N[currentLang]?.err_wrong_pass || 'Incorrect email or password. Please try again.')
+            : error.message;
+        setMsg('si', msg, 'error');
+        return;
+    }
+
+    if (data?.session?.user) {
+        currentUser = data.session.user;
+        closeModal('si');
+        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        updateNavbarUser();
+        buildTestButtons();
+    }
+}
+
+/* ─── E-POSTA İLE KAYIT OL ─── */
+async function handleSignUp(e) {
+    e.preventDefault();
+    clearMsg('su');
+    const name  = document.getElementById('su-name').value.trim();
+    const email = document.getElementById('su-email').value.trim();
+    const pass  = document.getElementById('su-pass').value;
+    if (!name || !email || !pass) {
+        setMsg('su', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('su', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
+    if (pass.length < 6) {
+        setMsg('su', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error');
+        return;
+    }
+
+    setBtnLoading('su-btn', true);
+    const { data, error } = await _supabase.auth.signUp({
+        email, password: pass,
+        options: { data: { full_name: name } }
+    });
+    setBtnLoading('su-btn', false);
+
+    if (error) {
+        const isAlreadyRegistered = error.message.includes('already registered')
+            || error.message.includes('User already registered')
+            || error.message.includes('already exists');
+        if (isAlreadyRegistered) {
+            setMsg('su', I18N[currentLang]?.err_already_member || '✉️ This email is already registered. Try signing in instead.', 'info');
+            setTimeout(() => switchModal('su', 'si'), 2200);
+        } else {
+            setMsg('su', error.message, 'error');
+        }
+        return;
+    }
+
+    if (data?.user && data.user.identities && data.user.identities.length === 0) {
+        setMsg('su', I18N[currentLang]?.err_already_member || '✉️ This email is already registered. Try signing in instead.', 'info');
+        setTimeout(() => switchModal('su', 'si'), 2200);
+        return;
+    }
+
+    if (data?.session?.user) {
+        currentUser = data.session.user;
+        closeModal('su');
+        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        updateNavbarUser();
+        buildTestButtons();
+        return;
+    }
+
+    if (data?.user && !data.session) {
+        setMsg('su', I18N[currentLang]?.msg_verify_email || '✅ Registration successful! Check your email and click the verification link.', 'success');
+    }
+}
+
+/* ─── ŞİFREMİ UNUTTUM ─── */
+function showForgotPassword() {
+    const siEmail = document.getElementById('si-email').value;
+    switchModal('si', 'fp');
+    setTimeout(function() {
+        const fpEmail = document.getElementById('fp-email');
+        if (fpEmail && siEmail) fpEmail.value = siEmail;
+    }, 150);
+}
+
+async function handleForgotPassword(e) {
+    e.preventDefault();
+    clearMsg('fp');
+    const email = document.getElementById('fp-email').value.trim();
+    if (!email) {
+        setMsg('fp', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('fp', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
+
+    setBtnLoading('fp-btn', true);
+    const { error } = await _supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + window.location.pathname
+    });
+    setBtnLoading('fp-btn', false);
+
+    if (error) {
+        setMsg('fp', I18N[currentLang]?.fp_err || 'Could not send reset email. Please check the address and try again.', 'error');
+    } else {
+        setMsg('fp', I18N[currentLang]?.fp_sent || '✅ Reset link sent! Check your email inbox.', 'success');
+        setTimeout(function() { switchModal('fp', 'si'); }, 3000);
+    }
+}
+
+/* ─── YENİ ŞİFRE KAYDET ─── */
+async function handleNewPassword(e) {
+    e.preventDefault();
+    clearMsg('np');
+    const pass  = document.getElementById('np-pass').value;
+    const pass2 = document.getElementById('np-pass2').value;
+
+    if (!pass || !pass2) {
+        setMsg('np', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (pass.length < 6) {
+        setMsg('np', I18N[currentLang]?.err_pass_short || 'Password must be at least 6 characters.', 'error');
+        return;
+    }
+    if (pass !== pass2) {
+        setMsg('np', I18N[currentLang]?.np_match_err || 'Passwords do not match.', 'error');
+        return;
+    }
+
+    setBtnLoading('np-btn', true);
+    const { error } = await _supabase.auth.updateUser({ password: pass });
+    setBtnLoading('np-btn', false);
+
+    if (error) {
+        setMsg('np', I18N[currentLang]?.np_err || 'Could not update password. Please try again.', 'error');
+        return;
+    }
+
+    setMsg('np', I18N[currentLang]?.np_success || '✅ Password updated! You are now signed in.', 'success');
+    setTimeout(function() {
+        closeModal('np');
+        document.getElementById('np-pass').value = '';
+        document.getElementById('np-pass2').value = '';
+    }, 2000);
+}
+
+/* ─── GÜNLÜK ÖDEME ─── */
+const DAILY_PRICES = [
+    { days:1, price:'3.00',  perDay:'3.00' },
+    { days:2, price:'4.49',  perDay:'2.25' },
+    { days:3, price:'5.99',  perDay:'2.00' },
+    { days:4, price:'6.99',  perDay:'1.75' },
+    { days:5, price:'7.99',  perDay:'1.60' },
+    { days:6, price:'8.99',  perDay:'1.50' },
+    { days:7, price:'9.49',  perDay:'1.36' },
+    { days:8, price:'9.99',  perDay:'1.25' },
+    { days:9, price:'10.99', perDay:'1.22' },
+    { days:10,price:'11.49', perDay:'1.15' },
+];
+let selectedDays = 3;
+
+function buildDayButtons() {
+    const container = document.getElementById('dayBtns');
+    if (!container) return;
+    const t = I18N[currentLang] || I18N['en'];
+    const tags = t.daily_tags || [];
+    container.innerHTML = '';
+    DAILY_PRICES.forEach((p, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'day-btn' + (p.days === selectedDays ? ' active' : '');
+        const tag = tags[i] || '';
+        btn.innerHTML = p.days + (tag ? `<span class="day-tag">${tag}</span>` : '');
+        btn.onclick = () => selectDay(p.days);
+        container.appendChild(btn);
+    });
+    updateDailyPriceDisplay();
+}
+
+function selectDay(days) {
+    selectedDays = days;
+    document.querySelectorAll('.day-btn').forEach((b, i) => {
+        b.classList.toggle('active', DAILY_PRICES[i].days === days);
+    });
+    updateDailyPriceDisplay();
+}
+
+function updateDailyPriceDisplay() {
+    const t = I18N[currentLang] || I18N['en'];
+    const p = DAILY_PRICES.find(x => x.days === selectedDays) || DAILY_PRICES[0];
+    const priceEl = document.getElementById('dailyPrice');
+    const perEl   = document.getElementById('dailyPerDay');
+    const lblEl   = document.getElementById('dailyDaysLabel');
+    if (priceEl) priceEl.textContent = p.price;
+    if (perEl)   perEl.innerHTML = `<strong>€${p.perDay} ${t.daily_per || '/ day'}</strong>`;
+    if (lblEl)   lblEl.textContent = `${p.days} ${p.days === 1 ? (t.daily_days_label || 'day') : (t.daily_days_label_p || 'days')}`;
+}
+
+async function startDailyPayment(e) {
+    if (!currentUser) { openModal('si'); return; }
+    const p = DAILY_PRICES.find(x => x.days === selectedDays) || DAILY_PRICES[0];
+    const t = I18N[currentLang] || I18N['en'];
+    const planName = `${selectedDays}-${t.daily_days_label_p || 'Day'} Access`;
+
+    const btn = document.getElementById('btnDailyBuy');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳';
+
+    try {
+        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${supabaseKey}` },
+            body: JSON.stringify({
+                planId: 'daily',
+                planName,
+                amount: p.price,
+                days: selectedDays,
+                userId: currentUser.id,
+                userEmail: currentUser.email
+            })
+        });
+        const data = await res.json();
+        if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+        } else {
+            alert('❌ Payment error: ' + (data.error || 'Unknown error'));
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    } catch (err) {
+        console.error('Daily payment error:', err);
+        alert('❌ Connection error. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
+}
+
+/* ─── GOOGLE İLE GİRİŞ ─── */
+async function signInWithGoogle() {
+    const cleanUrl = window.location.origin + window.location.pathname;
+    const { error } = await _supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: cleanUrl }
+    });
+    if (error) alert('❌ Google giriş hatası: ' + error.message);
+}
+
+/* ─── ÇIKIŞ ─── */
+async function signOut() {
+    const signinBtn = document.getElementById('signinBtn');
+    const mobSignin = document.getElementById('mobSigninBtn');
+
+    if (signinBtn) signinBtn.disabled = true;
+    if (mobSignin) mobSignin.disabled = true;
+
+    try {
+        await Promise.race([
+            _supabase.auth.signOut(),
+            new Promise(function(resolve) { setTimeout(resolve, 0); })
+        ]);
+    } catch (err) {
+        console.error('❌ Çıkış hatası:', err);
+    }
+
+    currentUser      = null;
+    currentPlanId    = null;
+    accessibleGroups = [];
+
+    Object.keys(localStorage).forEach(function(k) {
+        if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k);
+    });
+
+    if (window.location.hash || window.location.search.includes('token')) {
+        window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    updateNavbarUser();
+    buildTestButtons();
+    closeMob();
+
+    console.log('✅ Çıkış yapıldı');
+}
+
+/* ─── AUTH KONTROLÜ ─── */
+async function checkAuth() {
+    try {
+        const { data: { session }, error } = await _supabase.auth.getSession();
+
+        if (error) {
+            console.error('❌ Session alınamadı:', error);
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            updateNavbarUser(); buildTestButtons(); return;
+        }
+
+        if (session?.user) {
+            currentUser = session.user;
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons();
+        } else {
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            buildTestButtons();
+        }
+        updateNavbarUser();
+
+    } catch (err) {
+        console.error('❌ Auth kontrolü hatası:', err);
+        currentUser = null; currentPlanId = null; accessibleGroups = [];
+        updateNavbarUser(); buildTestButtons();
+    }
+}
+
+/* ─── KULLANICININ ERİŞİM BİLGİSİNİ ÇEK ─── */
+async function fetchUserAccess() {
+    if (!currentUser) {
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session?.user) {
+            currentUser = session.user;
+        } else {
+            currentPlanId = null; accessibleGroups = []; return;
+        }
+    }
+
+    try {
+        const res = await fetch(
+            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
+            {
+                headers: {
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs`,
+                }
+            }
+        );
+        const data = await res.json();
+
+        if (data && data.length > 0) {
+            currentPlanId    = data[0].plan_id;
+            accessibleGroups = [...new Set(data.map(r => r.group_id))];
+        } else {
+            currentPlanId = null; accessibleGroups = [];
+        }
+    } catch (err) {
+        console.error('❌ Erişim bilgisi alınırken hata:', err.message);
+        currentPlanId = null; accessibleGroups = [];
+    }
+}
+
+/* ─── İÇERİĞE ERİŞİM KONTROLÜ ─── */
+function canAccess(groupId) {
+    if (accessibleGroups.includes('all')) return true;
+    return accessibleGroups.includes(groupId);
+}
+
+/* ─── TEST AÇ ─── */
+function openTest(testNum) {
+    const lang = currentLang || 'en';
+    if (!currentUser) { openModal('si'); return; }
+    if (!canAccess('tests')) { showPaywall('tests'); return; }
+    window.open(`${QUIZ_BASE}/test-${testNum}-${lang}.html`, '_blank');
+}
+
+/* ─── TEORİ LİNKİ AÇ ─── */
+function openTheoryLink(url) {
+    if (!currentUser) { openModal('si'); return; }
+    if (!canAccess('theory')) { showPaywall('theory'); return; }
+
+    const lang = currentLang || 'en';
+    let finalUrl = url;
+    const cleanUrl = url.replace(/\/(tr-|nl-|ar-)([^/]+\.html)$/, '/$2');
+
+    if (lang === 'en') {
+        finalUrl = cleanUrl;
+    } else {
+        finalUrl = cleanUrl.replace(/\/([^/]+\.html)$/, `/${lang}-$1`);
+    }
+
+    window.open(finalUrl, '_blank');
+}
+
+/* ─── PAYWALL ─── */
+function showPaywall(groupId) {
+    const msgEl = document.getElementById('paywall-group-msg');
+    if (msgEl) {
+        const isTests  = groupId === 'tests';
+        const T = I18N[currentLang] || I18N['en'];
+        msgEl.textContent = isTests
+            ? (T.paywall_desc_tests  || T.paywall_desc)
+            : (T.paywall_desc_theory || T.paywall_desc);
+    }
+    document.getElementById('paywall-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePaywall() {
+    document.getElementById('paywall-modal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/* ─── PROGRESS — SUPABASE'DEN ÇEK ─── */
+async function fetchProgressFromSupabase() {
+    if (!currentUser) return;
+    const allLangs = ['en', 'tr', 'nl', 'ar'];
+    try {
+        for (const lang of allLangs) {
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
+            const completedTests = (data || []).map(r => r.test_number);
+            localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
+        }
+    } catch (err) {
+        console.error('❌ Supabase ilerlemesi alınırken hata:', err);
+    }
+}
+
+/* ─── NOTIFICATION SYSTEM ─── */
+function showNotification(message, type = 'info') {
+    let container = document.getElementById('notification-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'notification-container';
+        container.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 350px;
+        `;
+        document.body.appendChild(container);
+    }
+
+    const notification = document.createElement('div');
+    const colors = {
+        error: 'rgba(255,60,60,0.9)',
+        success: 'rgba(0,212,100,0.9)',
+        info: 'rgba(0,180,255,0.9)'
+    };
+
+    notification.style.cssText = `
+        background: ${colors[type] || colors.info};
+        color: white;
+        padding: 14px 18px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        animation: slideInRight 0.3s ease;
+        backdrop-filter: blur(10px);
+    `;
+
+    notification.textContent = message;
+    container.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+const notifStyle = document.createElement('style');
+notifStyle.textContent = `
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(notifStyle);
+
+/* ─── PROGRESS — SUPABASE'E KAYDET ─── */
+async function saveProgressToSupabase(testNum, lang) {
+    if (!currentUser) return false;
+    lang = lang || currentLang || 'en';
+
+    try {
+        const res = await fetch(
+            'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress',
+            {
+                method: 'POST',
+                headers: {
+                    'apikey': supabaseKey,
+                    'Authorization': `Bearer ${supabaseKey}`,
+                    'Content-Type': 'application/json',
+                    'Prefer': 'resolution=merge-duplicates'
+                },
+                body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
+            }
+        );
+        if (!res.ok) {
+            const err = await res.text();
+            console.error('❌ Progress kaydedilemedi:', err);
+            showNotification('Progress could not be saved.', 'error');
+            return false;
+        }
+        return true;
+    } catch (err) {
+        console.error('❌ Unexpected error saving progress:', err);
+        showNotification('Unexpected error occurred. Please try again.', 'error');
+        return false;
+    }
+}
+
+/* ─── POSTMESSAGE ─── */
+window.addEventListener('message', async function(e) {
+    const isAllowed = ['https://azerpashazadeh.github.io','https://oefenen.examtheorie.nl','https://www.examtheorie.nl','https://examtheorie.nl'].includes(e.origin)
+                   || e.origin.includes('examtheorie.nl');
+    if (!isAllowed) return;
+
+    const d = e.data || {};
+    if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
+
+    markCompleted(d.lang, d.testNumber);
+    buildTestButtons();
+
+    if (!currentUser) {
+        showNotification('Please sign in to save your progress.', 'info');
+        setTimeout(() => openModal('si'), 2000);
+        return;
+    }
+
+    const saved = await saveProgressToSupabase(d.testNumber, d.lang);
+    if (saved) {
+        await fetchProgressFromSupabase();
+        buildTestButtons();
+        showNotification(`Test ${d.testNumber} completed successfully!`, 'success');
+    } else {
+        showNotification('Progress saved locally. Will sync when you sign in.', 'info');
+    }
+});
+
+/* ─── AUTH STATE DEĞİŞİKLİKLERİ ─── */
+_supabase.auth.onAuthStateChange(async (event, session) => {
+    console.log('🔄 Auth event:', event);
+
+    try {
+        if (event === 'PASSWORD_RECOVERY') {
+            currentUser = session?.user || null;
+            updateNavbarUser();
+            if (window.location.hash) {
+                window.history.replaceState(null, '', window.location.pathname);
+            }
+            setTimeout(function() { openModal('np'); }, 300);
+            return;
+        }
+
+        if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
+            if (!currentUser || currentUser.id !== session.user.id) {
+                currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                buildTestButtons();
+                updateNavbarUser();
+            } else {
+                currentUser = session.user;
+                updateNavbarUser();
+            }
+
+            const _urlParams = new URLSearchParams(window.location.search);
+            if (_urlParams.get('payment') === 'success') {
+                const pollForPlan = async (attemptsLeft) => {
+                    if (attemptsLeft <= 0) {
+                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
+                        return;
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
+                    await fetchUserAccess();
+                    buildTestButtons();
+                    if (currentPlanId) {
+                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                    } else {
+                        pollForPlan(attemptsLeft - 1);
+                    }
+                };
+                pollForPlan(8);
+            }
+
+            if (window.location.hash) {
+                window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+            if (event === 'SIGNED_IN') {
+                closeModal('si');
+                closeModal('su');
+            }
+
+        } else if (event === 'INITIAL_SESSION' && !session) {
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            updateNavbarUser(); buildTestButtons();
+
+        } else if (event === 'SIGNED_OUT') {
+            if (currentUser !== null) {
+                currentUser = null; currentPlanId = null; accessibleGroups = [];
+                Object.keys(localStorage).forEach(k => {
+                    if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) {
+                        localStorage.removeItem(k);
+                    }
+                });
+                updateNavbarUser(); buildTestButtons();
+            }
+
+        } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+            if (currentUser?.id !== session.user.id) {
+                currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                updateNavbarUser(); buildTestButtons();
+            } else {
+                currentUser = session.user;
+                updateNavbarUser();
+            }
+        }
+
+    } catch (err) {
+        console.error('❌ Auth state değişim hatası:', err);
+    }
+});
+
+/* ─── SEKMEYE DÖNÜNCE ─── */
+let lastFocusUpdate = 0;
+const FOCUS_THROTTLE = 3000;
+
+window.addEventListener('focus', async () => {
+    const now = Date.now();
+    if (now - lastFocusUpdate < FOCUS_THROTTLE) return;
+    lastFocusUpdate = now;
+
+    if (currentUser) {
+        try {
+            const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+            if (sessionError || !sessionData?.session) {
+                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+                if (refreshError || !refreshData?.session?.user) {
+                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    updateNavbarUser(); buildTestButtons();
+                    showNotification('Session expired. Please sign in again.', 'info');
+                    return;
+                }
+                currentUser = refreshData.session.user;
+            }
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons();
+        } catch (err) {
+            console.error('❌ Focus update error:', err);
+        }
+    } else {
+        buildTestButtons();
+    }
+});
+
+/* ─── PERİYODİK SESSION CHECK ─── */
+setInterval(async () => {
+    if (currentUser) {
+        try {
+            const { data: sessionData, error: sessionError } = await _supabase.auth.getSession();
+            if (sessionError || !sessionData?.session) {
+                const { data: refreshData, error: refreshError } = await _supabase.auth.refreshSession();
+                if (refreshError || !refreshData?.session?.user) {
+                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    updateNavbarUser(); buildTestButtons();
+                    showNotification('Session expired. Please sign in again.', 'info');
+                } else {
+                    currentUser = refreshData.session.user;
+                }
+            }
+        } catch (err) {
+            console.error('❌ Periodic session check error:', err);
+        }
+    }
+}, 1 * 60 * 1000);
+
+/* ─── INIT ─── */
+window.addEventListener('DOMContentLoaded', async () => {
+    const savedLang = localStorage.getItem('et_lang') || 'en';
+    applyLang(savedLang);
+
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get('payment');
+    if (payment === 'success') {
+        window.history.replaceState(null, '', window.location.pathname);
+        showNotification('⏳ Payment received, activating your plan...', 'info');
+        let attempts = 0;
+        const maxAttempts = 10;
+        const planInterval = setInterval(async () => {
+            attempts++;
+            await fetchUserAccess();
+            if (currentPlanId) {
+                clearInterval(planInterval);
+                buildTestButtons(); updateNavbarUser();
+                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
+            } else if (attempts >= maxAttempts) {
+                clearInterval(planInterval);
+                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
+            }
+        }, 2000);
+    }
+
+    const reason = params.get('reason');
+    if (reason === 'login') {
+        setTimeout(() => openModal('si'), 600);
+    } else if (reason === 'plan') {
+        const group = window.location.href.includes('test-') ? 'tests' : 'theory';
+        setTimeout(() => showPaywall(group), 600);
+    }
+    if (reason) {
+        window.history.replaceState(null, '', window.location.pathname);
+    }
+});
+</script>
 </body>
 </html>
