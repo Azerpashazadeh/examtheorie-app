@@ -2343,18 +2343,17 @@ async function fetchUserAccess() {
         else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
-        const res = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.${currentUser.id}&select=plan_id,plan_name,expires_at,group_id`,
-            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-        );
-        const data = await res.json();
+        const { data, error } = await _supabase
+            .from('user_access')
+            .select('plan_id, plan_name, expires_at, group_id')
+            .eq('user_id', currentUser.id);
+        if (error) throw error;
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
         } else {
             currentPlanId = null; accessibleGroups = [];
         }
-        /* YENİ: reset_used durumunu çek */
         await fetchResetUsed();
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
@@ -2408,16 +2407,16 @@ async function fetchProgressFromSupabase() {
     if (!currentUser) return;
     const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
-        for (const lang of allLangs) {
-            const res = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.${currentUser.id}&language=eq.${lang}&select=test_number`,
-                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-            );
-            if (!res.ok) continue;
-            const data = await res.json();
+        await Promise.all(allLangs.map(async (lang) => {
+            const { data, error } = await _supabase
+                .from('user_progress')
+                .select('test_number')
+                .eq('user_id', currentUser.id)
+                .eq('language', lang);
+            if (error) { console.error(`❌ Progress fetch error for ${lang}:`, error); return; }
             const completedTests = (data || []).map(r => r.test_number);
             localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
-        }
+        }));
     } catch (err) { console.error('❌ Supabase ilerlemesi alınırken hata:', err); }
 }
 
@@ -2447,12 +2446,10 @@ async function saveProgressToSupabase(testNum, lang) {
     if (!currentUser) return false;
     lang = lang || currentLang || 'en';
     try {
-        const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress', {
-            method: 'POST',
-            headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
-            body: JSON.stringify({ user_id: currentUser.id, test_number: testNum, language: lang })
-        });
-        if (!res.ok) { const err = await res.text(); console.error('❌ Progress kaydedilemedi:', err); showNotification('Progress could not be saved.', 'error'); return false; }
+        const { error } = await _supabase
+            .from('user_progress')
+            .upsert({ user_id: currentUser.id, test_number: testNum, language: lang }, { onConflict: 'user_id,test_number,language' });
+        if (error) { console.error('❌ Progress kaydedilemedi:', error); showNotification('Progress could not be saved.', 'error'); return false; }
         return true;
     } catch (err) { console.error('❌ Unexpected error saving progress:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
 }
@@ -2464,17 +2461,22 @@ window.addEventListener('message', async function(e) {
     const d = e.data || {};
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
-    markCompleted(d.lang, d.testNumber);
-    await buildTestButtons(); // buildTestButtons zaten içinde fetchResetUsed + showResetBanner yapıyor
+    markCompleted(d.lang, d.testNumber); // önce localStorage'ı güncelle
 
     if (!currentUser) {
         showNotification('Please sign in to save your progress.', 'info');
         setTimeout(() => openModal('si'), 2000);
-        return;
+    } else {
+        const saved = await saveProgressToSupabase(d.testNumber, d.lang);
+        if (saved) {
+            await fetchProgressFromSupabase(); // Supabase'den tüm dilleri senkronize et
+            showNotification(`Test ${d.testNumber} completed successfully!`, 'success');
+        } else {
+            showNotification('Progress saved locally. Will sync when you sign in.', 'info');
+        }
     }
-    const saved = await saveProgressToSupabase(d.testNumber, d.lang);
-    if (saved) { await fetchProgressFromSupabase(); await buildTestButtons(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
-    else { showNotification('Progress saved locally. Will sync when you sign in.', 'info'); }
+
+    await buildTestButtons(); // en son çağrılır: fetchResetUsed + showResetBanner dahil
 });
 
 /* ─── AUTH STATE ─── */
