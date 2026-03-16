@@ -1474,8 +1474,8 @@ async function executeReset() {
         /* 4) LocalStorage temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 5) Bellek içi güncelle */
-        resetUsed = true;
+        /* 5) Supabase'den teyit al ve bellek içi güncelle */
+        await fetchResetUsed();
 
         /* 6) UI güncelle */
         buildTestButtons();
@@ -1954,13 +1954,10 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* 50 test tamamlandıysa — Supabase'den resetUsed çek, sonra karar ver */
+    /* 50 test tamamlandıysa — her zaman Supabase'den güncel durumu çek, sonra karar ver */
     if (next === null && checkAllTestsCompleted(lang)) {
-        if (resetUsed) return; // zaten kullanılmış, fetch etmeye gerek yok
         fetchResetUsed().then(() => {
-            if (!resetUsed) {
-                setTimeout(() => showResetBanner(), 400);
-            }
+            if (!resetUsed) showResetBanner();
         });
     }
 }
