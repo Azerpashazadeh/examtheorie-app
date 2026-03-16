@@ -2343,17 +2343,38 @@ async function fetchUserAccess() {
         else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
-        const { data, error } = await _supabase
-            .from('user_access')
-            .select('plan_id, plan_name, expires_at, group_id')
-            .eq('user_id', currentUser.id);
-        if (error) throw error;
-        if (data && data.length > 0) {
-            currentPlanId    = data[0].plan_id;
-            accessibleGroups = [...new Set(data.map(r => r.group_id))];
-        } else {
+        const now = new Date().toISOString();
+        // user_access View yerine direkt tablolardan sorgula (View cache sorununu önler)
+        const { data: plans, error: plansErr } = await _supabase
+            .from('user_plans')
+            .select('plan_id, expires_at')
+            .eq('user_id', currentUser.id)
+            .gt('expires_at', now)
+            .not('plan_id', 'is', null)
+            .order('created_at', { ascending: false });
+        if (plansErr) throw plansErr;
+
+        if (!plans || plans.length === 0) {
             currentPlanId = null; accessibleGroups = [];
+            await fetchResetUsed();
+            return;
         }
+
+        // En son aktif planın plan_id'si
+        currentPlanId = plans[0].plan_id;
+
+        // Bu planların group_id'lerini group_plans'dan çek
+        const planIds = [...new Set(plans.map(r => r.plan_id))];
+        const { data: groups, error: groupsErr } = await _supabase
+            .from('group_plans')
+            .select('group_id')
+            .in('plan_id', planIds);
+        if (groupsErr) throw groupsErr;
+
+        accessibleGroups = groups && groups.length > 0
+            ? [...new Set(groups.map(r => r.group_id))]
+            : [];
+
         await fetchResetUsed();
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
@@ -2493,19 +2514,17 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            const sessionId = session.access_token;
-
-            // SIGNED_IN: duplicate kontrolü — aynı token ile zaten işlem yapıldıysa sadece modal kapat
-            // INITIAL_SESSION: sayfa yenileme veya Mollie dönüşü — her zaman çalışsın, guard yok
+            const sessionId = session.access_token; // her oturum için benzersiz
+            // Aynı token ile daha önce işlem yapıldıysa sadece modal kapat, tekrar çekme
             if (event === 'SIGNED_IN' && _lastHandledSessionId === sessionId) {
-                console.log('⏭️ Duplicate SIGNED_IN, skipping');
+                console.log('⏭️ Same session already handled, skipping duplicate SIGNED_IN');
                 closeModal('si'); closeModal('su');
                 return;
             }
             _lastHandledSessionId = sessionId;
             currentUser = session.user;
 
-            // localStorage flag'i ile ödeme dönüşü tespit et
+            // localStorage flag ile ödeme dönüşü tespit et (URL zaten silinmiş olabilir)
             const _isPaymentReturn = localStorage.getItem('et_payment_pending') === '1';
             if (_isPaymentReturn) {
                 // Ödeme dönüşü: ÖNCE Supabase ve localStorage'ı temizle
@@ -2520,7 +2539,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             buildTestButtons(); updateNavbarUser();
 
             if (_isPaymentReturn) {
-                // Plan Supabase webhook'u ile yazılıyor, biraz gecikebilir — polling yap
+                buildTestButtons(); // temizlenmiş haliyle tekrar güncelle
                 const pollForPlan = async (attemptsLeft) => {
                     if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success'); return; }
                     await new Promise(r => setTimeout(r, 2000));
@@ -2594,7 +2613,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
-        // Ödeme dönüşü: flag'i localStorage'a kaydet, URL'yi temizle, onAuthStateChange halleder
+        // Ödeme dönüşü: flag set et, URL temizle, geri kalanı onAuthStateChange halleder
         localStorage.setItem('et_payment_pending', '1');
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
