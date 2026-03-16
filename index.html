@@ -2094,9 +2094,6 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         autoRefreshToken: true,
         detectSessionInUrl: true,
         flowType: 'implicit',
-        lock: function(name, acquireTimeout, fn) { return fn(); },
-        maxSessionTimeout: 60 * 60 * 24 * 7,
-        refreshTokenThreshold: 60 * 5,
     }
 });
 
