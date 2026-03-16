@@ -2501,16 +2501,22 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             }
             _lastHandledSessionId = sessionId;
             currentUser = session.user;
+            // URL parametresini fetchUserAccess'ten ÖNCE oku — DOMContentLoaded onu silmiş olabilir
+            const _isPaymentReturn = new URLSearchParams(window.location.search).get('payment') === 'success';
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
             buildTestButtons(); updateNavbarUser();
-            const _urlParams = new URLSearchParams(window.location.search);
-            if (_urlParams.get('payment') === 'success') {
+            if (_isPaymentReturn) {
+                // Ödeme dönüşü: user_progress ve localStorage temizle, ardından plan aktif olana kadar polling yap
+                await _supabase.from('user_progress').delete().eq('user_id', currentUser.id);
+                ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
+                _resetFetchPromise = null;
+                buildTestButtons(); // temizlenmiş haliyle hemen güncelle
                 const pollForPlan = async (attemptsLeft) => {
                     if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success'); return; }
                     await new Promise(r => setTimeout(r, 2000));
                     await fetchUserAccess();
                     buildTestButtons();
-                    if (currentPlanId) { showNotification('✅ Payment successful! Your plan is now active.', 'success'); }
+                    if (currentPlanId) { showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
                     else { pollForPlan(attemptsLeft - 1); }
                 };
                 pollForPlan(8);
@@ -2577,16 +2583,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
+        // Ödeme dönüşü: URL'yi hemen temizle, geri kalanı onAuthStateChange halleder
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
-        let attempts = 0;
-        const maxAttempts = 10;
-        const planInterval = setInterval(async () => {
-            attempts++;
-            await fetchUserAccess();
-            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
-            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
-        }, 2000);
     }
     const reason = params.get('reason');
     if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
