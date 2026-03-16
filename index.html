@@ -2175,7 +2175,12 @@ async function handleSignIn(e) {
     if (data?.session?.user) {
         currentUser = data.session.user;
         closeModal('si');
-        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        try {
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        } catch (err) {
+            console.error('❌ Post-login sync:', err);
+            showNotification('Session ok. If access is missing, try refreshing.', 'info');
+        }
         updateNavbarUser();
         buildTestButtons();
     }
@@ -2328,7 +2333,7 @@ async function signOut() {
     try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
     currentUser = null; currentPlanId = null; accessibleGroups = [];
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
-    if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
+    if (window.location.hash || window.location.search) { window.history.replaceState(null, '', window.location.pathname); }
     updateNavbarUser(); buildTestButtons(); closeMob();
     console.log('✅ Çıkış yapıldı');
 }
@@ -2509,24 +2514,6 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 currentUser = session.user;
                 updateNavbarUser();
             }
-            const _urlParams = new URLSearchParams(window.location.search);
-            if (_urlParams.get('payment') === 'success') {
-                const pollForPlan = async (attemptsLeft) => {
-                    if (attemptsLeft <= 0) {
-                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
-                        return;
-                    }
-                    await new Promise(r => setTimeout(r, 2000));
-                    await fetchUserAccess();
-                    buildTestButtons();
-                    if (currentPlanId) {
-                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
-                    } else {
-                        pollForPlan(attemptsLeft - 1);
-                    }
-                };
-                pollForPlan(8);
-            }
             if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
             if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
         } else if (event === 'INITIAL_SESSION' && !session) {
@@ -2585,15 +2572,39 @@ window.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
-        window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
+        // Session'ı bekle (Supabase INITIAL_SESSION async gelir)
+        let waited = 0;
+        while (!currentUser && waited < 5000) {
+            await new Promise(r => setTimeout(r, 300));
+            const { data: { session } } = await _supabase.auth.getSession();
+            if (session?.user) { currentUser = session.user; break; }
+            waited += 300;
+        }
+        if (currentUser) {
+            try { await _supabase.auth.refreshSession(); } catch (_) {}
+            const { data: { session } } = await _supabase.auth.getSession();
+            if (session?.user) { currentUser = session.user; }
+        }
         let attempts = 0;
-        const maxAttempts = 10;
+        const maxAttempts = 15;
         const planInterval = setInterval(async () => {
             attempts++;
-            await fetchUserAccess();
-            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
-            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
+            if (currentUser) {
+                await fetchUserAccess();
+                await fetchProgressFromSupabase();
+            }
+            buildTestButtons();
+            updateNavbarUser();
+            if (currentPlanId) {
+                clearInterval(planInterval);
+                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
+                window.history.replaceState(null, '', window.location.pathname);
+            } else if (attempts >= maxAttempts) {
+                clearInterval(planInterval);
+                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
+                window.history.replaceState(null, '', window.location.pathname);
+            }
         }, 2000);
     }
     const reason = params.get('reason');
