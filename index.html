@@ -1384,11 +1384,11 @@ async function fetchResetUsed() {
     if (_resetFetchPromise) { await _resetFetchPromise; return; }
     _resetFetchPromise = (async () => {
         try {
-            const res = await fetch(
-                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used,expires_at`,
-                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-            );
-            const data = await res.json();
+            const { data, error } = await _supabase
+                .from('user_plans')
+                .select('reset_used, expires_at')
+                .eq('user_id', currentUser.id);
+            if (error) throw error;
             // Plan yoksa veya aktif plan yoksa hak yok (testlere zaten erişemez)
             if (!data || data.length === 0) { resetUsed = true; return; }
             const now = new Date().toISOString();
