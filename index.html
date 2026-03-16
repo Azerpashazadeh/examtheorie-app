@@ -2479,7 +2479,7 @@ window.addEventListener('message', async function(e) {
 });
 
 /* ─── AUTH STATE ─── */
-let _authHandling = false; // aynı anda birden fazla SIGNED_IN işlemini önler
+let _lastHandledSessionId = null; // aynı session için tekrar işlem yapılmasını önler
 
 _supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('🔄 Auth event:', event);
@@ -2492,23 +2492,17 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            const incomingId = session.user.id;
-            // Guard: aynı user için işlem zaten devam ediyorsa atla
-            if (_authHandling) { console.log('⏭️ Auth handling already in progress, skipping:', event); return; }
-            // Guard: aynı user zaten yüklenmiş ve event SIGNED_IN ise (3. tetiklenme vs.) atla
-            if (event === 'SIGNED_IN' && currentUser?.id === incomingId) {
-                console.log('⏭️ Same user already loaded, skipping duplicate SIGNED_IN');
+            const sessionId = session.access_token; // her oturum için benzersiz
+            // Aynı token ile daha önce işlem yapıldıysa sadece modal kapat, tekrar çekme
+            if (event === 'SIGNED_IN' && _lastHandledSessionId === sessionId) {
+                console.log('⏭️ Same session already handled, skipping duplicate SIGNED_IN');
                 closeModal('si'); closeModal('su');
                 return;
             }
-            _authHandling = true;
-            try {
-                currentUser = session.user;
-                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-                buildTestButtons(); updateNavbarUser();
-            } finally {
-                _authHandling = false;
-            }
+            _lastHandledSessionId = sessionId;
+            currentUser = session.user;
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+            buildTestButtons(); updateNavbarUser();
             const _urlParams = new URLSearchParams(window.location.search);
             if (_urlParams.get('payment') === 'success') {
                 const pollForPlan = async (attemptsLeft) => {
@@ -2527,16 +2521,18 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             currentUser = null; currentPlanId = null; accessibleGroups = [];
             updateNavbarUser(); buildTestButtons();
         } else if (event === 'SIGNED_OUT') {
+            _lastHandledSessionId = null;
             if (currentUser !== null) {
                 currentUser = null; currentPlanId = null; accessibleGroups = [];
                 Object.keys(localStorage).forEach(k => { if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) { localStorage.removeItem(k); } });
                 updateNavbarUser(); buildTestButtons();
             }
         } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+            _lastHandledSessionId = session.access_token; // yeni token'ı kaydet
             if (currentUser?.id !== session.user.id) { currentUser = session.user; await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]); updateNavbarUser(); buildTestButtons(); }
             else { currentUser = session.user; updateNavbarUser(); }
         }
-    } catch (err) { console.error('❌ Auth state değişim hatası:', err); _authHandling = false; }
+    } catch (err) { console.error('❌ Auth state değişim hatası:', err); }
 });
 
 /* ─── SEKMEYE DÖNÜNCE ─── */
