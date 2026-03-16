@@ -2465,12 +2465,7 @@ window.addEventListener('message', async function(e) {
     if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
     markCompleted(d.lang, d.testNumber);
-    buildTestButtons();
-
-    if (checkAllTestsCompleted(d.lang)) {
-        await fetchResetUsed();
-        if (!resetUsed) showResetBanner();
-    }
+    await buildTestButtons(); // buildTestButtons zaten içinde fetchResetUsed + showResetBanner yapıyor
 
     if (!currentUser) {
         showNotification('Please sign in to save your progress.', 'info');
@@ -2478,7 +2473,7 @@ window.addEventListener('message', async function(e) {
         return;
     }
     const saved = await saveProgressToSupabase(d.testNumber, d.lang);
-    if (saved) { await fetchProgressFromSupabase(); buildTestButtons(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
+    if (saved) { await fetchProgressFromSupabase(); await buildTestButtons(); showNotification(`Test ${d.testNumber} completed successfully!`, 'success'); }
     else { showNotification('Progress saved locally. Will sync when you sign in.', 'info'); }
 });
 
