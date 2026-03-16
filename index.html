@@ -1374,28 +1374,36 @@ const RESET_I18N = {
 };
 
 /* ─── Reset durumu ─── */
-let resetUsed = false;
+// null = henüz Supabase'den çekilmedi, false = hak mevcut, true = kullanıldı/hak yok
+let resetUsed = null;
+let _resetFetchPromise = null; // uçuştaki fetch'i tekrar başlatmamak için
 
 async function fetchResetUsed() {
-    if (!currentUser) { resetUsed = false; return; }
-    try {
-        const res = await fetch(
-            `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used,expires_at`,
-            { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
-        );
-        const data = await res.json();
-        if (!data || data.length === 0) { resetUsed = false; return; }
-        // Sadece aktif (süresi dolmamış) planlara bak
-        const now = new Date().toISOString();
-        const activePlans = data.filter(row => !row.expires_at || row.expires_at > now);
-        if (activePlans.length === 0) { resetUsed = false; return; }
-        // Aktif planlardan herhangi birinde reset_used=false/null varsa hak mevcut
-        const hasUnused = activePlans.some(row => row.reset_used === false || row.reset_used === null);
-        resetUsed = !hasUnused;
-    } catch(err) {
-        console.error('❌ reset_used alinamadi:', err);
-        resetUsed = false;
-    }
+    if (!currentUser) { resetUsed = true; return; } // kullanıcı yoksa banner gösterme
+    // Aynı anda birden fazla çağrı varsa tek fetch yap, hepsini beklet
+    if (_resetFetchPromise) { await _resetFetchPromise; return; }
+    _resetFetchPromise = (async () => {
+        try {
+            const res = await fetch(
+                `https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_plans?user_id=eq.${currentUser.id}&select=reset_used,expires_at`,
+                { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } }
+            );
+            const data = await res.json();
+            // Plan yoksa veya aktif plan yoksa hak yok (testlere zaten erişemez)
+            if (!data || data.length === 0) { resetUsed = true; return; }
+            const now = new Date().toISOString();
+            const activePlans = data.filter(row => !row.expires_at || row.expires_at > now);
+            if (activePlans.length === 0) { resetUsed = true; return; }
+            // Aktif planlardan herhangi birinde reset_used=false/null varsa hak mevcut
+            const hasUnused = activePlans.some(row => row.reset_used === false || row.reset_used === null);
+            resetUsed = !hasUnused;
+        } catch(err) {
+            console.error('❌ reset_used alinamadi:', err);
+            resetUsed = true; // hata durumunda güvenli taraf: banner gösterme
+        }
+    })();
+    await _resetFetchPromise;
+    _resetFetchPromise = null; // bir sonraki çağrı için temizle
 }
 
 function checkAllTestsCompleted(lang) {
@@ -1403,7 +1411,7 @@ function checkAllTestsCompleted(lang) {
 }
 
 function showResetBanner() {
-    if (resetUsed) return;
+    if (resetUsed !== false) return; // null (henüz bilinmiyor) veya true ise gösterme
     if (!currentUser) return;
     const lang = currentLang || 'en';
     const t = RESET_I18N[lang] || RESET_I18N['en'];
@@ -1427,7 +1435,7 @@ function closeResetBanner() {
 }
 
 async function executeReset() {
-    if (!currentUser || resetUsed) return;
+    if (!currentUser || resetUsed !== false) return;
     const lang = currentLang || 'en';
     const t = RESET_I18N[lang] || RESET_I18N['en'];
     const btn = document.getElementById('btnResetNow');
@@ -1474,7 +1482,8 @@ async function executeReset() {
         /* 4) LocalStorage temizle */
         ['en','tr','nl','ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
-        /* 5) Supabase'den teyit al ve bellek içi güncelle */
+        /* 5) Supabase'den teyit al (cache'i temizleyerek) */
+        _resetFetchPromise = null;
         await fetchResetUsed();
 
         /* 6) UI güncelle */
@@ -1925,7 +1934,7 @@ function getNextTest(lang) {
 }
 
 /* ─── TEST BUTTONS — reset banner entegre ─── */
-function buildTestButtons() {
+async function buildTestButtons() {
     const lang = currentLang || 'en';
     const grid = document.getElementById('testBtnGrid');
     if (!grid) return;
@@ -1954,11 +1963,10 @@ function buildTestButtons() {
     }
     updateProgress(lang);
 
-    /* 50 test tamamlandıysa — her zaman Supabase'den güncel durumu çek, sonra karar ver */
+    /* 50 test tamamlandıysa — await ile bekle, sonra karar ver (race condition yok) */
     if (next === null && checkAllTestsCompleted(lang)) {
-        fetchResetUsed().then(() => {
-            if (!resetUsed) showResetBanner();
-        });
+        await fetchResetUsed();
+        if (!resetUsed) showResetBanner();
     }
 }
 
