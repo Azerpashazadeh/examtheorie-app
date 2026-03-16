@@ -2315,7 +2315,7 @@ async function signOut() {
     const mobSignin = document.getElementById('mobSigninBtn');
     if (signinBtn) signinBtn.disabled = true;
     if (mobSignin) mobSignin.disabled = true;
-    try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
+    try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 3000); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
     currentUser = null; currentPlanId = null; accessibleGroups = [];
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
     if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
@@ -2497,12 +2497,16 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 buildTestButtons();
                 updateNavbarUser();
             } else {
-                // Aynı kullanıcı — sadece navbar güncelle
+                // Aynı kullanıcı (ör. ödeme sonrası döndü) — progress + access her zaman güncelle
                 currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                buildTestButtons();
                 updateNavbarUser();
             }
+            // payment polling: DOMContentLoaded zaten hallediyor, burada sadece
+            // onAuthStateChange'in DOMContentLoaded'dan önce tetiklendiği edge case'i yakala
             const _urlParams = new URLSearchParams(window.location.search);
-            if (_urlParams.get('payment') === 'success') {
+            if (_urlParams.get('payment') === 'success' && event === 'INITIAL_SESSION') {
                 const pollForPlan = async (attemptsLeft) => {
                     if (attemptsLeft <= 0) { showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success'); return; }
                     await new Promise(r => setTimeout(r, 2000));
@@ -2586,8 +2590,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         const planInterval = setInterval(async () => {
             attempts++;
             await fetchUserAccess();
-            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
-            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
+            if (currentPlanId) {
+                clearInterval(planInterval);
+                await fetchProgressFromSupabase(); // ← plan aktif olunca progress de senkronize et
+                buildTestButtons(); updateNavbarUser();
+                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
+            } else if (attempts >= maxAttempts) {
+                clearInterval(planInterval);
+                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
+            }
         }, 2000);
     }
     const reason = params.get('reason');
