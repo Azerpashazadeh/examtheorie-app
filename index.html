@@ -2165,10 +2165,9 @@ async function handleSignIn(e) {
         setMsg('si', msg, 'error'); return;
     }
     if (data?.session?.user) {
-        currentUser = data.session.user;
+        // onAuthStateChange SIGNED_IN eventi fetchProgress + fetchUserAccess + buildTestButtons halleder
+        // burada tekrar çağırmıyoruz — çift paralel istek ve race condition önlenir
         closeModal('si');
-        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-        updateNavbarUser(); buildTestButtons();
     }
 }
 
@@ -2480,6 +2479,8 @@ window.addEventListener('message', async function(e) {
 });
 
 /* ─── AUTH STATE ─── */
+let _authHandling = false; // aynı anda birden fazla SIGNED_IN işlemini önler
+
 _supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('🔄 Auth event:', event);
     try {
@@ -2491,11 +2492,23 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            if (!currentUser || currentUser.id !== session.user.id) {
+            const incomingId = session.user.id;
+            // Guard: aynı user için işlem zaten devam ediyorsa atla
+            if (_authHandling) { console.log('⏭️ Auth handling already in progress, skipping:', event); return; }
+            // Guard: aynı user zaten yüklenmiş ve event SIGNED_IN ise (3. tetiklenme vs.) atla
+            if (event === 'SIGNED_IN' && currentUser?.id === incomingId) {
+                console.log('⏭️ Same user already loaded, skipping duplicate SIGNED_IN');
+                closeModal('si'); closeModal('su');
+                return;
+            }
+            _authHandling = true;
+            try {
                 currentUser = session.user;
                 await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
                 buildTestButtons(); updateNavbarUser();
-            } else { currentUser = session.user; updateNavbarUser(); }
+            } finally {
+                _authHandling = false;
+            }
             const _urlParams = new URLSearchParams(window.location.search);
             if (_urlParams.get('payment') === 'success') {
                 const pollForPlan = async (attemptsLeft) => {
@@ -2523,7 +2536,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             if (currentUser?.id !== session.user.id) { currentUser = session.user; await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]); updateNavbarUser(); buildTestButtons(); }
             else { currentUser = session.user; updateNavbarUser(); }
         }
-    } catch (err) { console.error('❌ Auth state değişim hatası:', err); }
+    } catch (err) { console.error('❌ Auth state değişim hatası:', err); _authHandling = false; }
 });
 
 /* ─── SEKMEYE DÖNÜNCE ─── */
