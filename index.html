@@ -2150,11 +2150,18 @@ function setBtnLoading(btnId, loading) { const btn = document.getElementById(btn
 
 /* ─── GİRİŞ YAP ─── */
 async function handleSignIn(e) {
-    e.preventDefault(); clearMsg('si');
+    e.preventDefault();
+    clearMsg('si');
     const email = document.getElementById('si-email').value.trim();
     const pass  = document.getElementById('si-pass').value;
-    if (!email || !pass) { setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error'); return; }
-    if (!/\S+@\S+\.\S+/.test(email)) { setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error'); return; }
+    if (!email || !pass) {
+        setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
     setBtnLoading('si-btn', true);
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
     setBtnLoading('si-btn', false);
@@ -2162,12 +2169,15 @@ async function handleSignIn(e) {
         const msg = error.message.includes('Invalid login') || error.message.includes('invalid_credentials')
             ? (I18N[currentLang]?.err_wrong_pass || 'Incorrect email or password.')
             : error.message;
-        setMsg('si', msg, 'error'); return;
+        setMsg('si', msg, 'error');
+        return;
     }
     if (data?.session?.user) {
-        // onAuthStateChange SIGNED_IN eventi fetchProgress + fetchUserAccess + buildTestButtons halleder
-        // burada tekrar çağırmıyoruz — çift paralel istek ve race condition önlenir
-        closeModal('si'); closeModal('su');
+        currentUser = data.session.user;
+        closeModal('si');
+        await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        updateNavbarUser();
+        buildTestButtons();
     }
 }
 
@@ -2315,7 +2325,7 @@ async function signOut() {
     const mobSignin = document.getElementById('mobSigninBtn');
     if (signinBtn) signinBtn.disabled = true;
     if (mobSignin) mobSignin.disabled = true;
-    try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 3000); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
+    try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
     currentUser = null; currentPlanId = null; accessibleGroups = [];
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
     if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
@@ -2335,21 +2345,11 @@ async function checkAuth() {
 }
 
 /* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre ─── */
-async function fetchUserAccess(forceRefresh = false) {
-    // forceRefresh=true: Mollie gibi dış yönlendirmelerden sonra token'ı zorla yenile.
-    // Aksi halde currentUser set edilmişse session kontrolünü atla.
-    if (forceRefresh || !currentUser) {
-        try {
-            const { data: rd, error: re } = await _supabase.auth.refreshSession();
-            if (!re && rd?.session?.user) {
-                currentUser = rd.session.user;
-            } else if (!currentUser) {
-                currentPlanId = null; accessibleGroups = []; return;
-            }
-            // forceRefresh ama refresh başarısız olsa bile currentUser varsa devam et
-        } catch(e) {
-            if (!currentUser) { currentPlanId = null; accessibleGroups = []; return; }
-        }
+async function fetchUserAccess() {
+    if (!currentUser) {
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session?.user) { currentUser = session.user; }
+        else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
         const { data, error } = await _supabase
@@ -2500,30 +2500,45 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            currentUser = session.user;
-            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-            buildTestButtons();
-            updateNavbarUser();
+            if (!currentUser || currentUser.id !== session.user.id) {
+                currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                buildTestButtons();
+                updateNavbarUser();
+            } else {
+                currentUser = session.user;
+                updateNavbarUser();
+            }
+            const _urlParams = new URLSearchParams(window.location.search);
+            if (_urlParams.get('payment') === 'success') {
+                const pollForPlan = async (attemptsLeft) => {
+                    if (attemptsLeft <= 0) {
+                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
+                        return;
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
+                    await fetchUserAccess();
+                    buildTestButtons();
+                    if (currentPlanId) {
+                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                    } else {
+                        pollForPlan(attemptsLeft - 1);
+                    }
+                };
+                pollForPlan(8);
+            }
             if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
             if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
         } else if (event === 'INITIAL_SESSION' && !session) {
             currentUser = null; currentPlanId = null; accessibleGroups = [];
             updateNavbarUser(); buildTestButtons();
         } else if (event === 'SIGNED_OUT') {
-            if (currentUser !== null) {
-                currentUser = null; currentPlanId = null; accessibleGroups = [];
-                Object.keys(localStorage).forEach(k => { if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) { localStorage.removeItem(k); } });
-                updateNavbarUser(); buildTestButtons();
-            }
+            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            Object.keys(localStorage).forEach(k => { if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) { localStorage.removeItem(k); } });
+            updateNavbarUser(); buildTestButtons();
         } else if (event === 'TOKEN_REFRESHED' && session?.user) {
-            if (currentUser?.id !== session.user.id) {
-                currentUser = session.user;
-                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-                updateNavbarUser(); buildTestButtons();
-            } else {
-                currentUser = session.user;
-                updateNavbarUser();
-            }
+            currentUser = session.user;
+            updateNavbarUser();
         }
     } catch (err) { console.error('❌ Auth state değişim hatası:', err); }
 });
@@ -2576,17 +2591,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         const maxAttempts = 10;
         const planInterval = setInterval(async () => {
             attempts++;
-            // forceRefresh=true: Mollie'den dönen token'ı her seferinde yenile
-            await fetchUserAccess(true);
-            if (currentPlanId) {
-                clearInterval(planInterval);
-                await fetchProgressFromSupabase();
-                buildTestButtons(); updateNavbarUser();
-                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
-            } else if (attempts >= maxAttempts) {
-                clearInterval(planInterval);
-                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
-            }
+            await fetchUserAccess();
+            if (currentPlanId) { clearInterval(planInterval); buildTestButtons(); updateNavbarUser(); showNotification('✅ Plan activated! Enjoy your studies.', 'success'); }
+            else if (attempts >= maxAttempts) { clearInterval(planInterval); showNotification('ℹ️ Please refresh the page if content is not visible.', 'info'); }
         }, 2000);
     }
     const reason = params.get('reason');
