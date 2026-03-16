@@ -2176,6 +2176,9 @@ async function handleSignIn(e) {
         currentUser = data.session.user;
         closeModal('si');
         try {
+            await _supabase.auth.refreshSession();
+            var sess = await _supabase.auth.getSession();
+            if (sess?.data?.session?.user) { currentUser = sess.data.session.user; }
             await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
         } catch (err) {
             console.error('❌ Post-login sync:', err);
@@ -2349,7 +2352,7 @@ async function checkAuth() {
     } catch (err) { console.error('❌ Auth kontrolü hatası:', err); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); }
 }
 
-/* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre ─── */
+/* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre (indexB gibi anon key ile, JWT’ye bağlı değil) ─── */
 async function fetchUserAccess() {
     if (!currentUser) {
         const { data: { session } } = await _supabase.auth.getSession();
@@ -2357,11 +2360,11 @@ async function fetchUserAccess() {
         else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
-        const { data, error } = await _supabase
-            .from('user_access')
-            .select('plan_id, plan_name, expires_at, group_id')
-            .eq('user_id', currentUser.id);
-        if (error) throw error;
+        const res = await fetch(
+            'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.' + currentUser.id + '&select=plan_id,plan_name,expires_at,group_id',
+            { headers: { 'apikey': supabaseKey, 'Authorization': 'Bearer ' + supabaseKey } }
+        );
+        const data = res.ok ? await res.json() : [];
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
@@ -2416,21 +2419,21 @@ function closePaywall() {
     document.body.style.overflow = '';
 }
 
-/* ─── PROGRESS — SUPABASE'DEN ÇEK ─── */
+/* ─── PROGRESS — SUPABASE'DEN ÇEK (indexB gibi anon key ile, JWT’ye bağlı değil) ─── */
 async function fetchProgressFromSupabase() {
     if (!currentUser) return;
     const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
-        await Promise.all(allLangs.map(async (lang) => {
-            const { data, error } = await _supabase
-                .from('user_progress')
-                .select('test_number')
-                .eq('user_id', currentUser.id)
-                .eq('language', lang);
-            if (error) { console.error(`❌ Progress fetch error for ${lang}:`, error); return; }
+        for (const lang of allLangs) {
+            const res = await fetch(
+                'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.' + currentUser.id + '&language=eq.' + lang + '&select=test_number',
+                { headers: { 'apikey': supabaseKey, 'Authorization': 'Bearer ' + supabaseKey } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
             const completedTests = (data || []).map(r => r.test_number);
-            localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
-        }));
+            localStorage.setItem('et_completed_' + lang, JSON.stringify(completedTests));
+        }
     } catch (err) { console.error('❌ Supabase ilerlemesi alınırken hata:', err); }
 }
 
@@ -2570,40 +2573,42 @@ window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
     const params = new URLSearchParams(window.location.search);
-    const payment = params.get('payment');
+    const hashParams = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
+    const payment = params.get('payment') || hashParams.get('payment');
     if (payment === 'success') {
         showNotification('⏳ Payment received, activating your plan...', 'info');
-        // Session'ı bekle (Supabase INITIAL_SESSION async gelir)
+        try {
+            var _ = await _supabase.auth.refreshSession();
+        } catch (e) {}
         let waited = 0;
-        while (!currentUser && waited < 5000) {
-            await new Promise(r => setTimeout(r, 300));
-            const { data: { session } } = await _supabase.auth.getSession();
-            if (session?.user) { currentUser = session.user; break; }
-            waited += 300;
-        }
-        if (currentUser) {
-            try { await _supabase.auth.refreshSession(); } catch (_) {}
-            const { data: { session } } = await _supabase.auth.getSession();
-            if (session?.user) { currentUser = session.user; }
+        while (!currentUser && waited < 6000) {
+            await new Promise(r => setTimeout(r, 400));
+            var sess = await _supabase.auth.getSession();
+            if (sess?.data?.session?.user) { currentUser = sess.data.session.user; break; }
+            waited += 400;
         }
         let attempts = 0;
-        const maxAttempts = 15;
-        const planInterval = setInterval(async () => {
+        var planInterval = setInterval(async function() {
             attempts++;
             if (currentUser) {
-                await fetchUserAccess();
-                await fetchProgressFromSupabase();
+                try {
+                    await fetchUserAccess();
+                    await fetchProgressFromSupabase();
+                } catch (e) { console.error(e); }
             }
             buildTestButtons();
             updateNavbarUser();
             if (currentPlanId) {
                 clearInterval(planInterval);
-                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
-                window.history.replaceState(null, '', window.location.pathname);
-            } else if (attempts >= maxAttempts) {
+                Object.keys(localStorage).forEach(function(k) {
+                    if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) localStorage.removeItem(k);
+                });
+                showNotification('✅ Plan activated! Reloading...', 'success');
+                setTimeout(function() { window.location.replace(window.location.pathname); }, 800);
+            } else if (attempts >= 20) {
                 clearInterval(planInterval);
-                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
-                window.history.replaceState(null, '', window.location.pathname);
+                showNotification('ℹ️ Reloading page to sync...', 'info');
+                setTimeout(function() { window.location.replace(window.location.pathname); }, 800);
             }
         }, 2000);
     }
@@ -2611,6 +2616,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
     else if (reason === 'plan') { const group = window.location.href.includes('test-') ? 'tests' : 'theory'; setTimeout(() => showPaywall(group), 600); }
     if (reason) { window.history.replaceState(null, '', window.location.pathname); }
+    setTimeout(function() { checkAuth(); }, 600);
 });
 </script>
 </body>
