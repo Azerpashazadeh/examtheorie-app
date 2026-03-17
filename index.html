@@ -2526,25 +2526,43 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 updateNavbarUser();
             }
 
-            // ÖDEME SONRASI POLLING (indexB'deki gibi)
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('payment') === 'success') {
-                const pollForPlan = async (attemptsLeft) => {
-                    if (attemptsLeft <= 0) {
-                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
-                        return;
-                    }
-                    await new Promise(r => setTimeout(r, 2000));
-                    await fetchUserAccess();
-                    buildTestButtons();
-                    if (currentPlanId) {
-                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
-                    } else {
-                        pollForPlan(attemptsLeft - 1);
-                    }
-                };
-                pollForPlan(8);
-            }
+            // ÖDEME SONRASI POLLING - HIZLANDIRILMIŞ VERSİYON
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('payment') === 'success') {
+    // URL'yi hemen temizle (tekrar tetiklenmemesi için)
+    window.history.replaceState(null, '', window.location.pathname);
+    
+    showNotification('⏳ Payment received, activating your plan...', 'info');
+    
+    const pollForPlan = async (attemptsLeft) => {
+        // Önce mevcut user'ı refresh et
+        try {
+            await _supabase.auth.refreshSession();
+        } catch (e) {}
+        
+        // Plan bilgisini çek
+        await fetchUserAccess();
+        
+        // Progress'i çek
+        await fetchProgressFromSupabase();
+        
+        // Butonları güncelle
+        buildTestButtons();
+        updateNavbarUser();
+        
+        if (currentPlanId) {
+            showNotification('✅ Payment successful! Your plan is now active.', 'success');
+        } else if (attemptsLeft > 0) {
+            // 1 saniye bekle ve tekrar dene
+            setTimeout(() => pollForPlan(attemptsLeft - 1), 1000);
+        } else {
+            showNotification('✅ Payment successful! Please refresh if content is not visible.', 'info');
+        }
+    };
+    
+    // Polling'i hemen başlat (0ms gecikmeyle)
+    setTimeout(() => pollForPlan(10), 0);
+}
 
             if (window.location.hash) {
                 window.history.replaceState(null, '', window.location.pathname + window.location.search);
