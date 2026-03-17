@@ -2343,7 +2343,13 @@ async function checkAuth() {
     try {
         const { data: { session }, error } = await _supabase.auth.getSession();
         if (error) { console.error('❌ Session alınamadı:', error); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); return; }
-        if (session?.user) { currentUser = session.user; await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]); buildTestButtons(); }
+        if (session?.user) { 
+    currentUser = session.user; 
+    // Promise.all yerine sırayla çalıştır
+    await fetchProgressFromSupabase();
+    await fetchUserAccess();
+    buildTestButtons(); 
+}
         else { currentUser = null; currentPlanId = null; accessibleGroups = []; buildTestButtons(); }
         updateNavbarUser();
     } catch (err) { console.error('❌ Auth kontrolü hatası:', err); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); }
@@ -2368,7 +2374,8 @@ async function fetchUserAccess() {
         } else {
             currentPlanId = null; accessibleGroups = [];
         }
-        await fetchResetUsed();
+        // fetchResetUsed'i ayrı bir microtask'te çalıştır
+setTimeout(() => fetchResetUsed(), 0);
     } catch (err) {
         console.error('❌ Erişim bilgisi alınırken hata:', err.message);
         currentPlanId = null; accessibleGroups = [];
