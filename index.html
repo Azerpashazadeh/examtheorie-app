@@ -2093,7 +2093,7 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
-        flowType: 'pkce',
+        flowType: 'implicit',
         lock: function(name, acquireTimeout, fn) { return fn(); },
         maxSessionTimeout: 60 * 60 * 24 * 7,
         refreshTokenThreshold: 60 * 5,
@@ -2150,11 +2150,18 @@ function setBtnLoading(btnId, loading) { const btn = document.getElementById(btn
 
 /* ─── GİRİŞ YAP ─── */
 async function handleSignIn(e) {
-    e.preventDefault(); clearMsg('si');
+    e.preventDefault();
+    clearMsg('si');
     const email = document.getElementById('si-email').value.trim();
     const pass  = document.getElementById('si-pass').value;
-    if (!email || !pass) { setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error'); return; }
-    if (!/\S+@\S+\.\S+/.test(email)) { setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error'); return; }
+    if (!email || !pass) {
+        setMsg('si', I18N[currentLang]?.err_field_required || 'Please fill in all fields.', 'error');
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        setMsg('si', I18N[currentLang]?.err_email_invalid || 'Please enter a valid email address.', 'error');
+        return;
+    }
     setBtnLoading('si-btn', true);
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
     setBtnLoading('si-btn', false);
@@ -2162,12 +2169,23 @@ async function handleSignIn(e) {
         const msg = error.message.includes('Invalid login') || error.message.includes('invalid_credentials')
             ? (I18N[currentLang]?.err_wrong_pass || 'Incorrect email or password.')
             : error.message;
-        setMsg('si', msg, 'error'); return;
+        setMsg('si', msg, 'error');
+        return;
     }
     if (data?.session?.user) {
-        // onAuthStateChange SIGNED_IN eventi fetchProgress + fetchUserAccess + buildTestButtons halleder
-        // burada tekrar çağırmıyoruz — çift paralel istek ve race condition önlenir
-        closeModal('si'); closeModal('su');
+        currentUser = data.session.user;
+        closeModal('si');
+        try {
+            await _supabase.auth.refreshSession();
+            var sess = await _supabase.auth.getSession();
+            if (sess?.data?.session?.user) { currentUser = sess.data.session.user; }
+            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+        } catch (err) {
+            console.error('❌ Post-login sync:', err);
+            showNotification('Session ok. If access is missing, try refreshing.', 'info');
+        }
+        updateNavbarUser();
+        buildTestButtons();
     }
 }
 
@@ -2315,10 +2333,10 @@ async function signOut() {
     const mobSignin = document.getElementById('mobSigninBtn');
     if (signinBtn) signinBtn.disabled = true;
     if (mobSignin) mobSignin.disabled = true;
-    try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 3000); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
+    try { await Promise.race([_supabase.auth.signOut(), new Promise(function(resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
     currentUser = null; currentPlanId = null; accessibleGroups = [];
     Object.keys(localStorage).forEach(function(k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
-    if (window.location.hash || window.location.search.includes('token')) { window.history.replaceState(null, '', window.location.pathname); }
+    if (window.location.hash || window.location.search) { window.history.replaceState(null, '', window.location.pathname); }
     updateNavbarUser(); buildTestButtons(); closeMob();
     console.log('✅ Çıkış yapıldı');
 }
@@ -2334,29 +2352,19 @@ async function checkAuth() {
     } catch (err) { console.error('❌ Auth kontrolü hatası:', err); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); }
 }
 
-/* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre ─── */
-async function fetchUserAccess(forceRefresh = false) {
-    // forceRefresh=true: Mollie gibi dış yönlendirmelerden sonra token'ı zorla yenile.
-    // Aksi halde currentUser set edilmişse session kontrolünü atla.
-    if (forceRefresh || !currentUser) {
-        try {
-            const { data: rd, error: re } = await _supabase.auth.refreshSession();
-            if (!re && rd?.session?.user) {
-                currentUser = rd.session.user;
-            } else if (!currentUser) {
-                currentPlanId = null; accessibleGroups = []; return;
-            }
-            // forceRefresh ama refresh başarısız olsa bile currentUser varsa devam et
-        } catch(e) {
-            if (!currentUser) { currentPlanId = null; accessibleGroups = []; return; }
-        }
+/* ─── ERİŞİM BİLGİSİ — fetchResetUsed entegre (indexB gibi anon key ile, JWT’ye bağlı değil) ─── */
+async function fetchUserAccess() {
+    if (!currentUser) {
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session?.user) { currentUser = session.user; }
+        else { currentPlanId = null; accessibleGroups = []; return; }
     }
     try {
-        const { data, error } = await _supabase
-            .from('user_access')
-            .select('plan_id, plan_name, expires_at, group_id')
-            .eq('user_id', currentUser.id);
-        if (error) throw error;
+        const res = await fetch(
+            'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_access?user_id=eq.' + currentUser.id + '&select=plan_id,plan_name,expires_at,group_id',
+            { headers: { 'apikey': supabaseKey, 'Authorization': 'Bearer ' + supabaseKey } }
+        );
+        const data = res.ok ? await res.json() : [];
         if (data && data.length > 0) {
             currentPlanId    = data[0].plan_id;
             accessibleGroups = [...new Set(data.map(r => r.group_id))];
@@ -2411,21 +2419,21 @@ function closePaywall() {
     document.body.style.overflow = '';
 }
 
-/* ─── PROGRESS — SUPABASE'DEN ÇEK ─── */
+/* ─── PROGRESS — SUPABASE'DEN ÇEK (indexB gibi anon key ile, JWT’ye bağlı değil) ─── */
 async function fetchProgressFromSupabase() {
     if (!currentUser) return;
     const allLangs = ['en', 'tr', 'nl', 'ar'];
     try {
-        await Promise.all(allLangs.map(async (lang) => {
-            const { data, error } = await _supabase
-                .from('user_progress')
-                .select('test_number')
-                .eq('user_id', currentUser.id)
-                .eq('language', lang);
-            if (error) { console.error(`❌ Progress fetch error for ${lang}:`, error); return; }
+        for (const lang of allLangs) {
+            const res = await fetch(
+                'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.' + currentUser.id + '&language=eq.' + lang + '&select=test_number',
+                { headers: { 'apikey': supabaseKey, 'Authorization': 'Bearer ' + supabaseKey } }
+            );
+            if (!res.ok) continue;
+            const data = await res.json();
             const completedTests = (data || []).map(r => r.test_number);
-            localStorage.setItem(`et_completed_${lang}`, JSON.stringify(completedTests));
-        }));
+            localStorage.setItem('et_completed_' + lang, JSON.stringify(completedTests));
+        }
     } catch (err) { console.error('❌ Supabase ilerlemesi alınırken hata:', err); }
 }
 
@@ -2500,10 +2508,36 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
             return;
         }
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
-            currentUser = session.user;
-            await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
-            buildTestButtons();
-            updateNavbarUser();
+            if (!currentUser || currentUser.id !== session.user.id) {
+                currentUser = session.user;
+                await Promise.all([fetchProgressFromSupabase(), fetchUserAccess()]);
+                buildTestButtons();
+                updateNavbarUser();
+            } else {
+                currentUser = session.user;
+                updateNavbarUser();
+            }
+
+            // Ödeme sonrası polling - indexB'den entegre edildi
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('payment') === 'success') {
+                const pollForPlan = async (attemptsLeft) => {
+                    if (attemptsLeft <= 0) {
+                        showNotification('✅ Payment successful! Please refresh if content is not visible.', 'success');
+                        return;
+                    }
+                    await new Promise(r => setTimeout(r, 2000));
+                    await fetchUserAccess();
+                    buildTestButtons();
+                    if (currentPlanId) {
+                        showNotification('✅ Payment successful! Your plan is now active.', 'success');
+                    } else {
+                        pollForPlan(attemptsLeft - 1);
+                    }
+                };
+                pollForPlan(8);
+            }
+
             if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
             if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
         } else if (event === 'INITIAL_SESSION' && !session) {
@@ -2568,31 +2602,24 @@ window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
     const params = new URLSearchParams(window.location.search);
-    const payment = params.get('payment');
+    const hashParams = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
+    const payment = params.get('payment') || hashParams.get('payment');
+    
+    // URL'den payment parametresini temizle - indexB'den entegre edildi
     if (payment === 'success') {
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
-        let attempts = 0;
-        const maxAttempts = 10;
-        const planInterval = setInterval(async () => {
-            attempts++;
-            // forceRefresh=true: Mollie'den dönen token'ı her seferinde yenile
-            await fetchUserAccess(true);
-            if (currentPlanId) {
-                clearInterval(planInterval);
-                await fetchProgressFromSupabase();
-                buildTestButtons(); updateNavbarUser();
-                showNotification('✅ Plan activated! Enjoy your studies.', 'success');
-            } else if (attempts >= maxAttempts) {
-                clearInterval(planInterval);
-                showNotification('ℹ️ Please refresh the page if content is not visible.', 'info');
-            }
-        }, 2000);
+        
+        // Polling zaten onAuthStateChange içinde yapılacak
+        // Burada sadece mevcut session'ı kontrol et
+        setTimeout(checkAuth, 600);
+    } else {
+        const reason = params.get('reason');
+        if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
+        else if (reason === 'plan') { const group = window.location.href.includes('test-') ? 'tests' : 'theory'; setTimeout(() => showPaywall(group), 600); }
+        if (reason) { window.history.replaceState(null, '', window.location.pathname); }
+        setTimeout(function() { checkAuth(); }, 600);
     }
-    const reason = params.get('reason');
-    if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
-    else if (reason === 'plan') { const group = window.location.href.includes('test-') ? 'tests' : 'theory'; setTimeout(() => showPaywall(group), 600); }
-    if (reason) { window.history.replaceState(null, '', window.location.pathname); }
 });
 </script>
 </body>
