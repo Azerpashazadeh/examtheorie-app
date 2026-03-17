@@ -3637,6 +3637,9 @@
         let currentPlanId = null;
         let accessibleGroups = [];
 
+        // Bildirim tekilleştirme için flag
+        let activationNotificationShown = false;
+
         /* ─── NAVBAR ─── */
         function updateNavbarUser() {
             const chip = document.getElementById('userChip');
@@ -4181,13 +4184,31 @@
                 const { data: { session } } = await _supabase.auth.getSession();
                 if (session?.user) {
                     currentUser = session.user;
+                    
+                    // Önce progress'i temizle (localStorage ve Supabase)
+                    const allLangs = ['en', 'tr', 'nl', 'ar'];
+                    for (const lang of allLangs) {
+                        localStorage.removeItem(`et_completed_${lang}`);
+                    }
+                    
+                    // Supabase'deki progress'i temizle
+                    try {
+                        await _supabase
+                            .from('user_progress')
+                            .delete()
+                            .eq('user_id', currentUser.id);
+                    } catch (e) {
+                        console.error('Progress temizleme hatası:', e);
+                    }
+                    
                     await fetchUserAccess();
-                    await fetchProgressFromSupabase();
+                    await fetchProgressFromSupabase(); // Bu boş array getirecek
                     buildTestButtons();
                     updateNavbarUser();
 
-                    if (currentPlanId) {
+                    if (currentPlanId && !activationNotificationShown) {
                         showNotification('✅ Plan activated! Your tests are ready.', 'success');
+                        activationNotificationShown = true;
                         return true;
                     }
                 }
