@@ -2082,7 +2082,7 @@ document.addEventListener('keydown', e => {
 });
 
 /* ═══════════════════════════════════════════════════════
-   SUPABASE
+   SUPABASE — TAM SİSTEM (indexB'den birebir)
 ═══════════════════════════════════════════════════════ */
 const supabaseUrl = 'https://rvbcsakzfadhtlfeigus.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
@@ -2093,10 +2093,7 @@ const _supabase = supabase.createClient(supabaseUrl, supabaseKey, {
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
-        flowType: 'implicit',
-        lock: function(name, acquireTimeout, fn) { return fn(); },
-        maxSessionTimeout: 60 * 60 * 24 * 7,
-        refreshTokenThreshold: 60 * 5,
+        flowType: 'implicit'
     }
 });
 
@@ -2496,17 +2493,21 @@ window.addEventListener('message', async function(e) {
     await buildTestButtons(); // en son çağrılır: fetchResetUsed + showResetBanner dahil
 });
 
-/* ─── AUTH STATE ─── */
+/* ─── AUTH STATE DEĞİŞİKLİKLERİ (indexB'den birebir) ─── */
 _supabase.auth.onAuthStateChange(async (event, session) => {
     console.log('🔄 Auth event:', event);
+
     try {
         if (event === 'PASSWORD_RECOVERY') {
             currentUser = session?.user || null;
             updateNavbarUser();
-            if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname); }
+            if (window.location.hash) {
+                window.history.replaceState(null, '', window.location.pathname);
+            }
             setTimeout(function() { openModal('np'); }, 300);
             return;
         }
+
         if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session?.user) {
             if (!currentUser || currentUser.id !== session.user.id) {
                 currentUser = session.user;
@@ -2518,7 +2519,7 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 updateNavbarUser();
             }
 
-            // Ödeme sonrası polling - indexB'den entegre edildi
+            // ÖDEME SONRASI POLLING (indexB'deki gibi)
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('payment') === 'success') {
                 const pollForPlan = async (attemptsLeft) => {
@@ -2538,17 +2539,29 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 pollForPlan(8);
             }
 
-            if (window.location.hash) { window.history.replaceState(null, '', window.location.pathname + window.location.search); }
-            if (event === 'SIGNED_IN') { closeModal('si'); closeModal('su'); }
+            if (window.location.hash) {
+                window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+            if (event === 'SIGNED_IN') {
+                closeModal('si');
+                closeModal('su');
+            }
+
         } else if (event === 'INITIAL_SESSION' && !session) {
             currentUser = null; currentPlanId = null; accessibleGroups = [];
             updateNavbarUser(); buildTestButtons();
+
         } else if (event === 'SIGNED_OUT') {
             if (currentUser !== null) {
                 currentUser = null; currentPlanId = null; accessibleGroups = [];
-                Object.keys(localStorage).forEach(k => { if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) { localStorage.removeItem(k); } });
+                Object.keys(localStorage).forEach(k => {
+                    if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) {
+                        localStorage.removeItem(k);
+                    }
+                });
                 updateNavbarUser(); buildTestButtons();
             }
+
         } else if (event === 'TOKEN_REFRESHED' && session?.user) {
             if (currentUser?.id !== session.user.id) {
                 currentUser = session.user;
@@ -2559,7 +2572,10 @@ _supabase.auth.onAuthStateChange(async (event, session) => {
                 updateNavbarUser();
             }
         }
-    } catch (err) { console.error('❌ Auth state değişim hatası:', err); }
+
+    } catch (err) {
+        console.error('❌ Auth state değişim hatası:', err);
+    }
 });
 
 /* ─── SEKMEYE DÖNÜNCE ─── */
@@ -2597,28 +2613,28 @@ setInterval(async () => {
     }
 }, 1 * 60 * 1000);
 
-/* ─── INIT ─── */
+/* ─── INIT (indexB'den birebir) ─── */
 window.addEventListener('DOMContentLoaded', async () => {
     const savedLang = localStorage.getItem('et_lang') || 'en';
     applyLang(savedLang);
+
     const params = new URLSearchParams(window.location.search);
-    const hashParams = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
-    const payment = params.get('payment') || hashParams.get('payment');
-    
-    // URL'den payment parametresini temizle - indexB'den entegre edildi
+    const payment = params.get('payment');
     if (payment === 'success') {
         window.history.replaceState(null, '', window.location.pathname);
         showNotification('⏳ Payment received, activating your plan...', 'info');
-        
         // Polling zaten onAuthStateChange içinde yapılacak
-        // Burada sadece mevcut session'ı kontrol et
-        setTimeout(checkAuth, 600);
-    } else {
-        const reason = params.get('reason');
-        if (reason === 'login') { setTimeout(() => openModal('si'), 600); }
-        else if (reason === 'plan') { const group = window.location.href.includes('test-') ? 'tests' : 'theory'; setTimeout(() => showPaywall(group), 600); }
-        if (reason) { window.history.replaceState(null, '', window.location.pathname); }
-        setTimeout(function() { checkAuth(); }, 600);
+    }
+
+    const reason = params.get('reason');
+    if (reason === 'login') {
+        setTimeout(() => openModal('si'), 600);
+    } else if (reason === 'plan') {
+        const group = window.location.href.includes('test-') ? 'tests' : 'theory';
+        setTimeout(() => showPaywall(group), 600);
+    }
+    if (reason) {
+        window.history.replaceState(null, '', window.location.pathname);
     }
 });
 </script>
