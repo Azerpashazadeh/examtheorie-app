@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Trafik Teorisi Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --card: #161a23;
+    --card2: #1e2330;
+    --accent: #f0c040;
+    --accent2: #e05a2b;
+    --text: #eef0f5;
+    --muted: #6b7280;
+    --green: #22c55e;
+    --red: #ef4444;
+    --radius: 16px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Arkaplan dekorasyon */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -30%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(240,192,64,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    left: -15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(224,90,43,0.07) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── WRAPPER ── */
+  #quiz-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+
+  /* ── iOS FULLSCREEN ── */
+  #quiz-wrapper.ios-fullscreen {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    padding: calc(var(--safe-top) + 20px) 20px calc(var(--safe-bottom) + 20px) 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg);
+    z-index: 9999 !important;
+  }
+
+  body.ios-fs-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* ── SCREENS ── */
+  .screen { display: none; animation: fadeUp 0.4s ease both; }
+  .screen.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── START SCREEN ── */
+  .start-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,192,64,0.12);
+    border: 1px solid rgba(240,192,64,0.25);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .start-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 8vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .start-title span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .start-desc {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+
+  .info-chip {
+    background: var(--card2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .info-chip strong { color: var(--text); }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    color: #0d0f14;
+    border: none;
+    padding: 16px 32px;
+    border-radius: var(--radius);
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 24px rgba(240,192,64,0.2);
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(240,192,64,0.3); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    width: 100%;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    margin-top: 12px;
+  }
+
+  .btn-secondary:hover { background: var(--card2); border-color: rgba(255,255,255,0.2); }
+
+  /* ── QUIZ SCREEN ── */
+  .quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .q-counter {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .q-counter span { color: var(--accent); }
+
+  .timer {
+    background: var(--card2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .timer.urgent { color: var(--red); border-color: rgba(239,68,68,0.3); animation: pulse 0.8s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+  /* Progress bar */
+  .progress-track {
+    height: 4px;
+    background: var(--card2);
+    border-radius: 100px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* Question card */
+  .q-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .q-text {
+    font-size: clamp(15px, 3.5vw, 18px);
+    line-height: 1.55;
+    font-weight: 500;
+  }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    background: var(--card);
+    border: 1.5px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .option:hover:not(.disabled) {
+    border-color: rgba(240,192,64,0.4);
+    background: rgba(240,192,64,0.05);
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    min-width: 32px;
+    height: 32px;
+    background: var(--card2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+
+  .option.correct { border-color: var(--green); background: rgba(34,197,94,0.08); }
+  .option.correct .option-letter { background: var(--green); color: #fff; }
+
+  .option.wrong { border-color: var(--red); background: rgba(239,68,68,0.08); }
+  .option.wrong .option-letter { background: var(--red); color: #fff; }
+
+  .option.disabled { cursor: default; }
+
+  .feedback-msg {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    display: none;
+  }
+
+  .feedback-msg.show { display: block; animation: fadeUp 0.3s ease both; }
+  .feedback-msg.correct { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+  .feedback-msg.wrong { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+
+  .btn-next {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0d0f14;
+    border: none;
+    padding: 15px;
+    border-radius: var(--radius);
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    display: none;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+
+  .btn-next.show { display: block; animation: fadeUp 0.3s 0.1s ease both; }
+  .btn-next:hover { transform: translateY(-2px); }
+
+  /* ── RESULT SCREEN ── */
+  .result-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 24px;
+  }
+
+  .result-icon.pass { background: rgba(34,197,94,0.15); }
+  .result-icon.fail { background: rgba(239,68,68,0.12); }
+
+  .result-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .result-sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .score-bar {
+    background: var(--card2);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .score-bar .label { color: var(--muted); font-size: 14px; }
+  .score-bar .val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
+  .score-bar .val.green { color: var(--green); }
+  .score-bar .val.red { color: var(--red); }
+  .score-bar .val.yellow { color: var(--accent); }
+
+  /* Responsive */
+  @media (max-width: 400px) {
+    .q-card { padding: 20px 16px; }
+    .option { padding: 13px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="quiz-wrapper">
+
+  <!-- START SCREEN -->
+  <div id="screen-start" class="screen active">
+    <div class="start-badge">🚦 Trafik Teorisi</div>
+    <h1 class="start-title">Teorini <span>Test Et</span></h1>
+    <p class="start-desc">Her soru için 20 saniyeniz var. Doğru şıkları seçin ve puan kazanın.</p>
+    <div class="info-row">
+      <div class="info-chip">📝 <strong>5</strong> Soru</div>
+      <div class="info-chip">⏱ <strong>20sn</strong> / Soru</div>
+      <div class="info-chip">🎯 <strong>60%</strong> Geçme</div>
+    </div>
+    <button class="btn-primary" id="btn-start">Teste Başla →</button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-header">
+      <div class="q-counter">Soru <span id="q-num">1</span> / 5</div>
+      <div class="timer" id="timer">⏱ 20</div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div class="q-card">
+      <p class="q-text" id="q-text"></p>
+    </div>
+    <div class="options" id="options"></div>
+    <div class="feedback-msg" id="feedback"></div>
+    <button class="btn-next" id="btn-next">Sonraki Soru →</button>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="screen-result" class="screen">
+    <div class="result-icon" id="result-icon">🏆</div>
+    <h2 class="result-title" id="result-title">Tebrikler!</h2>
+    <p class="result-sub" id="result-sub">Testi başarıyla tamamladın.</p>
+    <div class="score-bar">
+      <span class="label">Doğru Cevap</span>
+      <span class="val green" id="r-correct">0</span>
+    </div>
+    <div class="score-bar">
+      <span class="label">Yanlış Cevap</span>
+      <span class="val red" id="r-wrong">0</span>
+    </div>
+    <div class="score-bar">
+      <span class="label">Puan</span>
+      <span class="val yellow" id="r-score">0%</span>
+    </div>
+    <button class="btn-primary" id="btn-restart" style="margin-top:24px">Tekrar Dene →</button>
+    <button class="btn-secondary" id="btn-exit-fs" style="display:none">Tam Ekrandan Çık</button>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q: "Şehir içinde bir araç sürerken azami hız sınırı kaç km/saat'tir?",
+    options: ["90 km/saat", "50 km/saat", "70 km/saat", "30 km/saat"],
+    correct: 1,
+    explanation: "Şehir içi yollarda azami hız sınırı 50 km/saat'tir."
+  },
+  {
+    q: "Dur (STOP) işareti olan bir kavşağa yaklaşırken ne yapmalısınız?",
+    options: [
+      "Hızınızı biraz azaltın ve geçin",
+      "Sinyalize önce dur, sonra geç",
+      "Tamamen dur, yolu kontrol et ve güvenli olduğunda geç",
+      "Diğer araçlara öncelik vererek geçin"
+    ],
+    correct: 2,
+    explanation: "STOP işaretinde tamamen durmak zorunludur, ardından yolu kontrol edip güvenli ise geçebilirsiniz."
+  },
+  {
+    q: "Gece sürüşünde karşınıza araç geldiğinde uzun farları ne zaman kısa fara çevirmelisiniz?",
+    options: [
+      "Aracı gördüğünüz anda hemen",
+      "Karşı araç en az 150 metre uzaktayken",
+      "Karşı araç 5 metre'ye geldiğinde",
+      "Hiçbir zaman değiştirmenize gerek yok"
+    ],
+    correct: 1,
+    explanation: "Karşıdan araç gelirken en az 150 metre uzaklıkta uzun farı kısa fara almanız gerekir."
+  },
+  {
+    q: "Aşağıdakilerden hangisi sürücünün tehlikeli davranışı sayılmaz?",
+    options: [
+      "Direksiyon başında telefon kullanmak",
+      "Emniyet kemeri takmak",
+      "Makas atmak",
+      "Alkollü araç kullanmak"
+    ],
+    correct: 1,
+    explanation: "Emniyet kemeri takmak, sürücünün güvenliğini artıran doğru bir davranıştır."
+  },
+  {
+    q: "Yağmurlu havalarda frenleme mesafesi ne olur?",
+    options: [
+      "Kuru yola göre kısalır",
+      "Değişmez",
+      "Kuru yola göre uzar",
+      "Sadece ağır araçlarda uzar"
+    ],
+    correct: 2,
+    explanation: "Islak zeminde lastik ile yol arasındaki sürtünme azalır, bu nedenle frenleme mesafesi uzar."
+  }
+];
+
+// ── State ──
+let current = 0, score = 0, timerInterval = null, timeLeft = 20, answered = false, isFullscreen = false;
+
+// ── DOM ──
+const wrapper    = document.getElementById('quiz-wrapper');
+const screens    = { start: document.getElementById('screen-start'), quiz: document.getElementById('screen-quiz'), result: document.getElementById('screen-result') };
+const qNum       = document.getElementById('q-num');
+const qText      = document.getElementById('q-text');
+const optionsCt  = document.getElementById('options');
+const feedback   = document.getElementById('feedback');
+const btnNext    = document.getElementById('btn-next');
+const timerEl    = document.getElementById('timer');
+const progressFl = document.getElementById('progress-fill');
+const btnExitFs  = document.getElementById('btn-exit-fs');
+
+// ── Fullscreen helpers ──
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function enterFullscreen() {
+  isFullscreen = true;
+  if (!isIOS() && wrapper.requestFullscreen) {
+    wrapper.requestFullscreen().catch(() => enableCSSFullscreen());
+  } else if (!isIOS() && wrapper.webkitRequestFullscreen) {
+    wrapper.webkitRequestFullscreen();
+  } else {
+    enableCSSFullscreen();
+  }
+}
+
+function enableCSSFullscreen() {
+  wrapper.classList.add('ios-fullscreen');
+  document.body.classList.add('ios-fs-active');
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+  const vp = document.querySelector('meta[name="viewport"]');
+  if (vp) vp.content = 'width=device-width, initial-scale=1.0, viewport-fit=cover';
+}
+
+function exitFullscreen() {
+  isFullscreen = false;
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  }
+  wrapper.classList.remove('ios-fullscreen');
+  document.body.classList.remove('ios-fs-active');
+  document.body.style.position = '';
+  document.body.style.width = '';
+}
+
+// ── Screen switch ──
+function showScreen(name) {
+  Object.values(screens).forEach(s => s.classList.remove('active'));
+  screens[name].classList.remove('active');
+  void screens[name].offsetWidth;
+  screens[name].classList.add('active');
+}
+
+// ── Timer ──
+function startTimer() {
+  timeLeft = 20;
+  updateTimerUI();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerUI();
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      if (!answered) timeUp();
+    }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  timerEl.textContent = `⏱ ${timeLeft}`;
+  timerEl.classList.toggle('urgent', timeLeft <= 5);
+}
+
+function timeUp() {
+  answered = true;
+  disableOptions();
+  feedback.textContent = "⏰ Süre doldu! " + questions[current].explanation;
+  feedback.className = 'feedback-msg wrong show';
+  btnNext.classList.add('show');
+}
+
+// ── Quiz logic ──
+function loadQuestion() {
+  answered = false;
+  const q = questions[current];
+  qNum.textContent = current + 1;
+  progressFl.style.width = (current / questions.length * 100) + '%';
+  qText.textContent = q.q;
+  feedback.className = 'feedback-msg';
+  btnNext.classList.remove('show');
+
+  optionsCt.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt}</span>`;
+    btn.addEventListener('click', () => selectAnswer(i, btn));
+    optionsCt.appendChild(btn);
+  });
+
+  startTimer();
+}
+
+function selectAnswer(idx, btn) {
+  if (answered) return;
+  answered = true;
+  clearInterval(timerInterval);
+
+  const correct = questions[current].correct;
+  const allOpts = optionsCt.querySelectorAll('.option');
+
+  allOpts.forEach(o => o.classList.add('disabled'));
+  allOpts[correct].classList.add('correct');
+
+  if (idx === correct) {
+    score++;
+    feedback.textContent = "✅ Doğru! " + questions[current].explanation;
+    feedback.className = 'feedback-msg correct show';
+  } else {
+    btn.classList.add('wrong');
+    feedback.textContent = "❌ Yanlış. " + questions[current].explanation;
+    feedback.className = 'feedback-msg wrong show';
+  }
+
+  btnNext.textContent = current < questions.length - 1 ? 'Sonraki Soru →' : 'Sonucu Gör →';
+  btnNext.classList.add('show');
+}
+
+function disableOptions() {
+  optionsCt.querySelectorAll('.option').forEach(o => o.classList.add('disabled'));
+  const correct = questions[current].correct;
+  optionsCt.querySelectorAll('.option')[correct].classList.add('correct');
+}
+
+function showResult() {
+  clearInterval(timerInterval);
+  progressFl.style.width = '100%';
+  const pct = Math.round(score / questions.length * 100);
+  const pass = pct >= 60;
+
+  document.getElementById('result-icon').textContent = pass ? '🏆' : '📚';
+  document.getElementById('result-icon').className = 'result-icon ' + (pass ? 'pass' : 'fail');
+  document.getElementById('result-title').textContent = pass ? 'Tebrikler!' : 'Biraz Daha Çalış';
+  document.getElementById('result-sub').textContent = pass
+    ? `%${pct} puanla testi geçtin.`
+    : `%${pct} puan aldın. Geçme notu %60'tır.`;
+  document.getElementById('r-correct').textContent = score;
+  document.getElementById('r-wrong').textContent = questions.length - score;
+  document.getElementById('r-score').textContent = '%' + pct;
+
+  btnExitFs.style.display = isFullscreen ? 'block' : 'none';
+  showScreen('result');
+}
+
+// ── Events ──
+document.getElementById('btn-start').addEventListener('click', () => {
+  enterFullscreen();
+  current = 0; score = 0;
+  showScreen('quiz');
+  loadQuestion();
+});
+
+btnNext.addEventListener('click', () => {
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+});
+
+document.getElementById('btn-restart').addEventListener('click', () => {
+  current = 0; score = 0;
+  showScreen('quiz');
+  loadQuestion();
+});
+
+btnExitFs.addEventListener('click', () => {
+  exitFullscreen();
+  btnExitFs.style.display = 'none';
+});
+
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement) {
+    isFullscreen = false;
+    btnExitFs.style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>
