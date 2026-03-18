@@ -1,0 +1,177 @@
+name: Fix Bottom Overlay - All HTML Files
+
+on:
+  workflow_dispatch:  # Manuel tetikleme
+
+jobs:
+  fix-overlay:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run fix script
+        id: fix
+        run: |
+          python3 << 'PYEOF'
+          import os
+          import re
+
+          langs = ['en', 'tr', 'ar', 'nl']
+          numbers = range(1, 51)
+
+          report_ok = []
+          report_skipped = []
+          report_notfound = []
+          report_error = []
+
+          for lang in langs:
+              for num in numbers:
+                  filename = f"test-{num}-{lang}.html"
+
+                  if not os.path.exists(filename):
+                      report_notfound.append(filename)
+                      continue
+
+                  with open(filename, 'r', encoding='utf-8') as f:
+                      original = f.read()
+
+                  content = original
+
+                  # Track what changed
+                  changes = []
+
+                  # --- CHANGE 1: .overlay desktop - remove bottom inset ---
+                  new_content = content.replace(
+                      '        inset 0 -60px 0 0 #085dc4,\n        /* Alt kenar için 60px kalınlık */\n        inset 50px 0 0 0 #085dc4,',
+                      '        inset 50px 0 0 0 #085dc4,'
+                  )
+                  if new_content != content:
+                      changes.append('overlay desktop bottom removed')
+                      content = new_content
+
+                  # --- CHANGE 2: .overlay mobile - remove bottom inset ---
+                  new_content = content.replace(
+                      '          inset -5px 0 0 0 #085dc4,\n          /* Sağ kenar */\n          inset 0 calc(-11.75vh) 0 0 #085dc4;\n        /* Alt kenar */\n      }\n    }\n\n    .overlay-thin-top {',
+                      '          inset -5px 0 0 0 #085dc4;\n        /* Sağ kenar */\n      }\n    }\n\n    .overlay-thin-top {'
+                  )
+                  if new_content != content:
+                      changes.append('overlay mobile bottom removed')
+                      content = new_content
+
+                  # --- CHANGE 3: .overlay-thin-top desktop - remove bottom inset ---
+                  new_content = content.replace(
+                      '        inset 0 -60px 0 0 #085dc4,\n        /* Alt kenar */\n        inset 50px 0 0 0 #085dc4,',
+                      '        inset 50px 0 0 0 #085dc4,'
+                  )
+                  if new_content != content:
+                      changes.append('overlay-thin-top desktop bottom removed')
+                      content = new_content
+
+                  # --- CHANGE 4: .overlay-thin-top mobile - remove bottom inset ---
+                  new_content = content.replace(
+                      '          inset 0 calc(-11.75vh) 0 0 #085dc4,\n          /* Alt kenar */\n          inset 5px 0 0 0 #085dc4,',
+                      '          inset 5px 0 0 0 #085dc4,'
+                  )
+                  if new_content != content:
+                      changes.append('overlay-thin-top mobile bottom removed')
+                      content = new_content
+
+                  # --- CHANGE 5: Add #bottom-overlay CSS (only if not already present) ---
+                  if '#bottom-overlay' not in content:
+                      new_css = '''
+          /* Fixed bottom overlay - always aligned with button container */
+          #bottom-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: #085dc4;
+            pointer-events: none;
+            z-index: 1;
+          }
+
+          @media (max-width: 768px) {
+            #bottom-overlay {
+              height: 11.75vh;
+            }
+          }
+      '''
+                      marker = '    /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */'
+                      if marker in content:
+                          content = content.replace(marker, new_css + marker, 1)
+                          changes.append('bottom-overlay CSS added')
+                      else:
+                          # Fallback: insert before </style>
+                          content = content.replace('</style>', new_css + '  </style>', 1)
+                          changes.append('bottom-overlay CSS added (fallback)')
+
+                  # --- CHANGE 6: Add <div id="bottom-overlay"> in HTML (only if not already present) ---
+                  if '<div id="bottom-overlay">' not in content:
+                      new_content = content.replace(
+                          '<div class="overlay"></div>\n\n  <!-- Fullscreen Toggle Button -->',
+                          '<div class="overlay"></div>\n  <div id="bottom-overlay"></div>\n\n  <!-- Fullscreen Toggle Button -->'
+                      )
+                      if new_content != content:
+                          changes.append('bottom-overlay div added')
+                          content = new_content
+                      else:
+                          # Fallback: try without extra newline
+                          new_content = content.replace(
+                              '<div class="overlay"></div>',
+                              '<div class="overlay"></div>\n  <div id="bottom-overlay"></div>',
+                              1
+                          )
+                          if new_content != content:
+                              changes.append('bottom-overlay div added (fallback)')
+                              content = new_content
+
+                  if content == original:
+                      report_skipped.append(f"{filename} (no changes needed or patterns not found)")
+                  else:
+                      with open(filename, 'w', encoding='utf-8') as f:
+                          f.write(content)
+                      report_ok.append(f"{filename}: {', '.join(changes)}")
+
+          # Write report
+          with open('overlay-fix-report.txt', 'w', encoding='utf-8') as r:
+              r.write("=" * 60 + "\n")
+              r.write("OVERLAY FIX REPORT\n")
+              r.write("=" * 60 + "\n\n")
+
+              r.write(f"✅ FIXED ({len(report_ok)} files):\n")
+              for line in report_ok:
+                  r.write(f"  - {line}\n")
+
+              r.write(f"\n⏭️  SKIPPED ({len(report_skipped)} files):\n")
+              for line in report_skipped:
+                  r.write(f"  - {line}\n")
+
+              r.write(f"\n❌ NOT FOUND ({len(report_notfound)} files):\n")
+              for line in report_notfound:
+                  r.write(f"  - {line}\n")
+
+              r.write(f"\n💥 ERRORS ({len(report_error)} files):\n")
+              for line in report_error:
+                  r.write(f"  - {line}\n")
+
+              r.write("\n" + "=" * 60 + "\n")
+              r.write(f"TOTAL: {len(report_ok)} fixed, {len(report_skipped)} skipped, {len(report_notfound)} not found, {len(report_error)} errors\n")
+
+          print(open('overlay-fix-report.txt').read())
+          PYEOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nothing to commit" || git commit -m "fix: bottom overlay fixed to position:fixed for all 200 HTML files
+
+          - Removed bottom inset from .overlay (desktop + mobile)
+          - Removed bottom inset from .overlay-thin-top (desktop + mobile)
+          - Added #bottom-overlay div with position:fixed; bottom:0
+          - Report saved to overlay-fix-report.txt"
+          git push
