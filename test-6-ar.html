@@ -15,7 +15,25 @@
         })();
     </script>
     <style>
-        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
+    
+    /* Fixed bottom overlay - always aligned with button container */
+    #bottom-overlay {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #085dc4;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      #bottom-overlay {
+        height: 11.75vh;
+      }
+    }
+    /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
 
@@ -2863,6 +2881,7 @@
 
 <body>
     <div class="overlay"></div>
+  <div id="bottom-overlay"></div>
 
     <!-- Fullscreen Toggle Button -->
     <button class="js-toggle-fullscreen-btn toggle-fullscreen-btn" aria-label="Enter fullscreen mode" hidden>
