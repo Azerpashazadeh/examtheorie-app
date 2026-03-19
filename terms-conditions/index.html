@@ -1,1 +1,838 @@
-xxxxxxxxx
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions — ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00d4ff;
+            --blue: #0066ff;
+            --glass-blur: blur(22px) saturate(180%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 8, 25, 0.62);
+            z-index: 0;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: fixed;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 1260px;
+            height: 70px;
+            z-index: 1000;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 900;
+            text-decoration: none;
+            background: linear-gradient(135deg, #fff 30%, var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.07);
+            transition: all .25s;
+        }
+
+        .nav-back:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.13);
+            transform: translateX(-2px);
+        }
+
+        /* ── LAYOUT ── */
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 120px 20px 80px;
+        }
+
+        /* ── HEADER ── */
+        .page-header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeUp .8s ease both;
+        }
+
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--cyan);
+            background: rgba(0,212,255,0.1);
+            border: 1px solid rgba(0,212,255,0.25);
+            margin-bottom: 20px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(34px, 6vw, 58px);
+            font-weight: 900;
+            line-height: 1.08;
+            background: linear-gradient(135deg, #fff 40%, var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .page-meta {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ── INTRO CARD ── */
+        .intro-card {
+            background: rgba(0,212,255,0.07);
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+            animation: fadeUp .8s .1s ease both;
+        }
+
+        .intro-card p {
+            font-size: 14px;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.78);
+            font-weight: 300;
+        }
+
+        /* ── CONTENTS TABLE ── */
+        .contents-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+            animation: fadeUp .8s .15s ease both;
+        }
+
+        .contents-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contents-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+        }
+
+        @media (max-width: 560px) {
+            .contents-list { grid-template-columns: 1fr; }
+        }
+
+        .contents-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contents-list li:last-child { border-bottom: none; }
+
+        .contents-list a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color .2s;
+        }
+
+        .contents-list a:hover { color: var(--cyan); }
+
+        .contents-list .art-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cyan);
+            opacity: .6;
+            min-width: 22px;
+        }
+
+        /* ── ARTICLE CARDS ── */
+        .article-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.11);
+            border-radius: 20px;
+            padding: 32px 36px;
+            margin-bottom: 20px;
+            animation: fadeUp .7s ease both;
+            transition: border-color .3s, background .3s;
+            scroll-margin-top: 100px;
+        }
+
+        .article-card:hover {
+            border-color: rgba(0,212,255,0.2);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .article-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            opacity: .7;
+            margin-bottom: 6px;
+        }
+
+        .article-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .article-card p {
+            font-size: 14px;
+            line-height: 1.78;
+            color: rgba(255,255,255,0.72);
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+
+        .article-card p:last-child { margin-bottom: 0; }
+
+        .article-card p i {
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+            display: block;
+            margin: 14px 0 6px;
+            font-size: 13px;
+        }
+
+        /* Ordered lists */
+        .article-card ol {
+            padding-left: 0;
+            list-style: none;
+            counter-reset: article-counter;
+        }
+
+        .article-card > ol { margin-top: 4px; }
+
+        .article-card ol > li {
+            font-size: 14px;
+            line-height: 1.78;
+            color: rgba(255,255,255,0.72);
+            font-weight: 300;
+            padding: 7px 0 7px 32px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            counter-increment: article-counter;
+        }
+
+        .article-card ol > li:last-child { border-bottom: none; }
+
+        .article-card ol > li::before {
+            content: counter(article-counter) ".";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--cyan);
+            opacity: .7;
+            min-width: 24px;
+        }
+
+        /* Sub-lists (a, b, c) */
+        .article-card ol ol {
+            margin-top: 8px;
+            counter-reset: sub-counter;
+            padding-left: 16px;
+        }
+
+        .article-card ol ol > li {
+            counter-increment: sub-counter;
+            padding-left: 28px;
+            border-bottom: none;
+        }
+
+        .article-card ol ol > li::before {
+            content: counter(sub-counter, lower-alpha) ".";
+        }
+
+        /* Bullet lists */
+        .article-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 8px 0;
+        }
+
+        .article-card ul li {
+            font-size: 14px;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            padding: 5px 0 5px 22px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .article-card ul li:last-child { border-bottom: none; }
+
+        .article-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            opacity: .55;
+        }
+
+        .article-card a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        .article-card a:hover { text-decoration: underline; }
+
+        strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+        /* ── IDENTITY BOX ── */
+        .identity-box {
+            background: rgba(0,212,255,0.07);
+            border: 1px solid rgba(0,212,255,0.18);
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin: 12px 0;
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.75);
+            font-weight: 300;
+        }
+
+        .identity-box strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        /* ── CONTACT BOX ── */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,102,255,0.1));
+            border: 1px solid rgba(0,212,255,0.25);
+            border-radius: 20px;
+            padding: 32px 36px;
+            margin-top: 40px;
+            text-align: center;
+            animation: fadeUp .7s ease both;
+        }
+
+        .contact-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .contact-box p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,100,255,0.4);
+            transition: all .25s;
+        }
+
+        .contact-btn:hover {
+            box-shadow: 0 10px 28px rgba(0,100,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 32px 20px;
+            color: rgba(255,255,255,0.35);
+            font-size: 12.5px;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        footer a:hover { color: rgba(255,255,255,0.75); }
+
+        /* ── ANIMATION ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .article-card { padding: 22px 18px; }
+            .contents-card { padding: 22px 20px; }
+        }
+
+        /* Back to top */
+        .back-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .back-top:hover { color: var(--cyan); }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="https://www.examtheorie.nl" class="logo">Exam<span>Theorie</span></a>
+    <a href="https://www.examtheorie.nl" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+
+    <!-- HEADER -->
+    <div class="page-header">
+        <div class="page-badge">📋 Legal</div>
+        <h1 class="page-title">General Terms and Conditions</h1>
+        <p class="page-meta">ExamTheorie · Effective date: 1 June 2014 · Last updated: January 2026</p>
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro-card">
+        <p>
+            These General Terms and Conditions apply to all offers made by ExamTheorie and to any distance contract
+            concluded between ExamTheorie and the Consumer. By using our services you agree to these terms.
+            For questions, contact us at <a href="mailto:examtheorie@gmail.com" style="color:var(--cyan);">examtheorie@gmail.com</a>.
+        </p>
+    </div>
+
+    <!-- CONTENTS -->
+    <div class="contents-card">
+        <h2>Contents</h2>
+        <ol class="contents-list">
+            <li><a href="#article1"><span class="art-num">1</span> Definitions</a></li>
+            <li><a href="#article2"><span class="art-num">2</span> Entrepreneur's Identity</a></li>
+            <li><a href="#article3"><span class="art-num">3</span> Applicability</a></li>
+            <li><a href="#article4"><span class="art-num">4</span> The Offer</a></li>
+            <li><a href="#article4a"><span class="art-num">4a</span> Continuous Development</a></li>
+            <li><a href="#article5"><span class="art-num">5</span> The Contract</a></li>
+            <li><a href="#article6"><span class="art-num">6</span> Right of Withdrawal</a></li>
+            <li><a href="#article7"><span class="art-num">7</span> Obligations During Reflection</a></li>
+            <li><a href="#article8"><span class="art-num">8</span> Exercising Right of Withdrawal</a></li>
+            <li><a href="#article9"><span class="art-num">9</span> Entrepreneur's Obligations on Withdrawal</a></li>
+            <li><a href="#article10"><span class="art-num">10</span> Exclusion of Right of Withdrawal</a></li>
+            <li><a href="#article11"><span class="art-num">11</span> The Price</a></li>
+            <li><a href="#article12"><span class="art-num">12</span> Compliance and Extra Guarantee</a></li>
+            <li><a href="#article13"><span class="art-num">13</span> Delivery and Execution</a></li>
+            <li><a href="#article14"><span class="art-num">14</span> Continuing Performance Contracts</a></li>
+            <li><a href="#article15"><span class="art-num">15</span> Payment</a></li>
+            <li><a href="#article16"><span class="art-num">16</span> Complaints Procedure</a></li>
+            <li><a href="#article17"><span class="art-num">17</span> Disputes</a></li>
+            <li><a href="#article18"><span class="art-num">18</span> Additional Provisions</a></li>
+        </ol>
+    </div>
+
+    <!-- ARTICLE 1 -->
+    <div class="article-card" id="article1">
+        <div class="article-label">Article 1</div>
+        <h2>Definitions</h2>
+        <p>In these Terms and Conditions, the following terms shall have the following meanings:</p>
+        <ol>
+            <li><strong>Additional agreement:</strong> an agreement in which the Consumer acquires products, digital content and/or services with respect to a distance agreement and these goods, digital content and/or services are delivered by the Entrepreneur or a third party on the basis of an arrangement between this third party and the Entrepreneur.</li>
+            <li><strong>Reflection period:</strong> the period during which the Consumer may use his right of withdrawal.</li>
+            <li><strong>Consumer:</strong> the natural person who does not act for purposes related to his/her commercial, trade, craft or professional activities.</li>
+            <li><strong>Day:</strong> calendar day.</li>
+            <li><strong>Digital content:</strong> data produced and delivered in digital form.</li>
+            <li><strong>Continuing performance contract:</strong> a contract serving to deliver goods, services and/or digital content in a given period.</li>
+            <li><strong>Sustainable data carrier:</strong> any means, including email, that allow the Consumer or the Entrepreneur to store information directed to him/her personally in such a manner that makes future consultation and use possible during a period that matches the purpose for which the information is destined and which makes unaltered reproduction of the stored information possible.</li>
+            <li><strong>Right of withdrawal:</strong> the Consumer's option not to proceed with the distance agreement within the cooling-off period.</li>
+            <li><strong>Entrepreneur:</strong> ExamTheorie, the legal person who provides products, digital content and/or services to Consumers at a distance.</li>
+            <li><strong>Distance contract:</strong> a contract concluded by the Entrepreneur and the Consumer within the scope of an organised system for distance selling products, digital content and/or services, whereby exclusive or additional use is made of one or more technologies of distance communication up to the conclusion of the contract.</li>
+            <li><strong>Standard form for withdrawal:</strong> the European standard form for withdrawal.</li>
+            <li><strong>Technology for distance communication:</strong> a means to be used for concluding an agreement without the Consumer and the Entrepreneur being together in the same place at the same time.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 2 -->
+    <div class="article-card" id="article2">
+        <div class="article-label">Article 2</div>
+        <h2>The Entrepreneur's Identity</h2>
+        <div class="identity-box">
+            <strong>ExamTheorie</strong>
+            Voorsterallee 1, 7203 DN Zutphen, the Netherlands<br>
+            KvK (Chamber of Commerce): 42011186<br>
+            Email: <a href="mailto:examtheorie@gmail.com">examtheorie@gmail.com</a>
+        </div>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 3 -->
+    <div class="article-card" id="article3">
+        <div class="article-label">Article 3</div>
+        <h2>Applicability</h2>
+        <ol>
+            <li>These General Terms and Conditions apply to any offer from ExamTheorie and to any distance contract concluded by ExamTheorie and the Consumer.</li>
+            <li>Before concluding a distance contract, ExamTheorie shall make the text of these General Terms and Conditions available free of charge and as soon as possible.</li>
+            <li>If the distance contract is concluded electronically, the text of these General Terms and Conditions may also be supplied to the Consumer electronically in such a way that the Consumer can easily store it on a long-term data carrier.</li>
+            <li>In the event that specific product or service conditions apply in addition to these General Terms and Conditions, the Consumer may always appeal to the applicable provision that is most favourable to him/her.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 4 -->
+    <div class="article-card" id="article4">
+        <div class="article-label">Article 4</div>
+        <h2>The Offer</h2>
+        <ol>
+            <li>If an offer is of limited duration or if certain conditions apply, it shall be explicitly stated in the offer.</li>
+            <li>The offer contains a full and accurate description of the products, digital content and/or services offered. The description is suitably detailed to enable the Consumer to assess the products, services and/or digital content adequately. Obvious errors or mistakes in the offer do not bind ExamTheorie.</li>
+            <li>All offers contain such information that it is clear to the Consumer what rights and obligations are attached to accepting the offer.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 4a -->
+    <div class="article-card" id="article4a">
+        <div class="article-label">Article 4a</div>
+        <h2>Continuous Development and Changes to Digital Content</h2>
+        <ol>
+            <li>ExamTheorie may update and improve its digital content and services on an ongoing basis. This includes updates to theory materials, practice tests, and platform features.</li>
+            <li>The Consumer will be informed of any material changes that affect the services they have purchased, where possible in advance and always in a timely manner.</li>
+            <li>All offers contain such information that it is clear to the Consumer what rights and obligations are attached to accepting the offer.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 5 -->
+    <div class="article-card" id="article5">
+        <div class="article-label">Article 5</div>
+        <h2>The Contract</h2>
+        <ol>
+            <li>Subject to the provisions in paragraph 4, the contract becomes valid when the Consumer has accepted the offer and fulfilled the terms and conditions set.</li>
+            <li>If the Consumer accepted the offer via electronic means, ExamTheorie shall promptly confirm receipt of having accepted the offer via electronic means. As long as the receipt of said acceptance has not been confirmed, the Consumer may repudiate the contract.</li>
+            <li>If the contract is concluded electronically, ExamTheorie will take appropriate technical and organisational security measures for the electronic data transfer and ensure a safe web environment.</li>
+            <li>ExamTheorie may, within the limits of the law, gather information about the Consumer's ability to fulfil his payment obligations. If ExamTheorie has sound reasons for not concluding the contract, it is lawfully entitled to refuse an order or attach special terms to the implementation.</li>
+            <li>Before delivering the service or digital content, ExamTheorie shall send the following information to the Consumer:
+                <ol type="a">
+                    <li>the visiting address where the Consumer may get into contact with any complaints;</li>
+                    <li>the conditions on which and the manner in which the Consumer may exercise the right of withdrawal;</li>
+                    <li>the price including all taxes, and the way of payment and implementation;</li>
+                    <li>the requirements for cancelling the contract if the contract has a duration of more than one year;</li>
+                    <li>the standard form for withdrawal if the Consumer has the right of withdrawal.</li>
+                </ol>
+            </li>
+            <li>In case of a continuing performance contract, the stipulation in the previous paragraph only applies to the first delivery.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 6 -->
+    <div class="article-card" id="article6">
+        <div class="article-label">Article 6</div>
+        <h2>Right of Withdrawal</h2>
+        <p><i>In case of services and digital content not delivered on a physical carrier:</i></p>
+        <ol>
+            <li>The Consumer can terminate an agreement for services or digital content that is not delivered on a physical carrier without giving reasons during at least 14 days. ExamTheorie may ask the Consumer about the reason for the withdrawal but cannot force him to state his reason(s).</li>
+            <li>The reflection period starts on the day following the conclusion of the agreement.</li>
+            <li>If ExamTheorie has not provided the Consumer with the legally required information about the right of withdrawal or has not provided the standard form for withdrawal, the reflection period expires twelve months after the end of the original reflection period.</li>
+            <li>If ExamTheorie provided the Consumer with the required information within twelve months after the starting day of the original period of reflection, the period of reflection expires 14 days after the day on which the Consumer received the information.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 7 -->
+    <div class="article-card" id="article7">
+        <div class="article-label">Article 7</div>
+        <h2>Consumer's Obligations During the Reflection Period</h2>
+        <ol>
+            <li>During the reflection period, the Consumer shall handle the product and the packaging with care. The Consumer shall only unpack or use the product to the extent necessary for establishing the nature, the characteristics and the effect of the product.</li>
+            <li>The Consumer is only liable for the decrease in value of the product that is caused by handling which went further than allowed in sub-section 1.</li>
+            <li>The Consumer is not liable for the decrease in value of the product if ExamTheorie has not provided him with all legal information about the right of withdrawal before concluding the agreement.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 8 -->
+    <div class="article-card" id="article8">
+        <div class="article-label">Article 8</div>
+        <h2>Exercising the Consumer's Right of Withdrawal and the Costs</h2>
+        <ol>
+            <li>If the Consumer exercises his right of withdrawal he shall notify ExamTheorie unambiguously within the period of reflection.</li>
+            <li>The risk and the burden of proof for the correct and timely exercise of the right of withdrawal fall on the Consumer.</li>
+            <li>If the Consumer exercises his right of withdrawal, all additional agreements end by operation of law.</li>
+            <li>The Consumer does not bear any cost for the full or partial delivery of digital content not stored on a physical carrier if:
+                <ol type="a">
+                    <li>prior to the delivery, he has not explicitly consented to start performance of the agreement before the end of the period of reflection;</li>
+                    <li>he did not acknowledge losing his right of withdrawal when giving consent; or</li>
+                    <li>ExamTheorie failed to confirm the Consumer's statement.</li>
+                </ol>
+            </li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 9 -->
+    <div class="article-card" id="article9">
+        <div class="article-label">Article 9</div>
+        <h2>ExamTheorie's Obligations in Case of Withdrawal</h2>
+        <ol>
+            <li>If ExamTheorie makes the notification of withdrawal by electronic means possible, it shall promptly send a return receipt.</li>
+            <li>ExamTheorie shall reimburse all payments made by the Consumer as soon as possible but within 14 days following the day on which the Consumer notified the withdrawal.</li>
+            <li>ExamTheorie shall make use of the same means of payment that the Consumer used, unless the Consumer consents to another method. The reimbursement is free of charge for the Consumer.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 10 -->
+    <div class="article-card" id="article10">
+        <div class="article-label">Article 10</div>
+        <h2>Exclusion of the Right of Withdrawal</h2>
+        <p>ExamTheorie can exclude the following products and services from the right of withdrawal, provided the Consumer is clearly notified before concluding the agreement:</p>
+        <ol>
+            <li>Products or services with a price subject to fluctuations in the financial market beyond ExamTheorie's influence.</li>
+            <li>Services agreements, after full performance of the service, but only if the performance started with the Consumer's explicit prior consent and the Consumer acknowledged losing the right of withdrawal upon full performance.</li>
+            <li>The delivery of digital content other than on a physical carrier, but only if:
+                <ol type="a">
+                    <li>the performance was started with the Consumer's explicit prior consent; and</li>
+                    <li>the Consumer stated that he will lose his right of withdrawal by doing so.</li>
+                </ol>
+            </li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 11 -->
+    <div class="article-card" id="article11">
+        <div class="article-label">Article 11</div>
+        <h2>The Price</h2>
+        <ol>
+            <li>The prices of the products and/or services provided shall not be raised during the validity period given in the offer, subject to changes in price due to changes in VAT rates.</li>
+            <li>ExamTheorie may offer products or services whose prices are subject to fluctuations in the financial market at variable prices. The offer will state the possibility of being subject to fluctuations and that any indicated prices are target prices.</li>
+            <li>Price increases within 3 months after concluding the contract are permitted only if they are the result of new legislation.</li>
+            <li>Price increases from 3 months after concluding the contract are permitted only if:
+                <ol type="a">
+                    <li>they are the result of legal regulations or stipulations; or</li>
+                    <li>the Consumer has the authority to cancel the contract before the day on which the price increase starts.</li>
+                </ol>
+            </li>
+            <li>All prices indicated in the provision of products or services are including VAT.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 12 -->
+    <div class="article-card" id="article12">
+        <div class="article-label">Article 12</div>
+        <h2>Compliance and Extra Guarantee</h2>
+        <ol>
+            <li>ExamTheorie guarantees that the products and/or services comply with the contract, with the specifications listed in the offer, with reasonable requirements of usability and reliability, and with the existing statutory provisions on the day the contract was concluded.</li>
+            <li>An extra guarantee offered by ExamTheorie shall never affect the rights and claims the Consumer may exercise against ExamTheorie about a failure in the fulfilment of ExamTheorie's obligations.</li>
+            <li>"Extra guarantee" means each obligation by ExamTheorie in which it assigns certain rights or claims to the Consumer that go further than legally required in case it fails in compliance with its part of the agreement.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 13 -->
+    <div class="article-card" id="article13">
+        <div class="article-label">Article 13</div>
+        <h2>Delivery and Execution</h2>
+        <ol>
+            <li>ExamTheorie shall exercise the best possible care when executing orders and when assessing requests for the provision of services.</li>
+            <li>ExamTheorie shall execute accepted orders with convenient speed but at least within 30 days, unless another delivery period was agreed. If delivery has been delayed, or if an order cannot be filled or can only partially be filled, the Consumer shall be informed within one month after ordering. In such cases, the Consumer is entitled to repudiate the contract free of charge and with the right to possible compensation.</li>
+            <li>After repudiation in conformity with the preceding paragraph, ExamTheorie shall return the payment made by the Consumer promptly but at least within 30 days after repudiation.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 14 -->
+    <div class="article-card" id="article14">
+        <div class="article-label">Article 14</div>
+        <h2>Continuing Performance Agreements: Duration, Termination and Renewal</h2>
+        <p><i>Termination</i></p>
+        <ol>
+            <li>The Consumer may at all times terminate a contract concluded for an indefinite time with due observance of the termination rules and subject to not more than one month's notice.</li>
+            <li>The Consumer may at all times terminate a contract concluded for a specific time at the end of the specific period with not more than one month's notice.</li>
+            <li>The Consumer can cancel agreements at any time, at least in the same way as they were concluded, and with the same notice as ExamTheorie stipulated for itself.</li>
+        </ol>
+        <p><i>Extension</i></p>
+        <ol>
+            <li>An agreement concluded for a definite period which extends to the regular delivery of products or services may not be automatically extended or renewed for a fixed period.</li>
+            <li>An agreement concluded for a definite period may only be extended tacitly for an indefinite period if the Consumer can cancel it at any time with a notice of one month.</li>
+        </ol>
+        <p><i>Duration</i></p>
+        <ol>
+            <li>If the duration of a contract is more than one year, the Consumer may terminate the contract at any time after one year with a notice of not more than one month, unless reasonableness and fairness resist the termination before the end of the agreed term.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 15 -->
+    <div class="article-card" id="article15">
+        <div class="article-label">Article 15</div>
+        <h2>Payment</h2>
+        <ol>
+            <li>Unless otherwise stipulated, the amounts to be paid by the Consumer must be settled within 14 days after the period of reflection, or if there is no period of reflection within 14 days after concluding the agreement.</li>
+            <li>When selling products to Consumers, it is not permitted to negotiate an advance payment of more than 50% in the General Terms and Conditions.</li>
+            <li>The Consumer has the duty to inform ExamTheorie promptly of any inaccuracies in the payment details given or specified.</li>
+            <li>In case the Consumer has not complied with his payment obligation(s) in time, and ExamTheorie has pointed out the late payment and allowed a period of 14 days to comply, the Consumer is to pay the statutory interest on the amount payable and ExamTheorie is entitled to charge extrajudicial collection costs. These costs amount to no more than 15% for outstanding amounts up to €2,500, 10% for the following €2,500 and 5% for the following €5,000, with a minimum of €40.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 16 -->
+    <div class="article-card" id="article16">
+        <div class="article-label">Article 16</div>
+        <h2>Complaints Procedure</h2>
+        <ol>
+            <li>ExamTheorie has a well-publicized complaints procedure and handles complaints in accordance with this procedure.</li>
+            <li>Complaints about the execution of the agreement must be submitted fully and clearly described to ExamTheorie within a reasonable time after the Consumer has discovered the defects.</li>
+            <li>Complaints submitted to ExamTheorie will be answered within a period of 14 days from the date of receipt. If a complaint requires a foreseeable longer processing time, ExamTheorie will respond within 14 days with a notice of receipt and an indication of when the Consumer can expect a more detailed answer.</li>
+            <li>Complaints can be submitted via email to <a href="mailto:examtheorie@gmail.com">examtheorie@gmail.com</a>.</li>
+            <li>It is also possible to register complaints via the <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage" target="_blank" rel="noopener nofollow">European ODR platform</a>.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 17 -->
+    <div class="article-card" id="article17">
+        <div class="article-label">Article 17</div>
+        <h2>Disputes</h2>
+        <ol>
+            <li>Only Dutch law applies to agreements between ExamTheorie and the Consumer to which these general terms and conditions apply, even if the Consumer lives abroad.</li>
+            <li>The Vienna Sales Convention does not apply.</li>
+        </ol>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- ARTICLE 18 -->
+    <div class="article-card" id="article18">
+        <div class="article-label">Article 18</div>
+        <h2>Additional or Different Provisions</h2>
+        <p>
+            Additional provisions or deviations from these terms and conditions may not be to the detriment of the Consumer
+            and must be recorded in writing or in such a way that they can be stored by the Consumer in an accessible manner
+            on a durable medium.
+        </p>
+        <a href="#" class="back-top">↑ Back to top</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-box">
+        <h3>Questions About These Terms?</h3>
+        <p>
+            ExamTheorie · KvK 42011186<br>
+            Voorsterallee 1, 7203 DN Zutphen, the Netherlands
+        </p>
+        <a href="mailto:examtheorie@gmail.com" class="contact-btn">✉️ examtheorie@gmail.com</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 ExamTheorie · Built for CBR success</p>
+    <p style="margin-top:8px;">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <span style="margin:0 10px;opacity:.3;">·</span>
+        <a href="/terms-conditions">Terms and Conditions</a>
+    </p>
+</footer>
+
+</body>
+</html>
