@@ -43,7 +43,9 @@ for filename in os.listdir(ROOT):
         # Teori dosyaları — geri dön bağlantılarını güncelle
         changed = False
         for text in BACK_TEXTS:
-            pattern = r'(<a\b[^>]*\bhref=")[^"]*(")((?:[^>]*)>)\s*' + re.escape(text) + r'\s*</a>'
+            # Metindeki boşlukları esnek eşleştir — satır sonu, tab, çoklu boşluk hepsini yakala
+            flexible_text = r'\s+'.join(re.escape(word) for word in text.split())
+            pattern = r'(<a\b[^>]*\bhref=")[^"]*(")((?:[^>]*)>)\s*' + flexible_text + r'\s*</a>'
             replacement = r'\g<1>' + NEW_URL_NO_SLASH + r'\2\3' + text + r'</a>'
             new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
             if new_content != content:
