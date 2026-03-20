@@ -3321,32 +3321,7 @@
         /////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////
 
-        // Mevcut onclick olayını saklayın
-        const oldOnClick = document.getElementById("viewResult").onclick;
-
-        // Yeni onclick olayını tanımlayın
-        document.getElementById("viewResult").onclick = function (event) {
-            // Mevcut işlevselliği çağırın (finalResultShow fonksiyonu)
-            if (oldOnClick) {
-                oldOnClick(event);
-            }
-
-            // Yeni işlevselliği buraya ekleyin
-        const completedTestNumber = 1003; // TEST3 tamamlandı
-
-            // Frontend'e mesaj gönderme işlemi
-            const wixOrigin = "https://www.examtheorie.nl";
-            try {
-                window.parent.postMessage(
-                    { action: "updateProgress", testNumber: completedTestNumber },
-                    wixOrigin,
-                );
-                console.log("Frontend'e mesaj gönderildi.");
-            } catch (error) {
-                console.error("Mesaj gönderilirken hata oluştu:", error);
-            }
-        };
-
+       
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
