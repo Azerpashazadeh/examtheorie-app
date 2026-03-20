@@ -1,0 +1,26 @@
+name: Replace Domain - oefenen.examtheorie.nl to examtheorie.nl
+
+on:
+  workflow_dispatch:
+
+jobs:
+  replace-domain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run replace script
+        run: python3 replace_domain.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nothing to commit" || git commit -m "fix: replace oefenen.examtheorie.nl with examtheorie.nl in all files
+
+          - Scanned all files in repo regardless of extension
+          - Report saved to replace-domain-report.txt"
+          git push
