@@ -2,7 +2,7 @@
  * auth-guard.js — ExamTheorie Sayfa Koruma Sistemi
  * 
  * Bu dosyayı tüm teori ve test sayfalarına ekle:
- * <script src="https://oefenen.examtheorie.nl/auth-guard.js"></script>
+ * <script src="https://examtheorie.nl/auth-guard.js"></script>
  * 
  * Çalışma mantığı:
  * 1. Kullanıcı oturum açmış mı? → Hayır → Ana siteye yönlendir
@@ -16,7 +16,7 @@
 
     const SUPABASE_URL = 'https://rvbcsakzfadhtlfeigus.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
-    const HOME_URL     = 'https://oefenen.examtheorie.nl';
+    const HOME_URL     = 'https://examtheorie.nl';
 
 
 
