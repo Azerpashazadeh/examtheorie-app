@@ -20,10 +20,10 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 99999;
-            background: rgba(10, 20, 50, 0.92);
+            background: rgba(180, 70, 0, 0.95);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 160, 50, 0.45);
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
             padding: 13px 20px;
             display: flex;
@@ -48,7 +48,7 @@
             max-width: 780px;
         }
         #et-banner-text strong {
-            color: #00d4ff;
+            color: #ffe0b0;
             font-weight: 600;
         }
         #et-banner-text em {
