@@ -3518,6 +3518,8 @@
 
             /* 50 test tamamlandıysa — await ile bekle, sonra karar ver (race condition yok) */
             if (next === null && checkAllTestsCompleted(lang)) {
+                // Ödeme dönüşünde reset banner gösterme
+                if (localStorage.getItem('et_payment_pending') === '1') return;
                 await fetchResetUsed();
                 if (!resetUsed) showResetBanner();
             }
@@ -3588,6 +3590,7 @@
                 });
                 const data = await res.json();
                 if (data.paymentUrl) {
+                    localStorage.setItem('et_payment_pending', '1');
                     window.location.href = data.paymentUrl;
                 } else {
                     alert('❌ Payment error: ' + (data.error || 'Unknown error'));
@@ -3864,7 +3867,7 @@
                     body: JSON.stringify({ planId: 'daily', planName, amount: p.price, days: selectedDays, userId: currentUser.id, userEmail: currentUser.email })
                 });
                 const data = await res.json();
-                if (data.paymentUrl) { window.location.href = data.paymentUrl; }
+                if (data.paymentUrl) { localStorage.setItem('et_payment_pending', '1'); window.location.href = data.paymentUrl; }
                 else { alert('❌ Payment error: ' + (data.error || 'Unknown error')); btn.disabled = false; btn.textContent = originalText; }
             } catch (err) {
                 console.error('Daily payment error:', err);
@@ -4166,6 +4169,7 @@
 
             if (payment === 'success') {
                 // URL'yi hemen temizle
+                localStorage.setItem('et_payment_pending', '1');
                 window.history.replaceState(null, '', window.location.pathname);
                 showNotification('⏳ Payment received, activating your plan...', 'info');
 
@@ -4223,6 +4227,7 @@
                     buildTestButtons();
                     updateNavbarUser();
 
+                    localStorage.removeItem('et_payment_pending');
                     if (currentPlanId && !activationNotificationShown) {
                         showNotification('✅ Plan activated! Your tests are ready.', 'success');
                         activationNotificationShown = true;
