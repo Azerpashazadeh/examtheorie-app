@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -15,25 +15,25 @@
         })();
     </script>
     <style>
-    
-    /* Fixed bottom overlay - always aligned with button container */
-    #bottom-overlay {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background-color: #085dc4;
-      pointer-events: none;
-      z-index: 1;
-    }
+        /* Fixed bottom overlay - always aligned with button container */
+        #bottom-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: #085dc4;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-    @media (max-width: 768px) {
-      #bottom-overlay {
-        height: 11.75vh;
-      }
-    }
-    /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
+        @media (max-width: 768px) {
+            #bottom-overlay {
+                height: 11.75vh;
+            }
+        }
+
+        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
         /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
 
@@ -2871,7 +2871,7 @@
 
 <body>
     <div class="overlay"></div>
-  <div id="bottom-overlay"></div>
+    <div id="bottom-overlay"></div>
 
     <!-- Fullscreen Toggle Button -->
     <button class="js-toggle-fullscreen-btn toggle-fullscreen-btn" aria-label="Enter fullscreen mode" hidden>
@@ -3045,27 +3045,27 @@
 
     <!-- 3. Bölümü Başlatan Mesaj ve Yeni Düğme -->
     <div id="startMessage" style="display: none">
-      <h4>THEORIE EXAMEN VOERTUIG VOOR PASSAGIERS</h4>
-      <p class="start-insight">
-        Je kunt door de vragen vooruit en achteruit bladeren. Je hebt 30 minuten
-        voor deze sectie. Zolang de tijdsbalk loopt, kun je door de vragen
-        bladeren, overslaan, beantwoorden of corrigeren.
-      </p>
-      <p class="start-insight">
-        Als je een verlengd of individueel examen doet, heb je zelfs 45 minuten.
-        Wanneer een lesauto op het scherm verschijnt, ben jij de bestuurder.
-      </p>
-      <p class="start-insight">
-        In deze sectie krijg je 50 vragen, waarvan je er minimaal 44 correct
-        moet beantwoorden. Vragen die niet (volledig) beantwoord worden, zijn
-        altijd fout.
-      </p>
-      <h4 class="start-insight">Veel succes!</h4>
-      <div class="button-container">
-        <button id="startSection3Button" onclick="startQuizS3()">
-          GA DOOR NAAR DE EERSTE VRAAG
-        </button>
-      </div>
+        <h4>THEORIE EXAMEN VOERTUIG VOOR PASSAGIERS</h4>
+        <p class="start-insight">
+            Je kunt door de vragen vooruit en achteruit bladeren. Je hebt 30 minuten
+            voor deze sectie. Zolang de tijdsbalk loopt, kun je door de vragen
+            bladeren, overslaan, beantwoorden of corrigeren.
+        </p>
+        <p class="start-insight">
+            Als je een verlengd of individueel examen doet, heb je zelfs 45 minuten.
+            Wanneer een lesauto op het scherm verschijnt, ben jij de bestuurder.
+        </p>
+        <p class="start-insight">
+            In deze sectie krijg je 50 vragen, waarvan je er minimaal 44 correct
+            moet beantwoorden. Vragen die niet (volledig) beantwoord worden, zijn
+            altijd fout.
+        </p>
+        <h4 class="start-insight">Veel succes!</h4>
+        <div class="button-container">
+            <button id="startSection3Button" onclick="startQuizS3()">
+                GA DOOR NAAR DE EERSTE VRAAG
+            </button>
+        </div>
     </div>
 
     <!-- Section 3 -->
@@ -3076,13 +3076,9 @@
     <!-- Zamanlayıcı başlangıçta gizli -->
     <div class="quiz-container-s3"></div>
     <div id="button-container">
-        <button
-        id="previous-button-s3"
-        class="hidden"
-        onclick="previousQuestionS3()"
-      >
-        Vorige
-      </button>
+        <button id="previous-button-s3" class="hidden" onclick="previousQuestionS3()">
+            Vorige
+        </button>
 
         <div class="flex-grow">
             <h2 id="soruNumarasiS3"></h2>
@@ -3134,28 +3130,24 @@
         </div>
 
         <button id="next-button-s3" class="hidden" onclick="nextQuestionS3()">
-        Volgende
-      </button>
+            Volgende
+        </button>
     </div>
 
 
 
-    <div
-      id="proceedSection3End"
-      class="center-button hidden"
-      style="flex-direction: column; gap: 10px"
-    >
-      <div class="button-container">
-        <h2>Laatste Fase van het Examen</h2>
-      </div>
-      <p id="answeredQuestionsS3End"></p>
-      <p id="unAnsweredQuestionsS3End"></p>
-      <div id="endMessage3-S3" style="display: flex; flex-wrap: wrap"></div>
-      <div class="button-container">
-        <button id="proceedToResultDivBtn" onclick="proceedToResultDiv()">
-          DOORGAAN
-        </button>
-      </div>
+    <div id="proceedSection3End" class="center-button hidden" style="flex-direction: column; gap: 10px">
+        <div class="button-container">
+            <h2>Laatste Fase van het Examen</h2>
+        </div>
+        <p id="answeredQuestionsS3End"></p>
+        <p id="unAnsweredQuestionsS3End"></p>
+        <div id="endMessage3-S3" style="display: flex; flex-wrap: wrap"></div>
+        <div class="button-container">
+            <button id="proceedToResultDivBtn" onclick="proceedToResultDiv()">
+                DOORGAAN
+            </button>
+        </div>
     </div>
 
     <div id="myModal" class="modal">
@@ -3173,56 +3165,43 @@
     </div>
 
     <div id="myModalS3" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="noButtonClicked('section3')">&times;</span>
-        <h2>Doorgaan?</h2>
-        <p>Je kunt hierna niet meer teruggaan.</p>
-        <button
-          class="popup-btn"
-          onclick="yesButtonClicked('section3')"
-          id="yesBtn"
-        >
-          Ja
-        </button>
-        <button
-          class="popup-btn"
-          onclick="noButtonClicked('section3')"
-          id="noBtn"
-        >
-          Nee
-        </button>
-      </div>
+        <div class="modal-content">
+            <span class="close" onclick="noButtonClicked('section3')">&times;</span>
+            <h2>Doorgaan?</h2>
+            <p>Je kunt hierna niet meer teruggaan.</p>
+            <button class="popup-btn" onclick="yesButtonClicked('section3')" id="yesBtn">
+                Ja
+            </button>
+            <button class="popup-btn" onclick="noButtonClicked('section3')" id="noBtn">
+                Nee
+            </button>
+        </div>
     </div>
 
     <div id="viewResultContainerId" class="viewResultContainer hidden">
-      <p>Dank je wel voor het indienen van het examen!</p>
-      <hr />
-      <h2 id="failOrPass"></h2>
-      <div>
-        <img id="failOrPassIcon" alt="failOrPass" src="" />
-      </div>
-      <h3 id="endResult"></h3>
-      <button id="viewResult" onclick="finalResultShow()">
-        Bekijk mijn resultaat!
-      </button>
+        <p>Dank je wel voor het indienen van het examen!</p>
+        <hr />
+        <h2 id="failOrPass"></h2>
+        <div>
+            <img id="failOrPassIcon" alt="failOrPass" src="" />
+        </div>
+        <h3 id="endResult"></h3>
+        <button id="viewResult" onclick="finalResultShow()">
+            Bekijk mijn resultaat!
+        </button>
     </div>
 
     <div id="finalResultContainerId" class="finalResultContainer hidden">
-      <h2>ANTWOORDEN BEKIJKEN</h2>
-      <p>
-        Hieronder kun je de resultaten van het examen vinden. Je kunt op een vak
-        klikken om naar de betreffende vraag te gaan en je resultaten te
-        bekijken.
-      </p>
-      <div id="resultS3">
-        <h2>Controleer Je Antwoorden</h2>
-        <img
-          id="failOrPassEndS3"
-          alt="failOrPassEnd"
-          style="height: 50px"
-          src=""
-        />
-      </div>
+        <h2>ANTWOORDEN BEKIJKEN</h2>
+        <p>
+            Hieronder kun je de resultaten van het examen vinden. Je kunt op een vak
+            klikken om naar de betreffende vraag te gaan en je resultaten te
+            bekijken.
+        </p>
+        <div id="resultS3">
+            <h2>Controleer Je Antwoorden</h2>
+            <img id="failOrPassEndS3" alt="failOrPassEnd" style="height: 50px" src="" />
+        </div>
     </div>
 
     <!-- HTTP -->
@@ -3322,7 +3301,7 @@
         /////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////
 
-       
+
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -4964,78 +4943,78 @@
         let isYesClickedS3 = false; // Section 3 için bayrak
 
         function yesButtonClicked(type, timesUp = false) {
-        if (type == "section2") {
-          if (timesUp && isYesClickedS2) {
-            return; // YES düğmesine tıklanmışsa, timesUp işlemini durdur.
-          }
+            if (type == "section2") {
+                if (timesUp && isYesClickedS2) {
+                    return; // YES düğmesine tıklanmışsa, timesUp işlemini durdur.
+                }
 
-          isYesClickedS2 = true; // Section 2 için YES düğmesine tıklanıldığında bayrağı set ediyoruz.
+                isYesClickedS2 = true; // Section 2 için YES düğmesine tıklanıldığında bayrağı set ediyoruz.
 
-          // YES düğmesine tıklandığında Section 2 zamanlayıcısını durdur
-          clearInterval(timerIntervalS2);
+                // YES düğmesine tıklandığında Section 2 zamanlayıcısını durdur
+                clearInterval(timerIntervalS2);
 
-          if (timesUp) {
-            const totalQuestions =
-              document.querySelectorAll(".question").length;
-            currentQuestionIndex = totalQuestions - 1;
-            nextQuestionS2();
-            checkAnswersAndUpdateBlocksS2();
-          }
+                if (timesUp) {
+                    const totalQuestions =
+                        document.querySelectorAll(".question").length;
+                    currentQuestionIndex = totalQuestions - 1;
+                    nextQuestionS2();
+                    checkAnswersAndUpdateBlocksS2();
+                }
 
-          document.getElementById("myModal").style.display = "none";
-          document.getElementById("proceedSection3").classList.add("hidden");
-          document.getElementById("countdown").style.display = "none";
-          document.getElementById("startMessage").style.display = "block";
-        } else if (type == "section3") {
-          if (timesUp && isYesClickedS3) {
-            return; // YES düğmesine tıklanmışsa, Section 3 için timesUp işlemini durdur.
-          }
+                document.getElementById("myModal").style.display = "none";
+                document.getElementById("proceedSection3").classList.add("hidden");
+                document.getElementById("countdown").style.display = "none";
+                document.getElementById("startMessage").style.display = "block";
+            } else if (type == "section3") {
+                if (timesUp && isYesClickedS3) {
+                    return; // YES düğmesine tıklanmışsa, Section 3 için timesUp işlemini durdur.
+                }
 
-          isYesClickedS3 = true; // Section 3 için YES düğmesine tıklanıldığında bayrağı set ediyoruz.
+                isYesClickedS3 = true; // Section 3 için YES düğmesine tıklanıldığında bayrağı set ediyoruz.
 
-          // YES düğmesine tıklandığında Section 3 zamanlayıcısını durdur
-          clearInterval(timerInterval_S3);
+                // YES düğmesine tıklandığında Section 3 zamanlayıcısını durdur
+                clearInterval(timerInterval_S3);
 
-          if (timesUp) {
-            const totalQuestions =
-              document.querySelectorAll(".questionS3").length;
-            currentQuestionIndexS3 = totalQuestions - 1;
-            nextQuestionS3();
-            checkAnswersAndUpdateBlocks();
-          }
+                if (timesUp) {
+                    const totalQuestions =
+                        document.querySelectorAll(".questionS3").length;
+                    currentQuestionIndexS3 = totalQuestions - 1;
+                    nextQuestionS3();
+                    checkAnswersAndUpdateBlocks();
+                }
 
-          document.getElementById("myModalS3").style.display = "none";
-          document.getElementById("proceedSection3End").classList.add("hidden");
-          document.getElementById("app-s3").classList.add("hidden");
-          document
-            .getElementById("viewResultContainerId")
-            .classList.remove("hidden");
+                document.getElementById("myModalS3").style.display = "none";
+                document.getElementById("proceedSection3End").classList.add("hidden");
+                document.getElementById("app-s3").classList.add("hidden");
+                document
+                    .getElementById("viewResultContainerId")
+                    .classList.remove("hidden");
 
-          let calculateS3Correct = correctAnswerS3.questions.filter(
-            (x) => x.isCorrect === true,
-          );
-          let calculateS2Correct = correctAnswerS2.questions.filter(
-            (x) => x.isCorrect === true,
-          );
+                let calculateS3Correct = correctAnswerS3.questions.filter(
+                    (x) => x.isCorrect === true,
+                );
+                let calculateS2Correct = correctAnswerS2.questions.filter(
+                    (x) => x.isCorrect === true,
+                );
 
-          let scoredMarks =
-            correctAnswerS1 +
-            calculateS2Correct.length +
-            calculateS3Correct.length;
-          document.getElementById("endResult").textContent = scoredMarks;
+                let scoredMarks =
+                    correctAnswerS1 +
+                    calculateS2Correct.length +
+                    calculateS3Correct.length;
+                document.getElementById("endResult").textContent = scoredMarks;
 
-          if (calculateS3Correct.length >= 44) {
-            document.getElementById("failOrPass").textContent =
-              "Met Succes Geslaagd";
-            document.getElementById("failOrPassIcon").src =
-              "https://static.wixstatic.com/media/4b688f_12a1098a791f44f88cd7265a0517b851~mv2.png";
-          } else {
-            document.getElementById("failOrPass").textContent = "Helaas Gezakt";
-            document.getElementById("failOrPassIcon").src =
-              "https://static.wixstatic.com/media/4b688f_149ee4392b034dac89b73aef8268aef9~mv2.png";
-          }
+                if (calculateS3Correct.length >= 44) {
+                    document.getElementById("failOrPass").textContent =
+                        "Met Succes Geslaagd";
+                    document.getElementById("failOrPassIcon").src =
+                        "https://static.wixstatic.com/media/4b688f_12a1098a791f44f88cd7265a0517b851~mv2.png";
+                } else {
+                    document.getElementById("failOrPass").textContent = "Helaas Gezakt";
+                    document.getElementById("failOrPassIcon").src =
+                        "https://static.wixstatic.com/media/4b688f_149ee4392b034dac89b73aef8268aef9~mv2.png";
+                }
+            }
         }
-      }
 
         function finalResultShow() {
             viewResult = true;
@@ -5116,26 +5095,26 @@
         }
 
         function showCurrentQuestionS3() {
-        // Proceed bölümünü gizle
-        document.getElementById("proceedSection3End").classList.add("hidden");
+            // Proceed bölümünü gizle
+            document.getElementById("proceedSection3End").classList.add("hidden");
 
-        // Soru numarasını güncelle
-        const soruNumarasiS3 = document.getElementById("soruNumarasiS3");
-        if (soruNumarasiS3) {
-          soruNumarasiS3.innerText = `VRAAG ${currentQuestionIndexS3 + 1} VAN ${allQuestionsS3.length}`;
-        } else {
-          console.error("soruNumarasiS3 elementi bulunamadı!"); // Hata kontrolü
+            // Soru numarasını güncelle
+            const soruNumarasiS3 = document.getElementById("soruNumarasiS3");
+            if (soruNumarasiS3) {
+                soruNumarasiS3.innerText = `VRAAG ${currentQuestionIndexS3 + 1} VAN ${allQuestionsS3.length}`;
+            } else {
+                console.error("soruNumarasiS3 elementi bulunamadı!"); // Hata kontrolü
+            }
+
+            // Soruları göster/gizle
+            document.querySelectorAll(".questionS3").forEach((question, index) => {
+                question.classList.toggle("hidden", index !== currentQuestionIndexS3);
+            });
+
+            // Butonları güncelle
+            updatePreviousButtonS3();
+            updateNextButtonS3();
         }
-
-        // Soruları göster/gizle
-        document.querySelectorAll(".questionS3").forEach((question, index) => {
-          question.classList.toggle("hidden", index !== currentQuestionIndexS3);
-        });
-
-        // Butonları güncelle
-        updatePreviousButtonS3();
-        updateNextButtonS3();
-      }
 
         function previousQuestionS3() {
             if (currentQuestionIndexS3 > 0) {
@@ -5489,152 +5468,152 @@
         }
 
         async function loadQuizS3() {
-        const t1Questions = await fetchQuestionsS3(
-          "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-radionl.json",
-          37,
-        );
-        const t2Questions = await fetchQuestionsS3(
-          "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-fillblanknl.json",
-          3,
-        );
-        const t3Questions = await fetchQuestionsS3(
-          "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-checkboxnl.json",
-          1,
-        );
-        const t4Questions = await fetchQuestionsS3(
-          "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-resimsechnl.json",
-          2,
-        );
-        const t5Questions = await fetchQuestionsS3(
-          "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-dragdropnl.json",
-          7,
-        );
+            const t1Questions = await fetchQuestionsS3(
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-radionl.json",
+                37,
+            );
+            const t2Questions = await fetchQuestionsS3(
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-fillblanknl.json",
+                3,
+            );
+            const t3Questions = await fetchQuestionsS3(
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-checkboxnl.json",
+                1,
+            );
+            const t4Questions = await fetchQuestionsS3(
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-resimsechnl.json",
+                2,
+            );
+            const t5Questions = await fetchQuestionsS3(
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/dutchjsons/test1-dragdropnl.json",
+                7,
+            );
 
-        // T1'den gelen sorulara "Radio" button, T3'ten gelen sorulara "Checkbox" uygula
-        t1Questions.forEach((question) => {
-          question.type = "radio";
-          question.cevaplar = shuffleS3(question.cevaplar); // Seçenekleri karıştır
-          question.correctAnswer = question.dogruCevap;
-        });
-        t2Questions.forEach((question) => (question.onlyNumbers = true));
-        t3Questions.forEach((question) => {
-          question.type = "checkbox";
-          question.cevaplar = shuffleS3(question.cevaplar); // Seçenekleri karıştır
-          question.correctAnswers = question.dogruCevap;
-        });
+            // T1'den gelen sorulara "Radio" button, T3'ten gelen sorulara "Checkbox" uygula
+            t1Questions.forEach((question) => {
+                question.type = "radio";
+                question.cevaplar = shuffleS3(question.cevaplar); // Seçenekleri karıştır
+                question.correctAnswer = question.dogruCevap;
+            });
+            t2Questions.forEach((question) => (question.onlyNumbers = true));
+            t3Questions.forEach((question) => {
+                question.type = "checkbox";
+                question.cevaplar = shuffleS3(question.cevaplar); // Seçenekleri karıştır
+                question.correctAnswers = question.dogruCevap;
+            });
 
-        // T4'den gelen sorulara resim ekleyelim
-        t4Questions.forEach((question) => {
-          question.type = "image";
-          // question.secenekler = shuffleS3(question.secenekler); // Artık karıştırma yapılmıyor
-          question.correctAnswers = question.dogruCevap;
-        });
+            // T4'den gelen sorulara resim ekleyelim
+            t4Questions.forEach((question) => {
+                question.type = "image";
+                // question.secenekler = shuffleS3(question.secenekler); // Artık karıştırma yapılmıyor
+                question.correctAnswers = question.dogruCevap;
+            });
 
-        t5Questions.forEach((question) => (question.type = "dragdrop"));
+            t5Questions.forEach((question) => (question.type = "dragdrop"));
 
-        allQuestionsS3 = [
-          ...t1Questions,
-          ...t2Questions,
-          ...t3Questions,
-          ...t4Questions,
-          ...t5Questions,
-        ].sort(() => Math.random() - 0.5);
+            allQuestionsS3 = [
+                ...t1Questions,
+                ...t2Questions,
+                ...t3Questions,
+                ...t4Questions,
+                ...t5Questions,
+            ].sort(() => Math.random() - 0.5);
 
-        console.log("Toplam soru sayısı:", allQuestionsS3.length); // Test amaçlı
+            console.log("Toplam soru sayısı:", allQuestionsS3.length); // Test amaçlı
 
-        // Soruların doğru cevaplarını ve kullanıcı cevaplarını belirleyin
-        quizAnswersS3 = allQuestionsS3.map((question, index) => ({
-          id: index + 1,
-          dogruCevap: question.dogruCevap,
-          userAnswer: [], // Önce userAnswer'ı boş dizi olarak başlat
-          type: question.type,
-        }));
+            // Soruların doğru cevaplarını ve kullanıcı cevaplarını belirleyin
+            quizAnswersS3 = allQuestionsS3.map((question, index) => ({
+                id: index + 1,
+                dogruCevap: question.dogruCevap,
+                userAnswer: [], // Önce userAnswer'ı boş dizi olarak başlat
+                type: question.type,
+            }));
 
-        const quizContainer = document.querySelector(".quiz-container-s3");
-        quizContainer.innerHTML = createHTMLForQuestionsS3(allQuestionsS3);
+            const quizContainer = document.querySelector(".quiz-container-s3");
+            quizContainer.innerHTML = createHTMLForQuestionsS3(allQuestionsS3);
 
-        allQuestionsS3.forEach((question, index) => {
-          if (question.type === "dragdrop") {
-            createDragAndDropHTMLFromJSONS3(question, index + 1);
-            addDragAndDropFunctionalityS3(index + 1);
-          }
-        });
+            allQuestionsS3.forEach((question, index) => {
+                if (question.type === "dragdrop") {
+                    createDragAndDropHTMLFromJSONS3(question, index + 1);
+                    addDragAndDropFunctionalityS3(index + 1);
+                }
+            });
 
-        showCurrentQuestionS3();
-        updatePreviousButtonS3();
-        updateNextButtonS3();
-        checkAnswersAndUpdateBlocks();
-      }
+            showCurrentQuestionS3();
+            updatePreviousButtonS3();
+            updateNextButtonS3();
+            checkAnswersAndUpdateBlocks();
+        }
 
         function createHTMLForQuestionsS3(questions) {
-        let html = "";
-        questions.forEach((question, index) => {
-          console.log("Processing question:", question); // Debug log
+            let html = "";
+            questions.forEach((question, index) => {
+                console.log("Processing question:", question); // Debug log
 
-          const questionId = `questionS3-${index + 1}`;
-          html += `<div class="questionS3 hidden ${!question.resim && !question.video && question.type !== "image" ? "no-image" : ""}" id="${questionId}">`;
-          html += `<p>${index + 1}. ${question.soru}</p>`;
+                const questionId = `questionS3-${index + 1}`;
+                html += `<div class="questionS3 hidden ${!question.resim && !question.video && question.type !== "image" ? "no-image" : ""}" id="${questionId}">`;
+                html += `<p>${index + 1}. ${question.soru}</p>`;
 
-          if (question.type === "dragdrop") {
-            html += `<div id="demo-${index + 1}" class="drag-drop-container"></div>`;
-          } else {
-            if (question.resim) {
-              console.log("Adding image:", question.resim); // Debug log
-              html += `<img src="${question.resim}" alt="Resim" class="question-image"><br>`;
-            }
-            if (question.video) {
-              console.log("Adding video:", question.video); // Debug log
-              html += `<video controls class="question-video">
+                if (question.type === "dragdrop") {
+                    html += `<div id="demo-${index + 1}" class="drag-drop-container"></div>`;
+                } else {
+                    if (question.resim) {
+                        console.log("Adding image:", question.resim); // Debug log
+                        html += `<img src="${question.resim}" alt="Resim" class="question-image"><br>`;
+                    }
+                    if (question.video) {
+                        console.log("Adding video:", question.video); // Debug log
+                        html += `<video controls class="question-video">
                             <source src="${question.video}" type="video/mp4">
                             Tarayıcınız video etiketini desteklemiyor.
                          </video><br>`;
-            }
-            if (question.type === "image") {
-              const imageContainerClass =
-                question.secenekler.length === 4
-                  ? "image-container grid-4"
-                  : "image-container";
-              html += `<div class="${imageContainerClass}">`;
-              question.secenekler.forEach((resim, resimIndex) => {
-                html += `<div class="image-wrapper">
+                    }
+                    if (question.type === "image") {
+                        const imageContainerClass =
+                            question.secenekler.length === 4
+                                ? "image-container grid-4"
+                                : "image-container";
+                        html += `<div class="${imageContainerClass}">`;
+                        question.secenekler.forEach((resim, resimIndex) => {
+                            html += `<div class="image-wrapper">
                                 <img src="${resim}" alt="Resim ${resimIndex + 1}" class="question-image question-image-t4 selectable" onclick="toggleSelectionS3(this, ${index + 1}, ${resimIndex})">
                              </div>`;
-              });
-              html += `</div><br>`;
-            } else if (question.resimler) {
-              question.resimler.forEach((resim, resimIndex) => {
-                html += `<img src="${resim}" alt="Resim ${resimIndex + 1}" class="selectable" onclick="toggleSelectionS3(this)"><br>`;
-              });
-            }
+                        });
+                        html += `</div><br>`;
+                    } else if (question.resimler) {
+                        question.resimler.forEach((resim, resimIndex) => {
+                            html += `<img src="${resim}" alt="Resim ${resimIndex + 1}" class="selectable" onclick="toggleSelectionS3(this)"><br>`;
+                        });
+                    }
 
-            html += '<div class="answers">';
+                    html += '<div class="answers">';
 
-            if (question.type === "radio") {
-              question.cevaplar.forEach((cevap, cevapIndex) => {
-                html += `<label class="cevapSecenegi-s3" onclick="highlightSelectedS3(this, ${index + 1})">
+                    if (question.type === "radio") {
+                        question.cevaplar.forEach((cevap, cevapIndex) => {
+                            html += `<label class="cevapSecenegi-s3" onclick="highlightSelectedS3(this, ${index + 1})">
                                 <input type="radio" name="answer${index + 1}" value="${cevap}"> ${cevap}<br>
                              </label>`;
-              });
-            } else if (question.type === "checkbox") {
-              question.cevaplar.forEach((cevap, cevapIndex) => {
-                html += `<label class="cevapSecenegi-s3" onclick="highlightSelectedCheckboxS3(this, ${index + 1})">
+                        });
+                    } else if (question.type === "checkbox") {
+                        question.cevaplar.forEach((cevap, cevapIndex) => {
+                            html += `<label class="cevapSecenegi-s3" onclick="highlightSelectedCheckboxS3(this, ${index + 1})">
                                 <input type="checkbox" name="answer${index + 1}[]" value="${cevap}"> ${cevap}<br>
                              </label>`;
-              });
-            } else if (question.onlyNumbers) {
-              html += `<input type="number" name="answer${index + 1}" class="answer-input" placeholder="Vul in" oninput="handleTextInputS3(${index + 1}, this)" inputmode="numeric"><br>`;
-            }
+                        });
+                    } else if (question.onlyNumbers) {
+                        html += `<input type="number" name="answer${index + 1}" class="answer-input" placeholder="Vul in" oninput="handleTextInputS3(${index + 1}, this)" inputmode="numeric"><br>`;
+                    }
 
-            // Feedback için alan ekleme
-            html += `</div>
+                    // Feedback için alan ekleme
+                    html += `</div>
                      <div class="feedback" id="feedback-${index + 1}" style="display: none;">
                      ${question.feedback ? question.feedback : ""}
                      </div>`;
-          }
-          html += "</div>";
-        });
-        return html;
-      }
+                }
+                html += "</div>";
+            });
+            return html;
+        }
 
         // Cevapları karıştırmak için fonksiyon
         function shuffleS3(array) {
@@ -6065,22 +6044,22 @@
 
             // Sonuç gösterimi
             try {
-          const answeredEl = document.getElementById("answeredQuestionsS3End");
-          const unAnsweredEl = document.getElementById(
-            "unAnsweredQuestionsS3End",
-          );
+                const answeredEl = document.getElementById("answeredQuestionsS3End");
+                const unAnsweredEl = document.getElementById(
+                    "unAnsweredQuestionsS3End",
+                );
 
-          if (answeredEl)
-            answeredEl.textContent = `Aantal Beantwoorde Vragen: ${correctAnswerS3.answer}`;
-          if (unAnsweredEl)
-            unAnsweredEl.textContent = `Aantal Onbeantwoorde Vragen: ${correctAnswerS3.unanswer}`;
+                if (answeredEl)
+                    answeredEl.textContent = `Aantal Beantwoorde Vragen: ${correctAnswerS3.answer}`;
+                if (unAnsweredEl)
+                    unAnsweredEl.textContent = `Aantal Onbeantwoorde Vragen: ${correctAnswerS3.unanswer}`;
 
-          if (containerId === "endMessage4-S3") {
-            const correctEl = document.getElementById("correctAnswersS3End");
-            if (correctEl)
-              correctEl.textContent = `Number of Correct Answers: ${correctAnswerS3.correct}`;
-          }
-        } catch (error) {
+                if (containerId === "endMessage4-S3") {
+                    const correctEl = document.getElementById("correctAnswersS3End");
+                    if (correctEl)
+                        correctEl.textContent = `Number of Correct Answers: ${correctAnswerS3.correct}`;
+                }
+            } catch (error) {
                 console.warn("Sonuçlar gösterilirken hata oluştu:", error);
             }
         }
@@ -6111,7 +6090,7 @@
         }
 
         // lockQuizQuestions fonksiyonu
-               function lockQuizQuestionsS3() {
+        function lockQuizQuestionsS3() {
             const questions = document.querySelectorAll(".questionS3");
             questions.forEach((question, index) => {
                 let isCorrectArrayDragDrop = [];
@@ -6395,41 +6374,41 @@
 
         // Mesaj dinleyicisi
         window.addEventListener("message", function (event) {
-        // Mesajın güvenilir bir kaynaktan geldiğinden emin ol
-        if (event.origin !== "https://www.examtheorie.nl") return;
+            // Mesajın güvenilir bir kaynaktan geldiğinden emin ol
+            if (event.origin !== "https://www.examtheorie.nl") return;
 
-        const message = event.data;
-        console.log("Iframe'e mesaj alındı:", message);
+            const message = event.data;
+            console.log("Iframe'e mesaj alındı:", message);
 
-        // Mesaj bir nesne ise ve action özelliği "updateButtons" ise
-        if (typeof message === "object" && message.action === "updateButtons") {
-          const progress = message.progress; // Tamamlanan testlerin listesi
-          console.log("Progress bilgileri alındı:", progress);
+            // Mesaj bir nesne ise ve action özelliği "updateButtons" ise
+            if (typeof message === "object" && message.action === "updateButtons") {
+                const progress = message.progress; // Tamamlanan testlerin listesi
+                console.log("Progress bilgileri alındı:", progress);
 
-          // QUIZ-1 butonunu kontrol et ve güncelle
-          updateQuiz1Button(progress);
-        }
-      });
+                // QUIZ-1 butonunu kontrol et ve güncelle
+                updateQuiz1Button(progress);
+            }
+        });
 
         // QUIZ-1 butonunu güncelleme fonksiyonu
-       function updateQuiz1Button(progress) {
-        // QUIZ-1 butonunu seç
-        const quiz1Button = document.getElementById("quizButton1");
+        function updateQuiz1Button(progress) {
+            // QUIZ-1 butonunu seç
+            const quiz1Button = document.getElementById("quizButton1");
 
-        if (quiz1Button) {
-          // Eğer progress dizisinde 1 varsa, butonu devre dışı bırak
-          if (progress.includes(1)) {
-            quiz1Button.disabled = true;
-            quiz1Button.textContent = "QUIZ-1 (Tamamlandı)";
-            quiz1Button.classList.add("deactivated");
-          } else {
-            // Eğer progress dizisinde 1 yoksa, butonu aktif bırak
-            quiz1Button.disabled = false;
-            quiz1Button.textContent = "QUIZ-1";
-            quiz1Button.classList.remove("deactivated");
-          }
+            if (quiz1Button) {
+                // Eğer progress dizisinde 1 varsa, butonu devre dışı bırak
+                if (progress.includes(1)) {
+                    quiz1Button.disabled = true;
+                    quiz1Button.textContent = "QUIZ-1 (Tamamlandı)";
+                    quiz1Button.classList.add("deactivated");
+                } else {
+                    // Eğer progress dizisinde 1 yoksa, butonu aktif bırak
+                    quiz1Button.disabled = false;
+                    quiz1Button.textContent = "QUIZ-1";
+                    quiz1Button.classList.remove("deactivated");
+                }
+            }
         }
-      }
 
         // Sağ tıklamayı engelle
         document.addEventListener("contextmenu", function (event) {
@@ -6487,26 +6466,26 @@
             }
 
             // URL paramlarından oku
-        var idx = parseInt((window.__qs && window.__qs.get("idx")) || "1", 10); // 1..50
-        if (!Number.isFinite(idx) || idx < 1) idx = 1;
-        var tnParam = parseInt(
-          (window.__qs && window.__qs.get("tn")) || "0",
-          10,
-        );
-        var TEST_NUMBER =
-          Number.isFinite(tnParam) && tnParam > 0 ? tnParam : 3000 + idx;
-        var status = (window.__qs && window.__qs.get("status")) || "avail"; // 'done' | 'avail'
+            var idx = parseInt((window.__qs && window.__qs.get("idx")) || "1", 10); // 1..50
+            if (!Number.isFinite(idx) || idx < 1) idx = 1;
+            var tnParam = parseInt(
+                (window.__qs && window.__qs.get("tn")) || "0",
+                10,
+            );
+            var TEST_NUMBER =
+                Number.isFinite(tnParam) && tnParam > 0 ? tnParam : 3000 + idx;
+            var status = (window.__qs && window.__qs.get("status")) || "avail"; // 'done' | 'avail'
 
-        // Mevcut buton metnini koru (QUIZ-2, QUIZ-3…)
-        var baseLabel = (btn.textContent || "QUIZ-" + idx).trim();
+            // Mevcut buton metnini koru (QUIZ-2, QUIZ-3…)
+            var baseLabel = (btn.textContent || "QUIZ-" + idx).trim();
 
-        function setCompleted() {
-          btn.disabled = true;
-          btn.classList.add("deactivated");
-          btn.textContent = baseLabel + " (Voltooid)";
-          btn.onclick = null;
-          btn.setAttribute("aria-disabled", "true");
-        }
+            function setCompleted() {
+                btn.disabled = true;
+                btn.classList.add("deactivated");
+                btn.textContent = baseLabel + " (Voltooid)";
+                btn.onclick = null;
+                btn.setAttribute("aria-disabled", "true");
+            }
 
             function setAvailable() {
                 btn.disabled = false;
@@ -6533,27 +6512,8 @@
                     else setAvailable();
                 }
             });
-
-            // View Result override'ını dinamikleştir (testNumber = tn)
-            var viewBtn = document.getElementById("viewResult");
-if (viewBtn) {
-    var old = viewBtn.onclick;
-    viewBtn.onclick = function (ev) {
-        if (old) old(ev);
-        try {
-            window.parent.postMessage(
-                { action: "updateProgress", testNumber: TEST_NUMBER, lang: "en" },
-                "https://www.examtheorie.nl"
-            );
-        } catch (e) { }
-        setCompleted();
-    };
-}
+           
         })();
-
-
-
-
 
         function padForButton() {
             const wrap = document.getElementById('startMessage');
@@ -6813,7 +6773,7 @@ if (viewBtn) {
             }
         }
     </script>
-<script src="https://examtheorie.nl/auth-guard.js"></script>
+
 </body>
 
 </html>
