@@ -1,0 +1,28 @@
+name: Fix Bottom Overlay - Deneme Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix-overlay:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run fix script
+        run: python3 fix_overlay_deneme.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nothing to commit" || git commit -m "fix: bottom overlay fixed for deneme-en/tr/ar/nl.html
+
+          - Removed bottom inset from .overlay (desktop + mobile)
+          - Removed bottom inset from .overlay-thin-top (desktop + mobile)
+          - Added #bottom-overlay div with position:fixed; bottom:0
+          - Report saved to overlay-fix-report.txt"
+          git push
