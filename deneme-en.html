@@ -6498,29 +6498,9 @@
           if (done) setCompleted();
           else setAvailable();
         }
-      });
-
-      // View Result override'ını dinamikleştir (testNumber = tn)
-      var viewBtn = document.getElementById("viewResult");
-      if (viewBtn) {
-        var old = viewBtn.onclick;
-        viewBtn.onclick = function (ev) {
-          if (old) old(ev);
-          try {
-            window.parent.postMessage(
-              { action: "updateProgress", testNumber: TEST_NUMBER, lang: "en" },
-              "https://www.examtheorie.nl"
-            );
-          } catch (e) { }
-          setCompleted();
-        };
-      }
+      });    
 
     })();
-
-
-
-
 
     function padForButton() {
       const wrap = document.getElementById('startMessage');
@@ -6780,7 +6760,7 @@
       }
     }
   </script>
-<script src="https://examtheorie.nl/auth-guard.js"></script>
+
 </body>
 
 </html>
