@@ -1,452 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Römorklar İçin Kalıcı Gereksinimler – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-        h1,
-        h2 {
-            color: #E5AA1A;
-        }
-
-        h3 {
-            color: #000000;
-        }
-
-        .yh3 {
-            color: #E5AA1A;
-            /* Kırmızı */
-        }
-
-        .important-words1 {
-            background-color: #FFECC5;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        .important-words2 {
-            background-color: #FFECC5;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        .important-words5 {
-            background-color: #FFECC5;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 80%;
-                /* Mobilde resim genişliğini korur */
-            }
-        }
-
-        .important-words3 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 img {
-            width: 90%;
-            height: auto;
-            margin-right: -202px;
-            margin-left: 10px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            padding-right: 15px;
-            flex-grow: 1;
-            /* Metnin daha fazla alan kaplamasına izin ver */
-            flex-basis: 0;
-            /* Metnin esnek olmasını sağlar */
-            min-width: 150px;
-            /* Metnin minimum genişliğini belirler */
-            margin-left: 10px;
-        }
-
-        .image-content {
-            flex-shrink: 0;
-            /* Resmin sabit bir boyutta kalmasını sağlar */
-        }
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 5px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #E5AA1A;
-            position: absolute;
-            top: 80px;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #E5AA1A;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-
-
-        @media (max-width: 550px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;
+        --glass-shine:rgba(255,255,255,.06);--red:#e84545;
+        --text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);
+        --text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;
+        --card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22);
+    }
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);
+        color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;
+        background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);
+        transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+        background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;
+        background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;
+        color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--accent-light);margin-bottom:8px;margin-top:14px}
+    h3:first-child{margin-top:0}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px}
+    p:last-child{margin-bottom:0}
+
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    .glass-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;
+        padding:22px 24px 22px 32px;position:relative;overflow:hidden;
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);margin-bottom:24px;
+        box-shadow:0 4px 24px rgba(0,0,0,.35),inset 0 1px 0 var(--glass-shine)}
+    .glass-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .glass-card .accent-line{position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 4px 4px 0;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 24px}
+    @media(max-width:550px){.compare-grid{grid-template-columns:1fr}}
+    .compare-card{border-radius:14px;padding:18px 20px;position:relative;overflow:hidden}
+    .compare-card.emergency{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25)}
+    .compare-card.auxiliary{background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.22)}
+    .compare-card h3{font-size:.92rem;margin-bottom:8px}
+    .compare-card.emergency h3{color:#ffaaaa}
+    .compare-card.auxiliary h3{color:var(--accent-light)}
+    .compare-card p{font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:8px}
+    .compare-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.05em;margin-top:4px}
+    .compare-card.emergency .compare-badge{background:rgba(232,69,69,.15);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .compare-card.auxiliary .compare-badge{background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.25);color:var(--accent-light)}
+
+    .plate-row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
+    .plate-chip{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;
+        font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .plate-chip.white{background:rgba(230,240,255,.08);border:1px solid rgba(200,220,255,.2);color:#ddeeff}
+    .plate-chip.yellow{background:rgba(245,200,35,.08);border:1px solid rgba(245,200,35,.25);color:#ffe080}
+    .plate-chip .pl-swatch{width:28px;height:18px;border-radius:5px;flex-shrink:0;border:1px solid rgba(255,255,255,.15)}
+    .plate-chip.white .pl-swatch{background:#f5f8ff}
+    .plate-chip.yellow .pl-swatch{background:#f5c823}
+
+    .chips-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px}
+    .stat-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border-radius:30px;
+        background:rgba(26,108,246,.1);border:1px solid rgba(77,166,255,.22);
+        font-family:'Outfit',sans-serif;font-size:.83rem;font-weight:700;color:var(--accent-light)}
+    .stat-chip.red{background:rgba(232,69,69,.1);border-color:rgba(232,69,69,.25);color:#ffaaaa}
+    .stat-chip.amber{background:rgba(245,166,35,.1);border-color:rgba(245,166,35,.28);color:#ffd88a}
+
+    .prose-list{list-style:none;padding:0;margin:10px 0 14px;display:flex;flex-direction:column;gap:8px}
+    .prose-list li{font-family:'Lora',serif;font-size:.92rem;color:var(--text-muted);
+        padding-left:22px;position:relative;line-height:1.65}
+    .prose-list li::before{content:'';position:absolute;left:0;top:.68em;width:7px;height:7px;
+        border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(26,108,246,.35)}
+
+    .image-container{display:flex;flex-wrap:wrap;gap:20px;margin:20px 0}
+    .image-container figure{flex:1 1 46%;margin:0}
+    .image-container img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);
+        box-shadow:0 6px 24px rgba(0,0,0,.4);display:block}
+    .image-container figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);
+        text-align:center;margin-top:8px;font-style:italic;line-height:1.5}
+    @media(max-width:550px){.image-container figure{flex:1 1 100%}}
+
+    .image-container1{margin:20px 0;text-align:center}
+    .image-container1 img{width:100%;max-width:680px;height:auto;border-radius:12px;
+        border:1px solid var(--card-border);box-shadow:0 6px 24px rgba(0,0,0,.4);display:inline-block}
+    .image-container1 figcaption{font-family:'Outfit',sans-serif;font-size:.72rem;color:var(--text-dim);
+        text-align:center;margin-top:8px;font-style:italic;line-height:1.5}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+        background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;
+        border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}
+    .page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* ══ FAB ROW ══ */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;
+        display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;
+        display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;
+        box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);
+        transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);
+        animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+        background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;
+        border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+
+    /* ══ COLOUR PANEL ══ */
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;
+        z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
+        background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+        box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){
+        #color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;
+            width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;
+            transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}
+        #color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);
+        display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;
+        background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}
+        .panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+            width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;
+        border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+        color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);
+        background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;
+        color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .section-title{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;
+        margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .section-title::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;
+        border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);
+        border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;
+        color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;
+        border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+
+    /* ══ QUIZ ══ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);
+        backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+        padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);
+        border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;
+        display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);
+        animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;
+        background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;
+        background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);
+        font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;
+        background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;
+        cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;
+        background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;
+        font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;
+        background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;
+        border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);
+        cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;
+        color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);
+        border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);
+        box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -457,121 +311,423 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
-    <h2>Römorklar için Kalıcı Gereklilikler</h2>
-    <p>Arabalar gibi, römorkların da bir dizi kalıcı teknik gerekliliği karşılaması gerekir. Bu gereklilikleri karşılamayan bir römorku çekmek yasaktır.</p>
-    <h2>Binek Araçlarla Aynı Gereklilikler</h2>
-    <p>Römorklar, binek araçlar için geçerli olan birçok gerekliliğe tabidir. Bu gereklilikler şunları içerir:</p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-    <ul>
-        <li>maksimum boyutlar (4 metre yükseklik, 2.55 metre genişlik, 12 metre uzunluk)</li>
-        <li>lastik gereklilikleri (hasarsız, yeterli diş derinliği)</li>
-        <li>keskin ve çıkıntılı parçaların varlığı (korumalı veya mevcut olmamalı)</li>
+<!-- ═══ FAB ROW ═══ -->
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Sınav</span>📝</button>
+</div>
+
+<!-- ═══ COLOUR PANEL ═══ -->
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk &amp; Metin Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip">
+            <div class="font-strip-label">Yazı Boyutu</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ sıfırla</button>
+        </div>
+        <div class="presets-strip">
+            <div class="strip-label">Hızlı Temalar</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 Varsayılan</button>
+                <button class="preset-btn" data-preset="light">☀️ Açık</button>
+                <button class="preset-btn" data-preset="purple">🟣 Mor</button>
+                <button class="preset-btn" data-preset="green">🟢 Yeşil</button>
+                <button class="preset-btn" data-preset="amber">🟡 Amber</button>
+                <button class="preset-btn" data-preset="contrast">⬛ Kontrast</button>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Arka Plan</div>
+            <div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div>
+            <div class="opacity-row"><label>Arka plan saydamlığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Vurgu Renkleri</div>
+            <div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Metin Renkleri</div>
+            <div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Soluk metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Kartlar &amp; Paneller</div>
+            <div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div>
+            <div class="opacity-row"><label>Kart saydamlığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div>
+            <div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div>
+            <div class="opacity-row"><label>Kenarlık saydamlığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div>
+        </div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+
+<!-- ═══ QUIZ OVERLAY ═══ -->
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header">
+            <div class="quiz-header-left">
+                <div class="quiz-title">🚛 Römork Gereksinimleri Sınavı</div>
+                <div class="quiz-badge" id="quiz-badge">Sorular</div>
+            </div>
+            <button class="quiz-close" id="quiz-close-btn">✕</button>
+        </div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚛</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Römorklar için kalıcı gereksinimler konusundan rastgele seçilmiş sorular. Başlamadan önce sayfayı dikkatlice okuyunuz.</p>
+                <div class="qs-info">
+                    <div class="qs-chip" id="q-count-chip">📋 soru</div>
+                    <div class="qs-chip">🔀 Rastgele sıra</div>
+                    <div class="qs-chip">✅ Anında geri bildirim</div>
+                </div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Sınavı Başlat</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="page-wrapper">
+    <div class="brand-strip">
+        <span>ExamTheorie</span><span class="dot">›</span>
+        <span>Binek Otomobil</span><span class="dot">›</span>
+        <span style="color:var(--text-primary)">Römorklar İçin Kalıcı Gereksinimler</span>
+    </div>
+    <h1>Römorklar İçin Kalıcı Gereksinimler</h1>
+    <div class="section-divider"></div>
+
+    <p>Binek otomobiller gibi römorkların da bir dizi kalıcı teknik gereksinimi karşılaması zorunludur. Bu gereksinimleri karşılamayan bir römorku çekmek yasaktır.</p>
+
+    <h2>Binek Otomobillerle Ortak Gereksinimler</h2>
+    <p>Römorklar, binek otomobillere uygulanan gereksinimlerin büyük bölümüne de tabidir. Bu gereksinimler şunları kapsar:</p>
+    <ul class="prose-list">
+        <li>Azami boyutlar (4 metre yükseklik, 2,55 metre genişlik, 12 metre uzunluk)</li>
+        <li>Lastik gereksinimleri (hasar bulunmaması, yeterli diş derinliği)</li>
+        <li>Keskin ve dışarı taşan parçaların varlığı (korunmalı veya mevcut olmamalı)</li>
     </ul>
-    <h2>Yükleme Kapakları ve Kapıların Kapatılması</h2>
-    <p>Birçok römork, yükleme zeminine daha iyi erişim sağlamak için açılabilen bir arka kapağa sahiptir. Bazı kapalı römorklar bunun yerine arka kapılara sahiptir. Bu kapaklar ve kapılar düzgün bir şekilde kapanabilmeli ve taşıma sırasında kapalı kalmalıdır.</p>
+    <div class="chips-row">
+        <span class="stat-chip">↕ Azami yükseklik: 4 m</span>
+        <span class="stat-chip">↔ Azami genişlik: 2,55 m</span>
+        <span class="stat-chip">📏 Azami uzunluk: 12 m</span>
+    </div>
+
+    <h2>Yükleme Kapakları ve Kapılarının Kapatılması</h2>
+    <p>Pek çok römorğun arkasında yükleme tabanına daha kolay erişim sağlamak için katlanabilen bir kapak bulunur. Bazı kapalı römorkların ise arkasında kapı yer almaktadır. Bu kapaklar ve kapılar, seyir hâlindeyken düzgün biçimde kapanabilmeli ve kapalı kalmalıdır.</p>
+
+    <div class="plate-row">
+        <div class="plate-chip white">
+            <div class="pl-swatch"></div>
+            Beyaz plaka — azami izin verilen kütlesi 750 kg'a kadar olan römorklar
+        </div>
+        <div class="plate-chip yellow">
+            <div class="pl-swatch"></div>
+            Sarı plaka — azami izin verilen kütlesi 750 kg'ı aşan römorklar
+        </div>
+    </div>
 
     <div class="image-container">
         <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_708b8ce1ab6a480aacafd786c14d3e66~mv2.jpg"
-                alt="Görsel 1" />
-            <figcaption><em>Yükleme kapıları düzgün bir şekilde kapanmalı ve sürüş sırasında kapalı kalmalıdır. 750 kg üzerindeki maksimum izin verilen kütleye sahip römorklar ayrıca sarı bir plaka ile donatılmalıdır.</em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_708b8ce1ab6a480aacafd786c14d3e66~mv2.jpg" alt="Kapılı römork"/>
+            <figcaption>Yükleme kapıları seyir sırasında düzgün kapanmalı ve kapalı kalmalıdır. Azami izin verilen kütlesi 750 kg'ı aşan römorklar ayrıca sarı plaka taşımak zorundadır.</figcaption>
         </figure>
         <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_a36fba69584844cba5172e7de80f02e5~mv2.jpg"
-                alt="Görsel 2" />
-            <figcaption>
-                <em>Yükleme bölmesi kapakları düzgün bir şekilde kapanmalı ve sürüş sırasında kapalı kalmalıdır. 750 kg'a kadar maksimum izin verilen kütleye sahip römorklar ayrıca beyaz bir plaka ile donatılmalıdır.</em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_a36fba69584844cba5172e7de80f02e5~mv2.jpg" alt="Yükleme kaplı römork"/>
+            <figcaption>Yükleme kapakları seyir sırasında düzgün kapanmalı ve kapalı kalmalıdır. Azami izin verilen kütlesi 750 kg'a kadar olan römorklar ayrıca beyaz plaka taşımak zorundadır.</figcaption>
         </figure>
     </div>
+
     <h2>Plaka</h2>
-    <p>Bir römorkun arkasına plaka takılması mümkün olmalıdır. Römorklar, düzgün bir şekilde sabitlenmiş orijinal plakalar gerektirir.</p>
+    <p>Römorğun arkasına plaka takılabilmesi zorunludur. Römorklar orijinal plakalara sahip olmak ve bunları usulüne uygun biçimde sabitlemek zorundadır.</p>
+
     <h2>Fren Sistemi</h2>
-    <p>Çoğu römork frenlidir, yani kendi fren sistemine sahiptir. Frenli römorklardaki fren sistemleri düzgün çalışmalıdır. Frenler her iki tarafta da eşit derecede güçlü olmadığında, frenleme sırasında römorkun savrulması gibi durumlar meydana gelmemelidir.</p>
-    <p>Fren sistemindeki tüm parçalar hasarsız, düzgün bir şekilde sabitlenmiş, paslanmamış ve sızdırmaz olmalıdır. Fren hortumları iyi durumda olmalı ve diğer parçalarla temas etmemelidir.</p>
+    <p>Römorkların büyük çoğunluğu frenlidir; yani kendi fren sistemine sahiptir. Frenli römorkların fren sistemlerinin düzgün çalışması zorunludur. Bu, römorğun frenleme sırasında sallanmaması anlamına gelir; her iki taraftaki frenlerin eşit güçte olmaması durumunda bu sorun yaşanabilir.</p>
+    <p>Fren sistemindeki tüm parçalar hasarsız, düzgün bağlı, patsız ve sızdırmaz olmalıdır. Fren hortumları iyi durumda olmalı ve diğer parçalarla temas etmemelidir.</p>
+
     <h2>Aydınlatma</h2>
-    <p>Römork aydınlatması, binek araç aydınlatmasına uygulanmayan bir dizi kurala tabidir. Örneğin, 750 kg'a kadar olan römorklar için geri vites lambaları zorunlu değildir.</p>
-    <p>Ön taraf ve marker aydınlatması sadece daha geniş römorklarda zorunludur. Yan marker aydınlatması sadece altı metreden daha uzun römorklar için zorunludur. Bu yan lambalar ve marker aydınlatması daha kısa ve dar römorklarda da bulunabilir.</p>
-    <p>Ek retro-reflektörler römorkun ön (beyaz), arka (kırmızı) ve yan (turuncu, arka tarafı kırmızı olabilir) kısımlarına monte edilebilir.</p>
-    <h2>Zorunlu Aydınlatmanın Yerleştirilmesi ve Çalışması</h2>
-    <p>Römork aydınlatması şu kurallara uygun olmalıdır:</p>
-    <ul>
-        <li>Tüm aydınlatmalar römork üzerine yerleştirilerek açıkça görünür, diğer aydınlatmalarla karıştırılamaz olmalı ve römorkun boyutu iyi vurgulanmalıdır.</li>
-        <li>Tüm zorunlu aydınlatmalar düzgün çalışmalı ve düzgün bir şekilde sabitlenmelidir. Kırık lambalar veya hasarlı/kirli lamba camları nedeniyle ışık çıkışı %25'ten fazla azalmamalıdır. Lamba camları da çıkarılmamalıdır.</li>
-        <li>Aynı işlevi gören tüm lambalar aynı görünüme sahip olmalı ve sola ve sağa simetrik olarak yerleştirilmelidir.</li>
-        <li>Tüm zorunlu retro-reflektörler iyi yansıtmalıdır.</li>
+    <p>Römork aydınlatması, binek otomobil aydınlatmasına uygulanmayan bir dizi kurala tabidir. Örneğin 750 kg'a kadar olan römorklar için geri vites lambası zorunlu değildir.</p>
+    <p>Ön taraf aydınlatması ile ön ve arkadaki işaret aydınlatması yalnızca daha geniş römorklar için zorunludur. Yan işaret aydınlatması ise yalnızca altı metreden uzun römorklar için zorunludur. Bu yan lambalar ve işaret aydınlatması, daha kısa ve dar römorklar üzerinde de bulunabilir.</p>
+    <p>Römorğun ön (beyaz), arka (kırmızı) ve yan (sarı, arka kısmı muhtemelen kırmızı) kısımlarına ek retroyansıtıcılar da takılabilir.</p>
+
+    <h2>Zorunlu Aydınlatmanın Yerleşimi ve Çalışması</h2>
+    <p>Römork aydınlatması aşağıdaki kurallara uymak zorundadır:</p>
+    <ul class="prose-list">
+        <li>Tüm aydınlatma; açıkça görünebilecek, diğer aydınlatmalarla karıştırılmayacak ve römorğun boyutlarını net biçimde vurgulayacak şekilde yerleştirilmelidir.</li>
+        <li>Tüm zorunlu aydınlatma düzgün çalışmalı ve usulüne uygun bağlanmış olmalıdır. Yanmış ampuller veya hasarlı/kirli lamba camları nedeniyle ışık çıkışı %25'ten fazla azalmış olmamalıdır. Lamba camları da çıkarılmış olmamalıdır.</li>
+        <li>Aynı işleve sahip tüm lambalar aynı görünümde olmalı ve sola-sağa simetrik biçimde düzenlenmiş olmalıdır.</li>
+        <li>Tüm zorunlu retroyansıtıcılar yeterince yansıtma yapmalıdır.</li>
     </ul>
-    <div class="image-container1">
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_44e18c7cb4a04c71a641e26ce92a6c0c~mv2.jpeg"
-                alt="Görsel 1">
-            <figcaption><em></em></figcaption>
-        </figure>
-    </div>
-    <div class="image-container1">
-        <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_2f2239d3dad64f6d86052d1db66f1436~mv2.jpeg"
-                alt="Görsel 1">
-            <figcaption><em></em></figcaption>
-        </figure>
-    </div>
-
-    <h2>Yasaklanmış Aydınlatma</h2>
-    <p>Sadece yukarıda belirtilen zorunlu ve izin verilen aydınlatmalar bir römorkta bulunabilir. Römorklarda dışarı ışık yayacak şekilde iç aydınlatma bulunamaz. Araç, mavi yanıp sönen veya yanıp sönen lambalarla donatılmamalıdır, bunlar kapalı olsa bile, diğer yol kullanıcılarını yanıltabilir.</p>
-    <h2>Çekme Bağlantısı</h2>
-    <p>Römorku binek araca bağlayan çekme bağlantısı, römorkun ön kısmındaki metal çubuk veya üçgen çekme çubuğu üzerinde bulunur. Bu parça iyi durumda olmalıdır (eğilme veya çatlak olmamalıdır) ve römorkun gevşememesini sağlamalıdır.</p>
 
     <div class="image-container1">
         <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_d519f5108d1e42f990380da524581ea4~mv2.jpeg"
-                alt="Görsel 1">
-            <figcaption><em></em></figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_44e18c7cb4a04c71a641e26ce92a6c0c~mv2.jpeg" alt="Römork ön aydınlatması"/>
         </figure>
     </div>
-    <p>Sürüş sırasında bir römorkun beklenmedik şekilde gevşemesi durumunu hafifletmek için, römorklar acil fren veya yardımcı bağlantı ile donatılmalıdır. Her ikisinin aynı anda kullanılması yasaktır, çünkü biri diğerini etkisiz hale getirir.</p>
-    <h2>Acil Frenleme Sistemi</h2>
-    <p>Acil fren sistemi, römorkun çekme çubuğundan ayrılması durumunda, römorkun el freninin hemen devreye girmesini sağlar. Bu, römorkun el frenine bağlı ince bir çelik kablodur ve kancası veya halkası ile araca bağlanır. Römorkun gevşemesi durumunda gerilim oluşursa, acil fren römorkun el frenini uygular ve bu noktada kablo kopar. Römork, kontrolden çıkmak yerine, araçtan ayrı bir şekilde durur.</p>
-    <p>Bu cihaz, maksimum izin verilen kütlesi 1500 kg'ın üzerinde olan römorklar için zorunludur.</p>
-    <h2>Yardımcı Bağlantı</h2>
-    <p>Birçok hafif römork ve tüm frensiz römorklar acil frenleme sistemi ile donatılmamıştır. Bu römorklar bu nedenle, römorkun çekme çubuğundan ayrılması durumunda araç ve römorkun bağlı kalmasını sağlayan bir yardımcı bağlantı ile donatılmalıdır. Yardımcı bağlantı, römorkun gövdesine bağlanan ve kancası veya halkası ile araca bağlanan daha kalın bir çelik kablodur.</p>
-    <p>Bu kablo gerilim oluştuğunda kopmaz, ancak römork ve aracı bağlı tutar, böylece sürücü aracı ve römorku en kısa sürede güvenle durdurabilir.</p>
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_2f2239d3dad64f6d86052d1db66f1436~mv2.jpeg" alt="Römork arka aydınlatması"/>
+        </figure>
+    </div>
+
+    <h2>Yasak Aydınlatma</h2>
+    <p>Bir römork üzerinde yalnızca yukarıda belirtilen zorunlu ve izin verilen aydınlatmalar bulunabilir. Römorklar, dışarıya ışık veren iç aydınlatmayla donatılamaz. Araç; kapalı olsalar dahi mavi yanıp sönen veya titreyen lambalarla donatılamaz; zira bu durum diğer trafik kullanıcılarını yanıltabilir.</p>
+
+    <h2>Bağlantı Düzeneği (Kanca)</h2>
+    <p>Römorğun binek otomobile bağlandığı kısım olan bağlantı düzeneği (kanca); römorğun ön kısmındaki bir metal çerçeve olan çekme kolu veya çekme üçgeni üzerinde yer alır. Römorğun seyir sırasında ayrılmaması için bu parçanın iyi durumda (eğilme veya çatlak bulunmaması) olması zorunludur.</p>
+
+    <div class="image-container1">
+        <figure>
+            <img src="https://static.wixstatic.com/media/4b688f_d519f5108d1e42f990380da524581ea4~mv2.jpeg" alt="Römork bağlantı çekme kolu"/>
+        </figure>
+    </div>
+
+    <p>Seyir sırasında beklenmedik bir şekilde römorğun ayrılması durumunu hafifletmek amacıyla, römorkların bir <strong style="color:var(--text-primary)">acil fren sistemi</strong> veya <strong style="color:var(--text-primary)">yardımcı bağlantı halatı</strong> ile donatılmış olması zorunludur. Her ikisinin aynı anda bulunması yasaktır; zira bu sistemler birbirini etkisiz kılar.</p>
+
+    <h2>Acil Fren Sistemi</h2>
+    <p>Acil fren sistemi; römork çekme kancasından ayrılırsa römorğun el freninin anında devreye girmesini sağlar. Bu sistem; römorğun el frenine bağlı ince bir çelik halatı (kopma halatı) ve bunu araca bağlayan bir kanca veya halkadan oluşur. Römorğun ayrılmasıyla gerilim oluştuğunda acil fren römorğun el frenini uygular ve ardından halat kopar. Römork böylece araçtan bağımsız olarak durur; kontrolsüz biçimde yuvarlanan bir hâlde kalmaz.</p>
+
+    <div class="chips-row">
+        <span class="stat-chip red">⚠ Azami izin verilen kütlesi 1500 kg'ı aşan römorklar için zorunlu</span>
+    </div>
+
+    <h2>Yardımcı Bağlantı Halatı</h2>
+    <p>Pek çok hafif römork ve tüm frensiz römorklar acil fren sistemiyle donatılmamıştır. Bu nedenle söz konusu römorkların; römorğun çekme kancasından ayrılması hâlinde araç ile römorğu bağlı tutacak bir yardımcı bağlantı halatıyla donatılmış olması zorunludur. Yardımcı bağlantı halatı; römorğun gövdesine bağlı daha kalın bir çelik halat olup bir kanca veya halkayla araca bağlanır.</p>
+    <p>Bu halat gerilim oluştuğunda kopmaz; aksine römork ile aracı bağlı tutarak sürücünün en kısa sürede güvenli biçimde durmasına olanak tanır.</p>
+
+    <div class="compare-grid">
+        <div class="compare-card emergency">
+            <h3>🔴 Acil Fren Sistemi</h3>
+            <p>İnce çelik kopma halatı. Römork ayrıldığında el frenini uygular ve ardından kopar — römork bağımsız olarak durur.</p>
+            <span class="compare-badge">Zorunlu: AİK &gt; 1500 kg</span>
+        </div>
+        <div class="compare-card auxiliary">
+            <h3>🔵 Yardımcı Bağlantı Halatı</h3>
+            <p>Daha kalın çelik halat. Kopmaz — sürücünün her ikisini güvenle durdurabilmesi için römork ve aracı bağlı tutar.</p>
+            <span class="compare-badge">Zorunlu: acil freni olmayan römorklar</span>
+        </div>
+    </div>
 
     <div class="image-container">
         <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_6382814bcfe94dd6919cb6041834325c~mv2.jpg"
-                alt="Görsel 1" />
-            <figcaption><em>Kırmızı kablo kopma kablosudur. Bu, maksimum izin verilen kütlesi 1500 kg'ın üzerinde olan bir römork için zorunludur.</em></figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_6382814bcfe94dd6919cb6041834325c~mv2.jpg" alt="Kopma halatı"/>
+            <figcaption>Kırmızı halat kopma halatıdır (acil fren sistemi). Azami izin verilen kütlesi 1500 kg'ı aşan römorklar için zorunludur.</figcaption>
         </figure>
         <figure>
-            <img src="https://static.wixstatic.com/media/4b688f_37c227eef45049a990db8bcfdb7a3a82~mv2.jpg"
-                alt="Görsel 2" />
-            <figcaption>
-                <em>Yuvarlak kablo yardımcı bağlantıdır. Bu, acil fren sistemi olmayan römorklarda zorunludur.</em>
-            </figcaption>
+            <img src="https://static.wixstatic.com/media/4b688f_37c227eef45049a990db8bcfdb7a3a82~mv2.jpg" alt="Yardımcı bağlantı halatı"/>
+            <figcaption>Yuvarlak halat yardımcı bağlantı halatıdır. Acil fren sistemi bulunmayan römorklar için zorunludur.</figcaption>
         </figure>
     </div>
 
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a>
-
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const DEFAULTS={
+    'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+    'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+    'card-bg':'#0a1e41','card-border':'#4da6ff',
+    'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
+};
+const PRESETS={
+    default:{...DEFAULTS},
+    light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+    purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
+};
+let state={};try{state=JSON.parse(localStorage.getItem('et_ptr_colors')||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const colorKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexToRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){
+    const bg=hexToRgb(state['bg-deep']);
+    if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}
+    root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);
+    root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);
+    root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);
+    root.style.setProperty('--text-dim',state['text-dim']);
+    const cb=hexToRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+    const cbr=hexToRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
+    document.documentElement.style.fontSize=state['font-size']+'px';
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+    document.querySelector('.orb-1').style.background=state['accent'];
+    document.querySelector('.orb-2').style.background=state['accent-light'];
+    syncUI();try{localStorage.setItem('et_ptr_colors',JSON.stringify(state))}catch(e){}
+}
+function syncUI(){
+    colorKeys.forEach(key=>{
+        const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';
+        const prev=document.getElementById('prev-'+key);const hexIn=document.getElementById('hex-'+key);const pick=document.getElementById('pick-'+key);
+        if(prev)prev.style.background=safe;if(hexIn)hexIn.value=safe.replace('#','').toUpperCase();if(pick)pick.value=safe;
+    });
+    [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+        const sl=document.getElementById(id);const vl=document.getElementById(vid);
+        if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%';
+    });
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+}
+colorKeys.forEach(key=>{
+    const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);
+    if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});
+    if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});}
+});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+    const el=document.getElementById(id);const vl=document.getElementById(vid);
+    if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()});
+});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+
+/* ══ FAB DRAG ══ */
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem('et_ptr_fab'))}catch(e){}
+function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+const PAD=8;
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem('et_ptr_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+
+/* ══ PANEL DRAG ══ */
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');
+const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem('et_ptr_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem('et_ptr_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+/* ══ QUIZ ══ */
+const ALL_QUESTIONS=[
+    // ── Genel / Boyutlar ──
+    {topic:'Genel Gereksinimler',q:'Bir römorğun izin verilen azami yüksekliği kaçtır?',opts:['3 metre','3,5 metre','4 metre','5 metre'],ans:2,exp:'Römorklar binek otomobillerle aynı azami boyut gereksinimlerine tabidir: azami 4 metre yükseklik, 2,55 metre genişlik ve 12 metre uzunluk.'},
+    {topic:'Genel Gereksinimler',q:'Bir römorğun izin verilen azami genişliği kaçtır?',opts:['2,10 metre','2,30 metre','2,55 metre','3 metre'],ans:2,exp:'Bir römork için izin verilen azami genişlik, binek otomobillerle aynı şekilde 2,55 metredir.'},
+    {topic:'Genel Gereksinimler',q:'Aşağıdaki gereksinimlerden hangisi hem römorklar hem de binek otomobiller için geçerlidir?',opts:['Geçerli bir APK çıkması bulunmalıdır','Lastikler hasarsız olmalı ve yeterli diş derinliğine sahip olmalıdır','Araç çalışır bir hız göstergesine sahip olmalıdır','Geri vites lambası her zaman zorunludur'],ans:1,exp:'Lastik gereksinimleri (hasar bulunmaması, yeterli diş derinliği) binek otomobillerde olduğu gibi römorklar için de geçerlidir.'},
+    // ── Plaka ──
+    {topic:'Plaka',q:'Azami izin verilen kütlesi 750 kg\'ı aşan bir roman hangi renk plakayla donatılmak zorundadır?',opts:['Beyaz','Kırmızı','Sarı','Mavi'],ans:2,exp:'Azami izin verilen kütlesi 750 kg\'ı aşan römorklar sarı plaka taşımak zorundadır.'},
+    {topic:'Plaka',q:'Azami izin verilen kütlesi 750 kg\'a kadar olan bir römork hangi renk plakayla donatılmak zorundadır?',opts:['Sarı','Kırmızı','Beyaz','Yeşil'],ans:2,exp:'Azami izin verilen kütlesi 750 kg\'a kadar olan römorklar beyaz plaka taşımak zorundadır.'},
+    // ── Fren Sistemi ──
+    {topic:'Fren Sistemi',q:'Römorğun her iki tarafındaki frenler eşit güçte değilse ne olabilir?',opts:['Römork bir tarafa çeker','Römorğun frenleme sırasında sallanması riski doğar','Çekme kancası hasar görür','Acil fren sistemi otomatik olarak devreye girer'],ans:1,exp:'Frenlerin her iki tarafta eşit güçte olmaması durumunda römork frenleme sırasında sallanabilir. Bu nedenle fren sisteminin düzgün çalışması zorunludur.'},
+    {topic:'Fren Sistemi',q:'Bir römorğun fren hortumları hangi durumda olmalıdır?',opts:['Hafif yüzey pasına sahip olabilir','İyi durumda olmalı ve diğer parçalarla temas etmemelidir','Her iki yılda bir değiştirilmek zorundadır','Yalnızca APK muayenesinde kontrol edilmesi yeterlidir'],ans:1,exp:'Fren hortumları iyi durumda olmalı ve diğer parçalarla temas etmemelidir.'},
+    // ── Aydınlatma ──
+    {topic:'Römork Aydınlatması',q:'Azami izin verilen kütlesi 600 kg olan bir römork için geri vites lambası zorunlu mudur?',opts:['Evet, her zaman','Hayır — geri vites lambası 750 kg\'a kadar olan römorklar için zorunlu değildir','Evet, ancak yalnızca uzunluğu 4 metreden fazlaysa','Yalnızca gece saatlerinde'],ans:1,exp:'750 kg\'a kadar olan römorklar için geri vites lambası zorunlu değildir. Bu, binek otomobil aydınlatma kurallarından önemli bir farklılıktır.'},
+    {topic:'Römork Aydınlatması',q:'Bir römork üzerinde yan işaret aydınlatması ne zaman zorunludur?',opts:['Her zaman','Yalnızca genişliği 2,10 metreden fazla olan römorklar için','Yalnızca uzunluğu altı metreden fazla olan römorklar için','Yalnızca 750 kg\'dan ağır römorklar için'],ans:2,exp:'Yan işaret aydınlatması yalnızca altı metreden uzun römorklar için zorunludur.'},
+    {topic:'Römork Aydınlatması',q:'Römorğun ön kısmına eklenebilecek ek retroyansıtıcılar hangi renkte olabilir?',opts:['Kırmızı','Sarı','Beyaz','Turuncu'],ans:2,exp:'Römorğun ön (beyaz), arka (kırmızı) ve yan (sarı, arka kısmı muhtemelen kırmızı) kısımlarına ek retroyansıtıcılar takılabilir.'},
+    {topic:'Römork Aydınlatması',q:'Zorunlu römork aydınlatmasının ışık çıkışı, trafiğe uygunluğunu yitirmeden en fazla ne kadar azalabilir?',opts:['%10','%15','%25','%50'],ans:2,exp:'Yanmış ampuller veya hasarlı/kirli lamba camları nedeniyle ışık çıkışı %25\'ten fazla azalmış olmamalıdır.'},
+    {topic:'Römork Aydınlatması',q:'Bir römorğun şu anda kapalı olan mavi yanıp sönen lambaları bulunmaktadır. Bu duruma izin verilir mi?',opts:['Evet — kapalıysa herhangi bir risk oluşturmaz','Hayır — mavi yanıp sönen veya titreyen lambalar kapalı olsalar dahi yasaktır','Evet, ancak yalnızca gündüz saatlerinde','Yalnızca RDW tarafından onaylanmışsa'],ans:1,exp:'Römorklar, kapalı olsalar dahi mavi yanıp sönen veya titreyen lambalarla donatılamaz; zira bu durum diğer trafik kullanıcılarını yanıltabilir.'},
+    // ── Bağlantı Düzeneği ──
+    {topic:'Bağlantı Düzeneği',q:'Bağlantı düzeneğinin (çekme kolu veya çekme üçgeni) hangi durumda olması gerekir?',opts:['Römork bağlı olduğu sürece herhangi bir durumda olabilir','İyi durumda — eğilme veya çatlak bulunmamalıdır','Römorğun rengiyle aynı renkte boyanmış olmalıdır','Yalnızca her APK muayenesinde kontrol edilmesi yeterlidir'],ans:1,exp:'Bağlantı düzeneği, römorğun seyir sırasında ayrılmaması için eğilme veya çatlak bulunmayacak şekilde iyi durumda olmalıdır.'},
+    {topic:'Bağlantı Düzeneği',q:'Bir römork aynı anda hem acil fren sistemi hem de yardımcı bağlantı halatıyla donatılabilir mi?',opts:['Evet — her ikisine birden sahip olmak ek güvenlik sağlar','Evet, ancak yalnızca 1500 kg\'ı aşan römorklar için','Hayır — her ikisinin aynı anda bulunması yasaktır; zira bu sistemler birbirini etkisiz kılar','Yalnızca frenli römorklar için'],ans:2,exp:'Hem acil fren sistemi hem de yardımcı bağlantı halatının aynı anda bulunması yasaktır; zira bu sistemler birbirini etkisiz kılar.'},
+    // ── Acil Fren ──
+    {topic:'Acil Fren Sistemi',q:'Römork çekme kancasından ayrıldığında kopma halatı ne yapar?',opts:['Römorğu araca kalıcı olarak bağlı tutar','Römorğun el frenini uygular ve ardından kopar; römork bağımsız olarak durur','Otomatik olarak acil servisi arar','Araçtaki tehlike lambalarını aktif hâle getirir'],ans:1,exp:'Römorğun ayrılmasıyla gerilim oluştuğunda kopma halatı römorğun el frenini uygular ve ardından kopar. Römork, kontrolsüz biçimde yuvarlanmak yerine araçtan bağımsız olarak durur.'},
+    {topic:'Acil Fren Sistemi',q:'Hangi römorklar için acil fren sistemi zorunludur?',opts:['Tüm frenli römorklar','Uzunluğu 6 metreden fazla olan tüm römorklar','Azami izin verilen kütlesi 1500 kg\'ı aşan römorklar','Azami izin verilen kütlesi 750 kg\'ı aşan römorklar'],ans:2,exp:'Acil fren sistemi, azami izin verilen kütlesi 1500 kg\'ı aşan römorklar için zorunludur.'},
+    // ── Yardımcı Bağlantı Halatı ──
+    {topic:'Yardımcı Bağlantı Halatı',q:'Römork ayrılırsa yardımcı bağlantı halatı ne yapar?',opts:['Römorğun el frenini uygular','Kopar ve römorğu bağımsız olarak durdurur','Sürücünün her ikisini güvenle durdurabileceği şekilde römork ve aracı bağlı tutar','Sürücüyü uyarmak için bir alarm çalar'],ans:2,exp:'Yardımcı bağlantı halatı, gerilim oluştuğunda kopmayan daha kalın bir çelik halattır; sürücünün en kısa sürede her ikisini güvenle durdurabilmesi için römork ve aracı bağlı tutar.'},
+    {topic:'Yardımcı Bağlantı Halatı',q:'Hangi römorkların yardımcı bağlantı halatı takması zorunludur?',opts:['1500 kg\'ı aşan tüm römorklar','Kapılı tüm römorklar','Tüm frensiz römorklar ve acil fren sistemi olmayan römorklar','Uzunluğu 6 metreden fazla olan tüm römorklar'],ans:2,exp:'Tüm frensiz römorklar ve acil fren sistemiyle donatılmamış tüm römorkların yardımcı bağlantı halatına sahip olması zorunludur.'},
+    {topic:'Yardımcı Bağlantı Halatı',q:'Kopma halatı ile yardımcı bağlantı halatı arasındaki temel fark nedir?',opts:['Kopma halatı daha kalındır','Yardımcı bağlantı halatı gerilim oluştuğunda kopar; kopma halatı kopmaz','Kopma halatı gerilim oluştuğunda kopar; yardımcı bağlantı halatı kopmaz ve römork ile aracı bağlı tutar','Pratikte herhangi bir fark yoktur'],ans:2,exp:'Kopma halatı (acil fren sistemi) ince olup gerilim oluştuğunda kopar ve römorğu bağımsız olarak durdurur. Yardımcı bağlantı halatı ise daha kalın olup kopmaz; römork ile aracı bağlı tutarak sürücünün güvenle durmasını sağlar.'},
+];
+
+const QUIZ_SIZE=Math.min(15,ALL_QUESTIONS.length);
+let quizQuestions=[],qIndex=0,score=0,answered=[];
+const overlay=document.getElementById('quiz-overlay');
+const fabQuiz=document.getElementById('fab-quiz');
+const quizCloseBtn=document.getElementById('quiz-close-btn');
+const startScreen=document.getElementById('quiz-start-screen');
+const qScreen=document.getElementById('quiz-q-screen');
+const resultsScreen=document.getElementById('quiz-results-screen');
+const progressBar=document.getElementById('quiz-progress-bar');
+const quizBadge=document.getElementById('quiz-badge');
+quizBadge.textContent=QUIZ_SIZE+' Soru';
+const countChip=document.getElementById('q-count-chip');if(countChip)countChip.textContent='📋 '+QUIZ_SIZE+' soru';
+fabQuiz.addEventListener('click',()=>{if(fdrag)return;overlay.classList.add('is-open');showStartScreen()});
+quizCloseBtn.addEventListener('click',()=>overlay.classList.remove('is-open'));
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('is-open')});
+function showStartScreen(){startScreen.style.display='block';qScreen.classList.remove('active');resultsScreen.classList.remove('active');progressBar.style.width='0%';quizBadge.textContent=QUIZ_SIZE+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQuiz);
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function shuffleOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,opts:idx.map(i=>q.opts[i]),ans:idx.indexOf(q.ans)}}
+function startQuiz(){quizQuestions=shuffle(ALL_QUESTIONS).slice(0,QUIZ_SIZE).map(shuffleOpts);qIndex=0;score=0;answered=[];startScreen.style.display='none';resultsScreen.classList.remove('active');qScreen.classList.add('active');renderQuestion()}
+function renderQuestion(){
+    const q=quizQuestions[qIndex];const L=['A','B','C','D'];
+    progressBar.style.width=((qIndex/QUIZ_SIZE)*100)+'%';quizBadge.textContent=(qIndex+1)+' / '+QUIZ_SIZE;
+    qScreen.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qIndex+1} / ${QUIZ_SIZE}</div><div class="q-topic">${q.topic}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.opts.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="q-feedback"></div><div class="q-nav" id="q-nav" style="display:none"><button class="btn-primary" id="btn-next">${qIndex<QUIZ_SIZE-1?'Sonraki Soru →':'Sonuçları Gör'}</button></div>`;
+    qScreen.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(parseInt(btn.dataset.idx))));
+}
+function selectAnswer(chosen){
+    const q=quizQuestions[qIndex];const correct=q.ans;const isCorrect=chosen===correct;
+    if(isCorrect)score++;answered.push({q:q.q,chosen,correct,isCorrect,opts:q.opts});
+    qScreen.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===correct)btn.classList.add('correct');else if(i===chosen&&!isCorrect)btn.classList.add('wrong')});
+    const fb=document.getElementById('q-feedback');fb.classList.add('show');fb.classList.add(isCorrect?'fb-correct':'fb-wrong');
+    fb.innerHTML=`<strong>${isCorrect?'✅ Doğru!':'❌ Yanlış — doğru cevap: "'+q.opts[correct]+'"'}</strong>${q.exp}`;
+    document.getElementById('q-nav').style.display='flex';
+    document.getElementById('btn-next').addEventListener('click',()=>{qIndex++;qIndex<QUIZ_SIZE?renderQuestion():showResults()});
+}
+function showResults(){
+    progressBar.style.width='100%';quizBadge.textContent='Tamamlandı!';qScreen.classList.remove('active');resultsScreen.classList.add('active');
+    const pct=Math.round((score/QUIZ_SIZE)*100);
+    let msg='',sub='';
+    if(pct>=90){msg='Mükemmel! 🏆';sub='Olağanüstü — römork gereksinimlerini ezberlediniz!'}
+    else if(pct>=70){msg='Aferin! 👍';sub='Güzel bilgi düzeyi. Yanlış yaptıklarınızı gözden geçirirseniz tam hazır olursunuz.'}
+    else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Sağlam bir temel var ama bazı eksiklikler mevcut. Teorik bilgileri tekrar okuyup yeniden deneyin.'}
+    else{msg='Daha fazla çalışma gerekiyor 💡';sub='Üzülmeyin — sayfayı dikkatlice tekrar okuyun ve sınavı yeniden yapın!'}
+    resultsScreen.innerHTML=`<div class="result-circle"><div class="result-score">${score}</div><div class="result-total">${QUIZ_SIZE} üzerinden</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${score} Doğru</div><div class="rb-chip wrong">❌ ${QUIZ_SIZE-score} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Yeni Rastgele Sınav</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;
+    document.getElementById('btn-retry').addEventListener('click',startQuiz);
+    document.getElementById('btn-review').addEventListener('click',()=>{
+        const rl=document.getElementById('review-list');
+        if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=answered.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:'Outfit',sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle';
+        }else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}
+    });
+}
+applyAll();
+})();
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){
+    if(e.keyCode===123)return false;
+    if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false;
+};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
