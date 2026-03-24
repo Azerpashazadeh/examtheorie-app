@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
-        posthog.init('phc_6jm5rxLMNvCVxPkVcfxxxDYxEF6GEgZEAwsUVW0hqZn', {
-            api_host: 'https://us.i.posthog.com',
-            defaults: '2026-01-30'
-        })
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vz9ccypxk4");
     </script>
 
     <title>ExamTheorie — CBR Theory</title>
@@ -37,16 +38,45 @@
         }
 
         html {
+            height: 100%;
             scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center fixed;
-            background-size: cover;
             color: white;
+            /* Scroll body'de — tarayıcı toolbar'ı otomatik gizler */
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* lvh fallback: eski Safari için */
+        @supports not (height: 100lvh) {
+            #bg-layer, .pc-overlay-bg, body::before,
+            .pricing-overlay, .pc-overlay,
+            .modal-bg, .reset-banner-overlay {
+                height: 100vh;
+            }
+        }
+
+        /* Arka plan: fixed div — iOS Safari toolbar resize bug'ını önler */
+        #bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* lvh: large viewport height — toolbar dahil, değişmez */
+            height: 100lvh;
+            z-index: -2;
+            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center;
+            background-size: cover;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        /* Scroll artık body'de — scroll-container sadece wrapper */
+        #scroll-container {
+            min-height: 100%;
         }
 
         body.ar {
@@ -57,9 +87,13 @@
         body::before {
             content: '';
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100lvh;
             background: rgba(0, 8, 25, 0.55);
-            z-index: 0;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .glass {
@@ -92,7 +126,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 24px;
-            gap: 12px;
+            gap: 24px;
         }
 
         .logo {
@@ -334,12 +368,11 @@
         .hero {
             position: relative;
             z-index: 1;
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 130px 20px 80px;
+            padding: 150px 20px 110px;
         }
 
         .hero-inner {
@@ -432,7 +465,7 @@
         .stats-sec {
             position: relative;
             z-index: 1;
-            padding: 0 20px 80px;
+            padding: 0 20px 40px;
         }
 
         .stats-wrap {
@@ -469,7 +502,7 @@
         .feat-sec {
             position: relative;
             z-index: 1;
-            padding: 80px 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -480,7 +513,7 @@
             font-weight: 900;
             text-align: center;
             color: white;
-            margin-bottom: 56px;
+            margin-bottom: 28px;
         }
 
         body.ar .sec-head {
@@ -491,7 +524,7 @@
         .feat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            gap: 22px;
         }
 
         .feat-card {
@@ -526,7 +559,7 @@
         .how-sec {
             position: relative;
             z-index: 1;
-            padding: 80px 20px;
+            padding: 40px 20px 60px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -768,15 +801,28 @@
         /* ══ PRICING OVERLAY ══ */
         .pricing-overlay {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100lvh;
             background: rgba(0, 8, 25, 0.9);
             backdrop-filter: blur(8px);
             z-index: 2000;
             display: none;
             flex-direction: column;
+            overflow: hidden;
+        }
+
+        .pricing-scroll {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             padding: 100px 20px 60px;
-            overflow-y: auto;
         }
 
         .pricing-overlay.active {
@@ -1003,21 +1049,44 @@
         /* ══ PASSENGER CAR OVERLAY ══ */
         .pc-overlay {
             position: fixed;
-            inset: 0;
-            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center;
-            background-size: cover;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100lvh;
             z-index: 2000;
             display: none;
             flex-direction: column;
             overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .pc-overlay::before {
-            content: '';
+        /* Arka plan: fixed — iOS titreme önlemi */
+        .pc-overlay-bg {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100lvh;
+            z-index: 0;
+            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center;
+            background-size: cover;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .pc-overlay-bg::after {
+            content: '';
+            position: absolute;
             inset: 0;
             background: rgba(0, 8, 25, 0.65);
-            z-index: 0;
+        }
+
+        /* pc-scroll: wrapper div */
+        .pc-scroll {
+            position: relative;
+            z-index: 1;
+            width: 100%;
         }
 
         .pc-overlay.active {
@@ -1040,7 +1109,7 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all .3s;
-            z-index: 2001;
+            z-index: 9999;
             line-height: 1;
         }
 
@@ -1060,7 +1129,7 @@
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 100px 24px 80px;
+            padding: 100px 24px 60px;
         }
 
         .pc-header {
@@ -1264,7 +1333,8 @@
         .acc-header {
             width: 100%;
             padding: 0 20px;
-            height: 66px;
+            min-height: 66px;
+            height: auto;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -1273,8 +1343,8 @@
             background: transparent;
             color: white;
             font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 12.5px;
+            font-weight: 400;
             text-align: left;
             transition: background .25s;
         }
@@ -1303,6 +1373,12 @@
 
         .acc-label {
             flex: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 1.4;
+            padding: 10px 0;
         }
 
         .acc-arrow {
@@ -1488,7 +1564,10 @@
         /* ══ AUTH MODALS ══ */
         .modal-bg {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100lvh;
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(6px);
             z-index: 3000;
@@ -1717,7 +1796,10 @@
         /* ══ RESET BANNER ══ */
         .reset-banner-overlay {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100lvh;
             background: rgba(0, 8, 25, 0.88);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -1980,10 +2062,11 @@
 
         .terms-consent-text {
             font-size: 10.5px;
-            color: rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.45);
             line-height: 1.5;
-            margin: 6px 0 0 0;
+            margin: 8px 0 0 0;
             text-align: center;
+            display: block;
         }
 
         .terms-consent-text a {
@@ -2031,6 +2114,11 @@
 </head>
 
 <body>
+
+    <!-- Sabit arka plan katmanı — iOS scroll bug fix -->
+    <div id="bg-layer"></div>
+
+    <div id="scroll-container">
 
     <noscript>
         <div
@@ -2109,7 +2197,7 @@
             <h1 class="hero-title" data-i18n="hero_title"></h1>
             <p class="hero-slogan" data-i18n-html="hero_slogan"></p>
             <div class="hero-cta">
-                <button class="btn-hero-p" data-i18n="btn_start"></button>
+                <button class="btn-hero-p" data-i18n="btn_start" onclick="openDenemeTest()"></button>
                 <button class="btn-hero-s" data-i18n="btn_prices" onclick="openPricing()"></button>
             </div>
         </div>
@@ -2207,6 +2295,7 @@
 
     <!-- ═══════════ PRICING OVERLAY ═══════════ -->
     <div class="pricing-overlay" id="pricing-ol">
+        <div class="pricing-scroll">
         <div class="overlay-close" onclick="closePricing()">×</div>
         <h2 class="sec-head" data-i18n="price_head" style="margin-bottom:28px;"></h2>
         <div class="daily-picker-wrap">
@@ -2321,11 +2410,14 @@
                     <li data-i18n="pf4_6"></li>
                 </ul>
             </div>
-        </div>
-    </div>
+        </div><!-- /.pricing-grid -->
+        </div><!-- /.pricing-scroll -->
+    </div><!-- /#pricing-ol -->
 
     <!-- ═══════════ PASSENGER CAR OVERLAY ═══════════ -->
     <div class="pc-overlay" id="pc-ol">
+        <div class="pc-overlay-bg"></div>
+        <div class="pc-scroll">
         <div class="pc-close" onclick="closePassengerCar()">×</div>
         <div class="pc-inner">
             <div class="pc-header">
@@ -2758,6 +2850,7 @@
                 </div>
             </div>
         </div>
+        </div><!-- /.pc-scroll -->
     </div>
 
     <!-- ═══════════ AUTH MODALS ═══════════ -->
@@ -3546,6 +3639,7 @@
 
             /* 50 test tamamlandıysa — await ile bekle, sonra karar ver (race condition yok) */
             if (next === null && checkAllTestsCompleted(lang)) {
+                if (localStorage.getItem('et_payment_pending') === '1') return;
                 await fetchResetUsed();
                 if (!resetUsed) showResetBanner();
             }
@@ -3597,7 +3691,22 @@
         function toggleAcc(btn) { btn.closest('.acc-item').classList.toggle('open'); }
 
         /* ─── OVERLAYS & MODALS ─── */
-        function openPricing() { document.getElementById('pricing-ol').classList.add('active'); document.body.style.overflow = 'hidden'; buildDayButtons(); }
+        function openPricing() {
+            document.getElementById('pricing-ol').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            buildDayButtons();
+            // terms_consent gibi data-i18n-html elementlerini yenile
+            document.querySelectorAll('#pricing-ol [data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                const t = I18N[currentLang] || I18N['en'];
+                if (t[key]) el.innerHTML = t[key];
+            });
+            document.querySelectorAll('#pricing-ol [data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const t = I18N[currentLang] || I18N['en'];
+                if (t[key]) el.textContent = t[key];
+            });
+        }
         function closePricing() { document.getElementById('pricing-ol').classList.remove('active'); document.body.style.overflow = ''; }
 
         async function startPayment(planId, planName, amount, days) {
@@ -3630,8 +3739,15 @@
             }
         }
 
-        function openPassengerCar() { document.getElementById('pc-ol').classList.add('active'); document.body.style.overflow = 'hidden'; buildTestButtons(); }
-        function closePassengerCar() { document.getElementById('pc-ol').classList.remove('active'); document.body.style.overflow = ''; }
+        function openPassengerCar() {
+            document.getElementById('pc-ol').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            buildTestButtons();
+        }
+        function closePassengerCar() {
+            document.getElementById('pc-ol').classList.remove('active');
+            document.body.style.overflow = '';
+        }
         function openModal(id) { if (id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id + '-modal').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeModal(id) { document.getElementById(id + '-modal').classList.remove('active'); document.body.style.overflow = ''; }
         function switchModal(a, b) { closeModal(a); setTimeout(() => openModal(b), 100); }
@@ -3649,7 +3765,12 @@
             const mob = document.getElementById('mob-menu');
             if (!nav.contains(e.target) && !mob.contains(e.target)) closeMob();
         });
-        function scrollToSec(id) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); }
+        function scrollToSec(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const elTop = el.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: elTop, behavior: 'smooth' });
+        }
 
         /* ESC tuşu — reset banner kapatma eklendi */
         document.addEventListener('keydown', e => {
@@ -4194,6 +4315,7 @@
 
             if (payment === 'success') {
                 // URL'yi hemen temizle
+                localStorage.setItem('et_payment_pending', '1');
                 window.history.replaceState(null, '', window.location.pathname);
                 showNotification('⏳ Payment received, activating your plan...', 'info');
 
@@ -4251,6 +4373,7 @@
                     buildTestButtons();
                     updateNavbarUser();
 
+                    localStorage.removeItem('et_payment_pending');
                     if (currentPlanId && !activationNotificationShown) {
                         showNotification('✅ Plan activated! Your tests are ready.', 'success');
                         activationNotificationShown = true;
@@ -4263,6 +4386,8 @@
             return false;
         }
     </script>
+        </div><!-- /#scroll-container -->
+
 </body>
 
 </html>
