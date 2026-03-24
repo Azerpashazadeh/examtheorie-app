@@ -1,47 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   How does the final test work?
-  </title>
-  <style>
-html, body {
-  overflow: hidden !important;
-  height: 100%;
-  margin: 0;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-   
-
-     /* CSS dosyası (style.css) */
-    .custom-button {
-      display: inline-block;
-      width: 140px;
-      height: 39px;
-      background-color: black;
-      color: white;
-      text-align: center;
-      line-height: 39px;
-      /* Düğme yüksekliğine göre yazıyı ortala */
-      text-decoration: none;
-      /* Bağlantı alt çizgisini kaldır */
-      border-radius: 9px;
-      /* Köşeleri yuvarlat */
-      transition: background-color 0.3s ease;
-      margin-top: 70px;
-      /* Üstteki nesne ile düğme arasına 20px boşluk koy */
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Sınav Nasıl İşler? – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+        --bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;
+        --glass-shine:rgba(255,255,255,.06);--red:#e84545;
+        --text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);
+        --text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;
+        --card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22);
     }
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);
+        color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;
+        background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);
+        transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+        background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
 
-    .custom-button:hover {
-      background-color: blue;
-    }
-  </style>
- <!-- Microsoft Clarity -->
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;
+        background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;
+        color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:var(--accent-light);margin-bottom:10px;margin-top:4px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px}
+
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* Glass card */
+    .glass-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;
+        padding:22px 24px 22px 32px;position:relative;overflow:hidden;
+        backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);margin-bottom:20px;
+        box-shadow:0 4px 24px rgba(0,0,0,.35),inset 0 1px 0 var(--glass-shine)}
+    .glass-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .glass-card .accent-line{position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 4px 4px 0;
+        background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+
+    /* Question type cards grid */
+    .qtype-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:24px 0 32px}
+    .qtype-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;
+        padding:20px 20px 18px 20px;position:relative;overflow:hidden;
+        backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+        box-shadow:0 4px 18px rgba(0,0,0,.3),inset 0 1px 0 var(--glass-shine);
+        transition:transform .2s,box-shadow .2s}
+    .qtype-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,108,246,.18),inset 0 1px 0 var(--glass-shine)}
+    .qtype-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .qtype-icon{font-size:2rem;margin-bottom:10px;display:block}
+    .qtype-title{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;color:var(--accent-light);margin-bottom:7px}
+    .qtype-desc{font-family:'Lora',serif;font-size:.87rem;color:var(--text-muted);line-height:1.6;margin:0}
+
+    /* Info chips row */
+    .info-chips{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 32px}
+    .info-chip{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:30px;
+        background:rgba(26,108,246,.1);border:1px solid rgba(77,166,255,.2);
+        font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;color:var(--accent-light)}
+    .info-chip .chip-icon{font-size:1.1rem}
+
+    /* Result cards */
+    .result-row{display:flex;gap:16px;margin:20px 0 28px;flex-wrap:wrap}
+    .result-card{flex:1 1 220px;border-radius:14px;padding:18px 20px;
+        display:flex;align-items:center;gap:14px;backdrop-filter:blur(14px)}
+    .result-card.pass{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.28)}
+    .result-card.fail{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.28)}
+    .result-card .rc-icon{font-size:2rem;flex-shrink:0}
+    .result-card .rc-title{font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:3px}
+    .result-card.pass .rc-title{color:#6effc0}
+    .result-card.fail .rc-title{color:#ffaaaa}
+    .result-card .rc-desc{font-family:'Lora',serif;font-size:.82rem;color:var(--text-muted);line-height:1.5}
+
+    /* Navigation tip block */
+    .nav-tip-block{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.18);border-radius:14px;
+        padding:18px 22px;margin:20px 0 28px}
+    .nav-tip-block p{font-family:'Lora',serif;font-size:.92rem;color:rgba(180,215,255,.9);margin:0 0 8px;line-height:1.7}
+    .nav-tip-block p:last-child{margin:0}
+
+    /* Warning notice */
+    .notice-card{background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.2);border-radius:14px;
+        padding:16px 48px 16px 20px;margin:20px 0;position:relative}
+    .notice-card::before{content:'⚠️';position:absolute;top:14px;right:16px;font-size:1.3rem;opacity:.8}
+    .notice-card p{font-family:'Lora',serif;font-size:.92rem;color:rgba(255,200,200,.9);margin:0;line-height:1.7}
+
+    /* Success notice */
+    .success-card{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.2);border-radius:14px;
+        padding:18px 48px 18px 22px;margin:28px 0;position:relative}
+    .success-card::before{content:'🍀';position:absolute;top:14px;right:16px;font-size:1.3rem;opacity:.85}
+    .success-card p{font-family:'Lora',serif;font-size:.95rem;color:rgba(180,215,255,.95);margin:0;line-height:1.75;font-style:italic}
+
+    /* Prose list */
+    .prose-list{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:8px}
+    .prose-list li{font-family:'Lora',serif;font-size:.93rem;color:var(--text-muted);
+        padding-left:22px;position:relative;line-height:1.65}
+    .prose-list li::before{content:'';position:absolute;left:0;top:.68em;width:7px;height:7px;
+        border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(26,108,246,.35)}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+        background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;
+        border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}
+    .page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* ══ FAB ROW ══ */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;
+        display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;
+        display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;
+        box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);
+        transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);
+        animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+        background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;
+        font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;
+        border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+
+    /* ══ COLOUR PANEL ══ */
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;
+        z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
+        background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+        box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){
+        #color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;
+            width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;
+            transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}
+        #color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);
+        display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;
+        background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}
+        .panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+            width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);
+        background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;
+        border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+        color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);
+        background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;
+        color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .section-title{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;
+        color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;
+        margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .section-title::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;
+        border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);
+        border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;
+        color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;
+        background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;
+        border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;
+        font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    </style>
+<!-- Microsoft Clarity -->
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -50,31 +235,301 @@ html, body {
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
- <body>
-  <h1>
-   Final test nasıl çalışır?
-</h1>
-<p>
-   Final sürücü teori testi, yol kuralları, güvenli sürüş uygulamaları ve araç kullanma bilginizi değerlendirir. Genellikle çoktan seçmeli sorular, tehlike algılama görevleri ve durum değerlendirmeleri içerir.
-</p>
-<a class="custom-button" href="https://examtheorie.nl" target="_blank">Geri Dön</a>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-  
- 
+<!-- ═══ FAB ROW ═══ -->
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+</div>
+
+<!-- ═══ COLOUR PANEL ═══ -->
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk &amp; Metin Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip">
+            <div class="font-strip-label">Yazı Boyutu</div>
+            <button class="fs-btn sml" id="fs-shrink">a</button>
+            <div class="fs-size-display" id="fs-display">16px</div>
+            <button class="fs-btn lrg" id="fs-grow">A</button>
+            <button class="fs-reset" id="fs-reset">↺ sıfırla</button>
+        </div>
+        <div class="presets-strip">
+            <div class="strip-label">Hızlı Temalar</div>
+            <div class="preset-row">
+                <button class="preset-btn" data-preset="default">🔵 Varsayılan</button>
+                <button class="preset-btn" data-preset="light">☀️ Açık</button>
+                <button class="preset-btn" data-preset="purple">🟣 Mor</button>
+                <button class="preset-btn" data-preset="green">🟢 Yeşil</button>
+                <button class="preset-btn" data-preset="amber">🟡 Amber</button>
+                <button class="preset-btn" data-preset="contrast">⬛ Kontrast</button>
+            </div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Arka Plan</div>
+            <div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div>
+            <div class="opacity-row"><label>Arka plan saydamlığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Vurgu Renkleri</div>
+            <div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Metin Renkleri</div>
+            <div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div>
+            <div class="color-row"><div class="color-row-label">Soluk metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div>
+        </div>
+        <div class="color-section">
+            <div class="section-title">Kartlar &amp; Paneller</div>
+            <div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div>
+            <div class="opacity-row"><label>Kart saydamlığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div>
+            <div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div>
+            <div class="opacity-row"><label>Kenarlık saydamlığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div>
+        </div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══ -->
+<div class="page-wrapper">
+    <div class="brand-strip">
+        <span>ExamTheorie</span><span class="dot">›</span>
+        <span>Binek Otomobil</span><span class="dot">›</span>
+        <span style="color:var(--text-primary)">Final Sınav Nasıl İşler?</span>
+    </div>
+
+    <h1>Final Sınav Nasıl İşler?</h1>
+    <div class="section-divider"></div>
+
+    <p>Teori sınavı; trafik bilgisi ve kavrayışını çeşitli soru formatları aracılığıyla ölçmektedir. Bazı sorularda doğru seçeneği işaretlemeniz, bazılarında ise dairecikleri görüntü üzerindeki doğru konumlara sürüklemeniz istenir.</p>
+
+    <div class="info-chips">
+        <div class="info-chip"><span class="chip-icon">⏱️</span> Toplam süre: 30 dakika</div>
+        <div class="info-chip"><span class="chip-icon">✅</span> Geçme notu: 50 üzerinden en az 44</div>
+        <div class="info-chip"><span class="chip-icon">📋</span> Toplam soru sayısı: 50</div>
+        <div class="info-chip"><span class="chip-icon">⚡</span> Sonuç: Anında açıklanır</div>
+    </div>
+
+    <h2>Soru Tipleri</h2>
+
+    <div class="qtype-grid">
+
+        <div class="qtype-card">
+            <span class="qtype-icon">🖱️</span>
+            <div class="qtype-title">Sürükle &amp; Bırak Soruları</div>
+            <p class="qtype-desc">Numaralı dairecikleri görüntü üzerindeki doğru konumlara sürüklersiniz. Genellikle üç veya dört daire bulunur. Sürüklemeye başladığınızda olası yerleştirme alanları görünür hâle gelir. Bu sorular, geçiş hakkı sırasına ilişkin anlayışınızı ölçer.</p>
+        </div>
+
+        <div class="qtype-card">
+            <span class="qtype-icon">☑️</span>
+            <div class="qtype-title">Tek Sürükle &amp; Bırak (Öncelik)</div>
+            <p class="qtype-desc">Bu varyasyonda içinde onay işareti bulunan tek bir daire verilir. Göreviniz, trafik kurallarına göre önce geçme hakkına sahip olan trafik kullanıcısının üzerine bu daireyi yerleştirmektir.</p>
+        </div>
+
+        <div class="qtype-card">
+            <span class="qtype-icon">🔢</span>
+            <div class="qtype-title">Sayısal Giriş Soruları</div>
+            <p class="qtype-desc">Bu sorularda sayısal bir değer girmeniz istenir. Sık karşılaşılan konular arasında hız sınırları ve takip mesafesi yer almaktadır.</p>
+        </div>
+
+        <div class="qtype-card">
+            <span class="qtype-icon">🎯</span>
+            <div class="qtype-title">Hotspot (Tıklama Alanı) Soruları</div>
+            <p class="qtype-desc">Görüntü içindeki bir veya daha fazla bölgeye tıklamanız gerekir. Örnekler arasında çeşitli trafik işaretleri, gösterge paneli uyarıları veya farklı trafik senaryoları arasından seçim yapılması yer alır. Her sorunun altındaki yönergeler, birden fazla seçim yapılıp yapılamayacağını belirtir.</p>
+        </div>
+
+        <div class="qtype-card">
+            <span class="qtype-icon">📝</span>
+            <div class="qtype-title">Çoktan Seçmeli Sorular</div>
+            <p class="qtype-desc">Birden fazla cevap seçeneği sunulur; bunlardan biri veya birkaçı doğru olabilir. Doğru olan tüm seçenekleri belirlemeniz gerekmektedir. Birden fazla doğru cevap bulunduğunda soru bunu açıkça belirtir.</p>
+        </div>
+
+        <div class="qtype-card">
+            <span class="qtype-icon">🎬</span>
+            <div class="qtype-title">Video Klipli Sorular</div>
+            <p class="qtype-desc">Hareketsiz görüntüler yerine kısa trafik sahnelerini gösteren video klipler kullanılabilir. Ne yapılması gerektiğine ya da bir sonraki anda ne olabileceğine göre cevap verirsiniz. Videolar birden fazla kez oynatılabilir.</p>
+        </div>
+
+    </div>
+
+    <h2>Sınav Sırasında Erişilebilirlik</h2>
+
+    <div class="glass-card">
+        <div class="accent-line"></div>
+        <h3>Sesli Okuma</h3>
+        <p>Bilgisayar, sınav merkezinde verilen kulaklıklar aracılığıyla soruları sesli olarak okuyabilmektedir.</p>
+        <h3>Uzatılmış Süre</h3>
+        <p style="margin-bottom:0">Hak kazanan adaylar için uzatılmış sınav süresi seçeneği de mevcuttur.</p>
+    </div>
+
+    <h2>Sınav İçi Gezinme</h2>
+
+    <div class="nav-tip-block">
+        <p>Sınav sırasında emin olmadığınız soruları işaretleyebilir ya da ilerleme genel görünümünü açabilirsiniz.</p>
+        <p>Bu ekranda tamamlanan sorular ile işaretlenen sorular bir arada görüntülenir. Herhangi bir soru numarasına tıklayarak doğrudan o soruya geçilebilir.</p>
+        <p>Gezinme okları, sorular arasında serbestçe ileri geri hareket etmenizi sağlar.</p>
+    </div>
+
+    <h2>Süre &amp; Geçme Koşulu</h2>
+
+    <p>Sınav için toplam <strong style="color:var(--accent-light)">30 dakika</strong> ayrılmıştır. Sınavı geçebilmek için <strong style="color:var(--accent-light)">50 sorudan en az 44'üne</strong> doğru yanıt verilmesi gerekmektedir. Sonuçlar, sınav teslim edildikten hemen sonra ekranda görüntülenir.</p>
+
+    <div class="result-row">
+        <div class="result-card pass">
+            <div class="rc-icon">👍</div>
+            <div>
+                <div class="rc-title">Başarılı</div>
+                <div class="rc-desc">Başparmak yukarı simgesi sınavı geçtiğinizi gösterir.</div>
+            </div>
+        </div>
+        <div class="result-card fail">
+            <div class="rc-icon">👎</div>
+            <div>
+                <div class="rc-title">Başarısız</div>
+                <div class="rc-desc">Başparmak aşağı simgesi sınavı geçemediğinizi gösterir.</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Deneme Sınavı Sonrası Geri Bildirim</h2>
+
+    <ul class="prose-list">
+        <li>Deneme sınavları; hangi konuların tekrar edilmesi gerektiğini gösteren ayrıntılı geri bildirim sunar.</li>
+        <li>Resmi CBR sınav sonuçları, anlık açıklanmak yerine birkaç saat içinde e-posta yoluyla iletilir.</li>
+        <li>Deneme sınavı tamamlandıktan sonra her soruya, soru numarasına tıklanarak erişilebilen kapsamlı açıklamalar eklenmiştir.</li>
+        <li>Genel bakış düğmesi, özet ekranına geri döndürür.</li>
+    </ul>
+
+    <div class="notice-card">
+        <p>Sağ üst köşedeki çıkış düğmesi oturumunuzu kalıcı olarak sonlandırır. Bu işlem geri alınamaz.</p>
+    </div>
+
+    <div class="success-card">
+        <p>Teori sınavınızda başarılar dileriz!</p>
+    </div>
+
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
+</div>
+
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+
+const DEFAULTS={
+    'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545',
+    'text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6',
+    'card-bg':'#0a1e41','card-border':'#4da6ff',
+    'opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16
+};
+const PRESETS={
+    default:{...DEFAULTS},
+    light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},
+    purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},
+    contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}
+};
+let state={};
+try{state=JSON.parse(localStorage.getItem('et_finaltest_colors')||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const colorKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexToRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){
+    const bg=hexToRgb(state['bg-deep']);
+    if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}
+    root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);
+    root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);
+    root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);
+    root.style.setProperty('--text-dim',state['text-dim']);
+    const cb=hexToRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);
+    const cbr=hexToRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);
+    document.documentElement.style.fontSize=state['font-size']+'px';
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+    document.querySelector('.orb-1').style.background=state['accent'];
+    document.querySelector('.orb-2').style.background=state['accent-light'];
+    syncUI();try{localStorage.setItem('et_finaltest_colors',JSON.stringify(state))}catch(e){}
+}
+function syncUI(){
+    colorKeys.forEach(key=>{
+        const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';
+        const prev=document.getElementById('prev-'+key);const hexIn=document.getElementById('hex-'+key);const pick=document.getElementById('pick-'+key);
+        if(prev)prev.style.background=safe;if(hexIn)hexIn.value=safe.replace('#','').toUpperCase();if(pick)pick.value=safe;
+    });
+    [['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+        const sl=document.getElementById(id);const vl=document.getElementById(vid);
+        if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%';
+    });
+    document.getElementById('fs-display').textContent=state['font-size']+'px';
+}
+colorKeys.forEach(key=>{
+    const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);
+    if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});
+    if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});}
+});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{
+    const el=document.getElementById(id);const vl=document.getElementById(vid);
+    if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()});
+});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+
+/* ══ FAB DRAG ══ */
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem('et_finaltest_fab'))}catch(e){}
+function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+const PAD=8;
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||64;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem('et_finaltest_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+
+/* ══ PANEL DRAG ══ */
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');
+const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem('et_finaltest_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem('et_finaltest_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+applyAll();
+})();
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){
+    if(e.keyCode===123)return false;
+    if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;
+    if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false;
+};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
 </html>
-
