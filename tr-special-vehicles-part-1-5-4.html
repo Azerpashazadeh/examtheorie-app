@@ -1,304 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Özel Araçlar Bölüm 1 – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:48px 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
 
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
+    /* definition cards grid */
+    .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 28px}
+    @media(max-width:580px){.def-grid{grid-template-columns:1fr}}
+    .def-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:15px 16px;backdrop-filter:blur(12px)}
+    .def-card .dc-icon{font-size:1.6rem;margin-bottom:7px}
+    .def-card .dc-term{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--accent-light);letter-spacing:.04em;margin-bottom:5px}
+    .def-card p{font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted);margin:0;line-height:1.5}
 
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
+    /* photo grid */
+    .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 22px}
+    @media(max-width:550px){.photo-grid-2{grid-template-columns:1fr}}
+    .photo-grid-2 figure{margin:0}
+    .photo-grid-2 img{width:100%;height:auto;border-radius:12px;border:1px solid var(--card-border);box-shadow:0 4px 20px rgba(0,0,0,.4);display:block}
+    .photo-grid-2 figcaption{font-family:'Outfit',sans-serif;font-size:.7rem;color:var(--text-dim);text-align:center;margin-top:7px;font-style:italic;line-height:1.4}
 
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
+    /* signals info row */
+    .signals-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 22px}
+    @media(max-width:460px){.signals-row{grid-template-columns:1fr}}
+    .sig-card{border-radius:13px;padding:14px 16px;backdrop-filter:blur(12px);text-align:center}
+    .sig-card.blue{background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.28)}
+    .sig-card.red-c{background:rgba(232,69,69,.07);border:1px solid rgba(232,69,69,.22)}
+    .sig-card .sc-icon{font-size:1.8rem;margin-bottom:7px}
+    .sig-card .sc-label{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.04em;margin-bottom:5px}
+    .sig-card.blue .sc-label{color:var(--accent-light)}
+    .sig-card.red-c .sc-label{color:#ff8888}
+    .sig-card p{font-family:'Lora',serif;font-size:.78rem;color:var(--text-muted);margin:0;line-height:1.45}
 
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
+    /* tip list */
+    .tip-list{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:16px 20px;margin:14px 0 22px;backdrop-filter:blur(12px)}
+    .tip-list .tl-title{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--accent-light);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+    .tip-list ul{margin:0;padding:0;list-style:none}
+    .tip-list ul li{font-family:'Lora',serif;font-size:.88rem;color:var(--text-muted);padding:8px 0 8px 24px;position:relative;border-bottom:1px solid rgba(77,166,255,.07);line-height:1.6}
+    .tip-list ul li:last-child{border-bottom:none}
+    .tip-list ul li::before{content:'✓';position:absolute;left:2px;top:8px;color:var(--accent-light);font-weight:700;font-size:.85rem}
 
-        h1,
-        h2 {
-            color: #0093C3;
-        }
+    /* callouts */
+    .callout{border-radius:13px;padding:14px 18px 14px 22px;margin:14px 0 20px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.86rem;line-height:1.65;margin:0 0 6px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px!important;display:block}
+    .callout.red{background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.2)}
+    .callout.red::before{background:linear-gradient(180deg,var(--red),#ff6b6b)}
+    .callout.red p{color:rgba(255,180,180,.85)}
+    .callout.red p strong{color:#fff}
+    .callout.red .callout-title{color:#ff8888}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
 
-        h3 {
-            color: #000000;
-            margin-bottom: -8px;
-            margin-top: -8px;
+    /* police special rule */
+    .police-card{background:rgba(100,80,220,.08);border:1px solid rgba(140,120,255,.22);border-radius:13px;padding:15px 18px 15px 22px;margin:14px 0 22px;position:relative;overflow:hidden}
+    .police-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,#8c78ff,#c0b0ff);border-radius:0 3px 3px 0}
+    .police-card .pc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:#c0b0ff;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+    .police-card p{font-family:'Lora',serif;font-size:.88rem;color:rgba(210,195,255,.85);margin:0 0 6px;line-height:1.6}
+    .police-card p:last-child{margin:0}
+    .police-card p strong{color:#fff}
 
-        }
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
 
-        .gh3 {
-            color: #0093C3;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-        .important-words2 {
-            background-color: #B9E5FB;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-
-       
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-           
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #B9E5FB;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-    
-
-
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #0093C3;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #0093C3;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-       
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-       
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -309,155 +227,239 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
-    <h1>Özel Araçlar - Bölüm 1</h1>
-    <p>
-        Bazı araçlar diğer araçlardan daha fazla hakka sahiptir. Bunlar, örneğin, acil durum araçlarıdır. Ayrıca, tramvaylar,
-        askeri konvoylar ve motorlu araçlardan oluşan cenaze alayları da özel haklara sahiptir.<br>
-        Bunun dışında, ek haklara sahip olmasalar da dikkate almanız gereken araçlar vardır, örneğin büyük taşıma araçları.
-    </p>
-    
-    <div class="important-words2">
-        <div class="vertical-line2"></div>
-        <h3>Acil Durum Aracı</h3>
-        <p>
-            Optik sinyaller (yanıp sönen ışıklar) ve ses sinyalleri (sireni) taşıyan motorlu araçlardır. Bunlara mavi yanıp
-            sönen ışıklar ve çift tonlu korna dahildir. Bu araçlara her zaman yol vermelisiniz.
-        </p>
-        <h3>Ambulans</h3>
-        <p>
-            Hasta veya yaralı kişilerin hastaneye taşınması için donatılmış ve bu amaçla kullanılan motorlu araç.
-        </p>
-        <h3>Acil Tıbbi Hizmetler</h3>
-        <p>
-            Acil tıbbi bakım sağlamak için kullanılan motorlu araç. Bu, bir hastanın taşınması için gerekli olmayabilir, örneğin bir aile hekiminin (GP) şirket aracı gibi. Bu araçlar, esas olarak doktoru hastaya hızla ulaştırmak için kullanılır.
-        </p>
-        <h3>Hayvan Ambulansı</h3>
-        <p>
-            Hasta veya yaralı hayvanları taşımak için donatılmış ve bu amaçla kullanılan motorlu araç. Bu araçlar hiçbir zaman acil durum aracı değildir, çünkü mavi yanıp sönen ışıklar veya sirenler kullanmazlar. Ancak, genellikle fark edilmelerini kolaylaştırmak için ekstra sarı yanıp sönen ışıklara sahiptirler.
-        </p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Test</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk &amp; Metin Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
-    
-    <h2>Acil Durum Araçları</h2>
-    <p>
-        Acil durum araçları, acil bir görevi tamamlaması gereken motorlu araçlardır. Acele ettiklerini mavi optik sinyaller
-        (yanıp sönen ışıklar) ve çift tonlu korna (siren) şeklindeki ses sinyalleriyle gösterirler. Bu sinyaller olmadan
-        veya yalnızca bir sinyal ile, acil durum aracı olarak sınıflandırılmazlar ve öncelikleri olmaz.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_64d09112636d4d8b95ccd70a473ecda3~mv2.jpg"
-                    alt="Acil durum aracı örneği">
-                <figcaption>Acil durum araçları yalnızca bu hizmetlerin araçlarıyla sınırlı değildir.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_c39bcb500ca448eea472878807b0e94a~mv2.jpg"
-                    alt="Acil durum aracı örneği">
-                <figcaption>Diğer yetkili hizmetlerin araçları da mavi yanıp sönen ışıklar ve sirenler kullandığı sürece
-                    acil durum aracı olarak sınıflandırılabilir.</figcaption>
-            </figure>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan opaklığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Birincil vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Metin Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Soluk metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar &amp; Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart opaklığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık opaklığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🚨 Özel Araçlar Testi</div><div class="quiz-badge" id="quiz-badge">20 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚨</span>
+                <h2>Bilginizi Test Edin</h2>
+                <p>Acil araç tanımları, sinyaller, güvenli biçimde yol verme ve polise tanınan özel haklar hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 20 soru</div><div class="qs-chip">🔀 Rastgele sıra</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Teste Başla</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
         </div>
     </div>
-    
-    <p>
-        Acil durum araçları arasında ambulanslar, polis araçları ve itfaiye araçları bulunur. Ancak, diğer hizmetler de bu
-        sinyalleri kullanma yetkisine sahip olabilir. Bu durumda, onlar da acil durum aracı olarak sınıflandırılır. Buna,
-        Kamu İşleri ve Su Yolları Genel Müdürlüğü (Rijkswaterstaat) veya kan ve organ taşımacılığı için kullanılan araçlar
-        da dahildir.
-    </p>
-    
+</div>
 
+<!-- SAYFA İÇERİĞİ -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Trafik Kuralları</span><span class="dot">›</span><span style="color:var(--text-primary)">Özel Araçlar – Bölüm 1</span></div>
+    <h1>Özel Araçlar – Bölüm 1</h1>
+    <div class="section-divider"></div>
 
-    <h2>Acil Durum Araçlarına Yol Verme</h2>
-    <p>
-        Tüm yol kullanıcıları acil durum araçlarına yol vermelidir. Bu kurala hiçbir istisna yoktur. Ancak bunu güvenli bir
-        şekilde yapmak önemlidir. Acil durum aracına yol vermek için trafik kurallarını ihlal etmemeli veya tehlike yaratmamalısınız.
-        Bir acil durum aracı yaklaşıyorsa sakin olun. Bu araçların sürücüleri, trafik içinde kendilerine yol açmak için
-        gerekli manevraları yapar. Ne kadar öngörülebilir hareket ederseniz, bunu yapmaları o kadar kolay olur. İşte bazı
-        ipuçları:
-    </p>
-    <ul>
-        <li>
-            <p>Yalnızca güvenliyse yol açın. Bu sırada izin verilen hızla sürmeye devam edin.</p>
-        </li>
-        <li>
-            <p>Eğer bir şerit boşsa, bu şeridi acil durum aracı için boş bırakın. Trafik sıkışıklığında emniyet şeridinden uzak durun!</p>
-        </li>
-        <li>
-            <p>
-                Döner kavşaktaysanız veya bir acil durum aracı arkanızda bir döner kavşağa yaklaşıyorsa, acil durum aracı
-                döner kavşaktan çıkana kadar kavşakta sürmeye devam edin.
-            </p>
-        </li>
-        <li>
-            <p>
-                Kırmızı ışıkta duruyorsanız, yalnızca acil durum aracı geçemeyecek durumdaysa yol açın. Ayrıca, yalnızca bu
-                güvenliyse hareket edin. Kırmızı ışığı geçerek kavşağa girmeyin. Bu durumda beklemek daha güvenlidir.
-            </p>
-        </li>
-        <li>
-            <p>
-                Bir acil durum aracı sizi geçmek istiyorsa, şeritte kalın ve mümkün olduğunca sağa yanaşın. Asla yüksek
-                hızla yol kenarına veya kaldırıma girmeyin.
-            </p>
-        </li>
-        <li>
-            <p>Her zaman başka acil durum araçlarının olup olmadığından emin olun.</p>
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_3f5cd8eee5d0470b87ca1e8566d0ed33~mv2.jpg"
-                    alt="Döner kavşakta acil durum aracı">
-                <figcaption>Bu durumda, polis aracı döner kavşaktan çıkana kadar fazladan bir tur atın.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_4b38fd0a0f154b8c9519453969b8bf7a~mv2.jpg"
-                    alt="Düz geçit ve itfaiye aracı">
-                <figcaption>Kırmızı ışık yanarken itfaiye aracına yol vermek için düz geçide girmeyin.</figcaption>
-            </figure>
+    <p>Bazı araçlar diğerlerine kıyasla daha fazla hakka sahiptir. Acil araçlar bunların başında gelir. Tramvaylar, askeri konvoylar ve motorlu araçlardan oluşan cenaze kafileleri de özel haklara sahiptir. Bunların yanı sıra ek bir hakka sahip olmamakla birlikte özel dikkat gerektiren araçlar da mevcuttur; geniş nakliye araçları buna örnek gösterilebilir.</p>
+
+    <!-- Tanımlar -->
+    <div class="def-grid">
+        <div class="def-card">
+            <div class="dc-icon">🚑</div>
+            <div class="dc-term">Acil Araç</div>
+            <p>Hem optik sinyal (mavi flaşör) hem de sesli sinyal (iki tonlu siren) kullanan motorlu taşıt. Bu araçlara her zaman yol vermek zorunludur.</p>
+        </div>
+        <div class="def-card">
+            <div class="dc-icon">🏥</div>
+            <div class="dc-term">Ambulans</div>
+            <p>Hasta veya yaralıları hastaneye nakletmek ya da hastaneden getirmek amacıyla donatılmış ve bu iş için kullanılan motorlu taşıt.</p>
+        </div>
+        <div class="def-card">
+            <div class="dc-icon">👨‍⚕️</div>
+            <div class="dc-term">Acil Tıbbi Hizmet Aracı</div>
+            <p>Acil tıbbi müdahale sağlamak için kullanılan motorlu taşıt; hasta taşımak zorunda değildir. Örneğin, bir hastaya acilen ulaşmak için kullanılan aile hekimi şirket aracı bu kapsama girer.</p>
+        </div>
+        <div class="def-card">
+            <div class="dc-icon">🐾</div>
+            <div class="dc-term">Hayvan Ambulansı</div>
+            <p>Hasta veya yaralı hayvanları taşımak için kullanılan motorlu taşıt. Hiçbir zaman acil araç sayılmaz; mavi flaşör veya siren kullanmaz, ancak çoğunlukla ek sarı flaşöre sahiptir.</p>
         </div>
     </div>
-    <p>
-        Bir acil durum aracını göremez veya geç fark ederseniz, doğru tepki veremezsiniz. Tüm aynaları düzenli olarak kontrol
-        ettiğinizden emin olun. Çoğu zaman bir acil durum aracını duymadan önce görebilirsiniz. Ayrıca, trafik ışığında
-        beklerken her zaman yeterli takip mesafesi bırakın. Böylece bir acil durum aracı geçmek isterse hareket etmek için
-        yeriniz olur.
-    </p>
-    
-    <h2>Acil Durum Araçları ve Trafik Kuralları</h2>
-    <p>
-        Acil durum araçları, geçerli bir sebep olduğunda bazı trafik kurallarını görmezden gelebilir. Örneğin, kırmızı ışıkta
-        geçmelerine ve normalden daha hızlı sürmelerine izin verilir.
-    </p>
-    <p>
-        Polis araçları, optik ve ses sinyalleri taşımadıklarında ve bu nedenle acil durum aracı olarak sınıflandırılmadıklarında
-        bile bu kuralları görmezden gelebilir. Ancak, bunu yalnızca geçerli bir sebep olduğunda yapabilirler.
-    </p>
-    
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a>
 
- 
+    <!-- Acil araçlar nedir -->
+    <h2>Acil Araçlar</h2>
+    <p>Acil araçlar, acil bir görevi bulunan motorlu taşıtlardır. Aciliyeti, <strong>mavi optik sinyaller</strong> (flaşör) ve iki tonlu korna (siren) biçiminde <strong>sesli sinyaller</strong> aracılığıyla bildirirler. Her iki sinyal birlikte kullanılmadığı ya da yalnızca biri aktif olduğu durumlarda araç, acil araç sayılmaz ve öncelik hakkına sahip olmaz.</p>
 
+    <div class="signals-row">
+        <div class="sig-card blue">
+            <div class="sc-icon">🔵</div>
+            <div class="sc-label">Her İki Sinyal = Acil Araç ✔</div>
+            <p>Mavi flaşör <strong>VE</strong> iki tonlu siren birlikte kullanılır. Tam öncelik — tüm yol kullanıcıları yol vermek zorundadır.</p>
+        </div>
+        <div class="sig-card red-c">
+            <div class="sc-icon">❌</div>
+            <div class="sc-label">Yalnızca Bir Sinyal = Öncelik Yok</div>
+            <p>Yalnızca flaşör ya da yalnızca siren — araç acil araç sayılmaz ve özel öncelik hakkına <strong>sahip değildir</strong>.</p>
+        </div>
+    </div>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_64d09112636d4d8b95ccd70a473ecda3~mv2.jpg" alt="Yalnızca geleneksel acil servisler değil"/><figcaption>Acil araç statüsünde yalnızca geleneksel acil servis araçları yer almaz.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_c39bcb500ca448eea472878807b0e94a~mv2.jpg" alt="Diğer yetkili kuruluş araçları da acil araç olabilir"/><figcaption>Rijkswaterstaat (Hollanda Bayındırlık ve Su İşleri Genel Müdürlüğü) veya kan/organ nakil araçları gibi diğer yetkili kuruluş araçları da mavi flaşör ve siren kullandıkları sürece acil araç sayılabilir.</figcaption></figure>
+    </div>
+
+    <div class="callout blue">
+        <span class="callout-title">ℹ Diğer Yetkili Acil Araçlar</span>
+        <p>Polis, ambulans ve itfaiye araçlarının yanı sıra diğer yetkili kuruluşlar da bu sinyalleri kullanabilir. <strong>Rijkswaterstaat</strong> (Hollanda Bayındırlık ve Su İşleri Genel Müdürlüğü) araçları ile <strong>kan veya organ nakli</strong> amacıyla kullanılan araçlar buna örnek gösterilebilir.</p>
+    </div>
+
+    <!-- Yol verme -->
+    <h2>Acil Araçlara Yol Verme</h2>
+    <p><strong>Tüm yol kullanıcıları acil araçlara yol vermek zorundadır.</strong> Bu kuralın hiçbir istisnası bulunmamaktadır. Ancak yol verme işlemi <em>güvenli</em> biçimde gerçekleştirilmelidir; bu süreçte tehlike yaratmak, başkalarını engellemek veya trafik kurallarını ihlal etmek kesinlikle yasaktır. Bir acil araç yaklaşırken <strong>sakin kalın</strong>. Araç sürücüsü mümkün olduğunca kendi yolunu açacaktır. Ne kadar öngörülü davranırsanız, bu süreç o kadar kolaylaşır.</p>
+
+    <div class="tip-list">
+        <div class="tl-title">💡 Güvenli Yol Verme İpuçları</div>
+        <ul>
+            <li>Yalnızca <strong>güvenli olduğunda</strong> yer açın. Bu süreçte izin verilen hızda sürmeye devam edin.</li>
+            <li>Bir şerit boşsa, acil araç için o şeridi boş bırakın. Trafik sıkışıklığında <strong>bankete geçmeyin!</strong></li>
+            <li>Döner kavşaktayken ya da arkasında acil araç bulunurken döner kavşağa yaklaşıyorsanız, acil araç döner kavşaktan çıkana kadar <strong>döner kavşakta ilerlemeye devam edin</strong>.</li>
+            <li><strong>Kırmızı ışıkta</strong> bekliyorsanız yalnızca acil araç geçemiyorsa ve güvenli olduğunda yer açın. Kalabalık bir kavşağa kırmızı ışık ihlali yaparak girmeyin — çoğu zaman beklemek daha güvenlidir.</li>
+            <li>Bir acil araç sizi geçmek istiyorsa <strong>şeridinizdde kalın ve mümkün olduğunca sağa yaslanın</strong>. Yüksek hızla şerit dışına ya da kaldırıma asla çıkmayın.</li>
+            <li>Arkadan daha fazla acil araç gelip gelmediğini mutlaka kontrol edin.</li>
+        </ul>
+    </div>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_3f5cd8eee5d0470b87ca1e8566d0ed33~mv2.jpg" alt="Döner kavşakta acil araç — bir tur daha atın"/><figcaption>Bu durumda polis aracı döner kavşaktan çıkana kadar bir tur daha atmanız yeterlidir.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_4b38fd0a0f154b8c9519453969b8bf7a~mv2.jpg" alt="Hemzemin geçit — itfaiye için kırmızıda geçme"/><figcaption>Kırmızı ışıklar yanarken itfaiye aracına yol vermek için hemzemin geçide asla girmeyin.</figcaption></figure>
+    </div>
+
+    <div class="callout amber">
+        <span class="callout-title">👁 Aynalarınızı Kullanın</span>
+        <p>Bir acil aracı zamanında göremezseniz doğru tepkiyi veremezsiniz. <strong>Tüm aynalarınızı düzenli aralıklarla kontrol edin.</strong> Bir acil aracı <em>görmek</em>, duyabilmekten önce gerçekleşebilir. Ayrıca her zaman yeterli yer açabilmek için, trafik ışıklarında bile, <strong>yeterli takip mesafesi</strong> bırakın.</p>
+    </div>
+
+    <!-- Trafik kuralları istisnası -->
+    <h2>Acil Araçlar ve Trafik Kuralları</h2>
+    <p>Acil araçlar, geçerli bir nedenin varlığında bazı trafik kurallarını görmezden gelebilir. Örneğin kırmızı ışıkta geçebilir ya da hız sınırını aşabilirler.</p>
+
+    <div class="police-card">
+        <div class="pc-title">🚔 Polise Tanınan Özel İstisna</div>
+        <p>Polis araçları, optik ve sesli sinyal kullanmaksızın — yani teknik olarak o an acil araç sayılmasalar bile — belirli trafik kurallarını ihlal edebilir.</p>
+        <p>Ancak bu yetki <strong>keyfi biçimde kullanılamaz</strong>; yalnızca geçerli bir neden bulunduğunda geçerlidir.</p>
+    </div>
+
+    <div class="callout red">
+        <span class="callout-title">⚠ Önemli Uyarı</span>
+        <p>Acil bir araca yol verirken trafik kurallarını <strong>asla</strong> ihlal etmemelisiniz. Örneğin kalabalık bir kavşağa kırmızı ışık ihlali yaparak girmemeli; kırmızı ışıklar yanarken bir itfaiye aracı için bile olsa hemzemin geçide asla girmemelisiniz.</p>
+    </div>
+
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_sv1';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+    {t:'Tanımlar',q:'Bir aracın acil araç sayılabilmesi için hangi iki sinyali kullanması gerekir?',o:['Sarı flaşör ve korna','Mavi flaşör VE iki tonlu siren','Kırmızı flaşör ve siren','Yalnızca siren'],a:1,e:'Acil araç, hem mavi optik sinyaller (flaşör) hem de sesli sinyaller (iki tonlu siren) kullanmak zorundadır. Her iki sinyal birlikte olmadığında araç acil araç sayılmaz.'},
+    {t:'Tanımlar',q:'Bir araçta siren var ancak flaşör yok. Bu araç acil araç olarak öncelik hakkına sahip midir?',o:['Evet — siren tek başına yeterlidir','Hayır — hem mavi flaşör hem de siren zorunludur','Evet — ancak yalnızca gündüz vakti','Yalnızca polis aracıysa'],a:1,e:'Her iki sinyal birlikte olmadığında araç acil araç sayılmaz ve öncelik hakkına sahip değildir. Hem mavi flaşör hem de iki tonlu siren zorunludur.'},
+    {t:'Tanımlar',q:'Ambulans ile acil tıbbi hizmet aracı arasındaki fark nedir?',o:['Hiçbir fark yoktur','Ambulans hastaları taşır; acil tıbbi hizmet aracı yerinde müdahale sağlar ve hastayı taşımak zorunda değildir','Acil tıbbi hizmet araçları daha hızlıdır','Ambulanslar yalnızca hastanelere aittir'],a:1,e:'Ambulans hasta veya yaralıları taşımak için donatılmıştır. Acil tıbbi hizmet aracı ise bir hastaya acilen ulaşmak için kullanılan aile hekimi şirket aracı gibi, hastayı taşımak zorunda kalmaksızın acil tıbbi müdahale sağlar.'},
+    {t:'Tanımlar',q:'Hayvan ambulansı acil araç mıdır?',o:['Evet — sarı flaşörü varsa','Hayır — hayvan ambulansları hiçbir zaman mavi flaşör veya siren kullanmaz ve asla acil araç sayılmaz','Evet — her zaman','Yalnızca hayvanın durumu kritikse'],a:1,e:'Hayvan ambulansları mavi flaşör veya siren kullanmadığından hiçbir zaman acil araç sayılmaz. Görünürlüğü artırmak amacıyla çoğunlukla ek sarı flaşöre sahiptirler.'},
+    {t:'Tanımlar',q:'Polis, ambulans ve itfaiye dışında hangi araçlar da acil araç sayılabilir?',o:['Yalnızca askeri araçlar','Mavi flaşör ve siren kullanan Rijkswaterstaat araçları ve kan/organ nakil araçları','Sireni bulunan herhangi bir araç','Acil durumlardaki taksiler'],a:1,e:'Rijkswaterstaat veya kan/organ nakli gibi diğer yetkili kuruluş araçları da mavi flaşör ve siren kullandıkları sürece acil araç sayılabilir.'},
+    {t:'Yol Verme',q:'Acil araçlara kim yol vermek zorundadır?',o:['Yalnızca motorlu taşıtlar','Yalnızca aynı şeritteki sürücüler','Tüm yol kullanıcıları — hiçbir istisna yoktur','Yalnızca ana yoldaki sürücüler'],a:2,e:'Tüm yol kullanıcıları acil araçlara yol vermek zorundadır. Bu kuralın hiçbir istisnası bulunmamaktadır.'},
+    {t:'Yol Verme',q:'Acil araca yol vermek için trafik kurallarını ihlal edebilir misiniz?',o:['Evet — her zaman, çünkü acil aracın önceliği vardır','Hayır — tehlike yaratmadan, başkalarını engellemeden ve trafik kurallarını ihlal etmeden güvenli biçimde yol vermek zorundasınız','Evet — ancak yalnızca acil araç çok yakınsa','Yalnızca trafik ışıklarında'],a:1,e:'Yol verme işlemi güvenli biçimde gerçekleştirilmelidir. Bu süreçte tehlike yaratmak, başkalarını engellemek veya trafik kurallarını ihlal etmek yasaktır.'},
+    {t:'Yol Verme',q:'Otoyolda arkadan bir acil araç yaklaşıyor. Bir şerit boş. Ne yapmanız gerekir?',o:['Yoldan çekilmek için hızlanın','Boş şeridi acil araç için açık bırakın. Zorunlu olmadıkça bankete geçmeyin.','Hemen bankete geçin','Dörtlü flaşörlerinizi yakın ve durun'],a:1,e:'Bir şerit boşsa, o şeridi acil araç için açık bırakın. Özellikle trafik sıkışıklığında banketi gereksiz yere kullanmayın.'},
+    {t:'Yol Verme',q:'Döner kavşaktasınız. Arkadan bir acil araç yaklaşıyor. Ne yapmanız gerekir?',o:['Döner kavşakta hemen durun','Acil araç döner kavşaktan çıkana kadar döner kavşakta ilerlemeye devam edin, ardından yer açın','En yakın çıkıştan hemen ayrılın','Acil aracın döner kavşakta sizi geçmesine izin verin'],a:1,e:'Arkanda acil araç varken döner kavşaktaysanız, acil araç döner kavşaktan çıkana kadar döner kavşakta ilerlemeye devam edin.'},
+    {t:'Yol Verme',q:'Kırmızı ışıkta ilk sıradasınız. Arkada bir acil araç var. Ne yapmanız gerekir?',o:['Hemen kırmızı ışıktan geçin','Yalnızca acil araç geçemiyorsa ve güvenli olduğunda yer açın — kalabalık bir kavşağa kırmızı ışık ihlali yaparak girmekten kaçının','Acil araca yardımcı olmak için her zaman kırmızı ışıktan geçin','Karşı yönden geçen trafiği uyarmak için kornaya basın ve ilerleyin'],a:1,e:'Kırmızı ışıkta yalnızca acil araç geçemiyorsa ve güvenli olduğunda yer açın. Bir kavşağa kırmızı ışık ihlali yaparak girmek çoğu zaman beklemekten daha tehlikelidir.'},
+    {t:'Yol Verme',q:'Bir acil araç sizi geçiyor. Doğru hareket nedir?',o:['Kısa süreliğine hızlanarak bir boşluk yaratın','Hemen yüksek hızla şerit dışına çıkın','Şeridinizdde kalın ve mümkün olduğunca sağa yaslanın. Yüksek hızla şerit dışına ya da kaldırıma asla çıkmayın.','Sol şeride geçin'],a:2,e:'Şeridinizdde kalın ve mümkün olduğunca sağa yaslanın. Şerit dışına ya da kaldırıma yüksek hızla çıkmak tehlikelidir ve yasaktır.'},
+    {t:'Yol Verme',q:'Bir acil araç geçtikten sonra ne kontrol etmeniz gerekir?',o:['Aynalarınızın temiz olup olmadığını','Arkadan daha fazla acil araç gelip gelmediğini','Sinyal vermeniz gerekip gerekmediğini','Hızınızın doğru olup olmadığını'],a:1,e:'Arkadan daha fazla acil araç gelip gelmediğini mutlaka kontrol edin. İlkini ikinci veya üçüncü bir araç takip ediyor olabilir.'},
+    {t:'Yol Verme',q:'Trafik ışıklarında bile yeterli takip mesafesi bırakmak neden önemlidir?',o:['İki saniyelik kurala uymak için','Acil bir araç geçmek istediğinde yer açabilmek için her zaman yerinizin olması için','Yol ıslak olabileceğinden','Yayaların geçebilmesi için'],a:1,e:'Trafik ışıklarında yeterli takip mesafesi bırakmak, acil bir araç geçmek istediğinde her zaman yer açabilmenizi sağlar.'},
+    {t:'Yol Verme',q:'Bir acil araç yaklaşıyor ancak henüz güvenli biçimde yer açamıyorsunuz. Ne yapmanız gerekir?',o:['Nerede olursanız olun hemen durun','Güvenli biçimde yer açabilene kadar izin verilen hızda sürmeye devam edin','Mesafe yaratmak için hızlanın','Yan yola sapın'],a:1,e:'Yalnızca güvenli olduğunda yer açın. Bu süreçte izin verilen hızda sürmeye devam edin.'},
+    {t:'Aynalar',q:'Sürüş sırasında aynalarınızı neden düzenli aralıklarla kontrol etmelisiniz?',o:['Şerit çizgilerini kontrol etmek için','Bir acil aracı duyabilmeden önce görebileceğiniz ve zamanında tepki verebilmeniz için','Park yeri aramak için','Yakıt seviyenizi izlemek için'],a:1,e:'Bir acil aracı aynada duymadan önce görmek alışılmadık bir durum değildir. Düzenli ayna kontrolleri zamanında tepki verebilmenizi sağlar.'},
+    {t:'Trafik Kuralları',q:'Acil araçlar trafik kurallarını görmezden gelebilir mi?',o:['Hayır — her zaman tüm trafik kurallarına uymak zorundadırlar','Evet — kırmızı ışıktan geçmek veya hız sınırını aşmak gibi durumlarda geçerli bir neden olması halinde bazı kuralları görmezden gelebilirler','Evet — her zaman tüm kuralları görmezden gelebilirler','Yalnızca hastanın durumu kritikse'],a:1,e:'Acil araçlar, kırmızı ışıktan geçmek veya hız sınırını aşmak gibi geçerli bir nedenleri olduğunda bazı trafik kurallarını görmezden gelebilir.'},
+    {t:'Trafik Kuralları',q:'Bir polis aracının mavi flaşörü veya sireni aktif değil. Trafik kurallarını yine de görmezden gelebilir mi?',o:['Hayır — mavi flaşör ve siren olmadan diğer araçlar gibi tüm kurallara uymak zorundadır','Evet — polis araçları geçerli bir neden olduğunda mavi flaşör ve siren olmaksızın da bazı kuralları görmezden gelebilir','Evet — ancak yalnızca kavşaklarda','Yalnızca gizli araç kullanıyorsa'],a:1,e:'Polis araçları optik ve sesli sinyal olmaksızın da bazı trafik kurallarını görmezden gelebilir; ancak bu yetki yalnızca geçerli bir neden bulunduğunda kullanılabilir, keyfi biçimde değil.'},
+    {t:'Hemzemin Geçit',q:'Kırmızı ışıkların yandığı bir hemzemin geçitte arkanızda bir itfaiye aracı var. Ne yapmanız gerekir?',o:['Yer açmak için geçitten geçin','Bekleyin — kırmızı ışıklar yanarken itfaiye aracı için bile hemzemin geçide girmek yasaktır','Tren sürücülerini uyarmak için kornaya basın','Yer açmak için yavaşça geri gidin'],a:1,e:'Kırmızı ışıklar yanarken hemzemin geçide asla girmeyin; itfaiye aracına yol vermek için bile bu kural geçerlidir. Son derece tehlikeli bir eylemdir.'},
+    {t:'Karma',q:'Aşağıdakilerden hangisi acil araç değildir?',o:['Mavi flaşörü ve sireni olan ambulans','Mavi flaşörü ve sireni olan polis arabası','Sarı flaşörü olan hayvan ambulansı','Mavi flaşörü ve sireni olan Rijkswaterstaat aracı'],a:2,e:'Hayvan ambulansı hiçbir zaman mavi flaşör veya iki tonlu siren kullanmadığından asla acil araç sayılmaz. Sarı flaşöre sahip olabilir; ancak bu onu acil araç statüsüne sokmaz.'},
+    {t:'Karma',q:'Acil bir araca yol verirken en önemli ilke nedir?',o:['Duruma bakmaksızın mümkün olduğunca hızlı yol verin','Güvenli biçimde yol verin — bu süreçte tehlike yaratmayın ve trafik kurallarını ihlal etmeyin','Her zaman aracınızı tamamen durdurun','Her zaman bankete geçin'],a:1,e:'En önemli ilke güvenli biçimde yol vermektir. Bu süreçte tehlike yaratmak, başkalarını engellemek veya trafik kurallarını ihlal etmek yasaktır.'},
+];
+const QS=20;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Gör'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Acil araç kurallarına hâkimsiniz!'}else if(pct>=70){msg='Aferin! 👍';sub='Bilginiz iyi. Eksik kaldığınız konuları gözden geçirin.'}else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Sayfayı yeniden okuyun ve tekrar deneyin.'}else{msg='Daha fazla çalışma gerekli 💡';sub='Kuralları dikkatlice inceleyin ve testi yeniden yapın!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">${QS} üzerinden</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Yeni Rastgele Test</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Kapat'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
