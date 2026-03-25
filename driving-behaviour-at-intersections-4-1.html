@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Driving Behaviour at Intersections – ExamTheorie</title>
+    <title>Kavşaklarda Sürüş Davranışı – ExamTheorie</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -229,35 +229,35 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div id="fab-row">
-    <button class="fab" id="fab-palette"><span class="fab-tip">Colours</span>🎨</button>
-    <button class="fab" id="fab-quiz"><span class="fab-tip">Quiz</span>📝</button>
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Test</span>📝</button>
 </div>
 <div id="color-panel">
     <div class="panel-header" id="panel-drag-handle">
-        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Colour &amp; Text Settings</div></div>
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk &amp; Metin Ayarları</div></div>
         <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
     <div class="panel-body">
-        <div class="font-strip"><div class="font-strip-label">Font Size</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ reset</button></div>
-        <div class="presets-strip"><div class="strip-label">Quick Themes</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Default</button><button class="preset-btn" data-preset="light">☀️ Light</button><button class="preset-btn" data-preset="purple">🟣 Purple</button><button class="preset-btn" data-preset="green">🟢 Green</button><button class="preset-btn" data-preset="amber">🟡 Amber</button><button class="preset-btn" data-preset="contrast">⬛ Contrast</button></div></div>
-        <div class="color-section"><div class="stp">Background</div><div class="color-row"><div class="color-row-label">Page background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Background opacity</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
-        <div class="color-section"><div class="stp">Accent Colours</div><div class="color-row"><div class="color-row-label">Primary accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Light accent</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Warning / red</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
-        <div class="color-section"><div class="stp">Text Colours</div><div class="color-row"><div class="color-row-label">Main heading</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Section headings</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Body text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Subtle text</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
-        <div class="color-section"><div class="stp">Cards &amp; Panels</div><div class="color-row"><div class="color-row-label">Card background</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Card opacity</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Card border</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Border opacity</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
-        <button class="reset-all-btn" id="reset-all-btn">↺ Reset all settings</button>
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan opaklığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Birincil vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Metin Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Soluk metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar &amp; Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart opaklığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık opaklığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
     </div>
 </div>
 <div id="quiz-overlay">
     <div id="quiz-panel">
-        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🚦 Intersections Quiz</div><div class="quiz-badge" id="quiz-badge">22 Questions</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🚦 Kavşaklar Testi</div><div class="quiz-badge" id="quiz-badge">22 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
         <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
         <div class="quiz-body">
             <div class="quiz-start" id="quiz-start-screen">
                 <span class="qs-icon">🚦</span>
-                <h2>Test Your Knowledge</h2>
-                <p>Questions on intersection types, right of way on equivalent roads, exceptions (tram, unpaved), and priority signs B-1 through B-7.</p>
-                <div class="qs-info"><div class="qs-chip">📋 22 questions</div><div class="qs-chip">🔀 Random order</div><div class="qs-chip">✅ Instant feedback</div></div>
-                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
+                <h2>Bilginizi Test Edin</h2>
+                <p>Kavşak türleri, eşdeğer yollarda geçiş önceliği, istisnalar (tramvay, stabilize yol) ve B-1'den B-7'ye kadar öncelik işaretleri hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 22 soru</div><div class="qs-chip">🔀 Rastgele sıra</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Teste Başla</button>
             </div>
             <div class="quiz-q-screen" id="quiz-q-screen"></div>
             <div class="quiz-results" id="quiz-results-screen"></div>
@@ -265,150 +265,150 @@
     </div>
 </div>
 
-<!-- PAGE CONTENT -->
+<!-- SAYFA İÇERİĞİ -->
 <div class="page-wrapper">
-    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Traffic Rules</span><span class="dot">›</span><span style="color:var(--text-primary)">Driving Behaviour at Intersections</span></div>
-    <h1>Driving Behaviour at Intersections</h1>
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Trafik Kuralları</span><span class="dot">›</span><span style="color:var(--text-primary)">Kavşaklarda Sürüş Davranışı</span></div>
+    <h1>Kavşaklarda Sürüş Davranışı</h1>
     <div class="section-divider"></div>
 
-    <p>Different rules apply for when you encounter other traffic at intersections. It is important to understand the difference between <strong>road users</strong> (all traffic, including pedestrians) and <strong>drivers</strong> (all traffic without pedestrians). In addition, understand the difference between traffic on the <strong>intersecting road</strong> and traffic on the <strong>same road</strong>.</p>
+    <p>Kavşaklarda diğer trafik katılımcılarıyla karşılaşıldığında farklı kurallar geçerlidir. <strong>Yol kullanıcıları</strong> (yayalar dahil tüm trafik) ile <strong>sürücüler</strong> (yayalar hariç tüm trafik) arasındaki farkı anlamak büyük önem taşır. Bunun yanı sıra <strong>kesişen yoldaki</strong> trafik ile <strong>aynı yoldaki</strong> trafik arasındaki farkı da kavramak gerekir.</p>
 
-    <!-- Definitions -->
+    <!-- Tanımlar -->
     <div class="def-card">
-        <h3>Intersection</h3>
-        <p>Intersection or junction of roads. At an intersection it is possible to change direction — you can turn left or right. Intersections can be designed in many different ways.</p>
-        <h3>Intersecting Road</h3>
-        <p>A road that crosses the road you are on. This does not always have to be at 90 degrees — it can also be oblique, such as at a Y-junction.</p>
-        <h3>The Same Road</h3>
-        <p>The road you are on. Traffic on the same road approaches from behind or the front — whether pedestrians on the pavement or drivers on the carriageway. On a roundabout, all traffic following the roundabout is on the same road.</p>
-        <h3>Giving Way</h3>
-        <p>Allowing the drivers involved to proceed without hindrance. The driver who has priority must have the idea that they have priority — they must be able to drive unhindered.</p>
-        <h3>Priority Triangles (Shark's Teeth)</h3>
-        <p>White triangles on the road. Usually used with, but sometimes also without, sign B-6. In both cases, these triangles mean you must give right of way to drivers on the intersecting road.</p>
+        <h3>Kavşak</h3>
+        <p>Yolların kesiştiği veya birleştiği nokta. Kavşaklarda yön değiştirmek mümkündür; sağa veya sola dönülebilir. Kavşaklar birçok farklı biçimde tasarlanabilir.</p>
+        <h3>Kesişen Yol</h3>
+        <p>Üzerinde bulunduğunuz yolu kesen yol. Bu kesişme her zaman 90 derecede olmak zorunda değildir; Y kavşağında olduğu gibi eğik açılı da olabilir.</p>
+        <h3>Aynı Yol</h3>
+        <p>Üzerinde bulunduğunuz yol. Aynı yoldaki trafik, arkadan veya önden yaklaşır; kaldırımdaki yayalar ya da taşıt yolundaki sürücüler buna örnek gösterilebilir. Döner kavşakta, döner yolu izleyen tüm trafik aynı yol üzerindedir.</p>
+        <h3>Yol Verme</h3>
+        <p>İlgili sürücülerin engelsiz biçimde geçmesine izin vermek. Öncelik hakkına sahip olan sürücünün bu hakkı hissedebilmesi gerekir; yani engelsiz ilerleyebilmelidir.</p>
+        <h3>Öncelik Üçgenleri (Köpekbalığı Dişleri)</h3>
+        <p>Yol yüzeyine çizilmiş beyaz üçgenler. Genellikle B-6 tabelasıyla birlikte kullanılır; ancak bazen tabelasız da görülebilir. Her iki durumda da bu üçgenler, kesişen yoldaki sürücülere yol vermeniz gerektiği anlamına gelir.</p>
     </div>
 
-    <!-- Intersection types -->
+    <!-- Kavşak türleri -->
     <div class="photo-grid-4">
-        <figure><img src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg" alt="Normal intersection"/><figcaption>Normal intersection</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg" alt="T-junction"/><figcaption>T-junction</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg" alt="Y-junction"/><figcaption>Y-junction or fork</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg" alt="Bayonet intersection"/><figcaption>Bayonet intersection</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_bfa3fcda0ef745e89016aa898b7defed~mv2.jpg" alt="Normal kavşak"/><figcaption>Normal kavşak</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_057d875007204a7db2244e85db108ba0~mv2.jpg" alt="T kavşağı"/><figcaption>T kavşağı</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_1041b1f8b7c14373b28f75b3b0b2c339~mv2.jpg" alt="Y kavşağı"/><figcaption>Y kavşağı veya çatal</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_f5803acb4abd4d4ebd8fe399afeb40c5~mv2.jpg" alt="Bajonete kavşak"/><figcaption>Bajonete kavşak</figcaption></figure>
     </div>
 
-    <!-- Intersecting road photos -->
+    <!-- Kesişen yol fotoğrafları -->
     <div class="photo-grid-2">
-        <figure><img src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg" alt="Intersecting road"/><figcaption>Compared to the white lesson car, the coloured part is the intersecting road.</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg" alt="Y-junction intersecting"/><figcaption>Compared to the white lesson car, the coloured part of the Y-junction is the crossing road.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_84cdf3648fb243e38f5e2b958bd86f46~mv2.jpg" alt="Kesişen yol"/><figcaption>Beyaz eğitim aracına kıyasla renkli alan, kesişen yolu göstermektedir.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_4e3089c247694dcaa165c1bb7f7881be~mv2.jpg" alt="Y kavşağı kesişen yol"/><figcaption>Beyaz eğitim aracına kıyasla Y kavşağındaki renkli alan, kesişen yolu göstermektedir.</figcaption></figure>
     </div>
 
-    <!-- Same road photos -->
+    <!-- Aynı yol fotoğrafları -->
     <div class="photo-grid-2">
-        <figure><img src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg" alt="Same road"/><figcaption>All these road users are on the same road (coloured part).</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg" alt="Roundabout same road"/><figcaption>On a roundabout, the circular stretch counts as "the same road". The lesson car and cyclist are therefore on the same road.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_ad316a86cf6948fdb56c5a89b63952d7~mv2.jpg" alt="Aynı yol"/><figcaption>Tüm bu yol kullanıcıları aynı yol (renkli alan) üzerindedir.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_f7de8d7cb4a249c599dfd209085c47b5~mv2.jpeg" alt="Döner kavşak aynı yol"/><figcaption>Döner kavşakta dairesel şerit "aynı yol" sayılır. Dolayısıyla eğitim aracı ile bisikletli aynı yoldadır.</figcaption></figure>
     </div>
 
-    <!-- ── Giving way ── -->
-    <h2>Giving Way</h2>
-    <p>If priority at an intersection is not regulated by signs, road markings, or traffic lights, these are known as <strong>equivalent roads</strong>. On equivalent roads, drivers give right of way to drivers from the right.</p>
-    <p>You do not have to give a pedestrian priority — they are not classed as drivers.</p>
+    <!-- ── Yol verme ── -->
+    <h2>Yol Verme</h2>
+    <p>Bir kavşakta öncelik işaretler, yol çizgileri veya trafik ışıklarıyla düzenlenmemişse bu kavşaklar <strong>eşdeğer yollar</strong> olarak adlandırılır. Eşdeğer yollarda sürücüler, sağdan gelen sürücülere yol vermek zorundadır.</p>
+    <p>Yayalara yol vermek zorunlu değildir; zira yayalar sürücü sayılmaz.</p>
 
     <div class="photo-grid-2">
-        <figure><img src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg" alt="Cyclist from right has priority"/><figcaption>The cyclist coming from the right has priority over the lesson car.</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg" alt="Pedestrian not a driver"/><figcaption>The pedestrian from the right is not a driver and must therefore let the lesson car pass.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_8fac35b650874b72aba560a686d233f5~mv2.jpg" alt="Sağdan gelen bisikletlinin önceliği var"/><figcaption>Sağdan gelen bisikletlinin eğitim aracına göre önceliği vardır.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_5bc6f823995b4e0d98dd3b52af26d13f~mv2.jpg" alt="Yaya sürücü değildir"/><figcaption>Sağdan gelen yaya, sürücü sayılmadığından eğitim aracına yol vermek zorundadır.</figcaption></figure>
     </div>
 
-    <p>There are two exceptions to this rule:</p>
+    <p>Bu kuralın iki istisnası bulunmaktadır:</p>
 
     <div class="exception-list">
-        <div class="exc-item"><div class="ei-icon">🚃</div><div class="ei-text"><strong>Trams always have priority.</strong> Drivers give priority to tram drivers, regardless of direction.</div></div>
-        <div class="exc-item"><div class="ei-icon">🛤️</div><div class="ei-text"><strong>Unpaved roads.</strong> Drivers on unpaved roads give right of way to drivers from both left and right on a paved road.</div></div>
+        <div class="exc-item"><div class="ei-icon">🚃</div><div class="ei-text"><strong>Tramvaylar her zaman önceliğe sahiptir.</strong> Sürücüler, geldiği yönden bağımsız olarak tramvay sürücülerine yol vermek zorundadır.</div></div>
+        <div class="exc-item"><div class="ei-icon">🛤️</div><div class="ei-text"><strong>Stabilize (asfaltlanmamış) yollar.</strong> Stabilize yoldaki sürücüler, asfaltlı yoldaki sürücülere hem soldan hem sağdan geldiğine bakılmaksızın yol vermek zorundadır.</div></div>
     </div>
 
     <div class="photo-grid-2">
-        <figure><img src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg" alt="Tram priority"/><figcaption>The lesson car coming from the right must give right of way to the tram coming from the left.</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg" alt="Unpaved road"/><figcaption>The lesson car comes from an unpaved road and must give right of way to the driver on the paved road.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_da1571d86522460ab0e287a98ad45566~mv2.jpg" alt="Tramvay önceliği"/><figcaption>Sağdan gelen eğitim aracı, soldan gelen tramvaya yol vermek zorundadır.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_d17096e2db9447b9b21ab04b57c17ee9~mv2.jpg" alt="Stabilize yol"/><figcaption>Eğitim aracı stabilize bir yoldan gelmekte olup asfaltlı yoldaki sürücüye yol vermek zorundadır.</figcaption></figure>
     </div>
 
-    <!-- ── Priority signs ── -->
-    <h2>Priority Indicated by Signs or Road Markings</h2>
-    <p>If right of way at an intersection is controlled by signs or road markings, the "right has priority" rule is then irrelevant. Various signs regulate the priority.</p>
+    <!-- ── Öncelik işaretleri ── -->
+    <h2>İşaret veya Yol Çizgileriyle Belirlenen Öncelik</h2>
+    <p>Bir kavşakta geçiş önceliği işaret veya yol çizgileriyle düzenlenmişse "sağdan geçiş önceliği" kuralı geçerliliğini yitirir. Önceliği çeşitli işaretler düzenler.</p>
 
-    <!-- Sign list -->
+    <!-- İşaret listesi -->
     <div class="sign-list">
-        <div class="sign-group-label">🟡 Being given right of way — Priority Road</div>
+        <div class="sign-group-label">🟡 Geçiş önceliğine sahip olma — Öncelikli Yol</div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_71ed77b3f56847e399c1547a5a7a12eb~mv2.png" alt="B-1"/><div class="sr-code">B-1</div></div>
-            <div class="sign-row-body"><h3>Priority Road</h3><p>You are on a priority road. Crossing drivers must give you priority. This sign is repeated within built-up areas <em>before</em> every intersection, and outside built-up areas <em>after</em> every intersection — indicating whether you are inside or outside a built-up area.</p></div>
+            <div class="sign-row-body"><h3>Öncelikli Yol</h3><p>Öncelikli yol üzerindesiniz. Kesişen yoldaki sürücüler size yol vermek zorundadır. Bu işaret, yerleşim alanları içinde her kavşak <em>öncesinde</em>, yerleşim alanları dışında ise her kavşak <em>sonrasında</em> tekrarlanır; böylece yerleşim alanı içinde mi dışında mı olduğunuz belirtilir.</p></div>
         </div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_5b541bedc0ca4d048fa80dbbdcb7ab99~mv2.png" alt="B-2"/><div class="sr-code">B-2</div></div>
-            <div class="sign-row-body"><h3>End of Priority Road</h3><p>The B-2 sign indicates the end of the priority road. After this sign, the normal priority rules apply.</p></div>
+            <div class="sign-row-body"><h3>Öncelikli Yolun Sonu</h3><p>B-2 işareti, öncelikli yolun sona erdiğini bildirir. Bu işaretin ardından olağan öncelik kuralları yeniden geçerli olur.</p></div>
         </div>
-        <div class="sign-group-label">🟡 Being given right of way — Priority Intersection</div>
+        <div class="sign-group-label">🟡 Geçiş önceliğine sahip olma — Öncelikli Kavşak</div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_6cba878b84114d19a45e0cc897401bc1~mv2.png" alt="B-3"/><div class="sr-code">B-3</div></div>
-            <div class="sign-row-body"><h3>Priority Intersection — Two Side Roads</h3><p>You must be given priority. The thick arrow = your road. The cross marks = side roads. Side roads on both left and right. <strong>B-3, B-4 and B-5 only apply to the intersection you are approaching.</strong></p></div>
+            <div class="sign-row-body"><h3>Öncelikli Kavşak — İki Yan Yol</h3><p>Geçiş önceliğine sahipsiniz. Kalın ok sizin yolunuzu, çarpı işaretleri ise yan yolları gösterir. Hem sağda hem solda yan yol bulunmaktadır. <strong>B-3, B-4 ve B-5 yalnızca yaklaştığınız kavşak için geçerlidir.</strong></p></div>
         </div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_6386b91bf4af48eba2b76f5598bde178~mv2.png" alt="B-4"/><div class="sr-code">B-4</div></div>
-            <div class="sign-row-body"><h3>Priority Intersection — Side Road on the Left</h3><p>One side road on the left. You must be given priority by the crossing drivers from that side road.</p></div>
+            <div class="sign-row-body"><h3>Öncelikli Kavşak — Solda Yan Yol</h3><p>Solda bir yan yol bulunmaktadır. O yan yoldan gelen sürücülerin size yol vermesi zorunludur.</p></div>
         </div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_964195d9ac754a918b0dc4f4599a29a9~mv2.png" alt="B-5"/><div class="sr-code">B-5</div></div>
-            <div class="sign-row-body"><h3>Priority Intersection — Side Road on the Right</h3><p>One side road on the right. You must be given priority by the crossing drivers from that side road.</p></div>
+            <div class="sign-row-body"><h3>Öncelikli Kavşak — Sağda Yan Yol</h3><p>Sağda bir yan yol bulunmaktadır. O yan yoldan gelen sürücülerin size yol vermesi zorunludur.</p></div>
         </div>
-        <div class="sign-group-label">🔴 Giving right of way</div>
+        <div class="sign-group-label">🔴 Yol verme yükümlülüğü</div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_4b2a0103cec54e10a8de7f43100c00bf~mv2.png" alt="B-6"/><div class="sr-code">B-6</div></div>
-            <div class="sign-row-body"><h3>Give Way</h3><p>You must give priority to drivers on the intersecting road. <strong>Stopping is not mandatory</strong> — as long as you can give priority to the crossing drivers. Always combined with priority triangles (shark's teeth).</p></div>
+            <div class="sign-row-body"><h3>Yol Ver</h3><p>Kesişen yoldaki sürücülere yol vermek zorundasınız. Kesişen yoldaki sürücülere yol verebildiğiniz sürece <strong>durmak zorunlu değildir</strong>. Her zaman öncelik üçgenleriyle (köpekbalığı dişleri) birlikte kullanılır.</p></div>
         </div>
         <div class="sign-row">
             <div class="sign-row-img"><img src="https://static.wixstatic.com/media/4b688f_31408e28c07947ec9589ca27a9d12799~mv2.png" alt="B-7"/><div class="sr-code">B-7</div></div>
-            <div class="sign-row-body"><h3>Stop — Give Way</h3><p>You must give priority to drivers on the intersecting road. <strong>Stopping is always mandatory</strong> — even if you have seen there are no drivers on the intersecting road. Applied at intersections with poor visibility or high accident risk. Always combined with a stop line.</p></div>
+            <div class="sign-row-body"><h3>Dur — Yol Ver</h3><p>Kesişen yoldaki sürücülere yol vermek zorundasınız. Kesişen yolda hiçbir sürücünün bulunmadığını görmüş olsanız dahi <strong>durmak her zaman zorunludur</strong>. Görüş mesafesinin kısıtlı olduğu veya kaza riskinin yüksek olduğu kavşaklarda uygulanır. Her zaman bir dur çizgisiyle birlikte kullanılır.</p></div>
         </div>
     </div>
 
     <div class="compare-cards">
         <div class="cmp-card blue">
-            <div class="cmp-title">B-6 — Give Way Triangle</div>
-            <p>Stop only if needed. Always comes with <strong>priority triangles</strong> on the road surface.</p>
+            <div class="cmp-title">B-6 — Yol Ver Üçgeni</div>
+            <p>Yalnızca gerektiğinde durun. Her zaman yol yüzeyindeki <strong>öncelik üçgenleriyle</strong> birlikte kullanılır.</p>
         </div>
         <div class="cmp-card red">
-            <div class="cmp-title">B-7 — STOP Sign</div>
-            <p>Always stop — even if the road is clear. Always comes with a <strong>stop line</strong> on the road surface.</p>
+            <div class="cmp-title">B-7 — DUR Tabelası</div>
+            <p>Her zaman durun — yol boş olsa dahi. Her zaman yol yüzeyindeki <strong>dur çizgisiyle</strong> birlikte kullanılır.</p>
         </div>
     </div>
 
     <div class="photo-grid-2">
-        <figure><img src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg" alt="B-6 with priority triangles"/><figcaption>The B-6 sign is always combined with priority triangles.</figcaption></figure>
-        <figure><img src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg" alt="B-7 with stop line"/><figcaption>The B-7 sign is always combined with a stop line.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_de08047514ba4724b9e48fe57e0f1fbd~mv2.jpg" alt="B-6 öncelik üçgenleriyle"/><figcaption>B-6 tabelası her zaman öncelik üçgenleriyle birlikte kullanılır.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_0ef3c94ae76242adbfc727da4c6c4f2a~mv2.jpg" alt="B-7 dur çizgisiyle"/><figcaption>B-7 tabelası her zaman dur çizgisiyle birlikte kullanılır.</figcaption></figure>
     </div>
 
-    <p>These signs and markings are also <strong>only intended for drivers</strong>. Pedestrians are not subject to these priority rules.</p>
+    <p>Bu işaret ve çizgiler de <strong>yalnızca sürücüler için geçerlidir</strong>. Yayalar bu öncelik kurallarına tabi değildir.</p>
 
-    <!-- ── Examples ── -->
-    <h2>Examples</h2>
+    <!-- ── Örnekler ── -->
+    <h2>Örnekler</h2>
 
     <div class="scenario-list">
         <div class="scenario-card">
-            <img src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg" alt="Scenario 1"/>
-            <div class="sc-body"><div class="sc-num">Scenario 1 — B-6 + Priority Triangles</div><p class="sc-text">When approaching sign B-6 and priority triangles, give priority to drivers on the intersecting road. Here, a horse-drawn vehicle comes from the left on the intersecting road. The lesson car must give right of way to this driver.</p></div>
+            <img src="https://static.wixstatic.com/media/4b688f_501fd7e8f0ba403896825946960c2f41~mv2.jpg" alt="Senaryo 1"/>
+            <div class="sc-body"><div class="sc-num">Senaryo 1 — B-6 + Öncelik Üçgenleri</div><p class="sc-text">B-6 tabelası ve öncelik üçgenlerine yaklaşırken, kesişen yoldaki sürücülere yol verin. Burada soldan gelen bir atlı araba kesişen yoldan ilerlemektedir. Eğitim aracı bu sürücüye yol vermek zorundadır.</p></div>
         </div>
         <div class="scenario-card">
-            <img src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg" alt="Scenario 2"/>
-            <div class="sc-body"><div class="sc-num">Scenario 2 — Pedestrian at Priority Triangles</div><p class="sc-text">The lesson car is approaching priority triangles. The pedestrian on the intersecting road must wait for the lesson car — the lesson car only has to give priority to <strong>drivers</strong>, not pedestrians.</p></div>
+            <img src="https://static.wixstatic.com/media/4b688f_0244646732ae4d7b90ca0921ea34b9bb~mv2.jpg" alt="Senaryo 2"/>
+            <div class="sc-body"><div class="sc-num">Senaryo 2 — Öncelik Üçgenlerinde Yaya</div><p class="sc-text">Eğitim aracı öncelik üçgenlerine yaklaşmaktadır. Kesişen yoldaki yaya, eğitim aracını beklemek zorundadır; zira eğitim aracı yalnızca <strong>sürücülere</strong> yol vermekle yükümlüdür, yayalara değil.</p></div>
         </div>
         <div class="scenario-card">
-            <img src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg" alt="Scenario 3"/>
-            <div class="sc-body"><div class="sc-num">Scenario 3 — B-7 Stop Sign + Pedestrian</div><p class="sc-text">The pedestrian must wait for the lesson car. Due to the B-7 stop sign, the lesson car must stop — but can immediately drive away if no drivers come from left or right. A pedestrian is not a driver.</p></div>
+            <img src="https://static.wixstatic.com/media/4b688f_efab77e7bf454e0db4590522eaac4148~mv2.jpg" alt="Senaryo 3"/>
+            <div class="sc-body"><div class="sc-num">Senaryo 3 — B-7 Dur Tabelası + Yaya</div><p class="sc-text">Yaya, eğitim aracını beklemek zorundadır. B-7 dur tabelası nedeniyle eğitim aracı durmak zorundadır; ancak soldan veya sağdan hiçbir sürücü gelmiyorsa hemen hareket edebilir. Yaya, sürücü sayılmaz.</p></div>
         </div>
         <div class="scenario-card">
-            <img src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg" alt="Scenario 4"/>
-            <div class="sc-body"><div class="sc-num">Scenario 4 — Tram at Regulated Intersection</div><p class="sc-text">Tram drivers always have priority at an equivalent intersection. However, as soon as signs and road markings regulate the priority, the tram driver must follow these. Here, the tram driver must wait for the lesson car.</p></div>
+            <img src="https://static.wixstatic.com/media/4b688f_d0775d655cb8437d9d3e6d37d82e3eeb~mv2.jpg" alt="Senaryo 4"/>
+            <div class="sc-body"><div class="sc-num">Senaryo 4 — Düzenlenmiş Kavşakta Tramvay</div><p class="sc-text">Tramvay sürücüleri, eşdeğer kavşaklarda her zaman önceliğe sahiptir. Ancak işaret ve yol çizgileri önceliği düzenler düzenlemez tramvay sürücüsü de bu kurallara uymak zorundadır. Bu senaryoda tramvay sürücüsü eğitim aracını beklemek durumundadır.</p></div>
         </div>
     </div>
 
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Back to overview</a>
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
 </div>
 
 <script>
@@ -459,28 +459,28 @@ function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(d
 function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
 
 const ALL_Q=[
-    {t:'Key Concepts',q:'What is the difference between "road users" and "drivers"?',o:['Road users are only drivers; pedestrians are excluded','Road users include all traffic (including pedestrians); drivers are all traffic without pedestrians','Drivers include pedestrians; road users do not','There is no difference — the terms are interchangeable'],a:1,e:'Road users = all traffic including pedestrians. Drivers = all traffic without pedestrians. This distinction matters for priority rules.'},
-    {t:'Key Concepts',q:'What is an intersecting road?',o:['Always a road that meets yours at exactly 90 degrees','A road that crosses the road you are on — not necessarily at 90 degrees','A road that is parallel to yours','Only the road to the right of your direction of travel'],a:1,e:'An intersecting road crosses the road you are on. This does not have to be perpendicular — it can also be oblique, such as at a Y-junction.'},
-    {t:'Key Concepts',q:'You are driving on a roundabout. Is the cyclist ahead of you on the same road or the intersecting road?',o:['Intersecting road — they are going a different direction','Same road — all traffic following the roundabout is on the same road','It depends on which exit they are taking','It depends on whether there is a cycle lane'],a:1,e:'On a roundabout, the circular stretch of road counts as "the same road". All traffic following the roundabout is therefore on the same road.'},
-    {t:'Key Concepts',q:'What does "giving way" mean?',o:['Stopping completely and waiting for all traffic to pass','Allowing the drivers involved to proceed without hindrance — the driver with priority must feel they have priority','Sounding your horn to signal you are giving way','Turning on your hazard lights when yielding'],a:1,e:'Giving way means allowing the drivers involved to proceed without hindrance. The driver who has priority must also have the idea that he has priority and must be able to drive unhindered.'},
-    {t:'Equivalent Roads',q:'At an intersection with no signs, markings, or traffic lights, who has priority?',o:['The driver who arrived first','Drivers give right of way to drivers from the right','Drivers give right of way to drivers from the left','The driver on the wider road'],a:1,e:'On equivalent roads (no signs, markings, or traffic lights), drivers give right of way to drivers from the right.'},
-    {t:'Equivalent Roads',q:'A pedestrian approaches from your right on an equivalent intersection. Must you give them priority?',o:['Yes — all road users from the right have priority','No — pedestrians are not classed as drivers; the right-of-way rule only applies between drivers','Yes, but only if they are on a zebra crossing','Only if they are already crossing'],a:1,e:'You do not have to give a pedestrian priority, because they are not classed as drivers. The right-of-way rule on equivalent roads applies only to drivers.'},
-    {t:'Exceptions',q:'At an equivalent intersection, a tram approaches from your left. What applies?',o:['You have priority — the tram comes from the left','The tram has priority — drivers always give priority to tram drivers','Neither — trams are exempt from priority rules','Only if there are tracks on the road'],a:1,e:'Drivers give priority to tram drivers — this is an exception to the right-from-right rule. The tram always has priority at equivalent intersections, regardless of direction.'},
-    {t:'Exceptions',q:'You are on an unpaved road and approach an intersection with a paved road. What must you do?',o:['Apply the right-from-right rule as normal','Give right of way to drivers from both left and right on the paved road','Take priority because you arrived first','Only yield to drivers from your left'],a:1,e:'Drivers on unpaved roads give right of way to drivers from the left and right on a paved road — regardless of direction.'},
-    {t:'Exceptions',q:'There are signs regulating priority at an intersection. A tram approaches — does it automatically have priority?',o:['Yes — trams always have absolute priority','No — once signs regulate priority, the tram driver must follow those signs too','Yes, but only outside built-up areas','Only if it is a designated tram priority zone'],a:1,e:'Trams always have priority at equivalent intersections. But as soon as signs and markings regulate priority, the tram driver must follow those rules as well.'},
-    {t:'Priority Triangles',q:'What are priority triangles (shark\'s teeth)?',o:['Red triangles warning of a sharp corner ahead','White triangles on the road meaning you must give right of way to drivers on the intersecting road','Yellow diamonds indicating you have priority','Blue triangles indicating a tram lane'],a:1,e:'Priority triangles (shark\'s teeth) are white triangles on the road. They mean you must give right of way to drivers on the intersecting road — whether used with B-6 or without it.'},
-    {t:'Priority Signs',q:'What does the B-1 sign indicate?',o:['You must give way to drivers on the intersecting road','You are on a priority road — crossing drivers must give you priority','The end of a priority road','A priority intersection ahead'],a:1,e:'The B-1 sign indicates you are on a priority road. You must be given priority by crossing drivers. It is repeated before each intersection inside built-up areas, and after each intersection outside.'},
-    {t:'Priority Signs',q:'What does the B-2 sign indicate?',o:['Start of a priority road','Priority intersection ahead','End of the priority road — normal priority rules apply after this sign','You must stop and give way'],a:2,e:'The B-2 sign indicates the end of the priority road. After this sign, normal priority rules apply.'},
-    {t:'Priority Signs',q:'What does the thick arrow on sign B-3 represent?',o:['The direction with the most traffic','The road you are driving on','The direction you must take','The intersecting road with priority'],a:1,e:'On B-3 (and B-4, B-5), the thick arrow indicates the road you are driving on. The cross marks indicate side roads.'},
-    {t:'Priority Signs',q:'To how many intersections do signs B-3, B-4, and B-5 apply?',o:['All intersections along the road','Until the next B-2 sign','Only to the specific intersection you are approaching','To the next three intersections'],a:2,e:'Signs B-3, B-4, and B-5 only apply to the intersection you are approaching — not to any further intersections.'},
-    {t:'Priority Signs',q:'What does the B-4 sign indicate?',o:['Side road on the right — you must give way','Side road on the left — you must be given priority from that side road','Side roads on both sides — you have priority','Stop and give way to all traffic'],a:1,e:'The B-4 sign indicates a priority intersection with one side road on the left. You must be given priority by crossing drivers from that side road.'},
-    {t:'Priority Signs',q:'What does the B-6 sign require?',o:['Stop completely and wait','Give priority to drivers on the intersecting road — stopping is not mandatory as long as you can give priority','Give priority only to drivers from the right','Flash your headlights before proceeding'],a:1,e:'B-6 requires you to give priority to drivers on the intersecting road. Stopping is not mandatory, as long as you are able to give priority to the crossing drivers.'},
-    {t:'Priority Signs',q:'What does the B-7 (STOP) sign require compared to B-6?',o:['Both require a full stop','B-7 requires a full stop always; B-6 requires stopping only if needed','B-6 requires a full stop always; B-7 only if needed','Neither requires a stop if the road is clear'],a:1,e:'At B-7, stopping is always mandatory — even if you can see there are no drivers on the intersecting road. At B-6, stopping is not mandatory as long as you can give priority.'},
-    {t:'Priority Signs',q:'B-6 is always combined with which road marking?',o:['A stop line','Priority triangles (shark\'s teeth)','A broken white line','A solid yellow line'],a:1,e:'Sign B-6 is always combined with priority triangles (shark\'s teeth) on the road surface.'},
-    {t:'Priority Signs',q:'B-7 is always combined with which road marking?',o:['Priority triangles (shark\'s teeth)','A broken centre line','A stop line','A yellow cross marking'],a:2,e:'Sign B-7 (STOP) is always combined with a stop line on the road surface.'},
-    {t:'Priority Signs',q:'Where are B-7 signs typically applied?',o:['On all priority roads','At intersections with poor visibility or a high accident risk','On motorway slip roads only','At pedestrian crossings'],a:1,e:'B-7 signs are applied at intersections where there is poor visibility or a high accident risk — hence the mandatory stop requirement.'},
-    {t:'Examples',q:'You approach B-6 triangles. A horse-drawn cart comes from the left on the intersecting road. What do you do?',o:['Proceed — the cart comes from the left','Give way — a horse-drawn cart is a driver on the intersecting road','Sound your horn and proceed','The cart is not a driver; proceed without giving way'],a:1,e:'A horse-drawn vehicle is a driver. At B-6 priority triangles you must give priority to all drivers on the intersecting road — regardless of which side they come from.'},
-    {t:'Examples',q:'You approach B-6 priority triangles. A pedestrian is waiting on the intersecting road. What do you do?',o:['Stop and wait for the pedestrian to cross','Proceed — priority signs only apply between drivers, and pedestrians are not drivers','Sound your horn to warn them','Give way only if they have started crossing'],a:1,e:'Priority signs and markings are only intended for drivers. Pedestrians are not subject to these priority rules — you only need to give way to drivers at B-6 triangles.'},
+    {t:'Temel Kavramlar',q:'"Yol kullanıcıları" ile "sürücüler" arasındaki fark nedir?',o:['Yol kullanıcıları yalnızca sürücülerdir; yayalar kapsam dışıdır','Yol kullanıcıları yayalar dahil tüm trafiği kapsar; sürücüler ise yayalar hariç tüm trafiği kapsar','Sürücüler yayaları kapsar; yol kullanıcıları kapsamaz','Hiçbir fark yoktur — terimler birbirinin yerine kullanılabilir'],a:1,e:'Yol kullanıcıları = yayalar dahil tüm trafik. Sürücüler = yayalar hariç tüm trafik. Bu ayrım, öncelik kuralları açısından büyük önem taşır.'},
+    {t:'Temel Kavramlar',q:'Kesişen yol nedir?',o:['Her zaman sizin yolunuzla tam 90 derecede kesişen bir yol','Üzerinde bulunduğunuz yolu kesen yol — bu kesişme 90 derecede olmak zorunda değildir','Size paralel olan yol','Yalnızca sağınızdaki yol'],a:1,e:'Kesişen yol, üzerinde bulunduğunuz yolu kesen yoldur. Bu kesişme dik açıda olmak zorunda değildir; Y kavşağında olduğu gibi eğik açılı da olabilir.'},
+    {t:'Temel Kavramlar',q:'Döner kavşakta ilerliyorsunuz. Önünüzdeki bisikletli aynı yolda mı yoksa kesişen yolda mı?',o:['Kesişen yolda — farklı bir yöne gidiyorlar','Aynı yolda — döner yolu izleyen tüm trafik aynı yol üzerindedir','Hangi çıkışı kullandıklarına bağlıdır','Bisiklet şeridi olup olmadığına bağlıdır'],a:1,e:'Döner kavşakta dairesel şerit "aynı yol" sayılır. Döner yolu izleyen tüm trafik dolayısıyla aynı yol üzerindedir.'},
+    {t:'Temel Kavramlar',q:'"Yol verme" ne anlama gelir?',o:['Tam olarak durup tüm trafiğin geçmesini beklemek','İlgili sürücülerin engelsiz geçmesine izin vermek — öncelik hakkına sahip sürücünün bu hakkı hissedebilmesi gerekir','Yol verdiğinizi belirtmek için kornaya basmak','Yol verirken dörtlü flaşörü yakmak'],a:1,e:'Yol vermek, ilgili sürücülerin engelsiz biçimde geçmesine izin vermek demektir. Öncelik hakkına sahip sürücünün de bu hakkı hissedebilmesi ve engelsiz ilerleyebilmesi gerekir.'},
+    {t:'Eşdeğer Yollar',q:'İşaret, çizgi veya trafik ışığı bulunmayan bir kavşakta kimin önceliği vardır?',o:['İlk gelen sürücünün','Sürücüler, sağdan gelen sürücülere yol vermek zorundadır','Sürücüler, soldan gelen sürücülere yol vermek zorundadır','Daha geniş yoldaki sürücünün'],a:1,e:'Eşdeğer yollarda (işaret, çizgi veya trafik ışığı bulunmayan yollarda) sürücüler, sağdan gelen sürücülere yol vermek zorundadır.'},
+    {t:'Eşdeğer Yollar',q:'Eşdeğer bir kavşakta sağınızdan bir yaya yaklaşıyor. Ona yol vermek zorunda mısınız?',o:['Evet — sağdan gelen tüm yol kullanıcılarının önceliği vardır','Hayır — yayalar sürücü sayılmaz; geçiş önceliği kuralı yalnızca sürücüler arasında geçerlidir','Evet, ancak yalnızca yaya geçidindeyse','Yalnızca yaya geçmeye başlamışsa'],a:1,e:'Yayalara yol vermek zorunlu değildir; zira yayalar sürücü sayılmaz. Eşdeğer yollardaki geçiş önceliği kuralı yalnızca sürücüler arasında geçerlidir.'},
+    {t:'İstisnalar',q:'Eşdeğer bir kavşakta solunuzdan bir tramvay geliyor. Ne yapmanız gerekir?',o:['Öncelik sizdedir — tramvay soldan geliyor','Tramvayın önceliği vardır — sürücüler her zaman tramvay sürücülerine yol vermek zorundadır','Her ikisi de geçerli değil — tramvaylar öncelik kurallarından muaftır','Yalnızca yolda ray varsa geçerlidir'],a:1,e:'Sürücüler, tramvay sürücülerine yol vermek zorundadır — bu, sağdan öncelik kuralının bir istisnasıdır. Tramvay, eşdeğer kavşaklarda geldiği yönden bağımsız olarak her zaman önceliğe sahiptir.'},
+    {t:'İstisnalar',q:'Stabilize (asfaltlanmamış) bir yoldan gelip asfaltlı bir yolla kesişen kavşağa yaklaşıyorsunuz. Ne yapmanız gerekir?',o:['Olağan sağdan öncelik kuralını uygulayın','Asfaltlı yoldaki sürücülere hem soldan hem sağdan geldiğine bakılmaksızın yol verin','İlk geldiğiniz için öncelik alırsınız','Yalnızca soldan gelen sürücülere yol verin'],a:1,e:'Stabilize yoldaki sürücüler, asfaltlı yoldaki sürücülere geldiği yönden bağımsız olarak yol vermek zorundadır.'},
+    {t:'İstisnalar',q:'Bir kavşakta önceliği işaretler düzenliyor. Tramvay yaklaşıyor — tramvayın otomatik olarak önceliği var mı?',o:['Evet — tramvayların her zaman mutlak önceliği vardır','Hayır — işaretler önceliği düzenler düzenlemez tramvay sürücüsü de bu kurallara uymak zorundadır','Evet, ancak yalnızca yerleşim alanları dışında','Yalnızca özel tramvay önceliği bölgesindeyse'],a:1,e:'Tramvaylar eşdeğer kavşaklarda her zaman önceliğe sahiptir. Ancak işaret ve çizgiler önceliği düzenler düzenlemez tramvay sürücüsü de bu kurallara uymak zorundadır.'},
+    {t:'Öncelik Üçgenleri',q:'Öncelik üçgenleri (köpekbalığı dişleri) nedir?',o:['İleride keskin dönüş olduğunu uyaran kırmızı üçgenler','Yol yüzeyindeki beyaz üçgenler; kesişen yoldaki sürücülere yol vermeniz gerektiği anlamına gelir','Önceliğiniz olduğunu gösteren sarı elmas şekiller','Tramvay şeridini belirten mavi üçgenler'],a:1,e:'Öncelik üçgenleri (köpekbalığı dişleri), yol yüzeyine çizilmiş beyaz üçgenlerdir. B-6 tabelasıyla birlikte ya da tabelasız kullanılsın, her iki durumda da kesişen yoldaki sürücülere yol vermeniz gerektiği anlamına gelir.'},
+    {t:'Öncelik İşaretleri',q:'B-1 işareti neyi belirtir?',o:['Kesişen yoldaki sürücülere yol vermeniz gerektiğini','Öncelikli yol üzerindesiniz — kesişen sürücüler size yol vermek zorundadır','Öncelikli yolun sona erdiğini','İleride öncelikli kavşak olduğunu'],a:1,e:'B-1 işareti, öncelikli yol üzerinde olduğunuzu belirtir. Kesişen sürücüler size yol vermek zorundadır. Yerleşim alanları içinde her kavşak öncesinde, yerleşim alanları dışında ise her kavşak sonrasında tekrarlanır.'},
+    {t:'Öncelik İşaretleri',q:'B-2 işareti neyi belirtir?',o:['Öncelikli yolun başladığını','İleride öncelikli kavşak olduğunu','Öncelikli yolun sona erdiğini — bu işaretin ardından olağan öncelik kuralları geçerli olur','Durup yol vermeniz gerektiğini'],a:2,e:'B-2 işareti, öncelikli yolun sona erdiğini bildirir. Bu işaretin ardından olağan öncelik kuralları yeniden geçerli olur.'},
+    {t:'Öncelik İşaretleri',q:'B-3 işaretindeki kalın ok neyi temsil eder?',o:['En fazla trafiğin geldiği yönü','Sürüş yaptığınız yolu','Gitmeniz gereken yönü','Önceliği olan kesişen yolu'],a:1,e:'B-3 (ve B-4, B-5) işaretlerinde kalın ok, sürüş yaptığınız yolu gösterir. Çarpı işaretleri ise yan yolları belirtir.'},
+    {t:'Öncelik İşaretleri',q:'B-3, B-4 ve B-5 işaretleri kaç kavşak için geçerlidir?',o:['Yol boyunca tüm kavşaklar için','Bir sonraki B-2 işaretine kadar','Yalnızca yaklaştığınız kavşak için','Sonraki üç kavşak için'],a:2,e:'B-3, B-4 ve B-5 işaretleri yalnızca yaklaştığınız kavşak için geçerlidir; ilerleyen kavşaklar için geçerli değildir.'},
+    {t:'Öncelik İşaretleri',q:'B-4 işareti neyi belirtir?',o:['Sağda yan yol — yol vermeniz gerekiyor','Solda yan yol — o yan yoldan gelen sürücüler size yol vermek zorundadır','Her iki yanda da yan yol — sizin önceliğiniz var','Durun ve tüm trafiğe yol verin'],a:1,e:'B-4 işareti, solda bir yan yol bulunan öncelikli kavşağı bildirir. O yan yoldan gelen sürücülerin size yol vermesi zorunludur.'},
+    {t:'Öncelik İşaretleri',q:'B-6 işareti ne gerektirir?',o:['Tam olarak durup bekleyin','Kesişen yoldaki sürücülere yol verin — yol verebildiğiniz sürece durmak zorunlu değildir','Yalnızca sağdan gelen sürücülere yol verin','Geçmeden önce farlarınızı yakıp söndürün'],a:1,e:'B-6, kesişen yoldaki sürücülere yol vermenizi zorunlu kılar. Kesişen sürücülere yol verebildiğiniz sürece durmak zorunlu değildir.'},
+    {t:'Öncelik İşaretleri',q:'B-7 (DUR) işareti, B-6\'ya kıyasla ne gerektirir?',o:['Her ikisi de tam durma gerektirir','B-7 her zaman tam durma gerektirir; B-6 yalnızca gerektiğinde durma gerektirir','B-6 her zaman tam durma gerektirir; B-7 yalnızca gerektiğinde','Yol açıksa ikisi de durma gerektirmez'],a:1,e:'B-7\'de durma her zaman zorunludur — kesişen yolda hiçbir sürücünün bulunmadığını görmüş olsanız dahi. B-6\'da ise yol verebildiğiniz sürece durma zorunlu değildir.'},
+    {t:'Öncelik İşaretleri',q:'B-6 her zaman hangi yol çizgisiyle birlikte kullanılır?',o:['Dur çizgisi','Öncelik üçgenleri (köpekbalığı dişleri)','Kesik beyaz çizgi','Düz sarı çizgi'],a:1,e:'B-6 tabelası her zaman yol yüzeyindeki öncelik üçgenleriyle (köpekbalığı dişleri) birlikte kullanılır.'},
+    {t:'Öncelik İşaretleri',q:'B-7 her zaman hangi yol çizgisiyle birlikte kullanılır?',o:['Öncelik üçgenleri (köpekbalığı dişleri)','Kesik orta çizgi','Dur çizgisi','Sarı çarpı işareti'],a:2,e:'B-7 (DUR) tabelası her zaman yol yüzeyindeki dur çizgisiyle birlikte kullanılır.'},
+    {t:'Öncelik İşaretleri',q:'B-7 işaretleri tipik olarak nerede uygulanır?',o:['Tüm öncelikli yollarda','Görüş mesafesinin kısıtlı veya kaza riskinin yüksek olduğu kavşaklarda','Yalnızca otoyol bağlantı yollarında','Yaya geçitlerinde'],a:1,e:'B-7 işaretleri, görüş mesafesinin kısıtlı ya da kaza riskinin yüksek olduğu kavşaklara uygulanır; bu nedenle zorunlu durma şartı getirilmiştir.'},
+    {t:'Örnekler',q:'B-6 öncelik üçgenlerine yaklaşıyorsunuz. Kesişen yoldan soldan gelen bir atlı araba var. Ne yaparsınız?',o:['Geçin — araba soldan geliyor','Yol verin — atlı araba, kesişen yoldaki bir sürücüdür','Kornaya basın ve geçin','Araba sürücü sayılmaz; yol vermeden geçin'],a:1,e:'Atlı araç, sürücü sayılır. B-6 öncelik üçgenlerinde geldiği yönden bağımsız olarak kesişen yoldaki tüm sürücülere yol vermeniz gerekir.'},
+    {t:'Örnekler',q:'B-6 öncelik üçgenlerine yaklaşıyorsunuz. Kesişen yolda bir yaya bekliyor. Ne yaparsınız?',o:['Durun ve yayanın geçmesini bekleyin','Geçin — öncelik işaretleri yalnızca sürücüler arasında geçerlidir; yayalar sürücü sayılmaz','Uyarmak için kornaya basın','Yalnızca yaya geçmeye başlamışsa yol verin'],a:1,e:'Öncelik işaret ve çizgileri yalnızca sürücüler için geçerlidir. Yayalar bu öncelik kurallarına tabi değildir — B-6 öncelik üçgenlerinde yalnızca sürücülere yol vermeniz yeterlidir.'},
 ];
 const QS=22;
 let qQ=[],qI=0,sc=0,ans=[];
@@ -488,14 +488,14 @@ const ov=document.getElementById('quiz-overlay');const fq=document.getElementByI
 fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
 qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
 ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
-function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Questions'}
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
 document.getElementById('quiz-start-btn').addEventListener('click',startQ);
 function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
 function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
-function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Question ${qI+1} of ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Next Question →':'See Results'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
-function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Correct!':'❌ Incorrect — correct answer: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
-function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Complete!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Excellent! 🏆';sub='You have mastered intersection priority rules!'}else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review what you missed to be fully prepared.'}else if(pct>=50){msg='Keep practising 📖';sub='Re-read the rules and try again — you\'re getting there.'}else{msg='More study needed 💡';sub='Study the page carefully and retake the quiz!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">out of ${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Correct</div><div class="rb-chip wrong">❌ ${QS-sc} Wrong</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 New Random Quiz</button><button class="btn-secondary" id="btn-review">📋 Review Answers</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Correct: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='Hide Review'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}})}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Gör'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Kavşak önceliği kurallarında ustalaştınız!'}else if(pct>=70){msg='Aferin! 👍';sub='Bilginiz iyi. Eksik kaldığınız konuları gözden geçirerek tam hazırlık yapın.'}else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Kuralları yeniden okuyun ve tekrar deneyin — doğru yoldasınız.'}else{msg='Daha fazla çalışma gerekli 💡';sub='Sayfayı dikkatlice inceleyin ve testi yeniden yapın!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">${QS} üzerinden</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Yeni Rastgele Test</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Kapat'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
 applyAll();
 })();
 document.addEventListener('contextmenu',e=>e.preventDefault());
