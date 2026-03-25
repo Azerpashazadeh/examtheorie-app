@@ -1,601 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Yol İşaretleme ve Bilgilendirme – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-        h1,
-        h2 {
-            color: #972B90;
-        }
-
-
-
-        .gh3 {
-            color: #972B90;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-
-
-            min-height: 125px;
-
-
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Resmin konumlandırılmasını sağlayacak */
-            overflow: hidden;
-            /* İçerik taşmasını önler */
-        }
-
-        .important-words1 p {
-            margin-right: 175px;
-            /* Resmin genişliğine göre sağdan boşluk bırakır */
-        }
-
-        .important-words1 .side-image {
-            position: absolute;
-            right: 10px;
-            /* Sağdan 20px mesafe */
-            top: 50%;
-            /* Dikeyde ortalama için */
-            transform: translateY(-50%);
-            /* Gerçek dikey ortalama */
-            max-height: auto;
-            /* Resmin divi taşmasını önlemek için */
-            width: 170px;
-            /* Resim genişliği (isteğe göre ayarlanabilir) */
-            height: auto;
-            /* Oranları korumak için */
-        }
-
-
-        .important-words10 {
-
-            min-height: 125px;
-            padding: 0px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Resmin konumlandırılmasını sağlayacak */
-            overflow: hidden;
-            /* İçerik taşmasını önler */
-        }
-
-        .important-words10 p {
-            margin-right: 100px;
-            /* Resmin genişliğine göre sağdan boşluk bırakır */
-        }
-
-        .important-words10 .side-image {
-            position: absolute;
-            right: 10px;
-            /* Sağdan 20px mesafe */
-            top: 50%;
-            /* Dikeyde ortalama için */
-            transform: translateY(-50%);
-            /* Gerçek dikey ortalama */
-            max-height: auto;
-            /* Resmin divi taşması önlemek için */
-            width: 68px;
-            /* Resim genişliği (isteğe göre ayarlanabilir) */
-            height: auto;
-            /* Oranları korumak için */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattın pozisyonunu ayarlamak için */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 65px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-        .important-words6 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #D9C0DD;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 600px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-        .images-container7 {
-            display: grid;
-            gap: 20px;
-            /* Resimler arasındaki boşluk */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        /* Tarayıcı genişliği 1024px'den büyükse 4 sütun 3 satır */
-        @media (min-width: 1025px) {
-            .images-container7 {
-                grid-template-columns: repeat(5, 1fr);
-                grid-auto-rows: auto;
-            }
-        }
-
-        /* Tarayıcı genişliği 1024px veya daha küçükse 3 sütun 4 satır */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .images-container7 {
-                grid-template-columns: repeat(4, 1fr);
-                grid-auto-rows: auto;
-            }
-        }
-
-        /* Tarayıcı genişliği 768px veya daha küçükse 2 sütun 6 satır */
-        @media (max-width: 768px) and (min-width: 481px) {
-            .images-container7 {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: auto;
-            }
-        }
-
-        /* Tarayıcı genişliği 480px veya daha küçükse tek sütun 12 satır */
-        @media (max-width: 480px) {
-            .images-container7 {
-                grid-template-columns: 1fr;
-                grid-auto-rows: auto;
-            }
-        }
-
-        .images-container7 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-        }
-
-        .images-container7 img {
-            width: 70%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container7 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #972B90;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #972B90;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-        /* Genel tablo stilleri */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-            word-break: break-all;
-            /* Kelimeleri harflere ayırır */
-        }
-
-        /* Başlık hücrelerine stil */
-        th {
-            background-color: #d3b5d8;
-            font-weight: bold;
-        }
-
-        /* Responsive ayar: Küçük ekranlarda tablo küçülsün */
-        @media (max-width: 768px) {
-
-            th,
-            td {
-                padding: 5px;
-                font-size: 12px;
-                /* Küçük ekranlarda yazı küçülsün */
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            th,
-            td {
-                font-size: 10px;
-                /* Daha da küçük ekranlar için yazı boyutu */
-            }
-        }
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    p strong{color:var(--text-primary)}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* info card with side image */
+    .side-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 20px;backdrop-filter:blur(12px);display:flex;align-items:flex-start;gap:16px}
+    .side-card img{height:80px;width:auto;object-fit:contain;flex-shrink:0}
+    .side-card p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0;line-height:1.55}
+    .side-card p strong{color:var(--text-primary)}
+
+    /* hecto image standalone */
+    .center-img{display:flex;justify-content:flex-start;margin:12px 0 20px}
+    .center-img img{height:90px;width:auto;object-fit:contain}
+
+    /* sign grid 3-col */
+    .sign-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 22px}
+    @media(max-width:560px){.sign-grid-3{grid-template-columns:repeat(2,1fr)}}
+    .sg-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 10px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .sg-card img{max-height:80px;max-width:100%;object-fit:contain}
+    .sg-card .sgc-code{font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:800;color:var(--accent-light);letter-spacing:.05em}
+    .sg-card .sgc-label{font-family:'Lora',serif;font-size:.75rem;color:var(--text-muted);line-height:1.3}
+
+    /* level crossing diagram */
+    .lc-diagram{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 22px;backdrop-filter:blur(12px);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .lc-diagram img{height:100px;width:auto;object-fit:contain;flex-shrink:0}
+    .lc-diagram .lcd-text p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0 0 6px;line-height:1.5}
+    .lc-diagram .lcd-text p strong{color:var(--text-primary)}
+
+    /* reflector card */
+    .reflector-card{background:rgba(10,20,50,.6);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 22px;backdrop-filter:blur(12px);display:flex;align-items:center;gap:16px}
+    .reflector-card img{height:80px;width:auto;object-fit:contain;flex-shrink:0}
+    .reflector-card .rc-body p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0 0 5px;line-height:1.5}
+    .reflector-card .rc-body p strong{color:var(--text-primary)}
+    .r-red{color:#ff6b6b!important;font-weight:700}
+    .r-white{color:#e8f0ff!important;font-weight:700}
+
+    /* bw signage grid */
+    .bw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 10px}
+    @media(max-width:500px){.bw-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* yellow temp signs */
+    .yellow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 18px}
+    @media(max-width:500px){.yellow-grid{grid-template-columns:repeat(2,1fr)}}
+    .yg-card{background:rgba(245,200,10,.06);border:1px solid rgba(245,200,10,.18);border-radius:12px;padding:12px 10px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .yg-card img{max-height:74px;max-width:100%;object-fit:contain}
+    .yg-card .ygc-code{font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:800;color:#ffd166;letter-spacing:.05em}
+    .yg-card .ygc-label{font-family:'Lora',serif;font-size:.73rem;color:rgba(255,220,120,.85);line-height:1.3}
+
+    /* callout */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+
+    /* DRIP images */
+    .drip-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 18px}
+    @media(max-width:500px){.drip-row{grid-template-columns:1fr}}
+    .drip-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:10px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .drip-card img{max-height:100px;max-width:100%;object-fit:contain}
+    .drip-card p{font-family:'Lora',serif;font-size:.73rem;color:var(--text-muted);margin:0;line-height:1.35}
+
+    /* DRIP abbrev table */
+    .abbrev-table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--card-bg);border-radius:12px;overflow:hidden;border:1px solid var(--card-border)}
+    .abbrev-table th,.abbrev-table td{padding:7px 12px;font-family:'Outfit',sans-serif;font-size:.78rem;border-bottom:1px solid rgba(77,166,255,.07);text-align:left}
+    .abbrev-table th{color:var(--text-primary);font-weight:600;background:rgba(26,108,246,.08)}
+    .abbrev-table td{color:var(--accent-light);font-weight:700;letter-spacing:.04em}
+    .abbrev-table tr:last-child th,.abbrev-table tr:last-child td{border-bottom:none}
+
+    /* pictogram grid */
+    .pict-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0 22px}
+    @media(max-width:640px){.pict-grid{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:440px){.pict-grid{grid-template-columns:repeat(3,1fr)}}
+    .pt-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:9px 6px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+    .pt-tile img{height:50px;width:auto;object-fit:contain}
+    .pt-tile .ptt-label{font-family:'Lora',serif;font-size:.68rem;color:var(--text-muted);line-height:1.2}
+
+    /* dot beacon strip */
+    .dot-strip{display:flex;align-items:center;gap:14px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 16px;margin:12px 0 18px;backdrop-filter:blur(12px)}
+    .dot-strip img{height:60px;width:auto;object-fit:contain;flex-shrink:0}
+    .dot-strip p{font-family:'Lora',serif;font-size:.84rem;color:var(--text-muted);margin:0;line-height:1.5}
+    .dot-strip p strong{color:var(--text-primary)}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -606,438 +252,249 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
-    <h1>İşaretleme</h1>
-    <p>
-        İşaretleme, yolun gidişatı hakkında bilgi sağlayan ve özel dikkat göstermeniz gereken noktaları belirten
-        tabelaları içerir.
-    </p>
-    <h2>
-        Hektometre Tabelaları
-    </h2>
-    <p>
-        Hektometre tabelaları otoyollar, anayollar ve daha büyük bölgesel yollar boyunca yer alır. Bunlar, nerede
-        olduğunuzu hızlıca anlamak için tasarlanmıştır. Bu, bir kaza durumunda hayati önem taşıyabilir. Böyle bir
-        durumda, arıza veya acil servis ekiplerine nerede olduğunuzu söyleyebilirsiniz. Hektometre tabelaları her bir
-        hektometrede bir bulunur. Yani her 100 metrede bir tabela vardır. Bu tabelaların her biri, yolun başlangıcından
-        itibaren olan mesafeyi kilometre cinsinden belirten bir numaraya sahiptir. Buna hektometre numarası denir.
-    </p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Test</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk ve Yazı Boyutu Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek Kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan opaklığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Yazı Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart opaklığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık opaklığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🛣️ Yol İşaretleme Testi</div><div class="quiz-badge" id="quiz-badge">10 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🛣️</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Hektometre levhaları, çıkış/şevron levhaları, sert banket, hemzemin geçit işaretleri, yansıtıcı direkler, DRIP ve işaretleme hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 10 soru</div><div class="qs-chip">🔀 Rastgele sıra</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Testi Başlat</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
 
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_024f50b054c141238898af1a66818215~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-            </figure>
+<!-- SAYFA İÇERİĞİ -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Trafik İşaretleri</span><span class="dot">›</span><span style="color:var(--text-primary)">Yol İşaretleme ve Bilgilendirme</span></div>
+    <h1>Yol İşaretleme ve Bilgilendirme</h1>
+    <div class="section-divider"></div>
+    <p>Yol işaretleme, <strong>yolun gidişatı</strong> ve özellikle dikkat edilmesi gereken noktalar hakkında bilgi sağlayan işaretleri kapsar.</p>
+
+    <!-- HECTOMETRE SIGNS -->
+    <h2>📏 Hektometre Levhaları</h2>
+    <p>Hektometre levhaları otoyollar, otoyol (autoweg) ve büyük il yolları boyunca bulunur. Kazalarda veya acil durumlarda yerinizi hızlıca bildirmenizi sağlar. Her <strong>100 metrede</strong> bir konumlandırılmıştır, her levhanın kendine özgü numarası yolun başlangıcından itibaren kilometre cinsinden mesafeyi gösterir.</p>
+    <div class="center-img"><img src="https://static.wixstatic.com/media/4b688f_024f50b054c141238898af1a66818215~mv2.png" alt="Hektometre levhası"/></div>
+    <div class="side-card">
+        <img src="https://static.wixstatic.com/media/4b688f_ea7cc40a89b84e2dab57a1e274ab64ac~mv2.png" alt="Hektometre rampa harfi"/>
+        <p>Sağ alt köşede bir <strong>harf</strong> bulunması, <strong>rampa, hızlanma veya yavaşlama şeridinde</strong> olduğunuzu — otoyol veya otoyol (autoweg) ana taşıt yolunda olmadığınızı — gösterir.</p>
+    </div>
+    <div class="side-card">
+        <img src="https://static.wixstatic.com/media/4b688f_856c521d7ff0408a87f7bacecada31df~mv2.png" alt="Hektometre hız sınırı"/>
+        <p>Otoyol ve otoyol (autoweg) üzerinde hektometre levhasının üst kısmında genellikle <strong>hız sınırı</strong> belirtilir. Ancak yol kenarındaki veya üst geçitlerdeki normal levhalar veya elektronik matris levhalarda farklı bir hız gösteriliyorsa buradaki hız <strong>geçerli değildir</strong>.</p>
+    </div>
+
+    <!-- EXIT + CHEVRON SIGNS -->
+    <h2>🔀 Çıkış Levhaları ve Şevron Levhaları</h2>
+    <p>Yavaşlama şeridi sona ermeden veya yol ayrımından önce rotanıza karar vermelisiniz. Bir yavaşlama şeridinin sonunu bir <strong>"UIT" (çıkış)</strong> levhası belirtir. <strong>Şevron levhası</strong>, eşdeğer akışlı yolların (örneğin iki otoyolun) ayrıldığı bir yol ayrımını (fork) işaretler. Bir yol ayrımı çıkış değildir.</p>
+    <div class="sign-grid-3">
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_98228fe0f87042649e5cc64b9622510c~mv2.png" alt="BB-01"/><div class="sgc-code">BB-01</div><div class="sgc-label">Çıkış levhası — otoyol çıkışı</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_54a67d600d174241aa6a59bd3bccc706~mv2.png" alt="BB-02"/><div class="sgc-code">BB-02</div><div class="sgc-label">Çıkış levhası — otoyol (autoweg) çıkışı</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_322e8af76fc0414ca8c363502f66e586~mv2.png" alt="BB-03"/><div class="sgc-code">BB-03</div><div class="sgc-label">Şevron levhası — eşdeğer akışlı yolların ayrımı (çıkış değil)</div></div>
+    </div>
+
+    <!-- HARD SHOULDER + SHORT ACCELERATION -->
+    <h2>⚠️ Sert Banket ve Kısa Hızlanma Şeritleri</h2>
+    <p>Viyadükler, köprüler ve tüneller altında sert banket daraltılabilir veya tamamen ortadan kalkabilir. <strong>Eğik siyah çizgili</strong> levha bunu belirtir. 200 metreden kısa hızlanma şeritleri ve acil durum cepleri kendi levhalarıyla gösterilir.</p>
+    <div class="sign-grid-3">
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_38f755096a834e41ab9ccf384ec8d428~mv2.png" alt="BB-04"/><div class="sgc-code">BB-04</div><div class="sgc-label">Sert banketin sonu veya daralması</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_2b7cbf09dec44e2c88c8db0fc82f55ea~mv2.png" alt="BB-05"/><div class="sgc-code">BB-05</div><div class="sgc-label">Kısa hızlanma şeridi (200 m’den kısa)</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_99e833e6cc2c40e3b576f19493d949a7~mv2.png" alt="BB-06"/><div class="sgc-code">BB-06</div><div class="sgc-label">Acil durum cebi — sadece acil durumlarda kullanın</div></div>
+    </div>
+
+    <!-- LEVEL CROSSING MARKERS -->
+    <h2>🚂 Hemzemin Geçit ve Köprü İşaretleri</h2>
+    <div class="lc-diagram">
+        <img src="https://static.wixstatic.com/media/4b688f_de401e52d69e47e2b4aa0331b457116d~mv2.png" alt="Hemzemin geçit işaretleri"/>
+        <div class="lcd-text">
+            <p>Eğik kırmızı çizgiler, bir hemzemin geçide veya hareketli köprüye olan mesafeyi gösterir. <strong>Her kırmızı çizgi = 80 metre.</strong></p>
+            <p>3 çizgi = yaklaşık 240 m · 2 çizgi = yaklaşık 160 m · 1 çizgi = yaklaşık 80 m</p>
+            <p>Çizgiler her zaman <strong>taşıt yoluna doğru aşağıyı gösterir</strong>, levhanın hangi taraftan geçileceğini belirtir.</p>
         </div>
     </div>
 
-    <div class="important-words1">
-        <p>
-            Bu bilgilerin yanı sıra, hektometre tabelalarının sağ alt köşesinde bir harf de bulunabilir. Bu,
-            anayol/otoyol ana yolunda değil, bir rampada/hızlanma şeridinde ya da çıkış/yavaşlama şeridinde olduğunuzu
-            belirtir.
-        </p>
-        <img src="https://static.wixstatic.com/media/4b688f_ea7cc40a89b84e2dab57a1e274ab64ac~mv2.png" alt="Örnek Resim"
-            class="side-image">
-    </div>
-
-    <div class="important-words1">
-        <p>
-            Hız sınırı da genellikle otoyol ve anayol boyunca hektometre tabelalarının üst kısmına yerleştirilir. Ancak,
-            bu tabelalar yan yol kenarındaki ya da elektronik matriks tabelalarında belirtilen hız sınırlarıyla
-            çelişirse dikkate alınmaz.
-        </p>
-        <img src="https://static.wixstatic.com/media/4b688f_856c521d7ff0408a87f7bacecada31df~mv2.png" alt="Örnek Resim"
-            class="side-image">
-    </div>
-
-    <h2>
-        Çıkış Tabelaları ve Şevron Tabelaları
-    </h2>
-    <p>
-        Bir anayol veya otoyolda sürüş yaparken, yavaşlama şeridinin nerede bittiğini ya da yolun nerede ayrıldığını
-        önceden görebilmeniz önemlidir. Sonuçta, nereye gideceğinize çok önceden karar vermeniz gerekir. Bu nedenle,
-        yavaşlama şeridinin sonunda “UIT” (çıkış) tabelası ve eş akışlı yolların (örneğin anayollar veya otoyollar)
-        ayrımında şevron tabelası bulunur.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_98228fe0f87042649e5cc64b9622510c~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BB-01<br>
-                    Çıkış tabelası<br>
-                    Otoyoldan çıkış</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_54a67d600d174241aa6a59bd3bccc706~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BB-02<br>
-                    Çıkış tabelası<br>
-                    Anayoldan çıkış</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_322e8af76fc0414ca8c363502f66e586~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BB-03<br>
-                    Şevron tabelası<br>
-                    Eş akışlı yolların ayrımı (örneğin anayollar veya otoyollar). Bir ayrım bir çıkış değildir.
-                </figcaption>
-            </figure>
+    <!-- REFLECTOR POSTS -->
+    <h2>🔴 Yansıtıcı Direkler</h2>
+    <div class="reflector-card">
+        <img src="https://static.wixstatic.com/media/4b688f_051a37ce3f0e4e54b52e0708a29e55ea~mv2.png" alt="Yansıtıcı direkler"/>
+        <div class="rc-body">
+            <p>Yansıtıcı direkler <strong>yolun banketlerini ve kenarlarını</strong> işaretler, karanlıkta virajları daha erken görmenizi sağlar.</p>
+            <p><span class="r-red">Sağ taraf</span> — <span class="r-red">kırmızı</span> yansıtıcılı direkler (öndeki araçların kırmızı arka lambaları gibi)</p>
+            <p><span class="r-white">Sol taraf</span> — <span class="r-white">beyaz</span> yansıtıcılı direkler (karşıdan gelen trafiğin beyaz farları gibi)</p>
         </div>
     </div>
 
-    <h2>
-        Daraltılmış Sert Zeminler ve Kısaltılmış Hızlanma Şeritleri
-    </h2>
-    <p>
-        Otoyollarda sert zemin bulunur. Ancak bazı yerlerde, viyadüklerin altlarında, köprülerde ve tünellerde bu sert
-        zemin daralabilir ya da tamamen ortadan kalkabilir. Bu gibi durumlarda, acil bir durumda sağa doğru çekilme
-        şansı olmadığı için, bu durum eğik siyah çizgilerle belirtilen bir tabela ile gösterilir.
-    </p>
-    <p>
-        Bir hızlanma şeridi normalden kısa ise bu da bir tabela ile gösterilir. Genellikle kısa bir hızlanma şeridi,
-        daraltılmış veya eksik bir sert zeminin sonucudur.
-    </p>
-    <p>
-        Eğer bir sert zemin yerine acil duraklama cepleri (sığınaklar) bulunuyorsa, bunlar genellikle bir duraklama
-        tabelasıyla belirtilir. Bu tabelalara 80 km'lik yollar ve anayollar gibi bölgesel yollar boyunca rastlanabilir.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_38f755096a834e41ab9ccf384ec8d428~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BB-04<br>
-                    Sert zemin sonu veya daralması</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_2b7cbf09dec44e2c88c8db0fc82f55ea~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BB-05<br>
-                    Kısa hızlanma şeridi (200 metreden kısa)</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_99e833e6cc2c40e3b576f19493d949a7~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BB-06<br>
-                    Acil duraklama cebi Sadece acil durumlarda kullanın</figcaption>
-            </figure>
-        </div>
+    <!-- SIGNAGE BW/T -->
+    <h2>🗺️ Yönlendirme — Güzergâhlar ve Yönlendirmeler</h2>
+    <p><strong>BW levhaları</strong> yol bulmanıza yardımcı olur: geçiş trafiği, park güzergâhları (P halkası) ve trafik sıkışıklığı veya kapanmalar nedeniyle ihtiyaç duyulduğunda aktif hale gelen sabit alternatif güzergâhlar (U + numara).</p>
+    <div class="bw-grid">
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_79bf4cf0ce164307a8fac5f3c1a087c3~mv2.png" alt="BW-100"/><div class="sgc-code">BW-100</div><div class="sgc-label">Motorlu geçiş trafiği güzergâhı — oku takip edin</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_297dabc4f6b347ab847677a214f05927~mv2.png" alt="BW-204"/><div class="sgc-code">BW-204</div><div class="sgc-label">Park alanı — güzergâhı takip edin</div></div>
+        <div class="sg-card"><img src="https://static.wixstatic.com/media/4b688f_bff1cd56e3424e76adc9eb708126d725~mv2.png" alt="BW-207"/><div class="sgc-code">BW-207</div><div class="sgc-label">Alternatif güzergâh — oku takip edin</div></div>
+    </div>
+    <div class="callout amber">
+        <span class="callout-title">🟡 Sarı levhalar — her zaman geçici</span>
+        <p>Sarı levhalar yol çalışmaları veya geçici durumlarda kullanılır. Yönlendirme güzergâhlarını numara veya harf ile gösterirler.</p>
+    </div>
+    <div class="yellow-grid">
+        <div class="yg-card"><img src="https://static.wixstatic.com/media/4b688f_0b53edb9b27741629d319f3801b6d798~mv2.png" alt="T-113"/><div class="ygc-code">T-113</div><div class="ygc-label">Takip edilecek yönlendirme güzergâhı bilgisi</div></div>
+        <div class="yg-card"><img src="https://static.wixstatic.com/media/4b688f_62ac6f479dfd45f0b7715001538ed668~mv2.png" alt="T-201"/><div class="ygc-code">T-201</div><div class="ygc-label">Yönlendirme güzergâhı üzerinde yönlendirme levhası</div></div>
+        <div class="yg-card"><img src="https://static.wixstatic.com/media/4b688f_9a355a542e3743a2a5de88e6d1808c90~mv2.png" alt="OB-501"/><div class="ygc-code">OB-501</div><div class="ygc-label">Yönlendirme güzergâhı (zorunlu değil)</div></div>
     </div>
 
-    <h2>
-        Hemzemin Geçit ve Köprü İşaretlemeleri
-    </h2>
-    <p>
-        Hemzemin geçit veya hareketli bir köprüyü zamanında göstermek için, yol boyunca ne kadar mesafede bir hemzemin
-        geçit veya köprü göreceğinizi belirten tabelalar yerleştirilmiştir. Tabeladaki kırmızı diyagonal çizgilerin
-        sayısı, hemzemin geçide ne kadar uzaklıkta olduğunuzu gösterir. Her çizgi 80 metreyi temsil eder. Çizgiler
-        ayrıca tabelanın hangi tarafından geçmeniz gerektiğini de belirtir. Çizgiler her zaman yol yüzeyine doğru
-        aşağıyı işaret eder.
-    </p>
-
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_de401e52d69e47e2b4aa0331b457116d~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>Her kırmızı çizgi 80 metreyi temsil eder.</figcaption>
-            </figure>
-        </div>
+    <!-- DRIP -->
+    <h2>🖥️ Dinamik Rota Bilgi Panosu (DRIP)</h2>
+    <p>DRIP, yol kenarına yerleştirilmiş, trafik bilgilerini gösteren bir panodur. Seyahat süreleri ve gecikmeler, park yeri doluluk durumu, kazalar (kırmızı ile), hava durumu, etkinlik bilgileri ve kampanya mesajlarını gösterebilir.</p>
+    <div class="drip-row">
+        <div class="drip-card"><img src="https://static.wixstatic.com/media/4b688f_242151f33d8b4a5989989a1374c88c87~mv2.png" alt="DRIP trafik sıkışıklığı"/><p>Olası güzergâhlardaki trafik sıkışıklığı sayısını gösterir</p></div>
+        <div class="drip-card"><img src="https://static.wixstatic.com/media/4b688f_b47acce02ef444c5997cafab16abd64c~mv2.png" alt="DRIP kaza"/><p>Üst: kaza bilgisi. Alt: normal ve ek seyahat süresi (güzergâh başına)</p></div>
     </div>
-
-    <h2>
-        Reflektör Direkleri
-    </h2>
-    <div class="important-words10">
-        <p>Reflektör direkleri yolun kenarlarını ve omuzlarını göstermek için tasarlanmıştır. Bu direklere bakarak
-            karanlıkta virajları daha erken görebilirsiniz. Yolun <strong>sağ tarafında</strong>
-            <strong>kırmızı</strong> retro reflektörlü direkler bulunur.
-            Yolun <strong>sol tarafında</strong> ise <strong>beyaz</strong> retro reflektörlü direkler bulunur. Bunu,
-            yolun sağ tarafında genellikle kırmızı arka lambaları, sol tarafında ise karşıdan gelen trafiğin beyaz
-            farlarını gördüğünüzü hatırlayarak kolayca aklınızda tutabilirsiniz.
-        </p>
-
-        <img src="https://static.wixstatic.com/media/4b688f_051a37ce3f0e4e54b52e0708a29e55ea~mv2.png" alt="Örnek Resim"
-            class="side-image">
+    <div class="dot-strip">
+        <img src="https://static.wixstatic.com/media/4b688f_704f30ea1366479e8c4433fcfc745e43~mv2.png" alt="DRIP noktası"/>
+        <p>Hiçbir mesaj gösterilmediğinde DRIP bir <strong>etkileşim noktası (interference dot)</strong> gösterir. Bu, panelin çalıştığını — bozuk olmadığını — bildirir.</p>
     </div>
-
-    <h2>
-        Yönlendirme Tabelaları
-    </h2>
-    <p>
-        Bilmediğiniz bölgelerde yolunuzu daha kolay bulmanız için çeşitli yönlendirme tabelaları bulunmaktadır. Örneğin,
-        “Doorgaand verkeer” (geçiş trafiği) tabelaları sizi ana bağlantı yollarına yönlendirir. P-route veya P-ring
-        tabelaları genellikle şehir merkezinin kenarında bulunan otopark alanlarına yönlendirir. Alternatif güzergahı
-        gösteren tabelalar (bir numaralı U sembolü) sabittir. Bir akış yolunda trafik sıkışıklığı veya kapanma olduğu
-        durumlarda, trafik bilgilendirme servisi hangi alternatif güzergahı kullanarak bu sorunları atlatabileceğinizi
-        gösterebilir. Bu tabelaları genellikle bu tür sorunların daha sık yaşandığı yerlerde bulabilirsiniz.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_79bf4cf0ce164307a8fac5f3c1a087c3~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BW-100<br>
-                    Motorlu geçiş trafiği rotası, oku takip edin</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_297dabc4f6b347ab847677a214f05927~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BW-204<br>
-                    Otopark, rotayı takip edin</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_bff1cd56e3424e76adc9eb708126d725~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>BW-207<br>
-                    Alternatif rota, oku takip edin</figcaption>
-            </figure>
-        </div>
-    </div>
-    <p>
-        Sarı tabelalar her zaman geçici tabelalardır, örneğin yol çalışmaları sırasında. Örneğin, bir şehre veya köye
-        ulaşmak için belirli bir numarayı veya harfi takip etmenin en iyi yol olduğunu gösterebilirler.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_0b53edb9b27741629d319f3801b6d798~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>T-113<br>
-                    Takip edilecek alternatif rota bilgisi</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_62ac6f479dfd45f0b7715001538ed668~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>T-201<br>
-                    Alternatif rota işareti</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9a355a542e3743a2a5de88e6d1808c90~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>OB-501<br>
-                    Alternatif rota (zorunlu değil)</figcaption>
-            </figure>
-        </div>
-    </div>
-
-    <h2>
-        Dinamik Rota Bilgilendirme Paneli (DRIP)
-    </h2>
-    <p>
-        DRIP, yolun kenarına yerleştirilir ve sürücülere trafik bilgileri gösterir. DRIP'in amacı, trafik akışını
-        iyileştirmek ve trafik sıkışıklıklarını azaltmaktır. DRIP üzerinde aşağıdaki gibi mesajlar gösterilebilir:
-    </p>
-    <ul>
-        <li>
-            <p>
-                Rota üzerindeki mevcut seyahat süreleri veya gecikmeler;
-            </p>
-        </li>
-        <li>
-            <p>
-                Boş park alanları gibi park bilgileri;
-            </p>
-        </li>
-        <li>
-            <p>
-                Trafik sıkışıklıkları (kırmızı ile belirtilir), yol kapanmaları, kazalar, sapmalar, aşırı hava koşulları
-                veya köprü açılmaları gibi beklenmedik durumlar;
-            </p>
-        </li>
-        <li>
-            <p>
-                Etkinliklerdeki rotalar ve park yerleri gibi bilgiler;
-            </p>
-        </li>
-        <li>
-            <p>
-                Ulusal veya bölgesel mesajlar veya kampanya metinleri.
-            </p>
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_242151f33d8b4a5989989a1374c88c87~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>Bu DRIP, olası rotalardaki kaç trafik sıkışıklığıyla karşılaşacağınızı gösteriyor.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b47acce02ef444c5997cafab16abd64c~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>Üstteki DRIP, bir kaza hakkındaki bilgileri gösteriyor.<br>
-                    Alttaki DRIP, farklı rotalarda ne kadar normal ve ekstra seyahat süresi bekleyebileceğinizi
-                    gösteriyor.</figcaption>
-            </figure>
-        </div>
-    </div>
-
-    <div class="important-words1">
-        <p>
-            DRIP üzerinde bir mesaj gösterilmediğinde, genellikle bir nokta (parazit noktası) gösterilir. Bu şekilde bir
-            yol kullanıcısı, panelin kullanımda olduğunu ve arızalı olmadığını görür.
-        </p>
-        <img src="https://static.wixstatic.com/media/4b688f_704f30ea1366479e8c4433fcfc745e43~mv2.png" alt="Örnek Resim"
-            class="side-image">
-    </div>
-
-    <p>
-        DRIP üzerinde alan sınırlı olduğundan, kısaltmalar ve ikonlar kullanılır. Aşağıdaki kısaltmalar kullanılır:
-    </p>
-
-
-
-
-
-
-
-
-    <table>
-        <tr>
-            <th>dakika</th>
-            <td>min</td>
-            <th>kavşak</th>
-            <td>knp</td>
-        </tr>
-        <tr>
-            <th>saat</th>
-            <td>h</td>
-            <th>kesişme</th>
-            <td>krp</td>
-        </tr>
-        <tr>
-            <th>yön</th>
-            <td>ri</td>
-            <th>geçit (laan)</th>
-            <td>ln</td>
-        </tr>
-        <tr>
-            <th>kuzey</th>
-            <td>N</td>
-            <th>meydan</th>
-            <td>pln</td>
-        </tr>
-        <tr>
-            <th>doğu</th>
-            <td>O</td>
-            <th>cadde</th>
-            <td>str</td>
-        </tr>
-        <tr>
-            <th>güney</th>
-            <td>Z</td>
-            <th>bulvar</th>
-            <td>blvd</td>
-        </tr>
-        <tr>
-            <th>batı</th>
-            <td>W</td>
-            <th>tünel</th>
-            <td>tnl</td>
-        </tr>
-        <tr>
-            <th>kilometre</th>
-            <td>km</td>
-            <th>yol</th>
-            <td>wg</td>
-        </tr>
+    <p>Alan kısıtlı olduğundan DRIP <strong>kısaltmalar</strong> kullanır:</p>
+    <table class="abbrev-table">
+         <thead><tr><th>dakika</th><th>min</th><th>kavşak</th><th>knp</th></tr></thead>
+         <tbody>
+            <tr><td>saat</td><td>h</td><td>kavşak (kruispunt)</td><td>krp</td></tr>
+            <tr><td>yön (richting)</td><td>ri</td><td>laan</td><td>ln</td></tr>
+            <tr><td>kuzey</td><td>N</td><td>plein</td><td>pln</td></tr>
+            <tr><td>doğu</td><td>O</td><td>straat</td><td>str</td></tr>
+            <tr><td>güney</td><td>Z</td><td>boulevard</td><td>blvd</td></tr>
+            <tr><td>batı</td><td>W</td><td>tünel</td><td>tnl</td></tr>
+            <tr><td>kilometre</td><td>km</td><td>weg (yol)</td><td>wg</td></tr>
+        </tbody>
     </table>
+    <p>Şehir adları da kısaltılır — örn. <strong>Utrecht → Utr</strong>, <strong>Rotterdam → Rdam</strong>. Trafik sıkışıklıkları <strong>kırmızı</strong> renkle gösterilir.</p>
 
-    <p>
-        Şehir isimleri de kısaltılabilir. Örneğin, <strong>Utrecht</strong>, <strong>Utr</strong> olarak,
-        <strong>Rotterdam</strong> ise <strong>Rdam</strong> olarak kısaltılabilir.
-    </p>
-    <p>
-        Bir rota gösterildiğinde, trafik sıkışıklığını belirtmek için köprü veya tünel gibi ikonlar ya da kırmızı bir
-        renk kullanılabilir.
-    </p>
-    <h2>
-        Tabelalarda Piktogramlar
-    </h2>
-    <p>
-        DRIP üzerinde olduğu gibi, tabelalarda da piktogramlar görünebilir. En önemli olanlar aşağıda açıklanmıştır:
-    </p>
-
-    <div>
-        <div class="images-container7">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_1affdcee459e44b3888f576020a49fa7~mv2.png"
-                    alt="Yan hava yastığı arızası uyarısı">
-                <figcaption>Kavşak</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_e12a23f4d4854b41b36ce471715922d6~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Çıkış</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_060c3a9876f046288d511a229c5573a5~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Viyadük/Köprü</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_13b0e0c8d30945d89360bd55819d28ac~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Tünel</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_559369160c444d788ef65d366c19d0b1~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Havalimanı</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_a157a34b25184b7e98bebb869155e77a~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>İş Merkezi</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b1ece72518544629a352b3689ffd8ace~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Otopark Rotası</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_86866a025b304020b337e8bfa3495504~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Şehir Çevre Yolu (Bypass)</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b434201131a64d659f9912fed8cf025a~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Park Et ve Seyahat Et (Demiryolu İstasyonu)</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_c1ee7613840b42e7ae805846854f9ee1~mv2.png"
-                    alt="Yan hava yastığı arızası">
-                <figcaption>Hastane</figcaption>
-            </figure>
-        </div>
+    <!-- PICTOGRAMS -->
+    <h2>🔷 Levhalardaki Piktogramlar</h2>
+    <p>Piktogramlar hem DRIP’lerde hem de fiziksel yön levhalarında bulunur.</p>
+    <div class="pict-grid">
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_1affdcee459e44b3888f576020a49fa7~mv2.png" alt="kavşak"/><div class="ptt-label">Kavşak</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_e12a23f4d4854b41b36ce471715922d6~mv2.png" alt="çıkış"/><div class="ptt-label">Çıkış</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_060c3a9876f046288d511a229c5573a5~mv2.png" alt="viyadük"/><div class="ptt-label">Viyadük / köprü</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_13b0e0c8d30945d89360bd55819d28ac~mv2.png" alt="tünel"/><div class="ptt-label">Tünel</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_559369160c444d788ef65d366c19d0b1~mv2.png" alt="havalimanı"/><div class="ptt-label">Havalimanı</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_a157a34b25184b7e98bebb869155e77a~mv2.png" alt="iş parkı"/><div class="ptt-label">İş parkı</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_b1ece72518544629a352b3689ffd8ace~mv2.png" alt="park güzergahı"/><div class="ptt-label">Park güzergâhı</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_86866a025b304020b337e8bfa3495504~mv2.png" alt="çevre yolu"/><div class="ptt-label">Çevre yolu (ring)</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_b434201131a64d659f9912fed8cf025a~mv2.png" alt="P+R"/><div class="ptt-label">P+R (tren istasyonu)</div></div>
+        <div class="pt-tile"><img src="https://static.wixstatic.com/media/4b688f_c1ee7613840b42e7ae805846854f9ee1~mv2.png" alt="hastane"/><div class="ptt-label">Hastane</div></div>
     </div>
 
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a>
-
-
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Ana sayfaya dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_beacon';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+{t:'Hektometre Levhaları',q:'Hektometre levhaları acil durumda neden önemlidir?',o:['En yakın dinlenme tesisini gösterirler','Acil durum araçları için azami hızı belirtirler','Tam olarak nerede olduğunuzu yol yardım veya acil servislere bildirmenize yardımcı olurlar','Bir sonraki çıkışa olan mesafeyi gösterirler'],a:2,e:'Hektometre levhaları otoyollar, otoyol (autoweg) ve il yolları boyunca her 100 metrede bir bulunur. Bir kaza veya acil durumda levhadaki numarayı kullanarak tam konumunuzu acil servislere bildirebilirsiniz.'},
+{t:'Hektometre Levhaları',q:'Bir hektometre levhasının sağ alt köşesinde harf bulunuyor. Bu ne anlama gelir?',o:['Ana taşıt yolunda seyrediyorsunuz','Rampa, hızlanma şeridi veya yavaşlama şeridindesiniz — ana taşıt yolunda değilsiniz','Gösterilen hız sınırı burada geçerli değildir','Dinlenme tesisine yaklaşıyorsunuz'],a:1,e:'Hektometre levhasının sağ alt köşesindeki harf, otoyol veya otoyol (autoweg) üzerinde rampa, hızlanma şeridi veya çıkış/yavaşlama şeridinde olduğunuzu, ana taşıt yolunda olmadığınızı gösterir.'},
+{t:'Çıkış/Şevron',q:'BB-01/BB-02 (çıkış levhaları) ile BB-03 (şevron levhası) arasındaki fark nedir?',o:['BB-01/02 otoyollar içindir; BB-03 otoyol dışı içindir','BB-01/02 bir yavaşlama şeridinin sonunu (çıkış) işaretler; BB-03 eşdeğer akışlı iki yolun ayrıldığı bir yol ayrımını (fork) işaretler — çıkış değildir','BB-01/02 zorunludur; BB-03 sadece tavsiyedir','Birbirlerinin yerine kullanılırlar'],a:1,e:'BB-01 ve BB-02 bir yavaşlama şeridinin sonunu — bir otoyol veya otoyol (autoweg)’den fiili bir çıkışı — işaretler. BB-03 (şevron levhası) eşdeğer akışlı iki yolun (örneğin iki otoyol) ayrıldığı bir yol ayrımını işaretler. Yol ayrımı bir çıkış değildir.'},
+{t:'Sert Banket',q:'BB-04 levhası sizi ne konuda uyarır?',o:['200 metreden kısa hızlanma şeridi','Sert banketin sonu veya daralması — acil durumda sağa kaçış artık mümkün değildir','Acil durum cebi','İnşaat bölgesi, düşük hız'],a:1,e:'BB-04, sert banketin sona erdiği veya daraldığı konusunda uyarır. Bu genellikle viyadük altları, köprüler ve tünellerde görülür. Acil durumda sağa kaçış artık mümkün olmadığından önemli bir uyarıdır.'},
+{t:'Hemzemin Geçit İşaretleri',q:'Üzerinde 2 kırmızı eğik çizgi bulunan bir hemzemin geçit işareti görüyorsunuz. Hemzemin geçitten yaklaşık ne kadar uzaktasınız?',o:['Yaklaşık 80 metre','Yaklaşık 160 metre','Yaklaşık 240 metre','Yaklaşık 320 metre'],a:1,e:'Hemzemin geçit işaretindeki her kırmızı eğik çizgi 80 metreyi temsil eder. İki çizgi, hemzemin geçitten (veya hareketli köprüden) yaklaşık 160 metre uzakta olduğunuz anlamına gelir.'},
+{t:'Yansıtıcı Direkler',q:'Yolun SAĞ tarafındaki yansıtıcı direklerin yansıtıcı rengi nedir?',o:['Beyaz — karşıdan gelen trafiğin farlarıyla eşleşir','Kırmızı — sizinle aynı yönde seyreden araçların kırmızı arka lambalarıyla eşleşir','Sarı — yol işaretlemelerinden ayırt etmek için','Yeşil — güvenli yol kenarlarını belirtir'],a:1,e:'Yolun sağ tarafındaki yansıtıcı direkler kırmızı yansıtıcılara sahiptir. Bu, öndeki araçların kırmızı arka lambalarıyla eşleşir. Sol taraftaki direkler ise beyaz yansıtıcılara sahiptir ve karşıdan gelen trafiğin beyaz farlarıyla eşleşir.'},
+{t:'DRIP',q:'DRIP üzerinde herhangi bir mesaj gösterilmediğinde görünen etkileşim noktasının (interference dot) amacı nedir?',o:['İleride trafik sıkışıklığı olduğunu gösterir','Panelin çalıştığını ve arızalı olmadığını gösterir','Trafik mühendisleri tarafından kullanılan bir kalibrasyon işaretidir','DRIP’in bakım için çevrimdışı olduğunu gösterir'],a:1,e:'DRIP üzerinde herhangi bir mesaj gösterilmediğinde, panelin çalıştığını ve bozuk veya kapalı olmadığını yol kullanıcılarına göstermek için bir etkileşim noktası gösterilir.'},
+{t:'DRIP Kısaltmaları',q:'Bir DRIP üzerinde "ri Z" yazısını görüyorsunuz. Bu ne anlama gelir?',o:['Yol kapalı — bekleyin','Yön güney','Geçiş hakkı güney','Düşük hız bölgesi'],a:1,e:'"ri", "richting" (yön) kısaltmasıdır ve "Z", "Zuid" (güney) anlamına gelir. Dolayısıyla "ri Z", "yön güney" demektir.'},
+{t:'Yönlendirme',q:'Sarı bir yönlendirme levhası (T-113) neyi gösterir?',o:['Kalıcı bir alternatif güzergâh','Geçici bir yönlendirme güzergâhı — sarı levhalar her zaman geçicidir, örneğin yol çalışmaları sırasında','Tavsiye edilen ancak isteğe bağlı bir manzara yolu','Sadece inşaat araçları için ayrılmış güzergâh'],a:1,e:'Sarı levhalar her zaman geçicidir, örneğin yol çalışmaları sırasında kullanılır. T-113, takip edilecek yönlendirme güzergâhı hakkında bilgi verir. Bir şehir veya köye ulaşmak için takip edilecek en iyi yolu numara veya harf ile belirtir.'},
+{t:'Yönlendirme',q:'BW-207 bir "U" ve bir numara gösterir. Bu ne tür bir güzergâhı belirtir?',o:['Tek yönlü cadde','Alternatif güzergâh — trafik sıkışıklığı veya yol kapanmaları nedeniyle ihtiyaç duyulduğunda aktif hale gelen sabit levhalar','Sadece otobüs ve acil durum araçları için ayrılmış güzergâh','Şehir içi bisiklet güzergâhı'],a:1,e:'BW-207, bir alternatif güzergâhı (U ve bir numara ile gösterilir) belirtir. Bunlar, trafik sorunlarının düzenli olarak yaşandığı yerlere yerleştirilmiş sabit levhalardır. Trafik bilgi servisi, sürücülerin sıkışıklık veya kapanmalardan kaçınmasına yardımcı olmak için gerektiğinde bunları aktif hale getirir.'},
+];
+const QS=10;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Göster'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — Doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Yol işaretleme konusunda mükemmel bilgi!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi. Eksiklerinizi gözden geçirin.'}else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Sayfayı tekrar okuyup testi yeniden deneyin.'}else{msg='Biraz daha çalışmalısın 💡';sub='Hektometre, yansıtıcı direkler ve DRIP konularını gözden geçirin!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Testi Tekrarla</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Sizin cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
