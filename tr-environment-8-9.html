@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Çevre – ExamTheorie</title>
+    <title>Bakım ve Periyodik Kontroller – ExamTheorie</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -22,32 +22,20 @@
     h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
     h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
     h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text-primary);margin:22px 0 10px}
     p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
     p strong{color:var(--text-primary)}
     .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
 
-    /* emission substances table */
-    .emission-table{width:100%;border-collapse:collapse;margin:12px 0 22px;background:var(--card-bg);border-radius:13px;overflow:hidden;border:1px solid var(--card-border)}
-    .emission-table th{background:rgba(6,18,48,1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:10px 12px;text-align:left}
-    .emission-table td{font-family:'Lora',serif;font-size:.82rem;padding:10px 12px;border-bottom:1px solid rgba(77,166,255,.07);color:var(--text-muted);vertical-align:top;line-height:1.45}
-    .emission-table tr:last-child td{border-bottom:none}
-    .emission-table td:first-child{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:var(--text-primary);white-space:nowrap}
-    .emission-table tr:hover td{background:rgba(77,166,255,.03)}
-
-    /* eco measures grid */
-    .eco-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 22px}
-    @media(max-width:560px){.eco-grid{grid-template-columns:1fr}}
-    .eco-tile{background:rgba(0,200,100,.05);border:1px solid rgba(0,200,100,.14);border-radius:11px;padding:11px 12px;backdrop-filter:blur(10px)}
-    .eco-tile .et-title{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#6effc0;margin-bottom:4px}
-    .eco-tile p{font-family:'Lora',serif;font-size:.77rem;color:rgba(180,255,220,.8);margin:0;line-height:1.4}
-    .eco-tile p strong{color:#fff}
-
-    /* energy label image */
-    .energy-label-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:12px;margin:12px 0 18px;backdrop-filter:blur(12px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-    .energy-label-card img{max-height:160px;width:auto;object-fit:contain}
-    .energy-label-card .elc-body{flex:1;min-width:180px}
-    .energy-label-card .elc-body p{font-family:'Lora',serif;font-size:.84rem;color:var(--text-muted);margin:0 0 6px;line-height:1.5}
-    .energy-label-card .elc-body p strong{color:var(--text-primary)}
+    /* check row — part name + warning icon + body */
+    .check-row{display:flex;align-items:flex-start;gap:14px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:13px 15px;margin:10px 0 14px;backdrop-filter:blur(12px)}
+    .check-row .cr-icon{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;min-width:62px}
+    .check-row .cr-icon img{height:54px;width:auto;object-fit:contain}
+    .check-row .cr-icon span{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;color:var(--text-dim);text-align:center;line-height:1.2}
+    .check-row .cr-body p{font-family:'Lora',serif;font-size:.83rem;color:var(--text-muted);margin:0 0 5px;line-height:1.5}
+    .check-row .cr-body p:last-child{margin:0}
+    .check-row .cr-body p strong{color:var(--text-primary)}
+    @media(max-width:480px){.check-row{flex-direction:column}}
 
     /* photo pair */
     .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 18px}
@@ -62,16 +50,36 @@
     .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
     .callout p:last-child{margin:0}
     .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.red{background:rgba(232,69,69,.07);border:1px solid rgba(232,69,69,.22)}
+    .callout.red::before{background:linear-gradient(180deg,var(--red),#ff8888)}
+    .callout.red p{color:rgba(255,180,180,.85)}
+    .callout.red p strong{color:#fff}
+    .callout.red .callout-title{color:#ff8888}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
     .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
     .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
     .callout.blue p{color:var(--text-muted)}
     .callout.blue p strong{color:var(--text-primary)}
     .callout.blue .callout-title{color:var(--accent-light)}
-    .callout.green{background:rgba(0,200,100,.06);border:1px solid rgba(0,200,100,.18)}
-    .callout.green::before{background:linear-gradient(180deg,#00c864,#6effc0)}
-    .callout.green p{color:rgba(180,255,220,.85)}
-    .callout.green p strong{color:#fff}
-    .callout.green .callout-title{color:#6effc0}
+
+    /* tyre pressure bars */
+    .tyre-specs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+    .ts-pill{padding:8px 14px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600}
+    .ts-pill.blue{background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.25);color:var(--accent-light)}
+    .ts-pill.green{background:rgba(0,200,100,.09);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .ts-pill.amber{background:rgba(245,166,35,.09);border:1px solid rgba(245,166,35,.25);color:#ffd166}
+
+    /* fluid check table */
+    .fluid-table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--card-bg);border-radius:13px;overflow:hidden;border:1px solid var(--card-border)}
+    .fluid-table th{background:rgba(6,18,48,1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:10px 12px;text-align:left}
+    .fluid-table td{font-family:'Lora',serif;font-size:.82rem;padding:10px 12px;border-bottom:1px solid rgba(77,166,255,.07);color:var(--text-muted);vertical-align:top;line-height:1.45}
+    .fluid-table tr:last-child td{border-bottom:none}
+    .fluid-table td:first-child{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:var(--text-primary)}
+    .fluid-table tr:hover td{background:rgba(77,166,255,.03)}
 
     .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
     .custom-button::before{content:'←';font-size:1.1rem}
@@ -214,34 +222,34 @@
 <div class="orb orb-2"></div>
 <div id="fab-row">
     <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
-    <button class="fab" id="fab-quiz"><span class="fab-tip">Sınav</span>📝</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Test</span>📝</button>
 </div>
 <div id="color-panel">
     <div class="panel-header" id="panel-drag-handle">
-        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk ve Metin Ayarları</div></div>
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk ve Yazı Boyutu Ayarları</div></div>
         <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
     <div class="panel-body">
         <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
-        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek kontrast</button></div></div>
-        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan saydamlığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek Kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan opaklığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
         <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
-        <div class="color-section"><div class="stp">Metin Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
-        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart saydamlığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık saydamlığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <div class="color-section"><div class="stp">Yazı Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart opaklığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık opaklığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
         <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
     </div>
 </div>
 <div id="quiz-overlay">
     <div id="quiz-panel">
-        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🌱 Çevre Sınavı</div><div class="quiz-badge" id="quiz-badge">10 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🔧 Bakım Testi</div><div class="quiz-badge" id="quiz-badge">10 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
         <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
         <div class="quiz-body">
             <div class="quiz-start" id="quiz-start-screen">
-                <span class="qs-icon">🌱</span>
+                <span class="qs-icon">🔧</span>
                 <h2>Bilgini Test Et</h2>
-                <p>Enerji etiketleri, zararlı emisyonlar, katalitik konvertör, AdBlue, emisyon sınıfları ve ekonomik sürüş ipuçları hakkında sorular.</p>
-                <div class="qs-info"><div class="qs-chip">📋 10 soru</div><div class="qs-chip">🔀 Rastgele sıralama</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
-                <button class="btn-primary" id="quiz-start-btn">▶ Sınava Başla</button>
+                <p>Lastikler, ABS, frenler, aydınlatma, sıvılar, silecekler, egzoz ve aynalar hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 10 soru</div><div class="qs-chip">🔀 Rastgele sıra</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Testi Başlat</button>
             </div>
             <div class="quiz-q-screen" id="quiz-q-screen"></div>
             <div class="quiz-results" id="quiz-results-screen"></div>
@@ -251,79 +259,123 @@
 
 <!-- SAYFA İÇERİĞİ -->
 <div class="page-wrapper">
-    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Sürüş Davranışı</span><span class="dot">›</span><span style="color:var(--text-primary)">Çevre</span></div>
-    <h1>Çevre</h1>
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Sürüş Davranışı</span><span class="dot">›</span><span style="color:var(--text-primary)">Bakım ve Periyodik Kontroller</span></div>
+    <h1>Bakım ve Periyodik Kontroller</h1>
     <div class="section-divider"></div>
-    <p>Yanmalı motorlu bir aracı kullanmak tanımı gereği çevre için iyi değildir. Elektrikli araçların bile çevresel etkisi vardır — elektrik üretimi ve batarya imhası da maliyetlidir. Tahrik tipi ne olursa olsun, mümkün olduğunca ekonomik sürmek önemlidir.</p>
+    <p>Trafiğe güvenli bir şekilde katılmak için bir aracın, düzenli kontrollerle izlenen bir dizi gereksinimi karşılaması gerekir. Birkaç arıza, sürüşü yasal olarak yasaklar.</p>
 
-    <!-- ENERGY LABEL -->
-    <h2>🏷️ Enerji Etiketi</h2>
-    <div class="energy-label-card">
-        <img src="https://static.wixstatic.com/media/4b688f_7b9c8f7109c34241abc693075db7be81~mv2.png" alt="Enerji etiketi"/>
-        <div class="elc-body">
-            <p>Enerji etiketleri araçları <strong>A'dan G'ye</strong> sınıflandırır; yakıt tüketimi ve CO₂ emisyonlarına göre yıllık olarak güncellenir.</p>
-            <p><strong style="color:#6effc0">A–C (yeşil)</strong> = ekonomik · <strong style="color:#ffd166">D–E (sarı)</strong> = orta · <strong style="color:#ff8888">F–G (kırmızı)</strong> = ekonomik değil</p>
+    <!-- DİREKSİYON -->
+    <h2>🔄 Direksiyon</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_4253c7ddf88c464581bd9ac38cf4d5d3~mv2.png" alt="Direksiyon uyarısı"/><span>Direksiyon arızası</span></div>
+        <div class="cr-body"><p>Direksiyonda titreşim, ağırlaşma veya farklı bir his, bir direksiyon arızasına — veya lastikler, tekerlekler veya süspansiyonla ilgili bir soruna işaret edebilir. <strong>Sorun giderilene kadar araçla seyir yasaktır.</strong></p></div>
+    </div>
+
+    <!-- KORNA -->
+    <h2>📣 Korna</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_e5bc940dced7487ea8f88d05296d004f~mv2.png" alt="Korna"/><span>Korna</span></div>
+        <div class="cr-body"><p>Her binek otomobilde düzgün çalışan bir korna bulunmalıdır. <strong>Çalışmayan korna ile seyir yasaktır.</strong></p></div>
+    </div>
+
+    <!-- SÜSPANSİYON ve ABS -->
+    <h2>🔩 Süspansiyon ve ABS</h2>
+    <p>Arızalı süspansiyon, dengesizliğe neden olur — sallantı, savrulma, sağa/sola çekme, hız tümseklerinde gürültü veya eğilme. Bu, tehlikeli durumlara ve düzensiz lastik aşınmasına yol açar. <strong>Onarılmadan sürülmemelidir.</strong></p>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_777522730bb54fc18399fe356dd3fb4c~mv2.png" alt="ABS uyarısı"/><span>ABS arızası</span></div>
+        <div class="cr-body"><p>ABS, sert frenleme sırasında tekerleklerin kilitlenmesini önler — acil duruşta <strong>direksiyon hakimiyetinizi koruyabilirsiniz</strong>. ABS fren mesafesini her zaman kısaltmaz. ABS devreye girdiğinde fren pedalı titreşir — bu <strong>bir fren arızası değildir</strong>. <strong>Pedalı bırakmayın.</strong></p></div>
+    </div>
+
+    <!-- FRENLER -->
+    <h2>🛑 Frenler</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_908dac3ed0c347a28529d6bd43af487d~mv2.png" alt="Aşınmış fren balatası"/><span>Aşınmış fren balatası</span></div>
+        <div class="cr-body"><p>Fren performansında düşüş, frenleme sırasında savrulma veya bir uyarı ışığı = hemen servise gidin. <strong>Arızalı frenlerle seyir yasaktır.</strong></p></div>
+    </div>
+
+    <!-- LASTİKLER -->
+    <h2>🛞 Lastikler</h2>
+    <p>Lastikleri aylık olarak kontrol edin: <strong>lastik basıncını ve diş derinliğini</strong> ölçün. Her sürüşten önce: aracın etrafında dolaşarak patlak lastik, görünür hasar ve valf kapaklarını kontrol edin. Basıncı lastikler <strong>soğukken</strong> kontrol edin.</p>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_70a972d05d5944b2a9ac33e35cbd3734~mv2.png" alt="Düşük lastik basıncı"/><span>Düşük basınç</span></div>
+        <div class="cr-body"><p>Düşük basınç: daha yüksek yakıt tüketimi, zayıf yol tutuşu, artan lastik aşınması, patlama riski. Yüksek basınç: ayrıca zayıf yol tutuşu — aşınma lastiğin <strong>orta</strong> kısmında daha fazla olur.</p></div>
+    </div>
+    <div class="photo-pair">
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_31a94b8ba1c84590a4e5d4575c608ad1~mv2.jpeg" alt="Lastik aşınma göstergeleri"/><div class="pc-caption">Lastik aşınma göstergeleri, ana dişlerdeki çapraz işaretlerdir. Diş seviyesine geldiğinde lastiği değiştirin.</div></div>
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_6d4bacf5fbbe4144b5a7e88c47e7560d~mv2.jpeg" alt="Kış lastiği"/><div class="pc-caption">Kış lastikleri, ana dişler arasındaki ekstra kanallarla tanınır.</div></div>
+    </div>
+    <div class="tyre-specs">
+        <div class="ts-pill blue">🔵 Normal basınç: 2 – 2,5 bar (lastik genişliğine göre değişir)</div>
+        <div class="ts-pill green">✅ Kış lastiği önerilen: 4 mm (yasal min: 1,6 mm)</div>
+        <div class="ts-pill amber">🌡️ Kış lastiği faydalı: yalnızca 8°C'nin altında</div>
+    </div>
+    <div class="callout amber">
+        <span class="callout-title">⚠️ Lastikte çivi/vida?</span>
+        <p><strong>Çıkarmayın.</strong> Aracı servise götürün — vida olduğu yerde kaldığında lastikte bir miktar hava kalır ve delik bulunması kolaylaşır. Eksik valf kapakları, valfe kir girmesine izin verir ve yavaş hava kaçırmasına neden olur.</p>
+    </div>
+
+    <!-- AYDINLATMA -->
+    <h2>💡 Aydınlatma ve Sinyaller</h2>
+    <div class="photo-pair">
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_e153e765e6f54720b2df049bda4a69fd~mv2.jpeg" alt="Far üzerinde kar"/><div class="pc-caption">Sürüşten önce farların üzerindeki karı her zaman temizleyin.</div></div>
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_a4849ab6e6d74f50a0c67be5468b9024~mv2.jpeg" alt="Mat far kapağı"/><div class="pc-caption">Mat far kapakları daha az ışık geçirir — çok kötüyse değiştirin.</div></div>
+    </div>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_af52513551c5425f95cd6e277a7137d0~mv2.png" alt="Arızalı lamba"/><span>Arızalı lamba</span></div>
+        <div class="cr-body">
+            <p>Tüm zorunlu aydınlatma her zaman çalışır durumda olmalıdır — şu an kullanılması zorunlu olmasa bile (örn. gündüz uzun far çalışmalıdır). Bir lamba yanarsa, sürüşe devam etmek için <strong>hemen değiştirin.</strong></p>
+            <p>Pratikte birçok modern araç, lambaları değiştirmek için servis gerektirir. Kendiniz değiştiremiyorsanız, en kısa sürede servise gidin.</p>
         </div>
     </div>
+    <p>Arızalı sinyaller genellikle bellidir — <strong>diğer sinyaller daha hızlı yanıp söner</strong>. Ön farları, bir cam panodaki yansımalarına veya ışıklarda bir aracın arkasındayken kontrol edin. Arka lambaları, bir duvara veya cam cepheye bakarak dikiz aynasından kontrol edin.</p>
 
-    <!-- HAZARDOUS SUBSTANCES -->
-    <h2>☁️ Yanmalı Motorlardan Kaynaklanan Zararlı Maddeler</h2>
-    <table class="emission-table">
-        <tr><th>Madde</th><th>Etkileri ve Notlar</th></tr>
-        <tr><td>CO &amp; CO₂<br><small style="color:var(--text-dim)">Karbon oksitler</small></td><td>CO₂ kızılötesi radyasyonu emer → <strong>sera etkisi</strong>. Her ikisi de fosil yakıtların yanmasıyla oluşur. Benzinli motorlar <strong>daha fazla CO₂</strong> yayar.</td></tr>
-        <tr><td>NOx<br><small style="color:var(--text-dim)">Azot oksitler</small></td><td>Sağlığa zararlıdır, ozon tabakasına zarar verir. Tüm yüksek sıcaklıklı yanma işlemlerinde oluşur. Dizel motorlar <strong>önemli ölçüde daha fazla NOx</strong> yayar.</td></tr>
-        <tr><td>SO₂<br><small style="color:var(--text-dim)">Kükürt dioksit</small></td><td>Sağlığa zararlıdır. Hava kirliliğinin, <strong>duman ve asit yağmurunun</strong> ana nedenidir. Bazı fosil yakıtların yanması sırasında salınır.</td></tr>
-        <tr><td>PM<br><small style="color:var(--text-dim)">Partikül madde / ince toz</small></td><td>Çok zararlı küçük parçacıklar (is). Dizel motorlar daha fazla is üretir, ancak <strong>dizel partikül filtresi</strong> bulunur. Benzinli motorlarda (henüz) bu filtre yoktur. Ayrıca fren sürtünmesi, lastik aşınması ve yol yüzeyi aşınmasıyla da oluşur.</td></tr>
-     </table>
+    <!-- REFLEKTÖRLER -->
+    <h2>🔴 Yansıtıcılar</h2>
+    <p>Yansıtıcı camlar kırık, hasarlı veya mat olmamalıdır. Kar, buz, çamur veya kirle kaplanmamalıdır. Arkasında kırmızı yansıtıcıları eksik veya kırık olan bir araç, <strong>yola park bile edilemez, sürülmesi ise kesinlikle yasaktır</strong>.</p>
 
-    <!-- ENVIRONMENTAL ZONES -->
-    <h2>🗺️ Çevre Bölgeleri ve Emisyon Sınıfları</h2>
-    <p>Dizel araçlar <strong>0'dan 6'ya</strong> kadar emisyon sınıflarına ayrılır. Sınıf ne kadar yüksekse araç <strong>o kadar temizdir</strong>. Belediyeler çevre bölgeleri oluşturabilir — yalnızca belirli bir asgari emisyon sınıfını karşılayan araçlar girebilir. Aracınız 3. sınıf ise, 4 veya daha yüksek sınıf gerektiren bir bölgeye giremezsiniz.</p>
-    <div class="callout blue">
-        <span class="callout-title">🔗 Aracınızı kontrol edin</span>
-        <p>Aracınızın emisyon sınıfını ve yerel çevre bölgelerini <strong>www.milieuzones.nl</strong> adresinden öğrenebilirsiniz.</p>
+    <!-- AYNALAR -->
+    <h2>🪞 Aynalar</h2>
+    <p>Aynalar her zaman temiz ve hasarsız olmalıdır. Küçük bir çatlak bile görüşü güvenli sürüşü imkânsız hale getirecek kadar etkiler. <strong>Kırık aynayla seyir yasaktır.</strong></p>
+
+    <!-- SİLECEKLER -->
+    <h2>🌀 Cam Yıkama ve Silecekler</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_f18112742f3543e6b90c6e720ae4bd8a~mv2.png" alt="Cam suyu az"/><span>Cam suyu az</span></div>
+        <div class="cr-body"><p>Arızalı silecek veya yıkama sistemi veya boş cam suyu = sürüş yasaktır (görüş ciddi şekilde kısıtlanır). Her zaman cam suyu taşıyın. Silecek lastiklerini, şerit bıraktıklarında değiştirin. <strong>Arka silecek zorunlu değildir</strong> ancak tavsiye edilir.</p></div>
     </div>
+    <p>Silecek lastiklerini haftalık bir bezle temizleyin — özellikle ağaç altında park edildiyse. Sileceğin altındaki yaprak ve dallar ön camı çizebilir.</p>
 
-    <!-- ENVIRONMENTAL MEASURES -->
-    <h2>🔧 Çevresel Önlemler</h2>
-    <div class="photo-pair">
-        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_209e19cde7904d72a93273d6297b94cf~mv2.jpeg" alt="AdBlue"/><div class="pc-caption">AdBlue, sürücü tarafından doldurulmalıdır — genellikle dizel yakıt kapağının yanında veya kaputun altında bulunur.</div></div>
-        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_71d6b998211b408d96e15d9603e19c41~mv2.jpeg" alt="Katalitik konvertör"/><div class="pc-caption">Daire içine alınan parça katalitik konvertördür.</div></div>
-    </div>
-    <table class="emission-table">
-        <tr><th>Teknoloji</th><th>Nasıl çalışır</th></tr>
-        <tr><td>Üç yollu katalitik konvertör</td><td>Egzoz gazlarını temizler — karbon oksitleri ve azot oksitleri azaltır. Sadece çalışma sıcaklığına ulaştıktan sonra optimum verimle çalışır (~15–20 dakika). Bu nedenle <strong>kısa yolculuklar km başına daha kirleticidir</strong>.</td></tr>
-        <tr><td>Dizel partikül filtresi</td><td>Sadece dizel motorlar. <strong>Partikül madde</strong> emisyonunu azaltır.</td></tr>
-        <tr><td>AdBlue</td><td>Sadece dizel motorlar. Sıcak egzoz gazlarına enjekte edilir — zararlı <strong>azot oksitleri zararsız nitrojen ve suya dönüştürür</strong>.</td></tr>
+    <!-- EGZOZ -->
+    <h2>💨 Egzoz</h2>
+    <p>Arızalı bir egzoz genellikle artan gürültüden belli olur — hızlanırken daha ağır, daha yüksek veya çatırtılı ses. Bazı durumlarda yere sürtünebilir (kazıma sesi). <strong>Arızalı egzozla seyir yasaktır</strong> — gürültü rahatsızlık verir ve zararlı emisyonlar önemli ölçüde artar.</p>
+
+    <!-- SIVILAR -->
+    <h2>🛢️ Yağ Seviyesi ve Sıvılar</h2>
+    <table class="fluid-table">
+        <thead><tr><th>Sıvı</th><th>Nasıl kontrol edilir / Ne yapılmalı</th></tr></thead>
+        <tbody>
+            <tr>
+                <td>Motor Yağı</td>
+                <td>Aylık olarak <strong>yağ çubuğu (dipstick)</strong> ile motor soğukken kontrol edin. Çıkarın, silin, tamamen geri takın, tekrar çıkarın ve seviyeyi okuyun. Çok düşükse motor bloğunun üstündeki doldurma ağzından tamamlayın. Düşük yağ = motor aşırı ısınması, motor arızası.</td>
+            </tr>
+            <tr>
+                <td>Soğutma Sıvısı</td>
+                <td>Aylık olarak kontrol edin — <strong>sadece soğuk motorla!</strong> Soğutma sıvısı deposunu okuyun. Minimum seviyenin altındaysa, sürmeyin — önce soğutma sıvısıyla tamamlayın (acil durumda suyla, en kısa sürede değiştirin). Soğutma seviyesi düşmemelidir; düşüyorsa sızıntı olabilir.</td>
+            </tr>
+            <tr>
+                <td>Fren Hidroliği</td>
+                <td><strong>Kendiniz tamamlamayın</strong> — fren hatlarına hava girmemelidir. Bunu her zaman servise yaptırın. Deposunu okuyun — minimum seviyenin altına düşmemelidir. Düşerse frenler aşınmış olabilir veya sızıntı vardır. <strong>Minimum seviyenin altındaysa sürmeyin.</strong></td>
+            </tr>
+        </tbody>
     </table>
 
-    <!-- ECO DRIVING -->
-    <h2>🌿 Çevre Dostu Sürüş</h2>
-    <p>En büyük tasarruf, basitçe araç kullanmamaktan gelir. Araç kullanıldığında ise enerji tüketimini en aza indirin:</p>
-    <div class="eco-grid">
-        <div class="eco-tile"><div class="et-title">🚀 Hemen harekete geçin</div><p>Motoru rölantide ısıtmayın. Kalkışta aşırı gazlamayın.</p></div>
-        <div class="eco-tile"><div class="et-title">⬆️ Erken vites yükseltin</div><p>Manuel şanzıman: mümkün olduğunca erken yüksek vitese geçin. Yaklaşık kılavuz: 1500 dev/dk altı = çok erken, 2500 dev/dk üstü = çok geç.</p></div>
-        <div class="eco-tile"><div class="et-title">🛹 Viteste bırakarak sürün</div><p>Fren yapmayı önceden tahmin edin — gaza erken basmayı bırakın ve aracın viteste süzülmesini sağlayın. Gereksiz fren yapmayın.</p></div>
-        <div class="eco-tile"><div class="et-title">🔵 Lastik basıncı</div><p>Doğru lastik basıncını koruyun ve aracı düzenli olarak servise götürün — düşük basınç = daha yüksek yakıt tüketimi.</p></div>
-        <div class="eco-tile"><div class="et-title">👁️ Öngörü ve mesafe koruma</div><p>Uzağı görün. Takip mesafesini korumak, daha az fren ve gaz ile daha sabit bir hız sağlar.</p></div>
-        <div class="eco-tile"><div class="et-title">🔑 Motoru kapatın</div><p>Uzun süre beklerken (hemzemin geçit, açılır köprü), otomatik dur-kalk yoksa motoru kapatın.</p></div>
-        <div class="eco-tile"><div class="et-title">🖥️ Enerji tasarrufu sistemlerini kullanın</div><p>Hız sabitleyici, yol bilgisayarı ve navigasyon daha ekonomik sürmeye yardımcı olabilir.</p></div>
-        <div class="eco-tile"><div class="et-title">❄️ Enerji tüketen sistemleri sınırlayın</div><p>Klima, koltuk ısıtması, ayna ısıtması vb. gerekmediğinde kapatın.</p></div>
-        <div class="eco-tile"><div class="et-title">📋 Yolculuğunuzu hazırlayın</div><p>Planlama yapın. Zamanında yola çıkın. Yoğun saatlerden kaçının. Tavan kutusu, bisiklet taşıyıcıları kullanımdan sonra çıkarın. Gereksiz ağırlıktan ve kısa yolculuklardan kaçının.</p></div>
-        <div class="eco-tile"><div class="et-title">🪟 Camları kapalı tutun</div><p>Açık cam = daha fazla hava direnci = daha az aerodinamik = daha fazla yakıt tüketimi.</p></div>
-    </div>
-    <div class="photo-pair">
-        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_23db7ce2de7d476b9d0d64f7bf5fcb43~mv2.jpeg" alt="Lastik basıncı"/><div class="pc-caption">Yetersiz lastik basıncı enerji tüketimini artırır.</div></div>
-        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_349e73520d754daa91a05059b6d189c7~mv2.jpeg" alt="Tavan kutusu"/><div class="pc-caption">Tavan kutusu daha fazla hava direnci oluşturur ve enerji tüketimini artırır.</div></div>
-    </div>
-
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Ana sayfaya dön</a>
 </div>
 
 <script>
 (function(){
 'use strict';
-const K='et_env89';
+const K='et_mnt810';
 const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
 const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
 let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
@@ -368,16 +420,16 @@ function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(d
 function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
 
 const ALL_Q=[
-{t:'Enerji Etiketi',q:'"D" olarak derecelendirilmiş bir enerji etiketi — hangi renk kategorisine girer?',o:['Yeşil — ekonomik (A–C)','Sarı — orta (D–E)','Kırmızı — ekonomik değil (F–G)','Mavi — sıfır emisyon'],a:1,e:'Enerji etiketi üç renk kategorisi kullanır: Yeşil (A–C) = ekonomik, Sarı (D–E) = orta, Kırmızı (F–G) = ekonomik değil. D kategorisi sarı (orta) aralığına girer.'},
-{t:'Emisyonlar',q:'Hangi motor tipi önemli ölçüde daha fazla azot oksit (NOx) yayar?',o:['Benzinli motor','Dizel motor — benzinli motordan önemli ölçüde daha fazla azot oksit yayar','Elektrik motor','Hibrit motor'],a:1,e:'Dizel motorlar, benzinli motorlardan önemli ölçüde daha fazla azot oksit (NOx) yayar. Buna karşılık, benzinli motorlar dizel motorlardan daha fazla CO₂ yayar. NOx sağlığa zararlıdır ve ozon tabakasını etkiler.'},
-{t:'Emisyonlar',q:'Partikül madde (PM) nedir ve hangi kaynaklar tarafından üretilir?',o:['Yalnızca benzinli motorlar tarafından CO₂ emisyonlarından üretilen bir gaz','Yanmalı motorlar, fren sürtünmesi, lastik aşınması ve yol yüzeyi aşınmasından kaynaklanan çok küçük zararlı parçacıklar','Sadece dizel motorlardan çıkan is — benzinli motorlar hiç üretmez','Egzoz sisteminde biriken bir sıvı'],a:1,e:'Partikül madde (ince toz), çok küçük zararlı parçacıklardan oluşur: yanmalı motorlar (is), fren sürtünmesi, lastik aşınması ve yol yüzeyi aşınması. Dizel motorlar daha fazla is üretir ancak artık partikül filtresine sahiptir. Benzinli motorlarda henüz bu filtreler bulunmaz.'},
-{t:'Katalitik Konvertör',q:'Kısa yolculuklar neden km başına uzun yolculuklardan daha kirleticidir?',o:['Kısa yolculuklar daha fazla vites değiştirmeyi gerektirir, bu da daha fazla yakıt tüketir','Katalitik konvertör sadece çalışma sıcaklığına (~15–20 dk) ulaştıktan sonra optimum verimle çalışır. Kısa yolculuklar ısınmasına izin vermez.','Kısa yolculuklar daha düşük vites kullanır, bu da daha fazla emisyon üretir','Motor düşük hızlarda yakıt enjeksiyon verimliliğine ulaşamaz'],a:1,e:'Üç yollu katalitik konvertör, egzoz gazlarındaki karbon oksitleri ve azot oksitleri azaltır, ancak sadece çalışma sıcaklığına — yaklaşık 15 ila 20 dakika sürüş — ulaştıktan sonra optimum verimle çalışır. Bu nedenle kısa yolculuklar km başına uzun yolculuklardan daha kirleticidir.'},
-{t:'AdBlue',q:'AdBlue, dizel bir motorda ne işe yarar?',o:['Dizel partikül filtresini tıkanmayı önlemek için yağlar','Sıcak egzoz gazlarına enjekte edilerek zararlı azot oksitleri zararsız nitrojen ve suya dönüştürür','Yanmadan önce dizel yakıtın kükürt içeriğini azaltır','Yanma odasında kurum oluşumunu engeller'],a:1,e:'AdBlue, dizel motorlarda kullanılan bir sıvıdır. Sıcak egzoz gazlarına enjekte edilir ve zararlı azot oksitleri (NOx) zararsız nitrojen ve suya dönüştürerek aracın NOx emisyonlarını önemli ölçüde azaltır.'},
-{t:'Emisyon Sınıfları',q:'Dizel aracınız 3. emisyon sınıfında. 4. sınıf olarak belirlenmiş bir çevre bölgesine girebilir misiniz?',o:['Evet — 3. sınıf 4. sınıf uyumluluğunu içerir','Hayır — aracınız 3. sınıf ise 4 veya daha yüksek sınıf gerektiren alanlara giremezsiniz','Evet — sınıf numarası sadece otoyollar için geçerlidir','Sadece bölge girişinde çevre ücreti öderseniz'],a:1,e:'Çevre bölgeleri, giriş için asgari bir emisyon sınıfı belirtir. Aracınız 3. emisyon sınıfındaysa, 4 veya daha yüksek sınıf gerektiren bir alana giremezsiniz. Emisyon sınıfı ne kadar yüksekse araç o kadar temizdir. Sınıf 0 en kirleticidir.'},
-{t:'Ekonomik Sürüş',q:'Maksimum ekonomi için manuel şanzımanlı bir araçta vites ne zaman yükseltilmelidir?',o:['Her zaman tam olarak 2000 dev/dk\'da','Yaklaşık olarak 1500 ile 2500 dev/dk arasında — 1500 altı çok erken, 2500 üstü çok geç','Sadece yol bilgisayarı söylediğinde','Mümkün olduğunca geç vites yükseltin — yüksek devir daha verimlidir'],a:1,e:'Ekonomik sürüş için, çok erken olmadan mümkün olduğunca erken yüksek vitese geçin. Yaklaşık bir kılavuz: 1500 dev/dk altı = çok erken (motor zorlanabilir), 2500 dev/dk üstü = çok geç (yakıt israfı). İdeal vites geçiş noktası motor ve araç tipine bağlıdır.'},
-{t:'Ekonomik Sürüş',q:'İleride kırmızı ışık görüyorsunuz. En yakıt tasarruflu eylem nedir?',o:['Aynı hızda devam edin ve ışığa yaklaştığınızda sert fren yapın','Gaza erken basmayı bırakın ve aracın viteste süzülmesini sağlayın — geç fren yapmaya göre çok daha az yakıt kullanır','Vitesi boşa alın ve süzülün — boşta süzülme daha verimlidir','Son ana kadar hızı korumak için hafifçe gazlayın'],a:1,e:'Yavaşlamanız veya durmanız gerekeceğini öngördüğünüzde, gaza erken basmayı bırakın ve aracın viteste süzülmesini sağlayın. Viteste süzülme (motor freni) çok az yakıt kullanır veya hiç kullanmaz. Geç fren yapmak, yakıt harcayarak oluşturduğunuz kinetik enerjiyi boşa harcar.'},
-{t:'Ekonomik Sürüş',q:'Tavan kutusu kullanımdan sonra neden çıkarılmalıdır?',o:['Tavan kutuları yüksek hızlarda düşebilir','Tavan kutusu hava direncini artırır — araç daha az aerodinamik hale gelir ve daha fazla enerji tüketir','Tavan kutuları eklenen ağırlık nedeniyle fren mesafesini etkiler','Tavan kutusu arka cam görüşünü engeller'],a:1,e:'Tavan kutusu, tavan rafı ve bisiklet taşıyıcıları gibi gereksiz eşyaların çıkarılması hava direncini azaltır. Açık camlar da aynı etkiye sahiptir. Daha aerodinamik bir araç daha az enerji tüketir.'},
-{t:'Ekonomik Sürüş',q:'Açık camla araç kullanmak neden yakıt ekonomisi için kötüdür?',o:['Açık camlar sürücüyü rahatsız eden aerodinamik gürültüye neden olur','Açık camlar hava direncini artırır — araç daha az aerodinamiktir ve daha fazla yakıt tüketir','Açık camlar motor soğutma sisteminin fazla çalışmasına neden olur','Açık camlardan hava akışı klimanın etkisini azaltır'],a:1,e:'Açık camlar hava direncini artırır. Araç daha az aerodinamik hale gelir ve bu nedenle daha fazla enerji tüketir. Bu nedenle ekonomik sürüş tavsiyeleri, camları (ve tavan pencerelerini) mümkün olduğunca kapalı tutmayı içerir.'},
+{t:'ABS',q:'ABS sert frenleme sırasında devreye giriyor — fren pedalı titreşmeye başlıyor. Ne yapmalısınız?',o:['Fren pedalını bırakın — titreşim frenlerin arızalı olduğu anlamına gelir','Fren pedalına basılı tutun — titreşim ABS’nin çalıştığını gösterir, fren arızası değildir','Frenlere ABS’ye yardımcı olmak için tekrar tekrar basın','Hemen yol kenarına yönelin'],a:1,e:'ABS devreye girdiğinde fren pedalı titreşir. Bu BİR FREN ARIZASI değildir — ABS’nin çalıştığını ve tekerlek kilitlenmesini önlediğini gösterir. Pedalı sıkıca basılı tutun. ABS, sert frenleme sırasında direksiyon hakimiyetini korumanızı sağlar.'},
+{t:'Lastikler',q:'Lastiğinizde bir vida buldunuz. Ne yapmalısınız?',o:['Hemen çıkarın ve lastiğin sönüp sönmediğini kontrol edin','Çıkarmayın — aracı servise götürün. Vidayı olduğu yerde bırakmak lastikte bir miktar hava kalmasını sağlar ve deliğin bulunmasını kolaylaştırır.','Lastik onarım spreyi sıkın ve sürmeye devam edin','Lastiği hemen yedek lastikle değiştirin'],a:1,e:'Lastikte bir vida veya çivi bulursanız, ÇIKARMAYIN. Olduğu yerde bırakmak, lastikte bir miktar hava kalmasını sağlar (sönmeyi yavaşlatır) ve serviste deliğin bulunmasını kolaylaştırır. Aracı en kısa sürede servise götürün.'},
+{t:'Lastikler',q:'Kış lastikleri, yasal minimum değil, doğru şekilde işlev görmesi için hangi diş derinliğine ihtiyaç duyar?',o:['1,6 mm yasal minimum kış performansı için yeterlidir','4 mm — kış lastikleri doğru çalışması için en az 4 mm diş derinliğine ihtiyaç duyar, yasal minimum 1,6 mm olmasına rağmen','6 mm — kış lastikleri kar için kalın dişe ihtiyaç duyar','2 mm — standart aşınma göstergesi seviyesi'],a:1,e:'Kış lastikleri için yasal minimum diş derinliği 1,6 mm’dir, ancak kış lastiklerinin doğru performansı için en az 4 mm gerekir. 4 mm’nin altında kış lastiği performansı, yasal olarak izin verilse bile önemli ölçüde azalır.'},
+{t:'Lastikler',q:'Lastik basıncı çok yüksek. Aşınma en çok nerede olur?',o:['Lastiğin dış kenarlarında','Lastiğin orta kısmında — yüksek basınç lastiğin ortasında daha fazla temas sağlar','Tüm lastik genişliğinde eşit','Sadece iç kenarda'],a:1,e:'Yüksek lastik basıncı lastiğin ortasında hafif bir şişkinliğe neden olur, böylece yol ile temas esas olarak orta kısımda gerçekleşir. Bu, aşınmanın dişin orta kısmında yoğunlaşmasına neden olur. Düşük basınç ise dış kenarlarda aşınmaya yol açar.'},
+{t:'Aydınlatma',q:'Tüm zorunlu araç aydınlatması her zaman çalışır durumda olmalıdır. Bu, gündüz uzun farları da kapsar mı?',o:['Hayır — gündüz ışık kuralları sadece kısa farı gerektirir','Evet — tüm zorunlu aydınlatma, şu an kullanılması gerekmese bile her zaman çalışır durumda olmalıdır. Uzun far gündüz de çalışmalıdır.','Sadece kış aylarında','Sadece araçta otomatik far sensörleri varsa'],a:1,e:'Tüm zorunlu aydınlatma, şu an kullanılması zorunlu olmasa bile her zaman düzgün çalışır durumda olmalıdır. Uzun far gündüz de çalışmalıdır. Bir lamba yanarsa, sürüşe yasal olarak devam etmek için hemen değiştirin.'},
+{t:'Aydınlatma',q:'Sinyallerinizden biri yanmış. Uyarı lambası olmadan bunu nasıl anlayabilirsiniz?',o:['Sinyal farklı bir ses çıkarır','Diğer sinyaller normalden daha hızlı yanıp söner — bu, yanmış bir sinyal lambasının standart göstergesidir','Gösterge tablosundaki yakıt göstergesi dalgalanır','Dörtlü flaşör düğmesi çalışmaz'],a:1,e:'Arızalı sinyaller genellikle, çalışan diğer sinyallerin normalden daha hızlı yanıp sönmesiyle anlaşılır. Birçok modern araçta ayrıca gösterge tablosunda yanmış ampul uyarısı bulunur.'},
+{t:'Motor Yağı',q:'Yağ çubuğu (dipstick) ile motor yağı seviyesini doğru şekilde nasıl kontrol edersiniz?',o:['Yağ çubuğunu bir kez çıkarın ve seviyeyi hemen okuyun','Çıkarın, temizleyin, tamamen geri takın, tekrar çıkarın ve yağ seviyesini çubuğun alt kısmından okuyun','Motor çalışırken kontrol edin, doğru sonuç için','Sadece yağın rengine bakın — koyu yağ düşük seviye anlamına gelir'],a:1,e:'Doğru yağ çubuğu prosedürü: 1. Çubuğu çıkarın. 2. Temizleyin. 3. Tamamen geri takın. 4. Tekrar çıkarın. 5. Yağ seviyesini çubuğun alt kısmından okuyun. Bu doğru okumayı sağlar. Her zaman motor soğukken kontrol edin.'},
+{t:'Soğutma Sıvısı',q:'Soğutma sıvısı seviyesi minimumun altında. Benzin istasyonuna uzaksınız. Acil durumda ne yapabilirsiniz?',o:['Herhangi bir sıvı ekleyin — cam suyu da iş görür','Acil durum önlemi olarak su ile doldurun, ancak en kısa sürede uygun soğutma sıvısı ile değiştirin','Kısa mesafeler için soğutma sıvısız yavaşça sürün','Soğutma sıvısı deposuna motor yağı ekleyin'],a:1,e:'Acil durumda soğutma sıvısı deposu su ile doldurulabilir. Ancak en kısa sürede uygun soğutma sıvısı ile değiştirilmelidir. Soğutma sıvısı seviyesi minimumun altındaysa, doldurmadan sürmeyin — motor aşırı ısınabilir, arızalanabilir veya hatta tutuşabilir.'},
+{t:'Fren Hidroliği',q:'Fren hidroliğini neden kendiniz asla tamamlamamalısınız?',o:['Fren hidroliği çok aşındırıcıdır ve koruyucu ekipman gerektirir','Fren hatlarına hava girmemelidir — yanlış doldurma frenlerin kısmen veya tamamen işlevini yitirmesine neden olabilir. Bunu her zaman servise yaptırın.','Fren hidroliği kullanımdan önce termal işlemden geçirilmelidir','Depo sızdırmazdır ve sürücü tarafından açılamaz'],a:1,e:'Fren hidroliği, fren hatlarına hava girmemesi gerektiği için amatörler tarafından tamamlanmamalıdır. Hava girerse frenler kısmen veya tamamen işlevini yitirebilir. Fren hidroliği seviyesi düşerse, aşınmış frenler veya sızıntı olabilir — her ikisi de profesyonel müdahale gerektirir.'},
+{t:'Ön Cam Silecekleri',q:'Arka cam sileceğinin aracın yasal olarak sürülebilir olması için çalışması gerekir mi?',o:['Evet — arka silecekler ön silecekler gibi zorunludur','Hayır — arka cam silecekleri zorunlu değildir ve çalışmak zorunda değildir, ancak tavsiye edilir','Sadece kış koşullarında','Sadece station wagon ve arka silecek standart olan araçlarda'],a:1,e:'Ön cam sileceklerinin aksine (zorunludur), arka cam silecekleri yasal olarak zorunlu değildir ve çalışmak zorunda değildir. Ancak çalışan arka silecekler elbette görüş için tavsiye edilir.'},
 ];
 const QS=10;
 let qQ=[],qI=0,sc=0,ans=[];
@@ -392,7 +444,7 @@ function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(M
 function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
 function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Göster'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
 function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — Doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
-function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Çevre bilgisi mükemmel!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi. Kaçırdıklarını gözden geçir.'}else if(pct>=50){msg='Pratik yapmaya devam et 📖';sub='Ekonomik sürüş ipuçları ve emisyon bölümünü tekrar oku!'}else{msg='Daha fazla çalışmalısın 💡';sub='Katalitik konvertör, AdBlue ve ekonomik sürüşü tekrar gözden geçir!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Tekrar Dene</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Bakım konusunda mükemmel bilgi!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi. Eksiklerinizi gözden geçirin.'}else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Lastik ve sıvı bölümlerini tekrar okuyun!'}else{msg='Biraz daha çalışmalısın 💡';sub='Tüm bakım bölümlerini dikkatlice gözden geçirin!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Testi Tekrarla</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Sizin cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
 applyAll();
 })();
 document.addEventListener('contextmenu',e=>e.preventDefault());
