@@ -1,768 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Bakım ve Periyodik Kontrol – SürüşTeorisi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-        h1,
-        h2 {
-            color: #D5176A;
-        }
-
-
-
-        .gh3 {
-            color: #D5176A;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #FACAD2;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #FACAD2;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .image-block13 {
-            text-align: center;
-            /* Resim ve yazıyı ortalar */
-            margin: 0;
-        }
-
-        .image-block13 img {
-            display: block;
-            width: 100%;
-            /* Resim 400px genişliğinde olur */
-            height: auto;
-            margin: 0 auto;
-        }
-
-
-
-        .image-block13 figcaption {
-            font-size: 14px;
-            color: #444;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı ortalar */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            text-align: justify;
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 150px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-        .important-words6 {
-            background-color: #FACAD2;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            text-align: justify;
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #FACAD2;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-
-
-        .important-words3 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 img {
-            width: 90%;
-            height: auto;
-            margin-right: -202px;
-            margin-left: 10px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-
-
-
-
-        /* Masaüstü için 2 sütun düzeni */
-        .image-container8 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* İki sütun yapısı */
-            gap: 10px;
-        }
-
-        .image-block8 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-block8 img {
-            width: 100%;
-            max-width: 600px;
-            /* Resim genişliği sınırlanabilir */
-            height: auto;
-        }
-
-        .image-block8 figcaption {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.6em;
-            /* Yazı boyutunu küçültmek için */
-        }
-
-        /* Açıklamalı resimler için yüksekliği ayarlama */
-        .image-block8:nth-child(6n) figcaption,
-        .image-block8:nth-child(8n) figcaption {
-            min-height: 20px;
-            /* Açıklamalar için minimum yükseklik */
-        }
-
-        /* Mobil görünüm için sıralama ayarı */
-        @media (max-width: 650px) {
-            .image-container8 {
-                grid-template-columns: 1fr;
-                /* Mobilde tek sütun */
-                grid-template-areas:
-                    "image1"
-                    "image5"
-                    "image2"
-                    "image6"
-                    "image3"
-                    "image7"
-                    "image4"
-                    "image8";
-                /* İstenilen sıralama */
-            }
-
-            /* Her resim bloğuna grid area tanımlaması */
-            .image-block8:nth-child(1) {
-                grid-area: image1;
-            }
-
-            .image-block8:nth-child(2) {
-                grid-area: image2;
-            }
-
-            .image-block8:nth-child(3) {
-                grid-area: image5;
-            }
-
-            .image-block8:nth-child(4) {
-                grid-area: image6;
-            }
-
-            .image-block8:nth-child(5) {
-                grid-area: image3;
-            }
-
-            .image-block8:nth-child(6) {
-                grid-area: image4;
-            }
-
-            .image-block8:nth-child(7) {
-                grid-area: image7;
-            }
-
-            .image-block8:nth-child(8) {
-                grid-area: image8;
-            }
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #D5176A;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #D5176A;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            margin-top: 15px;
-
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-
-        }
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-        .image-text-container {
-            display: flex;
-            /* Görüntü ve metni yan yana koymak için */
-            flex-direction: row;
-            align-items: flex-start;
-            gap: -30px;
-
-        }
-
-        .image-text-container img {
-            max-width: 100%;
-            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
-            height: auto;
-            /* Görselin oranlarını koru */
-            width: 440px;
-            /* Görseli küçültmek için sabit bir genişlik */
-            margin-left: -40px;
-            /* Görsel ile sol kenar arasındaki boşluk */
-
-
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        table thead th {
-            background-color: #E0EDCB;
-            color: #333;
-            padding: 12px;
-        }
-
-        table tbody td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table tbody td.first-column {
-            background-color: #E0EDCB;
-            /* Sol sütun rengi */
-            font-weight: bold;
-            /* Yazıları kalın yapma */
-        }
-
-
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    /* CSS tamamen aynı kalır, değişiklik yok */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--text-primary);margin:22px 0 10px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    p strong{color:var(--text-primary)}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* check row — part name + warning icon + body */
+    .check-row{display:flex;align-items:flex-start;gap:14px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:13px 15px;margin:10px 0 14px;backdrop-filter:blur(12px)}
+    .check-row .cr-icon{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;min-width:62px}
+    .check-row .cr-icon img{height:54px;width:auto;object-fit:contain}
+    .check-row .cr-icon span{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;color:var(--text-dim);text-align:center;line-height:1.2}
+    .check-row .cr-body p{font-family:'Lora',serif;font-size:.83rem;color:var(--text-muted);margin:0 0 5px;line-height:1.5}
+    .check-row .cr-body p:last-child{margin:0}
+    .check-row .cr-body p strong{color:var(--text-primary)}
+    @media(max-width:480px){.check-row{flex-direction:column}}
+
+    /* photo pair */
+    .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 18px}
+    @media(max-width:520px){.photo-pair{grid-template-columns:1fr}}
+    .photo-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px)}
+    .photo-card img{width:100%;height:155px;object-fit:cover;display:block}
+    .photo-card .pc-caption{font-family:'Lora',serif;font-size:.76rem;color:var(--text-muted);padding:9px 12px;line-height:1.3}
+
+    /* callout */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.red{background:rgba(232,69,69,.07);border:1px solid rgba(232,69,69,.22)}
+    .callout.red::before{background:linear-gradient(180deg,var(--red),#ff8888)}
+    .callout.red p{color:rgba(255,180,180,.85)}
+    .callout.red p strong{color:#fff}
+    .callout.red .callout-title{color:#ff8888}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+
+    /* tyre pressure bars */
+    .tyre-specs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+    .ts-pill{padding:8px 14px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600}
+    .ts-pill.blue{background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.25);color:var(--accent-light)}
+    .ts-pill.green{background:rgba(0,200,100,.09);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .ts-pill.amber{background:rgba(245,166,35,.09);border:1px solid rgba(245,166,35,.25);color:#ffd166}
+
+    /* fluid check table */
+    .fluid-table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--card-bg);border-radius:13px;overflow:hidden;border:1px solid var(--card-border)}
+    .fluid-table th{background:rgba(6,18,48,1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:10px 12px;text-align:left}
+    .fluid-table td{font-family:'Lora',serif;font-size:.82rem;padding:10px 12px;border-bottom:1px solid rgba(77,166,255,.07);color:var(--text-muted);vertical-align:top;line-height:1.45}
+    .fluid-table tr:last-child td{border-bottom:none}
+    .fluid-table td:first-child{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:var(--text-primary)}
+    .fluid-table tr:hover td{background:rgba(77,166,255,.03)}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -773,526 +218,230 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
-    <h1>Bakım ve periyodik kontrol
-    </h1>
-    <p>
-        Bir aracın trafikte güvenle yer alabilmesi için belirli gereklilikleri karşılaması gerekir. Bu uygunluk,
-        aracın düzenli olarak kontrol edilmesiyle izlenmelidir. Nasıl ve ne zaman yapılacağı, parça bazında
-        aşağıda açıklanmıştır.
-    </p>
-    <h2>
-        Direksiyon
-    </h2>
-
-    <div class="important-words13">
-        <div class="container">
-            <div>
-                <p>
-                    Direksiyon simidinin titremeye başladığını, ağırlaştığını veya farklı hissettirdiğini fark ederseniz,
-                    bunu mutlaka araştırın. Sorun bir direksiyon arızasından kaynaklanabileceği gibi, lastikler, jantlar
-                    veya süspansiyonla ilgili bir problem de olabilir. Bu sorun çözülene kadar aracı kullanmak yasaktır.
-                </p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Test</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk &amp; Metin Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek Kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan opaklığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Metin Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart opaklığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık opaklığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🔧 Bakım Testi</div><div class="quiz-badge" id="quiz-badge">10 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🔧</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Lastikler, ABS, frenler, aydınlatma, sıvılar, silecekler, egzoz ve aynalar hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 10 soru</div><div class="qs-chip">🔀 Rastgele sıra</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Testi Başlat</button>
             </div>
-
-            <figure class="image-block13">
-                <img src="https://static.wixstatic.com/media/4b688f_4253c7ddf88c464581bd9ac38cf4d5d3~mv2.png"
-                    alt="Örnek Resim" class="image1">
-                <figcaption>Direksiyon destek sistemi arızası</figcaption>
-            </figure>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
         </div>
     </div>
+</div>
 
-    <h2>
-        Korna
-    </h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
+<!-- SAYFA İÇERİĞİ -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>SürüşTeorisi</span><span class="dot">›</span><span>Sürüş Davranışı</span><span class="dot">›</span><span style="color:var(--text-primary)">Bakım ve Periyodik Kontrol</span></div>
+    <h1>Bakım ve Periyodik Kontrol</h1>
+    <div class="section-divider"></div>
+    <p>Trafiğe güvenli bir şekilde katılabilmek için bir aracın düzenli kontrollerle izlenen bir dizi gereksinimi karşılaması gerekir. Bazı arızalar, aracın kullanılmasını yasal olarak yasaklar.</p>
 
-                <p>
-                    Her binek otomobilde çalışır durumda bir korna bulunmalıdır. Korna çalışmayan bir araçla sürüş yapmak
-                    yasaktır.
-                </p>
+    <!-- STEERING -->
+    <h2>🔄 Direksiyon</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_4253c7ddf88c464581bd9ac38cf4d5d3~mv2.png" alt="Hidrolik direksiyon arıza uyarısı"/><span>Hidrolik direksiyon arızası</span></div>
+        <div class="cr-body"><p>Direksiyonda titreşim, ağırlaşma veya farklı bir his, direksiyon arızasına — veya lastikler, tekerlekler veya süspansiyonla ilgili bir soruna işaret edebilir. <strong>Sorun çözülene kadar araç kullanmak yasaktır.</strong></p></div>
+    </div>
 
-            </div>
-            <figure class="image-block13">
-                <img src="https://static.wixstatic.com/media/4b688f_e5bc940dced7487ea8f88d05296d004f~mv2.png"
-                    alt="Örnek Resim" class="image1">
-                <figcaption></figcaption>
-            </figure>
+    <!-- HORN -->
+    <h2>📣 Korna</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_e5bc940dced7487ea8f88d05296d004f~mv2.png" alt="Korna"/><span>Korna</span></div>
+        <div class="cr-body"><p>Her binek otomobilde düzgün çalışan bir korna bulunmalıdır. <strong>Çalışmayan korna ile araç kullanmak yasaktır.</strong></p></div>
+    </div>
 
+    <!-- SUSPENSION & ABS -->
+    <h2>🔩 Süspansiyon ve ABS</h2>
+    <p>Arızalı süspansiyon azalmış stabiliteye neden olur — sarsıntı, savrulma, sola/sağa çekme, hız tümseklerinde gümleme veya yatma. Bu durum tehlikeli durumlara ve düzensiz lastik aşınmasına yol açar. <strong>Sürüşten önce onarılmalıdır.</strong></p>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_777522730bb54fc18399fe356dd3fb4c~mv2.png" alt="ABS uyarı ışığı"/><span>ABS arızası</span></div>
+        <div class="cr-body"><p>ABS, sert frenleme sırasında tekerleklerin kilitlenmesini önler — acil durdurma sırasında <strong>direksiyonu çevirmeye devam edebilirsiniz</strong>. ABS her zaman fren mesafesini kısaltmaz. ABS devreye girdiğinde fren pedalı titreşir — bu <strong>bir fren arızası değildir</strong>. <strong>Pedalı bırakmayın.</strong></p></div>
+    </div>
 
+    <!-- BRAKES -->
+    <h2>🛑 Frenler</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_908dac3ed0c347a28529d6bd43af487d~mv2.png" alt="Aşınmış fren balatası"/><span>Aşınmış fren balatası</span></div>
+        <div class="cr-body"><p>Fren performansında azalma, fren yaparken savrulma veya bir uyarı ışığı = hemen servise gidin. <strong>Arızalı frenlerle araç kullanmak yasaktır.</strong></p></div>
+    </div>
+
+    <!-- TYRES -->
+    <h2>🛞 Lastikler</h2>
+    <p>Lastikleri ayda bir kontrol edin: <strong>lastik basıncını ve diş derinliğini ölçün</strong>. Her sürüşten önce: aracın etrafında dolaşarak patlak lastik, gözle görülür hasar ve valf kapaklarını kontrol edin. Basıncı lastikler <strong>soğukken</strong> kontrol edin.</p>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_70a972d05d5944b2a9ac33e35cbd3734~mv2.png" alt="Düşük lastik basıncı"/><span>Düşük lastik basıncı</span></div>
+        <div class="cr-body"><p>Düşük basınç: daha yüksek yakıt tüketimi, zayıf yol tutuşu, artan lastik aşınması, patlama riski. Yüksek basınç: ayrıca zayıf yol tutuşu — aşınma daha çok lastiğin <strong>orta</strong> kısmında görülür.</p></div>
+    </div>
+    <div class="photo-pair">
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_31a94b8ba1c84590a4e5d4575c608ad1~mv2.jpeg" alt="Lastik aşınma göstergeleri"/><div class="pc-caption">Lastik aşınma göstergeleri, ana kanallardaki çapraz işaretlerdir. Diş seviyesine geldiğinde lastiği değiştirin.</div></div>
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_6d4bacf5fbbe4144b5a7e88c47e7560d~mv2.jpeg" alt="Kış lastiği"/><div class="pc-caption">Kış lastikleri, ana lastik kanalları arasındaki ek oluklarla tanınır.</div></div>
+    </div>
+    <div class="tyre-specs">
+        <div class="ts-pill blue">🔵 Normal basınç: 2 – 2,5 bar (lastik genişliğine göre değişir)</div>
+        <div class="ts-pill green">✅ Kış lastiği minimumu: 4 mm (yasal min: 1,6 mm)</div>
+        <div class="ts-pill amber">🌡️ Kış lastikleri faydalı: sadece 8°C'nin altında</div>
+    </div>
+    <div class="callout amber">
+        <span class="callout-title">⚠️ Lastikte çivi/vida?</span>
+        <p><strong>Çıkarmayın.</strong> Aracı servise götürün — çivi yerinde kaldığında lastikte biraz hava kalır ve deliği bulmak daha kolay olur. Eksik valf kapakları valfe kir girmesine izin vererek yavaş söndürmeye neden olur.</p>
+    </div>
+
+    <!-- LIGHTING -->
+    <h2>💡 Aydınlatma ve Sinyal Lambaları</h2>
+    <div class="photo-pair">
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_e153e765e6f54720b2df049bda4a69fd~mv2.jpeg" alt="Farların üzerinde kar"/><div class="pc-caption">Sürüşten önce her zaman far camlarındaki karı temizleyin.</div></div>
+        <div class="photo-card"><img src="https://static.wixstatic.com/media/4b688f_a4849ab6e6d74f50a0c67be5468b9024~mv2.jpeg" alt="Mat far camı"/><div class="pc-caption">Mat far camları daha az ışık geçirir — çok kötü olduğunda değiştirin.</div></div>
+    </div>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_af52513551c5425f95cd6e277a7137d0~mv2.png" alt="Kırık lamba"/><span>Kırık lamba</span></div>
+        <div class="cr-body">
+            <p>Tüm zorunlu aydınlatma her zaman çalışır durumda olmalıdır — şu anda gerekli olmasa bile (örn. uzun far gündüz çalışmalıdır). Bir lamba kırılırsa, aracı kullanmaya devam etmek için <strong>hemen değiştirin.</strong></p>
+            <p>Pratikte birçok modern araç, lambaların değiştirilmesi için servis gerektirir. Kendiniz değiştiremiyorsanız, en kısa sürede servise gidin.</p>
         </div>
     </div>
-    <h2>
-        Süspansiyon
-    </h2>
-    <p>
-        Bir aracın süspansiyonu, aracı tekerleklerle birleştiren kısımdır. Arızalı süspansiyon genellikle sürüş
-        sırasında azalan stabiliteyle kendini belli eder. Buna zıplama, savrulma ve aracın sağa/sola çekmesi dâhil
-        olabilir. Direksiyon zorlaşabilir veya kasislerden ve yükseltilerden geçerken tok sesler duyulabilir. Araç
-        ayrıca, yaylardan birinin çökmeye başlamasıyla yana yatabilir.
-    </p>
-    <p>
-        Bu stabilite kaybı tehlikeli durumlara yol açabileceği gibi lastiklerde düzensiz aşınmaya da neden olur. Böyle
-        bir durumda, araç kullanılmadan önce süspansiyonun onarılması gerekir.
-    </p>
-    <div class="important-words1">
-        <div class="vertical-line2"></div>
-        <h3>ABS (Kilitlemeyi önleyici fren sistemi)</h3>
-
-        <div class="important-words13">
-            <div class="container">
-                <div>
-                    <p>
-                        Binek otomobillerin çoğu ABS ile donatılmıştır. Bu sistem, sert frenlemede tekerleklerin kilitlenmesini
-                        önler. Bu sayede ani duruşlarda araç daha kontrol edilebilir kalır. ABS her zaman daha kısa fren
-                        mesafesi sağlamaz; ancak frenleme sırasında direksiyon çevirmeye devam edebildiğiniz için engellerden
-                        kaçmak kolaylaşır. ABS devreye girdiğinde fren pedalı titrer. Bu bir fren arızası değil, ABS'nin
-                        çalıştığının göstergesidir. Fren pedalını bırakmayın.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_777522730bb54fc18399fe356dd3fb4c~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>ABS arızası</figcaption>
-                </figure>
-
-
-            </div>
-
-
-
-        </div>
-        <h2>
-            Frenler
-        </h2>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        İyi çalışmayan frenler hayati tehlike oluşturur. Frenlerin etkisinin azaldığını, frenlemede
-                        savrulma olduğunu veya bir uyarı ışığının yandığını fark ederseniz aracı en kısa sürede bir serviste
-                        kontrol ettirin. Arızalı frenlerle araç kullanmak yasaktır.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_908dac3ed0c347a28529d6bd43af487d~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Aşınmış fren balatası</figcaption>
-                </figure>
-
-
-            </div>
-        </div>
-        <h2>
-            Lastikler
-        </h2>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Lastikler, profesyonel yardıma ihtiyaç olmadan nispeten kolayca kontrol edilebilir. Sürüşten önce
-                        aracın etrafında dolaşıp lastiklerin inik veya inmeye başlamadığından emin olun. Görünür hasar olup
-                        olmadığını kontrol edin ve tüm sibop kapaklarının yerinde olduğundan emin olun.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_70a972d05d5944b2a9ac33e35cbd3734~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Düşük lastik basıncı</figcaption>
-
-
-            </div>
-        </div>
-        <p>
-            Ayda bir kez lastik basıncını ve diş derinliğini ölçün. Lastiğin ana kanallarındaki küçük kabartılar
-            (aşınma göstergeleri) kanalın üst kenarından daha derinde olmalıdır. Göstergeler dişlerle aynı seviyeye
-            gelmeye başladıysa lastiğin deseni yetersizdir ve lastik değiştirilmelidir. Yetersiz diş derinliğiyle araç
-            kullanmak yasaktır.
-        </p>
-        <div>
-            <div class="images-container5">
-                <figure>
-                    <img src="https://static.wixstatic.com/media/4b688f_31a94b8ba1c84590a4e5d4575c608ad1~mv2.jpeg"
-                        alt="Uyarı yan hava yastığı arızası">
-                    <figcaption>Lastik aşınma göstergeleri, ana kanallardaki çapraz işaretlerdir.
-                    </figcaption>
-
-
-                </figure>
-                <figure>
-                    <img src="https://static.wixstatic.com/media/4b688f_6d4bacf5fbbe4144b5a7e88c47e7560d~mv2.jpeg"
-                        alt="Uyarı yan hava yastığı arızası">
-                    <figcaption>Kış lastikleri, ana kanallar arasındaki ekstra kanallardan genellikle ayırt edilir.
-                    </figcaption>
-
-
-                </figure>
-
-
-
-
-            </div>
-        </div>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Binek araçlarda kış lastiklerinin ana kanallardaki diş derinliği en az 1,6 mm olmalıdır (yasal
-                        asgari). Ancak düzgün çalışmaları için kış lastiklerinde en az 4 mm diş derinliği gerekir. Kış
-                        lastiklerinin daha yumuşak kauçuğu, onları yalnızca 8 °C altındaki sıcaklıklarda faydalı kılar.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_45817bae85ed4983b3e87935f8fc68f4~mv2.jpeg"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Kış lastiği üzerindeki sembol</figcaption>
-                </figure>
-
-
-            </div>
-        </div>
-        <p>
-            Lastikler henüz soğukken, sürüşten önce her zaman lastik basıncını kontrol edin; stepneyi de dâhil edin.
-            Basınç düşükse lastikleri şişirin. Bu işlem çoğu akaryakıt istasyonunda yapılabilir. İdeal lastik basıncı
-            kullanım kılavuzunda yer alır. Çoğu binek araçta kapı içlerinde veya yakıt kapağında ideal basınç tablosu
-            bulunur. Çoğu hava pompasında da araç marka/model ve ideal basınç listesi vardır. Çoğu durumda, basınç
-            2 ile 2,5 bar arasında olmalıdır. Bu hem kış hem yaz lastikleri için geçerlidir. Ancak ideal basınç, lastik
-            genişliğine göre değişebilir.
-        </p>
-        <p>
-            Lastik aşırı hasarlıysa veya balon yaptıysa, patlama riski arttığından araç kullanmak yasaktır.
-        </p>
-        <p>
-            Eksik sibop kapakları, siboba kir girmesi riskini artırır; bu da tam kapanmayı engelleyerek lastiğin
-            sönmesine neden olabilir. Yavaş sönme, lastikteki çivi veya vida nedeniyle de oluşabilir. Lastikte çivi/vida
-            bulursanız çıkarmayın ve aracı servise götürün. Bu, lastikte bir miktar havanın kalmasını sağlar ve deliğin
-            bulunmasını kolaylaştırır.
-        </p>
-        <p>
-            Düşük lastik basıncı daha yüksek enerji tüketimine, yetersiz tutuş nedeniyle kötü yol tutuşuna ve artan
-            lastik aşınmasına yol açar. En kötü ihtimalle patlamaya neden olabilir. Basınç çok yüksekse de tutuş kaybı
-            yaşayabilirsiniz; bu durumda aşınma daha çok orta kısımda görülür.
-        </p>
-        <h2>
-            Aydınlatma ve sinyaller
-        </h2>
-        <p>
-            Yeterli araç aydınlatması; diğer yol kullanıcılarına görünür kalmanız, sinyal verebilmeniz ve çevreyi
-            doğru görmeniz için kritik önemdedir. Sürüşten önce aracın etrafında dolaşıp lambaların temiz ve hasarsız
-            olduğundan emin olun.
-        </p>
-        <div>
-            <div class="images-container5">
-                <figure>
-                    <img src="https://static.wixstatic.com/media/4b688f_e153e765e6f54720b2df049bda4a69fd~mv2.jpeg"
-                        alt="Uyarı yan hava yastığı arızası">
-                    <figcaption>Sürüşten önce far kapaklarındaki karı mutlaka temizleyin.
-                    </figcaption>
-
-
-                </figure>
-                <figure>
-                    <img src="https://static.wixstatic.com/media/4b688f_a4849ab6e6d74f50a0c67be5468b9024~mv2.jpeg"
-                        alt="Uyarı yan hava yastığı arızası">
-                    <figcaption>Yıllar içinde far kapakları matlaşabilir. Bu, daha az ışık geçmesine yol açar. Aşırı
-                        matlaşma varsa değiştirilmelidir.
-                    </figcaption>
-
-
-                </figure>
-
-
-
-
-            </div>
-        </div>
-        <p>
-            Tüm aydınlatmayı düzenli olarak kontrol edin. Yolculuğun başında, her iki farın yansımasını gördüğünüzden
-            emin olun. Bu yansıma, cam bir yüzeyin yanından geçerken veya trafik ışıklarında başka bir aracın arkasında
-            dururken görülebilir. Arka ve fren lambaları, bir cam veya düz bir duvara dönükken dikiz aynasından en iyi
-            şekilde kontrol edilir. Lambaları açıp kapatın ve frene basın. Cam ya da düz duvardaki yansıma, çalışmayan
-            lamba olup olmadığını gösterir.
-        </p>
-        <p>
-            Modern binek araçların çoğunda, bir lamba arızalandığında yanan bir uyarı ışığı bulunur. Sinyal lambası
-            arızaları genellikle diğer sinyallerin daha hızlı yanıp sönmesinden anlaşılır.
-        </p>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Zorunlu tüm aydınlatma, o anda kullanmanız gerekmese bile her zaman çalışır durumda olmalıdır.
-                        Örneğin uzun farlar gündüz de çalışır durumda olmalıdır. Bir lamba arızalıysa, sürüşe devam
-                        edebilmek için onu derhal değiştirebilmelisiniz.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_af52513551c5425f95cd6e277a7137d0~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Bozuk lamba</figcaption>
-
-
-            </div>
-        </div>
-        <p>
-            Pratikte ise bu her zaman mümkün değildir. Modern binek araçlarda lambalar, profesyonel bilgi ve gerekli
-            ekipman olmadan değiştirilemeyebilir. Bazı durumlarda ulaşmak için tamponun veya far ünitesinin sökülmesi
-            gerekir. Aracınızdaki bir lamba bozulduysa ve değiştiremiyorsanız, en kısa sürede bir serviste
-            değiştirtin.
-        </p>
-        <h2>
-            Reflektörler
-        </h2>
-        <p>
-            Modern binek araçlarda reflektörlerin çoğu lamba ünitelerine entegredir. Bu ünitelerin etrafındaki camlar
-            kırık, hasarlı veya mat olmamalıdır; aksi hâlde ışık kalitesi etkilenir. Bağımsız reflektörler de hasarlı,
-            mat veya eksik olmamalıdır. Lambalar gibi kar, buz, çamur veya başka kirlerle kaplı olmamalıdır.
-        </p>
-        <p>
-            Zorunlu reflektörleri bulunmayan veya kırık reflektörleri olan binek araçlar, kamusal yollarda
-            kullanılamaz. Bazı durumlarda, örneğin aracın arkasındaki kırmızı reflektörler eksik veya kırık olduğunda,
-            aracı yolda park etmek dahi yasaktır.
-        </p>
-        <h2>
-            Aynalar
-        </h2>
-        <p>
-            Aynalar her zaman temiz ve hasarsız olmalıdır; çünkü onlardan görüşün en iyi şekilde korunması gerekir.
-            Sürüşten önce aynaları kontrol edin ve gerekirse temizleyin. Kırık aynayla araç kullanmak yasaktır. Camdaki
-            küçük bir çatlak bile görüşü olumsuz etkileyerek güvenli sürüşü engeller.
-        </p>
-        <h2>
-            Cam suyu püskürtücüler ve silecekler
-        </h2>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Silecekler veya cam suyu püskürtücüler arızalanırsa ya da cam suyu biterse, ön camdan görüş
-                        ciddi şekilde kısıtlanır ve araç kullanmak bu nedenle yasaktır. Çoğu akaryakıt istasyonunda
-                        satılan cam suyundan araçta her zaman bulundurun.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_f18112742f3543e6b90c6e720ae4bd8a~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Cam suyu seviyesi düşük</figcaption>
-
-
-            </div>
-        </div>
-        <p>
-            Silecek lastikleri (ön camda kayan parça), aşınma nedeniyle düzenli olarak değiştirilmelidir. Kullanım
-            sırasında ön camda çizgiler bırakmaları bunun göstergesidir.
-        </p>
-        <p>
-            Silecekleri düzenli olarak temizleyin; özellikle aracı ağaç altında park ediyorsanız. Küçük dallar ve
-            yapraklar, uzun süre silecek altında kalırsa ön camı çizebilir. Ayrıca silecek altındaki kir, silecek
-            çalıştığında cam üzerinde iz yapar. Haftada bir bezle silin; kir gördüğünüzde daha sık temizleyin.
-        </p>
-        <p>
-            Ön cam sileceklerinin aksine, arka cam silecekleri zorunlu değildir ve çalışır durumda olması gerekmez.
-            Ancak çalışıyor olmaları elbette önerilir.
-        </p>
-        <h2>
-            Egzoz
-        </h2>
-        <p>
-            Kırık bir egzoz genellikle artan sesten anlaşılır. Araç aniden daha tok veya daha yüksek ses çıkarıyorsa
-            ya da hızlanırken çatırdama duyuluyorsa, egzoz hasarlı olabilir.
-        </p>
-        <p>
-            Normal aşınma, genellikle yıllık araç muayenesinde (APK) veya diğer kontrollerde zamanında fark edilir.
-            Ancak bir yere çarpma sonucu hasar gören egzoz çoğu zaman aniden çok daha fazla ses çıkarır. Bazı
-            durumlarda, egzoz yerinden çıkıp sürüş sırasında yere sürtünerek kazıma sesi yapabilir.
-        </p>
-        <p>
-            Kırık egzozla araç kullanmak yasaktır. Yalnızca gürültü rahatsızlığı yaratmakla kalmaz, zararlı emisyonlar
-            da önemli ölçüde artar.
-        </p>
-        <h2>
-            Yağ seviyesi ve sıvılar
-        </h2>
-        <p>
-            Kaput altında motor yağı ve diğer bazı sıvılar gibi kendinizin kontrol edebileceği unsurlar vardır.
-        </p>
-        <div>
-            <div class="images-container5">
-                <figure>
-                    <img src="https://static.wixstatic.com/media/4b688f_5976b957091040cdaa8664044199b135~mv2.jpeg"
-                        alt="Uyarı yan hava yastığı arızası">
-
-
-
-                </figure>
-
-
-
-
-
-            </div>
-        </div>
-        <h3>
-            Motor yağı
-        </h3>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Motor yağı, motorun dönen parçalarının iyi yağlanmasını ve kısmen soğutulmasını sağlar. Yağ
-                        seviyesi çok düşerse motor aşırı ısınabilir, durabilir ve sonunda hasar görebilir.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_c86d387c64594b26b839e970b65b8d25~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Yetersiz yağ basıncı</figcaption>
-                </figure>
-
-
-            </div>
-        </div>
-        <p>
-            Yağ seviyesini (motor soğukken) her ay kontrol edin. Bunu genellikle motor parçaları arasından çıkan sarı
-            veya turuncu halkalı/saplı yağ çubuğuyla yaparsınız.
-        </p>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Yağ çubuğunu çekip çıkarın, temizleyin ve aynı deliğe tamamen geri takın. Çubuğu yeniden çıkarın
-                        ve alt ucundaki yağ seviyesini kontrol edin.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_62345ffdf50a4ca2a069ac993a790b21~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Düşük yağ seviyesi</figcaption>
-                </figure>
-
-
-            </div>
-        </div>
-        <p>
-            Seviye çok düşükse motor bloğunun üstündeki dolum kapağından yağ ekleyin.
-        </p>
-        <h3>
-            Soğutma sıvısı
-        </h3>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Adından anlaşılacağı üzere soğutma sıvısı motoru soğutur. Seviye çok düşükse motor aşırı
-                        ısınabilir, hasar görebilir hatta tutuşabilir. Bu nedenle, soğutma sıvısı seviyesini her ay
-                        kontrol edin. Bunu soğuk motorda yapın! Sürüş sırasında sıvı çok ısınabileceğinden, sıcak motorda
-                        kontrol etmek veya tamamlamak tehlikelidir. Seviye, genleşme kabından okunur.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_d2c9a0acaa714d9db42a87d2275cf130~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Motor aşırı ısındı</figcaption>
-
-
-            </div>
-        </div>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Seviye minimum değerin altına düşerse daha fazla sürmeyin; önce soğutma sıvısı ekleyin. Çoğu
-                        akaryakıt istasyonunda ve yapı markette satılır. Acil durumda, depo suyla da tamamlanabilir;
-                        ancak en kısa sürede uygun soğutma sıvısıyla değiştirilmelidir.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_5392f52eaa0243d2876ac2b9c01a4817~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Soğutma sıvısı seviyesi düşük</figcaption>
-
-
-            </div>
-        </div>
-        <p>
-            Normalde soğutma sıvısı seviyesi durup dururken düşmez. Bu bir yerde kaçak olduğu anlamına gelebilir.
-            Serviste kontrol ettirin.
-        </p>
-        <h3>
-            Fren hidroliği
-        </h3>
-        <div class="important-words13">
-            <div class="container">
-                <div>
-
-                    <p>
-                        Fren hidroliği, kendi başınıza rastgele tamamlayabileceğiniz bir sıvı değildir. Fren hatlarına
-                        hava girmemelidir ve yanlış şekilde tamamlanırsa frenler (kısmen) işlevini kaybedebilir. Bu
-                        işlemi her zaman serviste yaptırın. Normalde seviye sabit kalır; düşmüşse frenlerin aşınmış
-                        olabileceği veya bir yerde kaçak bulunduğu anlamına gelebilir.
-                    </p>
-
-                </div>
-                <figure class="image-block13">
-                    <img src="https://static.wixstatic.com/media/4b688f_4665f419bf514bd585bbfd3476c8f7d7~mv2.png"
-                        alt="Örnek Resim" class="image1">
-                    <figcaption>Fren sistemi arızası
-
-                    </figcaption>
-
-
-            </div>
-        </div>
-        <p>
-            Seviye, fren hidroliği deposundan okunur. Minimum değerin altına düşmemelidir. Düşmüşse daha fazla
-            ilerlemeyin.
-        </p>
-
-
-        <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a> 
-
-      
-  
-
+    <p>Kırık sinyaller genellikle belirgindir — <strong>diğer sinyaller daha hızlı yanıp söner</strong>. Ön farları, cam bir panele yansımalarını gözlemleyerek veya ışıklarda başka bir aracın arkasındayken kontrol edin. Arka lambaları dikiz aynası ile bir duvara veya pencereye bakarak kontrol edin.</p>
+
+    <!-- RETRO-REFLECTORS -->
+    <h2>🔴 Reflektörler</h2>
+    <p>Reflektör camları kırık, hasarlı veya mat olmamalıdır. Kar, buz, çamur veya kirle kaplanmamalıdır. Arkada kırık veya eksik kırmızı reflektörü olan bir araç <strong>yolda park edilemez</strong>, sürülmesi zaten yasaktır.</p>
+
+    <!-- MIRRORS -->
+    <h2>🪞 Aynalar</h2>
+    <p>Aynalar her zaman temiz ve hasarsız olmalıdır. Basit bir çatlak bile görüşü güvenli sürüşü imkânsız kılacak kadar etkiler. <strong>Kırık ayna ile araç kullanmak yasaktır.</strong></p>
+
+    <!-- WIPERS -->
+    <h2>🌀 Ön Cam Silecekleri ve Yıkama Sistemi</h2>
+    <div class="check-row">
+        <div class="cr-icon"><img src="https://static.wixstatic.com/media/4b688f_f18112742f3543e6b90c6e720ae4bd8a~mv2.png" alt="Yıkama suyu seviyesi düşük"/><span>Yıkama suyu seviyesi düşük</span></div>
+        <div class="cr-body"><p>Arızalı silecekler veya yıkama sistemi veya boş yıkama suyu deposu = araç kullanmak yasaktır (görüş ciddi şekilde kısıtlanır). Her zaman yedek cam suyu bulundurun. Silecek lastiklerini çizgi bıraktıklarında değiştirin. <strong>Arka silecek zorunlu değildir</strong> ancak tavsiye edilir.</p></div>
+    </div>
+    <p>Silecek lastiklerini haftalık bir bezle temizleyin — özellikle ağaç altında park edildiğinde. Sileceğin altındaki yaprak ve dallar ön camı çizebilir.</p>
+
+    <!-- EXHAUST -->
+    <h2>💨 Egzoz</h2>
+    <p>Kırık bir egzoz genellikle artan gürültüden — daha ağır, daha yüksek veya gaz verirken çatırdama — belirgindir. Bazı durumlarda yerde sürüklenebilir (sürüklenme sesi). <strong>Kırık egzozla araç kullanmak yasaktır</strong> — gürültü rahatsızlık verir ve zararlı emisyonlar önemli ölçüde artar.</p>
+
+    <!-- FLUIDS -->
+    <h2>🛢️ Yağ Seviyesi ve Sıvılar</h2>
+    <table class="fluid-table">
+         <th>Sıvı</th><th>Nasıl kontrol edilir / Ne yapılmalı</th>
+         <tr><td>Motor yağı</td><td>Soğuk motorda <strong>yağ çubuğu</strong> (genellikle sarı/turuncu halka) ile ayda bir kontrol edin. Çubuğu çekin, silin, tamamen geri takın, tekrar çekin ve seviyeyi okuyun. Düşükse motor bloğunun üstündeki doldurma ağzından tamamlayın. Düşük yağ = motor aşırı ısınması, motor arızası.</td></tr>
+         <tr><td>Soğutma suyu</td><td>Ayda bir kontrol edin — <strong>sadece soğuk motorda!</strong> Genleşme deposunu okuyun. Minimumun altındaysa, araç kullanmayın — önce soğutma suyu ile doldurun (acil durumda su, en kısa sürede uygun sıvı ile değiştirin). Soğutma suyu seviyesi düşmemelidir; düşüyorsa sızıntı olabilir.</td></tr>
+         <tr><td>Fren hidroliği</td><td><strong>Kendiniz eklemeyin</strong> — fren hatlarına hava girmemelidir. Bu işlem her zaman serviste yapılmalıdır. Deposunu okuyun — minimumun altına düşmemelidir. Düşerse frenler aşınmış olabilir veya sızıntı vardır. Minimumun altındaysa <strong>araç kullanmayın</strong>.</td></tr>
+    </table>
+
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel Bakışa Dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_mnt810_tr';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+{t:'ABS',q:'ABS'niz sert frenleme sırasında devreye giriyor — fren pedalı titreşmeye başlıyor. Ne yapmalısınız?',o:['Fren pedalını bırakın — titreşim frenlerin arızalandığı anlamına gelir','Fren pedalını basılı tutun — titreşim ABS'nin çalıştığının bir işaretidir, fren arızası değildir','ABS'nin çalışmasına yardımcı olmak için freni tekrar tekrar pompalayın','Derhal yol kenarına direksiyon kırın'],a:1,e:'ABS devreye girdiğinde fren pedalı titreşir. Bu BİR FREN ARIZASI değildir — ABS'nin çalıştığını ve tekerlek kilitlenmesini önlediğini doğrular. Pedalı sıkıca basılı tutun. ABS, sert frenleme sırasında direksiyonu çevirmeye devam etmenizi sağlar.'},
+{t:'Lastikler',q:'Lastiğinizde bir vida buldunuz. Ne yapmalısınız?',o:['Hemen çıkarın ve lastiğin sönüp sönmediğini kontrol edin','Çıkarmayın — aracı servise götürün. Vidayı yerinde bırakmak lastikte biraz hava kalmasını sağlar ve deliğin bulunmasını kolaylaştırır.','Lastik tamir spreyi uygulayın ve sürmeye devam edin','Hemen yolda yedek lastiği takın'],a:1,e:'Lastikte bir vida veya çivi bulursanız, ÇIKARMAYIN. Yerinde bırakmak lastikte biraz hava kalmasını sağlar (sönmeyi yavaşlatır) ve serviste deliğin bulunmasını kolaylaştırır. Aracı en kısa sürede servise götürün.'},
+{t:'Lastikler',q:'Kış lastikleri (sadece yasal minimum değil) düzgün çalışması için hangi diş derinliğine ihtiyaç duyar?',o:['1,6 mm yasal minimum kış performansı için yeterlidir','4 mm — kış lastiklerinin düzgün çalışması için en az 4 mm diş derinliğine ihtiyacı vardır, yasal minimum 1,6 mm olsa da','6 mm — kış lastiklerinin kar için kalın dişe ihtiyacı vardır','2 mm — standart aşınma göstergesi seviyesi'],a:1,e:'Kış lastikleri için yasal minimum diş derinliği 1,6 mm'dir, ancak düzgün kış performansı için kış lastiklerinin en az 4 mm'ye ihtiyacı vardır. 4 mm'nin altında kış lastiği performansı, yasal olarak izin verilse bile önemli ölçüde azalır.'},
+{t:'Lastikler',q:'Lastik basıncı çok yüksek. Lastik en çok nerede aşınır?',o:['Lastiğin dış kenarlarında','Lastiğin orta kısmında — yüksek basınç ortada daha fazla temas sağlar','Tüm lastik genişliğinde eşit','Yalnızca iç kenarda'],a:1,e:'Yüksek lastik basıncı, lastiğin ortada hafifçe şişmesine neden olur, bu nedenle yol ile temas esas olarak ortada gerçekleşir. Bu, aşınmanın dişin ortasında yoğunlaşmasına neden olur. Düşük basınç ise dış kenarlarda aşınmaya neden olur.'},
+{t:'Aydınlatma',q:'Tüm zorunlu araç aydınlatması her zaman çalışır durumda olmalıdır. Bu, gündüz saatlerinde uzun farı da içerir mi?',o:['Hayır — gündüz aydınlatma kuralları sadece kısa farı gerektirir','Evet — tüm zorunlu aydınlatma, şu anda gerekli olmasa bile her zaman çalışır durumda olmalıdır. Uzun far gündüz bile çalışmalıdır.','Yalnızca kış aylarında','Yalnızca aracın otomatik far sensörleri varsa'],a:1,e:'Tüm zorunlu aydınlatma, şu anda kullanmanız gerekli olmasa bile her zaman düzgün çalışır durumda olmalıdır. Uzun far gündüz de çalışmalıdır. Bir lamba kırılırsa, yasal olarak sürmeye devam etmek için hemen değiştirin.'},
+{t:'Aydınlatma',q:'Sinyal lambalarınızdan biri arızalı. Uyarı ışığı olmadan bunu nasıl anlayabilirsiniz?',o:['Sinyal lambası farklı bir ses çıkarır','Diğer sinyaller normalden daha hızlı yanıp söner — bu, arızalı bir sinyal lambası için standart işarettir','Gösterge tablosundaki yakıt göstergesi dalgalanır','Dörtlü flaşör düğmesi çalışmayı durdurur'],a:1,e:'Arızalı sinyaller genellikle, çalışan diğer sinyallerin normalden daha hızlı yanıp sönmesiyle tespit edilir. Birçok modern araçta ayrıca kırık lambalar için bir gösterge tablosu uyarı ışığı bulunur.'},
+{t:'Motor Yağı',q:'Yağ çubuğu ile motor yağı seviyesini doğru şekilde nasıl kontrol edersiniz?',o:['Yağ çubuğunu bir kez çekin ve seviyeyi hemen okuyun','Çubuğu çekin, silin, tamamen geri takın, tekrar çekin, ardından yağ seviyesini çubuğun alt kısmında okuyun','Doğru sonuçlar için motor çalışırken kontrol edin','Basitçe yağ çubuğunun rengini gözlemleyin — koyu renk düşük seviye anlamına gelir'],a:1,e:'Doğru yağ çubuğu prosedürü: 1. Çubuğu çekin. 2. Silin. 3. Tamamen geri takın. 4. Tekrar çekin. 5. Yağ seviyesini alt kısımda okuyun. Bu, doğru bir okuma sağlar. Her zaman soğuk motorla kontrol edin.'},
+{t:'Soğutma Sıvısı',q:'Soğutma suyu seviyesi minimumun altında. Benzinciden uzaktasınız. Acil bir durumda ne yapabilirsiniz?',o:['Mevcut herhangi bir sıvıyı ekleyin — cam suyu işe yarar','Acil bir önlem olarak suyla doldurun, ancak en kısa sürede uygun soğutma sıvısı ile değiştirin','Soğutma sıvısı olmadan kısa mesafelerde yavaşça sürün','Soğutma suyu deposuna motor yağı ekleyin'],a:1,e:'Acil bir durumda, soğutma suyu deposu suyla doldurulabilir. Ancak, bu mümkün olan en kısa sürede uygun soğutma sıvısı ile değiştirilmelidir. Soğutma suyu seviyesi minimumun altındaysa, doldurmadan daha fazla sürmeyin — motor aşırı ısınabilir, arızalanabilir ve hatta yangın çıkabilir.'},
+{t:'Fren Hidroliği',q:'Fren hidroliğini neden asla kendiniz eklememelisiniz?',o:['Fren hidroliği aşırı aşındırıcıdır ve koruyucu ekipman gerektirir','Fren hatlarına hava girmemelidir — yanlış doldurma frenlerin kısmen veya tamamen işlevini kaybetmesine neden olabilir. Bu işlem her zaman serviste yapılmalıdır.','Fren hidroliği kullanımdan önce ısıl işlem görmelidir','Depo sızdırmazdır ve sürücü tarafından açılamaz'],a:1,e:'Fren hidroliği amatör tarafından doldurulmamalıdır çünkü fren hatlarına hava girmemelidir. Hava girerse frenler kısmen veya tamamen işlevini kaybedebilir. Fren hidroliği seviyesi düşerse, bu aşınmış frenleri veya bir sızıntıyı gösterebilir — her ikisi de profesyonel müdahale gerektirir.'},
+{t:'Ön Cam Silecekleri',q:'Aracın yasal olarak sürülebilir olması için arka cam sileceğinin çalışması gerekir mi?',o:['Evet — arka silecekler ön silecekler gibi zorunludur','Hayır — arka cam silecekleri zorunlu değildir ve çalışmak zorunda değildir, ancak tavsiye edilir','Yalnızca kış koşullarında','Yalnızca station wagon ve arka sileceği standart olan araçlarda'],a:1,e:'Ön cam sileceklerinin aksine (zorunludur), arka cam silecekleri yasal olarak gerekli değildir ve çalışmak zorunda değildir. Ancak, çalışan arka silecekler görüş açısından elbette tavsiye edilir.'}
+];
+const QS=10;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Gör'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — Doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Bakım konusunda mükemmel bilgi!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi bilgi. Kaçırdıklarınızı gözden geçirin.'}else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Lastik ve sıvı bölümlerini tekrar okuyun!'}else{msg='Daha fazla çalışma gerekli 💡';sub='Tüm bakım bölümlerini dikkatlice gözden geçirin!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Testi Tekrarla</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
