@@ -1,505 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Güvenli Taşıma – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-        h1,
-        h2 {
-            color: #035EB1;
-        }
-
-
-
-        .gh3 {
-            color: #035EB1;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #D7DCEF;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #D7DCEF;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattın pozisyonunu ayarlamak için */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-           
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 90px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-        .important-words6 {
-            background-color: #D7DCEF;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #D7DCEF;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #035EB1;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #035EB1;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-
-
-
-
-
-        .image-text-container img {
-            max-width: 100%;
-            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
-            height: auto;
-            /* Görselin oranlarını koru */
-            width: 440px;
-            /* Görseli küçültmek için sabit bir genişlik */
-            margin-left: -40px;
-            /* Görsel ile sol kenar arasındaki boşluk */
-
-
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-
-
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--text-primary);margin:20px 0 8px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* def card */
+    .def-card{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.2);border-radius:11px;padding:12px 16px;margin:12px 0 20px;display:flex;align-items:flex-start;gap:10px}
+    .def-card .dc-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .def-card p{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);margin:0;line-height:1.5}
+    .def-card p strong{color:var(--text-primary)}
+
+    /* exceptions list */
+    .exc-list{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 18px;margin:12px 0 20px;backdrop-filter:blur(12px)}
+    .exc-list .el-title{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--accent-light);letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px}
+    .exc-list ul{margin:0;padding:0;list-style:none}
+    .exc-list ul li{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);padding:6px 0 6px 20px;position:relative;border-bottom:1px solid rgba(77,166,255,.07);line-height:1.5}
+    .exc-list ul li:last-child{border-bottom:none}
+    .exc-list ul li::before{content:'›';position:absolute;left:2px;color:var(--accent-light);font-weight:700}
+    .exc-list ul li strong{color:var(--text-primary)}
+    .exc-list ul li em{color:#ffd166;font-style:normal;font-weight:600}
+
+    /* belt rule highlight */
+    .belt-rule{background:rgba(0,200,100,.06);border:1px solid rgba(0,200,100,.2);border-radius:13px;padding:14px 18px;margin:14px 0 20px;position:relative;overflow:hidden}
+    .belt-rule::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0;background:linear-gradient(180deg,#00c864,#4dffc3)}
+    .belt-rule p{font-family:'Lora',serif;font-size:.88rem;color:rgba(180,255,220,.85);margin:0 0 6px;line-height:1.6}
+    .belt-rule p:last-child{margin:0}
+    .belt-rule p strong{color:#fff}
+    .belt-rule .br-title{font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:700;color:#4dffc3;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;display:block}
+
+    /* responsibility row */
+    .resp-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 20px}
+    @media(max-width:480px){.resp-row{grid-template-columns:1fr}}
+    .resp-card{border-radius:11px;padding:13px 15px;text-align:center;backdrop-filter:blur(10px)}
+    .resp-card.driver{background:rgba(26,108,246,.08);border:1px solid rgba(77,166,255,.2)}
+    .resp-card.self{background:rgba(77,200,100,.07);border:1px solid rgba(77,200,100,.18)}
+    .resp-card .rc-age{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;line-height:1;margin-bottom:5px}
+    .resp-card.driver .rc-age{color:var(--accent-light)}
+    .resp-card.self .rc-age{color:#4dffc3}
+    .resp-card .rc-label{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px}
+    .resp-card.driver .rc-label{color:var(--accent-light)}
+    .resp-card.self .rc-label{color:#4dffc3}
+    .resp-card p{font-family:'Lora',serif;font-size:.78rem;color:var(--text-muted);margin:0;line-height:1.35}
+
+    /* belt tips */
+    .belt-tips{display:flex;flex-direction:column;gap:9px;margin:12px 0 20px}
+    .belt-tip{background:var(--card-bg);border:1px solid var(--card-border);border-radius:11px;padding:12px 15px;backdrop-filter:blur(10px);display:flex;align-items:flex-start;gap:12px}
+    .belt-tip .bt-icon{font-size:1.3rem;flex-shrink:0}
+    .belt-tip .bt-body .bt-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:var(--accent-light);margin-bottom:4px}
+    .belt-tip .bt-body p{font-family:'Lora',serif;font-size:.83rem;color:var(--text-muted);margin:0;line-height:1.5}
+    .belt-tip .bt-body p strong{color:var(--text-primary)}
+
+    /* child seat groups grid */
+    .cs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 22px}
+    @media(max-width:700px){.cs-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:360px){.cs-grid{grid-template-columns:1fr}}
+    .cs-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px)}
+    .cs-tile img{width:100%;height:110px;object-fit:cover;display:block;border-bottom:1px solid var(--card-border)}
+    .cs-tile .cst-body{padding:9px 10px}
+    .cs-tile .cst-group{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;color:var(--accent-light);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+    .cs-tile .cst-name{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--text-primary);margin-bottom:3px}
+    .cs-tile .cst-weight{font-family:'Lora',serif;font-size:.74rem;color:var(--text-muted)}
+
+    /* airbag warning */
+    .airbag-card{background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.22);border-radius:13px;padding:14px 18px;margin:14px 0 20px;display:flex;align-items:flex-start;gap:14px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+    .airbag-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0;background:linear-gradient(180deg,var(--red),#ff8888)}
+    .airbag-card .ac-icon{font-size:2rem;flex-shrink:0;margin-top:2px}
+    .airbag-card .ac-body .ac-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:#ff8888;letter-spacing:.04em;margin-bottom:6px}
+    .airbag-card .ac-body p{font-family:'Lora',serif;font-size:.86rem;color:rgba(255,180,180,.85);margin:0 0 6px;line-height:1.6}
+    .airbag-card .ac-body p:last-child{margin:0}
+    .airbag-card .ac-body p strong{color:#fff}
+
+    /* using tips list */
+    .use-tips{display:flex;flex-direction:column;gap:9px;margin:12px 0 20px}
+    .use-tip{background:var(--card-bg);border:1px solid var(--card-border);border-radius:11px;padding:12px 15px 12px 44px;backdrop-filter:blur(10px);position:relative}
+    .use-tip::before{content:attr(data-num);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:rgba(26,108,246,.18);border:1px solid rgba(77,166,255,.3);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;line-height:1}
+    .use-tip .ut-title{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:var(--accent-light);margin-bottom:4px}
+    .use-tip p{font-family:'Lora',serif;font-size:.83rem;color:var(--text-muted);margin:0;line-height:1.5}
+    .use-tip p strong{color:var(--text-primary)}
+
+    /* exception warning */
+    .exc-warning{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2);border-radius:11px;padding:12px 16px;margin:14px 0 20px;display:flex;align-items:flex-start;gap:10px}
+    .exc-warning .ew-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .exc-warning p{font-family:'Lora',serif;font-size:.85rem;color:rgba(255,220,120,.85);margin:0;line-height:1.55}
+    .exc-warning p strong{color:#fff}
+
+    /* photo grids */
+    .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 20px}
+    .photo-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0 20px}
+    @media(max-width:600px){.photo-grid-2,.photo-grid-3{grid-template-columns:1fr}}
+    .photo-grid-2 figure,.photo-grid-3 figure{margin:0}
+    .photo-grid-2 img,.photo-grid-3 img{width:100%;height:auto;border-radius:11px;border:1px solid var(--card-border);box-shadow:0 4px 18px rgba(0,0,0,.4);display:block}
+    .photo-grid-2 figcaption,.photo-grid-3 figcaption{font-family:'Outfit',sans-serif;font-size:.68rem;color:var(--text-dim);text-align:center;margin-top:6px;font-style:italic;line-height:1.35}
+
+    /* callouts */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -510,445 +268,326 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
-    <h1>Güvenli Taşıma</h1>
-    <p>
-        Bir araç kullanıyorsanız, genç yolcular taşıyorsanız veya bir yolcu olarak seyahat ediyorsanız, bunu mümkün
-        olduğunca güvenli bir şekilde yapmak önemlidir. Bu nedenle, koltukların, emniyet kemerlerinin ve çocuk bağlama
-        sistemlerinin kullanımıyla ilgili belirli kurallar belirlenmiştir.
-    </p>
-    <div class="important-words1">
-        <div class="vertical-line2"></div>
-        <h3>Koltuk</h3>
-        <p>
-            Bir yetişkini barındırabilecek yapı. Bu, bireysel bir koltuk veya bir sıranın parçası olabilir.
-        </p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Test</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk ve Yazı Boyutu Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
-    <h2>Koltuklar</h2>
-    <p>
-        Hem sürücünün hem de yolcuların trafikte yer alırken belirlenmiş bir koltukta oturmaları zorunludur. Araç
-        hareket halindeyken bagajda veya yük alanında bulunmak yasaktır. Ayrıca, bir römork veya karavanda oturmak veya
-        ayakta durmak da yasaktır.
-    </p>
-    <p>
-        Bu kurallara birkaç istisna vardır, örneğin:
-    </p>
-    <ul>
-        <li>
-            <p>Toplu taşıma otobüslerinde taşıma.</p>
-        </li>
-        <li>
-            <p>Tekerlekli sandalyedeki yolcular, eğer düzgün bir şekilde sabitlenebiliyorsa.</p>
-        </li>
-        <li>
-            <p>Otobüslerde üç yaşından küçük çocukların taşınması.</p>
-        </li>
-        <li>
-            <p>Ambulanslarda veya diğer yataklı alanlarda (ranza) hasta taşınması.</p>
-        </li>
-        <li>
-            <p>Etkinliklerde yapılan geçit törenlerinde yolcu taşınması.</p>
-        </li>
-        <li>
-            <p>
-                Sekiz yaşından büyük çocukların bisikletin arka bagaj kısmında taşınması.<br>
-                Not: Bu, bir "snorfiets" üzerinde izin verilmez!
-            </p>
-        </li>
-    </ul>
-    <div class="important-words2">
-        <p>
-            Sekiz yaşından küçük yolcular, yalnızca sırt, eller ve ayaklar için yeterli destek sağlayan uygun bir
-            koltukta oturuyorsa, bisiklet, snorfiets ve moped üzerinde taşınabilir.
-        </p>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek Kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan opaklığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Yazı Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart opaklığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık opaklığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
     </div>
-    <h2>Emniyet Kemerleri</h2>
-    <p>
-        Emniyet kemeri kullanımı, şu araçlardaki tüm sürücüler ve yolcular için zorunludur:
-    </p>
-    <ul>
-        <li>
-            <p>Binek araçlar</p>
-        </li>
-        <li>
-            <p>Ticari araçlar</p>
-        </li>
-        <li>
-            <p>Kapalı gövdeye sahip üç tekerlekli motorlu araçlar</p>
-        </li>
-        <li>
-            <p>Brommobiller</p>
-        </li>
-    </ul>
-    <p>
-        Emniyet kemerlerinden daha fazla yolcu taşımayın. Günümüz binek araçlarında, tüm koltuklarda emniyet kemeri
-        bulunması zorunludur. Çoğu durumda, bunlar kalça üzerinden ve göğüs ile omuzun çaprazından geçen üç noktalı
-        kemerlerdir.
-    </p>
-    <p>
-        Kemer kullanımı hamile kadınlar için de zorunludur. Kemersiz, doğmamış bebekler kemerli taşınmaya göre daha
-        fazla risk altındadır. Kemer doğru şekilde takılmalıdır. Kalça kemeri karnın alt kısmına, omuz kısmı ise karnın
-        üstüne yerleştirilmelidir. Kemeri karnın üzerine geçirmek, doğmamış çocuklar için ek bir risk oluşturur.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_bc7c3b8ac1a647a78c12f49e68840de6~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Tüm sürücüler ve yolcular, hamile kadınlar da dahil olmak üzere, emniyet kemeri takmakla
-                    yükümlüdür.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_78040b8aedb94b958b3b3a2df8950d73~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Çocuklar, üç noktalı kemeri yalnızca kalça kemeri olarak takmamalıdır. Kemer göğüs üzerinden
-                    de geçmelidir.
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <div class="important-words1">
-        <p>
-            Emniyet kemeri takmak, binek araçlardaki <strong>tüm</strong> sürücüler ve yolcular için <strong>her
-                zaman</strong> zorunludur. Bu, doğru bir şekilde yapılmalıdır, bu nedenle üç noktalı kemer
-            kalçalarınızın ve göğsünüzün üzerinden düzgün bir şekilde geçmelidir. Kemerin üst kısmını sırtınızın
-            arkasından veya koltuk altınızdan geçirmemelisiniz.
-        </p>
-        <p>
-            <strong>12 yaş altındaki çocuklar: Emniyet kemeri zorunluluğundan sürücü sorumludur. 12 yaş ve üzeri
-                çocuklar: Emniyet kemeri zorunluluğundan kendileri sorumludur.</strong>
-        </p>
-    </div>
-
-    <h2>Emniyet Kemeri Takmak</h2>
-    <p>
-        Emniyet kemeri takmak, önden çarpışma durumunda sürücülerin ve yolcuların öne veya yukarı fırlamasını önler.
-        Saatte sadece 30 km hızla yapılan bir çarpışmada bile emniyet kemeri takmayan sürücüler ve yolcular ölümcül
-        yaralanmalar yaşayabilir. Emniyet kemeri kullanılmadığında hava yastıkları çok az fayda sağlar ve bazı
-        durumlarda ek yaralanmalara neden olabilir.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_241c8ebafa24464eb159d4f04b441dd3~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Emniyet kemeri kullanılmadığında, hava yastığı kazada ek yaralanmalara neden olabilir. Her
-                    zaman emniyet kemerinizi takın!
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_968c474e929a4cd4a4cb982eef84d60a~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>18 yaş altındaki ve 1,35 metreden kısa çocuklar, çocuk koltuğu veya yükseltici koltuk gibi
-                    bir çocuk bağlama sistemi kullanmalıdır.
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-
-    <p>Emniyet kemerini takarken ve kullanırken şu hususlar önemlidir:</p>
-    <ul>
-        <li>
-            <p>
-                <strong>Kemeri doğru şekilde takın</strong><br>
-                Sadece kalça kemeri olarak veya çapraz kısmı koltuk altınızdan geçirerek kullanmayın. Kalça kısmının
-                kalçanızın üzerinde sıkıca oturduğundan ve çapraz kısmın boynunuz ile omzunuz arasında bir yerde
-                olduğundan emin olun. Birçok kemer, boynunuzun veya omzunuzun çok yakınında olmaması için üst kısımda
-                ayarlanabilir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Kemer yerine takıldıktan sonra sıkıca çekin</strong><br>
-                Çok gevşek bir kemer, çarpışma sırasında düzgün veya yeterince hızlı sıkılaşmaz.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Kalın kazakları ve kışlık montları çıkarın</strong><br>
-                Giysiler ne kadar kalın olursa, kemer vücudunuza o kadar az oturur. Bu ekstra tampon, kemerin çarpışma
-                sırasında düzgün sıkılaşmamasına veya daha geç sıkılaşmasına neden olur ve vücudunuzun daha ileri
-                gitmesine sebep olur.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Su kenarında sürerken emniyet kemeri takın</strong><br>
-                Aracın suya girmesi durumunda kemer takmanın çıkışı zorlaştırdığı sıklıkla söylenir. Tabii ki, araçtan
-                çıkmadan önce emniyet kemerlerinin çıkarılması gerekir. Ancak, kemer takmamak, suyla çarpışma anında
-                araçtaki kişilerin ciddi şekilde yaralanması veya bilincini kaybetmesi riskini artırır. Bu da aracın
-                terk edilmesini imkansız hale getirir.
-            </p>
-        </li>
-    </ul>
-
-
-
-
-
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_0aac586607e84ff69c774e23db0b7945~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Çocuklara emniyet kemerini doğru şekilde takmalarını söyleyin ve bunu yaptıklarından emin
-                    olun.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_53815a68a8964075aae775cfe87170de~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Kalın bir kış montu ile kemer artık vücuda düzgün şekilde oturmaz. Çocuğu bu şekilde taşımak
-                    güvenli değildir.
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-
-    <h2>Baş Desteklerinin Kullanımı</h2>
-    <p>
-        Birçok kişi baş desteklerinin önemini göz ardı eder ve bu nedenle onları düzgün şekilde ayarlamaz. Ancak, doğru
-        şekilde ayarlanmış bir baş desteği, arkadan çarpma durumunda baş ve boyun yaralanmalarını önleyebilir.
-    </p>
-    <p>
-        Bir baş desteğinin üst kısmı, kafanın üst kısmıyla hizalanmalıdır. Baş desteği yeterince yukarı ayarlanamıyorsa,
-        en azından mümkün olduğu kadar yüksek olmalıdır. Bazı baş destekleri ileriye veya geriye eğilebilir, bu da başın
-        arkası ile baş desteği arasındaki mesafeyi azaltmak için kullanılabilir.
-    </p>
-
-    <div class="important-words1">
-        <div class="vertical-line2"></div>
-        <h3>Gövde</h3>
-        <p>
-            Binek aracın dayanıklılığını sağlayan çelik yapı. Bu, binek aracın "iskeleti" gibidir.
-        </p>
-    </div>
-
-    <h2>Çocuk Bağlama Sistemleri</h2>
-    <p>
-        18 yaş altındaki ve 1,35 metreden kısa çocuklar, çocuğun boyutuna ve ağırlığına uygun onaylanmış bir çocuk
-        bağlama sistemi kullanmalıdır. Bu sistem dört gruptan oluşur: 0+, I, II ve III.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_007365726f0c4dd499332fec9360d1ad~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Bebek oto koltuğu<br>
-                    Grup 0+, 0-13 kg
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_8e2a0b2f9a7042a088c10ff24dead869~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Çocuk oto koltuğu<br>
-                    Grup I, 9-18 kg
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_ec23095a331b4445804c16ad366b021f~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Yükseltici koltuklar (sırt destekli veya desteksiz)<br>
-                    Grup II, 15-25 kg<br>
-                    Grup III, 22-36 kg
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-
-    <h3>Bebek Oto Koltuğu (Grup 0+, 0-13 kg)</h3>
-    <p>
-        Bu oto koltukları, yaklaşık 18 aylığa kadar olan bebekler ve küçük çocuklar içindir. Bu koltuklar sürüş yönüne
-        ters monte edilir ve çocuk yaklaşık 13 kg ağırlığa ulaşana kadar veya başı koltuk kabuğunun üzerinde olana kadar
-        kullanılabilir. Bu zamana kadar en güvenli seçimdir. Koltuklar, binek araca emniyet kemeri veya Isofix sistemi
-        ile sabitlenir ve bebeğin kendi emniyet kemeri ile donatılmıştır.
-    </p>
-
-    <h3>Çocuk Oto Koltuğu (Grup I, 9-18 kg)</h3>
-    <p>
-        Bu koltuklar genellikle sürüş yönüne doğru monte edilir ve emniyet kemeri veya Isofix sistemi ile sabitlenir.
-        Yaklaşık bir yaşından itibaren çocuklar için uygundur. Çocuk, koltuğun kendi kemeri veya "bağlama bloğu" olarak
-        adlandırılan bir sistemle sabitlenir. Bu blok, normal üç noktalı kemerle karın ve göğsün bir kısmına sabitlenir.
-    </p>
-
-    <h3>Yükseltici Koltuklar (Grup II, 15-25 kg / Grup III, 22-36 kg)</h3>
-    <p>
-        Genellikle bu iki grup tek bir koltukta birleştirilmiştir; sırt destekli veya (çıkarılabilir) sırt desteksiz
-        yükseltici koltuk. Sırt destekli yükseltici koltuğun mümkün olduğunca uzun süre kullanılması tavsiye edilir
-        çünkü en iyi korumayı sağlar. Bu koltuklarda çocuk genellikle normal üç noktalı emniyet kemeriyle sabitlenir.
-        Yükseltici koltuk, kemerin vücut üzerinde doğru şekilde konumlanmasını sağlamalıdır.
-    </p>
-
-
-
-
-
-
-    <h2>Hava Yastıklarının Devre Dışı Bırakılması</h2>
-    <div class="important-words13">
-        <div class="container">
-            <div>
-                <p>
-                    Seyahat yönüne ters yerleştirilen bir koltuk kullanıyorsanız, ön hava yastığını mutlaka devre dışı
-                    bırakın. Bu hava yastıkları, normalde bir önden çarpışmada başı korumak için tasarlanmıştır. Bunlar
-                    genellikle ön panelde yer alır, ancak arka yolcuları korumak için ön koltuğun baş desteğinde de
-                    bulunabilir. Bu hava yastığı koltuğu ve dolayısıyla çocuğu araç içinde fırlatabilir. Bu nedenle bu
-                    hava yastığını devre dışı bırakmak <strong>zorunludur</strong>.
-                </p>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🚗 Güvenli Taşıma Testi</div><div class="quiz-badge" id="quiz-badge">25 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚗</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Koltuklar, emniyet kemerleri, çocuk koruma sistemleri, hava yastıkları, baş dayanakları ve kask zorunluluğu hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 25 soru</div><div class="qs-chip">🔀 Rastgele sıra</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Testi Başlat</button>
             </div>
-            <img src="https://static.wixstatic.com/media/4b688f_f745fb48ce5740b98429f86c3a61afed~mv2.png"
-                alt="Örnek Resim" class="image1">
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
         </div>
     </div>
-    <p>
-        Hava yastığı etkinleştirildiğinde, her zaman seyahat yönüne yerleştirilmiş bir koltuk kullanın. Bu durumda,
-        çocuk koltuğunun yerleştirildiği koltuğu mümkün olduğunca geriye kaydırın.
-    </p>
+</div>
 
-    <h2>Çocuk Bağlama Sistemlerinin Kullanımı</h2>
-    <p>
-        Çocuk bağlama sistemi kullanırken aşağıdaki hususlara dikkat edin:
-    </p>
-    <ul>
-        <li>
-            <p>
-                <strong>Koltuk düzgün bir şekilde sabitlenmiş olmalıdır</strong><br>
-                Isofix sistemine sahip koltuklar, doğru şekilde sabitlendiğinde en kararlı olanlardır. Bu sistem, araca
-                özel bir tıklama mekanizmasıyla bağlanır ve neredeyse hiç yerinden oynamaz. Bir kemerle sabitlenen
-                koltuk, yalnızca doğru şekilde yerleştirilmişse bir kazada düzgün şekilde tutulur. Talimatları
-                dikkatlice okuyun.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Yolcu hava yastığını devre dışı bırakın</strong><br>
-                Eğer ön koltukta seyahat yönüne ters yerleştirilmiş bir çocuk bağlama sistemiyle bir çocuk taşıyorsanız,
-                yolcu hava yastığını devre dışı bırakmak zorunludur. Hava yastığını kapatmamak çok tehlikelidir. Bir
-                kaza sırasında hava yastığı açılırsa, çocuk ölümcül şekilde yaralanabilir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Kalın kazak ve montları çıkarın</strong><br>
-                Bir çocuk, kışlık montla bir çocuk koltuğunda oturduğunda yeterince iyi korunmaz. Bir kazada çocuk
-                koltuktan fırlayabilir. Bu durumda kemerler vücudu yeterince sıkıca kavramaz.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Belirli bir gruba ait bir oto koltuğunu mümkün olduğunca uzun süre kullanın</strong><br>
-                Daha yüksek bir gruba erken geçiş yapmak daha az güvenlidir çünkü her daha yüksek grup daha az koruma
-                sunar. Çocuğun elbette rahat bir şekilde oturabilmesi önemlidir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>İkinci el koltuklar kullanırken dikkatli olun</strong><br>
-                İkinci el çocuk bağlama sistemlerinde, bunların bir kazaya karışıp karışmadığını mutlaka kontrol edin.
-                Kemerler, hava yastıkları ve kasklar gibi, çocuk bağlama sistemlerinin işlevi de bir kazada koruma
-                sağladıktan sonra bozulur. Bu tür bir olayın olup olmadığını genellikle anlamak mümkün değildir. Eğer bu
-                konuda şüpheniz varsa, o koltuğu kullanmamanız önerilir.
-            </p>
-        </li>
-    </ul>
+<!-- SAYFA İÇERİĞİ -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Trafik Kuralları</span><span class="dot">›</span><span style="color:var(--text-primary)">Güvenli Taşıma</span></div>
+    <h1>Güvenli Taşıma</h1>
+    <div class="section-divider"></div>
 
+    <p>Sürücüler, yolcular ve özellikle genç yolcuların mümkün olduğunca güvenli seyahat etmesini sağlamak amacıyla koltuk, emniyet kemeri ve çocuk koruma sistemlerinin kullanımına ilişkin belirli kurallar mevcuttur.</p>
 
+    <div class="def-card">
+        <div class="dc-icon">💺</div>
+        <p><strong>Koltuk:</strong> Bir yetişkini barındırabilecek yapı. Bu, tek bir koltuk veya bir sıranın parçası olabilir.</p>
+    </div>
 
+    <!-- KOLTUKLAR -->
+    <h2>💺 Koltuklar</h2>
+    <p>Hem sürücü hem de tüm yolcular trafikte seyir halindeyken belirlenmiş bir koltukta oturmalıdır. Araç hareket halindeyken bagajda veya yükleme bölümünde bulunmak <strong>yasaktır</strong>. Çekilen bir römork veya karavan içinde oturmak veya ayakta durmak da yasaktır.</p>
 
+    <div class="exc-list">
+        <div class="el-title">⚠ Koltuk Kurallarına İstisnalar</div>
+        <ul>
+            <li><strong>Toplu taşıma otobüsünde</strong> taşıma</li>
+            <li>Uygun şekilde sabitlenebiliyorsa <strong>tekerlekli sandalyedeki</strong> yolcular</li>
+            <li>Otobüste taşınan <strong>3 yaşından küçük çocuklar</strong></li>
+            <li><strong>Ambulanslarda</strong> veya diğer sedyelerde hasta taşınması</li>
+            <li>Etkinliklerdeki <strong>geçit törenleri sırasında</strong> yolcu taşıma</li>
+            <li>Bisikletin arka bagajında <strong>8 yaşından büyük çocuklar</strong> — <em>snorfiets’te izin verilmez!</em></li>
+        </ul>
+    </div>
 
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_7efd5bd0b32b4b598d93ef1a3b5b56ae~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Bu durumda yolcu hava yastığını devre dışı bırakmak zorunlu değildir, ancak önerilir. Eğer
-                    bu mümkün değilse, yolcu koltuğunu mümkün olduğunca geriye kaydırın.
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_97ffa6844ae14f7ab177ab3db398c8af~mv2.jpg"
-                    alt="Uyarı: Yan hava yastığı arızası">
-                <figcaption>Bu çocuk koltuğu yalnızca yolcu hava yastığı devre dışı bırakıldığında buraya
-                    yerleştirilebilir.
-                </figcaption>
-            </figure>
+    <div class="callout blue">
+        <span class="callout-title">🚲 Bisiklette Küçük Çocuklar</span>
+        <p>Bisiklet, snorfiets ve mopedlerde <strong>8 yaşından küçük</strong> yolcular yalnızca sırt, eller ve ayaklar için yeterli desteğe sahip uygun bir koltukta oturuyorlarsa taşınabilir.</p>
+    </div>
+
+    <!-- EMNİYET KEMERİ -->
+    <h2>🔒 Emniyet Kemeri</h2>
+    <p>Emniyet kemeri kullanımı aşağıdaki araçların tüm sürücüleri ve yolcuları için zorunludur: <strong>binek otomobiller, şirket arabaları, kapalı gövdeye sahip üç tekerlekli motorlu taşıtlar</strong> ve <strong>brommobielen</strong>.</p>
+    <p>Asla emniyet kemeri sayısından fazla yolcu taşımayın. Günümüz binek otomobillerinde tüm koltuklarda emniyet kemeri bulunur — genellikle kalça ve göğüsten geçen üç noktalı kemerler.</p>
+
+    <div class="belt-rule">
+        <span class="br-title">✅ Emniyet Kemeri — Temel Kurallar</span>
+        <p>Emniyet kemerleri, binek otomobillerin tüm sürücüleri ve yolcuları için <strong>her zaman zorunludur</strong>. Üç noktalı kemer kalçalarınızın ve göğsünüzün üzerinden iyi bir şekilde geçmelidir. Üst kısmı sırtınızın arkasına veya koltuğunuzun altına <strong>almayın</strong>.</p>
+        <p>Emniyet kemerleri <strong>hamile kadınlar</strong> için de zorunludur. Kalça kısmı <strong>karnın iyice altından</strong>, omuz kısmı ise <strong>karnın iyice üstünden</strong> geçmelidir. Kemerin karın üzerinden geçmesi doğmamış bebek için ek risk oluşturur.</p>
+    </div>
+
+    <div class="resp-row">
+        <div class="resp-card driver">
+            <div class="rc-age">12 yaşından küçük</div>
+            <div class="rc-label">Sürücünün Sorumluluğu</div>
+            <p>Sürücü, 12 yaşından küçük çocukların emniyet kemeri takmasını sağlamakla yükümlüdür.</p>
+        </div>
+        <div class="resp-card self">
+            <div class="rc-age">12 yaş ve üzeri</div>
+            <div class="rc-label">Yolcunun Kendi Sorumluluğu</div>
+            <p>12 yaş ve üzeri yolcular emniyet kemeri takmaktan kendileri sorumludur.</p>
         </div>
     </div>
 
-    <h2>Çocuk Bağlama Sistemi İstisnaları</h2>
-    <p>
-        1,35 metreden kısa çocuklar için çocuk bağlama sistemiyle taşımak her zaman en güvenli seçim olmasına rağmen,
-        bazı istisnai durumlarda bu mümkün olmayabilir.
-    </p>
-    <p>
-        Bu nedenle kanunda birkaç istisna yer almaktadır:
-    </p>
-    <ul>
-        <li>
-            <p>
-                Taksilerde ve toplu taşıma otobüslerinde kullanımı zorunlu değildir, ancak ön sıra koltuklarda
-                bulunmamalıdır.
-            </p>
-        </li>
-        <li>
-            <p>
-                Arka koltukta iki çocuk bağlama sistemi kullanılması nedeniyle üçüncü bir çocuk koltuğunun sığmadığı
-                durumlarda, üçüncü çocuk yalnızca arka koltukta emniyet kemeriyle taşınabilir. Bu tercihen en büyük
-                çocuk olmalıdır, ancak en az üç yaşından büyük bir çocuk olmalıdır.
-            </p>
-        </li>
-        <li>
-            <p>
-                Çocuk partisi gibi arada sırada yapılan taşımalar sırasında, üç yaşından büyük ancak 1,35 metreden kısa
-                çocuklar, yalnızca emniyet kemeri ile arka koltukta taşınabilir.
-            </p>
-        </li>
-    </ul>
-
-    <div class="important-words2">
-        <p>
-            <strong>Uyarı!</strong><br>
-            Bir şeyin yasal olarak izin verilmesi, bunun en iyi seçim olduğu anlamına gelmez. Eğer 1,35 metreden kısa
-            bir çocuk için bir çocuk bağlama sistemi kullanma seçeneği varsa, bu her zaman tercih edilmelidir.
-        </p>
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_bc7c3b8ac1a647a78c12f49e68840de6~mv2.jpg" alt="Emniyet kemeri zorunlu"/><figcaption>Tüm sürücüler ve yolcular emniyet kemeri takmakla yükümlüdür — hamile kadınlar da dâhil.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_78040b8aedb94b958b3b3a2df8950d73~mv2.jpg" alt="Çocuk kemeri"/><figcaption>Çocuklar üç noktalı kemeri yalnızca kalça kemeri olarak takmamalıdır; kemer göğüsten de geçmelidir.</figcaption></figure>
     </div>
 
-    <h2>Kask Zorunluluğu</h2>
-    <p>
-        Bazı motorlu taşıtlar için emniyet kemeri zorunluluğu yerine kask zorunluluğu geçerlidir. Bu araçlar arasında
-        mopetler, motosikletler, kapalı gövdesi olmayan brommobiller, motorlu üç tekerlekli araçlar ve ATV'ler yer alır
-        ve genellikle emniyet kemerleri bulunmaz. Bu durumlarda onaylı bir kask takmak zorunludur. Yine, 12 yaşından
-        itibaren sorumluluk yolcunun kendisine aittir. Daha küçük çocuklar için sorumluluk sürücüye aittir.
-    </p>
+    <!-- EMNİYET KEMERİNİ DOĞRU TAKMA -->
+    <h2>🛡️ Emniyet Kemeri Doğru Takma</h2>
+    <p><strong>30 km/saat</strong> gibi düşük hızlarda bile kemer takmayan bir yolcu ölümcül yaralanmalara maruz kalabilir. Hava yastıkları, emniyet kemeri olmadan çok az işe yarar ve hatta ek yaralanmalara neden olabilir.</p>
 
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a>
+    <div class="belt-tips">
+        <div class="belt-tip"><div class="bt-icon">✅</div><div class="bt-body"><div class="bt-title">Kemeri amaçlandığı gibi takın</div><p>Sadece kalça kemeri olarak değil, eğik kısmı koltuk altına almadan kullanın. Kalça kısmı kalça üzerinde sıkı olmalı; eğik kısım <strong>boyun ile omuz arasının ortasında</strong> konumlanmalıdır. Pek çok kemerin üst bağlantı noktası yükseklik ayarlıdır.</p></div></div>
+        <div class="belt-tip"><div class="bt-icon">🔧</div><div class="bt-body"><div class="bt-title">Takıldıktan sonra sıkın</div><p>Çok gevşek bir kemer, çarpışma anında gerektiği gibi sıkılaşmaz — veya çok geç sıkılaşır.</p></div></div>
+        <div class="belt-tip"><div class="bt-icon">🧥</div><div class="bt-body"><div class="bt-title">Kalın kazak ve montları çıkarın</div><p>Giysi ne kadar kalınsa kemer vücuda o kadar az oturur. Bu ekstra boşluk, çarpışmada kemerin daha geç sıkılaşmasına ve vücudun daha ileri hareket etmesine neden olur.</p></div></div>
+        <div class="belt-tip"><div class="bt-icon">💧</div><div class="bt-body"><div class="bt-title">Su kenarında her zaman kemer takın</div><p>Bazıları, kemer takılıyken suya gömülen bir araçtan çıkmanın daha zor olduğunu söyler — ancak <strong>kemersiz suya çarpma ciddi yaralanma veya bilinç kaybına yol açabilir ve kaçışı imkânsız hale getirebilir</strong>. Her zaman kemer takın; araçtan çıkmadan önce kemeri çözün.</p></div></div>
+    </div>
 
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_241c8ebafa24464eb159d4f04b441dd3~mv2.jpg" alt="Kemersiz hava yastığı"/><figcaption>Emniyet kemeri olmadan hava yastığı ek yaralanmalara neden olabilir. Her zaman kemerinizi takın!</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_968c474e929a4cd4a4cb982eef84d60a~mv2.jpg" alt="Yükseltici koltuk"/><figcaption>18 yaşından küçük ve 1,35 metreden kısa çocuklar, yükseltici koltuk gibi bir çocuk koruma sistemi kullanmalıdır.</figcaption></figure>
+    </div>
 
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_0aac586607e84ff69c774e23db0b7945~mv2.jpg" alt="Çocuk kemerini kontrol edin"/><figcaption>Çocuklara emniyet kemerini doğru takmalarını öğretin ve taktıklarını her zaman kontrol edin.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_53815a68a8964075aae775cfe87170de~mv2.jpg" alt="Kalın mont güvenli değil"/><figcaption>Kalın bir kış montu giyildiğinde kemer vücuda tam oturmaz — çocuklar için güvensizdir.</figcaption></figure>
+    </div>
+
+    <!-- BAŞ DAYANAĞI -->
+    <h2>🪑 Baş Dayanağının Kullanımı</h2>
+    <p>Doğru ayarlanmış bir baş dayanağı, arkadan çarpışmalarda <strong>baş ve boyun yaralanmalarını</strong> önleyebilir. <strong>Baş dayanağının üst kısmı, başın üst kısmıyla aynı hizada olmalıdır</strong>. Yeterince yükseğe ayarlanamıyorsa, mümkün olduğunca yükseğe ayarlayın. Bazı baş dayanakları, baş ile dayanak arasındaki boşluğu azaltmak için öne eğilebilir.</p>
+
+    <div class="def-card">
+        <div class="dc-icon">🏗️</div>
+        <p><strong>Gövde:</strong> Binek otomobile mukavemetini veren çelik yapı — aracın "iskeleti".</p>
+    </div>
+
+    <!-- ÇOCUK KORUMA SİSTEMLERİ -->
+    <h2>👶 Çocuk Koruma Sistemleri</h2>
+    <p><strong>18 yaşından küçük ve 1,35 metreden kısa</strong> çocuklar, çocuğun boyuna ve kilosuna uygun onaylı bir çocuk koruma sistemi kullanmak zorundadır. Dört grup vardır:</p>
+
+    <div class="cs-grid">
+        <div class="cs-tile">
+            <img src="https://static.wixstatic.com/media/4b688f_007365726f0c4dd499332fec9360d1ad~mv2.jpg" alt="Bebek oto koltuğu"/>
+            <div class="cst-body"><div class="cst-group">Grup 0+</div><div class="cst-name">Bebek Oto Koltuğu</div><div class="cst-weight">0–13 kg</div></div>
+        </div>
+        <div class="cs-tile">
+            <img src="https://static.wixstatic.com/media/4b688f_8e2a0b2f9a7042a088c10ff24dead869~mv2.jpg" alt="Çocuk oto koltuğu"/>
+            <div class="cst-body"><div class="cst-group">Grup I</div><div class="cst-name">Çocuk Oto Koltuğu</div><div class="cst-weight">9–18 kg</div></div>
+        </div>
+        <div class="cs-tile">
+            <img src="https://static.wixstatic.com/media/4b688f_ec23095a331b4445804c16ad366b021f~mv2.jpg" alt="Yükseltici koltuk"/>
+            <div class="cst-body"><div class="cst-group">Grup II</div><div class="cst-name">Yükseltici Koltuk</div><div class="cst-weight">15–25 kg</div></div>
+        </div>
+        <div class="cs-tile">
+            <img src="https://static.wixstatic.com/media/4b688f_ec23095a331b4445804c16ad366b021f~mv2.jpg" alt="Yükseltici koltuk"/>
+            <div class="cst-body"><div class="cst-group">Grup III</div><div class="cst-name">Yükseltici Koltuk</div><div class="cst-weight">22–36 kg</div></div>
+        </div>
+    </div>
+
+    <h3>Grup 0+ — Bebek Oto Koltuğu (0–13 kg)</h3>
+    <p>Bebekler ve yaklaşık 18 aya kadar küçük çocuklar için. <strong>Seyir yönünün tersine</strong> monte edilir. Çocuk ~13 kg ağırlığa ulaşana veya başı koltuk kabuğunun üzerine çıkana kadar kullanılır. Emniyet kemeri veya Isofix ile sabitlenir, kendi bebek kemerine sahiptir.</p>
+
+    <h3>Grup I — Çocuk Oto Koltuğu (9–18 kg)</h3>
+    <p>Genellikle seyir yönüne bakar. Emniyet kemeri veya Isofix ile sabitlenir. Yaklaşık bir yaşından itibaren uygundur. Çocuk, koltuğun kendi kemeri veya üç noktalı kemerle sabitlenen bir "kısıtlama bloğu" ile tutulur.</p>
+
+    <h3>Grup II &amp; III — Yükseltici Koltuk (15–25 kg / 22–36 kg)</h3>
+    <p>Genellikle sırt dayanağı çıkarılabilen tek bir koltukta birleştirilir. <strong>Mümkün olduğunca sırt dayanaklı versiyonu</strong> kullanın — en iyi korumayı sağlar. Çocuk, yükseltici koltuğun doğru şekilde konumlandırdığı standart üç noktalı emniyet kemeriyle bağlanır.</p>
+
+    <!-- HAVA YASTIĞINI DEVRE DIŞI BIRAKMA -->
+    <h2>💥 Hava Yastığını Devre Dışı Bırakma</h2>
+    <div class="airbag-card">
+        <div class="ac-icon">⚠️</div>
+        <div class="ac-body">
+            <div class="ac-title">ZORUNLU: Ön Yolcu Hava Yastığını Devre Dışı Bırakın</div>
+            <p>Ön koltukta <strong>seyir yönünün tersine</strong> yerleştirilmiş bir çocuk koltuğu kullanırken, yolcu hava yastığını <strong>kesinlikle</strong> devre dışı bırakmalısınız. Açılan bir hava yastığı, arkaya bakan koltuğu — ve içindeki çocuğu — araç içinde fırlatır. Bu <strong>zorunlu</strong> bir yasal gerekliliktir.</p>
+            <p>Hava yastığı aktifken, oto koltuğu seyir yönüne bakmalı ve ön koltuk <strong>mümkün olduğunca geriye</strong> itilmelidir.</p>
+        </div>
+    </div>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_7efd5bd0b32b4b598d93ef1a3b5b56ae~mv2.jpg" alt="Seyir yönüne bakan koltuk — hava yastığını devre dışı bırakma zorunlu değil"/><figcaption>Seyir yönüne bakan bir koltukta yolcu hava yastığını devre dışı bırakmak zorunlu değildir — ancak önerilir. Mümkün değilse ön koltuğu mümkün olduğunca geriye itin.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_97ffa6844ae14f7ab177ab3db398c8af~mv2.jpg" alt="Arkaya bakan koltuk — hava yastığı kapalı olmalı"/><figcaption>Arkaya bakan bir çocuk koltuğu ancak yolcu hava yastığı devre dışı bırakıldığında buraya yerleştirilebilir.</figcaption></figure>
+    </div>
+
+    <!-- ÇOCUK KOLTUĞUNU DOĞRU KULLANMA -->
+    <h2>✅ Çocuk Koltuklarını Doğru Kullanma</h2>
+    <div class="use-tips">
+        <div class="use-tip" data-num="1"><div class="ut-title">Koltuğun doğru sabitlendiğinden emin olun</div><p>Isofix koltuklar doğrudan araç gövdesine takılır ve en stabildir. Kemerle sabitlenen koltuklar doğru geçirilmelidir — kullanım kılavuzunu dikkatlice okuyun.</p></div>
+        <div class="use-tip" data-num="2"><div class="ut-title">Yolcu hava yastığını devre dışı bırakın (arkaya bakan koltuk)</div><p>Ön koltukta seyir yönünün tersine çocuk taşırken <strong>zorunludur</strong>. Açılan bir hava yastığı ölümcül olabilir.</p></div>
+        <div class="use-tip" data-num="3"><div class="ut-title">Kalın kazak ve montları çıkarın</div><p>Kışlık mont giyen çocuk iyi korunmaz. Kemerler yeterince sıkı kapanmayabilir ve çarpışmada çocuk koltuğundan fırlayabilir.</p></div>
+        <div class="use-tip" data-num="4"><div class="ut-title">Mümkün olduğunca aynı grupta kalın</div><p>Her bir üst grup <strong>daha az koruma</strong> sağlar. Gereğinden erken daha büyük gruba geçmeyin.</p></div>
+        <div class="use-tip" data-num="5"><div class="ut-title">İkinci el koltuklarda dikkatli olun</div><p>Kullanılmış bir koltuğun daha önce kazaya karışıp karışmadığını her zaman kontrol edin. Kemerler ve kasklar gibi, bir çarpışmada koruma sağlamış çocuk koltukları artık düzgün çalışmayabilir. <strong>Şüpheniz varsa kullanmayın.</strong></p></div>
+    </div>
+
+    <!-- İSTİSNALAR -->
+    <h2>🚌 Çocuk Koltuğu İstisnaları</h2>
+    <div class="exc-list">
+        <div class="el-title">Çocuk Koltuğu Zorunlu Olmadığı Durumlar</div>
+        <ul>
+            <li><strong>Taksiler ve toplu taşıma otobüslerinde</strong> — zorunlu değildir, ancak çocuklar ön koltuk sırasında bulunmamalıdır</li>
+            <li>Arkada iki çocuk koltuğu nedeniyle <strong>üçüncü bir çocuk koltuğu sığmıyorsa</strong>, üçüncü çocuk (tercihen en büyük ve her durumda <strong>3 yaşından büyük</strong>) arkada yalnızca emniyet kemeri kullanabilir</li>
+            <li><strong>Tek seferlik taşımalarda</strong> (örneğin çocuk partisi), 3 yaşından büyük ancak 1,35 metreden kısa çocuklar arkada yalnızca emniyet kemeriyle taşınabilir</li>
+        </ul>
+    </div>
+    <div class="exc-warning">
+        <div class="ew-icon">⚠️</div>
+        <p><strong>Uyarı!</strong> Yasal olarak izin verilmesi, en güvenli seçenek olduğu anlamına gelmez. 1,35 metreden kısa bir çocuk için çocuk koltuğu kullanmak mümkünse bu <strong>her zaman tercih edilmelidir</strong>.</p>
+    </div>
+
+    <!-- KASK ZORUNLULUĞU -->
+    <h2>⛑️ Kask Zorunluluğu</h2>
+    <p>Mopedler, motosikletler, kapalı gövdesi olmayan brommobielen, motorlu üç tekerlekli araçlar ve ATV’lerde — emniyet kemeri yerine <strong>kask zorunluluğu</strong> geçerlidir. Bu araçlarda onaylı bir kask takmakla yükümlüsünüz.</p>
+    <div class="resp-row">
+        <div class="resp-card driver">
+            <div class="rc-age">12 yaşından küçük</div>
+            <div class="rc-label">Sürücünün Sorumluluğu</div>
+            <p>Sürücü, 12 yaşından küçük çocukların kask takmasını sağlamakla yükümlüdür.</p>
+        </div>
+        <div class="resp-card self">
+            <div class="rc-age">12 yaş ve üzeri</div>
+            <div class="rc-label">Kendi Sorumluluğu</div>
+            <p>12 yaş ve üzeri yolcular kask takmaktan kendileri sorumludur.</p>
+        </div>
+    </div>
+
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Ana sayfaya dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_sft';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+    {t:'Koltuklar',q:'Araç hareket halindeyken sürücü ve yolcuların bulunması yasak olan yer neresidir?',o:['Ön yolcu koltuğu','Bagaj veya yükleme bölümü, ayrıca çekilen römork veya karavan','Arkada emniyet kemeri olmayan koltuk','Arka sıranın orta koltuğu'],a:1,e:'Araç hareket halindeyken bagajda veya yükleme bölümünde oturmak yasaktır. Çekilen römork veya karavan içinde oturmak veya ayakta durmak da yasaktır.'},
+    {t:'Koltuklar',q:'8 yaşından büyük bir çocuk bisikletin arka bagajında taşınabilir mi?',o:['Hayır — asla izin verilmez','Evet — 8 yaşından büyük çocuklar bisikletin arka bagajında taşınabilir, ancak snorfiets’te taşınamaz','Sadece kask takılıysa','Sadece bisiklet iki tekerlekliyse'],a:1,e:'8 yaşından büyük çocuklar bisikletin arka bagajında taşınabilir. Ancak snorfiets’te bu şekilde taşıma izinli değildir.'},
+    {t:'Koltuklar',q:'8 yaşından küçük bir çocuk, bisiklet veya mopedde hangi koşullarda taşınabilir?',o:['Her zaman kısıtlama olmaksızın','Sırt, eller ve ayaklar için yeterli desteğe sahip uygun bir koltukta oturuyorsa','Sadece kask takılıysa','Sadece kapalı bir araçta'],a:1,e:'8 yaşından küçük yolcular, bisiklet, snorfiets ve mopedlerde ancak sırt, eller ve ayaklar için yeterli desteğe sahip uygun bir koltukta oturuyorlarsa taşınabilir.'},
+    {t:'Emniyet Kemeri',q:'Emniyet kemeri kullanımı hangi araçlar için zorunludur?',o:['Sadece binek otomobiller','Binek otomobiller, şirket arabaları, kapalı gövdeye sahip üç tekerlekli motorlu taşıtlar ve brommobielen','Motosikletler dâhil tüm motorlu taşıtlar','Römorklar dâhil tüm araçlar'],a:1,e:'Emniyet kemeri kullanımı, binek otomobiller, şirket arabaları, kapalı gövdeye sahip üç tekerlekli motorlu taşıtlar ve brommobielen’in sürücüleri ve yolcuları için zorunludur.'},
+    {t:'Emniyet Kemeri',q:'10 yaşındaki bir yolcunun emniyet kemeri takmasını sağlamaktan kim sorumludur?',o:['Yolcunun kendisi','Sürücü','İkisi de eşit derecede','Çocuğun ebeveyni, sürücü değil'],a:1,e:'12 yaşından küçük çocuklarda sürücü, emniyet kemeri takılmasından sorumludur. 12 yaş ve üzeri yolcular kendileri sorumludur.'},
+    {t:'Emniyet Kemeri',q:'Hamile kadınlar emniyet kemeri takmalı mıdır?',o:['Hayır — doğmamış bebek için çok risklidir','Evet — kemer hamile kadınlar için de zorunludur. Kemersiz doğmamış bebek daha büyük risk altındadır.','Sadece ilk üç ayda','Sadece yolcu olarak, sürücü olarak değil'],a:1,e:'Emniyet kemerleri hamile kadınlar için de zorunludur. Kemersiz durumda doğmamış bebek daha büyük risk altındadır. Kalça kısmı karnın iyice altından, omuz kısmı karnın iyice üstünden geçmelidir.'},
+    {t:'Emniyet Kemeri',q:'Hamile bir kadın kalça kemerini nasıl takmalıdır?',o:['En iyi koruma için karnın üzerinden','Karnın iyice altından — kemerin karın üzerinden geçmesi doğmamış bebek için ek risk oluşturur','Hamilelikten bağımsız olarak normal kalça hizasında','Sadece omuz kemeri önemlidir'],a:1,e:'Kalça kemeri karnın iyice altından takılmalıdır. Kemerin karın üzerinden geçmesi doğmamış bebek için ek risk oluşturur.'},
+    {t:'Kemer Takma',q:'Kemer takmayan bir yolcu, bir çarpışmada en az hangi hızda ölümcül yaralanmalara maruz kalabilir?',o:['50 km/saat','100 km/saat','30 km/saat','70 km/saat'],a:2,e:'30 km/saat gibi düşük hızlarda bile kemer takmayan sürücü veya yolcular bir çarpışmada ölümcül yaralanmalara maruz kalabilir.'},
+    {t:'Kemer Takma',q:'Yolcu emniyet kemeri takmadığında hava yastığı açılırsa ne olabilir?',o:['Hava yastığı kemer olsun olmasın normal şekilde korur','Hava yastığı çok az işe yarar ve ek yaralanmalara neden olabilir','Kemer takılı değilse hava yastığı açılmaz','Hava yastığı bunu telafi etmek için daha yavaş şişer'],a:1,e:'Emniyet kemeri takılmadığında hava yastığı çok az işe yarar ve bazı durumlarda ek yaralanmalara bile neden olabilir.'},
+    {t:'Kemer Takma',q:'Kalın bir kış montunu giyerken neden önce çıkarmalısınız?',o:['Mont çarpışmada tutuşabilir','Kalın giysi kemerin vücuda oturmasını azaltır, çarpışmada kemerin daha geç sıkılaşmasına ve vücudun daha ileri hareket etmesine neden olur','Mont kemer tokasına erişimi zorlaştırır','Kalın montlar sadece çocuklar için sorundur'],a:1,e:'Giysi ne kadar kalınsa kemer vücuda o kadar az oturur. Bu ekstra boşluk, çarpışmada kemerin iyi sıkılaşmamasına veya çok geç sıkılaşmasına, vücudun daha ileri hareket etmesine neden olur.'},
+    {t:'Kemer Takma',q:'Bir kanal veya nehir kenarında seyrederken emniyet kemeri takmalı mısınız?',o:['Hayır — suya gömülen araçtan çıkmayı zorlaştırır','Evet — kemersiz suya çarpma ciddi yaralanma veya bilinç kaybına yol açar ve kaçışı imkânsız hale getirir','Sadece yolda bariyer varsa','Sadece gece'],a:1,e:'Su kenarında her zaman kemer takın. Kemersiz suya çarpma ciddi yaralanma veya bilinç kaybına yol açar ve araçtan çıkmayı imkânsız hale getirir. Kemeri araçtan çıkmadan hemen önce çözün.'},
+    {t:'Baş Dayanağı',q:'Baş dayanağının üst kısmı nerede olmalıdır?',o:['Omuz hizasında','Çene hizasında','Başın üst kısmıyla aynı hizada','Boyun arkasında'],a:2,e:'Baş dayanağının üst kısmı başın üst kısmıyla aynı hizada olmalıdır. Yeterince yükseğe ayarlanamıyorsa en azından mümkün olduğunca yükseğe ayarlanmalıdır.'},
+    {t:'Baş Dayanağı',q:'Doğru ayarlanmış bir baş dayanağı hangi yaralanmalara karşı korur?',o:['Önden çarpışmada baş yaralanmaları','Hava yastığı yaralanmaları','Arkadan çarpışmada baş ve boyun yaralanmaları','Yandan darbede yaralanmalar'],a:2,e:'Doğru ayarlanmış bir baş dayanağı, arkadan çarpışma durumunda baş ve boyun yaralanmalarını önleyebilir.'},
+    {t:'Çocuk Koltukları',q:'Hangi çocuklar onaylı bir çocuk koruma sistemi kullanmalıdır?',o:['12 yaşından küçük tüm çocuklar','18 yaşından küçük ve 1,35 metreden kısa çocuklar','Sadece 8 yaşından küçükler','Sadece 4 yaşından küçükler'],a:1,e:'18 yaşından küçük ve 1,35 metreden kısa çocuklar, çocuğun boyuna ve kilosuna uygun onaylı bir çocuk koruma sistemi kullanmak zorundadır.'},
+    {t:'Çocuk Koltukları',q:'Grup 0+ bebek oto koltuğu hangi yönde monte edilmelidir?',o:['Seyir yönüne bakar','Seyir yönünün tersine','Her iki yön de kabul edilebilir','Sadece yan tarafta özel bir konumda'],a:1,e:'Grup 0+ bebek oto koltukları seyir yönünün tersine monte edilir. Bu, bebek yaklaşık 13 kg ağırlığa ulaşana veya başı koltuk kabuğunun üzerine çıkana kadar en güvenli konumdur.'},
+    {t:'Çocuk Koltukları',q:'Grup I çocuk oto koltuğu hangi ağırlık aralığını kapsar?',o:['0–13 kg','9–18 kg','15–25 kg','22–36 kg'],a:1,e:'Grup I çocuk oto koltukları 9–18 kg ağırlığındaki çocuklar için uygundur; genellikle yaklaşık bir yaşından itibaren kullanılır.'},
+    {t:'Çocuk Koltukları',q:'Grup II ve III yükseltici koltuklarda mümkün olduğunca hangi versiyon kullanılmalıdır?',o:['Sırt dayanağı olmayan versiyon, daha fazla hareket özgürlüğü için','Sırt dayanaklı versiyon — en iyi korumayı sağlar','Her iki versiyon da eşit koruma sunar','Yan kısımları olmayan seyir yönüne bakan versiyon'],a:1,e:'Sırt dayanaklı yükseltici koltuğu mümkün olduğunca uzun süre kullanmak akıllıcadır, çünkü en iyi korumayı sağlar.'},
+    {t:'Hava Yastıkları',q:'Yolcu hava yastığını devre dışı bırakmak ne zaman zorunludur?',o:['Ön koltukta her zaman çocuk varken','Sadece önde seyir yönünün tersine bir çocuk koltuğu kullanıldığında — hava yastığı koltuğu ve çocuğu araç içinde fırlatabilir','Sadece 2010 öncesi araçlarda','Araçta 12 yaşından küçük herhangi bir çocuk varken'],a:1,e:'Ön koltukta seyir yönünün tersine bir koltuk kullanıldığında, yolcu hava yastığını devre dışı bırakmak zorunludur. Bu hava yastığı, arkaya bakan koltuğu ve içindeki çocuğu araç içinde fırlatabilir.'},
+    {t:'Hava Yastıkları',q:'Ön yolcu hava yastığı aktifken önde seyir yönüne bakan bir çocuk koltuğu yerleştiriyorsanız ne yapmalısınız?',o:['Hava yastığını devre dışı bırakın — zorunludur','Hava yastığını devre dışı bırakmak isteğe bağlıdır, ancak ön koltuğu mümkün olduğunca geriye itin','Hiçbir işlem yapılmasına gerek yok','Çocuk koltuğunu arkaya taşıyın — önde asla izin verilmez'],a:1,e:'Hava yastığı aktifken ve seyir yönüne bakan bir koltuk kullanılıyorsa, hava yastığını devre dışı bırakmak önerilir (zorunlu değil), ancak ön koltuk mümkün olduğunca geriye itilmelidir.'},
+    {t:'Çocuk Koltukları',q:'İkinci el bir çocuk koltuğu satın alıyorsunuz. Neyi kontrol etmelisiniz?',o:['Sadece doğru etiket ve grup işaretine sahip olup olmadığını','Daha önce bir kazaya karışıp karışmadığını — daha önce koruma sağlamış bir koltuk artık düzgün çalışmayabilir','Sadece yaşı ve son kullanma tarihini','Aracınızın modeline tam uyup uymadığını'],a:1,e:'İkinci el bir çocuk koltuğunun daha önce kazaya karışıp karışmadığını her zaman kontrol edin. Kemerler ve kasklar gibi, bir çarpışmada koruma sağlamış bir çocuk koltuğunun işlevselliği bozulabilir. Şüpheniz varsa kullanmayın.'},
+    {t:'Çocuk Koltukları',q:'Arkada zaten iki çocuk koltuğu var. Üçüncü bir çocuk (5 yaşında) taşınacak. Ne yapılabilir?',o:['Üçüncü çocuk hiç taşınamaz','Üçüncü çocuk (tercihen en büyük ve 3 yaşından büyük) arkada yalnızca emniyet kemeriyle taşınabilir','Üçüncü çocuk önde yalnızca kemerle oturmalı','Sadece diğer çocuklardan biri öne geçerse mümkün'],a:1,e:'İki çocuk koltuğu nedeniyle üçüncü bir çocuk koltuğu sığmıyorsa, üçüncü çocuk (tercihen en büyük ve her durumda 3 yaşından büyük) arkada yalnızca emniyet kemeriyle taşınabilir.'},
+    {t:'Çocuk Koltukları',q:'Bir grup çocuğu (hepsi 3 yaşından büyük, 1,35 m’den kısa) bir çocuk partisine götürüyorsunuz. Çocuk koltuğu zorunlu mudur?',o:['Evet — 1,35 m altında her zaman zorunlu','Hayır — çocuk partisi gibi tek seferlik taşımalarda, 3 yaşından büyük ancak 1,35 m’den kısa çocuklar arkada yalnızca emniyet kemeriyle taşınabilir','Sadece yolculuk 10 km’den uzunsa','Sadece otoyollarda'],a:1,e:'Çocuk partisi gibi tek seferlik taşımalarda, 3 yaşından büyük ancak 1,35 metreden kısa çocuklar arka koltukta yalnızca emniyet kemeriyle taşınabilir.'},
+    {t:'Kask',q:'Hangi araçlarda emniyet kemeri yerine kask zorunluluğu vardır?',o:['Binek otomobiller ve şirket arabaları','Mopedler, motosikletler, kapalı gövdesi olmayan brommobielen, motorlu üç tekerlekli araçlar ve ATV’ler','Tüm motorlu taşıtlar','Sadece motosikletler'],a:1,e:'Mopedler, motosikletler, kapalı gövdesi olmayan brommobielen, motorlu üç tekerlekli araçlar ve ATV’ler için — bu araçlarda genellikle emniyet kemeri bulunmadığından kask zorunluluğu geçerlidir.'},
+    {t:'Kask',q:'10 yaşındaki bir çocuğun mopedde kask takmasını sağlamaktan kim sorumludur?',o:['Yolcunun kendisi','Sürücü, 12 yaşından küçük yolcular için sorumludur','Kimin sürdüğüne bakılmaksızın ebeveynler','14 yaş altında isteğe bağlıdır'],a:1,e:'Sürücü, 12 yaşından küçük çocukların kask takmasını sağlamaktan sorumludur. 12 yaşından itibaren sorumluluk yolcunun kendisine aittir.'},
+    {t:'Emniyet Kemeri',q:'Üç noktalı emniyet kemeri nasıl takılmalıdır?',o:['Boyun baskısını önlemek için eğik kısım sırtın arkasında','Konfor için kalça kısmı karın üzerinde yüksekte','Kalça ve göğüs üzerinden doğru şekilde — sırtın arkasında veya koltuk altında değil','Boyun rahatsızlığını önlemek için eğik kısım koltuk altında'],a:2,e:'Üç noktalı kemer kalça ve göğüs üzerinden doğru şekilde geçmelidir. Kemerin üst kısmını sırtınızın arkasına veya koltuk altınıza almak, çarpışma anında etkinliğini azaltır.'},
+];
+const QS=25;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Göster'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — Doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Güvenli taşıma konusunda olağanüstü bilgi!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi. Eksiklerinizi gözden geçirin.'}else if(pct>=50){msg='Pratik yapmaya devam edin 📖';sub='Sayfayı tekrar okuyup testi yeniden deneyin.'}else{msg='Biraz daha çalışmalısın 💡';sub='Güvenli taşıma kurallarını dikkatlice gözden geçirin!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Yeni Rastgele Test</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Sizin cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
