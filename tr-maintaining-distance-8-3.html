@@ -1,747 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Takip Mesafesini Koruma – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-        h1,
-        h2 {
-            color: #D5176A;
-        }
-
-
-
-        .gh3 {
-            color: #D5176A;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #FACAD2;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #FACAD2;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattın pozisyonunu ayarlamak için */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            text-align: justify;
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 150px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-        .important-words6 {
-            background-color: #FACAD2;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            text-align: justify;
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #FACAD2;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-
-
-
-        .important-words3 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 {
-            background-color: #FFECC5;
-            padding-left: 0px;
-            padding-top: 0px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            /* Dikey hizalama */
-            justify-content: space-between;
-            /* Boşlukları kontrol eder */
-        }
-
-        .important-words4 img {
-            width: 90%;
-            height: auto;
-            margin-right: -202px;
-            margin-left: 10px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-
-
-
-
-        /* Masaüstü için 2 sütun düzeni */
-        .image-container8 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* İki sütun yapısı */
-            gap: 10px;
-        }
-
-        .image-block8 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-block8 img {
-            width: 100%;
-            max-width: 600px;
-            /* Resim genişliği sınırlanabilir */
-            height: auto;
-        }
-
-        .image-block8 figcaption {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.6em;
-            /* Yazı boyutunu küçültmek için */
-        }
-
-        /* Açıklamalı resimler için yüksekliği ayarlama */
-        .image-block8:nth-child(6n) figcaption,
-        .image-block8:nth-child(8n) figcaption {
-            min-height: 20px;
-            /* Açıklamalar için minimum yükseklik */
-        }
-
-        /* Mobil görünüm için sıralama ayarı */
-        @media (max-width: 650px) {
-            .image-container8 {
-                grid-template-columns: 1fr;
-                /* Mobilde tek sütun */
-                grid-template-areas:
-                    "image1"
-                    "image5"
-                    "image2"
-                    "image6"
-                    "image3"
-                    "image7"
-                    "image4"
-                    "image8";
-                /* İstenilen sıralama */
-            }
-
-            /* Her resim bloğuna grid area tanımlaması */
-            .image-block8:nth-child(1) {
-                grid-area: image1;
-            }
-
-            .image-block8:nth-child(2) {
-                grid-area: image2;
-            }
-
-            .image-block8:nth-child(3) {
-                grid-area: image5;
-            }
-
-            .image-block8:nth-child(4) {
-                grid-area: image6;
-            }
-
-            .image-block8:nth-child(5) {
-                grid-area: image3;
-            }
-
-            .image-block8:nth-child(6) {
-                grid-area: image4;
-            }
-
-            .image-block8:nth-child(7) {
-                grid-area: image7;
-            }
-
-            .image-block8:nth-child(8) {
-                grid-area: image8;
-            }
-        }
-
-        .vertical-line1 {
-            width: 4px;
-            height: 60%;
-            background-color: #D5176A;
-            position: absolute;
-            top: 28%;
-            left: 15px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .vertical-line2 {
-            width: 4px;
-            height: 100%;
-            background-color: #D5176A;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            /* Dikey hattın, sol kenardan uzaklığını ayarlar */
-        }
-
-        .important-words1 h2 {
-            color: #a70000;
-        }
-
-        .important-words2 h2 {
-            color: #a70000;
-        }
-
-        .important-words1 ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-left: 20px;
-            /* Metni dikey hattan uzaklaştırmak için sol boşluk ekler */
-        }
-
-        .important-words1 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: 0px;
-            /* Sol boşluk, text-indent için */
-            text-indent: 0px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-        .important-words2 li {
-            margin-bottom: 1px;
-            /* Elemanlar arasındaki mesafeyi ayarlar */
-            padding-left: px;
-            /* Sol boşluk, text-indent için */
-            text-indent: -20px;
-            /* İkinci satırların hizalanması için */
-            list-style-position: inside;
-            /* Madde işaretinin içerde kalmasını sağlar */
-        }
-
-
-
-        .road-section {
-            margin-top: 30px;
-        }
-
-        .road-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .custom-image {
-            width: 100%;
-            height: auto;
-            max-width: 1500px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .image-container figure {
-            max-width: 48%;
-            margin: 0px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            margin-top: 15px;
-
-        }
-
-        .image-container figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 15px;
-
-
-        }
-
-        .image-container1 {
-            display: flex;
-            justify-content: center;
-        }
-
-        .image-container1 img {
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container1 figure {
-            width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-            /* Yazıyı sol tarafa hizalar */
-        }
-
-        .image-text-container {
-            display: flex;
-            /* Görüntü ve metni yan yana koymak için */
-            flex-direction: row;
-            align-items: flex-start;
-            gap: -30px;
-
-        }
-
-        .image-text-container img {
-            max-width: 100%;
-            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
-            height: auto;
-            /* Görselin oranlarını koru */
-            width: 440px;
-            /* Görseli küçültmek için sabit bir genişlik */
-            margin-left: -40px;
-            /* Görsel ile sol kenar arasındaki boşluk */
-
-
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        table thead th {
-            background-color: #E0EDCB;
-            color: #333;
-            padding: 12px;
-        }
-
-        table tbody td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table tbody td.first-column {
-            background-color: #E0EDCB;
-            /* Sol sütun rengi */
-            font-weight: bold;
-            /* Yazıları kalın yapma */
-        }
-
-
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    p strong{color:var(--text-primary)}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* formula boxes */
+    .formula-box{background:rgba(26,108,246,.09);border:1.5px solid rgba(77,166,255,.3);border-radius:12px;padding:14px 20px;margin:12px 0 18px;backdrop-filter:blur(12px)}
+    .formula-box .fb-formula{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--accent-light);margin-bottom:6px}
+    .formula-box .fb-example{font-family:'Lora',serif;font-size:.85rem;color:var(--text-muted);line-height:1.5}
+    .formula-box .fb-example strong{color:#fff}
+
+    /* stopping distance visual */
+    .stop-dist-visual{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:14px 16px;margin:12px 0 22px;backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:8px}
+    .sdv-row{display:flex;align-items:center;gap:10px}
+    .sdv-label{font-family:'Outfit',sans-serif;font-size:.76rem;font-weight:700;min-width:100px;flex-shrink:0}
+    .sdv-bar{height:28px;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;white-space:nowrap;min-width:60px}
+    .sdv-bar.think{background:linear-gradient(90deg,rgba(245,166,35,.7),rgba(245,166,35,.5));border:1px solid rgba(245,166,35,.4)}
+    .sdv-bar.brake{background:linear-gradient(90deg,rgba(232,69,69,.7),rgba(232,69,69,.5));border:1px solid rgba(232,69,69,.4)}
+    .sdv-bar.total{background:linear-gradient(90deg,rgba(26,108,246,.7),rgba(77,166,255,.5));border:1px solid rgba(77,166,255,.4)}
+
+    /* thinking steps */
+    .thinking-steps{background:var(--card-bg);border:1px solid var(--card-border);border-radius:13px;padding:12px 16px;margin:12px 0 18px;backdrop-filter:blur(12px)}
+    .ts-row{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid rgba(77,166,255,.07)}
+    .ts-row:last-child{border-bottom:none}
+    .ts-num{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:2px}
+    .ts-title{font-family:'Outfit',sans-serif;font-size:.83rem;font-weight:700;color:var(--text-primary)}
+    .ts-desc{font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted);line-height:1.4;margin-top:2px}
+
+    /* distance table */
+    .dist-table{width:100%;border-collapse:collapse;margin:12px 0 22px;background:var(--card-bg);border-radius:13px;overflow:hidden;border:1px solid var(--card-border)}
+    .dist-table th{background:rgba(6,18,48,1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:10px 12px;text-align:center}
+    .dist-table td{font-family:'Outfit',sans-serif;font-size:.83rem;padding:9px 12px;text-align:center;border-bottom:1px solid rgba(77,166,255,.07);color:var(--text-muted)}
+    .dist-table tr:last-child td{border-bottom:none}
+    .dist-table td:first-child{font-weight:700;color:var(--text-primary)}
+    .dist-table tr:hover td{background:rgba(77,166,255,.04)}
+    .td-think{color:#ffd166!important;font-weight:600}
+    .td-brake{color:#ff8888!important;font-weight:600}
+    .td-total{color:var(--accent-light)!important;font-weight:700}
+    .td-follow{color:#6effc0!important;font-weight:600}
+
+    /* callout */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.red{background:rgba(232,69,69,.07);border:1px solid rgba(232,69,69,.22)}
+    .callout.red::before{background:linear-gradient(180deg,var(--red),#ff8888)}
+    .callout.red p{color:rgba(255,180,180,.85)}
+    .callout.red p strong{color:#fff}
+    .callout.red .callout-title{color:#ff8888}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+
+    /* road banking photos */
+    .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 20px}
+    @media(max-width:520px){.photo-pair{grid-template-columns:1fr}}
+    .photo-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px)}
+    .photo-card img{width:100%;height:150px;object-fit:cover;display:block}
+    .photo-card .pc-caption{font-family:'Lora',serif;font-size:.78rem;color:var(--text-muted);padding:10px 12px;line-height:1.4}
+    .photo-card.positive{border-color:rgba(0,200,100,.2)}
+    .photo-card.negative{border-color:rgba(232,69,69,.2)}
+
+    /* single photo */
+    .single-photo{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px);margin:12px 0 18px;max-width:500px}
+    .single-photo img{width:100%;max-height:200px;object-fit:cover;display:block}
+
+    /* note */
+    .note{font-family:'Lora',serif;font-size:.8rem;color:var(--text-dim);font-style:italic;margin:6px 0 18px}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -752,298 +236,213 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
-    <h1>Mesafeyi korumak
-    </h1>
-    <p>
-        Aracınızın etrafında ne kadar çok boşluk olursa, diğer araçlarla çarpışma ihtimaliniz o kadar azalır. Birçok
-        sürücü bununla zorlanır ve Hollanda yollarındaki yoğun trafik de durumu pek kolaylaştırmaz. Yetersiz takip
-        mesafesi çoğu zaman “tampon tampona takip” denilen duruma yaklaşır; bu durumda öndeki araç frenlemeye
-        başladığında, arkadaki aracın tepki verecek zamanı kalmaz.
-    </p>
-    <p>
-        Tampon tampona takip çok tehlikelidir ve ciddi para cezalarıyla cezalandırılır. Ayrıca, başka bir aracın arka
-        kısmına çarpan sürücüler neredeyse her zaman otomatik olarak kusurlu sayılır. Yeterli takip mesafesini
-        koruyamamak, otoyoldaki trafik kazalarının başlıca nedenlerinden biridir.
-    </p>
-    <div class="important-words1">
-        <div class="vertical-line2"></div>
-        <h3>Frenleme yavaşlaması</h3>
-        <p>
-            Bir binek otomobilin yasal olarak asgari bir frenleme yavaşlamasına sahip olması gerekir. Bu asgari değer,
-            sert fren yaptığınızda aracın saniyede ne kadar hız kaybetmesi gerektiğini belirtir. Frenleme yavaşlaması
-            m/s2 ile gösterilir. Bu sayı ne kadar yüksekse, fren mesafesi o kadar kısadır.
-        </p>
-
-
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Sınav</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk ve Metin Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
     </div>
-    <h2>
-        Durma mesafesi
-    </h2>
-    <p>
-        Trafik, sürücülerin hem beklenen hem de beklenmeyen ve fren gerektiren durumlarla düzenli olarak başa çıkmasını
-        gerektirir. Durmak için ihtiyaç duyacağınız mesafenin — yani durma mesafenizin — farkında olmak önemlidir. Durma
-        mesafesi yalnızca fren mesafesini değil, frene basmaya başlayana kadar geçen süre (düşünme süresi) boyunca kat
-        edilen mesafeyi de içerir.
-    </p>
-
-    <div class="important-words2">
-
-
-        <p>
-            <strong>Durma mesafesi = Düşünme mesafesi + Fren mesafesi</strong>
-        </p>
-
-
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan saydamlığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Metin Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart saydamlığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık saydamlığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
     </div>
-    <h2>
-        Düşünme süresi
-    </h2>
-    <p>
-        Beklenmedik bir durumla karşılaştığınızda tepki vermeniz gerekir. Bu, sabit bir kalıbı izler:
-    </p>
-    <ul>
-        <li>
-            <p>
-                <strong>
-                    Gözlem
-                </strong>Tepki vermeniz gerekebilecek bir şeyi fark edin.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>
-                    Öngörme
-                </strong>Bunun sizin için ne anlama geldiğini ve hangi seçeneklere sahip olduğunuzu öngörün.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Değerlendirme</strong>Bu seçenekleri karşılaştırın.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Karar verme</strong>En iyi seçeneği seçin.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Uygulama</strong>Kararınıza uygun şekilde hareket edin.
-            </p>
-        </li>
-    </ul>
-    <p>
-        Düşünme süresi; ne kadar hızlı gözlemleyip öngördüğünüzü, değerlendirdiğinizi, karar verip harekete geçtiğinizi
-        belirler. Sağlıklı, uyanık ve deneyimli bir sürücünün düşünme süresi yaklaşık bir saniyedir. Bu, fren yapma
-        nedeni gördüğünüz andan fren pedalına basana kadar geçen sürenin bir saniye olduğu anlamına gelir.
-    </p>
-    <p>
-        Bu bir saniye boyunca aynı hızla ilerlemeye devam edersiniz. Bu sürede kat edilen mesafe düşünme mesafesidir.
-        Bunu hesaplamak için hızı (km/s) dörde bölün ve ardından %10 ekleyin. Elde ettiğiniz sayı, düşünme mesafesini
-        metrek cinsinden verir.
-    </p>
-    <div class="important-words2">
-
-
-        <p>
-            <strong>(Hız : 4) + %10 = Düşünme mesafesi (metre)*</strong><br>
-            Örnek: (60 km/s : 4) + %10 = 15 + 1.5 = 16.5 metre
-        </p>
-
-
-    </div>
-    <h2>
-        Fren mesafesi
-    </h2>
-    <p>
-        Fren yapmak, aracın hemen duracağı anlamına gelmez. Bu, frenlerin kalitesine (frenleme yavaşlaması) ve
-        kullandığınız hıza bağlıdır. Bu süre içinde kat ettiğiniz mesafe, fren mesafesidir. Hızınız iki katına çıktığında
-        bu mesafe dört kat artar; yani hız iki katına çıktığında fren mesafesi dört katına çıkar. Hava koşulları ve yol
-        yüzeyi de fren mesafesini etkileyebilir.
-    </p>
-    <p>
-        Fren mesafesini hesaplamak için hızı (km/s) ona bölün, çıkan sayıyı kendiyle çarpın ve sonucu ikiye bölün. Bu
-        sayı, fren mesafesini metre cinsinden verir.
-    </p>
-    <div class="important-words2">
-
-
-        <p>
-            <strong>(Hız : 10) x (Hız : 10) : 2 = Fren mesafesi (metre)*</strong><br>
-            Örnek: (60 km/s : 10) x (60 km/s : 10) : 2 = 6 x 6 : 2 = 18 metre
-        </p>
-
-
-    </div>
-
-<!-- BURADA CEDVEL OLMALIDI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-
-
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9d488f0c584c49cdad2d1a7cfd27ff3c~mv2.jpg"
-                    alt="Warning side-airbag malfunction">
-
-
-
-            </figure>
-
-
-        </div>
-    </div>
-
-    <h2>
-        Takip mesafesi
-    </h2>
-    <p>
-        Aracınızın ön kısmı ile önünüzdeki aracın arka kısmı arasındaki mesafe, takip mesafesidir. Yeterli takip
-        mesafesini korumamak yasaktır. Güvenli takip mesafesini belirlemek için “iki saniye kuralını” kullanın. Buna
-        göre, öndeki araç bir sokak lambasını ya da trafik işaretini geçtiğinde, sizin aynı noktaya ulaşmanız iki saniye
-        sürmelidir.
-    </p>
-
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9bd154e3ac2e4fe78ffe448e878187bd~mv2.jpeg"
-                    alt="Warning side-airbag malfunction">
-
-
-
-            </figure>
-
-
-        </div>
-    </div>
-
-    <p>
-        Takip mesafesini yaklaşık olarak metre cinsinden bulmak için hızınızı (km/s) ikiye bölün ve çıkan sayıya %10
-        ekleyin.
-    </p>
-
-    <div class="important-words2">
-
-        <p>
-            <strong>(Hız : 2) + %10 = Takip mesafesi (metre)*</strong><br>
-            Örnek: (60 km/s : 2) + %10 = 30 + 3 = 33 metre
-        </p>
-
-
-    </div>
-    <p>
-        *Bu hesaplamalar farkındalık yaratmak amacıyla verilmiştir. CBR’de bu mesafeleri hesaplamanız istenmeyecektir.
-    </p>
-
-
-    <h2>
-        Olumsuz koşullar
-    </h2>
-    <p>
-        “İki saniye kuralına” uygun takip mesafesi; iyi yol ve hava koşulları, uyanık bir sürücü ve yeterli yol tutuşu
-        varsayılarak belirlenmiş asgari takip mesafesidir.
-    </p>
-    <p>
-        Kötü durumdaki bir aracın fren mesafesi daha uzun olur. Aynı şekilde, yolun veya havanın kötü olduğu
-        koşullarda da yol daha az tutuş sağlar. Bu durumlarda sürücülere, takip mesafesini artırmaları tavsiye edilir.
-    </p>
-    <p>
-        Yağmur, sis veya kar nedeniyle düşük görüş mesafesi ya da azalmış uyanıklık; algınızı ve tepkinizi etkileyerek
-        düşünme mesafesini artırır. Bu durumlarda da takip mesafesini artırmanız gerekir.
-    </p>
-    <p>
-        Bu tür durumlarda asgari takip mesafesini doğru tahmin etmek, bilgi ve deneyim gerektirir. Ancak, kılavuzlar üç
-        veya dört saniyenin yeterli olacağını belirtir.
-    </p>
-    <p>
-        Kötü yol yüzeylerini ve buna bağlı azalmış yol tutuşunu nasıl fark edeceğinizi öğrenmek için şunlara bakın:
-    </p>
-    <ul>
-        <li>
-            <p>
-<strong>
-    Yol yüzeyinin tipi ve durumu
-</strong>
-Islak bir yol yüzeyi, tıpkı çukurlu bir zemin ya da gevşek çakıl veya kum bulunan yüzey gibi daha az tutuş sağlar.
-Ayrıca, örneğin taş döşeli bir yol, asfalt yola göre daha az tutuş verir.
-            </p>
-        </li>
-        <li>
-            <p>
-<strong>Yol eğimi</strong>Virajlarda yollar genellikle hafif eğimlidir; iç viraj, dış viraja göre biraz daha alçaktır
-(pozitif yol eğimi). Bu, virajda daha fazla tutuş sağlar. Dış virajın, koşullar nedeniyle iç viraja göre daha alçak
-olması (negatif yol eğimi) halinde virajlarda tutuşunuz azalır.
-            </p>
-        </li>
-    </ul>
-    
-    
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_c5afe6ace8524cd0bb75c39d900becba~mv2.jpeg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Pozitif yol eğimi.<br>
-                    İç viraj, dış virajdan daha alçaktır.</figcaption>
-
-
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b7054cdac1ee437d8b7385354b31e709~mv2.jpeg"
-                    alt="Warning side-airbag malfunction">
-                <figcaption>Negatif yol eğimi.<br>
-                    Dış viraj, iç virajdan daha alçaktır.</figcaption>
-
-
-            </figure>
-
-
-        </div>
-    </div>
-    <div class="important-words13">
-        <div class="container">
-            <div>
-
-                <ul>
-                    <li>
-                        <p>
-                            <strong>Yeni yol yüzeyi</strong>Yeni bir yol yüzeyinde tutuşun hemen iyi olmasını
-                            beklersiniz; ancak durum böyle değildir. Yolun yeterince pürüzlü hâle gelmesi için önce
-                            “oturması” gerekir. Bu nedenle yeni yol yüzeyi başlangıçta daha kaygandır.
-                        </p>
-                    </li>
-                </ul>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">📏 Takip Mesafesini Koruma Sınavı</div><div class="quiz-badge" id="quiz-badge">10 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">📏</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Durma mesafesi, tepki mesafesi, fren mesafesi, 2 saniye kuralı, yol eğimi ve olumsuz koşullar hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 10 soru</div><div class="qs-chip">🔀 Rastgele sıralama</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Sınava Başla</button>
             </div>
-            <img src="https://static.wixstatic.com/media/4b688f_01523d444e1d4473b8399e40bd0e4af9~mv2.png"
-                alt="Örnek Resim" class="image1">
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
         </div>
     </div>
+</div>
 
-        <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a>
+<!-- SAYFA İÇERİĞİ -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Sürüş Davranışı</span><span class="dot">›</span><span style="color:var(--text-primary)">Takip Mesafesini Koruma</span></div>
+    <h1>Takip Mesafesini Koruma</h1>
+    <div class="section-divider"></div>
+    <p>Aracınızın çevresinde ne kadar fazla boşluk olursa, çarpışma riski o kadar düşer. Yakın takip (tampon takip) çok tehlikelidir ve ağır cezalara tabidir. Arkadan çarpma kazalarında, arkadaki sürücü <strong>neredeyse her zaman %100 kusurlu</strong> kabul edilir. Yetersiz takip mesafesi, otoyol kazalarının başlıca nedenlerinden biridir.</p>
 
+    <!-- STOPPING DISTANCE -->
+    <h2>🛑 Durma Mesafesi</h2>
+    <div class="formula-box">
+        <div class="fb-formula">Durma mesafesi = Tepki mesafesi + Fren mesafesi</div>
+    </div>
+    <div class="stop-dist-visual">
+        <div class="sdv-row"><div class="sdv-label" style="color:#ffd166">🧠 Tepki</div><div class="sdv-bar think" style="width:35%">16,5 m @ 60</div></div>
+        <div class="sdv-row"><div class="sdv-label" style="color:#ff8888">🛑 Fren</div><div class="sdv-bar brake" style="width:50%">18 m @ 60</div></div>
+        <div class="sdv-row"><div class="sdv-label" style="color:var(--accent-light)">📏 Toplam</div><div class="sdv-bar total" style="width:85%">34,5 m @ 60 km/s</div></div>
+    </div>
 
-      
-  
+    <!-- THINKING TIME -->
+    <h2>🧠 Tepki Süresi ve Tepki Mesafesi</h2>
+    <p>Beklenmedik bir durumla karşılaştığınızda, tepkiniz beş adımlı bir süreç izler:</p>
+    <div class="thinking-steps">
+        <div class="ts-row"><div class="ts-num">1</div><div><div class="ts-title">Gözlemleme</div><div class="ts-desc">Tepki vermenizi gerektirebilecek bir şeyi fark edersiniz.</div></div></div>
+        <div class="ts-row"><div class="ts-num">2</div><div><div class="ts-title">Tahmin Etme</div><div class="ts-desc">Bunun sizin için ne anlama geldiğini ve hangi seçenekleriniz olduğunu öngörürsünüz.</div></div></div>
+        <div class="ts-row"><div class="ts-num">3</div><div><div class="ts-title">Değerlendirme</div><div class="ts-desc">Bu seçenekleri karşılaştırırsınız.</div></div></div>
+        <div class="ts-row"><div class="ts-num">4</div><div><div class="ts-title">Karar Verme</div><div class="ts-desc">En iyi seçeneği seçersiniz.</div></div></div>
+        <div class="ts-row"><div class="ts-num">5</div><div><div class="ts-title">Uygulama</div><div class="ts-desc">Kararınıza göre harekete geçersiniz.</div></div></div>
+    </div>
+    <p>Sağlıklı, dikkatli ve deneyimli bir sürücünün tepki süresi yaklaşık <strong>bir saniyedir</strong>. Bu saniye boyunca aynı hızla yol almaya devam edersiniz — bu sürede kat edilen mesafe tepki mesafesidir.</p>
+    <div class="formula-box">
+        <div class="fb-formula">(Hız ÷ 4) + %10 = metre cinsinden tepki mesafesi</div>
+        <div class="fb-example"><strong>Örnek:</strong> (60 km/s ÷ 4) + %10 = 15 + 1,5 = <strong>16,5 metre</strong></div>
+    </div>
 
+    <!-- BRAKING DISTANCE -->
+    <h2>🔴 Fren Mesafesi</h2>
+    <p>Frene basmak aracı anında durdurmaz. Fren mesafesi, frenlerin kalitesine ve hıza bağlıdır. <strong>Hızınızı iki katına çıkardığınızda fren mesafesi dört katına çıkar.</strong> Hava koşulları ve yol yüzeyi de fren mesafesini etkiler.</p>
+    <div class="formula-box">
+        <div class="fb-formula">(Hız ÷ 10) × (Hız ÷ 10) ÷ 2 = metre cinsinden fren mesafesi</div>
+        <div class="fb-example"><strong>Örnek:</strong> (60 ÷ 10) × (60 ÷ 10) ÷ 2 = 6 × 6 ÷ 2 = <strong>18 metre</strong></div>
+    </div>
+
+    <!-- DISTANCE TABLE -->
+    <table class="dist-table">
+        <tr><th>Hız</th><th>🧠 Tepki mes.</th><th>🔴 Fren mes.</th><th>📏 Durma mes.</th><th>🟢 Takip mes.</th></tr>
+        <tr><td>30 km/s</td><td class="td-think">8,25 m</td><td class="td-brake">4,5 m</td><td class="td-total">12,75 m</td><td class="td-follow">16,5 m</td></tr>
+        <tr><td>50 km/s</td><td class="td-think">13,75 m</td><td class="td-brake">12,5 m</td><td class="td-total">26,25 m</td><td class="td-follow">27,5 m</td></tr>
+        <tr><td>60 km/s</td><td class="td-think">16,5 m</td><td class="td-brake">18 m</td><td class="td-total">34,5 m</td><td class="td-follow">33 m</td></tr>
+        <tr><td>80 km/s</td><td class="td-think">22 m</td><td class="td-brake">32 m</td><td class="td-total">54 m</td><td class="td-follow">44 m</td></tr>
+        <tr><td>100 km/s</td><td class="td-think">27,5 m</td><td class="td-brake">50 m</td><td class="td-total">77,5 m</td><td class="td-follow">55 m</td></tr>
+        <tr><td>120 km/s</td><td class="td-think">33 m</td><td class="td-brake">72 m</td><td class="td-total">105 m</td><td class="td-follow">66 m</td></tr>
+        <tr><td>130 km/s</td><td class="td-think">35,75 m</td><td class="td-brake">84,5 m</td><td class="td-total">120,25 m</td><td class="td-follow">71,5 m</td></tr>
+    </table>
+    <div class="single-photo"><img src="https://static.wixstatic.com/media/4b688f_9d488f0c584c49cdad2d1a7cfd27ff3c~mv2.jpg" alt="Durma mesafesi görseli"/></div>
+    <p class="note">* Bu hesaplamalar farkındalık içindir. CBR sınavında bu hesaplamaları yapmanız istenmeyecektir.</p>
+
+    <!-- FOLLOWING DISTANCE -->
+    <h2>🟢 Takip Mesafesi — 2 Saniye Kuralı</h2>
+    <p>Aracınızın ön kısmı ile öndeki aracın arka kısmı arasındaki mesafe takip mesafesidir. <strong>2 saniye kuralını</strong> kullanın: öndeki araç bir direk veya yol işaretini geçtiğinde, aynı noktaya sizin varmanız <strong>en az 2 saniye</strong> sürmelidir.</p>
+    <div class="single-photo"><img src="https://static.wixstatic.com/media/4b688f_9bd154e3ac2e4fe78ffe448e878187bd~mv2.jpeg" alt="2 saniye kuralı"/></div>
+    <div class="formula-box">
+        <div class="fb-formula">(Hız ÷ 2) + %10 = metre cinsinden takip mesafesi</div>
+        <div class="fb-example"><strong>Örnek:</strong> (60 km/s ÷ 2) + %10 = 30 + 3 = <strong>33 metre</strong></div>
+    </div>
+
+    <!-- POOR CONDITIONS -->
+    <h2>⚠️ Olumsuz Koşullar — Mesafenizi Artırın</h2>
+    <p>2 saniye kuralı <strong>sadece iyi koşullarda</strong> geçerlidir. Olumsuz koşullarda mesafeyi <strong>3–4 saniyeye</strong> çıkarın.</p>
+    <div class="callout amber">
+        <span class="callout-title">⚠️ Durma mesafesini artıran faktörler</span>
+        <p><strong>Fren mesafesini artırır:</strong> zayıf frenler, ıslak/kaygan/çakıllı yollar, negatif yol eğimi, yeni yol yüzeyi.</p>
+        <p><strong>Tepki mesafesini artırır:</strong> zayıf görüş (yağmur/sis/kar), azalmış dikkat, yorgunluk.</p>
+    </div>
+
+    <h2>🛣️ Yol Eğimi (Banket)</h2>
+    <div class="photo-pair">
+        <div class="photo-card positive"><img src="https://static.wixstatic.com/media/4b688f_c5afe6ace8524cd0bb75c39d900becba~mv2.jpeg" alt="Pozitif yol eğimi"/><div class="pc-caption"><strong>✅ Pozitif yol eğimi</strong> — virajın iç kısmı dış kısmından daha alçaktır. Viraj alırken <strong>daha fazla yol tutuşu</strong> sağlar.</div></div>
+        <div class="photo-card negative"><img src="https://static.wixstatic.com/media/4b688f_b7054cdac1ee437d8b7385354b31e709~mv2.jpeg" alt="Negatif yol eğimi"/><div class="pc-caption"><strong>⚠️ Negatif yol eğimi</strong> — virajın dış kısmı iç kısmından daha alçaktır. Virajlarda <strong>daha az yol tutuşu</strong> sağlar.</div></div>
+    </div>
+    <div class="callout blue">
+        <span class="callout-title">🆕 Yeni yol yüzeyi</span>
+        <p>Yeni bir yol yüzeyi, yeterli pürüzlülük kazanması için önce <strong>"alıştırılması"</strong> gerekir. Yeni yüzeyler başlangıçta <strong>beklenenden daha kaygandır</strong>.</p>
+    </div>
+
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_dist83';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+{t:'Yakın Takip',q:'Arkadan çarpma kazalarında neredeyse her zaman kim kusurlu kabul edilir?',o:['Öndeki aracın sürücüsü, beklenmedik şekilde fren yaptığı için','Arkadaki sürücü — yeterli takip mesafesi bırakmadığı için','Her iki sürücü eşit oranda','Arkadaki sürücü, yalnızca öndeki araç uyarısız fren yaptıysa'],a:1,e:'Arkadan çarpma kazalarında arkadaki sürücü neredeyse her zaman %100 kusurlu kabul edilir. Zamanında durabilmek için yeterli takip mesafesi bırakmamıştır. Yakın takip ayrıca yüksek cezalara tabidir.'},
+{t:'Durma Mesafesi',q:'Durma mesafesi hangi iki bileşenden oluşur?',o:['Tepki mesafesi + Reaksiyon mesafesi','Tepki mesafesi + Fren mesafesi','Gözlem mesafesi + Fren mesafesi','Reaksiyon mesafesi + Cevap mesafesi'],a:1,e:'Durma mesafesi = Tepki mesafesi + Fren mesafesi. Tepki mesafesi, frene basmadan önce geçen reaksiyon süresinde kat edilen mesafedir. Fren mesafesi ise fiilen fren yaparken kat edilen mesafedir.'},
+{t:'Tepki Süresi',q:'Sağlıklı, dikkatli ve deneyimli bir sürücünün tepki süresi yaklaşık ne kadardır?',o:['0,5 saniye','1 saniye','2 saniye','3 saniye'],a:1,e:'Sağlıklı, dikkatli ve deneyimli bir sürücünün tepki süresi yaklaşık 1 saniyedir. Bu saniye boyunca mevcut hızınızda yol almaya devam edersiniz — kat edilen mesafe tepki mesafesidir.'},
+{t:'Fren Mesafesi',q:'Hızınızı 60 km/s’ten 120 km/s’e iki katına çıkarıyorsunuz. Fren mesafesi nasıl değişir?',o:['İki katına çıkar','Üç katına çıkar','Dört katına çıkar','Yaklaşık aynı kalır — modern ABS telafi eder'],a:2,e:'Hızınızı iki katına çıkardığınızda fren mesafesi dört katına çıkar. Bunun nedeni, fren mesafesinin hızın karesiyle orantılı olmasıdır. 60 km/s’te 18 m; 120 km/s’te 72 m.'},
+{t:'2 Saniye Kuralı',q:'2 saniye kuralı pratikte nasıl uygulanır?',o:['Şerit değiştirmeden önce 2 saniye sinyal verdikten sonra geçin','Öndeki araç sabit bir noktayı (direk, işaret) geçtiğinde, aynı noktaya sizin varmanız en az 2 saniye sürmelidir','Öndeki aracın tam 2 araç boyu arkasında kalın','Hızınızın 2 katı mesafe bırakın'],a:1,e:'2 saniye kuralı: öndeki araç bir direk veya yol işareti gibi sabit bir noktayı geçtiğinde, siz aynı noktaya gelene kadar "bir-iki" diye saymalı ve en az 2 saniye geçmelidir. Bu, güvenli takip mesafesinin alt sınırını verir.'},
+{t:'Olumsuz Koşullar',q:'Yağmur, sis, azalmış dikkat gibi olumsuz koşullarda takip mesafenizi nasıl ayarlamalısınız?',o:['Aynı 2 saniyeyi koruyun — her zaman yeterlidir','1 saniyeye düşürün — daha hızlı tepki vermeniz gerekir','3–4 saniyeye çıkarın — 2 saniye kuralı sadece iyi koşullar için asgari mesafedir','ABS varsa ayar gerekmez'],a:2,e:'2 saniye kuralı iyi koşullar için asgari takip mesafesidir. Kötü hava, azalan görüş, azalmış dikkat veya zayıf yol yüzeyi gibi olumsuz koşullarda, kılavuzlar mesafenin 3–4 saniyeye çıkarılmasını önerir.'},
+{t:'Pozitif Yol Eğimi',q:'Pozitif yol eğimi nedir ve yol tutuşunu nasıl etkiler?',o:['Virajın dış kısmı iç kısmından alçaktır — yol tutuşunu azaltır','Virajın iç kısmı dış kısmından alçaktır — viraj alırken daha fazla yol tutuşu sağlar','Yol her iki yandan eşit eğimlidir — yol tutuşuna etkisi yoktur','Yol düzdür, eğim yoktur — maksimum yol tutuşu'],a:1,e:'Pozitif yol eğimi, virajın iç kısmının dış kısmından daha alçak olmasıdır (yol viraja doğru eğilir). Bu, viraj alırken daha fazla yol tutuşu sağlar. Negatif yol eğimi (dış kısım alçak) yol tutuşunu azaltır.'},
+{t:'Yeni Yol Yüzeyi',q:'Yeni kaplanmış bir yolda sürüyorsunuz. Nelere dikkat etmelisiniz?',o:['Yeni yol yüzeyleri hemen mükemmel yol tutuşu sağlar','Yeni yol yüzeyi beklenenden daha kaygandır — yeterli pürüzlülük kazanması için "alıştırılması" gerekir','Yeni yüzeyler sadece ıslak havada kaygandır','Normal hız ve normal takip mesafesi ile sürebilirsiniz'],a:1,e:'Yeni bir yol yüzeyi, iyi bir yol tutuşu için yeterli pürüzlülüğe kavuşması amacıyla önce "alıştırılmalıdır". Bu nedenle yeni yüzey başlangıçta beklenenden daha kaygandır; dikkatli olunmalı ve takip mesafesi artırılmalıdır.'},
+{t:'Tepki Mesafesi',q:'Tepki mesafesini etkileyen faktörler nelerdir?',o:['Sadece aracın fren sistemi','Sürücünün dikkati, görüş koşulları ve durumu — zayıf dikkat veya görüş tepki mesafesini artırır','Sadece yol yüzeyi ve hava koşulları','Aracın ağırlığı ve lastik durumu'],a:1,e:'Tepki mesafesi sürücünün dikkat ve algılama durumundan etkilenir. Zayıf görüş (yağmur, sis, kar) ve azalmış dikkat (yorgunluk, dikkat dağınıklığı) tepki süresini uzatır, yani frene basmadan önce daha fazla mesafe kat edersiniz.'},
+{t:'Düşünme Adımları',q:'Bir tehlikeye tepki verirken 5 düşünme adımının doğru sırası nedir?',o:['Karar ver → Gözlemle → Tahmin et → Değerlendir → Uygula','Gözlemle → Tahmin et → Değerlendir → Karar ver → Uygula','Tahmin et → Gözlemle → Karar ver → Değerlendir → Uygula','Uygula → Gözlemle → Tahmin et → Değerlendir → Karar ver'],a:1,e:'Tepki sürecindeki 5 adım: 1. Gözlemleme, 2. Tahmin Etme, 3. Değerlendirme, 4. Karar Verme, 5. Uygulama. Bu sabit sıra, tepki süresini ve tepki mesafesini belirler.'},
+];
+const QS=10;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Göster'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — Doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Takip mesafesi bilgisi mükemmel!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi. Kaçırdıklarını gözden geçir.'}else if(pct>=50){msg='Pratik yapmaya devam et 📖';sub='Formülleri ve koşulları tekrar oku.'}else{msg='Daha fazla çalışmalısın 💡';sub='Durma / tepki / fren mesafelerini tekrar gözden geçir!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Tekrar Dene</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
