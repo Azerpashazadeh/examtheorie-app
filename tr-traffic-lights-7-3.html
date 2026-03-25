@@ -1,637 +1,286 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dikey Hat Örneği</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap" rel="stylesheet" />
+    <title>Trafik Işıkları – ExamTheorie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <style>
-/* 1. Tüm Tarayıcı Boşluklarını Sıfırla */
-        html,
-        body {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-bottom: 80px;
-            width: 100%;
-            overflow-x: hidden;
-            /* Sağ tarafta boşluk yüzünden kayma oluşmasını engeller */
-        }
-
-        body {
-            font-family: "Trirong", serif;
-            line-height: 1.2;
-            /* Genişliği belirtiyoruz */
-            width: 75%;
-            /* ÖNEMLİ: Üst-alt 0, sağ-sol otomatik yaparak ortalar */
-            margin: 0 auto !important;
-            display: block;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        /* 1. Masaüstü (Geniş ekranlar) */
-        @media (min-width: 1025px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        /* 2. Tabletler (768px - 1024px arası) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                width: 95%;
-            }
-        }
-
-        /* 3. Mobil Telefonlar (767px ve altı) */
-        @media (max-width: 767px) {
-            body {
-                width: 96%;
-            }
-        }
-
-        h1,
-        h2 {
-            color: #972B90;
-        }
-
-
-
-        .gh3 {
-            color: #972B90;
-            /* Kırmızı */
-        }
-
-        strong {
-            display: block;
-            /* Blok düzeyinde eleman yapar, böylece margin çalışır */
-            margin-bottom: 10px;
-            /* Alttaki boşluk miktarını ayarlar */
-        }
-
-
-        .important-words1 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-        }
-
-        strong {
-            font-weight: bold;
-            margin-bottom: 0;
-            /* Alttaki boşluğu sıfırla */
-            margin-top: 0;
-            /* Üstteki boşluğu sıfırla */
-            display: inline;
-            /* Blok düzeyinde değil, satır düzeyinde olmasını sağla */
-        }
-
-
-
-        .important-words2 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattı bu alan içinde istediğimiz yere yerleştirebilmek için gerekli */
-            display: flex;
-            /* Flexbox kullanarak içeriği yan yana hizala */
-            justify-content: space-between;
-            /* Metin ve resim arasında boşluk bırak */
-            align-items: center;
-            /* Dikey hizalama için */
-        }
-
-        .important-words13 {
-            padding: 5px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-            /* Dikey hattın pozisyonunu ayarlamak için */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-           
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .image1 {
-            width: 65px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-
-        }
-
-
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Resim ve metni üst hizaya sabitle */
-            max-width: 100%;
-            margin-bottom: 20px;
-            /* Paragraflar arası boşluk */
-        }
-
-        .container * {
-            margin: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-            padding: 0px;
-            /* Sadece container içindeki elemanlar için geçerli */
-        }
-
-        p {
-            max-width: 98%;
-            
-        }
-
-        .image {
-            width: 100px;
-            /* Sabit genişlik */
-            height: auto;
-            margin-left: 5px;
-            /* Resmi metinden ayırmak için boşluk */
-            margin-top: 40px;
-        }
-
-        .important-words5 {
-            background-color: #D9C0DD;
-            /* Arka plan rengi */
-            padding: 15px;
-            margin-bottom: 20px;
-            /* "Merhaba" başlığını yatay olarak ortalar */
-        }
-
-        .important-words5 p {
-            margin-bottom: 20px;
-            /* Alt boşluk */
-
-        }
-
-        .images-container5 {
-            display: flex;
-            justify-content: space-between;
-            /* Resimler arasında eşit boşluk */
-            gap: 20px;
-            /* Resimler arası boşluk */
-            flex-wrap: wrap;
-            /* Ekranda sığmazsa resimleri alta taşır */
-            width: 100%;
-            /* Konteyner genişliği */
-            max-width: 100%;
-            /* Taşmaları önler */
-        }
-
-        .images-container5 figure {
-            margin: 0;
-            text-align: center;
-            /* Figcaption'ları ortalar */
-            flex: 1;
-            /* Esnek yapıda genişliği dengeler */
-        }
-
-        .images-container5 img {
-            width: 100%;
-            /* Resim genişliği */
-            height: auto;
-        }
-
-        .images-container5 figcaption {
-            font-size: 0.8em;
-            /* Figcaption yazı boyutu */
-            font-style: italic;
-            /* Yazıları italik yapar */
-            color: #333;
-            /* Figcaption yazı rengi */
-        }
-
-        /* Mobil versiyon için media query */
-        @media (max-width: 768px) {
-            .images-container5 {
-                flex-direction: column;
-                /* Mobilde resimleri dikey hizalar */
-                align-items: center;
-                /* Resimleri ortalar */
-                gap: 10px;
-                /* Mobilde daha küçük boşluk */
-            }
-
-            .images-container5 img {
-                width: 100%;
-                /* Mobilde resim genişliğini korur */
-            }
-
-        }
-
-        .inline {
-            display: inline;
-            /* Elemanı satır içi hale getirir */
-            color: black;
-            /* Yazı rengini değiştirir */
-            font-weight: bold;
-            /* Yazıyı kalın yapar */
-        }
-
-        /* Video için özel kapsayıcı */
-        .video-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            /* Tam ekran genişliği */
-            padding: 10px;
-            /* Kenar boşlukları */
-            box-sizing: border-box;
-            margin-top: 25px;
-        }
-
-        .video-container {
-            width: 100%;
-            /* Video oynatıcının genişliği ekranın %98'ini kapsar */
-            max-width: 1400px;
-            /* Büyük ekranlarda maksimum genişlik */
-            aspect-ratio: 16 / 9;
-            /* En-boy oranını korur */
-            position: relative;
-        }
-
-        video {
-            width: 100%;
-            /* Video kapsayıcı genişliğini tamamen doldurur */
-            height: auto;
-            /* Oranları korur */
-            border: 2px solid #ccc;
-            /* Çerçeve */
-            border-radius: 10px;
-            /* Köşeleri yuvarlama */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            /* Hafif gölge */
-        }
-
-
-
-
-
-
-
-        .important-words3 img {
-            width: 100%;
-            height: auto;
-            margin-right: -192px;
-
-            /* Resim ile metin arasındaki boşluk */
-            flex-shrink: 0;
-            /* Resmin daralmasını önler */
-        }
-
-        .text-content {
-            flex: 1;
-            /* Metin kısmının esnek olmasını sağlar */
-        }
-
-        .image-content {
-            margin-left: 20px;
-            /* Metin ile resim arasında boşluk bırak */
-        }
-
-        .image-content img {
-            max-width: 150px;
-            /* Resmin boyutunu ayarla */
-            height: auto;
-            /* Oranlı olarak yüksekliği ayarla */
-        }
-
-
-        /* Küçük ekranlar için medya sorgusu */
-        @media screen and (max-width: 768px) {
-            .important-words3 img {
-                width: 100%;
-                /* Küçük ekranlarda resmin boyutunu biraz küçült */
-            }
-
-            .text-content {
-                min-width: 80px;
-                /* Küçük ekranlar için metnin daha küçük olmasına izin ver */
-            }
-        }
-
-
-
-
-
-
-
-        /* Masaüstü için 2 sütun düzeni */
-        .image-container8 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* İki sütun yapısı */
-            gap: 10px;
-        }
-
-        .image-block8 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .image-block8 img {
-            width: 100%;
-            max-width: 600px;
-            /* Resim genişliği sınırlanabilir */
-            height: auto;
-        }
-
-        .image-block8 figcaption {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.6em;
-            /* Yazı boyutunu küçültmek için */
-        }
-
-        /* Açıklamalı resimler için yüksekliği ayarlama */
-        .image-block8:nth-child(6n) figcaption,
-        .image-block8:nth-child(8n) figcaption {
-            min-height: 20px;
-            /* Açıklamalar için minimum yükseklik */
-        }
-
-
-        .container3 {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .container3 strong {
-            display: block;
-            /* Bloğa çevirerek altındaki boşlukların uygulanmasını sağlar */
-            margin-bottom: 7px;
-            /* Altına 10 piksel boşluk ekler */
-            margin-top: 10px;
-        }
-
-
-        .item3 {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .image3 {
-            max-width: 150px;
-            height: auto;
-            flex-shrink: 0;
-        }
-
-        .text3 {
-            flex-grow: 1;
-            margin-top: -10px;
-        }
-
-        .text3 h2 {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1px;
-        }
-
-        .text3 p {
-            font-size: 1rem;
-            
-        }
-
-        @media (max-width: 768px) {
-            .item3 {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-
-            }
-
-            .image3 {
-                margin-bottom: 10px;
-                max-width: 300px;
-            }
-        }
-
-
-
-
-        .image-container1 {
-            display: flex;
-            align-items: center;
-            /* Resim ve metnin dikey olarak hizalanması için */
-            justify-content: space-between;
-            /* Resim ve metni yatayda ayırır */
-        }
-
-        .image-container1 img {
-            width: 80px;
-            /* Resmin genişliği belirlenir */
-
-            margin-left: 15px;
-            /* Metin ile resim arasında boşluk oluşturur */
-        }
-
-        .image-container1 div {
-            width: 90%;
-            /* Metin bloğunun genişliği belirlenir */
-        }
-
-        .image-container1 figure {
-            margin: 0;
-            text-align: center;
-        }
-
-        .image-container1 figcaption {
-            font-size: 0.6em;
-            color: #000000;
-            margin-top: 5px;
-            text-align: center;
-        }
-
-        .important-words6 {
-            background-color: #D9C0DD;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            position: relative;
-        }
-
-
-        .image-text-container {
-            display: flex;
-            /* Görüntü ve metni yan yana koymak için */
-            flex-direction: row;
-            align-items: flex-start;
-            gap: -30px;
-
-        }
-
-        .image-text-container img {
-            max-width: 100%;
-            /* Görselin maksimum genişliğini kapsayıcıya göre ayarla */
-            height: auto;
-            /* Görselin oranlarını koru */
-            width: 440px;
-            /* Görseli küçültmek için sabit bir genişlik */
-            margin-left: -40px;
-            /* Görsel ile sol kenar arasındaki boşluk */
-
-
-        }
-
-
-        .text-content {
-            flex: px;
-            /* Metin içeriği alanını genişlet */
-            font-size: 16px;
-
-
-        }
-
-
-
-
-        .dash-list {
-            list-style-type: none;
-            /* Varsayılan liste işaretçilerini kaldırır */
-            padding-left: 10px;
-            /* Sol iç boşluğu kaldırır */
-        }
-
-        .dash-list li {
-            position: relative;
-            /* Pozisyonlama için gerekli */
-            padding-left: 12px;
-            /* İşaretçi ile metin arasındaki boşluk */
-            margin-bottom: px;
-            /* Liste öğeleri arasında boşluk (isteğe bağlı) */
-        }
-
-        .dash-list li::before {
-            content: "- ";
-            /* Önce işaretçi olarak kullanmak istediğiniz karakter */
-            position: absolute;
-            /* Pozisyonu mutlak olarak ayarlamak */
-            left: 0;
-            /* Sol kenardan hizalama */
-            top: 0;
-            /* Üst kenardan hizalama */
-            color: black;
-            /* İşaretçi rengi (isteğe bağlı) */
-            font-size: 16px;
-            /* İşaretçi boyutu (isteğe bağlı) */
-        }
-
-        li strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: px;
-            /* Kalın yazı ile altındaki metin arasındaki mesafe */
-        }
-
-        li p {
-            margin: 0;
-            /* Altyazı metninin çevresindeki varsayılan boşluğu kaldır */
-            padding-left: 0px;
-            /* Altyazıyı biraz sağa kaydır */
-            font-size: 16px;
-            /* Altyazının boyutunu küçült */
-            color: #000000;
-            /* Altyazının rengini gri tonlarında yap */
-        }
-
-
-
-
-
-
-        @media (max-width: 650px) {
-            .image-container figure {
-                max-width: 100%;
-            }
-        }
-
-
-        /* Polis arabası resmini ortada tutmak ve genişligini metinlere uyumlu yapmak için */
-        .custom-centered-image {
-            display: block;
-            /* Resmi block element olarak ayarlar */
-            margin: 20px auto;
-            /* Ortalar ve üst-alt boşluk ekler */
-            width: 100%;
-            /* Genişliği metinlerin genişliğine bağlı olarak ayarlar */
-            max-width: 100%;
-            /* Tarayıcı boyutu değiştikçe genişliğin metin genişliği ile uyumlu olmasını sağlar */
-            height: auto;
-            /* Yüksekliği otomatik olarak ayarlar */
-        }
-
-        h3 {
-            margin-top: 20px;
-            margin-bottom: -30px;
-            /* Üstte 20 piksel boşluk bırakır */
-        }
-
-
-        /* CSS dosyası (style.css) */
-        .custom-button {
-            display: inline-block;
-            width: 140px;
-            height: 39px;
-            background-color: black;
-            color: white;
-            text-align: center;
-            line-height: 39px;
-            /* Düğme yüksekliğine göre yazıyı ortala */
-            text-decoration: none;
-            /* Bağlantı alt çizgisini kaldır */
-            border-radius: 9px;
-            /* Köşeleri yuvarlat */
-            transition: background-color 0.3s ease;
-            margin-top: 70px;
-            /* Üstteki nesne ile düğme arasına 20px boşluk koy */
-        }
-
-        .custom-button:hover {
-            background-color: blue;
-        }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg-deep:#050d1a;--accent:#1a6cf6;--accent-light:#4da6ff;--red:#e84545;--text-primary:#e8f0ff;--text-muted:rgba(180,205,255,.75);--text-dim:rgba(140,175,230,.55);--heading-color:#4da6ff;--card-bg:rgba(10,30,65,.55);--card-border:rgba(77,166,255,.22)}
+    html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);line-height:1.75;min-height:100vh;padding-bottom:120px;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(26,108,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(26,108,246,.12) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(5,20,60,.9) 0%,transparent 100%);transition:background-color .35s,color .35s}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(77,166,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(77,166,255,.03) 1px,transparent 1px);background-size:60px 60px}
+    .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);opacity:.15}
+    .orb-1{width:500px;height:500px;background:var(--accent);top:-100px;left:-100px}
+    .orb-2{width:400px;height:400px;background:var(--accent-light);bottom:100px;right:-80px}
+    .page-wrapper{position:relative;z-index:1;width:75%;margin:0 auto;padding:50px 20px 20px}
+    @media(min-width:768px) and (max-width:1024px){.page-wrapper{width:95%}}
+    @media(max-width:767px){.page-wrapper{width:96%;padding:30px 14px}}
+    .brand-strip{display:flex;align-items:center;gap:10px;margin-bottom:40px;font-size:.85rem;color:var(--text-dim);letter-spacing:.04em}
+    .brand-strip .dot{color:var(--accent-light)}
+    h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;background:linear-gradient(135deg,var(--text-primary) 30%,var(--accent-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+    h2{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.5vw,1.45rem);font-weight:600;color:var(--heading-color);margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+    h2::before{content:'';display:inline-block;width:4px;height:1.2em;flex-shrink:0;border-radius:4px;background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    h3{font-family:'Outfit',sans-serif;font-size:.98rem;font-weight:700;color:var(--text-primary);margin:20px 0 10px}
+    p{font-family:'Lora',serif;font-size:.96rem;color:var(--text-muted);margin-bottom:14px;line-height:1.75}
+    .section-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);margin:10px 0 32px}
+
+    /* light colours grid */
+    .light-colours{display:flex;flex-direction:column;gap:8px;margin:14px 0 22px}
+    .lc-row{display:flex;align-items:flex-start;gap:14px;padding:10px 14px;border-radius:11px;border:1px solid transparent;backdrop-filter:blur(10px)}
+    .lc-row.red-l{background:rgba(232,69,69,.07);border-color:rgba(232,69,69,.2)}
+    .lc-row.yellow-l{background:rgba(245,166,35,.06);border-color:rgba(245,166,35,.18)}
+    .lc-row.green-l{background:rgba(0,200,100,.06);border-color:rgba(0,200,100,.18)}
+    .lc-row.flash-l{background:rgba(245,166,35,.05);border-color:rgba(245,166,35,.12)}
+    .lc-dot{width:26px;height:26px;border-radius:50%;flex-shrink:0;margin-top:2px}
+    .lc-row.red-l .lc-dot{background:#e84545;box-shadow:0 0 10px rgba(232,69,69,.6)}
+    .lc-row.yellow-l .lc-dot{background:#f5a623;box-shadow:0 0 10px rgba(245,166,35,.5)}
+    .lc-row.green-l .lc-dot{background:#00c864;box-shadow:0 0 10px rgba(0,200,100,.5)}
+    .lc-row.flash-l .lc-dot{background:#f5a623;box-shadow:0 0 10px rgba(245,166,35,.5);animation:flashDot 1s step-start infinite}
+    @keyframes flashDot{0%,100%{opacity:1}50%{opacity:.1}}
+    .lc-body .lc-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--text-primary);margin-bottom:3px}
+    .lc-body p{font-family:'Lora',serif;font-size:.83rem;color:var(--text-muted);margin:0;line-height:1.45}
+
+    /* tricolour photo grid */
+    .photo-grid-3{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:12px 0 22px}
+    .photo-grid-3 figure{margin:0;text-align:center;flex:1 1 150px}
+    .photo-grid-3 img{height:120px;width:auto;max-width:100%;object-fit:contain;border-radius:10px;border:1px solid var(--card-border);background:rgba(4,12,30,.5);padding:6px;display:block;margin:0 auto}
+    .photo-grid-3 figcaption{font-family:'Outfit',sans-serif;font-size:.68rem;color:var(--text-dim);text-align:center;margin-top:6px;font-style:italic;line-height:1.3}
+
+    /* photo grid 2 */
+    .photo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 22px}
+    @media(max-width:550px){.photo-grid-2{grid-template-columns:1fr}}
+    .photo-grid-2 figure{margin:0}
+    .photo-grid-2 img{width:100%;height:auto;border-radius:11px;border:1px solid var(--card-border);box-shadow:0 4px 18px rgba(0,0,0,.4);display:block}
+    .photo-grid-2 figcaption{font-family:'Outfit',sans-serif;font-size:.68rem;color:var(--text-dim);text-align:center;margin-top:6px;font-style:italic;line-height:1.35}
+
+    /* right turn at red */
+    .red-turn-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 22px}
+    @media(max-width:500px){.red-turn-cards{grid-template-columns:1fr}}
+    .rtc{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px)}
+    .rtc img{width:100%;height:auto;display:block;border-bottom:1px solid var(--card-border)}
+    .rtc-body{padding:10px 12px}
+    .rtc-body .rtc-title{font-family:'Outfit',sans-serif;font-size:.76rem;font-weight:700;color:var(--accent-light);margin-bottom:4px}
+    .rtc-body p{font-family:'Lora',serif;font-size:.78rem;color:var(--text-muted);margin:0;line-height:1.4}
+
+    /* round vs arrow callout */
+    .light-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 22px}
+    @media(max-width:500px){.light-type-grid{grid-template-columns:1fr}}
+    .lt-card{border-radius:12px;padding:13px 14px;backdrop-filter:blur(12px)}
+    .lt-card.round{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.18)}
+    .lt-card.arrow{background:rgba(0,200,100,.05);border:1px solid rgba(0,200,100,.15)}
+    .lt-card .ltc-label{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+    .lt-card.round .ltc-label{color:#ffd166}
+    .lt-card.arrow .ltc-label{color:#6effc0}
+    .lt-card p{font-family:'Lora',serif;font-size:.83rem;line-height:1.5;margin:0}
+    .lt-card.round p{color:rgba(255,220,120,.85)}
+    .lt-card.arrow p{color:rgba(180,255,220,.85)}
+    .lt-card p strong{color:#fff}
+
+    /* tram nine-eye grid */
+    .nine-eye-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0 22px}
+    @media(max-width:540px){.nine-eye-grid{grid-template-columns:repeat(3,1fr)}}
+    .ne-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:11px;padding:9px 7px;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+    .ne-tile img{height:80px;width:auto;object-fit:contain}
+    .ne-tile p{font-family:'Lora',serif;font-size:.72rem;color:var(--text-muted);margin:0;line-height:1.3}
+
+    /* lane lights grid */
+    .lane-grid{display:flex;flex-direction:column;gap:10px;margin:14px 0 22px}
+    .lane-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 14px;backdrop-filter:blur(10px);display:flex;align-items:flex-start;gap:14px}
+    .lane-item img{width:64px;height:64px;object-fit:contain;flex-shrink:0;border-radius:8px;border:1px solid var(--card-border);background:rgba(4,12,30,.5)}
+    .lane-item .li-body .li-title{font-family:'Outfit',sans-serif;font-size:.84rem;font-weight:700;color:var(--text-primary);margin-bottom:4px}
+    .lane-item .li-body p{font-family:'Lora',serif;font-size:.82rem;color:var(--text-muted);margin:0;line-height:1.5}
+    .lane-item .li-body p strong{color:var(--text-primary)}
+
+    /* warning signs grid */
+    .warn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 22px}
+    @media(max-width:480px){.warn-grid{grid-template-columns:1fr}}
+    .warn-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px);display:flex;align-items:center;gap:12px;padding:10px 12px}
+    .warn-tile img{height:60px;width:auto;object-fit:contain;flex-shrink:0;border-radius:7px;border:1px solid var(--card-border);background:rgba(4,12,30,.5)}
+    .warn-tile .wt-body .wt-code{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;color:var(--accent-light);letter-spacing:.06em;margin-bottom:3px}
+    .warn-tile .wt-body p{font-family:'Lora',serif;font-size:.78rem;color:var(--text-muted);margin:0;line-height:1.35}
+
+    /* pedestrian lights */
+    .ped-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 22px}
+    @media(max-width:480px){.ped-grid{grid-template-columns:1fr}}
+    .ped-tile{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;gap:0}
+    .ped-tile img{height:100px;width:auto;object-fit:contain;padding:8px}
+    .ped-tile .pt-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:var(--text-muted);padding:6px 10px;text-align:center;border-top:1px solid var(--card-border);width:100%}
+
+    /* ped colour rules */
+    .ped-rules{display:flex;flex-direction:column;gap:7px;margin:12px 0 22px}
+    .pr-row{display:flex;align-items:flex-start;gap:12px;padding:9px 13px;border-radius:10px;backdrop-filter:blur(10px)}
+    .pr-row.green{background:rgba(0,200,100,.06);border:1px solid rgba(0,200,100,.17)}
+    .pr-row.flash-g{background:rgba(0,200,100,.04);border:1px solid rgba(0,200,100,.1)}
+    .pr-row.red-p{background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.17)}
+    .pr-row.flash-y{background:rgba(245,166,35,.05);border:1px solid rgba(245,166,35,.14)}
+    .pr-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:3px}
+    .pr-row.green .pr-dot,.pr-row.flash-g .pr-dot{background:#00c864}
+    .pr-row.red-p .pr-dot{background:#e84545}
+    .pr-row.flash-y .pr-dot{background:#f5a623}
+    .pr-row.flash-g .pr-dot{animation:flashDot 1s step-start infinite}
+    .pr-row .pr-body .pr-title{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;margin-bottom:2px}
+    .pr-row.green .pr-body .pr-title{color:#6effc0}
+    .pr-row.flash-g .pr-body .pr-title{color:#6effc0}
+    .pr-row.red-p .pr-body .pr-title{color:#ff8888}
+    .pr-row.flash-y .pr-body .pr-title{color:#ffd166}
+    .pr-row .pr-body p{font-family:'Lora',serif;font-size:.82rem;margin:0;line-height:1.4}
+    .pr-row.green .pr-body p,.pr-row.flash-g .pr-body p{color:rgba(180,255,220,.85)}
+    .pr-row.red-p .pr-body p{color:rgba(255,180,180,.85)}
+    .pr-row.flash-y .pr-body p{color:rgba(255,220,120,.85)}
+
+    /* callouts */
+    .callout{border-radius:13px;padding:13px 18px 13px 22px;margin:12px 0 18px;position:relative;overflow:hidden}
+    .callout::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;border-radius:0 3px 3px 0}
+    .callout p{font-family:'Lora',serif;font-size:.85rem;line-height:1.62;margin:0 0 5px}
+    .callout p:last-child{margin:0}
+    .callout-title{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px!important;display:block}
+    .callout.amber{background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2)}
+    .callout.amber::before{background:linear-gradient(180deg,#f5a623,#ffd166)}
+    .callout.amber p{color:rgba(255,220,120,.85)}
+    .callout.amber p strong{color:#fff}
+    .callout.amber .callout-title{color:#ffd166}
+    .callout.blue{background:rgba(26,108,246,.07);border:1px solid rgba(77,166,255,.22)}
+    .callout.blue::before{background:linear-gradient(180deg,var(--accent),var(--accent-light))}
+    .callout.blue p{color:var(--text-muted)}
+    .callout.blue p strong{color:var(--text-primary)}
+    .callout.blue .callout-title{color:var(--accent-light)}
+
+    /* video */
+    .video-section{margin:22px 0 10px}
+    .video-section .vs-label{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;color:var(--accent-light);letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px}
+    .video-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--card-border);box-shadow:0 6px 28px rgba(0,0,0,.5);background:#000}
+    .video-wrap video{width:100%;display:block;max-height:380px}
+    .video-note{font-family:'Lora',serif;font-size:.8rem;color:var(--text-dim);margin-top:8px;font-style:italic;line-height:1.4}
+
+    .custom-button{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--accent) 0%,#1250c4 100%);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;border-radius:50px;margin-top:60px;transition:all .3s;box-shadow:0 4px 20px rgba(26,108,246,.45);letter-spacing:.04em}
+    .custom-button::before{content:'←';font-size:1.1rem}
+    .custom-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(26,108,246,.65)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .page-wrapper>*{animation:fadeUp .5s ease both}
+    .page-wrapper>*:nth-child(1){animation-delay:.05s}.page-wrapper>*:nth-child(2){animation-delay:.10s}.page-wrapper>*:nth-child(3){animation-delay:.15s}.page-wrapper>*:nth-child(n+4){animation-delay:.20s}
+
+    /* FAB */
+    #fab-row{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:1100;display:flex;flex-direction:column;gap:10px;user-select:none;-webkit-user-select:none;touch-action:none}
+    @media(max-width:767px){#fab-row{right:16px;bottom:20px;top:unset;transform:none;flex-direction:row}}
+    .fab{width:52px;height:52px;border-radius:50%;border:none;cursor:grab;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 4px 24px rgba(26,108,246,.55),0 0 0 3px rgba(77,166,255,.18);transition:box-shadow .25s,filter .2s;flex-shrink:0;position:relative}
+    .fab:active{cursor:grabbing}
+    .fab#fab-palette{background:linear-gradient(135deg,var(--accent),var(--accent-light))}
+    .fab#fab-quiz{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+    .fab:hover{filter:brightness(1.15)}
+    .fab::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(77,166,255,.3);animation:fabPulse 2.8s ease infinite;pointer-events:none}
+    .fab.active::after,.fab:hover::after{animation:none;opacity:0}
+    @keyframes fabPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:0;transform:scale(1.35)}}
+    .fab .fab-tip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(4,12,28,.92);border:1px solid rgba(77,166,255,.2);color:#fff;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+    .fab:hover .fab-tip{opacity:1}
+    #color-panel{position:fixed;right:82px;top:50%;transform:translateY(-50%) scale(.95);transform-origin:right center;z-index:1050;width:320px;max-height:85vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,12,30,.97);border:1px solid rgba(77,166,255,.22);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);box-shadow:0 12px 50px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;touch-action:none}
+    #color-panel.is-open{opacity:1;pointer-events:all;transform:translateY(-50%) scale(1)}
+    #color-panel.positioned{transform:none!important}
+    #color-panel.positioned.is-open{opacity:1;pointer-events:all;transform:none!important}
+    @media(max-width:767px){#color-panel{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:unset!important;width:100%!important;max-height:76vh;border-radius:20px 20px 0 0;transform:translateY(100%)!important;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .2s!important;opacity:1!important;pointer-events:none}#color-panel.is-open{transform:translateY(0)!important;pointer-events:all!important}}
+    .panel-header{padding:14px 16px 12px;background:rgba(6,18,45,1);border-bottom:1px solid rgba(77,166,255,.12);display:flex;align-items:center;justify-content:space-between;cursor:grab;flex-shrink:0;background-image:radial-gradient(circle,rgba(77,166,255,.14) 1px,transparent 1px);background-size:6px 6px}
+    .panel-header:active{cursor:grabbing}
+    @media(max-width:767px){.panel-header{cursor:default;padding-top:20px}.panel-header::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:rgba(77,166,255,.3)}.drag-icon{display:none}}
+    .panel-header-inner{display:flex;align-items:center;gap:8px;pointer-events:none}
+    .drag-icon{font-size:.85rem;opacity:.38}
+    .panel-title{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.03em}
+    .panel-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+    .panel-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .panel-body{overflow-y:auto;overflow-x:hidden;flex:1;padding-bottom:24px}
+    .panel-body::-webkit-scrollbar{width:3px}
+    .panel-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .font-strip{display:flex;align-items:center;gap:8px;padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07);background:rgba(255,255,255,.015)}
+    .font-strip-label{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;color:rgba(140,175,230,.5);letter-spacing:.08em;text-transform:uppercase;flex:1}
+    .fs-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(77,166,255,.16);background:rgba(26,108,246,.1);color:var(--accent-light);cursor:pointer;font-family:'Outfit',sans-serif;font-weight:700;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .fs-btn:hover{background:rgba(26,108,246,.28)}
+    .fs-btn.sml{font-size:.76rem}.fs-btn.lrg{font-size:1.05rem}
+    .fs-size-display{min-width:36px;text-align:center;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent-light)}
+    .fs-reset{padding:3px 9px;border-radius:7px;border:1px solid rgba(77,166,255,.13);background:transparent;color:rgba(140,175,230,.5);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;white-space:nowrap}
+    .fs-reset:hover{color:var(--accent-light);border-color:rgba(77,166,255,.32)}
+    .presets-strip{padding:12px 16px 10px;border-bottom:1px solid rgba(77,166,255,.07)}
+    .strip-label{font-family:'Outfit',sans-serif;font-size:.67rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .preset-row{display:flex;gap:6px;flex-wrap:wrap}
+    .preset-btn{flex:1 1 auto;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(180,205,255,.7);cursor:pointer;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;transition:all .2s;text-align:center;white-space:nowrap}
+    .preset-btn:hover{background:rgba(26,108,246,.2);border-color:rgba(77,166,255,.3);color:#fff}
+    .color-section{padding:13px 16px 0}
+    .stp{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;color:rgba(140,175,230,.45);letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .stp::before{content:'';display:inline-block;width:12px;height:1px;background:rgba(77,166,255,.25)}
+    .color-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055);transition:background .2s}
+    .color-row:hover{background:rgba(77,166,255,.055)}
+    .color-row-label{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-muted);flex:1;min-width:0}
+    .color-row-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .color-swatch-wrap{position:relative;width:28px;height:28px;flex-shrink:0;border-radius:7px;border:2px solid rgba(255,255,255,.18);overflow:hidden;cursor:pointer}
+    .color-swatch-wrap:hover{box-shadow:0 0 0 2px rgba(77,166,255,.5)}
+    .color-preview{position:absolute;inset:0;border-radius:5px;pointer-events:none}
+    .color-input-native{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);opacity:0;cursor:pointer;border:none;padding:0}
+    .color-hex-input{width:72px;background:rgba(255,255,255,.07);border:1px solid rgba(77,166,255,.18);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.73rem;color:#cce0ff;text-align:center;letter-spacing:.05em;outline:none;transition:border-color .2s}
+    .color-hex-input:focus{border-color:rgba(77,166,255,.55);color:#fff;background:rgba(77,166,255,.12)}
+    .opacity-row{display:flex;align-items:center;gap:8px;padding:6px 10px 8px;border-radius:9px;margin-bottom:5px;background:rgba(255,255,255,.025);border:1px solid rgba(77,166,255,.055)}
+    .opacity-row label{font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--text-muted);flex:1}
+    .opacity-row input[type=range]{flex:2;accent-color:var(--accent-light);cursor:pointer}
+    .opacity-val{font-family:'Outfit',sans-serif;font-size:.73rem;color:var(--accent-light);min-width:32px;text-align:right}
+    .reset-all-btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;padding:9px;border-radius:9px;border:1px solid rgba(232,69,69,.22);background:rgba(232,69,69,.07);color:#e84545;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;transition:all .22s;text-align:center}
+    .reset-all-btn:hover{background:rgba(232,69,69,.17);border-color:rgba(232,69,69,.42)}
+    /* QUIZ */
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(2,6,18,.86);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:rgba(5,14,35,.97);border:1px solid rgba(77,166,255,.25);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.8);animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:rgba(6,18,48,1);border-bottom:1px solid rgba(77,166,255,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:#fff}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(77,166,255,.18);background:transparent;color:rgba(140,175,230,.6);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(232,69,69,.15);color:#e84545;border-color:rgba(232,69,69,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(77,166,255,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(77,166,255,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px}
+    .quiz-start h2::before{display:none}
+    .quiz-start p{font-family:'Lora',serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;background:rgba(26,108,246,.12);border:1px solid rgba(77,166,255,.18);font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;background:linear-gradient(135deg,var(--accent),#1250c4);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 20px rgba(26,108,246,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,108,246,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(77,166,255,.1);color:var(--accent-light);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1px solid rgba(77,166,255,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(77,166,255,.2);border-color:rgba(77,166,255,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:'Outfit',sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;border:1px solid rgba(77,166,255,.14);background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(77,166,255,.1);border-color:rgba(77,166,255,.3);color:#fff}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(77,166,255,.12);border:1px solid rgba(77,166,255,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(0,200,100,.12)!important;border-color:rgba(0,200,100,.4)!important;color:#6effc0!important}
+    .q-opt.correct .opt-letter{background:rgba(0,200,100,.2);border-color:rgba(0,200,100,.5);color:#6effc0}
+    .q-opt.wrong{background:rgba(232,69,69,.12)!important;border-color:rgba(232,69,69,.4)!important;color:#ffaaaa!important}
+    .q-opt.wrong .opt-letter{background:rgba(232,69,69,.2);border-color:rgba(232,69,69,.5);color:#ffaaaa}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:'Lora',serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#6effc0}
+    .q-feedback.fb-wrong{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#ffcccc}
+    .q-feedback strong{font-family:'Outfit',sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(26,108,246,.15),transparent);box-shadow:0 0 30px rgba(26,108,246,.3)}
+    .result-score{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+    .result-total{font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px}
+    .result-sub{font-family:'Lora',serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(0,200,100,.12);border:1px solid rgba(0,200,100,.3);color:#6effc0}
+    .rb-chip.wrong{background:rgba(232,69,69,.12);border:1px solid rgba(232,69,69,.3);color:#ffaaaa}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -642,443 +291,276 @@
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
 </head>
-
 <body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div id="fab-row">
+    <button class="fab" id="fab-palette"><span class="fab-tip">Renkler</span>🎨</button>
+    <button class="fab" id="fab-quiz"><span class="fab-tip">Sınav</span>📝</button>
+</div>
+<div id="color-panel">
+    <div class="panel-header" id="panel-drag-handle">
+        <div class="panel-header-inner"><span class="drag-icon">⠿</span><div class="panel-title">🎨 Renk ve Metin Ayarları</div></div>
+        <button class="panel-close" id="panel-close-btn">✕</button>
+    </div>
+    <div class="panel-body">
+        <div class="font-strip"><div class="font-strip-label">Yazı Boyutu</div><button class="fs-btn sml" id="fs-shrink">a</button><div class="fs-size-display" id="fs-display">16px</div><button class="fs-btn lrg" id="fs-grow">A</button><button class="fs-reset" id="fs-reset">↺ sıfırla</button></div>
+        <div class="presets-strip"><div class="strip-label">Hızlı Temalar</div><div class="preset-row"><button class="preset-btn" data-preset="default">🔵 Varsayılan</button><button class="preset-btn" data-preset="light">☀️ Açık</button><button class="preset-btn" data-preset="purple">🟣 Mor</button><button class="preset-btn" data-preset="green">🟢 Yeşil</button><button class="preset-btn" data-preset="amber">🟡 Kehribar</button><button class="preset-btn" data-preset="contrast">⬛ Yüksek kontrast</button></div></div>
+        <div class="color-section"><div class="stp">Arka Plan</div><div class="color-row"><div class="color-row-label">Sayfa arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-bg-deep"></div><input class="color-input-native" type="color" id="pick-bg-deep"/></div><input class="color-hex-input" id="hex-bg-deep" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Arka plan saydamlığı</label><input type="range" id="opacity-bg" min="0" max="100" value="100"/><div class="opacity-val" id="opacity-bg-val">100%</div></div></div>
+        <div class="color-section"><div class="stp">Vurgu Renkleri</div><div class="color-row"><div class="color-row-label">Ana vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent"></div><input class="color-input-native" type="color" id="pick-accent"/></div><input class="color-hex-input" id="hex-accent" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Açık vurgu</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-accent-light"></div><input class="color-input-native" type="color" id="pick-accent-light"/></div><input class="color-hex-input" id="hex-accent-light" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Uyarı / kırmızı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-red"></div><input class="color-input-native" type="color" id="pick-red"/></div><input class="color-hex-input" id="hex-red" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Metin Renkleri</div><div class="color-row"><div class="color-row-label">Ana başlık</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-primary"></div><input class="color-input-native" type="color" id="pick-text-primary"/></div><input class="color-hex-input" id="hex-text-primary" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Bölüm başlıkları</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-heading-color"></div><input class="color-input-native" type="color" id="pick-heading-color"/></div><input class="color-hex-input" id="hex-heading-color" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">Gövde metni</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-muted"></div><input class="color-input-native" type="color" id="pick-text-muted"/></div><input class="color-hex-input" id="hex-text-muted" maxlength="6" spellcheck="false"/></div></div><div class="color-row"><div class="color-row-label">İkincil metin</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-text-dim"></div><input class="color-input-native" type="color" id="pick-text-dim"/></div><input class="color-hex-input" id="hex-text-dim" maxlength="6" spellcheck="false"/></div></div></div>
+        <div class="color-section"><div class="stp">Kartlar ve Paneller</div><div class="color-row"><div class="color-row-label">Kart arka planı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-bg"></div><input class="color-input-native" type="color" id="pick-card-bg"/></div><input class="color-hex-input" id="hex-card-bg" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kart saydamlığı</label><input type="range" id="opacity-card" min="0" max="100" value="55"/><div class="opacity-val" id="opacity-card-val">55%</div></div><div class="color-row"><div class="color-row-label">Kart kenarlığı</div><div class="color-row-right"><div class="color-swatch-wrap"><div class="color-preview" id="prev-card-border"></div><input class="color-input-native" type="color" id="pick-card-border"/></div><input class="color-hex-input" id="hex-card-border" maxlength="6" spellcheck="false"/></div></div><div class="opacity-row"><label>Kenarlık saydamlığı</label><input type="range" id="opacity-border" min="0" max="100" value="22"/><div class="opacity-val" id="opacity-border-val">22%</div></div></div>
+        <button class="reset-all-btn" id="reset-all-btn">↺ Tüm ayarları sıfırla</button>
+    </div>
+</div>
+<div id="quiz-overlay">
+    <div id="quiz-panel">
+        <div class="quiz-header"><div class="quiz-header-left"><div class="quiz-title">🚦 Trafik Işıkları Sınavı</div><div class="quiz-badge" id="quiz-badge">18 Soru</div></div><button class="quiz-close" id="quiz-close-btn">✕</button></div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚦</span>
+                <h2>Bilgini Test Et</h2>
+                <p>Üç renkli ışıklar, kırmızıda sağa dönüş, yuvarlak ve ok lambalar, hemzemin geçit, köprü, tramvay, yaya ve şerit ışıkları hakkında sorular.</p>
+                <div class="qs-info"><div class="qs-chip">📋 18 soru</div><div class="qs-chip">🔀 Rastgele sıralama</div><div class="qs-chip">✅ Anında geri bildirim</div></div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Sınava Başla</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</div>
+
+<!-- SAYFA İÇERİĞİ -->
+<div class="page-wrapper">
+    <div class="brand-strip"><span>ExamTheorie</span><span class="dot">›</span><span>Trafik Kuralları</span><span class="dot">›</span><span style="color:var(--text-primary)">Trafik Işıkları</span></div>
     <h1>Trafik Işıkları</h1>
-    <p>
-        Standart trafik ışıklarına ek olarak, tramvay ve otobüs ışıkları, hemzemin geçit ve köprü ışıkları ile şerit ışıkları gibi başka trafik ışıkları da vardır.
-    </p>
-    <h2>
-        Üç Renkli Trafik Işıkları
-    </h2>
-    <p>
-        Bunlar günlük trafikte en sık karşılaşılan trafik ışıklarıdır. Daha büyük kavşaklarda bulunurlar ve kırmızı, sarı (halk arasında "turuncu" olarak adlandırılır) ve yeşil renklerinden oluşurlar.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_b496345a7b694e80a48e79f74a041989~mv2.png"
-                    alt="Trafik ışığı tüm yönler için">
-                <figcaption>Trafik ışığı tüm yönler için</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_fdf9769eb51441e68f9eabaa4e550488~mv2.png"
-                    alt="Trafik ışığı sola dönüş için">
-                <figcaption>Trafik ışığı sola dönüş</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_21d5787b20cc4c89b59ad23464b1b977~mv2.png"
-                    alt="Bisiklet ve moped sürücüleri için trafik ışığı">
-                <figcaption>Bisiklet ve moped sürücüleri için trafik ışığı</figcaption>
-            </figure>
-        </div>
-    </div>
-    <p>
-        Işıklar genellikle bir daire şeklindedir, ancak bir yön oku veya bisiklet gibi başka bir sembol de olabilir. Bu durumlarda, trafik ışığı yalnızca belirtilen yön veya belirtilen araçların sürücüleri için geçerlidir. Buradaki bir bisiklet simgesi, mopetler, elektrikli bisikletler, hız pedelekleri ve engelli araçlarını da kapsar.
-    </p>
-    <p>
-        Renklerin anlamları şu şekildedir:
-    </p>
-    <ul>
-        <li>
-            <p>
-                <strong>Kırmızı</strong>
-                Dur. Hareket etmek yasaktır.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Sarı</strong>
-                Dur. Ancak trafik ışığına makul bir şekilde duramayacak kadar yakınsanız, devam edebilirsiniz.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Yeşil</strong>
-                Devam edin. Yeşil ışıkta ilerlememek yasaktır.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Yanıp sönen sarı ışık</strong>
-                Trafik ışığı çalışmıyor. Kavşağa dikkatlice yaklaşın. Bu durumda, önceliği düzenleyen trafik işaretleri ve işaretlemeleri yeniden geçerli olur.
-            </p>
-        </li>
-    </ul>
-    <h2>
-        Kırmızı Işıkta Sağa Dönüş
-    </h2>
-    <p>
-        Bazı durumlarda, trafik ışığının altında veya yanında bir yazı levhası bulunur:
-    </p>
-    <ul>
-        <li>
-            <p>
-                <strong>Bisikletliler sağa dönebilir - Hollandaca: ‘Rechtsaf voor fietsers vrij’</strong>
-                Bisikletliler ve elektrikli bisiklet sürücüleri kırmızı ışıkta bile sağa dönebilir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Bisiklet ve mopet sürücüleri sağa dönebilir - Hollandaca: ‘Rechtsaf voor (brom)fietsers vrij’</strong>
-                Bisikletliler, elektrikli bisiklet sürücüleri, mopet sürücüleri ve hız pedelek sürücüleri kırmızı ışıkta bile sağa dönebilir. Ancak küçük motorlu araçlar (brommobiel) buna dahil değildir!
-            </p>
-        </li>
-    </ul>
-    <p>
-        Dikkat! Kırmızı ışıkta sağa dönerken, yeşil ışıkta geçiş hakkına sahip olan trafiğe yol vermelisiniz.
-    </p>
-    
+    <div class="section-divider"></div>
+    <p>Standart üç renkli trafik ışıklarının yanı sıra tramvay ve otobüs ışıkları, hemzemin geçit ve köprü ışıkları, şerit ışıkları, yaya ışıkları ve daha fazlası bulunur.</p>
 
+    <!-- TRICOLOUR -->
+    <h2>🔴🟡🟢 Üç Renkli Trafik Işıkları</h2>
+    <p>En yaygın trafik ışıkları. Büyük kavşaklarda kırmızı, sarı ve yeşil ışıklarla bulunur. Lambalar dairesel, yön okları veya bisiklet (mopedler, snorfiets, hızlı elektrikli bisikletler ve engelli araçlarını da kapsar) gibi semboller şeklinde olabilir.</p>
 
+    <div class="photo-grid-3">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_b496345a7b694e80a48e79f74a041989~mv2.png" alt="Tüm yönler"/><figcaption>Tüm yönler</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_fdf9769eb51441e68f9eabaa4e550488~mv2.png" alt="Sadece sola dönüş"/><figcaption>Sadece sola dönüş</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_21d5787b20cc4c89b59ad23464b1b977~mv2.png" alt="Bisikletliler ve mopedler"/><figcaption>Bisikletliler ve moped sürücüleri</figcaption></figure>
+    </div>
 
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_a4f7f9ad02814e6f934981f9d8191213~mv2.png"
-                    alt="Bisikletliler için kırmızı ışıkta sağa dönüş serbest">
-                <figcaption>Bisikletliler ve elektrikli bisiklet sürücüleri burada kırmızı ışıkta sağa dönebilir.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_4d42449c69d44129bb4e3d9d7bf7ded2~mv2.png"
-                    alt="Bisiklet ve mopet sürücüleri için kırmızı ışıkta sağa dönüş serbest">
-                <figcaption>Bisikletliler, elektrikli bisiklet sürücüleri, mopet sürücüleri ve hız pedelek sürücüleri burada kırmızı ışıkta sağa dönebilir.</figcaption>
-            </figure>
-        </div>
+    <div class="light-colours">
+        <div class="lc-row red-l"><div class="lc-dot"></div><div class="lc-body"><div class="lc-title">🔴 Kırmızı</div><p>Dur. Araç kullanmak <strong>yasaktır</strong>.</p></div></div>
+        <div class="lc-row yellow-l"><div class="lc-dot"></div><div class="lc-body"><div class="lc-title">🟡 Sarı</div><p>Dur — <strong>ancak</strong> ışığa o kadar yakınsanız makul şekilde duramıyorsanız devam edebilirsiniz.</p></div></div>
+        <div class="lc-row green-l"><div class="lc-dot"></div><div class="lc-body"><div class="lc-title">🟢 Yeşil</div><p>Devam edin. <strong>Yeşil ışıkta durmak yasaktır.</strong></p></div></div>
+        <div class="lc-row flash-l"><div class="lc-dot"></div><div class="lc-body"><div class="lc-title">💛 Yanıp Sönen Sarı</div><p>Trafik ışığı <strong>çalışmıyor</strong>. Dikkatlice yaklaşın. Geçiş önceliğini belirleyen trafik işaretleri ve yol çizgileri tekrar geçerlidir.</p></div></div>
     </div>
-    <h2>
-        Trafik Işığında Ok veya Daire
-    </h2>
-    <p>
-        Kavşağa bağlı olarak, trafik ışıklarının şekli değişebilir. Bazen bir yön oku, bazen bir daire şeklindedir. Çeşitli ön sıralama şeritlerine sahip daha büyük kavşaklarda genellikle yön okları şeklinde lambalar bulunur. Ön sıralama şeritleri olmayan daha küçük kavşaklarda genellikle daire şeklinde lambalar bulunur.
-    </p>
-    <div class="important-words6">
-        <div class="image-container1">
-            <div>
-                <p>
-                    Eğer yuvarlak bir lambaya sahip trafik ışığında sağa veya sola dönmek istiyorsanız, karşıdan gelen trafik veya yanınızdaki trafik aynı anda yeşil ışıkta olabilir. Bu durumda iki kural geçerlidir:
-                </p>
-                <ul>
-                    <li>
-                        <p>
-                            Aynı yoldaki düz giden trafik, dönüş yapan trafiğe üstünlük sağlar.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Sağa dönen sürücüler, sola dönen sürücülere üstünlük sağlar.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <img src="https://static.wixstatic.com/media/4b688f_224c948a60fc4600915e7182750f77e3~mv2.png"
-                alt="Örnek Resim" class="image1">
-        </div>
-    </div>
-    <p>
-        Bu genellikle trafik ışıklarının altına yerleştirilen bir tabela ile belirtilir.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_40d27835d6be45e1a72b874615ae39c0~mv2.png"
-                    alt="Yeşil ışıkta sağa dönerken dikkat edilmesi gerekenler">
-                <figcaption>Yeşil ışıkta sağa dönerken düz giden trafiğe yol vermelisiniz.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_7d052c6c05d445fc9e85e3b2c60771b1~mv2.png"
-                    alt="Yeşil ışıkta sola dönerken dikkat edilmesi gerekenler">
-                <figcaption>Yeşil ışıkta sola dönerken düz giden ve karşıdan gelen trafiğe yol vermelisiniz.</figcaption>
-            </figure>
-        </div>
-    </div>
-    <div class="important-words13">
-        <div class="container">
-            <div>
-                <p>
-                    Ok şeklinde lambalara sahip trafik ışıklarında sağa veya sola dönmek istiyorsanız, karşıdan gelen trafik veya yanınızdaki trafik ile karşılaşmazsınız. Bu durumda sorunsuz bir şekilde sağa veya sola dönebilirsiniz.
-                </p>
-            </div>
-            <img src="https://static.wixstatic.com/media/4b688f_b4b24926c10f4fc283ef9af47c36d796~mv2.png"
-                alt="Örnek Resim" class="image1">
-        </div>
-    </div>
-    <h2>
-        Hemzemin Geçit Işıkları
-    </h2>
-    <p>
-        Bu ışıklar, tren yaklaşmadığında kapalı olan ve tren yaklaştığında dönüşümlü olarak yanıp sönen iki kırmızı ışıktan oluşur. Bu durumda durmanız gerekir. Bazı hemzemin geçitlerde, geçiş yapabileceğinizi gösteren ek bir beyaz ışık yanıp söner.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_56354e4ebd9a4b6e9bcc6335a7d6fc77~mv2.jpeg"
-                    alt="Hemzemin geçitte kırmızı ışık yanıyorsa durun">
-                <figcaption>Hemzemin geçit bariyerleri kalkıkken bile, kırmızı ışıklar sönmeden geçiş yapmamalısınız.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_cf829efbc4e745f4b0ae180b03f0503c~mv2.jpeg"
-                    alt="Beyaz ışık yandığında geçiş güvenli">
-                <figcaption>Eski hemzemin geçitlerde, o anda tren yaklaşmadığını gösteren ek bir beyaz ışık bulunur.</figcaption>
-            </figure>
-        </div>
-    </div>
-    <h2>
-        Köprü Işıkları
-    </h2>
-    <p>
-        Köprü ışıkları, köprü kapalı ve trafik geçişine izin verildiğinde kapalı olan, köprü açıldığında ise yanan veya (iki ışıklı sistemde) yanıp sönen bir veya iki kırmızı ışıktan oluşur. Bu durumda durmanız gerekir.
-    </p>
-    <h2>
-        Tramvay ve Otobüs Işıkları (Dokuz Göz)
-    </h2>
-    <p>
-        Bu trafik ışıkları, toplu taşıma araçları için özel olarak tasarlanmıştır ve kare bir düzlemde dokuz yuvarlak ışıktan oluşur. Üst ve alt sıradaki ışıklar beyazdır, orta ışık sarıdır ve sol ve sağdaki iki ışık kırmızıdır.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_6652481bfebf4680bf18ec097c11b618~mv2.png"
-                    alt="Sola dönüş serbest">
-                <figcaption>Sola dönüş serbest</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_588f1a5d3ff1434faa6176e9d7f77db6~mv2.png"
-                    alt="Düz devam serbest">
-                <figcaption>Düz devam serbest</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_088c73e25a624f82abe70b71e5d5a72b~mv2.png"
-                    alt="Sağa dönüş serbest">
-                <figcaption>Sağa dönüş serbest</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_ed27eafccf25498eb33f82aa8455922f~mv2.png"
-                    alt="Eğer mümkünse durun">
-                <figcaption>Eğer makul şekilde durabiliyorsanız durun.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_0ff2738be18b4fff804b219a48ce805e~mv2.png"
-                    alt="Dur">
-                <figcaption>Dur</figcaption>
-            </figure>
-        </div>
-    </div>
-    
 
+    <!-- RIGHT TURN AT RED -->
+    <h2>↩️ Kırmızı Işıkta Sağa Dönüş</h2>
+    <p>Bazı durumlarda trafik ışığına ek bir levha konularak kırmızıda sağa dönüşe izin verilir:</p>
+    <div class="red-turn-cards">
+        <div class="rtc">
+            <img src="https://static.wixstatic.com/media/4b688f_a4f7f9ad02814e6f934981f9d8191213~mv2.png" alt="Bisikletliler kırmızıda sağa"/>
+            <div class="rtc-body"><div class="rtc-title">Rechtsaf voor fietsers vrij</div><p>Bisikletliler ve snorfiets kullanıcıları — kırmızı ışıkta bile sağa dönebilir.</p></div>
+        </div>
+        <div class="rtc">
+            <img src="https://static.wixstatic.com/media/4b688f_4d42449c69d44129bb4e3d9d7bf7ded2~mv2.png" alt="Bisiklet ve mopedler kırmızıda sağa"/>
+            <div class="rtc-body"><div class="rtc-title">Rechtsaf voor (brom)fietsers vrij</div><p>Bisikletliler, snorfiets kullanıcıları, moped sürücüleri ve hızlı elektrikli bisiklet sürücüleri kırmızıda sağa dönebilir. <strong>Brommobielen (hafif motorlu araçlar) dönemez!</strong></p></div>
+        </div>
+    </div>
+    <div class="callout amber">
+        <span class="callout-title">⚠ Kırmızıda sağa dönüş — yol ver!</span>
+        <p>Kırmızı ışıkta sağa dönerken, <strong>yeşil ışık yanan trafiğin geçiş hakkı vardır</strong>. Her zaman yol verin.</p>
+    </div>
 
+    <!-- ROUND VS ARROW -->
+    <h2>🔵 Yuvarlak Lamba ve Ok Lamba</h2>
+    <div class="light-type-grid">
+        <div class="lt-card round">
+            <div class="ltc-label">⭕ Yuvarlak lamba</div>
+            <p>Karşıdan gelen veya paralel yöndeki trafik <strong>aynı anda yeşil ışık alabilir</strong>. İki kural geçerlidir:<br><br>1. Düz giden trafik, dönen trafiğe göre geçiş hakkına sahiptir.<br>2. Sağa dönen trafik, sola dönen trafiğe göre geçiş hakkına sahiptir.</p>
+        </div>
+        <div class="lt-card arrow">
+            <div class="ltc-label">➡️ Ok şeklindeki lamba</div>
+            <p>Ok ışığı ile sola veya sağa dönmek, <strong>çatışan trafikle karşılaşmayacağınız</strong> anlamına gelir. Engellenmeden dönebilirsiniz — karşıdan gelen veya paralel yöndeki trafik aynı anda yeşil almaz.</p>
+        </div>
+    </div>
 
-    <p>
-        Bu trafik ışığının bağlı olduğu şeridi kullanan tramvaylar ve otobüsler, bu ışıklara uymalıdır.
-    </p>
-    <h2>
-        Sarı Yanıp Sönen Işık
-    </h2>
-    <p>
-        Tek bir sarı yanıp sönen ışık bazen tehlike konusunda uyarmak için kullanılır. Örneğin, bir yaya geçidi veya hemzemin geçit konusunda uyarıda bulunabilir. Duruma bağlı olarak hızınızı düşürmek akıllıca olabilir.
-    </p>
-    <h2>
-        Kırmızı Yanıp Sönen Işık
-    </h2>
-    <p>
-        Ayrıca, kapalı bir hemzemin geçit veya bir kavşak sonrası açık bir köprüye yaklaştığınızı belirten kırmızı ışıklar da vardır. Bu kırmızı ışıklar, belirtilen yöne gitmenizin yasak olduğunu ifade eder. Bu kavşaklar genellikle başka trafik ışıkları ile düzenlenmez. Kırmızı ışıklar, kavşak üzerinde trafik sıkışıklığını önlemek için tasarlanmıştır.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_a781cea09cc0462abc9a4525bf2419b3~mv2.jpg"
-                    alt="Sarı yanıp sönen ışık tehlike işareti">
-                <figcaption>Sarı yanıp sönen ışık, ileride kapalı bir hemzemin geçit olduğunu belirtir.</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9ab1781c515746e080047645ca60435c~mv2.jpg"
-                    alt="Kırmızı yanıp sönen ışık dur işareti">
-                <figcaption>Kırmızı yanıp sönen ışık, sola dönmek istiyorsanız burada durmanız gerektiğini belirtir. Kavşak sonrası hemzemin geçit kapalıdır. Devam ederseniz kavşağı bloke edersiniz.</figcaption>
-            </figure>
-        </div>
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_40d27835d6be45e1a72b874615ae39c0~mv2.png" alt="Yuvarlak yeşilde sağa dönüş"/><figcaption>Yuvarlak yeşil ışıkta sağa dönüş — düz giden trafiğe yol vermelidir.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_7d052c6c05d445fc9e85e3b2c60771b1~mv2.png" alt="Yuvarlak yeşilde sola dönüş"/><figcaption>Yuvarlak yeşil ışıkta sola dönüş — düz giden ve karşıdan gelen trafiğe yol vermelidir.</figcaption></figure>
     </div>
-    <h2>
-        Yaya Işıkları
-    </h2>
-    <p>
-        Çoğu yaya ışığı, kırmızı ve yeşil yaya lambalarından oluşur. Bazı yaya ışıklarında, kırmızı lamba yerine bir ünlem işareti bulunan sarı bir üçgen kullanılır.
-    </p>
-    <p>
-        Yaya ışıklarının renkleri şu şekilde yorumlanabilir:
-    </p>
-    <ul>
-        <li>
-            <p>
-                <strong>Yeşil ışık</strong>
-                Yayalar geçebilir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Yanıp sönen yeşil ışık</strong>
-                Yayalar geçebilir, ancak ışık çok yakında kırmızıya dönecektir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Kırmızı ışık</strong>
-                Yayalar geçmeye başlayamaz. Halihazırda geçmekte olan yayalar mümkün olan en hızlı şekilde yürümelidir.
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Sarı yanıp sönen ışık</strong>
-                Yayalar geçebilir, ancak diğer trafiğe yol vermelidir. Geçiş kendi sorumluluğunuzdadır.
-            </p>
-        </li>
-    </ul>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_fa6951a144db49dcbbf33d1a0d4d4255~mv2.png"
-                    alt="Yeşil yaya ışığı">
-                <figcaption>Yaya ışığı yeşil</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_7f3094e636644faeb1d83c66a7fc6047~mv2.png"
-                    alt="Sarı yaya ışığı">
-                <figcaption>Yaya ışığı sarı</figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_9a5e2570c8464be1b811337c70257337~mv2.png"
-                    alt="Kırmızı yaya ışığı">
-                <figcaption>Yaya ışığı kırmızı</figcaption>
-            </figure>
-        </div>
-    </div>
-    <h2>
-        Şerit Işıkları
-    </h2>
-    <p>
-        Bunlar elektronik matris tabelalardaki ışıklardır. Otobanlar ve ana yolların şeritlerinin üzerinde giderek daha fazla yerde bulunabilir. Bu ışıklarla farklı karakterler gösterilebilir.
-    </p>
-    <div class="container3">
-        <div class="item3">
-            <img src="https://static.wixstatic.com/media/4b688f_d1bdf3b328ce402cb1e82e2ba676597a~mv2.png"
-                alt="Hız sınırı" class="image3">
-            <div class="text3">
-                <strong>Hız Sınırı</strong>
-                <p>Şeritte belirtilen hız sınırını aşamazsınız. Bu önerilen bir hız değildir. Ayrıca, bu şeridin kullanılabilir olduğunu da ifade eder.</p>
-            </div>
-        </div>
-        <div class="item3">
-            <img src="https://static.wixstatic.com/media/4b688f_5238ba9d928c4d85bf83f629df350311~mv2.png"
-                alt="Yeşil ok" class="image3">
-            <div class="text3">
-                <strong>Yeşil Ok</strong>
-                <p>Şerit kullanılabilir.</p>
-            </div>
-        </div>
-        <div class="item3">
-            <img src="https://static.wixstatic.com/media/4b688f_45d50cc99967462aab7f192d3480eb24~mv2.png"
-                alt="Beyaz ok" class="image3">
-            <div class="text3">
-                <strong>Beyaz Ok</strong>
-                <p>Kırmızı çarpı işareti yaklaşıyor, şerit mümkün olan en kısa sürede boşaltılmalıdır.</p>
-            </div>
-        </div>
-        <div class="item3">
-            <img src="https://static.wixstatic.com/media/4b688f_8449d7b6b4194372ae956a7aa1aa4c2d~mv2.png"
-                alt="Kırmızı çarpı" class="image3">
-            <div class="text3">
-                <strong>Kırmızı Çarpı</strong>
-                <p>Bu şeridi kullanmak yasaktır. Yalnızca acil durumlarda kullanılabilir.</p>
-            </div>
-        </div>
-        <div class="item3">
-            <img src="https://static.wixstatic.com/media/4b688f_c0624732bd3e403c93a6aa9da6387967~mv2.png"
-                alt="Otobüs şeridi" class="image3">
-            <div class="text3">
-                <strong>‘BUS’ veya ‘LIJNBUS’ Yazısı</strong>
-                <p>Şerit yalnızca otobüs sürücüleri tarafından kullanılabilir. ‘LIJNBUS’ kelimesi varsa, şerit yalnızca toplu taşıma otobüsleri için kullanılabilir.</p>
-            </div>
-        </div>
-        <div class="item3">
-            <img src="https://static.wixstatic.com/media/4b688f_7fa72759bfb84d3ab558485d1f9c576f~mv2.png"
-                alt="F-9 Matris İşareti" class="image3">
-            <div class="text3">
-                <strong>F-9 Matris İşareti</strong>
-                <p>Elektronik matris işaretleri ile belirtilen tüm yasakların sonu. Buradan itibaren standart kurallar geçerlidir.</p>
-            </div>
-        </div>
-    </div>
-    
 
-    <h3>
-        Diğer (uyarı) işaretleri
-    </h3>
-    <p>
-        Elektronik matris tabelalarında başka işaretler de görünebilir. Genellikle bunlar uyarı işaretleridir. Bu sayede bir sürücü olarak hız sınırının neden düştüğünü veya bir şeridin neden kapatıldığını bilirsiniz.
-    </p>
-    <div>
-        <div class="images-container5">
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_8754b9f5a3534e45be4fb1249c07a30f~mv2.png"
-                    alt="Trafik sıkışıklığı uyarısı">
-                <figcaption>J-33<br>
-                    Trafik sıkışıklığı uyarısı
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://static.wixstatic.com/media/4b688f_3c4cd3cb7a7e47b0bfca7f6e36702759~mv2.png"
-                    alt="Kaza uyarısı">
-                <figcaption>J-34<br>
-                    Kaza uyarısı
-                </figcaption>
-            </figure>
-        </div>
+    <!-- LEVEL CROSSING -->
+    <h2>🚂 Hemzemin Geçit Işıkları</h2>
+    <p>İki kırmızı ışık; <strong>tren yaklaşmadığında kapalıdır</strong>, tren yaklaştığında <strong>dönüşümlü olarak yanıp söner</strong> — durmalısınız. Bazı geçitlerde geçişin güvenli olduğunu belirten beyaz yanıp sönen bir ışık da bulunur. Bariyerler açık olsa bile, kırmızı ışıklar sönene kadar geçidi geçmeyin.</p>
+
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_56354e4ebd9a4b6e9bcc6335a7d6fc77~mv2.jpeg" alt="Hemzemin geçit kırmızı ışıklar"/><figcaption>Bariyerler açık olsa bile, kırmızı ışıklar sönene kadar bekleyin.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_cf829efbc4e745f4b0ae180b03f0503c~mv2.jpeg" alt="Hemzemin geçit beyaz ışık"/><figcaption>Eski geçitlerde, tren yaklaşmadığını belirten beyaz yanıp sönen ışık bulunur.</figcaption></figure>
     </div>
-    
-    <div class="video-wrapper">
-        <div class="video-container">
-            <video controls
-                poster="https://static.wixstatic.com/media/4b688f_a76ca53620294c5eacd008ef6f974fb2~mv2.jpg">
-                <!-- Video kaynakları -->
-                <source
-                    src="https://video.wixstatic.com/video/4b688f_0dd3563306ec428ba8dbd73b782a6190/480p/mp4/file.mp4"
-                    type="video/mp4">
-                <source src="video_dosyaniz.webm" type="video/webm">
-    
-                <!-- Altyazılar -->
-                <track src="altyazi_tr.vtt" kind="subtitles" srclang="nl" label="Dutch">
-                <track src="altyazi_en.vtt" kind="subtitles" srclang="tr" label="Türkçe">
-    
-                Tarayıcınız bu videoyu desteklemiyor. Lütfen farklı bir tarayıcı kullanın.
+
+    <!-- BRIDGE LIGHTS -->
+    <h2>🌉 Köprü Işıkları</h2>
+    <p>Bir veya iki kırmızı ışık; <strong>köprü kapalıyken söner</strong> (trafik geçebilir). Köprü açıldığında kırmızı ışık(lar) yanar — durmalısınız. İki kırmızı ışık varsa, dönüşümlü olarak yanıp sönerler.</p>
+
+    <!-- TRAM / BUS NINE-EYE -->
+    <h2>🚌 Tramvay ve Otobüs Işıkları (Dokuz Gözlü)</h2>
+    <p>Özellikle toplu taşıma için tasarlanmıştır. Kare düzende dokuz yuvarlak ışık: üst ve alt sıralar beyaz, ortadaki lamba sarı, sol ve sağ lambalar kırmızıdır. Bu şeridi kullanan tramvaylar ve otobüsler bu ışıklara uymalıdır.</p>
+
+    <div class="nine-eye-grid">
+        <div class="ne-tile"><img src="https://static.wixstatic.com/media/4b688f_6652481bfebf4680bf18ec097c11b618~mv2.png" alt="Sol"/><p>Sola dönüşe izin verilir</p></div>
+        <div class="ne-tile"><img src="https://static.wixstatic.com/media/4b688f_588f1a5d3ff1434faa6176e9d7f77db6~mv2.png" alt="Düz"/><p>Düz gitmeye izin verilir</p></div>
+        <div class="ne-tile"><img src="https://static.wixstatic.com/media/4b688f_088c73e25a624f82abe70b71e5d5a72b~mv2.png" alt="Sağ"/><p>Sağa dönüşe izin verilir</p></div>
+        <div class="ne-tile"><img src="https://static.wixstatic.com/media/4b688f_ed27eafccf25498eb33f82aa8455922f~mv2.png" alt="Makul dur"/><p>Makul şekilde durabiliyorsanız durun</p></div>
+        <div class="ne-tile"><img src="https://static.wixstatic.com/media/4b688f_0ff2738be18b4fff804b219a48ce805e~mv2.png" alt="Dur"/><p>Dur</p></div>
+    </div>
+
+    <!-- YELLOW / RED FLASHING -->
+    <h2>⚠️ Sarı ve Kırmızı Yanıp Sönen Işıklar</h2>
+    <div class="photo-grid-2">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_a781cea09cc0462abc9a4525bf2419b3~mv2.jpg" alt="Sarı yanıp sönen uyarı"/><figcaption>Sarı yanıp sönen ışık — ileride hemzemin geçit gibi bir tehlikeyi bildirir. Hız azaltmayı düşünün.</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_9ab1781c515746e080047645ca60435c~mv2.jpg" alt="Kırmızı yanıp sönen"/><figcaption>Kırmızı yanıp sönen ışık — kavşaktan sonra hemzemin geçidin kapalı olduğunu veya köprünün açık olduğunu belirtir. O yönde ilerlemek yasaktır.</figcaption></figure>
+    </div>
+
+    <!-- PEDESTRIAN LIGHTS -->
+    <h2>🚶 Yaya Işıkları</h2>
+    <p>Çoğu yaya ışığında kırmızı ve yeşil yaya lambası bulunur. Bazılarında kırmızı yerine üçgen içinde ünlem işareti (sarı) bulunur.</p>
+    <div class="ped-rules">
+        <div class="pr-row green"><div class="pr-dot"></div><div class="pr-body"><div class="pr-title">Yeşil</div><p>Yayalar geçebilir.</p></div></div>
+        <div class="pr-row flash-g"><div class="pr-dot"></div><div class="pr-body"><div class="pr-title">Yanıp Sönen Yeşil</div><p>Yayalar geçebilir, ancak ışık çok yakında kırmızıya dönecektir.</p></div></div>
+        <div class="pr-row red-p"><div class="pr-dot"></div><div class="pr-body"><div class="pr-title">Kırmızı</div><p>Yayalar geçişe başlayamaz. Geçiş halinde olanlar olabildiğince hızlı yürümelidir.</p></div></div>
+        <div class="pr-row flash-y"><div class="pr-dot"></div><div class="pr-body"><div class="pr-title">Yanıp Sönen Sarı</div><p>Yayalar geçebilir, ancak diğer trafiğe yol vermelidir. Geçiş kendi sorumluluklarındadır.</p></div></div>
+    </div>
+
+    <div class="photo-grid-3">
+        <figure><img src="https://static.wixstatic.com/media/4b688f_fa6951a144db49dcbbf33d1a0d4d4255~mv2.png" alt="Yaya yeşil"/><figcaption>Yaya yeşil</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_7f3094e636644faeb1d83c66a7fc6047~mv2.png" alt="Yaya sarı"/><figcaption>Yaya sarı (⚠)</figcaption></figure>
+        <figure><img src="https://static.wixstatic.com/media/4b688f_9a5e2570c8464be1b811337c70257337~mv2.png" alt="Yaya kırmızı"/><figcaption>Yaya kırmızı</figcaption></figure>
+    </div>
+
+    <!-- LANE LIGHTS -->
+    <h2>🛣️ Şerit Işıkları (Matris İşaretleri)</h2>
+    <p>Otoyol ve karayollarında şeritlerin üzerinde bulunur. Her gösterge yalnızca kendi şeridi için geçerlidir.</p>
+
+    <div class="lane-grid">
+        <div class="lane-item"><img src="https://static.wixstatic.com/media/4b688f_d1bdf3b328ce402cb1e82e2ba676597a~mv2.png" alt="Hız sınırı şeridi"/><div class="li-body"><div class="li-title">Hız Sınırı</div><p>O şerit için azami hız. <strong>Tavsiye hızı değildir — zorunludur.</strong> Aynı zamanda şeridin kullanılabileceği anlamına gelir. Trafik sıkışıklığında bazen sarı yanıp sönen ışıklarla birlikte kullanılır.</p></div></div>
+        <div class="lane-item"><img src="https://static.wixstatic.com/media/4b688f_5238ba9d928c4d85bf83f629df350311~mv2.png" alt="Yeşil ok"/><div class="li-body"><div class="li-title">Yeşil Ok</div><p>Şerit <strong>kullanılabilir</strong>.</p></div></div>
+        <div class="lane-item"><img src="https://static.wixstatic.com/media/4b688f_45d50cc99967462aab7f192d3480eb24~mv2.png" alt="Beyaz ok"/><div class="li-body"><div class="li-title">Beyaz Ok</div><p>Kırmızı çarpının önceden bildirimi — <strong>bu şeridi en kısa sürede boşaltın.</strong> Genellikle sarı yanıp sönen ışıklarla birlikte kullanılır.</p></div></div>
+        <div class="lane-item"><img src="https://static.wixstatic.com/media/4b688f_8449d7b6b4194372ae956a7aa1aa4c2d~mv2.png" alt="Kırmızı çarpı"/><div class="li-body"><div class="li-title">Kırmızı Çarpı</div><p>Bu şeridi kullanmak <strong>yasaktır</strong>. Sadece gerçek bir acil durumda kullanılabilir.</p></div></div>
+        <div class="lane-item"><img src="https://static.wixstatic.com/media/4b688f_c0624732bd3e403c93a6aa9da6387967~mv2.png" alt="BUS / LIJNBUS"/><div class="li-body"><div class="li-title">BUS / LIJNBUS</div><p><strong>BUS</strong> — sadece otobüs şoförleri için şerit. <strong>LIJNBUS</strong> — sadece hat otobüsü şoförleri için şerit.</p></div></div>
+        <div class="lane-item"><img src="https://static.wixstatic.com/media/4b688f_7fa72759bfb84d3ab558485d1f9c576f~mv2.png" alt="F-9 matris bitiş"/><div class="li-body"><div class="li-title">Matris İşareti F-9</div><p>Elektronik matris işaretleriyle belirtilen tüm yasakların sonu. <strong>Bu noktadan itibaren standart kurallar geçerlidir.</strong></p></div></div>
+    </div>
+
+    <h3>⚠ Matris İşaretlerinde Diğer Uyarı İşaretleri</h3>
+    <p>Hızın neden düşürüldüğünü veya şeridin neden kapatıldığını açıklamak için matris işaretlerinde uyarı işaretleri de görünebilir.</p>
+    <div class="warn-grid">
+        <div class="warn-tile"><img src="https://static.wixstatic.com/media/4b688f_8754b9f5a3534e45be4fb1249c07a30f~mv2.png" alt="J-33 trafik sıkışıklığı"/><div class="wt-body"><div class="wt-code">J-33</div><p>Trafik sıkışıklığı uyarısı</p></div></div>
+        <div class="warn-tile"><img src="https://static.wixstatic.com/media/4b688f_3c4cd3cb7a7e47b0bfca7f6e36702759~mv2.png" alt="J-34 kaza"/><div class="wt-body"><div class="wt-code">J-34</div><p>Kaza uyarısı</p></div></div>
+    </div>
+
+    <div class="video-section">
+        <div class="vs-label">🎬 Kırmızı Çarpı Açıklaması — Rijkswaterstaat</div>
+        <div class="video-wrap">
+            <video controls poster="https://static.wixstatic.com/media/4b688f_a76ca53620294c5eacd008ef6f974fb2~mv2.jpg">
+                <source src="https://video.wixstatic.com/video/4b688f_0dd3563306ec428ba8dbd73b782a6190/480p/mp4/file.mp4" type="video/mp4">
+                Tarayıcınız video etiketini desteklemiyor.
             </video>
         </div>
+        <p class="video-note">© Rijkswaterstaat — Felemenkçe, İngilizce altyazı (CC butonu). Kırmızı çarpıların ne zaman ve neden kullanıldığını açıklar.</p>
     </div>
-    
-    <p>
-        (c) Rijkswaterstaat
-    </p>
-    <p>
-        Kırmızı çarpılar her zaman bir sebep için vardır. Bir şeridin üzerinde kırmızı bir çarpı işareti varsa, o şeritte araç kullanmanız yasaktır. Yukarıdaki videoda, kırmızı çarpıların ne zaman ve neden kullanıldığı açıklanmıştır.<br>
-        Not: Video Hollandaca dilindedir, ancak CC düğmesine tıklayarak Türkçe altyazıları açabilirsiniz.
-    </p>
-    
-    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Geri Dön</a>
-    
+
+    <a href="https://examtheorie.nl" class="custom-button" target="_blank">Genel bakışa dön</a>
+</div>
 
 <script>
-        // 1. Sağ tık menüsünü tamamen kapatır (CTRL+U'ya oradan ulaşımı da keser)
-        document.addEventListener('contextmenu', event => event.preventDefault());        // 2. Klavye üzerinden tüm arka kapıları kilitler
-        document.onkeydown = function (e) {
-            // F12 tuşu
-            if (e.keyCode == 123) return false;            // CTRL+U (Kaynağı Görüntüle)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;            // CTRL+S (Sayfayı Kaydet)
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;            // CTRL+SHIFT+I, J ve C (İncele ve Konsol araçları)
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
-        };        // 3. Metin seçmeyi ve kopyalamayı da engelle (İçerik çalınmasın)
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-    </script>
+(function(){
+'use strict';
+const K='et_tfl';
+const DEFAULTS={'bg-deep':'#050d1a','accent':'#1a6cf6','accent-light':'#4da6ff','red':'#e84545','text-primary':'#e8f0ff','heading-color':'#4da6ff','text-muted':'#b4cdff','text-dim':'#8cafd6','card-bg':'#0a1e41','card-border':'#4da6ff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16};
+const PRESETS={default:{...DEFAULTS},light:{'bg-deep':'#f0f4ff','accent':'#1a6cf6','accent-light':'#0050cc','red':'#cc2222','text-primary':'#0a1a3a','heading-color':'#1a6cf6','text-muted':'#1e3c78','text-dim':'#3c64b4','card-bg':'#ffffff','card-border':'#1a6cf6','opacity-bg':100,'opacity-card':72,'opacity-border':18,'font-size':16},purple:{'bg-deep':'#0d0520','accent':'#6b2fff','accent-light':'#b07fff','red':'#e84545','text-primary':'#f0e8ff','heading-color':'#b07fff','text-muted':'#d2b9ff','text-dim':'#af96e6','card-bg':'#1e0a46','card-border':'#b07fff','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},green:{'bg-deep':'#021510','accent':'#00b882','accent-light':'#4dffc3','red':'#e84545','text-primary':'#e0fff4','heading-color':'#4dffc3','text-muted':'#a0ffd2','text-dim':'#78d2aa','card-bg':'#003219','card-border':'#4dffc3','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},amber:{'bg-deep':'#150a00','accent':'#e07b00','accent-light':'#ffd166','red':'#e84545','text-primary':'#fff8e8','heading-color':'#ffd166','text-muted':'#ffe1a0','text-dim':'#d2af64','card-bg':'#281400','card-border':'#ffd166','opacity-bg':100,'opacity-card':55,'opacity-border':22,'font-size':16},contrast:{'bg-deep':'#000000','accent':'#ffffff','accent-light':'#ffff00','red':'#ff4444','text-primary':'#ffffff','heading-color':'#ffff00','text-muted':'#eeeeee','text-dim':'#aaaaaa','card-bg':'#111111','card-border':'#ffff00','opacity-bg':100,'opacity-card':90,'opacity-border':60,'font-size':16}};
+let state={};try{state=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+state=Object.assign({},DEFAULTS,state);
+const root=document.documentElement;
+const cKeys=['bg-deep','accent','accent-light','red','text-primary','heading-color','text-muted','text-dim','card-bg','card-border'];
+function hexRgb(h){const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:null}
+function applyAll(){const bg=hexRgb(state['bg-deep']);if(bg){const a=state['opacity-bg']/100;root.style.setProperty('--bg-deep',`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`);document.body.style.backgroundColor=`rgba(${bg[0]},${bg[1]},${bg[2]},${a})`}root.style.setProperty('--accent',state['accent']);root.style.setProperty('--accent-light',state['accent-light']);root.style.setProperty('--red',state['red']);root.style.setProperty('--text-primary',state['text-primary']);root.style.setProperty('--heading-color',state['heading-color']);root.style.setProperty('--text-muted',state['text-muted']);root.style.setProperty('--text-dim',state['text-dim']);const cb=hexRgb(state['card-bg']);if(cb)root.style.setProperty('--card-bg',`rgba(${cb[0]},${cb[1]},${cb[2]},${state['opacity-card']/100})`);const cbr=hexRgb(state['card-border']);if(cbr)root.style.setProperty('--card-border',`rgba(${cbr[0]},${cbr[1]},${cbr[2]},${state['opacity-border']/100})`);document.documentElement.style.fontSize=state['font-size']+'px';document.getElementById('fs-display').textContent=state['font-size']+'px';document.querySelector('.orb-1').style.background=state['accent'];document.querySelector('.orb-2').style.background=state['accent-light'];syncUI();try{localStorage.setItem(K,JSON.stringify(state))}catch(e){}}
+function syncUI(){cKeys.forEach(key=>{const hex=state[key]||'#000000';const safe=/^#[0-9a-f]{6}$/i.test(hex)?hex:'#000000';const p=document.getElementById('prev-'+key);const h=document.getElementById('hex-'+key);const pk=document.getElementById('pick-'+key);if(p)p.style.background=safe;if(h)h.value=safe.replace('#','').toUpperCase();if(pk)pk.value=safe});[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const sl=document.getElementById(id);const vl=document.getElementById(vid);if(sl)sl.value=state[id];if(vl)vl.textContent=state[id]+'%'});document.getElementById('fs-display').textContent=state['font-size']+'px'}
+cKeys.forEach(key=>{const pick=document.getElementById('pick-'+key);const hexIn=document.getElementById('hex-'+key);const prev=document.getElementById('prev-'+key);if(pick)pick.addEventListener('input',e=>{state[key]=e.target.value;if(prev)prev.style.background=e.target.value;if(hexIn)hexIn.value=e.target.value.replace('#','').toUpperCase();applyAll()});if(hexIn){hexIn.addEventListener('input',e=>{const v=e.target.value.replace(/[^a-fA-F0-9]/g,'');hexIn.value=v.toUpperCase();if(v.length===6){state[key]='#'+v;if(prev)prev.style.background='#'+v;if(pick)pick.value='#'+v;applyAll()}});hexIn.addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()})}});
+[['opacity-bg','opacity-bg-val'],['opacity-card','opacity-card-val'],['opacity-border','opacity-border-val']].forEach(([id,vid])=>{const el=document.getElementById(id);const vl=document.getElementById(vid);if(el)el.addEventListener('input',e=>{state[id]=parseInt(e.target.value);if(vl)vl.textContent=e.target.value+'%';applyAll()})});
+document.getElementById('fs-grow').addEventListener('click',()=>{state['font-size']=Math.min(26,state['font-size']+1);applyAll()});
+document.getElementById('fs-shrink').addEventListener('click',()=>{state['font-size']=Math.max(11,state['font-size']-1);applyAll()});
+document.getElementById('fs-reset').addEventListener('click',()=>{state['font-size']=16;applyAll()});
+document.querySelectorAll('.preset-btn').forEach(btn=>{btn.addEventListener('click',()=>{const p=PRESETS[btn.dataset.preset];if(p){state=Object.assign({},p);applyAll()}})});
+document.getElementById('reset-all-btn').addEventListener('click',()=>{state=Object.assign({},DEFAULTS);applyAll()});
+const fabRow=document.getElementById('fab-row');
+const isMob=()=>window.innerWidth<=767;
+let fabPos=null;try{fabPos=JSON.parse(localStorage.getItem(K+'_fab'))}catch(e){}
+const PAD=8;function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
+function setFabPos(x,y){const W=window.innerWidth,H=window.innerHeight;const r=fabRow.getBoundingClientRect();const w=r.width||64,h=r.height||120;x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);fabRow.style.right='unset';fabRow.style.bottom='unset';fabRow.style.top=y+'px';fabRow.style.left=x+'px';fabRow.style.transform='none';return{x,y}}
+requestAnimationFrame(()=>{if(fabPos&&!isMob())fabPos=setFabPos(fabPos.x,fabPos.y)});
+window.addEventListener('resize',()=>{if(isMob())return;const r=fabRow.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)fabPos=setFabPos(r.left,r.top)});
+let fdrag=false,fsx,fsy,fex,fey;
+fabRow.addEventListener('mousedown',e=>{fdrag=false;fsx=e.clientX;fsy=e.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('mousemove',onFM);document.addEventListener('mouseup',onFU)});
+fabRow.addEventListener('touchstart',e=>{if(isMob())return;fdrag=false;const t=e.touches[0];fsx=t.clientX;fsy=t.clientY;const r=fabRow.getBoundingClientRect();fex=r.left;fey=r.top;document.addEventListener('touchmove',onFT,{passive:false});document.addEventListener('touchend',onFTE)},{passive:true});
+function onFM(e){const dx=e.clientX-fsx,dy=e.clientY-fsy;if(!fdrag&&Math.hypot(dx,dy)<6)return;fdrag=true;fabRow.style.cursor='grabbing';setFabPos(fex+dx,fey+dy)}
+function onFT(e){e.preventDefault();const t=e.touches[0];onFM({clientX:t.clientX,clientY:t.clientY})}
+function onFU(){document.removeEventListener('mousemove',onFM);document.removeEventListener('mouseup',onFU);if(fdrag){const r=fabRow.getBoundingClientRect();fabPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_fab',JSON.stringify(fabPos))}catch(e){}}fabRow.style.cursor='';setTimeout(()=>{fdrag=false},10)}
+function onFTE(){document.removeEventListener('touchmove',onFT);document.removeEventListener('touchend',onFTE);onFU()}
+const colorPanel=document.getElementById('color-panel');const dragHandle=document.getElementById('panel-drag-handle');const fabPalette=document.getElementById('fab-palette');const panelCloseBtn=document.getElementById('panel-close-btn');
+let panelOpen=false,panelPos=null;try{panelPos=JSON.parse(localStorage.getItem(K+'_pan'))}catch(e){}
+function setPanelPos(x,y){if(isMob())return;const W=window.innerWidth,H=window.innerHeight;const r=colorPanel.getBoundingClientRect();const w=r.width||320,h=Math.min(r.height||500,H*0.85);x=clamp(x,PAD,W-w-PAD);y=clamp(y,PAD,H-h-PAD);colorPanel.classList.add('positioned');colorPanel.style.right='unset';colorPanel.style.bottom='unset';colorPanel.style.left=x+'px';colorPanel.style.top=y+'px';return{x,y}}
+requestAnimationFrame(()=>{if(panelPos&&!isMob())panelPos=setPanelPos(panelPos.x,panelPos.y)});
+window.addEventListener('resize',()=>{if(isMob()||!panelOpen)return;const r=colorPanel.getBoundingClientRect();if(r.right>window.innerWidth-PAD||r.bottom>window.innerHeight-PAD||r.left<PAD||r.top<PAD)panelPos=setPanelPos(r.left,r.top)});
+fabPalette.addEventListener('click',()=>{if(fdrag)return;panelOpen=!panelOpen;colorPanel.classList.toggle('is-open',panelOpen);fabPalette.classList.toggle('active',panelOpen);if(panelOpen&&!isMob()){if(panelPos){setPanelPos(panelPos.x,panelPos.y)}else{const fr=fabRow.getBoundingClientRect();const pw=320;let px=fr.left-pw-12;if(px<PAD)px=fr.right+12;let py=fr.top+fr.height/2-250;panelPos=setPanelPos(px,py)}}});
+panelCloseBtn.addEventListener('click',()=>{panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')});
+document.addEventListener('mousedown',e=>{if(!panelOpen)return;if(!colorPanel.contains(e.target)&&!fabPalette.contains(e.target)){panelOpen=false;colorPanel.classList.remove('is-open');fabPalette.classList.remove('active')}});
+let pdrag=false,psx,psy,pex,pey;
+dragHandle.addEventListener('mousedown',e=>{if(isMob()||e.target===panelCloseBtn||e.target.closest('.panel-close'))return;pdrag=false;psx=e.clientX;psy=e.clientY;const r=colorPanel.getBoundingClientRect();pex=r.left;pey=r.top;document.addEventListener('mousemove',onPM);document.addEventListener('mouseup',onPU)});
+function onPM(e){const dx=e.clientX-psx,dy=e.clientY-psy;if(!pdrag&&Math.hypot(dx,dy)<6)return;pdrag=true;dragHandle.style.cursor='grabbing';setPanelPos(pex+dx,pey+dy)}
+function onPU(){document.removeEventListener('mousemove',onPM);document.removeEventListener('mouseup',onPU);if(pdrag){const r=colorPanel.getBoundingClientRect();panelPos={x:r.left,y:r.top};try{localStorage.setItem(K+'_pan',JSON.stringify(panelPos))}catch(e){}}dragHandle.style.cursor='grab';pdrag=false}
+
+const ALL_Q=[
+{t:'Üç Renkli',q:'Sarı trafik ışığı ne anlama gelir?',o:['Hızlanıp geç','Dur — ancak ışığa o kadar yakınsanız makul şekilde duramıyorsanız devam edebilirsiniz','30 km/s hıza düş ve devam et','Sadece yol ıslaksa dur'],a:1,e:'Sarı ışık dur anlamına gelir — ancak ışığa o kadar yakınsanız durmanız makul değilse devam edebilirsiniz.'},
+{t:'Üç Renkli',q:'Yeşil trafik ışığında durmak yasal mıdır?',o:['Evet — istediğiniz anı seçebilirsiniz','Evet — ancak en fazla 30 saniye','Hayır — yeşil ışıkta durmak yasaktır','Sadece önünüzde bir araç varsa izinlidir'],a:2,e:'Yeşil ışıkta durmak yasaktır. Işık yeşil yandığında ilerlemelisiniz.'},
+{t:'Üç Renkli',q:'Yanıp sönen sarı trafik ışığı ne anlama gelir?',o:['Işık az sonra kırmızıya dönecek','50 km/s hıza düş','Trafik ışığı çalışmıyor — dikkatlice yaklaşın. Geçiş önceliği işaretleri ve yol çizgileri tekrar geçerlidir.','Devam etmeden önce dur'],a:2,e:'Yanıp sönen sarı ışık, trafik ışığının çalışmadığı anlamına gelir. Kavşağa dikkatlice yaklaşın. Geçiş önceliğini belirleyen trafik işaretleri ve yol çizgileri tekrar geçerlidir.'},
+{t:'Üç Renkli',q:'Trafik ışığında bisiklet sembolü bulunuyor. Bu ışık kimleri bağlar?',o:['Sadece bisikletler','Sadece bisikletler — mopedler araba ışıklarını kullanır','Bisikletliler, moped sürücüleri, snorfiets kullanıcıları, hızlı elektrikli bisiklet sürücüleri ve engelli araçları','Sadece bisikletliler ve snorfiets kullanıcıları'],a:2,e:'Bisiklet piktogramlı trafik ışığı aynı zamanda mopedleri, snorfietsleri, hızlı elektrikli bisikletleri ve engelli araçlarını da kapsar.'},
+{t:'Kırmızıda Sağa Dönüş',q:'"Rechtsaf voor fietsers vrij" levhası var. Brommobiel (hafif motorlu araç) kullanıyorsunuz. Kırmızı ışıkta sağa dönebilir misiniz?',o:['Evet — bu levha tüm küçük araçların kırmızıda sağa dönmesine izin verir','Hayır — brommobielen bu levha ile kırmızıda sağa dönemez','Sadece yol boşsa','Evet — brommobielen mopedlerle eşdeğerdir'],a:1,e:'"Rechtsaf voor fietsers vrij" levhası sadece bisikletliler ve snorfiets kullanıcılarına izin verir. "Rechtsaf voor (brom)fietsers vrij" levhası moped sürücüleri ve hızlı elektrikli bisikletleri ekler — ancak brommobielen hiçbirinde kırmızıda sağa dönemez.'},
+{t:'Kırmızıda Sağa Dönüş',q:'Bisikletlisiniz, "Rechtsaf voor fietsers vrij" levhasıyla kırmızıda sağa dönüyorsunuz. Bir arabanın yeşil ışığı var. Geçiş hakkı kimde?',o:['Sizde — ek levhayı takip ediyorsunuz','Arabada — kırmızıda sağa dönerken bile yeşil ışık yanan trafiğin geçiş hakkı vardır','Hiçbirinizde — aynı anda ilerlersiniz','Kavşağa ilk varan kişide'],a:1,e:'Kırmızı ışıkta sağa dönerken, yeşil ışık yanan trafiğin geçiş hakkı vardır. Onlara yol vermelisiniz.'},
+{t:'Yuvarlak vs Ok',q:'Yuvarlak yeşil lamba var ve sola dönmek istiyorsunuz. Nelere dikkat etmelisiniz?',o:['Hiçbir şeye — yeşil her yöne serbestçe gitmenize izin verir','Karşıdan gelen düz giden trafik ve sağa dönen trafik de aynı anda yeşil almış olabilir — onlara yol vermelisiniz','Sadece yayalar geçebilir','Sadece solunuzdaki araçlar'],a:1,e:'Yuvarlak yeşil lambada karşıdan gelen veya paralel yöndeki trafik aynı anda yeşil ışık alabilir. Sola dönmek, karşıdan gelen düz giden trafiğe ve sağa dönen trafiğe yol vermek anlamına gelir.'},
+{t:'Yuvarlak vs Ok',q:'Sola dönüş ok lambası yanıyor. Diğer trafikle çatışma olur mu?',o:['Evet — yine de düz giden trafiğe yol vermelisiniz','Evet — karşıdan sağa dönenlerin önceliği vardır','Hayır — ok lambasında çatışan trafikle karşılaşmazsınız. Engellenmeden dönebilirsiniz.','Sadece yayalar geçiyorsa'],a:2,e:'Ok şeklindeki lambada, karşıdan gelen veya paralel yöndeki trafik aynı anda yeşil almaz. Sağa veya sola engellenmeden dönebilirsiniz.'},
+{t:'Hemzemin Geçit',q:'Hemzemin geçitte bariyerler açık ancak kırmızı ışıklar hâlâ yanıp sönüyor. Geçebilir misiniz?',o:['Evet — bariyerlerin açık olması güvenli olduğu anlamına gelir','Hayır — bariyerlerin açık olup olmadığına bakılmaksızın, kırmızı ışıklar sönene kadar beklemelisiniz','Sadece tren göremiyorsanız','Sadece kamyonlar bekler — arabalar geçebilir'],a:1,e:'Hemzemin geçitte bariyerler açık olsa bile, kırmızı ışıklar sönene kadar geçidi geçmeyin.'},
+{t:'Hemzemin Geçit',q:'Bazı eski hemzemin geçitlerde bulunan beyaz yanıp sönen ışık neyi gösterir?',o:['Bir tren yaklaşıyor — hemen dur','Geçit geçici olarak kapalı','O anda tren yaklaşmıyor — geçmek güvenlidir','Alışılmadık yavaş bir araç geçiyor'],a:2,e:'Eski hemzemin geçitlerde, o anda tren yaklaşmadığını belirten ek bir beyaz yanıp sönen ışık bulunur.'},
+{t:'Köprü Işıkları',q:'Köprü ışıkları şu anda sönük. Bu ne anlama gelir?',o:['Köprü açık — geçmeyin','Köprü kapalı ve trafik geçebilir','Işıklar bozuk — dikkatli olun','Köprü indiriliyor'],a:1,e:'Köprü ışıkları, köprü kapalıyken ve trafik geçebilecekken sönüktür. Köprü açıldığında kırmızı ışık(lar) yanar veya yanıp söner — o zaman durmalısınız.'},
+{t:'Tramvay ve Otobüs',q:'Tramvay ve otobüsler için dokuz gözlü trafik ışıklarını kimler takip etmelidir?',o:['Kavşaktaki tüm yol kullanıcıları','Sadece tramvaylar','Işığın ait olduğu şeridi kullanan tramvaylar ve otobüsler','Şerit fark etmeksizin tüm toplu taşıma araçları'],a:2,e:'Dokuz gözlü trafik ışığının ait olduğu şeridi kullanan tramvaylar ve otobüsler bu ışıklara uymalıdır. Diğer trafik standart trafik ışıklarını kullanır.'},
+{t:'Yaya Işıkları',q:'Yaya ışığı yanıp sönen yeşil. Yaya ne yapmalıdır?',o:['Dur — ışık az sonra kırmızıya döner ve geçiş yasaktır','Geçebilir, ancak ışık çok yakında kırmızıya dönecektir — acele etmelidir','Sabit yeşili beklemelidir','Geri dönmeli — geçişe başlamasına izin yoktur'],a:1,e:'Yanıp sönen yeşil yaya ışığı, yayaların hâlâ geçebileceği ancak ışığın çok yakında kırmızıya döneceği anlamına gelir.'},
+{t:'Yaya Işıkları',q:'Yaya ışığı kırmızı gösteriyor ancak biri geçişe başlamış ve yolun ortasında. Ne yapmalıdır?',o:['Yolun ortasında durup beklemeli','Geldiği kaldırıma geri dönmeli','Geçişi tamamlamak için olabildiğince hızlı yürümeli','Kırmızı durmak anlamına gelir — ihlalde bulunmuştur'],a:2,e:'Kırmızı, yayaların geçişe başlayamayacağı anlamına gelir. Zaten geçiş halinde olanlar, geçişi olabildiğince hızlı tamamlamalıdır.'},
+{t:'Şerit Işıkları',q:'Otoyolda şeridinizin üzerinde kırmızı çarpı gösteriliyor. Bu şeritte sürebilir misiniz?',o:['Evet — kırmızı çarpılar sadece tavsiye niteliğindedir','Evet — ancak sadece düşük hızda','Hayır — kırmızı çarpılı şeridi kullanmak yasaktır. Sadece gerçek bir acil durumda kullanılabilir.','Sadece başka şerit yoksa'],a:2,e:'Kırmızı çarpı, o şeridi kullanmanın yasak olduğu anlamına gelir. Sadece gerçek bir acil durumda kullanılabilir.'},
+{t:'Şerit Işıkları',q:'Şeridinizin üzerinde beyaz ok gösteriliyor. Ne yapmalısınız?',o:['Mevcut hızı koruyun — beyaz kısıtlama yok anlamına gelir','Dur ve yeşil oku bekle','Şeridi en kısa sürede boşaltın — beyaz ok kırmızı çarpının önceden bildirimidir','Sadece sağ şeride geçin'],a:2,e:'Beyaz ok, kırmızı çarpının önceden bildirimidir. Şeridi en kısa sürede boşaltın. Genellikle sarı yanıp sönen ışıklarla birlikte kullanılır.'},
+{t:'Şerit Işıkları',q:'Şeridinizin üzerindeki matris işareti F-9 gösteriyor. Bu ne anlama gelir?',o:['İleride trafik sıkışıklığı var','Hızı 90 km/s düşürün','Elektronik matris işaretleriyle belirtilen tüm yasakların sonu — bu noktadan itibaren standart kurallar geçerlidir','Şerit otobüslere ayrılmıştır'],a:2,e:'Matris işareti F-9, elektronik matris işaretleriyle belirtilen tüm yasakların sona erdiğini gösterir. Bu noktadan itibaren standart kurallar geçerlidir.'},
+{t:'Şerit Işıkları',q:'Bir şeridin üzerindeki matris işaretinde gösterilen hız sınırı — tavsiye midir yoksa zorunlu mudur?',o:['Tavsiye — matris hızı her zaman bir öneridir','Zorunlu — bu bir tavsiye hızı değildir. O şeritte belirtilen sınırın üzerinde süremezsiniz.','Sadece kamyonlar ve otobüsler için zorunlu','Hafta içi tavsiye, hafta sonu zorunlu'],a:1,e:'Şerit matris işaretinde gösterilen hız sınırı zorunludur, tavsiye değildir. Aşmak ihlaldir. Aynı zamanda şeridin kullanılabileceğini gösterir.'},
+];
+const QS=18;
+let qQ=[],qI=0,sc=0,ans=[];
+const ov=document.getElementById('quiz-overlay');const fq=document.getElementById('fab-quiz');const qcb=document.getElementById('quiz-close-btn');const ss=document.getElementById('quiz-start-screen');const qs=document.getElementById('quiz-q-screen');const rs=document.getElementById('quiz-results-screen');const pb=document.getElementById('quiz-progress-bar');
+fq.addEventListener('click',()=>{if(fdrag)return;ov.classList.add('is-open');showSS()});
+qcb.addEventListener('click',()=>ov.classList.remove('is-open'));
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('is-open')});
+function showSS(){ss.style.display='block';qs.classList.remove('active');rs.classList.remove('active');pb.style.width='0%';document.getElementById('quiz-badge').textContent=QS+' Soru'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQ);
+function shu(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function shOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)}}
+function startQ(){qQ=shu(ALL_Q).slice(0,QS).map(shOpts);qI=0;sc=0;ans=[];ss.style.display='none';rs.classList.remove('active');qs.classList.add('active');renderQ()}
+function renderQ(){const q=qQ[qI];const L=['A','B','C','D'];pb.style.width=((qI/QS)*100)+'%';document.getElementById('quiz-badge').textContent=(qI+1)+' / '+QS;qs.innerHTML=`<div class="q-meta"><div class="q-counter">Soru ${qI+1} / ${QS}</div><div class="q-topic">${q.t}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.o.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="qfb"></div><div class="q-nav" id="qnav" style="display:none"><button class="btn-primary" id="btn-next">${qI<QS-1?'Sonraki Soru →':'Sonuçları Göster'}</button></div>`;qs.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selA(parseInt(btn.dataset.idx))))}
+function selA(ch){const q=qQ[qI];const co=q.a;const ok=ch===co;if(ok)sc++;ans.push({q:q.q,chosen:ch,correct:co,isCorrect:ok,opts:q.o});qs.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===co)btn.classList.add('correct');else if(i===ch&&!ok)btn.classList.add('wrong')});const fb=document.getElementById('qfb');fb.classList.add('show');fb.classList.add(ok?'fb-correct':'fb-wrong');fb.innerHTML=`<strong>${ok?'✅ Doğru!':'❌ Yanlış — Doğru cevap: "'+q.o[co]+'"'}</strong>${q.e}`;document.getElementById('qnav').style.display='flex';document.getElementById('btn-next').addEventListener('click',()=>{qI++;qI<QS?renderQ():showRes()})}
+function showRes(){pb.style.width='100%';document.getElementById('quiz-badge').textContent='Tamamlandı!';qs.classList.remove('active');rs.classList.add('active');const pct=Math.round((sc/QS)*100);let msg='',sub='';if(pct>=90){msg='Mükemmel! 🏆';sub='Trafik ışıkları bilgisi mükemmel!'}else if(pct>=70){msg='Aferin! 👍';sub='İyi. Kaçırdıklarını gözden geçir.'}else if(pct>=50){msg='Pratik yapmaya devam et 📖';sub='Sayfayı tekrar oku ve tekrar dene.'}else{msg='Daha fazla çalışmalısın 💡';sub='Tüm trafik ışığı türlerini dikkatlice tekrar gözden geçir!'}rs.innerHTML=`<div class="result-circle"><div class="result-score">${sc}</div><div class="result-total">/${QS}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${sc} Doğru</div><div class="rb-chip wrong">❌ ${QS-sc} Yanlış</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Tekrar Dene</button><button class="btn-secondary" id="btn-review">📋 Cevapları İncele</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;document.getElementById('btn-retry').addEventListener('click',startQ);document.getElementById('btn-review').addEventListener('click',()=>{const rl=document.getElementById('review-list');if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=ans.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(0,200,100,.07)':'rgba(232,69,69,.07)'};border:1px solid ${a.isCorrect?'rgba(0,200,100,.2)':'rgba(232,69,69,.2)'}"><div style="font-family:Outfit,sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'#6effc0':'#ffaaaa'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} S${i+1}</div><div style="font-family:Outfit,sans-serif;font-size:.85rem;color:#fff;margin-bottom:6px">${a.q}</div><div style="font-family:Lora,serif;font-size:.8rem;color:var(--text-muted)">Cevabınız: <strong style="color:${a.isCorrect?'#6effc0':'#ffaaaa'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Doğru cevap: <strong style="color:#6effc0">'+a.opts[a.correct]+'</strong>':''}</div></div>`).join('');document.getElementById('btn-review').textContent='İncelemeyi Gizle'}else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Cevapları İncele'}})}
+applyAll();
+})();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.onkeydown=function(e){if(e.keyCode===123)return false;if(e.ctrlKey&&e.keyCode==='U'.charCodeAt(0))return false;if(e.ctrlKey&&e.keyCode==='S'.charCodeAt(0))return false;if(e.ctrlKey&&e.shiftKey&&['I','J','C'].map(c=>c.charCodeAt(0)).includes(e.keyCode))return false};
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('copy',e=>e.preventDefault());
+</script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
 </body>
-
 </html>
-
