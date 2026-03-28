@@ -6818,7 +6818,7 @@ if (viewBtn) {
 
 <script>
 function notifyNewSystem() {
-    var urlParts = window.location.pathname.match(/test-(\d+)-(\w+)\.html/);
+    var urlParts = window.location.pathname.match(/test-(\d+)-(\w+)/);
     if (urlParts) {
         var testNumber = parseInt(urlParts[1], 10);
         var lang       = urlParts[2];
