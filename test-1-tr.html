@@ -6339,23 +6339,22 @@
     /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
     /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
 
-    // Mesaj dinleyicisi
-    window.addEventListener("message", function (event) {
-      // Mesajın güvenilir bir kaynaktan geldiğinden emin ol
-      if (event.origin !== "https://www.examtheorie.nl") return;
-
-      const message = event.data;
-      console.log("Iframe'e mesaj alındı:", message);
-
-      // Mesaj bir nesne ise ve action özelliği "updateButtons" ise
-      if (typeof message === "object" && message.action === "updateButtons") {
-        const progress = message.progress; // Tamamlanan testlerin listesi
-        console.log("Progress bilgileri alındı:", progress);
-
-        // QUIZ-3 butonunu kontrol et ve güncelle
-        updateQuiz1Button(progress);
-      }
-    });
+   window.addEventListener("message", function (event) {
+  const allowedOrigins = [
+    "https://examtheorie.nl",
+    "https://www.examtheorie.nl",
+    "https://examtheorie-app.pages.dev"
+  ];
+  if (!allowedOrigins.includes(event.origin)) return;
+  
+  const message = event.data;
+  console.log("Iframe'e mesaj alındı:", message);
+  if (typeof message === "object" && message.action === "updateButtons") {
+    const progress = message.progress;
+    console.log("Progress bilgileri alındı:", progress);
+    updateQuiz1Button(progress);
+  }
+});
 
     // QUIZ-3 butonunu güncelleme fonksiyonu
     function updateQuiz1Button(progress) {
