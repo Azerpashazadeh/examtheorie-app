@@ -1,0 +1,27 @@
+name: Fix urlParts Regex - test- HTML Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix-urlparts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run fix script
+        run: python3 fix_urlparts.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nothing to commit" || git commit -m "fix: remove .html extension from urlParts regex in all test- files
+
+          - Old: match(/test-(\d+)-(\w+)\.html/)
+          - New: match(/test-(\d+)-(\w+)/)
+          - Report saved to urlparts-fix-report.txt"
+          git push
