@@ -1,0 +1,42 @@
+name: SEO Tag Injection
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'seo-config.json'
+      - 'inject-seo.js'
+  workflow_dispatch:   # Elle de çalıştırılabilir
+
+permissions:
+  contents: write
+
+jobs:
+  inject-seo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run SEO injector
+        run: node inject-seo.js --dir .
+
+      - name: Commit changes (eğer değişiklik varsa)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "✅ Değişiklik yok, commit atlanıyor."
+          else
+            git commit -m "chore: SEO tagları güncellendi [skip ci]"
+            git push
+          fi
