@@ -1,0 +1,32 @@
+name: List HTML Files
+
+on:
+  workflow_dispatch:   # Sadece elle çalıştır (Actions sekmesinden)
+
+jobs:
+  list-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: HTML dosyalarını listele ve kaydet
+        run: |
+          echo "📄 Tüm HTML dosyaları:"
+          find . -name "*.html" \
+            ! -path "./.git/*" \
+            ! -path "./node_modules/*" \
+            | sed 's|^\./||' \
+            | sort \
+            > html-file-list.txt
+
+          cat html-file-list.txt
+          echo ""
+          echo "Toplam: $(wc -l < html-file-list.txt) dosya"
+
+      - name: Listeyi artifact olarak kaydet
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-file-list
+          path: html-file-list.txt
+          retention-days: 7
