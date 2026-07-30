@@ -2343,7 +2343,8 @@
                         <div class="daily-price-block">
                             <div class="daily-price-main"><span>€</span><span id="dailyPrice">3.00</span></div>
                             <div class="daily-price-per"><strong id="dailyPerDay">€3.00 / day</strong> &nbsp;·&nbsp;
-                                <span id="dailyDaysLabel">1 day</span></div>
+                                <span id="dailyDaysLabel">1 day</span>
+                            </div>
                         </div>
                         <button class="btn-daily-buy" id="btnDailyBuy" data-i18n="daily_btn"
                             onclick="startDailyPayment(event)">Buy Now</button>
@@ -3833,8 +3834,13 @@
                 buildTestButtons();
             }
             function openDenemeTest() {
+                // Buton geçici olarak devre dışı — hiçbir işlem yapılmıyor
+                return;
+
+                /* --- eski kod, geri açmak istersen aşağıyı yorumdan çıkar ---
                 const lang = currentLang || localStorage.getItem('et_lang') || 'en';
                 window.location.href = 'https://examtheorie.nl/deneme-' + lang + '.html';
+                */
             }
             function closePassengerCar() {
                 document.getElementById('pc-ol').classList.remove('active');
