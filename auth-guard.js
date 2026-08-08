@@ -1,33 +1,27 @@
 /**
  * auth-guard.js — ExamTheorie Sayfa Koruma Sistemi
- * 
- * Bu dosyayı tüm teori ve test sayfalarına ekle:
- * <script src="https://examtheorie.nl/auth-guard.js"></script>
- * 
- * Çalışma mantığı:
- * 1. Kullanıcı oturum açmış mı? → Hayır → Ana siteye yönlendir
- * 2. Aktif planı var mı?         → Hayır → Ana siteye yönlendir (paywall açılır)
- * 3. Planı bu sayfaya erişebilir mi? → Hayır → Ana siteye yönlendir
- * 4. Her şey OK → Sayfa gösterilir
  */
 
 (function() {
     'use strict';
 
+    // 🟢 NETLIFY KONTROLÜ: Netlify üzerinden çalışıyorsa hiçbir kontrol yapma ve çık
+    if (window.location.hostname.includes('netlify')) {
+        return;
+    }
+
     const SUPABASE_URL = 'https://rvbcsakzfadhtlfeigus.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YmNzYWt6ZmFkaHRsZmVpZ3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjE0NTAsImV4cCI6MjA4NjkzNzQ1MH0.jU0Yt5pMurD9vhZeDTQCasQLkz-saZlhWekXDgUegRs';
     const HOME_URL     = 'https://examtheorie.nl';
 
-
-
     // Sayfa bilgilerini URL'den ayrıştır
-    const path     = window.location.pathname;
+    const path      = window.location.pathname;
     const testMatch = path.match(/\/test-(\d+)-(en|tr|nl|ar)\.html/);
     
-    const isTest   = !!testMatch;
-    const testNum  = isTest ? parseInt(testMatch[1]) : null;
-    const lang     = isTest ? testMatch[2] : null;
-    const GROUP    = isTest ? 'tests' : 'theory';
+    const isTest    = !!testMatch;
+    const testNum   = isTest ? parseInt(testMatch[1]) : null;
+    const lang      = isTest ? testMatch[2] : null;
+    const GROUP     = isTest ? 'tests' : 'theory';
 
     // Sayfayı kontrol bitene kadar gizle
     document.documentElement.style.visibility = 'hidden';
@@ -107,10 +101,9 @@
                     .eq('user_id', session.user.id)
                     .eq('language', lang)
                     .eq('test_number', testNum)
-                    .maybeSingle(); // Daha performanslı kontrol
+                    .maybeSingle();
 
                 if (!testError && testData) {
-                    // Test zaten çözülmüşse ana sayfaya gönder
                     redirectHome('completed');
                     return;
                 }
@@ -129,5 +122,3 @@
 
     checkAccess();
 })();
-
-    
