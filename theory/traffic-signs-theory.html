@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3 — Traffic Signs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18120e;--paper:#faf7f2;--warm-mid:#f0ead8;--card:#ffffff;--accent:#b83228;--accent-soft:#f0dbd8;--gold:#a87424;--gold-soft:#f0e4c8;--blue:#1a4f7a;--blue-soft:#ddeaf5;--green:#1a5c34;--green-soft:#d4eddf;--muted:#6e6358;--border:#d8d0be;--shadow:rgba(24,18,14,0.07);--radius:8px;--radius-sm:4px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:clamp(15px,2.2vw,18px);line-height:1.8;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+.book-header{background:var(--ink);color:var(--paper);padding:clamp(40px,8vw,72px) clamp(20px,5vw,48px) clamp(36px,7vw,60px);text-align:center;position:relative;overflow:hidden;}
+.book-header::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0,transparent 38px,rgba(255,255,255,0.018) 38px,rgba(255,255,255,0.018) 39px);pointer-events:none;}
+.chapter-eyebrow{font-size:clamp(10px,1.5vw,12px);font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.book-header h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,6vw,58px);font-weight:700;line-height:1.1;position:relative;}
+.book-header .lead{margin-top:18px;font-size:clamp(14px,2vw,17px);color:rgba(250,247,242,.60);font-style:italic;max-width:560px;margin-left:auto;margin-right:auto;}
+.gold-rule{width:56px;height:2px;background:var(--gold);margin:24px auto 0;}
+.chapter-nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,40px);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px var(--shadow);}
+.chapter-nav ul{list-style:none;display:inline-flex;gap:0;}
+.chapter-nav li a{display:block;padding:14px 14px;font-size:clamp(11px,1.5vw,13px);font-weight:600;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;}
+.chapter-nav li a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+.page{max-width:960px;margin:0 auto;padding:clamp(36px,6vw,64px) clamp(16px,5vw,48px) clamp(60px,10vw,120px);}
+.intro-pull{border-left:4px solid var(--gold);background:var(--warm-mid);padding:clamp(20px,4vw,30px) clamp(20px,4vw,32px);margin-bottom:clamp(40px,7vw,64px);border-radius:0 var(--radius) var(--radius) 0;}
+.intro-pull p{font-size:clamp(15px,2vw,17px);color:#2e2218;}
+.intro-pull p+p{margin-top:14px;}
+.section{margin-bottom:clamp(40px,7vw,64px);scroll-margin-top:60px;}
+.section-head{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,30px);font-weight:700;color:var(--ink);padding-bottom:12px;border-bottom:2px solid var(--border);margin-bottom:8px;line-height:1.2;}
+.section-head em{color:var(--accent);font-style:italic;}
+.section-sub{font-size:clamp(13px,1.8vw,15px);color:var(--muted);font-style:italic;margin-bottom:clamp(20px,3vw,32px);}
+.rule-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:row;align-items:stretch;transition:box-shadow .18s;margin-bottom:clamp(14px,2vw,20px);}
+.rule-block:hover{box-shadow:0 6px 20px var(--shadow);}
+.rule-block.has-image .rule-body{flex:1;min-width:0;}
+.rule-body{padding:clamp(18px,3vw,26px);}
+.rule-title{font-family:'Playfair Display',serif;font-size:clamp(17px,2.4vw,20px);font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;line-height:1.3;}
+.badge{font-family:'Source Serif 4',serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:3px;white-space:nowrap;background:var(--accent-soft);color:var(--accent);}
+.badge.b{background:var(--blue-soft);color:var(--blue);}
+.badge.g{background:var(--green-soft);color:var(--green);}
+.badge.au{background:var(--gold-soft);color:var(--gold);}
+.rule-body p{font-size:clamp(14px,1.9vw,16.5px);color:#2a201a;line-height:1.78;}
+.rule-body p+p{margin-top:10px;}
+.rule-body ul{margin-top:10px;padding-left:20px;}
+.rule-body ul li{font-size:clamp(14px,1.9vw,16px);color:#2a201a;line-height:1.75;margin-bottom:6px;}
+.inner-note{margin-top:12px;padding:10px 14px;background:var(--warm-mid);border-radius:var(--radius-sm);font-size:clamp(13px,1.7vw,15px);color:var(--muted);font-style:italic;line-height:1.65;}
+.img-slot{width:140px;height:140px;flex-shrink:0;flex-grow:0;overflow:hidden;background:var(--warm-mid);border-left:1px solid var(--border);}
+@media(max-width:599px){.img-slot{width:80px;height:80px;}}
+.img-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.callout{padding:clamp(18px,3vw,26px) clamp(18px,3vw,28px);border-radius:var(--radius);margin:clamp(24px,4vw,36px) 0;}
+.callout.warn{background:#fdf1f0;border-left:4px solid var(--accent);}
+.callout.tip{background:#eef7f1;border-left:4px solid var(--green);}
+.callout.info{background:#edf3fb;border-left:4px solid var(--blue);}
+.callout.gold{background:var(--gold-soft);border-left:4px solid var(--gold);}
+.callout-ttl{font-size:clamp(10px,1.5vw,12px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;}
+.callout.warn .callout-ttl{color:var(--accent);}
+.callout.tip .callout-ttl{color:var(--green);}
+.callout.info .callout-ttl{color:var(--blue);}
+.callout.gold .callout-ttl{color:var(--gold);}
+.callout p{font-size:clamp(14px,1.9vw,16px);line-height:1.74;}
+.callout p+p{margin-top:10px;}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:clamp(20px,3vw,32px) 0;border:1px solid var(--border);border-radius:var(--radius);}
+.comp-table{width:100%;border-collapse:collapse;font-size:clamp(13px,1.8vw,15.5px);min-width:480px;}
+.comp-table th{background:var(--ink);color:var(--paper);padding:13px 16px;text-align:left;font-weight:600;letter-spacing:.06em;font-size:clamp(11px,1.5vw,13px);text-transform:uppercase;}
+.comp-table td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table tr:nth-child(even) td{background:var(--warm-mid);}
+.comp-table tr:hover td{background:var(--accent-soft);}
+.split-box{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:clamp(20px,3vw,30px) 0;}
+@media(max-width:480px){.split-box{grid-template-columns:1fr;}}
+.split-side{padding:clamp(18px,3vw,26px);}
+.split-side:first-child{border-right:1px solid var(--border);background:var(--warm-mid);}
+@media(max-width:480px){.split-side:first-child{border-right:none;border-bottom:1px solid var(--border);}}
+.split-title{font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,19px);font-weight:700;margin-bottom:10px;}
+.split-side p,.split-side ul{font-size:clamp(13px,1.8vw,15.5px);line-height:1.72;}
+.split-side ul{padding-left:18px;margin-top:8px;}
+.split-side ul li{margin-bottom:5px;}
+.divider{display:flex;align-items:center;gap:12px;margin:clamp(36px,5vw,56px) 0;color:var(--border);}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+/* Sign category grid */
+.sign-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:clamp(12px,2vw,18px);margin:clamp(16px,2.5vw,28px) 0;}
+.sign-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow .18s;}
+.sign-card:hover{box-shadow:0 4px 16px var(--shadow);}
+.sign-img{height:110px;background:var(--warm-mid);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);}
+.sign-img img{width:100%;height:100%;object-fit:cover;}
+.sign-info{padding:12px 14px;}
+.sign-code{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.sign-name{font-size:clamp(13px,1.8vw,15px);font-weight:600;color:var(--ink);line-height:1.3;}
+/* Traffic light grid */
+.light-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:clamp(12px,2vw,18px);margin:clamp(16px,2.5vw,28px) 0;}
+.light-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(16px,2.5vw,22px);display:flex;flex-direction:row;align-items:center;gap:14px;}
+.light-dot{width:44px;height:44px;border-radius:50%;flex-shrink:0;border:2px solid var(--border);}
+.light-dot.red{background:#d32f2f;}
+.light-dot.yellow{background:#f9a825;}
+.light-dot.green{background:#388e3c;}
+.light-dot.green-arrow{background:#388e3c;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;}
+.light-dot.yellow-flash{background:#f9a825;border-style:dashed;}
+.light-dot.red-yellow{background:linear-gradient(to bottom,#d32f2f 50%,#f9a825 50%);}
+.light-info{flex:1;min-width:0;}
+.light-meaning{font-size:clamp(13px,1.8vw,15px);font-weight:700;color:var(--ink);margin-bottom:3px;}
+.light-sub{font-size:clamp(12px,1.6vw,13px);color:var(--muted);line-height:1.5;}
+/* Road marking visual */
+.marking-strip{display:flex;flex-direction:column;gap:clamp(12px,2vw,18px);margin:clamp(16px,2.5vw,28px) 0;}
+.marking-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:row;align-items:stretch;}
+.marking-img{width:100px;flex-shrink:0;background:var(--warm-mid);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:12px;}
+.marking-img img{width:100%;height:100%;object-fit:cover;}
+@media(max-width:599px){.marking-img{width:70px;}}
+.marking-info{padding:clamp(14px,2.5vw,20px);}
+.marking-name{font-family:'Playfair Display',serif;font-size:clamp(15px,2.2vw,18px);font-weight:700;color:var(--ink);margin-bottom:6px;}
+.marking-info p{font-size:clamp(13px,1.8vw,15.5px);color:#2a201a;line-height:1.72;}
+.priority-box{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:clamp(20px,3.5vw,32px);margin:clamp(20px,3vw,30px) 0;text-align:center;}
+.priority-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:16px;}
+.priority-item{background:rgba(255,255,255,0.1);border-radius:6px;padding:10px 16px;font-size:clamp(13px,1.8vw,15px);font-weight:600;}
+.priority-arrow{color:var(--gold);font-size:20px;font-weight:700;}
+.page-foot{margin-top:clamp(48px,8vw,80px);padding-top:24px;border-top:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:clamp(11px,1.6vw,13px);color:var(--muted);}
+.page-foot .pg{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);color:var(--border);}
+</style>
+</head>
+<body>
+
+<header class="book-header">
+  <p class="chapter-eyebrow">Chapter 3</p>
+  <h1>Traffic Signs</h1>
+  <p class="lead">Road signs, traffic lights and road surface markings — what they mean, which ones override which, and how to read every signal on a Dutch road.</p>
+  <div class="gold-rule"></div>
+</header>
+
+<nav class="chapter-nav" aria-label="Jump to section">
+  <ul>
+    <li><a href="#s1">General Rules</a></li>
+    <li><a href="#s2">Road Signs</a></li>
+    <li><a href="#s3">Traffic Lights</a></li>
+    <li><a href="#s4">Road Markings</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <div class="intro-pull">
+    <p>Chapter 3 covers everything you see on the road that is not another vehicle. Signs on poles, lights at intersections, lines and symbols painted on the asphalt — all of these are traffic signs in the legal sense, and all of them carry binding instructions for road users.</p>
+    <p>Understanding how signs work — which ones take priority, how they interact with each other, and what each colour and shape communicates — is as fundamental to the Dutch driving theory exam as the traffic rules themselves.</p>
+  </div>
+
+  <!-- ══════════════════ §1 GENERAL RULES ══════════════════ -->
+  <section class="section" id="s1">
+    <h2 class="section-head">§ 1 — <em>General Rules for Traffic Signs</em></h2>
+    <p class="section-sub">The foundational rules that apply to all traffic signs — signs on poles, lights, and markings on the road surface alike.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Obligation to Obey <span class="badge au">All road users</span></div>
+        <p>Every road user must <strong>obey all traffic signs that apply to them</strong>. This is not optional. A sign displayed according to the rules is legally binding from the moment a road user can reasonably see it.</p>
+        <p>This obligation applies to the road user themselves — not just to the driver of a vehicle. Pedestrians, cyclists, moped riders, horse riders — all must obey the signs that address them.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/obey-traffic-signs.jpg" alt="Obligation to obey traffic signs"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Signs Override General Rules <span class="badge">Priority of signs</span></div>
+        <p>A traffic sign always <strong>overrides the general traffic rules</strong> of the road. If the general rule says give way to the right, but a sign indicates you have priority — the sign wins. Signs are specific instructions for a specific location; the general rules are defaults that apply only when no sign says otherwise.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/sign-overrides-rule.jpg" alt="Traffic sign overrides general traffic rules"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Variable Message Signs <span class="badge b">Electronic</span></div>
+        <p><strong>Variable message signs</strong> — electronic signs that can change their display — carry the same legal force as fixed signs. This includes the matrix signs above motorways that display speed limits, lane closures (red X) or open lanes (green arrow). When a matrix sign shows a red cross above a lane, that lane is closed and driving in it is prohibited. When it shows a speed limit, that limit applies immediately.</p>
+        <div class="inner-note">A blank matrix sign — one showing nothing — does not change the applicable rules. The default rules and any fixed signs below continue to apply.</div>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/variable-message-sign-matrix.jpg" alt="Variable message sign on motorway"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Supplementary Boards (Onderborden) <span class="badge g">Under the sign</span></div>
+        <p>A <strong>supplementary board</strong> is a smaller panel placed directly below a traffic sign. It modifies, limits or clarifies the main sign. For example, a no-parking sign may have a supplementary board showing specific hours during which parking is prohibited — outside those hours, parking is permitted. Always read supplementary boards as part of the main sign instruction.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/supplementary-board-onderbord.jpg" alt="Supplementary board below traffic sign"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Where Signs Apply <span class="badge b">Scope of a sign</span></div>
+        <p>A traffic sign generally applies from the point where it is placed. Signs for a road apply to the <strong>entire carriageway</strong> in the direction indicated. Some signs apply only to the lane above which they are positioned — this is the case for matrix signs on motorways. Supplementary boards can further define the zone of application.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/sign-zone-application.jpg" alt="Where a traffic sign applies"></div>
+    </div>
+
+    <!-- Priority hierarchy box -->
+    <div class="priority-box">
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(16px,2.5vw,20px);font-weight:700;color:var(--gold);">The Authority Hierarchy</div>
+      <p style="margin-top:8px;font-size:clamp(13px,1.8vw,15px);color:rgba(250,247,242,0.7);">When instructions conflict, this order always applies — top overrides everything below it.</p>
+      <div class="priority-row">
+        <div class="priority-item">🚦 Traffic Controller</div>
+        <div class="priority-arrow">›</div>
+        <div class="priority-item">🔴 Traffic Lights</div>
+        <div class="priority-arrow">›</div>
+        <div class="priority-item">🪧 Road Signs</div>
+        <div class="priority-arrow">›</div>
+        <div class="priority-item">📏 Traffic Rules</div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- ══════════════════ §2 ROAD SIGNS ══════════════════ -->
+  <section class="section" id="s2">
+    <h2 class="section-head">§ 2 — <em>Road Signs (Verkeersborden)</em></h2>
+    <p class="section-sub">Dutch road signs are organised into categories by letter code. Shape and colour communicate the type of instruction before you even read the detail.</p>
+
+    <div class="rule-block">
+      <div class="rule-body">
+        <div class="rule-title">How Dutch Signs Are Organised</div>
+        <p>Every Dutch road sign belongs to a lettered category. The category tells you immediately what kind of instruction the sign carries. Learning the categories is one of the most efficient ways to prepare for the theory exam — once you know the system, individual signs become much easier to recognise and remember.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr><th>Category</th><th>Name</th><th>Shape &amp; colour</th><th>What it does</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A</strong></td>
+            <td>Speed limits</td>
+            <td>Round, red border, white background</td>
+            <td>Sets a maximum speed. A1 = numeric limit; A3 = end of limit; A4 = advisory speed</td>
+          </tr>
+          <tr>
+            <td><strong>B</strong></td>
+            <td>Priority signs</td>
+            <td>Various — triangle, diamond, octagon</td>
+            <td>Defines who has right of way. B1 = priority road; B6 = give way; B7 = stop</td>
+          </tr>
+          <tr>
+            <td><strong>C</strong></td>
+            <td>Prohibition signs</td>
+            <td>Round, red border, white or blue background</td>
+            <td>Forbids a specific action or vehicle type from entering or using the road</td>
+          </tr>
+          <tr>
+            <td><strong>D</strong></td>
+            <td>Obligation signs</td>
+            <td>Round, blue background, white symbol</td>
+            <td>Requires road users to follow a specific direction or use a specific lane</td>
+          </tr>
+          <tr>
+            <td><strong>E</strong></td>
+            <td>Parking &amp; stopping signs</td>
+            <td>Blue rectangle or square</td>
+            <td>Defines parking zones, time-limited parking, permit areas and no-parking zones</td>
+          </tr>
+          <tr>
+            <td><strong>F</strong></td>
+            <td>Instruction signs</td>
+            <td>Various — mostly rectangular, blue or white</td>
+            <td>Provides specific instructions: lane usage, end of motorway, overtaking rules</td>
+          </tr>
+          <tr>
+            <td><strong>G</strong></td>
+            <td>Road type signs</td>
+            <td>Blue rectangle or square</td>
+            <td>Identifies motorways (G1/G2) and expressways (G3/G4), bicycle paths (G11), erf zones (G5)</td>
+          </tr>
+          <tr>
+            <td><strong>J</strong></td>
+            <td>Warning signs</td>
+            <td>Triangle, red border, white background, black symbol</td>
+            <td>Warns of a hazard ahead — bend, crossing, level crossing, roadworks, slippery road</td>
+          </tr>
+          <tr>
+            <td><strong>L</strong></td>
+            <td>Information signs</td>
+            <td>Blue rectangle, white or green text/symbol</td>
+            <td>Provides useful information: distances, facilities, parking, emergency telephones</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Key signs by category -->
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Priority Signs — Category B</h3>
+    <p style="font-size:clamp(14px,1.9vw,16px);color:#2a201a;margin-bottom:20px;line-height:1.78;">Priority signs are among the most critical on Dutch roads. They define who has the right of way at intersections and junctions.</p>
+
+    <div class="sign-grid">
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-b1-priority-road.jpg" alt="B1 Priority road sign"></div>
+        <div class="sign-info"><div class="sign-code">B1</div><div class="sign-name">Priority road — you have right of way</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-b2-end-priority.jpg" alt="B2 End of priority road sign"></div>
+        <div class="sign-info"><div class="sign-code">B2</div><div class="sign-name">End of priority road</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-b3-priority-over-oncoming.jpg" alt="B3 Priority over oncoming traffic"></div>
+        <div class="sign-info"><div class="sign-code">B3</div><div class="sign-name">Priority over oncoming traffic</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-b4-yield-to-oncoming.jpg" alt="B4 Give way to oncoming traffic"></div>
+        <div class="sign-info"><div class="sign-code">B4</div><div class="sign-name">Give way to oncoming traffic</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-b6-give-way.jpg" alt="B6 Give way sign"></div>
+        <div class="sign-info"><div class="sign-code">B6</div><div class="sign-name">Give way — yield to crossing traffic</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-b7-stop.jpg" alt="B7 Stop sign"></div>
+        <div class="sign-info"><div class="sign-code">B7</div><div class="sign-name">Stop — come to a full stop before proceeding</div></div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-ttl">B6 vs B7 — Give Way vs Stop</div>
+      <p>The B6 (give way) requires you to yield — slow down, check, and proceed only if safe. You do not have to stop if the way is clear. The B7 (stop) requires a <strong>complete stop</strong> — you must come to a full standstill before the stop line, regardless of whether traffic is present. Failing to make a full stop at a B7 is a violation even if no other vehicle is visible.</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Prohibition Signs — Category C</h3>
+
+    <div class="sign-grid">
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c1-no-entry.jpg" alt="C1 No entry sign"></div>
+        <div class="sign-info"><div class="sign-code">C1</div><div class="sign-name">No entry — all traffic forbidden</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c2-no-motor-vehicles.jpg" alt="C2 No motor vehicles"></div>
+        <div class="sign-info"><div class="sign-code">C2</div><div class="sign-name">No motor vehicles</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c6-no-trucks.jpg" alt="C6 No trucks"></div>
+        <div class="sign-info"><div class="sign-code">C6</div><div class="sign-name">No trucks</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c7-no-buses.jpg" alt="C7 No buses"></div>
+        <div class="sign-info"><div class="sign-code">C7</div><div class="sign-name">No buses</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c12-no-overtaking.jpg" alt="C12 No overtaking"></div>
+        <div class="sign-info"><div class="sign-code">C12</div><div class="sign-name">No overtaking for motor vehicles</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c16-no-u-turn.jpg" alt="C16 No U-turn"></div>
+        <div class="sign-info"><div class="sign-code">C16</div><div class="sign-name">No U-turn</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c17-no-stopping.jpg" alt="C17 No stopping"></div>
+        <div class="sign-info"><div class="sign-code">C17</div><div class="sign-name">No stopping (yellow line)</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c18-no-parking.jpg" alt="C18 No parking"></div>
+        <div class="sign-info"><div class="sign-code">C18</div><div class="sign-name">No parking</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-c22-max-speed.jpg" alt="C22 Maximum speed example"></div>
+        <div class="sign-info"><div class="sign-code">A1 (e.g. 70)</div><div class="sign-name">Maximum speed limit</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Obligation Signs — Category D</h3>
+    <p style="font-size:clamp(14px,1.9vw,16px);color:#2a201a;margin-bottom:20px;line-height:1.78;">Obligation signs are <strong>blue circles with white symbols</strong>. They tell you what you must do — not what you must avoid.</p>
+
+    <div class="sign-grid">
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d1-straight-only.jpg" alt="D1 Straight ahead only"></div>
+        <div class="sign-info"><div class="sign-code">D1</div><div class="sign-name">Straight ahead only</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d2-right-only.jpg" alt="D2 Right turn only"></div>
+        <div class="sign-info"><div class="sign-code">D2</div><div class="sign-name">Turn right only</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d3-left-only.jpg" alt="D3 Left turn only"></div>
+        <div class="sign-info"><div class="sign-code">D3</div><div class="sign-name">Turn left only</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d4-straight-or-right.jpg" alt="D4 Straight or right"></div>
+        <div class="sign-info"><div class="sign-code">D4</div><div class="sign-name">Straight or right only</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d5-straight-or-left.jpg" alt="D5 Straight or left"></div>
+        <div class="sign-info"><div class="sign-code">D5</div><div class="sign-name">Straight or left only</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d6-keep-right.jpg" alt="D6 Keep right of obstacle"></div>
+        <div class="sign-info"><div class="sign-code">D6</div><div class="sign-name">Keep right of obstacle</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d7-keep-left.jpg" alt="D7 Keep left of obstacle"></div>
+        <div class="sign-info"><div class="sign-code">D7</div><div class="sign-name">Keep left of obstacle</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-d9-roundabout.jpg" alt="D9 Roundabout"></div>
+        <div class="sign-info"><div class="sign-code">D9</div><div class="sign-name">Roundabout ahead — follow direction</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Road Type Signs — Category G</h3>
+
+    <div class="sign-grid">
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g1-motorway-start.jpg" alt="G1 Motorway start"></div>
+        <div class="sign-info"><div class="sign-code">G1</div><div class="sign-name">Start of motorway (autosnelweg)</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g2-motorway-end.jpg" alt="G2 End of motorway"></div>
+        <div class="sign-info"><div class="sign-code">G2</div><div class="sign-name">End of motorway</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g3-expressway-start.jpg" alt="G3 Expressway start"></div>
+        <div class="sign-info"><div class="sign-code">G3</div><div class="sign-name">Start of expressway (autoweg)</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g4-expressway-end.jpg" alt="G4 End of expressway"></div>
+        <div class="sign-info"><div class="sign-code">G4</div><div class="sign-name">End of expressway</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g5-erf-start.jpg" alt="G5 Erf zone start"></div>
+        <div class="sign-info"><div class="sign-code">G5</div><div class="sign-name">Start of residential zone (erf)</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g6-erf-end.jpg" alt="G6 End of erf zone"></div>
+        <div class="sign-info"><div class="sign-code">G6</div><div class="sign-name">End of residential zone</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g7-30zone-start.jpg" alt="G7 30 zone start"></div>
+        <div class="sign-info"><div class="sign-code">G7</div><div class="sign-name">Start of 30 km/h zone</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g8-30zone-end.jpg" alt="G8 End of 30 zone"></div>
+        <div class="sign-info"><div class="sign-code">G8</div><div class="sign-name">End of 30 km/h zone</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g11-bicycle-path.jpg" alt="G11 Mandatory bicycle path"></div>
+        <div class="sign-info"><div class="sign-code">G11</div><div class="sign-name">Mandatory bicycle path</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g12a-bicycle-moped-path.jpg" alt="G12a Combined bicycle moped path"></div>
+        <div class="sign-info"><div class="sign-code">G12a</div><div class="sign-name">Combined bicycle/moped path</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-g13-optional-bicycle.jpg" alt="G13 Optional bicycle path"></div>
+        <div class="sign-info"><div class="sign-code">G13</div><div class="sign-name">Optional (non-mandatory) bicycle path</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Warning Signs — Category J</h3>
+    <p style="font-size:clamp(14px,1.9vw,16px);color:#2a201a;margin-bottom:20px;line-height:1.78;">Warning signs are <strong>triangles with a red border</strong>. They alert you to a hazard ahead. They do not prohibit anything — they ask you to be prepared and adjust your speed and attention.</p>
+
+    <div class="sign-grid">
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j2-right-bend.jpg" alt="J2 Dangerous right bend"></div>
+        <div class="sign-info"><div class="sign-code">J2</div><div class="sign-name">Dangerous right-hand bend ahead</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j8-priority-crossing.jpg" alt="J8 Priority road crossing"></div>
+        <div class="sign-info"><div class="sign-code">J8</div><div class="sign-name">Intersection with priority road ahead</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j12-level-crossing-barriers.jpg" alt="J12 Level crossing with barriers"></div>
+        <div class="sign-info"><div class="sign-code">J12</div><div class="sign-name">Level crossing with barriers</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j13-level-crossing-no-barriers.jpg" alt="J13 Level crossing without barriers"></div>
+        <div class="sign-info"><div class="sign-code">J13</div><div class="sign-name">Level crossing without barriers</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j15-slippery-road.jpg" alt="J15 Slippery road"></div>
+        <div class="sign-info"><div class="sign-code">J15</div><div class="sign-name">Slippery road surface ahead</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j16-pedestrian-crossing.jpg" alt="J16 Pedestrian crossing warning"></div>
+        <div class="sign-info"><div class="sign-code">J16</div><div class="sign-name">Pedestrian crossing ahead</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j21-roadworks.jpg" alt="J21 Roadworks warning"></div>
+        <div class="sign-info"><div class="sign-code">J21</div><div class="sign-name">Roadworks ahead</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j22-cyclists-crossing.jpg" alt="J22 Cyclists and moped riders crossing"></div>
+        <div class="sign-info"><div class="sign-code">J22</div><div class="sign-name">Cyclists and moped riders may cross</div></div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-img"><img src="http://example.com/images/theory/sign-j32-traffic-jam.jpg" alt="J32 Traffic jam warning"></div>
+        <div class="sign-info"><div class="sign-code">J32</div><div class="sign-name">Congestion / traffic jam ahead</div></div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-ttl">Reading Warning Signs Correctly</div>
+      <p>Warning signs do not change your right of way or prohibit any action. They warn you to <strong>prepare</strong>. When you see a J-sign, reduce speed, increase following distance, and be ready for the hazard described. The sign tells you what is coming — it is your job to respond appropriately.</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Speed Limit Signs — Ending a Limit</h3>
+
+    <div class="split-box">
+      <div class="split-side">
+        <div class="split-title">A3 — End of Speed Limit</div>
+        <p>A round sign with a strikethrough over a number ends the specific speed limit shown. After this sign, the default speed limit for that road type applies again. If you are on a motorway and the A3 follows an A1-70 sign, you return to 130 km/h.</p>
+      </div>
+      <div class="split-side">
+        <div class="split-title">A4 — Advisory Speed</div>
+        <p>A square sign (not round) with a speed number is an <strong>advisory speed</strong> — recommended, not mandatory. It typically appears before a sharp bend or road narrowing. You are not breaking the law by going faster, but the advisory exists for a reason.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- ══════════════════ §3 TRAFFIC LIGHTS ══════════════════ -->
+  <section class="section" id="s3">
+    <h2 class="section-head">§ 3 — <em>Traffic Lights (Verkeerslichten)</em></h2>
+    <p class="section-sub">What each light colour and combination means — and what you must do when you see it.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Obligation to Obey Traffic Lights <span class="badge au">All road users</span></div>
+        <p>Traffic lights are legally binding. Every road user must follow the instruction of the light that applies to them. Running a red light is one of the most serious traffic violations and is a common cause of fatal accidents at intersections.</p>
+        <p>If traffic lights are not functioning — showing nothing at all — the general traffic rules apply, including the give-way-to-the-right rule at intersections.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/traffic-light-pole.jpg" alt="Traffic light at intersection"></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:32px 0 16px;color:var(--ink);">Standard Vehicle Traffic Lights</h3>
+
+    <div class="light-grid">
+      <div class="light-card">
+        <div class="light-dot red"></div>
+        <div class="light-info">
+          <div class="light-meaning">Red — Stop</div>
+          <div class="light-sub">Come to a full stop before the stop line. Do not proceed under any circumstances.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot red-yellow"></div>
+        <div class="light-info">
+          <div class="light-meaning">Red + Yellow — Prepare</div>
+          <div class="light-sub">Prepare to move off. Do not proceed yet — green has not shown.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot green"></div>
+        <div class="light-info">
+          <div class="light-meaning">Green — Proceed</div>
+          <div class="light-sub">You may proceed, but still give way to pedestrians and cyclists already crossing.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot yellow"></div>
+        <div class="light-info">
+          <div class="light-meaning">Yellow — Stop if safe</div>
+          <div class="light-sub">Stop before the line if you can do so safely. Only proceed if stopping would be dangerous.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot green-arrow">→</div>
+        <div class="light-info">
+          <div class="light-meaning">Green Arrow — Conditional go</div>
+          <div class="light-sub">You may proceed in the direction of the arrow only. Give way to all other traffic crossing your path.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot yellow-flash"></div>
+        <div class="light-info">
+          <div class="light-meaning">Flashing Yellow — Caution</div>
+          <div class="light-sub">No binding stop instruction. Proceed with care, apply general traffic rules.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-ttl">Yellow Light — The Most Misunderstood Signal</div>
+      <p>Yellow does <strong>not</strong> mean accelerate. It means stop — if you can do so safely. The exception is if stopping would require sudden harsh braking that could cause a rear-end collision or other danger. Only in that case may you continue through yellow. The burden of proof is always on the driver who passed the line on yellow.</p>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-ttl">Green — Not Unconditional</div>
+      <p>A green light permits you to proceed — but it does not remove your obligation to give way. When a light turns green, you must still yield to <strong>pedestrians who are crossing</strong> and <strong>cyclists who are on the crossing</strong>. Green means you may go — it does not mean everything in your path must stop for you.</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Pedestrian Traffic Lights</h3>
+
+    <div class="light-grid">
+      <div class="light-card">
+        <div class="light-dot red"></div>
+        <div class="light-info">
+          <div class="light-meaning">Red figure — Do not cross</div>
+          <div class="light-sub">Wait at the kerb. Do not step onto the crossing.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot green"></div>
+        <div class="light-info">
+          <div class="light-meaning">Green figure — Cross now</div>
+          <div class="light-sub">Cross promptly. If the green starts flashing, complete the crossing — do not start if you are not yet on the road.</div>
+        </div>
+      </div>
+      <div class="light-card">
+        <div class="light-dot yellow-flash"></div>
+        <div class="light-info">
+          <div class="light-meaning">Flashing green figure — Hurry</div>
+          <div class="light-sub">Finish crossing. Do not start crossing if you have not yet stepped off the kerb.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Bicycle Traffic Lights</h3>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Bicycle-Specific Lights <span class="badge g">Fietsers</span></div>
+        <p>Where a separate traffic light for cyclists is present — recognisable by the bicycle symbol on the light housing — cyclists must follow that light, not the general vehicle light. The same red/yellow/green rules apply.</p>
+        <p>Where no separate bicycle light is present, cyclists follow the <strong>general vehicle traffic lights</strong>.</p>
+        <div class="inner-note">Some intersections have a small supplementary green arrow light for cyclists that allows them to proceed in a specific direction while vehicle traffic is stopped. This is the cyclist's equivalent of the conditional green arrow for cars.</div>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/bicycle-traffic-light.jpg" alt="Bicycle-specific traffic light"></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Tram &amp; Bus Lights</h3>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Public Transport Traffic Lights <span class="badge b">Trams &amp; buses</span></div>
+        <p>Trams and buses often have their own traffic lights — typically showing <strong>white symbols</strong> (vertical bar = stop; horizontal bar = proceed; diagonal bar = turn). These signals apply only to public transport vehicles and are not addressed to other road users. Car drivers should ignore tram/bus signal lights.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/tram-bus-traffic-light.jpg" alt="Tram and bus traffic light signals"></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Matrix Signs Above Motorway Lanes</h3>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Lane Signals on Motorways <span class="badge au">Per-lane control</span></div>
+        <p>On Dutch motorways, electronic matrix signs above each lane control that specific lane individually. The possible signals are:</p>
+        <ul>
+          <li><strong>Green arrow pointing down</strong> — lane is open, you may use it</li>
+          <li><strong>Red cross (X)</strong> — lane is closed, you must not drive in it</li>
+          <li><strong>Yellow arrow pointing left or right</strong> — move to the adjacent lane; your current lane is about to close</li>
+          <li><strong>Speed limit number</strong> — that specific speed limit applies in this lane</li>
+        </ul>
+        <div class="inner-note">A matrix sign overrides the general speed limit for that lane. If the general motorway limit is 130 km/h but the matrix shows 90 km/h, you must drive at 90 km/h in that lane.</div>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/motorway-matrix-lane-signals.jpg" alt="Motorway matrix lane signals — green arrow, red cross, speed limit"></div>
+    </div>
+
+  </section>
+
+  <div class="divider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- ══════════════════ §4 ROAD MARKINGS ══════════════════ -->
+  <section class="section" id="s4">
+    <h2 class="section-head">§ 4 — <em>Road Surface Markings</em></h2>
+    <p class="section-sub">Lines, symbols and patterns on the road surface — what each one means and how to respond to it.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Road Markings Are Binding <span class="badge au">Legal force</span></div>
+        <p>Road surface markings carry the same legal force as signs on poles. A continuous white line, shark's teeth, a stop line — all are legally binding instructions. Driving over a solid continuous line or ignoring a stop line is a violation, just as running a red light would be.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/road-markings-legal-force.jpg" alt="Road markings are legally binding"></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:32px 0 16px;color:var(--ink);">Lane Lines</h3>
+
+    <div class="marking-strip">
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-continuous-white-line.jpg" alt="Continuous white line"></div>
+        <div class="marking-info">
+          <div class="marking-name">Continuous White Line — Lane Boundary</div>
+          <p>A <strong>solid continuous white line</strong> between lanes may not be crossed. This applies to the centre line between opposing traffic directions and to lane-dividing lines marked as continuous. You must stay on your side.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-broken-white-line.jpg" alt="Broken white line"></div>
+        <div class="marking-info">
+          <div class="marking-name">Broken White Line — May Cross</div>
+          <p>A <strong>broken (dashed) white line</strong> marks a lane boundary that may be crossed when safe to do so — for example, when overtaking or changing lanes. You must still check that it is safe before crossing.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-double-continuous-line.jpg" alt="Double continuous white line"></div>
+        <div class="marking-info">
+          <div class="marking-name">Double Continuous Line — Absolutely No Crossing</div>
+          <p>A <strong>double solid white line</strong> is an absolute prohibition. Neither side may cross it. This marking is used on roads where overtaking or lane changes would be especially dangerous — for example, approaching the crest of a hill.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-continuous-broken-combination.jpg" alt="Continuous line beside broken line"></div>
+        <div class="marking-info">
+          <div class="marking-name">Continuous + Broken Combination</div>
+          <p>When a continuous line runs alongside a broken line, the rule depends on <strong>which side you are on</strong>. If the continuous line is on your side, you may not cross. If the broken line is on your side, you may cross when safe. Look at the line closest to you.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Stop and Give-Way Lines</h3>
+
+    <div class="marking-strip">
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-stop-line.jpg" alt="Stop line at traffic light"></div>
+        <div class="marking-info">
+          <div class="marking-name">Stop Line (Stopstreep)</div>
+          <p>A <strong>thick continuous white line</strong> across the road at a traffic light or stop sign. You must stop with the front of your vehicle behind this line. No part of your vehicle may cross the line while stopped.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-give-way-line.jpg" alt="Give way line at intersection"></div>
+        <div class="marking-info">
+          <div class="marking-name">Give-Way Line (Haaientanden)</div>
+          <p><strong>Shark's teeth</strong> — rows of triangles pointing toward you — indicate a give-way obligation. You must yield to traffic on the road you are about to enter. Often found at roundabouts and at junctions where a B6 sign is also present.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Pedestrian &amp; Cyclist Crossings</h3>
+
+    <div class="marking-strip">
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-zebra-crossing.jpg" alt="Zebra crossing markings"></div>
+        <div class="marking-info">
+          <div class="marking-name">Zebra Crossing (Voetgangersoversteekplaats)</div>
+          <p>Parallel white stripes across the road. Drivers must give way to pedestrians who are on the crossing or who are clearly about to step onto it. Cyclists also have priority at combined pedestrian/cyclist crossings where a bicycle symbol is added.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-cyclist-crossing.jpg" alt="Cyclist crossing markings"></div>
+        <div class="marking-info">
+          <div class="marking-name">Cyclist Crossing (Fietsoversteekplaats)</div>
+          <p>Marked with two broken white lines across the road and a bicycle symbol. Cyclists have priority here if combined with a B6 sign or shark's teeth. Without those, the general priority rules apply.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Special Marked Zones on the Road Surface</h3>
+
+    <div class="marking-strip">
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-block-markings.jpg" alt="Block markings at entry lane"></div>
+        <div class="marking-info">
+          <div class="marking-name">Block Markings (Blokmarkering)</div>
+          <p>A pattern of white blocks separates an entry or exit lane from the main carriageway. Driving over block markings is not automatically prohibited, but they indicate a transition zone — treat with care.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-diversion-area.jpg" alt="Diversion area diagonal stripes"></div>
+        <div class="marking-info">
+          <div class="marking-name">Diversion Area (Verdrijvingsvlak)</div>
+          <p>An area covered with diagonal stripes. <strong>Driving on this is prohibited.</strong> It is used to steer traffic away from an obstacle or to separate opposing streams. Treat it as solid ground you must not enter.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-junction-point.jpg" alt="Junction point puntstuk"></div>
+        <div class="marking-info">
+          <div class="marking-name">Junction Point (Puntstuk)</div>
+          <p>A triangular or polygonal marked area at a point where lanes split or merge. Do not drive on it and do not stop on it. It is a visual guide to keep traffic separated at complex junctions.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-yellow-lines.jpg" alt="Yellow line markings no stopping"></div>
+        <div class="marking-info">
+          <div class="marking-name">Yellow Lines — Stopping Restrictions</div>
+          <p>A <strong>single yellow line</strong> along the kerb indicates a stopping restriction during specific hours shown on a supplementary board. A <strong>double yellow line</strong> (or a solid yellow kerb line) means no stopping at any time.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-bus-lane-text.jpg" alt="BUS painted on road surface"></div>
+        <div class="marking-info">
+          <div class="marking-name">BUS / LIJNBUS Text</div>
+          <p>The word "BUS" or "LIJNBUS" painted on the road surface marks a bus lane or bus road. Only authorised vehicles — buses, and sometimes taxis and cyclists per supplementary sign — may use this lane.</p>
+        </div>
+      </div>
+      <div class="marking-card">
+        <div class="marking-img"><img src="http://example.com/images/theory/marking-bicycle-symbol.jpg" alt="Bicycle symbol on road surface"></div>
+        <div class="marking-info">
+          <div class="marking-name">Bicycle Symbol on Carriageway</div>
+          <p>A bicycle image painted on the road marks a bicycle lane (fietsstrook). Combined with a solid line: other drivers must not enter. Combined with a broken line: other drivers may enter briefly if needed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="callout-ttl">Continuous vs Broken — The Key Distinction</div>
+      <p>Across Dutch road markings, the continuous/broken distinction is fundamental. <strong>Continuous = may not cross.</strong> <strong>Broken = may cross when safe.</strong> This applies to lane lines, bicycle lane borders, and bus lane borders. When in doubt, if the line is solid, treat it as a wall.</p>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:36px 0 16px;color:var(--ink);">Arrow Markings on the Road</h3>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Direction Arrows <span class="badge b">Lane guidance</span></div>
+        <p>Arrows painted on the road surface inside a lane indicate the <strong>permitted direction(s) for that lane</strong>. If an arrow points straight ahead, you must go straight. If it shows a right turn, you must turn right. If your intended direction differs from the arrow, you must change lanes before the arrow.</p>
+        <p>Arrows are often combined with text (e.g. "BUS" or a lane number) to further clarify the permitted use of that lane.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/direction-arrows-road.jpg" alt="Direction arrows painted on road surface"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Speed Limit Markings <span class="badge">On the road surface</span></div>
+        <p>Speed limit numbers can also be painted directly on the road surface — for example, "30" in a 30-zone or "70" on a rural road. These have the same force as a sign on a pole. They are particularly common at the start of a zone, as a reminder after intersections, or in school zones.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/speed-limit-road-marking.jpg" alt="Speed limit number painted on road surface"></div>
+    </div>
+
+  </section>
+
+  <!-- CHAPTER SUMMARY -->
+  <div class="callout gold" style="margin-top:0">
+    <div class="callout-ttl">Chapter 3 — What to Take Away</div>
+    <p>Traffic signs divide into four groups: signs on poles (A through L categories), traffic lights, variable message signs, and road surface markings. The authority hierarchy is: traffic controller &gt; traffic lights &gt; road signs &gt; general rules. A continuous line may not be crossed. A broken line may be crossed when safe. Shark's teeth always mean yield. A red X above a motorway lane means that lane is closed.</p>
+    <p style="margin-top:12px">For the exam, focus especially on: the B6/B7 distinction (give way vs full stop), the meaning of yellow at traffic lights, the green conditional arrow, matrix signs on motorways, and the difference between solid and broken bicycle lane borders.</p>
+  </div>
+
+  <div class="page-foot">
+    <span>Dutch Driving Theory — Based on RVV 1990 (effective 1 January 2026)</span>
+    <span class="pg">3</span>
+  </div>
+
+</main>
+</body>
+</html>

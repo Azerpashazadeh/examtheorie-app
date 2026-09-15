@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 — Exemptions and Waivers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18120e;--paper:#faf7f2;--warm-mid:#f0ead8;--card:#ffffff;--accent:#b83228;--accent-soft:#f0dbd8;--gold:#a87424;--gold-soft:#f0e4c8;--blue:#1a4f7a;--blue-soft:#ddeaf5;--green:#1a5c34;--green-soft:#d4eddf;--muted:#6e6358;--border:#d8d0be;--shadow:rgba(24,18,14,0.07);--radius:8px;--radius-sm:4px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:clamp(15px,2.2vw,18px);line-height:1.8;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+.book-header{background:var(--ink);color:var(--paper);padding:clamp(40px,8vw,72px) clamp(20px,5vw,48px) clamp(36px,7vw,60px);text-align:center;position:relative;overflow:hidden;}
+.book-header::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0,transparent 38px,rgba(255,255,255,0.018) 38px,rgba(255,255,255,0.018) 39px);pointer-events:none;}
+.chapter-eyebrow{font-size:clamp(10px,1.5vw,12px);font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.book-header h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,5.5vw,54px);font-weight:700;line-height:1.1;position:relative;}
+.book-header .lead{margin-top:18px;font-size:clamp(14px,2vw,17px);color:rgba(250,247,242,.60);font-style:italic;max-width:560px;margin-left:auto;margin-right:auto;}
+.gold-rule{width:56px;height:2px;background:var(--gold);margin:24px auto 0;}
+.chapter-nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 clamp(16px,4vw,40px);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px var(--shadow);}
+.chapter-nav ul{list-style:none;display:inline-flex;gap:0;}
+.chapter-nav li a{display:block;padding:14px 16px;font-size:clamp(11px,1.5vw,13px);font-weight:600;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;}
+.chapter-nav li a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+.page{max-width:960px;margin:0 auto;padding:clamp(36px,6vw,64px) clamp(16px,5vw,48px) clamp(60px,10vw,120px);}
+.intro-pull{border-left:4px solid var(--gold);background:var(--warm-mid);padding:clamp(20px,4vw,30px) clamp(20px,4vw,32px);margin-bottom:clamp(40px,7vw,64px);border-radius:0 var(--radius) var(--radius) 0;}
+.intro-pull p{font-size:clamp(15px,2vw,17px);color:#2e2218;}
+.intro-pull p+p{margin-top:14px;}
+.section{margin-bottom:clamp(40px,7vw,64px);scroll-margin-top:60px;}
+.section-head{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,30px);font-weight:700;color:var(--ink);padding-bottom:12px;border-bottom:2px solid var(--border);margin-bottom:8px;line-height:1.2;}
+.section-head em{color:var(--accent);font-style:italic;}
+.section-sub{font-size:clamp(13px,1.8vw,15px);color:var(--muted);font-style:italic;margin-bottom:clamp(20px,3vw,32px);}
+.rule-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:row;align-items:stretch;transition:box-shadow .18s;margin-bottom:clamp(14px,2vw,20px);}
+.rule-block:hover{box-shadow:0 6px 20px var(--shadow);}
+.rule-block.has-image .rule-body{flex:1;min-width:0;}
+.rule-body{padding:clamp(18px,3vw,26px);}
+.rule-title{font-family:'Playfair Display',serif;font-size:clamp(17px,2.4vw,20px);font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;line-height:1.3;}
+.badge{font-family:'Source Serif 4',serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:3px;white-space:nowrap;background:var(--accent-soft);color:var(--accent);}
+.badge.b{background:var(--blue-soft);color:var(--blue);}
+.badge.g{background:var(--green-soft);color:var(--green);}
+.badge.au{background:var(--gold-soft);color:var(--gold);}
+.rule-body p{font-size:clamp(14px,1.9vw,16.5px);color:#2a201a;line-height:1.78;}
+.rule-body p+p{margin-top:10px;}
+.rule-body ul{margin-top:10px;padding-left:20px;}
+.rule-body ul li{font-size:clamp(14px,1.9vw,16px);color:#2a201a;line-height:1.75;margin-bottom:6px;}
+.inner-note{margin-top:12px;padding:10px 14px;background:var(--warm-mid);border-radius:var(--radius-sm);font-size:clamp(13px,1.7vw,15px);color:var(--muted);font-style:italic;line-height:1.65;}
+.img-slot{width:140px;height:140px;flex-shrink:0;flex-grow:0;overflow:hidden;background:var(--warm-mid);border-left:1px solid var(--border);}
+@media(max-width:599px){.img-slot{width:80px;height:80px;}}
+.img-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.callout{padding:clamp(18px,3vw,26px) clamp(18px,3vw,28px);border-radius:var(--radius);margin:clamp(24px,4vw,36px) 0;}
+.callout.warn{background:#fdf1f0;border-left:4px solid var(--accent);}
+.callout.tip{background:#eef7f1;border-left:4px solid var(--green);}
+.callout.info{background:#edf3fb;border-left:4px solid var(--blue);}
+.callout.gold{background:var(--gold-soft);border-left:4px solid var(--gold);}
+.callout-ttl{font-size:clamp(10px,1.5vw,12px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;}
+.callout.warn .callout-ttl{color:var(--accent);}
+.callout.tip .callout-ttl{color:var(--green);}
+.callout.info .callout-ttl{color:var(--blue);}
+.callout.gold .callout-ttl{color:var(--gold);}
+.callout p{font-size:clamp(14px,1.9vw,16px);line-height:1.74;}
+.callout p+p{margin-top:10px;}
+.divider{display:flex;align-items:center;gap:12px;margin:clamp(36px,5vw,56px) 0;color:var(--border);}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.split-box{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:clamp(20px,3vw,30px) 0;}
+@media(max-width:480px){.split-box{grid-template-columns:1fr;}}
+.split-side{padding:clamp(18px,3vw,26px);}
+.split-side:first-child{border-right:1px solid var(--border);background:var(--warm-mid);}
+@media(max-width:480px){.split-side:first-child{border-right:none;border-bottom:1px solid var(--border);}}
+.split-title{font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,19px);font-weight:700;margin-bottom:10px;}
+.split-side p,.split-side ul{font-size:clamp(13px,1.8vw,15.5px);line-height:1.72;}
+.split-side ul{padding-left:18px;margin-top:8px;}
+.split-side ul li{margin-bottom:5px;}
+/* Exemption type cards */
+.exemption-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:clamp(14px,2vw,20px);margin:clamp(16px,2.5vw,28px) 0;}
+.exemption-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(18px,2.5vw,24px);border-left:4px solid var(--gold);}
+.exemption-card.blue-left{border-left-color:var(--blue);}
+.exemption-card.green-left{border-left-color:var(--green);}
+.exemption-card.red-left{border-left-color:var(--accent);}
+.exemption-title{font-family:'Playfair Display',serif;font-size:clamp(16px,2.2vw,18px);font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+.exemption-card p{font-size:clamp(13px,1.8vw,15px);color:#2a201a;line-height:1.7;}
+/* Who grants table */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:clamp(20px,3vw,32px) 0;border:1px solid var(--border);border-radius:var(--radius);}
+.comp-table{width:100%;border-collapse:collapse;font-size:clamp(13px,1.8vw,15.5px);min-width:420px;}
+.comp-table th{background:var(--ink);color:var(--paper);padding:13px 16px;text-align:left;font-weight:600;letter-spacing:.06em;font-size:clamp(11px,1.5vw,13px);text-transform:uppercase;}
+.comp-table td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table tr:nth-child(even) td{background:var(--warm-mid);}
+.comp-table tr:hover td{background:var(--accent-soft);}
+/* Seatbelt exemption cards */
+.seatbelt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:clamp(12px,2vw,16px);margin:clamp(16px,2.5vw,24px) 0;}
+.seatbelt-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(14px,2.5vw,20px);display:flex;gap:12px;align-items:flex-start;}
+.seatbelt-icon{font-size:26px;flex-shrink:0;line-height:1;}
+.seatbelt-info{}
+.seatbelt-title{font-weight:700;font-size:clamp(13px,1.8vw,15px);color:var(--ink);margin-bottom:4px;}
+.seatbelt-info p{font-size:clamp(12px,1.6vw,14px);color:var(--muted);line-height:1.6;}
+/* Priority vehicle exemption visual */
+.pv-box{background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:clamp(22px,3.5vw,34px);margin:clamp(20px,3vw,30px) 0;}
+.pv-box-title{font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);font-weight:700;color:var(--gold);margin-bottom:14px;}
+.pv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:14px;}
+.pv-item{background:rgba(255,255,255,0.08);border-radius:6px;padding:12px 14px;font-size:clamp(12px,1.7vw,14px);line-height:1.55;}
+.pv-item strong{display:block;color:var(--gold);margin-bottom:3px;font-size:clamp(13px,1.8vw,15px);}
+.page-foot{margin-top:clamp(48px,8vw,80px);padding-top:24px;border-top:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:clamp(11px,1.6vw,13px);color:var(--muted);}
+.page-foot .pg{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);color:var(--border);}
+</style>
+</head>
+<body>
+
+<header class="book-header">
+  <p class="chapter-eyebrow">Chapter 6</p>
+  <h1>Exemptions &amp; Waivers</h1>
+  <p class="lead">When the rules have exceptions — who can grant them, who benefits from them, and what they actually permit.</p>
+  <div class="gold-rule"></div>
+</header>
+
+<nav class="chapter-nav" aria-label="Jump to section">
+  <ul>
+    <li><a href="#s1">General Exemptions</a></li>
+    <li><a href="#s2">Seatbelt Exemptions</a></li>
+    <li><a href="#s3">Other Waivers</a></li>
+    <li><a href="#s5">Priority Vehicle Exemptions</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <div class="intro-pull">
+    <p>The traffic rules in Chapters 2 through 5 apply to everyone — but Dutch law also recognises that certain situations, certain vehicles or certain people genuinely need to operate outside those rules. Chapter 6 sets out the legal framework for granting exemptions and waivers: who has the authority to grant them, under what conditions they are valid, and what they permit.</p>
+    <p>For the theory exam, the most important topics in this chapter are seatbelt exemptions and the special rules that apply to priority vehicles when responding to an emergency.</p>
+  </div>
+
+  <!-- ════════════════════════ §1 GENERAL ════════════════════════ -->
+  <section class="section" id="s1">
+    <h2 class="section-head">§ 1 — <em>General Exemptions</em></h2>
+    <p class="section-sub">The legal basis for granting exemptions — and who has the authority to do so.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">What Is an Exemption? <span class="badge au">Ontheffing</span></div>
+        <p>An <strong>exemption (ontheffing)</strong> is an official decision that releases a specific person, vehicle or category of road user from a specific rule in the RVV 1990. Exemptions are not automatic — they must be applied for and formally granted by the competent authority.</p>
+        <p>A <strong>waiver (vrijstelling)</strong> is slightly different: it is a general rule built into the regulations that automatically applies to a defined category, without needing to be individually applied for. Both achieve a similar result — they permit something that would otherwise be prohibited — but through different mechanisms.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/exemption-permit-document.jpg" alt="Official exemption permit document"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Who Grants Exemptions? <span class="badge b">Competent Authority</span></div>
+        <p>The authority to grant exemptions from the RVV 1990 lies with the <strong>competent authority (bevoegd gezag)</strong>. In practice this means:</p>
+        <ul>
+          <li><strong>The Minister of Infrastructure and Water Management</strong> — for exemptions that apply nationally or to categories that cross municipal boundaries</li>
+          <li><strong>Provincial authorities</strong> — for provincial roads</li>
+          <li><strong>Municipal authorities</strong> — for roads within their jurisdiction</li>
+          <li><strong>Water boards</strong> — for roads they manage</li>
+        </ul>
+        <p>The competent authority may attach conditions to an exemption. These conditions are legally binding — violating a condition of an exemption is equivalent to violating the underlying rule.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/competent-authority-exemption.jpg" alt="Competent authority granting an exemption"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Types of Situations That May Warrant an Exemption <span class="badge g">Common cases</span></div>
+        <p>Exemptions are typically granted for situations where strict application of the rules would be unreasonable, disproportionate or impractical. Common categories include:</p>
+        <ul>
+          <li><strong>Oversized or overweight loads</strong> — vehicles or combinations that exceed normal dimension or weight limits</li>
+          <li><strong>Specialist vehicles</strong> — road sweepers, concrete pumps, mobile cranes operating in restricted areas</li>
+          <li><strong>Events and temporary situations</strong> — road closures, special routes for races or processions</li>
+          <li><strong>Medical or physical conditions</strong> — seatbelt exemptions for people who cannot safely wear one</li>
+          <li><strong>Professional operations</strong> — certain trade or construction activities requiring access to restricted roads</li>
+        </ul>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/oversized-load-exemption.jpg" alt="Oversized load vehicle with exemption permit"></div>
+    </div>
+
+    <div class="exemption-grid">
+      <div class="exemption-card blue-left">
+        <div class="exemption-title">Exemption must be carried</div>
+        <p>When an exemption is granted for a specific vehicle or operation, the exemption document must be carried in the vehicle and shown on request to enforcement officers. A verbal claim of exemption without documentation carries no legal weight.</p>
+      </div>
+      <div class="exemption-card green-left">
+        <div class="exemption-title">Exemption is specific</div>
+        <p>An exemption applies only to the specific rule, vehicle, route or time period stated in the document. It does not grant a general licence to ignore other rules. Only the precisely stated exception is permitted.</p>
+      </div>
+      <div class="exemption-card au">
+        <div class="exemption-title">Exemptions can be withdrawn</div>
+        <p>The granting authority can revoke an exemption if conditions are not met, if circumstances change, or if the exemption is misused. Driving on a revoked exemption is a violation.</p>
+      </div>
+      <div class="exemption-card red-left">
+        <div class="exemption-title">Automatic waivers exist</div>
+        <p>Some waivers are built directly into the RVV 1990 and apply automatically without a formal application — for example, the waiver allowing priority vehicles to exceed speed limits when responding to an emergency.</p>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-ttl">Exemption vs Exception vs Waiver</div>
+      <p>Dutch traffic law uses three related but distinct concepts. An <strong>exemption (ontheffing)</strong> is individually granted for a specific case. A <strong>waiver (vrijstelling)</strong> applies automatically to a defined category and is written into the regulations. An <strong>exception (uitzondering)</strong> is a built-in rule that limits the scope of another rule — for example, the exception that allows buses to stop at bus stops despite normal stopping restrictions. All three result in permitted behaviour that would otherwise be prohibited.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- ════════════════════════ §2 SEATBELTS ════════════════════════ -->
+  <section class="section" id="s2">
+    <h2 class="section-head">§ 2 — <em>Seatbelt Exemptions</em></h2>
+    <p class="section-sub">Who is exempt from the seatbelt obligation — and under what conditions.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">The General Rule <span class="badge au">Autogordel</span></div>
+        <p>The general rule is clear: <strong>every occupant of a motor vehicle must wear a seatbelt</strong> at all times while the vehicle is in motion. The driver is responsible for ensuring passengers under 18 are properly restrained. There are no exceptions based on speed, distance or road type — the seatbelt must always be worn.</p>
+        <p>However, the RVV 1990 acknowledges that there are genuine situations — medical, physical or operational — where wearing a seatbelt is not possible or not appropriate. For these situations, specific exemptions exist.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/seatbelt-general-rule.jpg" alt="Seatbelt must be worn — general rule"></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,22px);margin:32px 0 16px;color:var(--ink);">Who Is Exempt from Wearing a Seatbelt</h3>
+
+    <div class="seatbelt-grid">
+      <div class="seatbelt-card">
+        <div class="seatbelt-icon">🏥</div>
+        <div class="seatbelt-info">
+          <div class="seatbelt-title">Medical certificate holders</div>
+          <p>People with a medical condition that makes wearing a seatbelt dangerous or impossible — confirmed by a doctor's certificate — are exempt. The certificate must be carried in the vehicle.</p>
+        </div>
+      </div>
+      <div class="seatbelt-card">
+        <div class="seatbelt-icon">🚗</div>
+        <div class="seatbelt-info">
+          <div class="seatbelt-title">Driver reversing</div>
+          <p>A driver who is reversing their vehicle is exempt from the seatbelt requirement for the duration of the reversing manoeuvre only.</p>
+        </div>
+      </div>
+      <div class="seatbelt-card">
+        <div class="seatbelt-icon">🚕</div>
+        <div class="seatbelt-info">
+          <div class="seatbelt-title">Taxi drivers with passengers</div>
+          <p>Taxi drivers are exempt from wearing a seatbelt when carrying passengers — because frequent stops, exits and re-entries make continuous seatbelt use impractical.</p>
+        </div>
+      </div>
+      <div class="seatbelt-card">
+        <div class="seatbelt-icon">📦</div>
+        <div class="seatbelt-info">
+          <div class="seatbelt-title">Delivery drivers in built-up areas</div>
+          <p>Drivers making frequent short deliveries in a built-up area — such as postal workers or couriers — are exempt during the delivery rounds where stopping is continuous.</p>
+        </div>
+      </div>
+      <div class="seatbelt-card">
+        <div class="seatbelt-icon">🏗️</div>
+        <div class="seatbelt-info">
+          <div class="seatbelt-title">Certain professional operations</div>
+          <p>Drivers of certain vehicles used for road maintenance, refuse collection or similar operations that require repeated stopping and exiting may be exempt during those operations.</p>
+        </div>
+      </div>
+      <div class="seatbelt-card">
+        <div class="seatbelt-icon">🚌</div>
+        <div class="seatbelt-info">
+          <div class="seatbelt-title">Bus passengers standing</div>
+          <p>Passengers standing in a bus (where seatbelts are not available for standing positions) are naturally exempt — there is no seatbelt to wear in those positions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-ttl">The Medical Certificate — Carry It Always</div>
+      <p>If you are exempt from wearing a seatbelt due to a medical condition, the exemption certificate must be <strong>carried in the vehicle at all times</strong> and produced immediately upon request by an enforcement officer. Claiming a medical exemption without the certificate is not accepted. The certificate must state clearly that wearing a seatbelt is medically contraindicated and must be signed by a registered doctor.</p>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Child Restraint Exemptions <span class="badge b">Kinderbeveiligingssysteem</span></div>
+        <p>The child restraint obligation — children under 1.35 m must use an approved child seat — also has limited exemptions:</p>
+        <ul>
+          <li>In taxis, when no child seat is available and the child is accompanied by an adult — the adult seatbelt may be used instead, and the child must sit in the rear</li>
+          <li>Children with a medical condition preventing use of a child seat — confirmed by a medical certificate</li>
+          <li>In vehicles where fitting a child seat is technically not possible due to the vehicle's design — the child must still travel in the rear using an adult seatbelt</li>
+        </ul>
+        <div class="inner-note">These exemptions are narrow. The default rule — child seat for all children under 1.35 m — applies in virtually all normal driving situations. The exemptions exist only for genuinely exceptional circumstances.</div>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/child-restraint-exemption.jpg" alt="Child restraint exemption circumstances"></div>
+    </div>
+
+  </section>
+
+  <div class="divider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- ════════════════════════ §3 OTHER WAIVERS ════════════════════════ -->
+  <section class="section" id="s3">
+    <h2 class="section-head">§ 3 &amp; 4 — <em>Other Waivers</em></h2>
+    <p class="section-sub">Additional waiver categories that appear in the RVV 1990.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Waivers for Specific Road Sections <span class="badge au">Road authority decisions</span></div>
+        <p>Road authorities — municipalities, provinces, the national government — can grant waivers for specific roads or sections that allow vehicles or operations that would otherwise be prohibited. Examples include:</p>
+        <ul>
+          <li>Allowing heavy goods vehicles on roads with a weight restriction, for essential deliveries</li>
+          <li>Permitting cyclists on roads where cycling is normally prohibited</li>
+          <li>Allowing access to closed roads for authorised maintenance work</li>
+          <li>Granting time-limited access to pedestrian zones for loading and unloading</li>
+        </ul>
+        <p>These waivers are typically indicated by supplementary boards below the relevant signs, specifying the time, vehicle type or other conditions under which the exception applies.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/road-waiver-supplementary-board.jpg" alt="Road waiver indicated by supplementary board under sign"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Waivers for Special Events <span class="badge b">Events</span></div>
+        <p>For organised events — cycling races, marathons, markets, festivals — road authorities can temporarily waive normal traffic rules for specific roads and time windows. These waivers are typically accompanied by temporary signs and traffic controller deployment. Participants in permitted events operate under the conditions of the event waiver, not normal traffic rules, for the duration of the event.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/event-waiver-road-closure.jpg" alt="Road closure for special event under waiver"></div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-ttl">Supplementary Boards as Waiver Indicators</div>
+      <p>One of the most practical ways waivers appear in everyday traffic is through supplementary boards. A "no entry" sign (C1) with a supplementary board saying "except for residents" is a built-in waiver. A "no parking" sign with hours shown is a time-limited waiver. A bicycle prohibition sign with "except cyclists going straight ahead" is a directional waiver. Always read supplementary boards — they frequently turn a prohibition into a partial permission.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- ════════════════════════ §5 PRIORITY VEHICLES ════════════════════════ -->
+  <section class="section" id="s5">
+    <h2 class="section-head">§ 5 — <em>Priority Vehicle Exemptions</em></h2>
+    <p class="section-sub">The special rules that apply to ambulances, fire trucks, police vehicles and other emergency services when responding to an emergency.</p>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">What Is a Priority Vehicle? <span class="badge">🚨 Voorrangsvoertuig</span></div>
+        <p>A priority vehicle is a motor vehicle that is simultaneously displaying <strong>both a blue flashing or rotating light and a siren</strong>. Only when both signals are active does the vehicle qualify as a priority vehicle and benefit from the associated exemptions.</p>
+        <p>The blue light alone, or the siren alone, does not create a priority vehicle. Both must be active at the same time.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/priority-vehicle-blue-light-siren.jpg" alt="Priority vehicle with blue flashing light and siren active"></div>
+    </div>
+
+    <!-- Priority vehicle exemptions dark box -->
+    <div class="pv-box">
+      <div class="pv-box-title">🚨 What a Priority Vehicle May Do</div>
+      <p style="font-size:clamp(13px,1.8vw,15px);color:rgba(250,247,242,0.7);margin-bottom:4px;">When both blue light and siren are active, the following exemptions automatically apply — no individual permit needed:</p>
+      <div class="pv-grid">
+        <div class="pv-item"><strong>Exceed speed limits</strong>Drive faster than the posted limit when necessary to reach an emergency.</div>
+        <div class="pv-item"><strong>Pass red traffic lights</strong>Proceed through a red light after ensuring it is safe to do so.</div>
+        <div class="pv-item"><strong>Ignore give-way obligations</strong>Proceed at intersections without waiting for right of way.</div>
+        <div class="pv-item"><strong>Use bus lanes</strong>Drive in bus lanes and other restricted lanes.</div>
+        <div class="pv-item"><strong>Drive on the wrong side</strong>Use the oncoming lane when the path ahead is blocked.</div>
+        <div class="pv-item"><strong>Stop anywhere</strong>Stop in locations where stopping is normally prohibited — including yellow lines, bus stops and junctions.</div>
+        <div class="pv-item"><strong>Ignore direction signs</strong>Proceed in a direction that a sign would normally prohibit.</div>
+        <div class="pv-item"><strong>Use the hard shoulder</strong>Drive on the emergency shoulder of a motorway.</div>
+      </div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Duty of Care Always Remains <span class="badge warn">Critical limit</span></div>
+        <p>Even with all these exemptions active, a priority vehicle driver is <strong>never exempt from the duty of care</strong>. They must always drive in a way that does not needlessly endanger other road users. Exceeding a speed limit does not mean driving recklessly. Passing a red light does not mean driving without looking. The exemptions permit breaking specific rules — they do not permit endangering lives.</p>
+        <p>A priority vehicle driver who causes an accident through recklessness cannot hide behind the exemptions. The exemptions are tools for efficiency, not a licence for dangerous driving.</p>
+        <div class="inner-note">This is a frequently tested point in the theory exam: priority vehicles have exemptions from specific rules, but they are never exempt from the fundamental duty of care toward other road users.</div>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/priority-vehicle-duty-of-care.jpg" alt="Priority vehicle driver still has duty of care"></div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Other Road Users — Obligations When a Priority Vehicle Approaches <span class="badge b">Your duty</span></div>
+        <p>When a priority vehicle approaches with both blue light and siren active, every other road user must:</p>
+        <ul>
+          <li><strong>Make way immediately</strong> — move to the side, slow down, stop if necessary</li>
+          <li><strong>Keep the path clear</strong> — do not block the priority vehicle's route</li>
+          <li><strong>Act safely</strong> — making way does not mean endangering yourself or others; find the safest way to create space</li>
+          <li><strong>Not follow the priority vehicle</strong> — it is illegal to follow a priority vehicle through a red light or into a restricted area simply because the priority vehicle went there</li>
+        </ul>
+        <div class="inner-note">You are obliged to make way — but you are not permitted to break traffic rules yourself while doing so, except to the minimum extent necessary to create a clear path. Moving briefly onto a yellow line to let an ambulance pass is permitted; running a red light because an ambulance passed through is not.</div>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/making-way-for-ambulance.jpg" alt="Road users making way for an ambulance"></div>
+    </div>
+
+    <div class="split-box">
+      <div class="split-side">
+        <div class="split-title">✅ Permitted when making way</div>
+        <ul>
+          <li>Stopping briefly on a yellow line</li>
+          <li>Stopping at a bus stop briefly</li>
+          <li>Moving onto the hard shoulder of a motorway to create space</li>
+          <li>Crossing a solid white line to move aside if no safer option exists</li>
+        </ul>
+      </div>
+      <div class="split-side">
+        <div class="split-title">🚫 Not permitted when making way</div>
+        <ul>
+          <li>Running a red light yourself</li>
+          <li>Following the priority vehicle through a red light</li>
+          <li>Driving into oncoming traffic unsafely</li>
+          <li>Stopping in a way that blocks other emergency access</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-block has-image">
+      <div class="rule-body">
+        <div class="rule-title">Which Vehicles Can Be Priority Vehicles? <span class="badge g">Authorised vehicles</span></div>
+        <p>Only vehicles for which blue lights and sirens are officially authorised may become priority vehicles. This includes:</p>
+        <ul>
+          <li><strong>Ambulances</strong> — when responding to medical emergencies</li>
+          <li><strong>Fire trucks</strong> — when responding to fires or other emergencies</li>
+          <li><strong>Police vehicles</strong> — when responding to incidents requiring urgent response</li>
+          <li><strong>Other emergency services</strong> — officially authorised vehicles of coast guard, bomb disposal, certain military units</li>
+        </ul>
+        <p>A doctor's car with a green flashing light is <strong>not</strong> a priority vehicle in the legal sense — it has a different, lesser status. Green flashing lights are a request for courtesy, not a legal command to yield.</p>
+      </div>
+      <div class="img-slot"><img src="http://example.com/images/theory/authorised-priority-vehicles.jpg" alt="Authorised priority vehicles — ambulance, fire truck, police car"></div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-ttl">Green Flashing Light — Not a Priority Vehicle</div>
+      <p>A <strong>green flashing light</strong> — used by some doctors and certain other authorised persons — does not create a priority vehicle. Other road users are encouraged to make way out of courtesy, but they are <strong>not legally obliged</strong> to do so. The legal obligation to yield applies only to vehicles displaying both a blue light and a siren simultaneously. Never confuse a green light with a blue one — the legal consequences are completely different.</p>
+    </div>
+
+  </section>
+
+  <!-- CHAPTER SUMMARY -->
+  <div class="callout gold" style="margin-top:0">
+    <div class="callout-ttl">Chapter 6 — What to Take Away</div>
+    <p>Chapter 6 covers the framework of exceptions to the rules. Exemptions are individually granted; waivers apply automatically to defined categories. The competent authority — municipal, provincial or national — grants exemptions, which must be carried and shown on request.</p>
+    <p style="margin-top:12px">For the exam, focus especially on: seatbelt exemptions (medical certificate, reversing driver, taxi driver, delivery driver), priority vehicle exemptions (both blue light AND siren required), the duty of care that always remains even for priority vehicles, and the fact that other road users must make way but may not themselves break traffic rules beyond what is strictly necessary.</p>
+    <p style="margin-top:12px">The green flashing light distinction — not a priority vehicle — is a classic exam trap. Remember: <strong>blue + siren = priority vehicle. Green light alone = courtesy request only.</strong></p>
+  </div>
+
+  <div class="page-foot">
+    <span>Dutch Driving Theory — Based on RVV 1990 (effective 1 January 2026)</span>
+    <span class="pg">6</span>
+  </div>
+
+</main>
+</body>
+</html>
