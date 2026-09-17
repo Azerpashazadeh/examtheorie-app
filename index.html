@@ -3875,8 +3875,9 @@
             if (!currentUser) { openModal('si'); return; }
             if (!canAccess('theory')) { showPaywall('theory'); return; }
             const lang = currentLang || localStorage.getItem('et_lang') || 'en';
-            const prefix = lang === 'en' ? '' : (lang + '-');
-            window.open('theory/' + prefix + fileName, '_blank');
+            const supportedLangs = ['en', 'tr', 'nl', 'ar'];
+            const theoryLang = supportedLangs.includes(lang) ? lang : 'en';
+            window.open('theory/' + theoryLang + '/' + fileName, '_blank');
         }
 
         /* ─── PAYWALL ─── */
