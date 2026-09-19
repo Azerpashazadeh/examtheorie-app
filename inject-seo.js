@@ -10,7 +10,7 @@
  *  4. <head> içine şunları ekler/günceller:
  *       - <meta name="description">
  *       - <link rel="canonical">
- *       - hreflang alternate linkleri (4 dil)
+ *       - hreflang alternate linkleri (yalnızca mevcut dil dosyaları)
  *       - <meta name="robots">
  *       - Open Graph tagları
  *
@@ -34,42 +34,47 @@ const LANG_MAP = {
   ''    : { lang: 'en', hreflang: 'en' },   // prefiks yoksa İngilizce
 };
 
-// Dil prefikslerini slug'dan temizlerken kullanılacak sıra (uzundan kısaya)
+// Dil prefikslerini slug'dan temizlerken kullanılacak sıra
 const LANG_PREFIXES = ['tr-', 'nl-', 'ar-'];
 
-// Atlanacak dosya kalıpları (regex — dosya adına göre)
+// Atlanacak dosya kalıpları
 const SKIP_PATTERNS = [
   /^test-\d+/,          // quiz dosyaları: test-1-en.html
-  /^ru-/,               // Rusça (aktif değil)
-  /^fa-/,               // Farsça (aktif değil)
-  /^deneme/,            // geliştirme dosyaları
+  /^ru-/,              // Rusça (aktif değil)
+  /^fa-/,              // Farsça (aktif değil)
+  /^deneme/,           // geliştirme dosyaları
   /^sayfa/,
   /^deney/,
   /^arapdugmeler/,
 ];
 
-
-
-// ── CLI argümanları ───────────────────────────────────────────────────────────
+// ── CLI argümanları ──────────────────────────────────────────────────────────
 
 const args    = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
 const DIR_IDX = args.indexOf('--dir');
-const ROOT    = DIR_IDX !== -1 ? path.resolve(args[DIR_IDX + 1]) : process.cwd();
+const ROOT    = DIR_IDX !== -1
+  ? path.resolve(args[DIR_IDX + 1])
+  : process.cwd();
 
 // ── Config yükle ─────────────────────────────────────────────────────────────
 
 const CONFIG_PATH = path.join(ROOT, 'seo-config.json');
 let config = {};
+
 if (fs.existsSync(CONFIG_PATH)) {
   try {
     config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));
-    console.log(`✅ seo-config.json yüklendi (${Object.keys(config).length} kayıt)`);
+    console.log(
+      `✅ seo-config.json yüklendi (${Object.keys(config).length} kayıt)`
+    );
   } catch (e) {
-    console.warn('⚠️  seo-config.json parse hatası:', e.message);
+    console.warn('⚠️ seo-config.json parse hatası:', e.message);
   }
 } else {
-  console.log('ℹ️  seo-config.json bulunamadı — description\'lar boş bırakılacak');
+  console.log(
+    'ℹ️ seo-config.json bulunamadı — description\'lar boş bırakılacak'
+  );
 }
 
 // ── Yardımcı fonksiyonlar ─────────────────────────────────────────────────────
@@ -78,22 +83,21 @@ if (fs.existsSync(CONFIG_PATH)) {
 function parseFilename(filename) {
   const base = path.basename(filename, '.html');
 
-  // Dil tespiti
   let langKey = '';
-  let slug    = base;
+  let slug = base;
+
   for (const prefix of LANG_PREFIXES) {
     if (base.startsWith(prefix)) {
       langKey = prefix;
-      slug    = base.slice(prefix.length);
+      slug = base.slice(prefix.length);
       break;
     }
   }
 
-  // quiz dosyası mı? (test-1-nl.html gibi)
   const isQuiz = /^test-\d+/.test(slug);
 
   return {
-    lang    : LANG_MAP[langKey],
+    lang: LANG_MAP[langKey],
     langKey,
     slug,
     isQuiz,
@@ -101,34 +105,70 @@ function parseFilename(filename) {
   };
 }
 
-/** Bu slug için diğer dil versiyonlarının URL'lerini üretir */
+/** Ana sayfa kök URL kullanır; diğer kök sayfaların temiz URL düzeni korunur. */
+function pageUrl(base) {
+  return base === 'index'
+    ? `${BASE_URL}/`
+    : `${BASE_URL}/${base}`;
+}
+
+/** Yalnızca kök dizinde gerçekten bulunan dil dosyalarını bildirir. */
 function buildHreflangs(slug) {
-  return {
-    en: `${BASE_URL}/${slug}`,
-    tr: `${BASE_URL}/tr-${slug}`,
-    nl: `${BASE_URL}/nl-${slug}`,
-    ar: `${BASE_URL}/ar-${slug}`,
-  };
+  const result = {};
+
+  for (const [prefix, info] of Object.entries(LANG_MAP)) {
+    const base = `${prefix}${slug}`;
+    const candidate = path.join(ROOT, `${base}.html`);
+
+    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+      result[info.hreflang] = pageUrl(base);
+    }
+  }
+
+  return result;
 }
 
 /** Config'den description çeker */
 function getDescription(slug, langCode) {
   const entry = config[slug];
+
   if (!entry) return '';
-  return (entry[langCode] && entry[langCode].description) || entry.description || '';
+
+  return (
+    (entry[langCode] && entry[langCode].description)
+    || entry.description
+    || ''
+  );
 }
 
-/** SEO bloğunu oluşturur — mevcut varsa günceller */
+/** SEO bloğunu oluşturur */
 function buildSeoBlock(slug, langInfo, htmlTitle) {
-  const langCode   = langInfo.hreflang;
-  const canonical  = langCode === 'en'
-    ? `${BASE_URL}/${slug}`
-    : `${BASE_URL}/${langInfo.hreflang}-${slug}`;
-  const hreflangs  = buildHreflangs(slug);
-  const desc       = getDescription(slug, langCode);
-  const ogTitle    = htmlTitle || `${slug.replace(/-/g, ' ')} – ${SITE_NAME}`;
+  const langCode = langInfo.hreflang;
+  const canonical = pageUrl(
+    langCode === 'en' ? slug : `${langCode}-${slug}`
+  );
 
-  const descTag    = desc
+  const hreflangs = buildHreflangs(slug);
+  const alternates = Object.entries(hreflangs);
+
+  // Tek URL içinde değişen diller için ayrı dil URL'leri ilan edilmez.
+  const alternateTags = alternates.length > 1
+    ? alternates.map(([code, url]) =>
+        `    <link rel="alternate" hreflang="${code}" href="${url}" />`
+      ).concat(
+        hreflangs.en
+          ? [
+              `    <link rel="alternate" hreflang="x-default" href="${hreflangs.en}" />`
+            ]
+          : []
+      ).join('\n') + '\n'
+    : '';
+
+  const desc = getDescription(slug, langCode);
+  const ogTitle = htmlTitle
+    || `${slug.replace(/-/g, ' ')} – ${SITE_NAME}`;
+
+  const descTag = desc
     ? `    <meta name="description" content="${desc}" />`
     : `    <!-- TODO: meta description for ${slug} (${langCode}) -->`;
 
@@ -136,12 +176,7 @@ function buildSeoBlock(slug, langInfo, htmlTitle) {
     <meta name="robots" content="index, follow" />
 ${descTag}
     <link rel="canonical" href="${canonical}" />
-    <link rel="alternate" hreflang="en" href="${hreflangs.en}" />
-    <link rel="alternate" hreflang="tr" href="${hreflangs.tr}" />
-    <link rel="alternate" hreflang="nl" href="${hreflangs.nl}" />
-    <link rel="alternate" hreflang="ar" href="${hreflangs.ar}" />
-    <link rel="alternate" hreflang="x-default" href="${hreflangs.en}" />
-    <meta property="og:title" content="${ogTitle}" />
+${alternateTags}    <meta property="og:title" content="${ogTitle}" />
     <meta property="og:description" content="${desc}" />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:site_name" content="${SITE_NAME}" />
@@ -152,52 +187,51 @@ ${descTag}
 /** HTML dosyasını işler */
 function processFile(filepath) {
   const filename = path.basename(filepath);
-  const { lang, slug, isQuiz, base } = parseFilename(filename);
+  const { lang, slug } = parseFilename(filename);
 
-  // Skip kontrolü
   for (const pat of SKIP_PATTERNS) {
     if (pat.test(filename)) {
-      console.log(`  ⏭  Atlandı: ${filename}`);
+      console.log(`  ⏭ Atlandı: ${filename}`);
       return false;
     }
   }
+
   if (!lang) {
-    console.log(`  ⏭  Atlandı (dil tanınamadı): ${filename}`);
+    console.log(`  ⏭ Atlandı (dil tanınamadı): ${filename}`);
     return false;
   }
 
   let html = fs.readFileSync(filepath, 'utf8');
 
-  // Başlığı al
   const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
-  const htmlTitle  = titleMatch ? titleMatch[1].trim() : '';
+  const htmlTitle = titleMatch ? titleMatch[1].trim() : '';
 
   const seoBlock = buildSeoBlock(slug, lang, htmlTitle);
 
-  // Mevcut SEO bloğu var mı?
   if (html.includes('auto-generated by inject-seo.js')) {
-    // Güncelle
     html = html.replace(
       /[ \t]*<!-- ═══ SEO \(auto-generated[\s\S]*?═══ \/SEO ═══ -->/,
       seoBlock
     );
+
     console.log(`  🔄 Güncellendi: ${filename}`);
   } else {
-    // <head> içine, <title>'dan hemen sonra ekle
     if (html.includes('</title>')) {
       html = html.replace('</title>', `</title>\n${seoBlock}`);
     } else if (html.includes('<head>')) {
       html = html.replace('<head>', `<head>\n${seoBlock}`);
     } else {
-      console.warn(`  ⚠️  <head> bulunamadı: ${filename}`);
+      console.warn(`  ⚠️ <head> bulunamadı: ${filename}`);
       return false;
     }
+
     console.log(`  ✅ Eklendi: ${filename} (${lang.hreflang})`);
   }
 
   if (!DRY_RUN) {
     fs.writeFileSync(filepath, html, 'utf8');
   }
+
   return true;
 }
 
@@ -206,33 +240,48 @@ function processFile(filepath) {
 function scanDir(dir) {
   const results = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
+
   for (const entry of entries) {
-    if (entry.isDirectory()) {
-      if (['node_modules', '.git', '.github'].includes(entry.name)) continue;
-      results.push(...scanDir(path.join(dir, entry.name)));
-    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+    // Bu betiğin dil ve temiz URL kuralları yalnızca kök HTML dosyaları içindir.
+    // theory/en/... gibi alt dizinlerin farklı URL yapısını değiştirme.
+    if (entry.isFile() && entry.name.endsWith('.html')) {
       results.push(path.join(dir, entry.name));
     }
   }
+
   return results;
 }
 
 // ── Ana çalıştırma ────────────────────────────────────────────────────────────
 
-console.log(`\n🚀 ExamTheorie SEO Injector`);
-console.log(`📁 Dizin : ${ROOT}`);
-console.log(`${DRY_RUN ? '🔍 MOD    : DRY RUN (dosya yazılmaz)' : '✍️  MOD    : YAZMA aktif'}\n`);
+console.log('\n🚀 ExamTheorie SEO Injector');
+console.log(`📁 Dizin: ${ROOT}`);
+console.log(
+  `${DRY_RUN
+    ? '🔍 MOD: DRY RUN (dosya yazılmaz)'
+    : '✍️ MOD: YAZMA aktif'}\n`
+);
 
-const files   = scanDir(ROOT);
+const files = scanDir(ROOT);
 console.log(`📄 Bulunan HTML dosyası: ${files.length}\n`);
 
 let processed = 0;
-let skipped   = 0;
+let skipped = 0;
 
 for (const file of files) {
   const ok = processFile(file);
-  if (ok) processed++; else skipped++;
+
+  if (ok) {
+    processed++;
+  } else {
+    skipped++;
+  }
 }
 
-console.log(`\n🏁 Tamamlandı: ${processed} işlendi, ${skipped} atlandı`);
-if (DRY_RUN) console.log('   (DRY RUN — hiçbir dosya değiştirilmedi)');
+console.log(
+  `\n🏁 Tamamlandı: ${processed} işlendi, ${skipped} atlandı`
+);
+
+if (DRY_RUN) {
+  console.log('   (DRY RUN — hiçbir dosya değiştirilmedi)');
+}
