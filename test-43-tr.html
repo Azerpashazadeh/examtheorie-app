@@ -5711,7 +5711,13 @@
 
         function addDragAndDropFunctionalityS3(index) {
             const demo = document.getElementById(`demo-${index}`);
-            const draggers = demo.querySelectorAll(".box");
+            const demoImage = demo && demo.querySelector("img");
+      if (demoImage && !demoImage.complete) {
+        demoImage.addEventListener("load", () => addDragAndDropFunctionalityS3(index), { once: true });
+        demoImage.addEventListener("error", () => addDragAndDropFunctionalityS3(index), { once: true });
+        return;
+      }
+      const draggers = demo.querySelectorAll(".box");
             const targets = demo.querySelectorAll(".target");
 
             // Her bir draggable için başlangıç ayarları
@@ -5725,80 +5731,77 @@
 
             // Drag and Drop işlevselliği
             Draggable.create(draggers, {
-                bounds: demo,
-                edgeResistance: 0.1,
-                inertia: true,
-                onDragStart: function (event) {
-                    // Drag işlemi başladığında tüm hedefleri "highlight" ile vurgula
-                    targets.forEach((target) => target.classList.add("highlight"));
-                },
-                onDragEnd: function (event) {
-                    let snapMade = false;
+        bounds: demo,
+        edgeResistance: 0.1,
+        inertia: false,
+        onDragStart: function (event) {
+          gsap.killTweensOf(this.target);
+          // Drag işlemi başladığında tüm hedefleri "highlight" ile vurgula
+          targets.forEach((target) => target.classList.add("highlight"));
+        },
+        onDragEnd: function (event) {
+          const dragger = this.target;
+          let snapMade = false;
 
-                    // Her hedefi kontrol et
-                    targets.forEach((target) => {
-                        if (this.hitTest(target, { threshold: "80%" })) {
-                            // Eğer hedef "occupied" değilse, hedefi işaretle ve sürüklenen kutuyu hedefe yerleştir
-                            if (!target.classList.contains("occupied")) {
-                                target.classList.add("occupied"); // Burada occupied sınıfı ekleniyor
-                                gsap.to(event.target, {
-                                    duration: 0.6,
-                                    left: target.style.left,
-                                    top: target.style.top,
-                                    x: 0,
-                                    y: 0,
-                                });
+          // Her hedefi kontrol et
+          targets.forEach((target) => {
+            if (this.hitTest(target, { threshold: "80%" })) {
+              // Eğer hedef "occupied" değilse, işaretle ve kutuyu hedefe yerleştir
+              if (!target.classList.contains("occupied") || dragger.targetAttachedTo === target) {
+                target.classList.add("occupied");
+                gsap.killTweensOf(dragger);
+                gsap.to(dragger, {
+                  duration: 0.6,
+                  left: target.style.left,
+                  top: target.style.top,
+                  x: 0,
+                  y: 0,
+                  overwrite: "auto",
+                });
 
-                                // Eğer kutu daha önce başka bir hedefe bağlıysa, eski bağlantıyı kaldır
-                                if (event.target.targetAttachedTo !== target) {
-                                    if (event.target.targetAttachedTo) {
-                                        event.target.targetAttachedTo.classList.remove(
-                                            "occupied",
-                                        ); // Eski hedeften occupied sınıfı kaldırılır
-                                    }
-                                    event.target.targetAttachedTo = target; // Yeni hedefe bağla
-                                }
+                // Kutu başka bir hedefteyse eski bağlantıyı kaldır
+                if (dragger.targetAttachedTo !== target) {
+                  if (dragger.targetAttachedTo) {
+                    dragger.targetAttachedTo.classList.remove("occupied");
+                  }
+                  dragger.targetAttachedTo = target;
+                }
 
-                                // Yeni hedefe data-target ekle
-                                event.target.setAttribute("data-target", target.id);
-                                snapMade = true; // Bırakma işlemi başarılı
-                            }
-                        }
-                        // "highlight" sınıfını hedeften kaldır
-                        target.classList.remove("highlight");
-                    });
+                dragger.setAttribute("data-target", target.id);
+                snapMade = true;
+              }
+            }
+            target.classList.remove("highlight");
+          });
 
-                    // Eğer hedefe bırakılmadıysa
-                    if (!snapMade) {
-                        // Eski hedef bağlantısını kaldır
-                        if (event.target.targetAttachedTo) {
-                            event.target.targetAttachedTo.classList.remove("occupied"); // Geri çekilince occupied sınıfı kaldırılır
-                            event.target.targetAttachedTo = null; // Hedef bağlantısını sıfırla
-                        }
-
-                        // data-target ilişkisinin kaldırılması
-                        event.target.setAttribute("data-target", "");
-
-                        // Kutuyu orijinal pozisyona geri yerleştir
-                        gsap.to(event.target, {
-                            duration: 0.6,
-                            x: 0,
-                            y: 0,
-                            left: event.target.originalLeft,
-                            top: event.target.originalTop,
-                        });
-                    }
-
-                    // Cevaplanan verileri güncelle
-                    updateDragDropUserAnswersS3(index, draggers);
-
-                    // Değerlendirme fonksiyonunu çağır
-                    evaluateAnswersS3("endMessage3-S3");
-                },
+          // Geçersiz bırakmada bağlantıyı temizle ve kutuyu ilk konumuna döndür
+          if (!snapMade) {
+            gsap.killTweensOf(dragger);
+            if (dragger.targetAttachedTo) {
+              dragger.targetAttachedTo.classList.remove("occupied");
+              dragger.targetAttachedTo = null;
+            }
+            dragger.setAttribute("data-target", "");
+            gsap.to(dragger, {
+              duration: 0.6,
+              x: 0,
+              y: 0,
+              left: dragger.originalLeft,
+              top: dragger.originalTop,
+              overwrite: "auto",
             });
-        }
+          }
 
-        // Kullanıcı cevaplarını güncelleme fonksiyonu
+          // Cevaplanan verileri güncelle
+          updateDragDropUserAnswersS3(index, draggers);
+
+          // Değerlendirme fonksiyonunu çağır
+          evaluateAnswersS3("endMessage3-S3");
+        },
+      });
+    }
+
+    // Kullanıcı cevaplarını güncelleme fonksiyonu
         function updateDragDropUserAnswersS3(index, draggers) {
             draggers.forEach((dragger) => {
                 const targetId = dragger.getAttribute("data-target");
