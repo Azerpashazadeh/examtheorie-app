@@ -116,6 +116,118 @@ img{max-width:100%;display:block;}
 .page-foot{margin-top:clamp(48px,8vw,80px);padding-top:24px;border-top:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:clamp(11px,1.6vw,13px);color:var(--muted);}
 .page-foot .pg{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);color:var(--border);}
 </style>
+<style>
+
+    #quiz-overlay{position:fixed;inset:0;z-index:2000;background:rgba(24,18,14,.65);
+        backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+        padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    #quiz-overlay.is-open{opacity:1;pointer-events:all}
+    #quiz-panel{width:100%;max-width:640px;max-height:90vh;background:var(--paper);
+        border:1px solid rgba(168,116,36,.25);border-radius:22px;overflow:hidden;
+        display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(24,18,14,.8);
+        animation:quizIn .35s cubic-bezier(.4,0,.2,1) both}
+    @keyframes quizIn{from{transform:translateY(30px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+    .quiz-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;
+        background:rgba(6,18,48,1);border-bottom:1px solid rgba(168,116,36,.12);flex-shrink:0}
+    .quiz-header-left{display:flex;align-items:center;gap:10px}
+    .quiz-title{font-family:Arial,sans-serif;font-size:1rem;font-weight:700;color:var(--ink)}
+    .quiz-badge{padding:3px 10px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));
+        font-family:Arial,sans-serif;font-size:.7rem;font-weight:700;color:var(--ink);letter-spacing:.04em}
+    .quiz-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(168,116,36,.18);
+        background:transparent;color:rgba(110,99,88,.6);cursor:pointer;font-size:1.1rem;
+        display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .quiz-close:hover{background:rgba(184,50,40,.15);color:var(--accent);border-color:rgba(184,50,40,.3)}
+    .quiz-progress-bar-wrap{height:3px;background:rgba(168,116,36,.1);flex-shrink:0}
+    .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .4s;width:0%}
+    .quiz-body{overflow-y:auto;overflow-x:hidden;flex:1;padding:24px 22px}
+    .quiz-body::-webkit-scrollbar{width:3px}
+    .quiz-body::-webkit-scrollbar-thumb{background:rgba(168,116,36,.2);border-radius:4px}
+    .quiz-start{text-align:center;padding:20px 10px}
+    .quiz-start .qs-icon{font-size:3rem;margin-bottom:16px;display:block}
+    .quiz-start h2{font-family:Arial,sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:10px}
+    .quiz-start p{font-family:Georgia,serif;font-size:.94rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .qs-info{display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+    .qs-chip{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:30px;
+        background:rgba(184,50,40,.12);border:1px solid rgba(168,116,36,.18);
+        font-family:Arial,sans-serif;font-size:.8rem;color:var(--accent-light);font-weight:500}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 32px;
+        background:linear-gradient(135deg,var(--accent),var(--accent));color:var(--ink);
+        font-family:Arial,sans-serif;font-size:.95rem;font-weight:700;border:none;border-radius:50px;
+        cursor:pointer;box-shadow:0 4px 20px rgba(184,50,40,.45);transition:all .25s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(184,50,40,.65)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;
+        background:rgba(168,116,36,.1);color:var(--accent-light);font-family:Arial,sans-serif;font-size:.88rem;
+        font-weight:600;border:1px solid rgba(168,116,36,.22);border-radius:50px;cursor:pointer;transition:all .25s}
+    .btn-secondary:hover{background:rgba(168,116,36,.2);border-color:rgba(168,116,36,.4)}
+    .quiz-q-screen{display:none}.quiz-q-screen.active{display:block}
+    .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .q-counter{font-family:Arial,sans-serif;font-size:.8rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em}
+    .q-topic{font-family:Arial,sans-serif;font-size:.72rem;padding:3px 10px;border-radius:20px;
+        background:rgba(168,116,36,.1);border:1px solid rgba(168,116,36,.15);color:var(--accent-light);letter-spacing:.04em}
+    .q-text{font-family:Arial,sans-serif;font-size:1rem;font-weight:600;color:var(--ink);line-height:1.55;margin-bottom:22px}
+    .q-options{display:flex;flex-direction:column;gap:10px}
+    .q-opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;
+        border:1px solid rgba(168,116,36,.14);background:rgba(255,255,255,.03);
+        cursor:pointer;transition:all .2s;font-family:Arial,sans-serif;font-size:.9rem;
+        color:var(--text-muted);text-align:left;width:100%}
+    .q-opt:hover:not(:disabled){background:rgba(168,116,36,.1);border-color:rgba(168,116,36,.3);color:var(--ink)}
+    .opt-letter{width:26px;height:26px;border-radius:8px;background:rgba(168,116,36,.12);
+        border:1px solid rgba(168,116,36,.2);color:var(--accent-light);font-weight:700;font-size:.8rem;
+        display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .q-opt.correct{background:rgba(26,92,52,.12)!important;border-color:rgba(26,92,52,.4)!important;color:var(--green)!important}
+    .q-opt.correct .opt-letter{background:rgba(26,92,52,.2);border-color:rgba(26,92,52,.5);color:var(--green)}
+    .q-opt.wrong{background:rgba(184,50,40,.12)!important;border-color:rgba(184,50,40,.4)!important;color:var(--accent)!important}
+    .q-opt.wrong .opt-letter{background:rgba(184,50,40,.2);border-color:rgba(184,50,40,.5);color:var(--accent)}
+    .q-opt:disabled{cursor:default}
+    .q-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-family:Georgia,serif;font-size:.88rem;line-height:1.6;display:none}
+    .q-feedback.show{display:block}
+    .q-feedback.fb-correct{background:rgba(26,92,52,.08);border:1px solid rgba(26,92,52,.25);color:var(--green)}
+    .q-feedback.fb-wrong{background:rgba(184,50,40,.08);border:1px solid rgba(184,50,40,.25);color:var(--accent)}
+    .q-feedback strong{font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:.04em;display:block;margin-bottom:4px}
+    .q-nav{display:flex;justify-content:flex-end;margin-top:20px}
+    .quiz-results{display:none;text-align:center;padding:10px 10px 20px}
+    .quiz-results.active{display:block}
+    .result-circle{width:120px;height:120px;border-radius:50%;margin:0 auto 20px;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        border:3px solid var(--accent-light);background:radial-gradient(circle,rgba(184,50,40,.15),transparent);
+        box-shadow:0 0 30px rgba(184,50,40,.3)}
+    .result-score{font-family:Arial,sans-serif;font-size:2.2rem;font-weight:700;color:var(--ink);line-height:1}
+    .result-total{font-family:Arial,sans-serif;font-size:.8rem;color:var(--text-dim);margin-top:2px}
+    .result-msg{font-family:Arial,sans-serif;font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+    .result-sub{font-family:Georgia,serif;font-size:.9rem;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+    .result-breakdown{display:flex;justify-content:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .rb-chip{padding:8px 18px;border-radius:30px;font-family:Arial,sans-serif;font-size:.82rem;font-weight:600}
+    .rb-chip.correct{background:rgba(26,92,52,.12);border:1px solid rgba(26,92,52,.3);color:var(--green)}
+    .rb-chip.wrong{background:rgba(184,50,40,.12);border:1px solid rgba(184,50,40,.3);color:var(--accent)}
+    .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    
+#quiz-overlay{--accent:var(--accent);--accent-light:var(--gold);--text-muted:var(--muted);--text-dim:var(--muted);margin:0;width:100%;height:100%;max-width:none;max-height:none;border:0;color:var(--ink);display:none;line-height:1.6}
+#quiz-overlay[open]{display:flex;opacity:1;pointer-events:auto}
+#quiz-overlay::backdrop{background:transparent}
+#quiz-panel{max-height:90dvh}
+#fab-quiz{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:1100;border:0;border-radius:50px;padding:15px 22px;background:linear-gradient(135deg,var(--accent),var(--accent));color:white;font:700 15px Arial,sans-serif;box-shadow:0 4px 24px rgba(24,18,14,.18);cursor:pointer}
+#quiz-overlay button:focus-visible,#fab-quiz:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+#quiz-overlay .q-meta{gap:10px;flex-wrap:wrap}
+#quiz-overlay .quiz-body{min-height:0}
+#quiz-overlay .quiz-header-left{flex-wrap:wrap}
+#quiz-overlay .quiz-close{width:44px;height:44px;color:var(--muted)}
+@media(max-width:480px){#quiz-overlay{padding:10px}#quiz-overlay .quiz-body{padding:18px 14px}#quiz-overlay .qs-info{gap:8px}#fab-quiz{padding:13px 17px}}
+@media(prefers-reduced-motion:reduce){#quiz-overlay *,#quiz-overlay{animation:none!important;transition:none!important}}
+
+#quiz-overlay{--accent-light:var(--gold);--text-muted:var(--muted);--text-dim:var(--muted);--accent:#b83228}
+#quiz-panel{background:var(--paper);border-color:var(--border);box-shadow:0 20px 70px rgba(24,18,14,.25)}
+#quiz-overlay .quiz-header{background:var(--warm-mid);border-bottom-color:var(--border)}
+#quiz-overlay .quiz-badge,#quiz-overlay .btn-primary,#fab-quiz{background:var(--accent);color:var(--paper)}
+#quiz-overlay .btn-primary:hover,#fab-quiz:hover{filter:brightness(.94)}
+#quiz-overlay .q-opt{background:var(--card);border-color:var(--border);color:var(--ink)}
+#quiz-overlay .q-opt:hover:not(:disabled){background:var(--warm-mid);border-color:var(--gold);color:var(--ink)}
+#quiz-overlay .q-topic,#quiz-overlay .qs-chip,#quiz-overlay .opt-letter,#quiz-overlay .btn-secondary{background:var(--gold-soft);border-color:var(--border);color:var(--ink)}
+#quiz-overlay .quiz-progress-bar-wrap{background:var(--warm-mid)}
+#quiz-overlay .quiz-progress-bar{background:var(--gold)}
+#quiz-overlay .result-circle{background:var(--gold-soft);border-color:var(--gold);box-shadow:none}
+#quiz-overlay .quiz-body::-webkit-scrollbar-thumb{background:var(--border)}
+
+</style>
 </head>
 <body>
 <header class="book-header">
@@ -956,5 +1068,98 @@ img{max-width:100%;display:block;}
 <span class="pg">1</span>
 </div>
 </main>
+<button id="fab-quiz" aria-haspopup="dialog" aria-controls="quiz-overlay">📝 Quiz · 15 Questions</button>
+<dialog id="quiz-overlay" aria-labelledby="quiz-heading">
+    <div id="quiz-panel">
+        <div class="quiz-header">
+            <div class="quiz-header-left">
+                <div class="quiz-title" id="quiz-heading">📝 Traffic Rules Quiz</div>
+                <div class="quiz-badge" id="quiz-badge">Questions</div>
+            </div>
+            <button class="quiz-close" id="quiz-close-btn" aria-label="Close quiz">✕</button>
+        </div>
+        <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+        <div class="quiz-body">
+            <div class="quiz-start" id="quiz-start-screen">
+                <span class="qs-icon">🚗</span>
+                <h2>Test Your Knowledge</h2>
+                <p>Each attempt selects 15 questions at random from 50 questions based on this chapter. Questions do not repeat within an attempt; some may reappear in later attempts. Read the page carefully before starting — each question is based directly on its content.</p>
+                <div class="qs-info">
+                    <div class="qs-chip" id="q-count-chip">📋 questions</div>
+                    <div class="qs-chip">🔀 Random order</div>
+                    <div class="qs-chip">✅ Instant feedback</div>
+                </div>
+                <button class="btn-primary" id="quiz-start-btn">▶ Start Quiz</button>
+            </div>
+            <div class="quiz-q-screen" id="quiz-q-screen"></div>
+            <div class="quiz-results" id="quiz-results-screen"></div>
+        </div>
+    </div>
+</dialog>
+<script>
+(()=>{
+const ALL_QUESTIONS=[{"topic": "Road position · §1", "q": "A pavement and a footpath are both available. Where should a pedestrian walk?", "opts": ["On the carriageway", "On the pavement or footpath", "On the bicycle path first", "Always on the verge"], "ans": 1, "exp": "The pavement or footpath is the first choice for pedestrians. Bicycle paths are the next option only when neither is available."}, {"topic": "Overtaking · §2", "q": "The driver ahead has moved left and signalled a left turn. On which side should you pass, when it is safe?", "opts": ["Only on the left", "Either side", "On the right", "On the pavement"], "ans": 2, "exp": "A driver positioned to the left and signalling a left turn is passed on the right. This is an exception to the usual left-side overtaking rule."}, {"topic": "Intersections · §4", "q": "Your light is green, but a queue prevents you from clearing the intersection. What should you do?", "opts": ["Enter and wait in the middle", "Sound the horn and enter", "Follow the vehicle ahead closely", "Wait before the intersection until you can clear it"], "ans": 3, "exp": "Do not enter an intersection unless you can clear it completely. A green light does not justify blocking it."}, {"topic": "Right of way · §5", "q": "Two cars approach an equivalent, unregulated intersection on paved roads. The other car comes from your right. Who must give way?", "opts": ["You must give way", "The other driver must give way", "The slower car must give way", "The larger car has priority"], "ans": 0, "exp": "At an equivalent intersection without signs, lights or another applicable exception, drivers give way to drivers approaching from the right."}, {"topic": "Turning · §7", "q": "You are turning left. An oncoming car on the same road is turning right into the same road as you. No signs or lights change the ordinary rule. What must you do?", "opts": ["Go first because your turn is longer", "Give way to the oncoming car", "Go first if you indicated earlier", "Ask the other driver to reverse"], "ans": 1, "exp": "A driver turning left must give way to an oncoming driver turning right at the same intersection."}, {"topic": "Safe speed · §8", "q": "You are below the posted speed limit, but cannot stop within the clear distance you can see. What does the chapter say?", "opts": ["Your speed is acceptable because it is below the limit", "Only trucks need to slow down", "You are still driving too fast and must slow down", "Using high-beam headlights removes the need to slow down"], "ans": 2, "exp": "You must be able to stop within the distance you can see ahead and that is clear. Staying below a posted limit alone is not enough."}, {"topic": "Parking · §10", "q": "What does a broken yellow line alongside the road prohibit?", "opts": ["Parking", "Only overnight parking", "All driving alongside it", "Every brief stop to let a passenger out"], "ans": 0, "exp": "A broken yellow line prohibits parking. A solid yellow line prohibits stopping. Other restrictions can also apply at the location."}, {"topic": "Fog lights · §13", "q": "There is heavy rain but no fog or snowfall. May you use the rear fog light just because of the rain?", "opts": ["Yes, whenever it rains", "Yes, if driving above 50 km/h", "Yes, on motorways only", "No"], "ans": 3, "exp": "Rear fog lights may be used when fog or snowfall reduces visibility to less than 50 metres, not merely because of heavy rain."}, {"topic": "Motorways · §16", "q": "An electronic sign shows a red cross above a rush-hour lane. What does it mean?", "opts": ["Use the lane only for overtaking", "The lane is closed; do not drive on it", "The lane is open to cars only", "The lane has a lower speed limit"], "ans": 1, "exp": "A rush-hour lane may be used when officially open. A red cross means that the lane is closed."}, {"topic": "Residential zones · §17", "q": "What is the maximum speed inside an erf?", "opts": ["30 km/h", "Walking speed with no numerical limit", "15 km/h", "50 km/h"], "ans": 2, "exp": "The chapter states a statutory maximum of 15 km/h inside an erf. Drivers must also adapt to pedestrians sharing the space."}, {"topic": "Roundabouts · §18", "q": "What determines priority at a roundabout?", "opts": ["The signs and road markings, or ordinary priority rules if none regulate it", "Traffic already on the roundabout always has priority", "The largest vehicle always has priority", "Entering traffic always has priority"], "ans": 0, "exp": "Check the signs and shark's teeth. If no priority signs or markings regulate the roundabout, the ordinary rule of giving way to drivers from the right applies."}, {"topic": "Towing · §23", "q": "What is the maximum distance between the rear of a towing motor vehicle and the front of the motor vehicle being towed?", "opts": ["2 metres", "3 metres", "10 metres", "5 metres"], "ans": 3, "exp": "The distance between the towing vehicle and the towed vehicle may be no more than 5 metres. The arrangement must also be safe and controllable."}, {"topic": "Special manoeuvres · §24", "q": "You are pulling out of a parking space as a pedestrian and a cyclist approach your path. Who must you give way to?", "opts": ["Only the cyclist", "Both the pedestrian and the cyclist", "Neither if you have indicated", "Only vehicles approaching from the right"], "ans": 1, "exp": "Moving from a parking space is a special manoeuvre. You must first give way to all other traffic, including pedestrians and cyclists."}, {"topic": "Child restraints · §27", "q": "You want to fit a rear-facing child seat on a front passenger seat equipped with a front airbag. What is required?", "opts": ["Move the seat forward", "Keep the airbag active", "Deactivate the front airbag", "Use only the adult seatbelt instead"], "ans": 2, "exp": "A rear-facing child seat may be used on a seat with a front airbag only if that airbag has been deactivated."}, {"topic": "Mobile phones · §30", "q": "A cyclist holds a phone to check navigation while riding. Is this permitted?", "opts": ["No, the handheld-device prohibition also applies to cyclists", "Yes, if no call is being made", "Yes, at low speed", "Yes, on a bicycle path"], "ans": 0, "exp": "The prohibition on holding a mobile electronic device while driving also applies to cyclists, including when checking navigation. Stop safely before using the phone by hand."}, {"topic": "Road position · §1", "q": "Unless another rule provides otherwise, what is the basic road-position rule for drivers?", "opts": ["Keep as far right as possible", "Stay near the centre line", "Always use the left lane", "Choose any lane regardless of traffic"], "ans": 0, "exp": "The chapter gives keeping as far to the right as possible as the fundamental position rule."}, {"topic": "Cyclists · §1", "q": "A mandatory bicycle path is present. Where must a cyclist on an ordinary bicycle ride?", "opts": ["On the pavement", "On the mandatory bicycle path", "Always on the carriageway", "On the verge"], "ans": 1, "exp": "Cyclists must use a mandatory bicycle path or combined bicycle/moped path where one is present. The chapter separately describes exceptions for wide bicycles."}, {"topic": "Overtaking · §2", "q": "You approach a zebra crossing behind a slow vehicle. May you overtake immediately before or on the crossing?", "opts": ["Yes, if you indicate", "Yes, if no pedestrian is visible", "No", "Only on the right"], "ans": 2, "exp": "Overtaking a vehicle immediately before or on a pedestrian crossing is prohibited."}, {"topic": "Traffic queues · §3", "q": "Traffic is moving slowly in queues in lanes going in the same direction. May the queue on the right pass the queue on the left?", "opts": ["No, never", "Only if the left lane is empty", "Only motorcycles may do this", "Yes"], "ans": 3, "exp": "When traffic is moving in queues, passing a queue on the right is an exception to the normal overtaking rule."}, {"topic": "Right of way · §5", "q": "You approach from an unpaved road. A car on a paved road approaches from your left. With no signs or lights changing the rule, who gives way?", "opts": ["You give way to the car on the paved road", "The car on the paved road gives way", "Whoever arrived last gives way", "Only a turning driver gives way"], "ans": 0, "exp": "Drivers on an unpaved road give way to drivers on a paved road, regardless of which side they approach from."}, {"topic": "Trams · §5", "q": "At an otherwise unregulated intersection, a tram approaches your car from the left. What is the ordinary priority rule?", "opts": ["Your car has priority because it comes from the right", "You give way to the tram", "The faster vehicle goes first", "Trams have priority only at night"], "ans": 1, "exp": "At an otherwise unregulated intersection, drivers give way to trams. Lights, signs or authorised instructions may determine a different order."}, {"topic": "Level crossings · §5", "q": "The railway crossing is open, but the queue beyond it leaves no room for your whole vehicle. What should you do?", "opts": ["Enter if no train is visible", "Stop on the tracks until the queue moves", "Wait before the crossing until you can clear it completely", "Follow the car ahead without leaving a gap"], "ans": 2, "exp": "You may enter a level crossing only when you can pass through immediately and clear it completely."}, {"topic": "Turning · §7", "q": "When should you signal an intended turn?", "opts": ["Only after entering the new road", "Only when another vehicle is behind you", "Halfway through the turn", "Before starting the turn"], "ans": 3, "exp": "Signal before turning, using the indicator or an arm signal if no indicator is fitted."}, {"topic": "Stopping · §9", "q": "What does a solid yellow line alongside the road prohibit?", "opts": ["Stopping", "Only overnight parking", "Only loading goods", "Only parking for more than five minutes"], "ans": 0, "exp": "A solid yellow line prohibits stopping, unlike a broken yellow line which prohibits parking."}, {"topic": "Stopping · §9", "q": "According to the chapter, which brief stop is an exception to the bus-stop stopping restriction?", "opts": ["Waiting for someone who is still at home", "Immediately letting a passenger board or get out", "Leaving the car to buy a ticket", "Parking while checking a timetable"], "ans": 1, "exp": "The bus-stop restriction has an exception for immediately boarding or alighting passengers. It does not allow parking there."}, {"topic": "Parking · §10", "q": "How close to an intersection is parking prohibited?", "opts": ["Within 1 metre", "Within 2 metres", "Within 5 metres", "Within 20 metres"], "ans": 2, "exp": "The chapter prohibits parking within 5 metres of an intersection."}, {"topic": "Parking · §10", "q": "A blue-zone sign requires a parking disc. What must you display?", "opts": ["A note with your telephone number", "The time you intend to leave", "Only a payment receipt", "A clearly visible parking disc showing arrival time"], "ans": 3, "exp": "Where time-limited parking requires a parking disc, display the arrival time clearly through the windscreen and respect the permitted duration."}, {"topic": "Bicycles and mopeds · §11", "q": "How should a parked bicycle or moped be positioned?", "opts": ["So other road users can pass freely", "Across the footpath to make it visible", "Across a bicycle path", "Where it blocks the least expensive vehicle"], "ans": 0, "exp": "Bicycles and mopeds must not be placed in a way that obstructs pedestrians, cyclists or other road users."}, {"topic": "Warning signals · §12", "q": "Which situation justifies using the horn?", "opts": ["Greeting a friend", "Warning of imminent danger", "Expressing frustration at a queue", "Announcing every overtaking manoeuvre"], "ans": 1, "exp": "Sound and flashing-light signals are used to avert imminent danger, not merely as greetings or expressions of frustration."}, {"topic": "Vehicle lights · §13", "q": "Which front lights must a motor vehicle use while driving at night?", "opts": ["Daytime running lights alone", "Parking lights alone", "Dipped headlights", "Fog lights only, in all weather"], "ans": 2, "exp": "Motor vehicles must use dipped headlights at night and in reduced visibility."}, {"topic": "Bicycle lights · §13", "q": "Which front and rear light combination does the chapter require for a bicycle ridden at night?", "opts": ["Flashing red at the front and white at the rear", "A red light at both ends", "Only a white front light", "A steady white or yellow front light and a steady red rear light"], "ans": 3, "exp": "The bicycle lighting list specifies a non-flashing white or yellow front light and a non-flashing red rear light, as well as the required reflectors."}, {"topic": "Warning beacons · §13", "q": "A road-work vehicle uses an amber flashing light. Does that light give it priority?", "opts": ["No, it warns of a special or dangerous situation", "Yes, over every other vehicle", "Yes, but only at intersections", "Yes, if it is moving slowly"], "ans": 0, "exp": "An amber or yellow rotating or flashing light warns other road users. It does not give the vehicle priority."}, {"topic": "Stationary lights · §14", "q": "Your motor vehicle is stationary at night on the carriageway outside a built-up area. Which lights does the chapter require?", "opts": ["No lights if the engine is off", "The prescribed front and rear parking/position lights", "Only an interior light", "High-beam headlights"], "ans": 1, "exp": "A motor vehicle stationary at night on the carriageway outside a built-up area must show the prescribed front and rear parking/position lights."}, {"topic": "Special lights · §15", "q": "What does a green flashing light identify during authorised emergency-service operations?", "opts": ["A vehicle with automatic priority", "A vehicle carrying dangerous goods", "A command vehicle", "A vehicle exempt from speed limits"], "ans": 2, "exp": "A green flashing light identifies a command function. It does not by itself create priority."}, {"topic": "Motorway access · §16", "q": "What minimum construction-related speed capability and permission does the chapter specify for motorway access?", "opts": ["25 km/h", "45 km/h", "50 km/h", "60 km/h"], "ans": 3, "exp": "Vehicles that cannot or may not travel at least 60 km/h are excluded from motorways. Other vehicle-category restrictions also apply; this is not a minimum driving speed in every situation."}, {"topic": "Expressway access · §16", "q": "For an autoweg, what speed must a motor vehicle, by construction, be able and permitted to reach?", "opts": ["At least 50 km/h", "At least 30 km/h", "At least 80 km/h", "At least 100 km/h"], "ans": 0, "exp": "An autoweg is intended for motor vehicles that can and may travel at least 50 km/h by construction. This is an access condition, not a requirement to maintain that speed in all conditions."}, {"topic": "Motorway behaviour · §16", "q": "You miss your motorway exit. May you reverse along the motorway to reach it?", "opts": ["Yes, on the shoulder", "No, reversing on a motorway is prohibited", "Yes, with hazard lights on", "Yes, if the exit is less than 50 metres away"], "ans": 1, "exp": "Reversing and turning around are prohibited on motorways."}, {"topic": "Residential zones · §17", "q": "Where may you park inside an erf?", "opts": ["Anywhere if pedestrians can squeeze past", "On any shared walking area", "Only in designated marked parking spaces", "Anywhere for less than an hour"], "ans": 2, "exp": "Parking inside an erf is permitted only in designated marked parking spaces."}, {"topic": "Roundabouts · §18", "q": "When leaving a roundabout, what signal should you give?", "opts": ["Signal left until you leave", "Use hazard lights", "No signal is needed", "Signal right before your exit"], "ans": 3, "exp": "Signal right before leaving the roundabout so waiting drivers know you are exiting."}, {"topic": "Pedestrians · §19", "q": "A pedestrian is clearly about to step onto a zebra crossing. What should a driver do?", "opts": ["Give way to the pedestrian", "Continue until the pedestrian reaches the middle", "Sound the horn and continue", "Give way only after the pedestrian waves"], "ans": 0, "exp": "Drivers give way to pedestrians on a crossing or clearly about to step onto it."}, {"topic": "Priority vehicles · §20", "q": "An ambulance responding to an emergency approaches with a blue flashing light and siren. What should you do?", "opts": ["Accelerate to stay ahead of it", "Make way as quickly as safely possible, stopping if necessary", "Always drive through a red light to clear its path", "Stop immediately wherever you are, even if that blocks it"], "ans": 1, "exp": "Give way safely and avoid blocking the priority vehicle. Making way does not allow you to ignore traffic lights or endanger others."}, {"topic": "Animals · §21", "q": "You encounter loose animals near the road. What is the appropriate response?", "opts": ["Sound the horn repeatedly", "Accelerate past them closely", "Slow down and pass with as much space as possible", "Keep your speed because animals must yield"], "ans": 2, "exp": "Animals are unpredictable. Slow down, take precautions and give them space; a horn can startle them."}, {"topic": "Warning triangle · §26", "q": "When a warning triangle is used for an obstructing stationary vehicle, approximately where should it be placed?", "opts": ["5 metres beyond the vehicle", "Immediately beside the driver door", "100 metres beyond the vehicle", "30 metres from the vehicle toward approaching traffic"], "ans": 3, "exp": "Place the triangle about 30 metres from the vehicle in the direction from which traffic approaches."}, {"topic": "Warning triangle · §26", "q": "An obstructing stationary vehicle has working hazard warning lights switched on. Does the chapter also require a warning triangle?", "opts": ["No, a triangle is not required when the hazard lights are operating", "Yes, always", "Only inside built-up areas", "Only during daylight"], "ans": 0, "exp": "Approaching drivers must be warned about an obstacle they may not notice in time. Operating hazard lights mean a triangle is not required."}, {"topic": "Seating · §26a", "q": "In an ordinary passenger car, may a passenger travel in the boot instead of a designated seat?", "opts": ["Yes, for a short journey", "No", "Yes, below 30 km/h", "Yes, if all seats are occupied"], "ans": 1, "exp": "Passengers must use designated seats. The boot is not a passenger seat."}, {"topic": "Seatbelts · §27", "q": "How should a seatbelt be worn?", "opts": ["With the shoulder belt under the arm", "Loose enough to move freely out of the seat", "Correctly across the shoulder and chest", "Only across the lap even when a shoulder belt is fitted"], "ans": 2, "exp": "The chapter says the belt must be worn correctly across the shoulder and chest, not tucked under the arm."}, {"topic": "Child restraints · §27", "q": "Below what height must a child generally use an approved child restraint suitable for them?", "opts": ["1.00 metre", "1.20 metres", "1.50 metres", "1.35 metres"], "ans": 3, "exp": "Children under 1.35 metres generally need an approved, suitable child restraint fitted correctly."}, {"topic": "Helmets · §28", "q": "Does the helmet requirement also apply to snorfiets riders and their passengers?", "opts": ["Yes, they must wear an approved helmet", "Only to the passenger", "Only outside built-up areas", "No, because a snorfiets is slower"], "ans": 0, "exp": "Snorfiets riders and passengers must also wear an approved helmet. The chapter allows an approved moped or speed-pedelec helmet for a snorfiets rider."}, {"topic": "Children on bicycles · §29", "q": "What seating support is required for a child under 8 carried on a bicycle?", "opts": ["Foot support only", "Sufficient support for the back, hands and feet", "No support if the child can hold the rider", "Only a cushion on the luggage rack"], "ans": 1, "exp": "A child under 8 needs a safe seating position supporting the back, hands and feet, such as a suitable child seat."}, {"topic": "Mobile phones · §30", "q": "Which statement about using a securely mounted phone is consistent with the chapter?", "opts": ["A mount permits all distracting use", "Mounted navigation is always prohibited", "Use without holding it is permitted in principle, provided it causes no danger or obstruction", "A mounted phone may be held whenever the road is straight"], "ans": 2, "exp": "Hands-free use is permitted in principle when the device is not held and its use does not endanger or hinder traffic. Attention to traffic remains essential."}];
+const QUIZ_SIZE=Math.min(15,ALL_QUESTIONS.length);
+let quizQuestions=[],qIndex=0,score=0,answered=[],locked=false;
+const overlay=document.getElementById('quiz-overlay');
+const fabQuiz=document.getElementById('fab-quiz');
+const quizCloseBtn=document.getElementById('quiz-close-btn');
+const startScreen=document.getElementById('quiz-start-screen');
+const qScreen=document.getElementById('quiz-q-screen');
+const resultsScreen=document.getElementById('quiz-results-screen');
+const progressBar=document.getElementById('quiz-progress-bar');
+const quizBadge=document.getElementById('quiz-badge');
+quizBadge.textContent=QUIZ_SIZE+' Questions';
+const countChip=document.getElementById('q-count-chip');if(countChip)countChip.textContent='📋 '+QUIZ_SIZE+' questions';
+
+fabQuiz.addEventListener('click',()=>{overlay.showModal();document.body.style.overflow='hidden';showStartScreen();document.getElementById('quiz-start-btn').focus()});
+quizCloseBtn.addEventListener('click',()=>overlay.close());
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.close()});
+function showStartScreen(){startScreen.style.display='block';qScreen.classList.remove('active');resultsScreen.classList.remove('active');progressBar.style.width='0%';quizBadge.textContent=QUIZ_SIZE+' Questions'}
+document.getElementById('quiz-start-btn').addEventListener('click',startQuiz);
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function shuffleOpts(q){const idx=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return{...q,opts:idx.map(i=>q.opts[i]),ans:idx.indexOf(q.ans)}}
+function startQuiz(){quizQuestions=shuffle(ALL_QUESTIONS).slice(0,QUIZ_SIZE).map(shuffleOpts);qIndex=0;score=0;answered=[];startScreen.style.display='none';resultsScreen.classList.remove('active');qScreen.classList.add('active');renderQuestion()}
+function renderQuestion(){
+    locked=false;document.querySelector('.quiz-body').scrollTop=0;
+    const q=quizQuestions[qIndex];const L=['A','B','C','D'];
+    progressBar.style.width=((qIndex/QUIZ_SIZE)*100)+'%';quizBadge.textContent=(qIndex+1)+' / '+QUIZ_SIZE;
+    qScreen.innerHTML=`<div class="q-meta"><div class="q-counter">Question ${qIndex+1} of ${QUIZ_SIZE}</div><div class="q-topic">${q.topic}</div></div><div class="q-text">${q.q}</div><div class="q-options">${q.opts.map((o,i)=>`<button class="q-opt" data-idx="${i}"><span class="opt-letter">${L[i]}</span><span>${o}</span></button>`).join('')}</div><div class="q-feedback" id="q-feedback" role="status"></div><div class="q-nav" id="q-nav" style="display:none"><button class="btn-primary" id="btn-next">${qIndex<QUIZ_SIZE-1?'Next Question →':'See Results'}</button></div>`;
+    qScreen.querySelectorAll('.q-opt').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(parseInt(btn.dataset.idx))));
+}
+function selectAnswer(chosen){
+    if(locked)return;locked=true;
+    const q=quizQuestions[qIndex];const correct=q.ans;const isCorrect=chosen===correct;
+    if(isCorrect)score++;answered.push({q:q.q,chosen,correct,isCorrect,opts:q.opts,exp:q.exp});
+    qScreen.querySelectorAll('.q-opt').forEach((btn,i)=>{btn.disabled=true;if(i===correct)btn.classList.add('correct');else if(i===chosen&&!isCorrect)btn.classList.add('wrong')});
+    const fb=document.getElementById('q-feedback');fb.classList.add('show');fb.classList.add(isCorrect?'fb-correct':'fb-wrong');
+    fb.innerHTML=`<strong>${isCorrect?'✅ Correct!':'❌ Incorrect — correct answer: "'+q.opts[correct]+'"'}</strong>${q.exp}`;
+    document.getElementById('q-nav').style.display='flex';
+    document.getElementById('btn-next').addEventListener('click',()=>{qIndex++;qIndex<QUIZ_SIZE?renderQuestion():showResults()});
+}
+function showResults(){
+    document.querySelector('.quiz-body').scrollTop=0;
+    progressBar.style.width='100%';quizBadge.textContent='Complete!';qScreen.classList.remove('active');resultsScreen.classList.add('active');
+    const pct=Math.round((score/QUIZ_SIZE)*100);
+    let msg='',sub='';
+    if(pct>=90){msg='Excellent! 🏆';sub='Outstanding — you know this traffic rules chapter very well!'}
+    else if(pct>=70){msg='Well done! 👍';sub='Good knowledge. Review the questions you missed and you\'ll be fully prepared.'}
+    else if(pct>=50){msg='Keep practising 📖';sub='Solid foundation but some gaps remain. Re-read the theory and try again.'}
+    else{msg='More study needed 💡';sub='Don\'t worry — read through the page carefully again and retake the quiz!'}
+    resultsScreen.innerHTML=`<div class="result-circle"><div class="result-score">${score}</div><div class="result-total">out of ${QUIZ_SIZE}</div></div><div class="result-msg">${msg}</div><div class="result-sub">${sub}</div><div class="result-breakdown"><div class="rb-chip correct">✅ ${score} Correct</div><div class="rb-chip wrong">❌ ${QUIZ_SIZE-score} Wrong</div></div><div class="result-actions"><button class="btn-primary" id="btn-retry">🔀 Try Again</button><button class="btn-secondary" id="btn-review">📋 Review Answers</button></div><div id="review-list" style="margin-top:20px;display:none"></div>`;
+    document.getElementById('btn-retry').addEventListener('click',startQuiz);
+    document.getElementById('btn-review').addEventListener('click',()=>{
+        const rl=document.getElementById('review-list');
+        if(rl.style.display==='none'){rl.style.display='block';rl.innerHTML=answered.map((a,i)=>`<div style="margin-bottom:14px;padding:12px 14px;border-radius:10px;background:${a.isCorrect?'rgba(26,92,52,.07)':'rgba(184,50,40,.07)'};border:1px solid ${a.isCorrect?'rgba(26,92,52,.2)':'rgba(184,50,40,.2)'}"><div style="font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:${a.isCorrect?'var(--green)':'var(--accent)'};margin-bottom:4px">${a.isCorrect?'✅':'❌'} Q${i+1}</div><div style="font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--ink);margin-bottom:6px">${a.q}</div><div style="font-family:'Lora',serif;font-size:.8rem;color:var(--text-muted)">Your answer: <strong style="color:${a.isCorrect?'var(--green)':'var(--accent)'}">${a.opts[a.chosen]}</strong>${!a.isCorrect?'<br>Correct: <strong style="color:var(--green)">'+a.opts[a.correct]+'</strong>':''}</div><p style="color:var(--muted);font-size:.85rem;margin-top:8px">${a.exp}</p></div>`).join('');document.getElementById('btn-review').textContent='Hide Review';
+        }else{rl.style.display='none';document.getElementById('btn-review').textContent='📋 Review Answers'}
+    });
+}
+
+overlay.addEventListener('close',()=>{document.body.style.overflow='';fabQuiz.focus()});
+
+fabQuiz.textContent='📝 Quiz · '+QUIZ_SIZE+' Questions';
+
+})();
+</script>
 </body>
 </html>
