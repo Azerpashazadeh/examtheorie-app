@@ -59,6 +59,15 @@ for lang in LANGS:
             match=re.search(r'const ALL_QUESTIONS=(\[.*?\]);',original,re.S)
             if match: bank=json.loads(match[1])
             else: bank=json.loads((ROOT/'traffic-rules-en-bank.json').read_text(encoding='utf-8'))
+            # The original English bank predates the shared builder and stores
+            # the section only in the topic label. Restore the section anchor so
+            # feedback can offer the same “Read this section” link as every
+            # other localized chapter bank.
+            for item in bank:
+                if not item.get('source'):
+                    section_match=re.search(r'§\s*(\d+[a-z]?)', item.get('topic',''), re.I)
+                    if section_match:
+                        item['source']='s'+section_match.group(1).lower()
             (ROOT/'traffic-rules-en-bank.json').write_text(json.dumps(bank,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
             # Remove the old standalone quiz, preserving the chapter and first style.
             original=re.sub(r'<style>\s*#quiz-overlay.*?</style>\s*','',original,flags=re.S)
