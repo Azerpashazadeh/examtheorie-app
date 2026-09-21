@@ -46,6 +46,19 @@
   launcher.id = 'chapter-quiz-launch';
   launcher.setAttribute('aria-haspopup', 'dialog');
   launcher.setAttribute('aria-controls', 'chapter-quiz');
+  const language = (document.documentElement?.lang || 'en').toLowerCase().slice(0, 2);
+  const menuLabels = {
+    en: '← Back to Menu',
+    tr: '← Menüye Dön',
+    nl: '← Terug naar menu',
+    ar: '← العودة إلى القائمة'
+  };
+  const menuReturn = button(menuLabels[language] || menuLabels.en, () => {
+    const chapterFile = window.location.pathname.split('/').pop() || '';
+    const target = `../../index.html?open=theory&chapter=${encodeURIComponent(chapterFile)}`;
+    window.location.href = target;
+  });
+  menuReturn.id = 'chapter-menu-return';
   const dialog = el('dialog');
   dialog.id = 'chapter-quiz';
   dialog.setAttribute('aria-labelledby','cq-title');
@@ -60,7 +73,7 @@
   progress.max = count; progress.value = 0; progress.setAttribute('aria-label',t.progress);
   const body = el('div','cq-body');
   panel.append(header,progress,body); dialog.append(panel);
-  document.body.append(launcher,dialog);
+  document.body.append(menuReturn,launcher,dialog);
   let session=[], index=0, answers=[], locked=false, previousOverflow='';
   dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;launcher.focus();});
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
