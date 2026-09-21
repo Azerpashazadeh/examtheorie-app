@@ -145,11 +145,14 @@
         }
 
         .logo {
+            display: inline-block;
             font-family: 'Playfair Display', serif;
             font-size: 24px;
             font-weight: 900;
             white-space: nowrap;
             flex-shrink: 0;
+            text-decoration: none;
+            cursor: pointer;
             background: linear-gradient(135deg, #fff 30%, var(--cyan));
             -webkit-background-clip: text;
             background-clip: text;
@@ -2216,7 +2219,7 @@
 
     <!-- ═══════════ NAVBAR ═══════════ -->
     <nav class="navbar glass" id="navbar">
-        <div class="logo">Exam<span>Theorie</span></div>
+        <a class="logo" href="https://examtheorie.nl/" aria-label="ExamTheorie">Exam<span>Theorie</span></a>
         <div class="nav-center">
             <button class="nav-link" data-i18n="nav_car" onclick="openPassengerCar()">Passenger Car</button>
             <button class="nav-link" data-i18n="nav_prices" onclick="openPricing()">Package Prices</button>
