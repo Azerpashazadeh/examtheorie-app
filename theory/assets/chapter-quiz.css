@@ -43,4 +43,6 @@
 #chapter-quiz .cq-image{display:block;width:140px;height:140px;object-fit:contain;margin:0 auto 20px;background:#fff;border-radius:8px;padding:8px}
 #chapter-quiz [hidden]{display:none!important}
 @media(max-width:480px){#chapter-quiz{padding:8px}#chapter-quiz .cq-header{padding:10px;gap:6px}#chapter-quiz .cq-body{padding:18px 14px}#chapter-quiz .cq-header h2{font-size:16px}#chapter-quiz .cq-badge{font-size:11px}#chapter-quiz-launch{padding:13px 17px}}
+/* On small screens, let theory illustrations use the full card width. */
+@media(max-width:599px){.rule-block.has-image{flex-direction:column}.rule-block.has-image .img-slot{order:-1;width:100%;height:auto;aspect-ratio:16/9;border-left:0;border-bottom:1px solid var(--border)}.rule-block.has-image .img-slot img{object-fit:cover}}
 @media(prefers-reduced-motion:reduce){#chapter-quiz *{scroll-behavior:auto!important}}
