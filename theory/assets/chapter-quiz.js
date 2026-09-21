@@ -59,6 +59,17 @@
     window.location.href = target;
   });
   menuReturn.id = 'chapter-menu-return';
+  const fullQuizLabel = launcher.textContent;
+  const fullMenuLabel = menuReturn.textContent;
+  const compactMenuLabels = {en:'☰ Menu',tr:'☰ Menü',nl:'☰ Menu',ar:'☰ القائمة'};
+  const browserWindow = typeof window !== 'undefined' ? window : null;
+  const setResponsiveButtonLabels = () => {
+    const compact = browserWindow ? browserWindow.innerWidth <= 480 : false;
+    launcher.textContent = compact ? '📝 Quiz' : fullQuizLabel;
+    menuReturn.textContent = compact ? (compactMenuLabels[language] || compactMenuLabels.en) : fullMenuLabel;
+  };
+  setResponsiveButtonLabels();
+  browserWindow?.addEventListener('resize', setResponsiveButtonLabels, {passive:true});
   const dialog = el('dialog');
   dialog.id = 'chapter-quiz';
   dialog.setAttribute('aria-labelledby','cq-title');

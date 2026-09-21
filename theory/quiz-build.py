@@ -8,6 +8,7 @@ import json, re
 ROOT = Path(__file__).resolve().parent
 LANGS = ['en','tr','nl','ar']
 BANKS = {lang:{} for lang in LANGS}
+ASSET_VERSION = '20260922'
 
 def q(chapter, source, prompts, options, answer=0, explanation=None):
     prompts=prompts.split(' || ')
@@ -84,8 +85,8 @@ for lang in LANGS:
             assert len(item['opts'])==4 and len(set(item['opts']))==4
             assert 0<=item['ans']<4
         data=json.dumps(dict(labels=LABELS[lang],questions=bank),ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
-        injection='\n<!-- CHAPTER QUIZ START -->\n<script type="application/json" id="chapter-quiz-data">'+data+'</script>\n<script src="../assets/chapter-quiz.js" defer></script>\n<!-- CHAPTER QUIZ END -->\n'
-        original=original.replace('</head>','<link rel="stylesheet" href="../assets/chapter-quiz.css" data-chapter-quiz="true">\n</head>')
+        injection='\n<!-- CHAPTER QUIZ START -->\n<script type="application/json" id="chapter-quiz-data">'+data+'</script>\n<script src="../assets/chapter-quiz.js?v='+ASSET_VERSION+'" defer></script>\n<!-- CHAPTER QUIZ END -->\n'
+        original=original.replace('</head>','<link rel="stylesheet" href="../assets/chapter-quiz.css?v='+ASSET_VERSION+'" data-chapter-quiz="true">\n</head>')
         original=original.replace('</body>',injection+'</body>')
         path.write_text(original,encoding='utf-8')
         print(lang,chapter,len(bank),'questions')
