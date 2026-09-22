@@ -2883,6 +2883,7 @@
                 }
 
                 /* 4) LocalStorage temizle */
+                clearUnconfirmedCompletions();
                 ['en', 'tr', 'nl', 'ar'].forEach(l => localStorage.removeItem(`et_completed_${l}`));
 
                 /* 5) Supabase'den teyit al (cache'i temizleyerek) */
@@ -3349,6 +3350,14 @@
         /* ─── TEST PROGRESS ─── */
         const TOTAL_TESTS = 50;
         const QUIZ_BASE = 'https://examtheorie.nl';
+        // Keep new completions visible until a server read confirms them.
+        const unconfirmedCompletions = new Map();
+        let progressRevision = 0;
+
+        function clearUnconfirmedCompletions() {
+            unconfirmedCompletions.clear();
+            progressRevision++;
+        }
 
         function lsKey(lang) { return `et_completed_${lang}`; }
         function getCompleted(lang) { return JSON.parse(localStorage.getItem(lsKey(lang)) || '[]'); }
@@ -3368,7 +3377,7 @@
         }
 
         /* ─── TEST BUTTONS — reset banner entegre ─── */
-        async function buildTestButtons() {
+        async function buildTestButtons(checkReset = true) {
             const lang = currentLang || 'en';
             const grid = document.getElementById('testBtnGrid');
             if (!grid) return;
@@ -3398,7 +3407,9 @@
             updateProgress(lang);
 
             /* 50 test tamamlandıysa — await ile bekle, sonra karar ver (race condition yok) */
-            if (next === null && checkAllTestsCompleted(lang)) {
+            const hasUnsavedCompletion = [...unconfirmedCompletions.values()]
+                .some(item => item.userId === currentUser?.id && item.lang === lang && !item.saved);
+            if (checkReset && !hasUnsavedCompletion && next === null && checkAllTestsCompleted(lang)) {
                 if (localStorage.getItem('et_payment_pending') === '1') return;
                 await fetchResetUsed();
                 if (!resetUsed) showResetBanner();
@@ -3819,6 +3830,7 @@
             if (mobSignin) mobSignin.disabled = true;
             try { await Promise.race([_supabase.auth.signOut(), new Promise(function (resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
             currentUser = null; currentPlanId = null; accessibleGroups = [];
+            clearUnconfirmedCompletions();
             Object.keys(localStorage).forEach(function (k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
             if (window.location.hash || window.location.search) { window.history.replaceState(null, '', window.location.pathname); }
             updateNavbarUser(); buildTestButtons(); closeMob();
@@ -3911,17 +3923,27 @@
         /* ─── PROGRESS — SUPABASE'DEN ÇEK (indexB gibi anon key ile, JWT’ye bağlı değil) ─── */
         async function fetchProgressFromSupabase() {
             if (!currentUser) return;
+            const userId = currentUser.id;
             const allLangs = ['en', 'tr', 'nl', 'ar'];
             try {
                 for (const lang of allLangs) {
+                    const revision = progressRevision;
                     const res = await fetch(
-                        'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.' + currentUser.id + '&language=eq.' + lang + '&select=test_number',
+                        'https://rvbcsakzfadhtlfeigus.supabase.co/rest/v1/user_progress?user_id=eq.' + userId + '&language=eq.' + lang + '&select=test_number',
                         { headers: { 'apikey': supabaseKey, 'Authorization': 'Bearer ' + supabaseKey } }
                     );
                     if (!res.ok) continue;
                     const data = await res.json();
+                    // Ignore responses overtaken by a completion, reset, or account change.
+                    if (currentUser?.id !== userId || revision !== progressRevision) return;
                     const completedTests = (data || []).map(r => r.test_number);
-                    localStorage.setItem('et_completed_' + lang, JSON.stringify(completedTests));
+                    for (const [key, item] of unconfirmedCompletions) {
+                        if (item.userId !== userId || item.lang !== lang) continue;
+                        if (completedTests.includes(item.testNumber)) unconfirmedCompletions.delete(key);
+                        else completedTests.push(item.testNumber);
+                    }
+                    localStorage.setItem(lsKey(lang), JSON.stringify(completedTests));
+                    progressRevision++;
                 }
             } catch (err) { console.error('❌ Supabase ilerlemesi alınırken hata:', err); }
         }
@@ -3967,22 +3989,33 @@
             const d = e.data || {};
             if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
-            markCompleted(d.lang, d.testNumber); // önce localStorage'ı güncelle
+            const userId = currentUser?.id;
+            const key = `${userId}:${d.lang}:${d.testNumber}`;
+            const completion = { userId, lang: d.lang, testNumber: d.testNumber, saved: false };
+            if (userId) unconfirmedCompletions.set(key, completion);
+            progressRevision++;
+            markCompleted(d.lang, d.testNumber);
+            // Paint local progress now; saving must not hold up the test buttons.
+            void buildTestButtons(false);
 
             if (!currentUser) {
                 showNotification('Please sign in to save your progress.', 'info');
                 setTimeout(() => openModal('si'), 2000);
             } else {
                 const saved = await saveProgressToSupabase(d.testNumber, d.lang);
+                if (unconfirmedCompletions.get(key) === completion) {
+                    completion.saved = saved;
+                    progressRevision++;
+                }
+                if (currentUser?.id !== userId) return;
                 if (saved) {
-                    await fetchProgressFromSupabase(); // Supabase'den tüm dilleri senkronize et
                     showNotification(`Test ${d.testNumber} completed successfully!`, 'success');
                 } else {
-                    showNotification('Progress saved locally. Will sync when you sign in.', 'info');
+                    showNotification('Progress is saved on this device, but could not be saved to your account. Please check your connection.', 'error');
                 }
             }
 
-            await buildTestButtons(); // en son çağrılır: fetchResetUsed + showResetBanner dahil
+            await buildTestButtons(); // Check reset eligibility after the save finishes.
         });
 
         /* ─── AUTH STATE DEĞİŞİKLİKLERİ (indexB'den birebir) ─── */
@@ -4026,6 +4059,7 @@
                 } else if (event === 'SIGNED_OUT') {
                     if (currentUser !== null) {
                         currentUser = null; currentPlanId = null; accessibleGroups = [];
+                        clearUnconfirmedCompletions();
                         Object.keys(localStorage).forEach(k => {
                             if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) {
                                 localStorage.removeItem(k);
@@ -4053,7 +4087,9 @@
         /* ─── SEKMEYE DÖNÜNCE ─── */
         let lastFocusUpdate = 0;
         const FOCUS_THROTTLE = 3000;
-        window.addEventListener('focus', async () => {
+        async function refreshProgressOnReturn() {
+            // Show cached progress before session checks or network requests.
+            void buildTestButtons(false);
             const now = Date.now();
             if (now - lastFocusUpdate < FOCUS_THROTTLE) return;
             lastFocusUpdate = now;
@@ -4069,6 +4105,10 @@
                     buildTestButtons();
                 } catch (err) { console.error('❌ Focus update error:', err); }
             } else { buildTestButtons(); }
+        }
+        window.addEventListener('focus', refreshProgressOnReturn);
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') void refreshProgressOnReturn();
         });
 
         /* ─── PERİYODİK SESSION CHECK ─── */
@@ -4133,6 +4173,7 @@
                 if (session?.user) {
                     currentUser = session.user;
                     
+                    clearUnconfirmedCompletions();
                     // Önce progress'i temizle (localStorage ve Supabase)
                     const allLangs = ['en', 'tr', 'nl', 'ar'];
                     for (const lang of allLangs) {
