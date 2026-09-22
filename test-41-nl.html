@@ -1,2873 +1,525 @@
-﻿<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Quiz</title>
+<html lang="nl">
+<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><title>ExamTheorie · Oefenexamen 41</title><style id="exam-design">/* Embedded Manrope font license:
+Copyright 2018 The Manrope Project Authors (https://github.com/googlefonts/manrope)
 
-    <script>
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+*/
+@font-face{font-family:'Manrope Countdown';font-style:normal;font-weight:600;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAoEAA8AAAAAErQAAAmqAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG4FcHIE4BmA/U1RBVCoARBEICpcQk0oLWgABNgIkA4EwBCAFhAwHIAwHG5APUVSTeiDTSFk4fz944PlT/1y8gJWXDGbrVC8T0qnwjCzbp/mafZhvCudq70UEMQ2iqSdNU8EsxTR40yFL6sC1nLkWzq0n5n8/5ur+RBNuUUPlaCQqKe2//embiCRMtImFCI2jqbcdmZAJlZC5TqiE0ki8bBpMHB1r0EgxpeirI2f8CMDDYCai5s4vryNjzdaOJjKaVnW1kIGmUH0aOjQ2dLTg2ihGBRqJyzMbD2AOzjeWoote7N+9aCaH/gYShYEBnsEMzuqHMAQ1gFusf7+ThdRQznymMpyBSDzw1Hvw4MgDLvuXpKNh34qL/Nun2h/jsU8iUPYLhu3QoEQDwHfnI1ktC1YouN6kYy2tzQxt6W7uoH9bS3czoa4+5t00KAyTzmQN10xnJDl49NC67PzJB/UO+3dkEvKSoRpc2pRBBkJGkRy0HmjQ+h65UMIQI0PfCpy9Olw+yGh5hPGIS5GPRAg1ntxQW1xRwqOEmOyq++9aM8BVJxeGEJdcjuiJxqVWDqg5gNEAf+cC5OZ167teSS+FNQlDLuQQER3IQKE9mpEJupodqBonMdm2N7yRzV77NftHfZQaxWyb4A6HLoBUO7rgDLboly0nYePciwa/AmwCFpp7I2mPJzmBfHI/4F2HHv9gpqU5e/UJDginOIt8vnBKWlo4JexLCziLwsG+YZ+zwOcL+7RXpLOt8/HN8Z4eofYmk95jloXc8+ab5rFkUhh7e3o88TffRO+xLL97pVjj3RqNbk4mxVlnvQdPXawuNjpI0smMWlY0iaDukr7mulEBkUrM7DwSFAGx3bvFr7zSiwfdeptleY+Ves1Uc0UqgejS2W8Qj6uev77u8ZDWyOnPnmM+2vFN9liWdzsjbvGJ7U1G65YqpKvOfIAFeJA91oqdcbsGXTzxHjP6WFg2Ne1QQWGsZ1AyTlu9mS1x3N3Js6PX1RLDHqWOOuoWbWS3CyXmEbnHajTqRNTrWBFd94jEdW8W1l2H8thwP41BcW5T9smdpYf5RJCVvc9qFD7R6F3vFV6MAmu4jB3orhloLvHjq1o4/JFSx1XKP+uHqsVabAJhexptTA3o6p7lqK5rMKnHEeqoqwH3rk7B9JSCyn/2IRqhUThIIiQK2ySIBIW0ABGgsC0TyURhWzKSjEIaQRAUdkQgESikQ5AQFNJBSBAKO3wQHxTSHogHCtucECfQ6zrmGoTXxjwdA69dg2PGXIN79422kxwu5eQ/kVKOw0mTSP4k/7cHps2/zL33y6zT4OuZQA3AJjoSy4zrTpGimk4hQWolfAYIzwz0nLjcYTOf1WhPW9TRlqp2Ke/GirpbduDmVLeFNI9zqxiOdym0UTmAAJ1CVEN2jZ3S5SX480nZ3A87C7baKfu8cSNQs72r/gjsg6fPdYPHH/r2u6KOJ66oY4rxlNG23/YBxLk2bc83zXSpHor9VVHUFJUsg5iElcpwFkqkud1813VpwS+/3zddRXjF6c3TkgjjCab7lMlouXCjF2hcBxx67s7Yg9O4R3d1E2l7lkg10arXpAryTSrcIvtuZAq5oajGeELbddpoMl64Cg1DBIthLEFIWBYjCIhhLCHFWBYHZ93nnu+1U3b3sedBruvIc82aYYO29TCd+KWwAKEW1zIta4bKOM5e1rKGqS1aVJrwBb8lvv2I1sAMn2/u399m69ForLC93Qo1GltP6xa1hqqo0JSr1Ux5RQVDAb+vt/U79Lo74w5M5x7e1U2k7Vli1SSrnknj55mzMIvsu2kp5IaiGtNxpvu0yWQ67+g1DhNQgrEEgUEWIwgWwyAhlbAsBupdR1+H8NqYp2Pgtetw9JhrEF4b83QMvHYNjrbLORzn5D+ROMfhcpLDcY78SY5zHA789m3vd+h1d8YenMY9uqubSNuzxKpJVj2Tys8zqzCL7LtpKeSGohrTcW33aaPJdMEBjUMExDCWIDCW5eexf20cOM0ZnzdSoRhd4lSpmDBGQQmYqOeV1HSRT0C8IjpUGbH4uIJOzMjWSTFDVpbKYiVVRgFVJuRTlEBAUXx+mRoc+qp0UCEbV/VLuWz8oLK0xCYnx1f+Uikdb1OUGcjS+sLf8oqbFLLS+sLfcgubgYfz/YWVUxeWD+qB2hkwusJz3iJvYW6RIAILCZT8MCpPph8QF2abcMKYk+aZjYqd/b/76bgBtH1TMZt2KTP7fJedGCMA+YUCUV6R6O8l/2c0pv3783ajr+mbD545WhyFZLbc2IeD186Txhi8KmZ5VTx/Yn2SY8iZBEzfVs1knCmj993CzDhBGcULD8WxkLBYUWBCV6DThbu66bI/Sm7HlHpHqjgMM2Spss1WEuwbkTdSqRhV4vR+xJEvcmcIvQPrVrYmpCcIqDJpmeC312znxM9Wg68B+Qx8eJ1YFF9Qsbu2qnRfcd8+V05vnNN18dEdOy862jVnauOvckHvsv1VtZW74wsWHppvlhWXmeXz59eXlxWbZXNvn1o8Zeq04slTpxRPnja1eAp5V92+6HhNzek1F731vffei0LPkDwDOFC9FlI9SmqE0h39kFbnT4gkF62PudOQTnrBf59KJ6GBICzoLegj6CvoJ+jPHUCz9oMYSgIndBwmXyH4x79kcYoZoPoYl7IfoauNh9lrf6ZHGZdyAHQ7FBy1P9YRsvMlS4yHeAR02LiUuP2xrjAehhvtr5Rfnc0WELepA8TgEvmiOpeI/Y285lD3LmTY38onTk/Yn0tbnU0EZDeQLeS9zu+SEA+oG+O6u/Reh5X+6HcrglN/cynnq2n0nbuvPmDPfa9X9SX/P/jf7e4X3cP1QWk1AlhEeqxn7v8P/v+g+8X4kI3jGWo8y7OGJqHK2aLPJqa3ENF3EdOndF7yDgmdRUTfwRb9Du36JJuNWMyQsJ/sJQfIUbKTPKKL716pziMhL2OLGklM9SKiZhJTA8xpbSTkW0RUPVvMirRjLpHTuFWeyrvi1FheMxRi+FnUQhk3ZrGy18OujUW785RL+b5EEOLlEkmAR0sU44nP1bdLDPJoK3EQIlIcYCwF3QT4SAGtkb0PammgmQ3MppUmYkRpYAPrWE/XrH0XbUxmRHZaJ2voYANtdFnt8IEcvn8Tw2mlg3WMoIr5lFPBKlrooJU2GhhGTUzs8PtqKy2EGMtwxjGSsZvKU6ilmApKpkVFak62jm6aWEUHsuoQzrmIWyUwef1DjGYko5hkfXWs95iQACM7shHXoH2z6FYGRLd2EmKgSobO3LeODTc93azuN66hlWb1cH2AkB0dYxUjaGbBQS0o2rHaF7Z7Jhl3vFfYB2/VxwE=) format('woff2')}
+/* New presentation stylesheet. No CSS from the old quiz is included. */
+:root{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#152b4c;font-synthesis:none;--blue:#0674ec;--ink:#152b4c;--muted:#718098;--line:#e3eaf4}
+*{box-sizing:border-box}html{min-height:100%;background:#0754b8}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 43% -25%,#298ffc 0,transparent 60%),linear-gradient(120deg,#06479f,#096cd4 54%,#0751b5);line-height:1.5}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.48}button:focus-visible,a:focus-visible,input:focus-visible,[role=button]:focus-visible{outline:3px solid #0bc3ee;outline-offset:4px}button{transition:background .16s,box-shadow .16s}h1,h2,h3,h4,p{margin-top:0}button svg{width:21px;height:21px}.hidden,[hidden]{display:none!important}.preinit #quizButton1{visibility:hidden}
+.ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden;background:linear-gradient(145deg,transparent 23%,#ffffff06 23%,#ffffff06 44%,transparent 44%)}.ambient::after{content:"";position:absolute;width:75vw;height:70vh;right:-25vw;bottom:-40vh;border-radius:50%;border:85px solid #ffffff05}
+.exam-app{position:relative;max-width:1460px;margin:auto;padding:32px 40px 24px}.page-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 8px 28px;color:white}.wordmark{display:flex;align-items:center;gap:10px;font-weight:800;font-style:italic;font-size:28px;letter-spacing:-1px}.wordmark>svg{width:35px;height:35px}.wordmark small{display:block;font-size:12px;letter-spacing:.1px;font-style:normal;font-weight:400;color:#b5d9ff}.page-tools{display:flex;gap:20px;align-items:center}.exam-label{font-size:10px;letter-spacing:1.8px;color:#c1e0ff}.icon-button{height:40px;width:40px;border:1px solid #ffffff35;border-radius:12px;color:white;background:#ffffff0d;display:grid;place-items:center}.icon-button svg{fill:none;stroke:currentColor;stroke-width:2}.toggle-fullscreen-btn:not(.on) .icon-fullscreen-leave,.toggle-fullscreen-btn.on .icon-fullscreen-enter{display:none}
+.exam-shell{background:#fff;border:1px solid #ffffffc9;border-radius:24px;box-shadow:0 28px 75px #00377238;overflow:clip}.exam-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:22px;min-height:62px;padding:12px 32px;border-bottom:1px solid #edf1f7}.toolbar-brand{font-size:23px;letter-spacing:-.7px;font-weight:800;color:#065acb;font-style:italic;white-space:nowrap}.brand-symbol{font-size:32px;vertical-align:middle;line-height:0;margin-right:5px}.toolbar-context{text-align:right;font-size:13px;color:var(--muted)}.timer-slot{display:flex;justify-content:center;min-height:0;align-items:center;grid-column:2}.progress-group{display:flex;align-items:center;justify-content:flex-end;gap:14px;min-width:0}#soruNumarasiS3{font-size:12px;font-weight:650;white-space:nowrap;margin:0;color:#1a345b}#progress-percent{font-size:12px;min-width:29px}.progress-track{height:7px;width:140px;max-width:35%;flex:1;min-width:45px;background:#e8edf5;border-radius:9px;overflow:hidden}#progress-fill{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#03b3ef,#0073f5);transition:width .2s}
+#app-s3{width:auto;height:auto}.base-timer_S3{display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.base-timer__svg_S3{display:none}.countdown-caption{font-size:12px;line-height:1.2;font-weight:400;color:#65758e}.base-timer__label_S3{position:static;display:block;min-width:5ch;font-family:"Manrope Countdown","Segoe UI",sans-serif;font-size:24px;line-height:1.2;font-weight:600;font-variant-numeric:tabular-nums lining-nums;text-align:center;color:#152b4c;transition:color .2s}.timer-warning .base-timer__label_S3{color:#9a7000}.timer-alert .base-timer__label_S3{color:#c83535}
+.exam-content{padding:24px 30px}.quiz-container-s3:empty{display:none}.questionS3{position:relative;display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,.94fr);grid-template-rows:auto 1fr;column-gap:26px;row-gap:18px;align-items:start;isolation:isolate;min-width:0}.questionS3::before{content:"";position:absolute;inset:0 0 0 calc(55.24% + 13px);background:linear-gradient(135deg,#f2f7fc,#f7faff);border-radius:20px;z-index:-1}.questionS3>p{grid-column:2;grid-row:1;display:flex;gap:14px;align-items:flex-start;font-size:clamp(17px,1.35vw,21px);font-weight:700;line-height:1.4;padding:25px 22px 0;margin:0;min-width:0}.questionS3>p::before{content:attr(data-number);flex-shrink:0;display:grid;place-items:center;width:42px;height:42px;background:#cbf2fb;border-radius:12px;color:#0962bb;font-size:18px;line-height:1}.questionS3>br,.answers>br,.answers>label>br{display:none}
+.questionS3>.question-image,.questionS3>.question-video{grid-column:1;grid-row:1/span 3;display:block;width:100%;height:auto;max-width:100%;border-radius:15px;box-shadow:0 10px 24px #162c4710}.questionS3>.question-video{background:#0d1e37}.questionS3>.answers{grid-column:2;grid-row:2;display:flex;flex-direction:column;gap:14px;min-width:0;padding:0 22px 24px}.cevapSecenegi-s3{position:relative;display:flex;align-items:center;gap:13px;min-height:66px;padding:17px 19px;background:#fff;border:1px solid #d1dceb;border-radius:12px;color:#223959;line-height:1.45;font-size:15px;cursor:pointer;box-shadow:0 2px 3px #00377903}.cevapSecenegi-s3:hover{border-color:#90bdec}.cevapSecenegi-s3.selectedAnswer{border-color:#0088ff;background:#e1f2ff;box-shadow:0 0 0 1px #0088ff22}.cevapSecenegi-s3 input{appearance:auto;width:20px;height:20px;margin:0;flex-shrink:0;accent-color:#057bff}.answer-input{width:100%;max-width:270px;min-height:62px;border:1px solid #c9d9ed;border-radius:12px;padding:14px 18px;background:white;color:var(--ink);font-size:22px;font-weight:650}.answer-input:focus{border-color:#0088ff}.questionS3.no-media{max-width:790px;min-height:300px;margin:auto;grid-template-columns:1fr}.questionS3.no-media::before{inset:0}.questionS3.no-media>p,.questionS3.no-media>.answers{grid-column:1}.questionS3.has-video.has-image{grid-template-rows:auto auto 1fr}.questionS3.has-video.has-image>.question-image{grid-row:1}.questionS3.has-video.has-image>.question-video{grid-row:2/span 2}
+.questionS3>.image-container{grid-column:1;grid-row:1/span 3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;min-width:0}.image-wrapper{aspect-ratio:3/2;min-width:0;position:relative;border-radius:13px;overflow:hidden;border:2px solid transparent;background:#f1f6fc;cursor:pointer}.image-wrapper img{display:block;width:100%;height:100%;max-width:100%;object-fit:contain}.image-wrapper.selected{border-color:#0088ff;box-shadow:0 0 0 2px #0088ff22}.image-wrapper.selected::after{content:"✓";position:absolute;right:9px;top:9px;display:grid;place-items:center;background:#087cf3;color:white;width:28px;height:28px;border-radius:50%;pointer-events:none}
+.questionS3>.drag-drop-container{grid-column:1;grid-row:1/span 3;align-self:start;position:relative;width:100%;height:auto;padding:0;transform-origin:top left;touch-action:none}.drag-drop-container img{display:block;width:100%;height:auto;border-radius:15px}.box,.target{position:absolute;width:12%;height:14.9%;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:clamp(17px,2vw,30px);line-height:1}.box{box-sizing:border-box;cursor:grab;color:#bd7400;background:white;border:4px solid orange;box-shadow:0 3px 12px #0004;z-index:2;touch-action:none}.target{color:black;background:transparent}.target.highlight{background:#ffc66f88}.drag-drop-container .box:active{cursor:grabbing}.disabled3,.disabled2,.disabled{pointer-events:none}.questionS3>.feedback-container{grid-column:2;grid-row:2}.feedback-container{position:static!important;width:100%!important;border:1px solid #d5e2ef!important;background:#fff;border-radius:12px!important;box-shadow:none!important;padding:15px!important;gap:12px;margin:8px 0 0!important}.feedback-text{font-size:14px;line-height:1.65;text-align:left!important}.feedback-container img{flex-shrink:0;object-fit:contain}.marker{font-style:normal;flex-shrink:0}.selected-correct{border-color:#43a875}.selected-wrong{border-color:#e55858}
+.exam-actions{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 30px;border-top:1px solid #edf1f7;background:white}.question-navigation,.map-actions{display:flex;align-items:center;gap:12px;min-width:0}.question-navigation>button{border-radius:12px;min-width:150px;height:49px;font-size:15px;font-weight:650;border:1px solid #d3dfef;background:white;color:#537398;display:flex;justify-content:center;align-items:center;gap:14px}.question-navigation>button::before{content:"‹";font-size:27px;line-height:1}#next-button-s3{border:0;color:white;background:linear-gradient(180deg,#08afec,#0062f2);box-shadow:0 7px 15px #087fff30}#next-button-s3::before{display:none}#next-button-s3::after{content:"›";font-size:27px;line-height:1}#next-button-s3:hover{box-shadow:0 8px 20px #087fff50}.map-actions .grid-button{display:flex;align-items:center;gap:8px;border:0;border-radius:9px;padding:10px 9px;background:#f1f7ff;color:#0876dc;font-size:13px;font-weight:550}.grid-button svg{fill:currentColor;width:20px;height:20px}#answer-hint{font-size:12px;color:#7a8da6}#btnExternalLink{position:static}.page-footer{display:flex;gap:16px;align-items:center;color:#96c8f9;font-size:9px;letter-spacing:2px;margin:26px 8px 0}.page-footer>span{width:48px;height:2px;background:#00d8ed}
+.welcome{max-width:670px;margin:35px auto 45px;text-align:center}.eyebrow{font-size:10px;letter-spacing:2px;color:#2383ce;font-weight:700}.welcome h1{font-size:clamp(34px,4vw,52px);line-height:1.1;letter-spacing:-1.6px;margin:16px 0}.lead{font-size:17px;color:#6c809b}.exam-facts{display:flex;justify-content:center;margin:32px 0;gap:0}.exam-facts>div{flex:1;max-width:165px;border-right:1px solid var(--line)}.exam-facts>div:last-child{border:0}.exam-facts strong{display:block;font-size:30px;color:#076bd3;font-weight:750}.exam-facts span{font-size:13px;color:var(--muted)}.primary,#startSection3Button,#proceedToResultDivBtn,#viewResult,#proceedToSecction3Button{border:0;border-radius:12px;padding:14px 28px;background:linear-gradient(180deg,#08afec,#0062f2);color:#fff;font-weight:650;box-shadow:0 6px 15px #0079ff22}.launch{min-width:200px}.small-muted{font-size:12px;color:#8694a9;margin:17px 0 0}#startMessage{max-width:760px;margin:14px auto;padding:18px 0!important}#startMessage h4:first-child{font-size:28px;color:#14365b;line-height:1.3;margin-bottom:22px}#startMessage p{color:#536984;font-size:15px;line-height:1.85}#startMessage .button-container{margin-top:28px}#startMessage h4:last-of-type{font-size:18px}
+#proceedSection3End,#viewResultContainerId,#finalResultContainerId{text-align:center;padding:14px 8px 24px;max-width:850px;margin:auto}#proceedSection3End{display:flex;align-items:center;flex-direction:column;gap:12px}#proceedSection3End h2,#finalResultContainerId>h2{font-size:25px;margin-bottom:14px}#answeredQuestionsS3End,#unAnsweredQuestionsS3End{display:inline-block;color:#5a7190;margin:0}#endMessage3-S3,#endMessage4-S3{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%;padding:10px 0;margin:16px 0}.question-block-s3{display:grid!important;place-items:center;width:45px;height:45px;border-radius:9px;background:#edf2f8;color:#244260;border:1px solid #d9e3ee;cursor:pointer;font-size:14px;font-weight:650}.question-block-s3:hover{outline:2px solid #078aff}.answered-block{background:#d5edf9}.correct-block{background:#dff5e8;color:#1e7548;border-color:#95d7b2}.incorrect-block{background:#ffe4e4;color:#ac3535;border-color:#f2aaaa}.unanswered-block{background:#f0f3f7;color:#7e8a9a}.viewResultContainer h2{font-size:28px}.viewResultContainer #endResult{font-size:44px;line-height:1;margin:20px}#failOrPassIcon{max-width:78px;max-height:78px}#failOrPassEndS3{object-fit:contain}#resultS3{padding:12px 0}#finalResultContainerId>p{color:#6b7f99;font-size:14px;max-width:580px;margin:0 auto 20px}.loading-screen{text-align:center;padding:60px 0;color:#4f698b}.loading-screen h2{font-size:21px}.loading-dot{display:block;margin:0 auto 20px;width:30px;height:30px;border:3px solid #daedfd;border-top-color:#0084ff;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.modal{display:none;position:fixed;inset:0;z-index:1000;background:#061c45aa;backdrop-filter:blur(5px);padding:20px}.modal-content{max-width:480px;background:white;margin:15vh auto 0;border-radius:22px;padding:30px;text-align:center;box-shadow:0 24px 80px #00163460}.modal-content h2{font-size:24px}.modal-content p{color:#6b7e97}.popup-buttons{display:flex;justify-content:center;gap:12px}.popup-btn{padding:12px 24px;border:1px solid #cfdeef;border-radius:10px;font-weight:600;background:#087ff0;color:white}.popup-btn:last-child{background:white;color:#416187}
+@media(min-width:1550px){.exam-app{padding-top:46px}.questionS3{min-height:440px}}
+@media(max-width:1000px){.exam-app{padding:24px}.exam-toolbar{padding:12px 22px;gap:10px;grid-template-columns:minmax(0,1fr) auto minmax(0,1.2fr)}.toolbar-brand{font-size:19px}.progress-group{gap:9px}.exam-content{padding:20px}.questionS3{column-gap:18px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.questionS3::before{left:calc(50% + 9px)}.questionS3>p{padding:20px 16px 0;font-size:17.5px;gap:10px}.questionS3>.answers{padding:0 16px 20px}.cevapSecenegi-s3{padding:14px;font-size:14px}.exam-actions{padding:18px 20px}.question-navigation>button{min-width:125px}}
+@media(max-width:720px),(pointer:coarse) and (max-width:1100px){.exam-app{padding:15px 12px 22px}.page-header{margin:0 4px 18px;gap:8px}.wordmark{font-size:22px;gap:6px}.wordmark small{font-size:10px}.wordmark>svg{width:27px}.exam-label{display:none}.page-tools{gap:0}.icon-button{height:36px;width:36px;border-radius:10px}.exam-shell{border-radius:19px}.exam-toolbar{padding:9px 16px;grid-template-columns:auto minmax(0,1fr);gap:14px;min-height:50px}.toolbar-brand{display:none}.timer-slot{min-height:0;grid-column:1}.toolbar-context{font-size:12px}#app-s3{width:auto;height:auto}.base-timer__label_S3{font-size:22px}.countdown-caption{font-size:11px}.progress-group{flex-wrap:wrap;justify-content:flex-start;gap:4px 8px;width:100%}#soruNumarasiS3{flex-basis:100%;font-size:11px}.progress-track{max-width:none;width:auto;flex:1}.exam-content{padding:16px}.questionS3,.questionS3.no-media{display:flex;flex-direction:column;gap:0;min-height:0;max-width:none}.questionS3::before{display:none}.questionS3>.question-image,.questionS3>.question-video,.questionS3>.image-container,.questionS3>.drag-drop-container{order:1;align-self:stretch;width:100%;border-radius:12px;margin-bottom:18px;flex-shrink:0}.questionS3>p{order:0;font-size:16px;line-height:1.4;padding:0 0 18px;gap:11px;width:100%}.questionS3>p::before{width:34px;height:34px;font-size:16px;border-radius:10px}.questionS3>.answers{order:2;padding:0;width:100%;gap:10px}.cevapSecenegi-s3{min-height:56px;padding:14px 13px;font-size:14px;gap:11px}.cevapSecenegi-s3 input{width:19px;height:19px}.questionS3>.feedback-container{order:3}.box,.target{font-size:clamp(15px,5vw,24px)}.box{border-width:3px}.questionS3>.image-container{gap:10px}.exam-actions{flex-wrap:wrap;padding:14px 16px max(16px,env(safe-area-inset-bottom));gap:14px}.question-navigation{order:0;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}.question-navigation>button{min-width:0;width:100%;height:47px;font-size:14px}.map-actions{order:1;width:100%;justify-content:center;flex-wrap:wrap}.map-actions .grid-button{font-size:12px;padding:8px 12px}#answer-hint{font-size:11px}.welcome{margin:25px 0}.welcome h1{font-size:35px}.exam-facts{margin:25px 0}.exam-facts strong{font-size:25px}.exam-facts span{font-size:11px}.page-footer{font-size:8px;letter-spacing:1.1px;gap:10px;margin:20px 4px 0}.page-footer>span{width:25px}#startMessage{padding:8px 0!important}#startMessage h4:first-child{font-size:23px}#startMessage p{font-size:14px}#startSection3Button{width:100%;padding:15px 8px;font-size:12px}.question-block-s3{width:38px;height:38px}.modal-content{padding:24px 20px}.answer-input{max-width:none}.exam-content:has(#startMessage[style*="block"]){padding-bottom:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+.question-block-s3.hidden{display:none!important}
+.cevapSecenegi-s3.selected-correct{background:#e6f6ed!important;border-color:#82cfa3;box-shadow:none;color:#1e6640}
+.cevapSecenegi-s3.selected-wrong{background:#fff0f0!important;border-color:#eea5a5;box-shadow:none;color:#a33030}
+.cevapSecenegi-s3[style*="lightgrey"]{background:#f1f4f8!important;color:#5e718a}
+.image-wrapper.review-choice.selected::after{display:none}.image-wrapper .marker{z-index:3;display:grid;place-items:center;min-width:28px;min-height:28px}
+.modal-content{position:relative}.modal-content .close{position:absolute;right:18px;top:12px;cursor:pointer;font-size:26px;line-height:1;padding:5px;color:#69819a}
+
+/* Stable desktop frame: only its middle content area can overflow. */
+@media (min-width:721px) and (pointer:fine), (min-width:1101px) {
+  html,body{height:100%;overflow:hidden}
+  .exam-app{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+  .page-header,.page-footer{flex:none}
+  .exam-shell{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+  .exam-toolbar,.exam-actions{flex:none}
+  .exam-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+}
+
+/* A phone in fullscreen has one scroll surface between its fixed controls. */
+html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;overflow:hidden;overscroll-behavior:none}
+.mobile-fullscreen .exam-app{
+  position:fixed;top:var(--exam-viewport-top,0px);left:0;right:0;
+  height:100vh;height:var(--exam-viewport-height,100dvh);max-width:none;
+  padding:10px 12px 8px;padding-top:max(10px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.mobile-fullscreen .page-header{flex:none;margin-bottom:12px}
+.mobile-fullscreen .page-footer{display:none}
+.mobile-fullscreen .exam-shell{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.mobile-fullscreen .exam-toolbar{flex:none;min-height:50px;padding:9px 16px}
+.mobile-fullscreen .exam-content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+.mobile-fullscreen .exam-actions{flex:none;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:34px 47px;gap:6px;padding:6px 16px 10px}
+.mobile-fullscreen .map-actions{grid-row:1;order:0;flex-wrap:nowrap;min-height:0}
+.mobile-fullscreen .map-actions .grid-button{padding:6px 10px;font-size:12px}
+.mobile-fullscreen .question-navigation{grid-row:2;order:1}
+.mobile-fullscreen .modal{overflow-y:auto;overscroll-behavior:contain}
+
+/* Keep the timer on one line and use compact toolbars when it is absent. */
+.progress-group,.toolbar-context{grid-column:3}
+.exam-shell:not(.has-timer) .timer-slot{display:none}
+.questionS3.has-image-choices{min-height:0}
+.questionS3>.image-container{width:100%;max-width:var(--choice-width,554px);justify-self:center;align-self:start}
+@media(max-width:720px),(pointer:coarse) and (max-width:1100px){
+  .progress-group{grid-column:2}
+  #soruNumarasiS3{line-height:1.2}
+  #progress-percent{font-size:10px;line-height:1.2}
+  .toolbar-context{grid-column:1/-1;text-align:left}
+  .exam-shell:not(.has-timer) .exam-toolbar{min-height:40px;padding-top:8px;padding-bottom:8px}
+  .exam-shell:not(.has-timer) .progress-group{grid-column:1/-1}
+  .questionS3>.image-container{align-self:center;gap:10px;max-width:var(--choice-width,418px)}
+  .image-wrapper.selected::after{width:23px;height:23px;right:6px;top:6px;font-size:13px}
+}
+</style><script>
         (function () {
             window.__qs = new URLSearchParams(location.search); // idx, tn, status burada
             // İlk anda yanlış görünmesin diye kısa süre gizle (disabled görünümü olmayacak)
             document.documentElement.classList.add("preinit");
         })();
     </script>
-    <style>
-    
-    /* Fixed bottom overlay - always aligned with button container */
-    #bottom-overlay {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background-color: #085dc4;
-      pointer-events: none;
-      z-index: 1;
-    }
+</head>
+<body>
+<div aria-hidden="true" class="ambient"></div>
+<div class="exam-app">
+<header class="page-header">
+<div class="wordmark"><svg aria-hidden="true" viewbox="0 0 32 32"><path d="M8 4h8l-3 8H5zm13 0h8l-3 8h-8zM4 16h8l-3 8H1zm13 0h8l-3 8h-8z" fill="currentColor"></path></svg><div>ExamTheorie<small>Theorie vandaag. Veiligere wegen morgen.</small></div></div>
+<div class="page-tools"><span class="exam-label">AUTOTHEORIE · OEFENEXAMEN 41</span><button aria-label="Enter fullscreen mode" class="js-toggle-fullscreen-btn toggle-fullscreen-btn icon-button" hidden="">
+<svg aria-hidden="true" class="toggle-fullscreen-svg" height="18" viewbox="-2 -2 28 28" width="18">
+<!-- Tam ekrana GİR (enter) ikonu -->
+<g class="icon-fullscreen-enter">
+<path d="M 2 9 v -7 h 7"></path>
+<path d="M 22 9 v -7 h -7"></path>
+<path d="M 22 15 v 7 h -7"></path>
+<path d="M 2 15 v 7 h 7"></path>
+</g>
+<!-- Tam ekrandan ÇIK (leave) ikonu -->
+<g class="icon-fullscreen-leave">
+<path d="M 24 17 h -7 v 7"></path>
+<path d="M 0 17 h 7 v 7"></path>
+<path d="M 0 7 h 7 v -7"></path>
+<path d="M 24 7 h -7 v -7"></path>
+</g>
+</svg>
+</button></div>
+</header>
+<main class="exam-shell" id="exam-shell">
+<header class="exam-toolbar">
+<div class="toolbar-brand"><span aria-hidden="true" class="brand-symbol">✦</span> ExamTheorie</div>
+<div class="timer-slot"><div class="hidden" id="app-s3"></div></div>
+<div class="progress-group" hidden="" id="progress-group">
+<h2 id="soruNumarasiS3"></h2>
+<div aria-label="Exam progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-track" role="progressbar"><span id="progress-fill"></span></div><span id="progress-percent">0%</span>
+</div>
+<span class="toolbar-context" id="toolbar-context">Oefen in uw eigen tempo</span>
+</header>
+<div class="exam-content">
+<section class="welcome" id="welcome-screen">
+<span class="eyebrow">UW VOLGENDE STAP BEGINT HIER</span>
+<h1>Klaar voor de weg?</h1><p class="lead">Test uw kennis van de verkeersregels.</p>
+<div class="exam-facts"><div><strong>50</strong><span>vragen</span></div><div><strong>30</strong><span>minuten</span></div><div><strong>44</strong><span>goed om te slagen</span></div></div>
+<button class="primary launch" id="quizButton1" onclick="startQuizAndFullscreen()">QUIZ-41</button><p class="small-muted">Lees de uitleg voordat u de timer start.</p>
+</section>
+<div id="startMessage" style="display: none">
+<h4>THEORIE EXAMEN VOERTUIG VOOR PASSAGIERS</h4>
+<p class="start-insight">
+        Je kunt door de vragen vooruit en achteruit bladeren. Je hebt 30 minuten
+        voor deze sectie. Zolang de tijdsbalk loopt, kun je door de vragen
+        bladeren, overslaan, beantwoorden of corrigeren.
+      </p>
+<p class="start-insight">
+        Als je een verlengd of individueel examen doet, heb je zelfs 45 minuten.
+        Wanneer een lesauto op het scherm verschijnt, ben jij de bestuurder.
+      </p>
+<p class="start-insight">
+        In deze sectie krijg je 50 vragen, waarvan je er minimaal 44 correct
+        moet beantwoorden. Vragen die niet (volledig) beantwoord worden, zijn
+        altijd fout.
+      </p>
+<h4 class="start-insight">Veel succes!</h4>
+<div class="button-container">
+<button id="startSection3Button" onclick="startQuizS3()">
+          GA DOOR NAAR DE EERSTE VRAAG
+        </button>
+</div>
+</div>
+<div class="loading-screen" hidden="" id="loading-screen"><span class="loading-dot"></span><h2>Examen voorbereiden…</h2><p>Vragen en afbeeldingen laden.</p></div>
+<div class="quiz-container-s3"></div>
+<div class="center-button hidden" id="proceedSection3End" style="flex-direction: column; gap: 10px">
+<div class="button-container">
+<h2>Laatste Fase van het Examen</h2>
+</div>
+<p id="answeredQuestionsS3End"></p>
+<p id="unAnsweredQuestionsS3End"></p>
+<div id="endMessage3-S3" style="display: flex; flex-wrap: wrap"></div>
+<div class="button-container">
+<button id="proceedToResultDivBtn" onclick="proceedToResultDiv()">
+          DOORGAAN
+        </button>
+</div>
+</div>
+<div class="viewResultContainer hidden" id="viewResultContainerId">
+<p>Dank je wel voor het indienen van het examen!</p>
+<hr/>
+<h2 id="failOrPass"></h2>
+<div>
+<img alt="failOrPass" id="failOrPassIcon" src=""/>
+</div>
+<h3 id="endResult"></h3>
+<button id="viewResult" onclick="finalResultShow()">
+        Bekijk mijn resultaat!
+      </button>
+</div>
+<div class="finalResultContainer hidden" id="finalResultContainerId">
+<h2>ANTWOORDEN BEKIJKEN</h2>
+<p>
+        Hieronder kun je de resultaten van het examen vinden. Je kunt op een vak
+        klikken om naar de betreffende vraag te gaan en je resultaten te
+        bekijken.
+      </p>
+<div id="resultS3">
+<h2>Controleer Je Antwoorden</h2>
+<img alt="failOrPassEnd" id="failOrPassEndS3" src="" style="height: 50px"/>
+</div>
+</div>
+</div>
+<footer class="exam-actions" hidden="" id="exam-actions">
+<div class="map-actions"><button aria-label="Vragenoverzicht" class="grid-button hidden" id="btnQuestionMap" title="Vragenoverzicht" type="button">
+<svg aria-hidden="true" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+<rect height="6" rx="1" width="6" x="0" y="0"></rect>
+<rect height="6" rx="1" width="6" x="8" y="0"></rect>
+<rect height="6" rx="1" width="6" x="16" y="0"></rect>
+<rect height="6" rx="1" width="6" x="0" y="8"></rect>
+<rect height="6" rx="1" width="6" x="8" y="8"></rect>
+<rect height="6" rx="1" width="6" x="16" y="8"></rect>
+<rect height="6" rx="1" width="6" x="0" y="16"></rect>
+<rect height="6" rx="1" width="6" x="8" y="16"></rect>
+<rect height="6" rx="1" width="6" x="16" y="16"></rect>
+</svg>
+<span>Vragenoverzicht</span></button><button aria-label="Antwoorden bekijken" class="grid-button hidden" id="btnResultMap" title="Antwoorden bekijken" type="button">
+<svg aria-hidden="true" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+<rect height="6" rx="1" width="6" x="0" y="0"></rect>
+<rect height="6" rx="1" width="6" x="8" y="0"></rect>
+<rect height="6" rx="1" width="6" x="16" y="0"></rect>
+<rect height="6" rx="1" width="6" x="0" y="8"></rect>
+<rect height="6" rx="1" width="6" x="8" y="8"></rect>
+<rect height="6" rx="1" width="6" x="16" y="8"></rect>
+<rect height="6" rx="1" width="6" x="0" y="16"></rect>
+<rect height="6" rx="1" width="6" x="8" y="16"></rect>
+<rect height="6" rx="1" width="6" x="16" y="16"></rect>
+</svg>
+<span>Antwoorden bekijken</span></button><button aria-label="ExamTheorie startpagina" class="grid-button hidden" id="btnExternalLink" onclick="window.open('https://examtheorie.nl/', '_blank')" title="ExamTheorie startpagina" type="button">
+<svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path>
+</svg>
+<span>ExamTheorie startpagina</span></button><span id="answer-hint">Kies uw antwoord om verder te gaan</span></div>
+<nav aria-label="Vraagnavigatie" class="question-navigation"><button disabled="" hidden="" id="previous-placeholder" type="button">Vorige</button><button class="hidden" id="previous-button-s3" onclick="previousQuestionS3()">Vorige</button><button class="hidden" id="next-button-s3" onclick="nextQuestionS3()">Volgende</button></nav>
+</footer>
+</main>
+<footer class="page-footer"><span aria-hidden="true"></span>EEN BEETJE OEFENEN. VEEL MEER VERTROUWEN.</footer>
+</div>
+<div class="modal" id="myModalS3">
+<div class="modal-content">
+<span class="close" onclick="noButtonClicked('section3')">×</span>
+<h2>Doorgaan?</h2>
+<p>Je kunt hierna niet meer teruggaan.</p>
+<button class="popup-btn" id="yesBtn" onclick="yesButtonClicked('section3')">
+          Ja
+        </button>
+<button class="popup-btn" id="noBtn" onclick="noButtonClicked('section3')">
+          Nee
+        </button>
+</div>
+</div>
+<div hidden="" id="legacy-support">
+<div class="overlay"></div>
+<div id="bottom-overlay"></div>
+<!-- Fullscreen Toggle Button -->
+
+<!-- Diğer içerikler burada -->
+<!--<div class="coordinateDisplay">X: 0, Y: 0</div>-->
+<!-- SECTION-1 ve teste başla düğmeleri -->
+
+<!-- Mesaj alanı -->
+<div id="messageArea">
+<h4>THEORY EXAM EXPLANATION</h4>
+<p>
+            Welcome to the theory exam for passenger cars. This theory exam consists
+            of three sections: hazard perception, knowledge and insight.
+        </p>
+<p>
+            To pass this exam, you must pass each section individually. After the
+            exam, you will immediately see whether you passed or failed, and how
+            well you performed in each section.
+        </p>
+<h4>Good luck with the exam!</h4>
+</div>
+<!-- Yeni eklenen mesaj alanı -->
+<div id="additionalMessage">
+<h4>EXPLANATION OF HAZARD PERCEPTION</h4>
+<p>
+            In this section, you will have 8 seconds to answer each question. As
+            long as the timer is running, you can still answer the question. If you
+            do not answer in time, the question will be marked wrong. You cannot go
+            back to the previous question.
+        </p>
+<p>
+            Each question will present several choices for how you think you should
+            react to certain scenarios:<br/>- Brake.<br/>- Release accelerator.<br/>-
+            Nothing.<br/>
+</p>
+<p>
+            For each question, assume you are the driver. On the dashboard, you can
+            see the speed at which you are driving. If you are changing direction,
+            you will see an indicator. You can see the traffic behind you in the
+            rear-view mirror.
+        </p>
+<p>You will now begin the hazard perception section.</p>
+<p>
+            This section consists of 25 questions, of which you must answer at least
+            13 correctly.
+        </p>
+<h4>Good luck!</h4>
+</div>
+<div id="buttonContainer">
+<button id="startButton" onclick="showProceedButton()">
+            START THE THEORY EXAM
+        </button>
+<button id="proceedButton" onclick="startQuiz()">PROCEED</button>
+</div>
+<!-- Yeni eklenti -->
+<!-- <button id="lock-quiz-button" class="hidden">
+    Quiz'i Kitle ve İşaretleri Ekle
+  </button> -->
+<!-- Quiz alanını içeren bir div oluşturalım -->
+<div id="quizAlani" style="display: none">
+<!-- Soru alanı -->
+<div id="soruAlani">
+<!-- Zamanlayıcı alanı -->
+<div id="timerDiv">
+<div id="app"></div>
+</div>
+<div class="questionContainer" id="cevaplarContainer">
+<div id="soruResmi"></div>
+<!-- Soru resmi alanı -->
+<div id="cevaplar"></div>
+</div>
+<div id="buttonDiv">
+<button class="navigateButton hidden" id="previousButton" onclick="prevQuestion()">
+                    Previous
+                </button>
+<!--Bu kismi kapatiyorum ki Sorubashligi-->
+<div class="flex-grow">
+<h2 id="soruBasligi"></h2>
+</div>
+<button class="navigateButton" id="nextButton" onclick="nextQuestion()">
+                    Next
+                </button>
+</div>
+</div>
+</div>
+<!-- Gri dikdörtgen -->
+<div class="hidden" id="grayRectangle"></div>
+<!-- Sonuç gösterme alanı -->
+<div id="sonucAlani" style="display: none">
+<h2>Quiz Sonucu</h2>
+<div id="sonuc"></div>
+</div>
+<!-- Section 2 -->
+<!-- <div id="quiz-header"></div> -->
+<!-- Boş alan -->
+<div class="base-timer hidden" id="countdown">
+<svg class="base-timer__svg" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<g class="base-timer__circle">
+<!-- Yarıçapı 17 olarak değiştiriyoruz -->
+<circle class="base-timer__path-elapsed" cx="50" cy="50" r="17"></circle>
+<path class="base-timer__path-remaining green" d="
+                    M 50, 50
+                    m -17, 0
+                    a 17,17 0 1,0 34,0
+                    a 17,17 0 1,0 -34,0" id="base-timer-path-remaining-s2" stroke-dasharray="107"></path>
+</g>
+</svg>
+<span class="base-timer__label" id="base-timer-label-s2"></span>
+</div>
+<div class="quiz-container">
+<!-- Quiz içeriği buraya eklenecek -->
+</div>
+<div id="button-container">
+<!-- <button id="start-button" class="hidden" onclick="startQuizS2()">Section2</button> -->
+<button class="hidden" id="previous-button" onclick="previousQuestion()">
+            Previous
+        </button>
+<button class="hidden" id="next-button" onclick="nextQuestionS2()">
+            Next
+        </button>
+</div>
+<!-- <button id="lock-quiz-button-s-2" class="hidden">
+    Quiz'i Kitle ve İşaretleri Ekle
+  </button> -->
+<div class="center-button hidden" id="proceedSection3" style="flex-direction: column; gap: 10px">
+<h4>END KNOWLEDGE</h4>
+<p class="knowledge-explanation" id="answeredQuestionsS2End"></p>
+<p class="knowledge-explanation" id="unAnsweredQuestionsS2End"></p>
+<h4>OVERVIEW</h4>
+<p class="knowledge-explanation">
+            Use this overview to quickly go to a question. By selecting a box you go
+            directly to the question.
+        </p>
+<div id="endMessage" style="display: flex; flex-wrap: wrap"></div>
+<button id="proceedToSecction3Button" onclick="startSection3Questions()">
+            PROCEED
+        </button>
+</div>
+<!-- 3. Bölümü Başlatan Mesaj ve Yeni Düğme -->
+
+<!-- Section 3 -->
+<!-- <div id="quiz-header"></div> -->
+<!-- Zamanlayıcı başlangıçta gizli -->
+
+<!-- Zamanlayıcı başlangıçta gizli -->
+
+<div id="button-container">
+
+<div class="flex-grow">
+
+<!-- Yeni ID: soruNumarasiS3 -->
+<span class="map-buttons">
+<!-- Soru haritası (zaten var) -->
+
+<!-- 🔹 Yeni: Sonuç haritası butonu -->
+
+<!-- 🔹 Yeni: Dış bağlantı butonu -->
+
+</span>
+</div>
+
+</div>
+
+<div class="modal" id="myModal">
+<div class="modal-content">
+<span class="close" onclick="noButtonClicked('section2')">×</span>
+<h2>Proceed?</h2>
+<p>You can not go back after this.</p>
+<button class="popup-btn" id="yesBtn" onclick="yesButtonClicked('section2')">
+                Yes
+            </button>
+<button class="popup-btn" id="noBtn" onclick="noButtonClicked('section2')">
+                No
+            </button>
+</div>
+</div>
+
+
+
+<!-- HTTP -->
+
+<!-- HTTPS -->
+
+
+
+
+
+
+</div>
 
-    @media (max-width: 768px) {
-      #bottom-overlay {
-        height: 11.75vh;
-      }
-    }
-    /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
-        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
-        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
-
-        html,
-        body {
-            min-height: 100dvh;
-            overflow-y: auto;
-        }
-
-        #startMessage {
-            display: none;
-        }
-
-        #startMessage.is-active {
-            display: block;
-            min-height: 100dvh;
-            /* 100vh değil 100dvh */
-            /* JS ayrıca paddingBottom verecek */
-        }
-
-        #startMessage .button-container {
-            margin-bottom: 100px;
-            /* 24px idi, indi biraz daha fazla */
-        }
-
-
-        /* Kaydırma çubuğunu gizle ama kaydırma aktif kalsın */
-        body {
-            font-family: "Times New Roman";
-            display: block;
-            height: auto;
-            place-items: center;
-
-            /* Kenarlarda ufak boşluk */
-            padding-left: 0px;
-            padding-right: 8px;
-
-            /* Scrollbar gizleme */
-            scrollbar-width: none !important;
-            /* Firefox */
-            -ms-overflow-style: none !important;
-            /* Eski Edge/IE */
-        }
-
-        body::-webkit-scrollbar {
-            width: 0 !important;
-            height: 0 !important;
-            display: none !important;
-        }
-
-        .preinit #quizButton1 {
-            visibility: hidden;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #ffffff;
-        }
-
-        #quizButton1 {
-            top: 120px;
-            /* Butonun üst kenardan mesafesi */
-            left: 50%;
-            transform: translateX(-50%);
-            position: absolute;
-            padding: 14px 40px;
-            display: inline-block;
-            text-decoration: none;
-            text-transform: uppercase;
-            overflow: hidden;
-            cursor: pointer;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 17px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            letter-spacing: 2.5px;
-            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        #quizButton1:hover {
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
-            background: linear-gradient(135deg, #357ABD 0%, #2868A8 100%);
-        }
-
-        #quizButton1:active {
-            transform: translateX(-50%) translateY(-1px);
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
-        }
-
-        #viewResult {
-            top: 430px;
-            /* Butonun üstkenardan mesafesi */
-            left: 50%;
-            transform: translateX(-50%);
-            position: absolute;
-            padding: 14px 32px;
-            display: inline-block;
-            text-decoration: none;
-            overflow: hidden;
-            cursor: pointer;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        #viewResult:hover {
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-
-        #viewResult:active {
-            transform: translateX(-50%) translateY(0);
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            /* İçeriğe tıklamayı engellemez */
-            box-shadow:
-                inset 0 60px 0 0 #085dc4,
-                /* Üst kenar için 50px kalınlık */
-                inset 0 -60px 0 0 #085dc4,
-                /* Alt kenar için 60px kalınlık */
-                inset 50px 0 0 0 #085dc4,
-                /* Sol kenar için 10px kalınlık */
-                inset -50px 0 0 0 #085dc4;
-            /* Sağ kenar için 10px kalınlık */
-            z-index: 1;
-            /* Diğer içeriklerin altında görünmesini sağlar */
-        }
-
-        /* Mobil cihazlar için stil tanımlamaları */
-        @media (max-width: 768px) {
-            .overlay {
-                box-shadow:
-                    inset 0 60px 0 0 #085dc4,
-                    /* Üst kenar */
-                    inset 5px 0 0 0 #085dc4,
-                    /* Sol kenar */
-                    inset -5px 0 0 0 #085dc4,
-                    /* Sağ kenar */
-                    inset 0 calc(-11.75vh) 0 0 #085dc4;
-                /* Alt kenar */
-            }
-        }
-
-        .overlay-thin-top {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            box-shadow:
-                inset 0 10px 0 0 #085dc4,
-                /* Üst kenar 5px */
-                inset 0 -60px 0 0 #085dc4,
-                /* Alt kenar */
-                inset 50px 0 0 0 #085dc4,
-                /* Sol kenar */
-                inset -50px 0 0 0 #085dc4;
-            /* Sağ kenar */
-            z-index: 1;
-        }
-
-        @media (max-width: 768px) {
-            .overlay-thin-top {
-                box-shadow:
-                    inset 0 10px 0 0 #085dc4,
-                    /* Üst kenar 5px */
-                    inset 0 calc(-11.75vh) 0 0 #085dc4,
-                    /* Alt kenar */
-                    inset 5px 0 0 0 #085dc4,
-                    /* Sol kenar */
-                    inset -5px 0 0 0 #085dc4;
-                /* Sağ kenar */
-            }
-        }
-
-        /*
-.coordinateDisplay {
-            position: fixed;
-
-            top: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            font-size: 14px;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1000;
-            pointer-events: none;
-
-        }
-
-        .highlightXY {
-            position: absolute;
-            background-color: rgba(255, 0, 0, 0.5);
-            border: 1px solid red;
-            pointer-events: none;
-
-        }
-*/
-
-        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
-        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
-        /*Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat Müveqqeti kordinat */
-
-        #quizAlani {
-            outline: 1px solid transparent;
-        }
-
-        #soruAlani {
-            outline: 1px solid transparent;
-        }
-
-        #timerDiv {
-            outline: 1px solid transparent;
-        }
-
-        #cevaplarContainer {
-            outline: 1px solid transparent;
-        }
-
-        #buttonDiv {
-            outline: 1px solid transparent;
-        }
-
-        #app {
-            outline: 2px solid transparent;
-        }
-
-        #soruResmi {
-            outline: 2px solid transparent;
-        }
-
-        #cevaplar {
-            outline: 2px solid transparent;
-        }
-
-        #feedbackDiv {
-            outline: 2px solid transparent;
-        }
-
-        #proceedSection3End {
-            outline: 2px solid transparent;
-        }
-
-        #endMessage3-S3 {
-            outline: 2px solid transparent;
-        }
-
-
-
-        /*//GÖRÜNMEYENLER, QUİZİN HEÇ BİR  YERİNDE RENK OLUŞTURMADI//*/
-
-        #quiz-header {
-            outline: 2px solid transparent;
-        }
-
-        .questionContainer {
-            outline: 5px solid transparent;
-        }
-
-        h4,
-        p {
-            margin-left: 20px;
-
-            /* Sol tarafta 20px boşluk */
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .center-button {
-            /*Açıklamalar bölümündeki mavi düymeleri ayarlar "PROCEED"*/
-            display: flex;
-            justify-content: center;
-            margin-top: 25px;
-        }
-
-        /*
-                   ███████████     ███████    █████       █████  █████ ██████   ██████            ████ 
-                  ░░███░░░░░███  ███░░░░░███ ░░███       ░░███  ░░███ ░░██████ ██████            ░░███ 
-                   ░███    ░███ ███     ░░███ ░███        ░███   ░███  ░███░█████░███             ░███ 
-                   ░██████████ ░███      ░███ ░███        ░███   ░███  ░███░░███ ░███  ██████████ ░███ 
-                   ░███░░░░░███░███      ░███ ░███        ░███   ░███  ░███ ░░░  ░███ ░░░░░░░░░░  ░███ 
-                   ░███    ░███░░███     ███  ░███      █ ░███   ░███  ░███      ░███             ░███ 
-                   ███████████  ░░░███████░   ███████████ ░░████████   █████     █████            █████
-                  ░░░░░░░░░░░     ░░░░░░░    ░░░░░░░░░░░   ░░░░░░░░   ░░░░░     ░░░░░            ░░░░░  */
-
-        @media only screen and (max-width: 768px) {
-            #timerDiv {
-                /* Manuel boyut ayarları */
-                width: 100px;
-                /* TimerDiv genişliği */
-                height: 100px;
-                /* TimerDiv yüksekliği */
-                margin-top: 130px;
-
-                /* Pozisyon ayarları */
-                margin: 0 auto;
-                /* Kendini yatayda ortalar */
-                /* Merkezi hizalama ve düzen */
-                display: flex;
-                /* Flex düzeni */
-                justify-content: center;
-                /* İçeriği yatayda ortalar */
-                align-items: center;
-                /* İçeriği dikeyde ortalar */
-                padding: 0;
-                z-index: 0;
-
-                /* İsteğe bağlı stil */
-
-                box-sizing: border-box;
-                /* Padding dahil genişlik hesaplaması */
-            }
-
-            #app {
-                width: 100px;
-                /* App genişliği */
-                height: 100px;
-                /* App yüksekliği */
-
-                margin: 0;
-                /* Tüm marginleri sıfırlar */
-                display: flex;
-                /* İçerik için flex düzeni */
-                justify-content: center;
-                /* Yatayda içerik hizalama */
-                align-items: center;
-                /* Dikeyde içerik hizalama */
-                margin-top: -55px;
-                z-index: 100;
-            }
-
-            #soruAlani {
-                margin-top: 5px;
-                height: 500px;
-                /* Birinci bölüm komple sorualanını aşağı yukarı kaydırma*/
-                padding: 4px;
-                position: relative;
-                box-sizing: border-box;
-                /* Padding dahil genişlik kontrolü sağlar */
-            }
-
-            #cevaplarContainer {
-                margin-top: -25px;
-                height: 800px;
-
-                /* Maksimum yüksekliği sınırlandırmaz */
-            }
-
-            #quizAlani {
-                height: auto;
-                /* İçeriğe göre yüksekliği ayarlar */
-                width: 100%;
-                /* Genişliği tamamen kullanır */
-                max-width: 700px;
-                /* Maksimum genişlik sınırı */
-                box-sizing: border-box;
-                /* Padding ve border dahil genişlik hesaplaması */
-                overflow: visible;
-                /* Taşan içeriklerin görünmesini sağlar */
-            }
-
-
-            #cevaplar {
-                display: flex;
-                flex-direction: column;
-                /* Şıkları dikey hizalar */
-                justify-content: center;
-                /* Şıkları dikey ortalar */
-                align-items: center;
-                /* Şıkları yatayda ortalar */
-            }
-
-            .cevapSecenegi {
-                width: 95%;
-                /* Şıkların genişliği %90 */
-                margin-bottom: 10px;
-                /* Şıklar arasında boşluk */
-                text-align: left;
-                /* Metni sola hizalar */
-            }
-
-            .questionContainer {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            #buttonDiv {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 10px;
-                position: fixed;
-                bottom: 11%;
-                left: 50%;
-                /* Ekranın tam ortasına hizalan */
-                transform: translateX(-50%);
-                /* Ortalaması için sola doğru yarı genişliği kadar kaydır */
-                width: 100%;
-                /* Genişliği tarayıcının %95'i */
-                padding: 0 2px;
-                z-index: 10;
-                box-sizing: border-box;
-                overflow: hidden;
-                margin: 0;
-                /* margin:0 auto; yerine margin:0 kullanın */
-            }
-        }
-
-        @media only screen and (min-width: 768px) {
-            .questionContainer {
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                /* Resim ve cevap seçenekleri arasındaki mesafe */
-                flex-grow: 1;
-                /* Boş alanı kullanmasını sağlar */
-                width: 10vw;
-                /* Tarayıcı genişliği boyunca uzanır */
-                max-width: none;
-                /* Maksimum genişlik sınırını kaldırır */
-                margin: 0 auto;
-                /* Ortalamak için */
-                padding: 0 20px;
-                /* Kenarlara boşluk bırakmak için */
-            }
-
-
-            #quizAlani {
-                height: 540px;
-                /* Sabit yükseklik */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 95%;
-                /* Tarayıcı genişliğinin %90'ını kaplar */
-                max-width: 1200px;
-                /* Genişlik 1400px'i aşmaz */
-                min-width: 600px;
-                /* Genişlik 600px'ten küçük olmaz */
-                margin: 0 auto;
-                /* Ortalamak için */
-                padding: 0 20px;
-                /* Kenarlara boşluk bırakır */
-                box-sizing: border-box;
-                /* Genişlik hesaplamasını düzenler */
-
-                /* Yatay kaydırmayı kaldırır */
-                margin-top: 20px !important;
-                z-index: 0;
-            }
-
-            #soruAlani {
-                margin-top: 5px;
-                /* Birinci bölüm komple sorualanını aşağı yukarı kaydırma*/
-                padding: 4px;
-                position: relative;
-                box-sizing: border-box;
-                /* Padding dahil genişlik kontrolü sağlar */
-            }
-
-            #timerDiv {
-                /* Manuel boyut ayarları */
-                width: 100px;
-                /* TimerDiv genişliği */
-                height: 100px;
-                /* TimerDiv yüksekliği */
-                margin-top: 130px;
-
-                /* Pozisyon ayarları */
-                margin: 0 auto;
-                /* Kendini yatayda ortalar */
-                /* Merkezi hizalama ve düzen */
-                display: flex;
-                /* Flex düzeni */
-                justify-content: center;
-                /* İçeriği yatayda ortalar */
-                align-items: center;
-                /* İçeriği dikeyde ortalar */
-                padding: 0;
-                z-index: 0;
-
-                /* İsteğe bağlı stil */
-
-                box-sizing: border-box;
-                /* Padding dahil genişlik hesaplaması */
-            }
-
-            #app {
-                width: 100px;
-                /* App genişliği */
-                height: 100px;
-                /* App yüksekliği */
-
-                margin: 0;
-                /* Tüm marginleri sıfırlar */
-                display: flex;
-                /* İçerik için flex düzeni */
-                justify-content: center;
-                /* Yatayda içerik hizalama */
-                align-items: center;
-                /* Dikeyde içerik hizalama */
-                margin-top: -70px;
-                z-index: 100;
-            }
-
-            #cevaplarContainer {
-                margin-top: -20px;
-                /* Yukarıdan negatif margin */
-                width: 100%;
-                /* Kapsayıcı genişliğini tamamen kullanır */
-                height: auto;
-                /* İçeriğe göre yüksekliği ayarlar */
-                padding: 0;
-                /* İçerik ile kenarlar arasında boşluk bırakmaz */
-                box-sizing: border-box;
-                /* Genişlik hesaplamasına padding'i dahil eder */
-                overflow: visible;
-                /* Dikeyde taşan içeriği görünür yapar */
-                max-height: none;
-                /* Maksimum yüksekliği sınırlandırmaz */
-            }
-
-            #soruResmi {
-                padding: 0;
-                /* İçerik ile kenarlar arasında boşluk bırakmaz */
-                margin-left: 0px;
-                /* Sol kenardan boşluk */
-                margin-right: 10px;
-                /* Sağ kenardan boşluk */
-                flex: 60;
-                /* Flex düzeninde %55'lik bir genişlik ayarı */
-                z-index: 5;
-                /* Görünürlük sırasını korur */
-
-                /* Genişleme sınırlarını kaldırma */
-                max-width: none;
-                /* Maksimum genişlik sınırını kaldırır */
-                max-height: none;
-                /* Maksimum yükseklik sınırını kaldırır */
-                width: auto;
-                /* İçeriğe göre genişlik ayarı */
-                height: auto;
-                /* İçeriğe göre yükseklik ayarı */
-            }
-
-            #cevaplar {
-                position: relative;
-                /* Kapsayıcı için referans noktası oluşturur */
-                width: 100%;
-                /* Genişlik ayarı */
-                height: auto;
-                /* Yükseklik içeriğe göre */
-
-                flex: 40;
-            }
-
-            .feedback-container {
-                position: relative;
-                /* absolute yerine relative kullan */
-                width: 95%;
-                /* Genişliği tam olarak ayarla */
-                max-width: 100%;
-                margin: 0 auto;
-                /* Yatayda ortala */
-            }
-
-            #buttonDiv {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 10px;
-                position: fixed;
-                bottom: 0.7%;
-                left: 50%;
-                /* Ekranın tam ortasına hizalan */
-                transform: translateX(-50%);
-                /* Ortalaması için sola doğru yarı genişliği kadar kaydır */
-                width: 100%;
-                /* Genişliği tarayıcının %95'i */
-                padding: 0 2px;
-                z-index: 10;
-                box-sizing: border-box;
-                overflow: hidden;
-                margin: 0;
-                /* margin:0 auto; yerine margin:0 kullanın */
-            }
-
-            #nextButton {
-                margin-right: 0px;
-                /* Sağ taraftan boşluk azaltılır */
-            }
-
-            .cevapSecenegi {
-                width: 95%;
-                /* Şıkların genişliği %90 */
-                margin-bottom: 10px;
-                /* Şıklar arasında boşluk */
-                text-align: left;
-                /* Metni sola hizalar */
-            }
-        }
-
-        .soruKare {
-            width: 30px;
-            height: 30px;
-            display: inline-block;
-            margin: 5px;
-            border: 1px solid black;
-            text-align: center;
-            line-height: 30px;
-        }
-
-        /* Birinci bölümün cevap seçeneklerini ayarlayan kod*/
-        .cevapSecenegi {
-            display: block;
-            margin-bottom: 10px;
-            border: 1px solid #cecece;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 10px;
-            background-color: rgb(239, 239, 239);
-            position: relative;
-            /* İkazların doğrulması için */
-        }
-
-        /*
-
-                   ███████████     ███████    █████       █████  █████ ██████   ██████             ████████ 
-                  ░░███░░░░░███  ███░░░░░███ ░░███       ░░███  ░░███ ░░██████ ██████             ███░░░░███
-                   ░███    ░███ ███     ░░███ ░███        ░███   ░███  ░███░█████░███            ░░░    ░███
-                   ░██████████ ░███      ░███ ░███        ░███   ░███  ░███░░███ ░███  ██████████   ███████ 
-                   ░███░░░░░███░███      ░███ ░███        ░███   ░███  ░███ ░░░  ░███ ░░░░░░░░░░   ███░░░░  
-                   ░███    ░███░░███     ███  ░███      █ ░███   ░███  ░███      ░███             ███      █
-                   ███████████  ░░░███████░   ███████████ ░░████████   █████     █████           ░██████████
-                  ░░░░░░░░░░░     ░░░░░░░    ░░░░░░░░░░░   ░░░░░░░░   ░░░░░     ░░░░░            ░░░░░░░░░░ 
-*/
-
-        .question {
-            outline: 4px solid transparent;
-            /* Kırmızı renkte 2px kalınlığında outline */
-        }
-
-        #countdown {
-            outline: 1px solid transparent;
-            /* Mavi renkte 2px kalınlığında outline */
-        }
-
-        .question-image {
-            outline: 3px solid transparent;
-        }
-
-        .image-container {
-            outline: 6px solid transparent;
-        }
-
-        .answers {
-            outline: 3px solid transparent;
-        }
-
-        p {
-            outline: 1px solid transparent;
-        }
-
-        .image-wrapper {
-            outline: 1px solid transparent;
-        }
-
-        /*iki ve üçüncü  bölümlerde resimden seçme kenarlığı*/
-
-        .cevapSecenegi.resultIcon {
-            margin-left: 10px;
-            font-size: 20px;
-            /* İkaz boyutunu ayarlar */
-            vertical-align: middle;
-            /* İkaz ortalamayı ayarlar */
-        }
-
-        .selectedAnswer {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .correctAnswer::after {
-            /* content: " ✔️"; */
-            color: rgb(11, 207, 11);
-            font-weight: bold;
-        }
-
-        .incorrectAnswer::after {
-            /* content: " ❌"; */
-            color: red;
-            font-weight: bold;
-        }
-
-        .correctAnswer {
-            background-color: rgb(11, 207, 11) !important;
-            color: white !important;
-        }
-
-        .incorrectAnswer {
-            background-color: red !important;
-            color: white !important;
-        }
-
-        .unselectedAnswer {
-            background-color: lightgray !important;
-            color: black !important;
-        }
-
-        .resultIcon {
-            margin-left: 10px;
-            font-size: 20px;
-            vertical-align: middle;
-        }
-
-        #soruSayisi {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 18px;
-        }
-
-        /* Genel stiller */
-        .navigateButton {
-            width: 20%;
-            height: 6vh;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            z-index: 1100;
-            /* Diğer içeriklerin üzerinde olmak için */
-        }
-
-        img {
-            /*Birinci bölüm resim boyutu ayarlama*/
-            max-width: 100%;
-            height: auto;
-        }
-
-        .flex-grow {
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        #buttonContainer {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        #startButton,
-        #proceedButtonBottom,
-        #proceedKnowledgeButton,
-        #proceedToFirstQuestionButton,
-        #proceedButton {
-            display: none;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 50px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-
-        #proceedButton {
-            display: none;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 50px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-bottom: 70px;
-        }
-
-        #proceedToSecction3Button {
-            width: 40%;
-            height: 40px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            display: inline-block;
-            margin: 0 auto;
-            /* Yatayda ortalamak için */
-        }
-
-        #startSection3Button,
-        #proceedToResultDivBtn {
-            width: 80%;
-            height: 40px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        #additionalMessage {
-            display: none;
-            text-align: left;
-            margin-top: 0px;
-            margin-left: 0px;
-            margin-right: 10px;
-            font-size: 16px;
-            color: black;
-        }
-
-        #messageArea {
-            display: none;
-            text-align: left;
-            margin-top: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            font-size: 16px;
-            color: black;
-        }
-
-        .knowledge-explanation {
-            font-size: 16px;
-            margin-bottom: 0px;
-            margin-left: 20px;
-        }
-
-        .start-insight {
-            font-size: 17px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-        }
-
-        #startMessage {
-            display: none;
-            margin-top: 50px;
-            /* İstediğiniz değeri buraya ekleyin */
-        }
-
-
-        /* En azından sabit bir pay */
-        #startMessage.is-active {
-            padding-bottom: 96px;
-            /* ~buton + nefes payı */
-        }
-
-        /* Android/Chrome için: gerçek dinamik viewport */
-        #startMessage.is-active {
-            padding-bottom: max(96px, 6dvh);
-        }
-
-        /* iOS çentik/pill varsa: safe-area'yı ekle */
-        #startMessage.is-active {
-            padding-bottom: max(96px, calc(6dvh + env(safe-area-inset-bottom)));
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #startMessage p,
-        #startMessage h4 {
-            margin-left: 70px;
-            margin-right: 70px;
-            margin-bottom: 10px;
-        }
-
-        #startMessage .start-insight {
-            margin-left: 70px;
-            margin-right: 70px;
-        }
-
-        /* Mobil versiyon için (maksimum 768px genişlikte) */
-        @media (max-width: 768px) {
-
-            #startMessage p,
-            #startMessage h4 {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-
-            #startMessage .start-insight {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-
-            #proceedSection3End .button-container h2 {
-                margin: 2px 15px;
-
-                padding: 2px 1px;
-
-            }
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            /* Yatayda ortalamak için */
-        }
-
-        .flex-grow {
-            flex-grow: 1;
-            /* h2 elementinin mevcut alanı kaplamasını sağlar */
-            text-align: center;
-            /* Metni ortalar */
-        }
-
-        #button-container button {
-            flex-shrink: 0;
-            /* Butonların boyutunun küçülmesini engeller */
-            padding: 10px 20px;
-            /* Butonların iç boşluğu */
-        }
-
-        #endMessage {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            margin-left: 20px;
-            /* İstediğiniz değeri buraya ekleyin */
-        }
-
-        #proceedSection3 {
-            margin-top: 50px;
-        }
-
-        #proceedSection3 .knowledge-explanation {
-            margin-bottom: -10px;
-            margin-top: 10px;
-            /* Elemanlar arasındaki mesafeyi küçültmek için */
-        }
-
-        #proceedSection3 h4 {
-            margin-top: 20px;
-            margin-bottom: -10px;
-            /* İstediğiniz değeri buraya ekleyin */
-        }
-
-        #proceedSection3 .knowledge-explanation:last-child {
-            margin-bottom: 120px;
-            /* Son elemanın altındaki boşluğu kaldırmak için */
-        }
-
-        .base-timer {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            padding: 0;
-            margin-top: 10px;
-            /*Bu bütün bölümlerde zamanlayıcını aşağı yuxarı hizalayır*/
-            margin-bottom: 10px;
-        }
-
-        .base-timer__label,
-        .base-timer__label_S3 {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: bolder;
-            color: rgb(255, 255, 255);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            margin: 25% auto;
-            /* Daha aşağıda konumlandırıldı (15%'den 25%'e) */
-            padding: 35px 30px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            width: 85%;
-            max-width: 450px;
-            text-align: center;
-            position: relative;
-            animation: slideDown 0.4s ease;
-        }
-
-        .modal-content h2 {
-            color: #085dc4;
-            font-size: 24px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .modal-content p {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .close {
-            color: #999;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            font-size: 32px;
-            font-weight: 300;
-            transition: all 0.3s ease;
-            line-height: 1;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #e74c3c;
-            transform: rotate(90deg);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .popup-btn {
-            padding: 14px 35px;
-            font-size: 17px;
-            font-weight: 600;
-            margin: 10px 8px;
-            cursor: pointer;
-            border: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            min-width: 120px;
-        }
-
-        #yesBtn {
-            background: linear-gradient(135deg, #085dc4 0%, #0652a8 100%);
-            color: white;
-        }
-
-        #yesBtn:hover {
-            background: linear-gradient(135deg, #0652a8 0%, #054a8f 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(8, 93, 196, 0.4);
-        }
-
-        #noBtn {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-        }
-
-        #noBtn:hover {
-            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
-
-        .popup-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Mobil uyumluluk */
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 35% auto;
-                /* Mobilde daha da aşağıda */
-                width: 90%;
-                padding: 30px 20px;
-            }
-
-            .modal-content h2 {
-                font-size: 20px;
-            }
-
-            .modal-content p {
-                font-size: 15px;
-            }
-
-            .popup-btn {
-                padding: 12px 25px;
-                font-size: 16px;
-                min-width: 100px;
-            }
-        }
-
-        .viewResultContainer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* Yatayda ortalama */
-            text-align: center;
-            /* Metinleri de ortalar */
-            width: 100%;
-            /* Konteynerin genişliği */
-            margin-bottom: 150px;
-            /* Mobil cihazlarda düğmenin overlay altına taşmasını önler */
-        }
-
-        /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
-        /* Varsayılan (mobil) düzen - üst üste hizalama */
-        .question {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            /* 2 eşit sütun */
-            gap: 1vw;
-            max-width: 1500px;
-            width: 100%;
-            margin: 1vw auto;
-            position: fixed;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 1px solid transparent;
-            border-radius: 1vw;
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .question p {
-            margin-bottom: 11px;
-            margin-top: 13px;
-            padding-right: 25px;
-            padding-left: 5px;
-        }
-
-        .question-image {
-            width: 100%;
-            max-width: 70vw;
-            height: auto;
-            justify-self: start;
-            border-radius: 0.5vw;
-            margin-bottom: -15px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        .question-video {
-            width: 100%;
-            max-width: 70vw;
-            height: auto;
-            justify-self: start;
-            border-radius: 0.5vw;
-            margin-bottom: -15px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        /* T4 tipi sorular için özel stiller */
-        .image-container {
-            display: flex;
-            /* Flexbox kullan */
-            flex-wrap: nowrap;
-            /* Yeni satıra geçmesini önle */
-            gap: 10px;
-            justify-content: center;
-            /* Öğeleri ortala */
-            max-width: 100%;
-            overflow-x: auto;
-            /* Yatay kaydırma ekle */
-            padding-bottom: 5px;
-            /* Kaydırma çubuğu içeriğe yapışmasın */
-        }
-
-        /* Öğelerin boyutları */
-        .image-container .item {
-            flex: 1 1 auto;
-            /* Genişleyebilir ve küçülebilir */
-            display: flex;
-        }
-
-        .image-container.grid-4 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Resim kapsayıcısının konumunu ayarlıyoruz */
-        .image-wrapper {
-            flex: 1;
-            /* Esnemeye izin ver */
-            position: relative;
-            display: inline-block;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            /* Taşmaları engeller */
-            border-radius: 8px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        /* Resimlerin varsayılan stili */
-        .image-wrapper img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            /* Kapsayıcıyı tam doldurur */
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Seçili durumda uygulanacak stil */
-        /* Seçili durumda uygulanacak stil */
-        .image-wrapper.selected::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            /* Viewport yüksekliği */
-            background-color: rgba(76, 0, 255, 0.2);
-            /* %20 opaklıkta mavi renk */
-            pointer-events: none;
-            /* Katmanın tıklamaları engellememesi için */
-            box-sizing: border-box;
-        }
-
-        .question-image-t4 {
-            max-width: 10%;
-            height: auto;
-            object-fit: contain;
-            cursor: pointer;
-            transition: none;
-        }
-
-        .question-image-t4:hover {
-            transform: scale(1);
-        }
-
-        .answers {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 0;
-        }
-
-        .answers label {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            margin-top: 0px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .answers input[type="radio"],
-        .answers input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        #previous-button,
-        #next-button {
-            position: absolute;
-            width: 22vw;
-            height: 6vh;
-            z-index: 999;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            line-height: 6vh;
-        }
-
-        /* Masaüstü düzeni */
-        @media (min-width: 768px) {
-            .question {
-                display: grid;
-                grid-template-rows: auto 1fr auto;
-                max-width: 80%;
-                grid-template-columns: 60% 40%;
-                gap: 0px;
-                align-items: start;
-                top: 55px;
-                padding: 1vw;
-                padding-bottom: 50px;
-            }
-
-            .question-image {
-                grid-column: 1;
-                grid-row: 1 / span 3;
-            }
-
-            .question-image-t4 {
-                width: 100%;
-                height: auto;
-                margin-right: 10px;
-                max-width: 100%;
-            }
-
-            .image-container {
-                grid-column: 1;
-                grid-row: 1 / span 3;
-                padding: 10px;
-            }
-
-            .question p {
-                grid-column: 2;
-                grid-row: 1;
-                margin-top: -2px;
-            }
-
-            .answers {
-                grid-column: 2;
-                grid-row: 2;
-                margin-left: 30px;
-            }
-
-            .feedback-container {
-                grid-column: 2;
-                grid-row: 3;
-                margin-left: 30px;
-                width: calc(100% - 30px);
-                position: relative;
-            }
-
-            #previous-button {
-                bottom: 1%;
-                left: 1%;
-            }
-
-            #next-button {
-                bottom: 1%;
-                right: 1%;
-            }
-
-            .question.no-image {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .question.no-image .question p,
-            .question.no-image .answers {
-                width: 60%;
-                text-align: center;
-                margin-left: 0;
-            }
-
-            .question.no-image .feedback-container {
-                width: 100%;
-                margin-left: 0;
-            }
-        }
-
-        /* Mobil düzen */
-        @media (max-width: 767px) {
-            .question {
-                position: absolute;
-                top: 35px;
-                left: 50%;
-                transform: translateX(-50%);
-                /* Yalnızca yatayda ortala */
-                width: 90vw;
-                /* Genişliği ayarla */
-                max-width: 92%;
-                /* Çok geniş olmaması için */
-                height: auto;
-                /* Yükseklik içeriğe göre ayarlansın */
-                min-height: 70vh;
-                /* Minimum olarak ekranı kaplasın */
-                overflow-y: auto;
-                /* İçerik taşarsa kaydırma çubuğu */
-                overflow-x: hidden;
-                /* Yatay taşmayı engelle */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                /* İçeriği yukarı hizala */
-                padding: 10px;
-                padding-bottom: calc(11vh + 7vh);
-                /* Ekran yüksekliğinin %11'i + 6vh */
-                background: white;
-                /* Arka planı düzenle */
-                border-radius: 10px;
-                /* Köşeleri yumuşat */
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                /* Hafif gölge ekleyerek daha güzel bir görünüm sağla */
-                z-index: -1;
-            }
-
-            .answers,
-            .question p {
-                width: 100%;
-                text-align: left;
-            }
-
-            .answers {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-top: 0;
-            }
-
-            .question.no-image .question p,
-            .question.no-image .answers {
-                width: 98%;
-                text-align: center;
-                margin-left: 0;
-            }
-
-            .question-image {
-                max-width: 100%;
-            }
-
-            .question-video {
-                max-width: 100%;
-                aspect-ratio: 16/9;
-            }
-
-            .question-image-t4 {
-                max-width: 100%;
-                height: auto;
-                margin: 10px 0;
-            }
-
-            .image-container.grid-4 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-                padding: 10px;
-                overflow: visible;
-            }
-
-            #previous-button,
-            #next-button {
-                position: fixed;
-                width: 20%;
-                height: 6vh;
-                background-color: #007bff;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                text-align: center;
-                line-height: 5vh;
-                cursor: pointer;
-                z-index: 1000;
-            }
-
-            #previous-button {
-                left: 1%;
-                bottom: 11%;
-            }
-
-            #next-button {
-                right: 1%;
-                bottom: 11%;
-            }
-
-            .show-rectangle {
-                display: block;
-            }
-        }
-
-        /*
-                   ███████████     ███████    █████       █████  █████ ██████   ██████             ████████ 
-                  ░░███░░░░░███  ███░░░░░███ ░░███       ░░███  ░░███ ░░██████ ██████             ███░░░░███
-                   ░███    ░███ ███     ░░███ ░███        ░███   ░███  ░███░█████░███            ░░░    ░███
-                   ░██████████ ░███      ░███ ░███        ░███   ░███  ░███░░███ ░███  ██████████   ██████░ 
-                   ░███░░░░░███░███      ░███ ░███        ░███   ░███  ░███ ░░░  ░███ ░░░░░░░░░░   ░░░░░░███
-                   ░███    ░███░░███     ███  ░███      █ ░███   ░███  ░███      ░███             ███   ░███
-                   ███████████  ░░░███████░   ███████████ ░░████████   █████     █████           ░░████████ 
-                  ░░░░░░░░░░░     ░░░░░░░    ░░░░░░░░░░░   ░░░░░░░░   ░░░░░     ░░░░░             ░░░░░░░░  
-                                                                                                            
-                                                                                                            
-                                                                                                            */
-
-        .drag-drop-container {
-            outline: 3px solid transparent;
-        }
-
-        .box {
-            outline: 1px transparent;
-        }
-
-        #app-s3 {
-            outline: 5px transparent;
-        }
-
-        /*/////////////////////////////////////Bölüm-3///////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-        .questionS3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1vw;
-            max-width: 1500px;
-            width: 100%;
-            margin: 1vw auto;
-            position: fixed;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 3px solid transparent;
-            border-radius: 1vw;
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .questionS3 p {
-            font-size: 17px;
-            /* Yazı boyutu */
-            font-weight: 500;
-            /* Kalın yazı */
-            margin-bottom: 11px;
-            margin-top: 10px;
-            padding: 8px 25px 8px 5px;
-            /* Üst-alt ve yan boşluklar */
-            background-color: rgba(200, 200, 200, 0.3);
-            /* Hafif gri arka plan */
-            border-radius: 5px;
-            /* Köşeleri hafif yuvarlatma */
-            display: inline-block;
-            /* Metin uzunluğuna göre esnek genişlik */
-            max-width: 100%;
-            /* Genişliğin çok büyümemesi için */
-            word-wrap: break-word;
-            /* Uzun kelimeleri kır */
-        }
-
-        .questionS3 .question-image {
-            width: 100%;
-            max-width: 70vw;
-            height: auto;
-            justify-self: start;
-            border-radius: 0.5vw;
-            margin-bottom: -15px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        .questionS3 .question-video {
-            width: 100%;
-            max-width: 70vw;
-            height: auto;
-            justify-self: start;
-            border-radius: 0.5vw;
-            margin-bottom: -15px;
-            aspect-ratio: 16/9;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        .questionS3 .image-container {
-            display: flex;
-            /* Flexbox kullan */
-            flex-wrap: nowrap;
-            /* Yeni satıra geçmesini önle */
-            gap: 10px;
-            justify-content: center;
-            /* Öğeleri ortala */
-            max-width: 100%;
-            overflow-x: auto;
-            /* Yatay kaydırma ekle */
-            padding-bottom: 5px;
-            /* Kaydırma çubuğu içeriğe yapışmasın */
-        }
-
-        /* Yeni eklenen grid-4 sınıfı için özel stiller */
-        .questionS3 .image-container.grid-4 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .questionS3 .image-wrapper {
-            flex: 1;
-            /* Esnemeye izin ver */
-            position: relative;
-            display: inline-block;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            /* Taşmaları engeller */
-            border-radius: 8px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        .questionS3 .image-wrapper img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            /* Kapsayıcıyı tam doldurur */
-            margin: 0;
-            padding: 0;
-        }
-
-        .questionS3 .image-wrapper.selected::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            /* Viewport yüksekliği */
-            background-color: rgba(76, 0, 255, 0.2);
-            /* %20 opaklıkta mavi renk */
-            pointer-events: none;
-            /* Katmanın tıklamaları engellememesi için */
-            box-sizing: border-box;
-        }
-
-        /* grid-4 içindeki wrapper'lar için özel stil */
-        .questionS3 .image-container.grid-4 .image-wrapper41 {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .questionS3 .question-image-t4 {
-            max-width: 10%;
-            height: auto;
-            margin: 0;
-            display: block;
-        }
-
-        /* grid-4 içindeki resimler için özel stil */
-        .questionS3 .image-container.grid-4 .question-image-t4 {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .questionS3 .answers {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 0;
-        }
-
-        .questionS3 .answers label {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            margin-top: 0px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .questionS3 .answers input[type="radio"],
-        .questionS3 .answers input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        .cevapSecenegi-s3 {
-            display: block;
-            margin-bottom: 10px;
-            border: 1px solid #cecece;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 10px;
-            background-color: rgb(239, 239, 239);
-            position: relative;
-        }
-
-        @media (min-width: 768px) {
-            .questionS3 {
-                display: grid;
-                grid-template-rows: auto 1fr auto;
-                max-width: 80%;
-                grid-template-columns: 60% 40%;
-                gap: 0px;
-                align-items: start;
-                top: 57px;
-                padding: 1vw;
-                padding-bottom: 50px;
-            }
-
-            .questionS3 .question-image,
-            .questionS3 .question-video {
-                grid-column: 1;
-                grid-row: 1 / span 3;
-            }
-
-            .questionS3 .question-image-t4 {
-                width: 100%;
-                height: auto;
-                margin-right: 10px;
-                max-width: 100%;
-            }
-
-            /* grid-4 için masaüstü özel stilleri */
-            .questionS3 .image-container {
-                grid-column: 1;
-                grid-row: 1 / span 3;
-                padding: 10px;
-            }
-
-            .questionS3 .question p {
-                grid-column: 2;
-                grid-row: 1;
-                margin-top: -2px;
-            }
-
-            .questionS3 .answers {
-                grid-column: 2;
-                grid-row: 2;
-                margin-left: 30px;
-            }
-
-            .cevapSecenegi-s3 {
-                width: 95%;
-                /* Şıkların genişliği %90 */
-                margin-bottom: 10px;
-                /* Şıklar arasında boşluk */
-                text-align: left;
-                /* Metni sola hizalar */
-            }
-
-            .questionS3.no-image .answers {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .questionS3.no-image p {
-                text-align: center;
-            }
-
-            .questionS3 p {
-                grid-column: 2;
-                grid-row: 1;
-                margin-top: -2px;
-            }
-
-            .drag-drop-container {
-                grid-column: 1;
-                /* 1. sütunda başlar */
-                grid-row: 1 / span 2;
-                /* 1. satırdan başlar ve 2 satır boyunca uzanır */
-            }
-
-            .questionS3 .feedback-container {
-                grid-column: 2;
-                grid-row: 2;
-                margin-left: 10px;
-                /* Gerekli değil, kaldırıldı */
-                width: calc(100% - 30px);
-                position: relative;
-                justify-self: center;
-                /* Yatayda ortalama */
-            }
-
-            #button-container {
-                position: fixed;
-                /* Konteyneri sabitle */
-                bottom: 0%;
-                /* Sayfanın altından 11% yukarıda */
-                left: 50%;
-                /* Sol kenarı ekranın %50'lik kısmına yerleştir */
-                transform: translateX(-50%);
-                /* Sol kenarı ortaladığımızda, konteynerin tam ortalanmasını sağlar */
-                display: flex;
-                align-items: center;
-                /* Dikeyde ortala */
-                justify-content: space-between;
-                /* Butonlar ve h2 arasında eşit boşluk bırak */
-                gap: 10px;
-                /* Öğeler arasında boşluk */
-                width: 99%;
-                /* Konteynerin genişliği */
-                padding: 0px;
-                /* İç boşluk */
-                z-index: 1000;
-                /* Diğer içeriklerin üzerinde olması için */
-            }
-
-            .flex-grow {
-                flex-grow: 1;
-                /* Mevcut alanı kaplar */
-                text-align: center;
-                /* Metni ortalar */
-                min-width: 100px;
-                /* Minimum genişlik (isteğe bağlı) */
-            }
-
-            #previous-button-s3,
-            #next-button-s3 {
-                position: static;
-                font-size: 20px;
-
-                /* fixed yerine static yapın */
-                width: 15%;
-                height: 60px;
-                background-color: #085dc4;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                z-index: 1000;
-
-                /* Metni yatayda ve dikeyde ortala */
-                display: flex;
-                justify-content: center;
-                /* Yatayda ortala */
-                align-items: center;
-                /* Dikeyde ortala */
-
-                /* Çift katmanlı gölge: koyu + hafif beyaz */
-                box-shadow:
-                    0 6px 12px rgba(255, 255, 255, 0.5),
-                    /* Ana koyu gölge */
-                    0 0 10px rgba(255, 255, 255, 0.38);
-                /* Hafif beyaz dış parlama */
-
-                transition:
-                    box-shadow 1s ease,
-                    transform 0.2s ease;
-            }
-
-            .questionS3.no-image {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .questionS3.no-image p,
-            .questionS3.no-image .answers {
-                width: 100%;
-                text-align: center;
-                margin-left: 0;
-            }
-
-            .questionS3.no-image .feedback-container {
-                width: 100%;
-                margin-left: 0;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .questionS3 {
-                grid-template-columns: 1fr;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                position: relative;
-                max-width: 98% !important;
-                /* !important ekledim */
-                width: 98% !important;
-                /* Genişliği %98 olarak ayarladım */
-                top: 40px;
-                padding-bottom: 20px;
-                margin-bottom: 200px;
-            }
-
-            .questionS3 p,
-            .questionS3 .answers {
-                width: 95%;
-                text-align: center;
-                align-self: center;
-                margin: 0 auto;
-                /* Yatayda ortala */
-            }
-
-            .questionS3 .answers {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-top: 0;
-            }
-
-            .questionS3 p {
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-
-            .questionS3 .question-image {
-                max-width: 100%;
-            }
-
-            .questionS3 .question-video {
-                max-width: 100%;
-            }
-
-            /* Mobil için grid-4 özel stilleri */
-            .questionS3 .image-container.grid-4 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-                padding: 10px;
-                overflow: visible;
-            }
-
-            .questionS3 .question-image-t4 {
-                max-width: 100%;
-                height: auto;
-                margin: 10px 0;
-                display: block;
-            }
-
-            .cevapSecenegi-s3 {
-                width: 95%;
-                /* Şıkların genişliği %90 */
-                margin-bottom: 10px;
-                /* Şıklar arasında boşluk */
-                text-align: left;
-                /* Metni sola hizalar */
-            }
-
-            #button-container {
-                position: fixed;
-                /* Konteyneri sabitle */
-                bottom: 0;
-
-                /* Sayfanın altından 11% yukarıda */
-                left: 1%;
-                /* Sol kenardan 1% boşluk bırak */
-                right: 1%;
-                /* Sağ kenardan 1% boşluk bırak */
-                display: flex;
-                align-items: center;
-                /* Dikeyde ortala */
-                justify-content: space-between;
-                /* Butonlar ve h2 arasında eşit boşluk bırak */
-                gap: 10px;
-                /* Öğeler arasında boşluk */
-                width: 99%;
-                /* Konteynerin genişliği (100% - 1% sol - 1% sağ) */
-                padding: 0px;
-                /* İç boşluk */
-                z-index: 1000;
-                /* Diğer içeriklerin üzerinde olması için */
-            }
-
-            .flex-grow {
-                flex-grow: 1;
-                /* Mevcut alanı kaplar */
-                text-align: center;
-                /* Metni ortalar */
-                min-width: 100px;
-                /* Minimum genişlik (isteğe bağlı) */
-            }
-
-            #previous-button-s3,
-            #next-button-s3 {
-                position: static;
-                width: 20%;
-                height: 11.73vh;
-                background-color: #085dc4;
-                color: white;
-                font-size: 14px;
-                border: 1px solid #085dc4;
-                border-radius: 8px;
-                cursor: pointer;
-                z-index: 1000;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                /* Çift katmanlı gölge: koyu + hafif beyaz */
-                box-shadow:
-                    0 6px 12px rgba(255, 255, 255, 0.5),
-                    /* Ana koyu gölge */
-                    0 0 10px rgba(255, 255, 255, 0.938);
-                /* Hafif beyaz dış parlama */
-
-                transition:
-                    box-shadow 1s ease,
-                    transform 0.2s ease;
-            }
-
-            /* Butona basıldığında gölgeyi azaltalım */
-            #previous-button-s3:active,
-            #next-button-s3:active {
-                box-shadow:
-                    0 3px 6px rgba(0, 0, 0, 0.4),
-                    0 0 6px rgba(255, 255, 255, 0.3);
-                transform: translateY(1px);
-            }
-
-            .show-rectangle {
-                display: block;
-            }
-
-            /* Drag-and-drop öğeleri için özel stil */
-            .drag-drop-container {
-                width: 98% !important;
-                /* Genişliği %98 olarak ayarladım */
-                max-width: 98% !important;
-                /* Genişliği %98 olarak ayarladım */
-                margin: 0 auto;
-            }
-
-            .box,
-            .target {
-                width: 12%;
-                height: 14.9%;
-            }
-        }
-
-        #finalResultContainerId {
-            width: 70%;
-            /* Masaüstünde ekranın %80'ini kapla */
-            max-width: 70%;
-            margin: 50px auto 0 auto;
-            /* Üstte 100px boşluk bırak, yatayda ortala */
-            padding-bottom: 100px;
-        }
-
-        #finalResultContainerId h2,
-        #finalResultContainerId p {
-            text-align: center;
-            /* İçerikleri ortala */
-        }
-
-        /* Mobil versiyon için özel ayarlar */
-        @media (max-width: 768px) {
-            #finalResultContainerId {
-                width: 90%;
-                /* Mobilde ekranın %95'ini kapla */
-                max-width: 90%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        #demo {
-            width: 800px;
-            height: 400px;
-            background-color: yellow;
-            position: relative;
-        }
-
-        .box {
-            background-color: white;
-            text-align: center;
-            font-size: 2.5vw;
-            width: 12%;
-            height: 14.9%;
-            color: orange;
-            position: absolute;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
-            /* Yumuşak gölge efekti */
-            /* 2px turuncu border ekleyelim */
-            border: 4px solid orange;
-        }
-
-        @media (max-width: 768px) {
-            .box {
-                background-color: white;
-                text-align: center;
-                font-size: 5.2vw;
-                width: 12%;
-                height: 14.9%;
-                color: orange;
-                position: absolute;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
-                /* Yumuşak gölge efekti */
-
-                /* 2px turuncu border ekleyelim */
-                border: 4px solid orange;
-            }
-        }
-
-        .target {
-            background-color: orange;
-            text-align: center;
-            font-size: 2.5vw;
-            width: 12%;
-            height: 14.9%;
-            color: white;
-            position: absolute;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            /* box-shadow özelliği kaldırıldı */
-        }
-
-        .target {
-            background-color: transparent;
-            color: black;
-        }
-
-        .target {
-            background-color: transparent;
-            color: black;
-        }
-
-        .drag-drop-container {
-            position: relative;
-            width: 100%;
-            height: auto;
-            transform-origin: top left;
-            transform: scale(1);
-        }
-
-        .drag-drop-container img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            /* Alt boşluğu kaldırır */
-            border-radius: 8px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 5px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        .highlight {
-            background-color: rgba(255, 165, 0, 0.5);
-        }
-
-        /*//////////////////////////////////////Bölüm-3//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
-        .selectedAnswer {
-            background-color: yellow;
-        }
-
-        /*.feedback-container {
-      border: 5px solid #000;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    } */
-
-        .feedback-text {
-            margin: 0;
-            flex: 1;
-            resize: none;
-            font-style: italic;
-            /* Metni italik yapmak için bu satırı ekledik */
-            font-size: 13px;
-            padding: 5px;
-
-            /* Metin boyutunu ayarlamak için istediğiniz değeri belirleyin */
-        }
-
-        .feedback-image {
-            width: 5px;
-            height: 5px;
-            margin-left: 10px;
-            margin-right: 30px;
-            border: 1px solid;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .disabled2 {
-            pointer-events: none;
-            /*Burada "none"ı "auto" yapsak birinci bölümde feedback enable olur*/
-            opacity: 0.6;
-        }
-
-        .disabled3 {
-            pointer-events: none;
-            /*Burada "none"ı "auto" yapsak birinci bölümde feedback enable olur*/
-            opacity: 0.6;
-        }
-
-        .disabled-answer {
-            background-color: lightgray;
-            color: rgb(84, 16, 232);
-        }
-
-        .cevapSecenegi .disabled {
-            opacity: 0.1;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        .correct-answer::after {
-            content: " ✔️";
-            color: rgb(11, 207, 11);
-            font-weight: bold;
-        }
-
-        .wrong-answer::after {
-            content: " ❌";
-            color: red;
-            font-weight: bold;
-        }
-
-        .correct {
-            background-color: lightgray;
-            color: rgb(11, 207, 11);
-        }
-
-        .selected-correct {
-            background-color: rgb(11, 207, 11);
-            color: white;
-        }
-
-        .selected-wrong {
-            background-color: red;
-            color: white;
-        }
-
-        /*Bu kod parçası şu an etkisiz  kimi görünür*/
-        .feedback-container {
-            border: 6px solid #ed0e0e;
-            padding: 20px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .feedback-image {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .selected {
-            border: 2px solid rgb(0, 255, 94);
-        }
-
-        .answer-input {
-            color: black;
-            width: 200px;
-            /* İstediğiniz genişliği buraya ekleyin */
-            height: 40px;
-            /* İstediğiniz yüksekliği buraya ekleyin */
-            padding: 5px;
-            /* İç boşluk eklemek için */
-            font-size: 20px;
-            /* Yazı boyutunu ayarlamak için */
-            box-sizing: border-box;
-            /* Padding ve border dahil genişlik ve yükseklik */
-            /* Solgun renk */
-        }
-
-        .placeholder-text {
-            color: #ccc;
-
-            /* Daha solgun renk */
-        }
-
-        .cevapSecenegiS2 {
-            display: block;
-            margin-bottom: -10px;
-            /* Seçenekler arasındaki boşluğu ayarlar */
-            border: 1px solid #cecece;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 10px;
-            background-color: rgb(239, 239, 239);
-            text-align: left;
-            /* İkinci bölümde cevap seçeneginde Metinlerin sola hizalanmasını sağlar */
-            width: 95%;
-            /* Seçeneklerin tam genişlikte olmasını sağlar */
-        }
-
-        .selectedAnswer {
-            background-color: #007bff;
-            color: white;
-        }
-
-        #countdown {
-            /* margin-top: -86px;
-    margin-bottom: -30px; */
-            display: flex;
-            justify-content: center;
-            width: 100px;
-
-            /*İkinci bölümde zamanlayıcının yerini degiştirmek*/
-            position: absolute;
-            top: -30px;
-            /* Elemanı yatayda ortalamak için */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #quiz-header {
-            height: 0px;
-            /* Boş alan yüksekliği */
-            overflow: hidden;
-            /* Boş alanın kaydırılmasını engeller */
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .question-block {
-            cursor: pointer;
-        }
-
-        /*================================================01234====================================================*/
-
-        /*================================================01234====================================================*/
-
-        /*================================================01234====================================================*/
-
-        .selected {
-            border: 2px solid rgb(76, 0, 255);
-        }
-
-        .answer-input {
-            color: black;
-        }
-
-        .placeholder-text {
-            color: #ccc;
-        }
-
-        .selectedAnswer {
-            background-color: #007bff;
-            color: white;
-        }
-
-        /* Saatın pozisyonunu ayarlama */
-        #app-s3 {
-            position: fixed;
-            top: -20px;
-            /* Üst kenardan 25px aşağıda */
-            left: 50%;
-            transform: translateX(-50%);
-            /* Yatayda tam ortalamak için */
-            margin: 0;
-            /* Gereksiz marginleri kaldırdık */
-            z-index: 10;
-        }
-
-        #quiz-header {
-            height: 0px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .question-block-s3 {
-            cursor: pointer;
-            width: 45px;
-            height: 45px;
-            border: 2px solid #085dc4;
-            border-radius: 10px;
-            text-align: center;
-            line-height: 45px;
-            margin: 5px;
-            font-weight: 600;
-            font-size: 16px;
-            color: #333;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
-            box-shadow: 0 3px 10px rgba(8, 93, 196, 0.15);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .question-block-s3::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .question-block-s3:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(8, 93, 196, 0.3);
-            border-color: #0652a8;
-        }
-
-        .question-block-s3:hover::before {
-            left: 100%;
-        }
-
-        .question-block-s3:active {
-            transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 3px 10px rgba(8, 93, 196, 0.2);
-        }
-
-        /* Cevaplanan soru (gri) */
-        .question-block-s3.answered-block {
-            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
-            border-color: #999;
-            color: #555;
-        }
-
-        /* Doğru cevap (yeşil) */
-        .question-block-s3.correct-block {
-            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-            border-color: #2e7d32;
-            color: white;
-            box-shadow: 0 3px 15px rgba(76, 175, 80, 0.4);
-        }
-
-        .question-block-s3.correct-block:hover {
-            background: linear-gradient(135deg, #45a049 0%, #388e3c 100%);
-            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.5);
-        }
-
-        /* Yanlış cevap (kırmızı) */
-        .question-block-s3.incorrect-block {
-            background: linear-gradient(135deg, #f44336 0%, #e53935 100%);
-            border-color: #c62828;
-            color: white;
-            box-shadow: 0 3px 15px rgba(244, 67, 54, 0.4);
-        }
-
-        .question-block-s3.incorrect-block:hover {
-            background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%);
-            box-shadow: 0 6px 25px rgba(244, 67, 54, 0.5);
-        }
-
-        /* Mobil uyumluluk */
-        @media (max-width: 768px) {
-            .question-block-s3 {
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
-                font-size: 14px;
-                margin: 4px;
-            }
-        }
-
-        .quiz-container-s3 {
-            position: relative;
-            /* margin-top: -40px; */
-        }
-
-        /*================================================01234====================================================*/
-
-        /*================================================01234====================================================*/
-
-        .deactivated {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        #result {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-        }
-
-        .base-timer,
-        .base-timer_S3 {
-            position: relative;
-            width: 100px;
-            height: 100px;
-        }
-
-        .base-timer__svg,
-        .base-timer__svg_S3 {
-            transform: scaleX(-1);
-        }
-
-        .base-timer__circle,
-        .base-timer__circle_S3 {
-            fill: #000000;
-            stroke: none;
-        }
-
-        .base-timer__path-elapsed,
-        .base-timer__path-elapsed_S3 {
-            stroke-width: 4px;
-            stroke: grey;
-        }
-
-        .base-timer__path-remaining,
-        .base-timer__path-remaining_S3 {
-            stroke-width: 4px;
-            stroke-linecap: round;
-            transform: rotate(90deg);
-            transform-origin: center;
-            transition: 1s linear all;
-            fill-rule: nonzero;
-            stroke: currentColor;
-        }
-
-        .base-timer__path-remaining.green,
-        .base-timer__path-remaining_S3.green {
-            color: rgb(65, 184, 131);
-        }
-
-        .base-timer__path-remaining.orange,
-        .base-timer__path-remaining_S3.orange {
-            color: orange;
-        }
-
-        .base-timer__path-remaining.red,
-        .base-timer__path-remaining_S3.red {
-            color: red;
-        }
-
-        #endMessage3-S3 {
-            margin-left: 70px;
-            margin-right: 70px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Soru istatistik metinleri */
-        #answeredQuestionsS3End,
-        #unAnsweredQuestionsS3End,
-        #correctAnswersS3End {
-            font-size: 18px;
-            font-weight: 600;
-            color: #085dc4;
-            margin: 15px 70px;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
-            border-left: 4px solid #085dc4;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(8, 93, 196, 0.1);
-        }
-
-        #correctAnswersS3End {
-            border-left-color: #4caf50;
-            color: #2e7d32;
-        }
-
-        /* Mobile version - applies when screen width is 768px or less */
-        @media (max-width: 768px) {
-            #endMessage3-S3 {
-                margin-left: 10px;
-                margin-right: 10px;
-                justify-content: center;
-            }
-
-            /* Mobil versiyonda bu metinlere daha az boşluk */
-            #answeredQuestionsS3End,
-            #unAnsweredQuestionsS3End,
-            #correctAnswersS3End {
-                margin: 5px 15px !important;
-                padding: 5px 5px !important;
-                font-size: 14px;
-            }
-
-            /* Mobil cihazlarda İLERLE butonunun alt kenardan taşmasını önle */
-            #proceedSection3End {
-                padding-bottom: 70px !important;
-                margin-bottom: 100px !important;
-            }
-
-            /* İLERLE butonu için ekstra güvenlik */
-            #proceedToResultDivBtn {
-                margin-bottom: 20px !important;
-            }
-        }
-
-        #proceedSection3End {
-            margin-top: 50px;
-            margin-bottom: 60px;
-        }
-
-        #proceedSection3End p {
-            margin-left: 80px;
-            margin-right: 80px;
-        }
-
-        #viewResultContainerId {
-            margin-top: 120px;
-        }
-
-        #viewResultContainerId p,
-        h2,
-        h3 {
-            margin-bottom: 15px;
-            font-size: 22px;
-            margin-top: 15px;
-        }
-
-        #failOrPassEndS3 {
-            display: none;
-            margin: 0 auto;
-            margin-bottom: 20px !important;
-        }
-
-
-        /* Yüksek özgüllük + reset: başka kurallar ezemesin */
-        #button-container .map-buttons .grid-button {
-            background-color: #085dc4 !important;
-            color: #fff !important;
-            border: none !important;
-            box-shadow: none !important;
-            background-image: none !important;
-            appearance: none;
-            -webkit-appearance: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        #button-container .map-buttons .grid-button:hover {
-            background-color: #004a9e !important;
-        }
-
-        #button-container .map-buttons .grid-button svg {
-            width: 28px;
-            height: 28px;
-            fill: #fff !important;
-        }
-
-        .flex-grow {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        #soruNumarasiS3 {
-            margin: 0;
-            font-size: 14px;
-            color: #fefefe;
-            display: flex;
-            justify-content: center;
-            line-height: 1;
-        }
-
-        .map-buttons {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-
-        #endMessage4-S3 {
-            display: flex !important;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            visibility: visible !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-        }
-
-
-
-
-        /* Mobil: <768px */
-        @media (max-width: 768px) {
-            #button-container #btnExternalLink {
-                position: absolute;
-                /* container’a göre */
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, calc(-50% - 6vh));
-            }
-        }
-
-        /* Masaüstü: >=768px */
-        @media (min-width: 769px) {
-            #button-container #btnExternalLink {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, calc(-50% - 30px));
-                /* ~24px yukarı it */
-            }
-        }
-
-        /* Fullscreen Toggle Button Styles */
-        .toggle-fullscreen-btn {
-            position: fixed;
-            z-index: 10000;
-            top: 0px;
-            right: 0px;
-            width: 25px;
-            height: 25px;
-            border: 0;
-            padding: 0;
-            border-radius: 0px;
-            background: #085dc4;
-            cursor: pointer;
-            outline: none;
-            display: grid;
-            place-items: center;
-            opacity: .92;
-            transition: transform .15s ease, opacity .15s ease;
-        }
-
-        .toggle-fullscreen-btn:hover,
-        .toggle-fullscreen-btn:focus {
-            opacity: 1;
-            transform: scale(1.06);
-        }
-
-        .toggle-fullscreen-svg {
-            display: block;
-            height: auto;
-        }
-
-        .toggle-fullscreen-svg path {
-            transform-box: view-box;
-            transform-origin: 12px 12px;
-            fill: none;
-            stroke: #fff;
-            stroke-width: 4;
-            transition: .15s;
-        }
-
-        .toggle-fullscreen-btn:hover path:nth-child(1),
-        .toggle-fullscreen-btn:focus path:nth-child(1) {
-            transform: translate(-2px, -2px);
-        }
-
-        .toggle-fullscreen-btn:hover path:nth-child(2),
-        .toggle-fullscreen-btn:focus path:nth-child(2) {
-            transform: translate(2px, -2px);
-        }
-
-        .toggle-fullscreen-btn:hover path:nth-child(3),
-        .toggle-fullscreen-btn:focus path:nth-child(3) {
-            transform: translate(2px, 2px);
-        }
-
-        .toggle-fullscreen-btn:hover path:nth-child(4),
-        .toggle-fullscreen-btn:focus path:nth-child(4) {
-            transform: translate(-2px, 2px);
-        }
-
-        .toggle-fullscreen-btn:not(.on) .icon-fullscreen-leave {
-            display: none;
-        }
-
-        .toggle-fullscreen-btn.on .icon-fullscreen-enter {
-            display: none;
-        }
-    </style>
-<!-- Microsoft Clarity -->
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -2875,374 +527,11 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vz9ccypxk4");
 </script>
-</head>
-
-<body>
-    <div class="overlay"></div>
-  <div id="bottom-overlay"></div>
-
-    <!-- Fullscreen Toggle Button -->
-    <button class="js-toggle-fullscreen-btn toggle-fullscreen-btn" aria-label="Enter fullscreen mode" hidden>
-        <svg class="toggle-fullscreen-svg" width="18" height="18" viewBox="-2 -2 28 28" aria-hidden="true">
-            <!-- Tam ekrana GİR (enter) ikonu -->
-            <g class="icon-fullscreen-enter">
-                <path d="M 2 9 v -7 h 7" />
-                <path d="M 22 9 v -7 h -7" />
-                <path d="M 22 15 v 7 h -7" />
-                <path d="M 2 15 v 7 h 7" />
-            </g>
-            <!-- Tam ekrandan ÇIK (leave) ikonu -->
-            <g class="icon-fullscreen-leave">
-                <path d="M 24 17 h -7 v 7" />
-                <path d="M 0 17 h 7 v 7" />
-                <path d="M 0 7 h 7 v -7" />
-                <path d="M 24 7 h -7 v -7" />
-            </g>
-        </svg>
-    </button>
-
-    <!-- Diğer içerikler burada -->
-    <!--<div class="coordinateDisplay">X: 0, Y: 0</div>-->
-
-    <!-- SECTION-1 ve teste başla düğmeleri -->
-    <button id="quizButton1" onclick="startQuizAndFullscreen()">QUIZ-41</button>
-
-    <!-- Mesaj alanı -->
-    <div id="messageArea">
-        <h4>THEORY EXAM EXPLANATION</h4>
-        <p>
-            Welcome to the theory exam for passenger cars. This theory exam consists
-            of three sections: hazard perception, knowledge and insight.
-        </p>
-        <p>
-            To pass this exam, you must pass each section individually. After the
-            exam, you will immediately see whether you passed or failed, and how
-            well you performed in each section.
-        </p>
-        <h4>Good luck with the exam!</h4>
-    </div>
-
-    <!-- Yeni eklenen mesaj alanı -->
-    <div id="additionalMessage">
-        <h4>EXPLANATION OF HAZARD PERCEPTION</h4>
-        <p>
-            In this section, you will have 8 seconds to answer each question. As
-            long as the timer is running, you can still answer the question. If you
-            do not answer in time, the question will be marked wrong. You cannot go
-            back to the previous question.
-        </p>
-        <p>
-            Each question will present several choices for how you think you should
-            react to certain scenarios:<br />- Brake.<br />- Release accelerator.<br />-
-            Nothing.<br />
-        </p>
-        <p>
-            For each question, assume you are the driver. On the dashboard, you can
-            see the speed at which you are driving. If you are changing direction,
-            you will see an indicator. You can see the traffic behind you in the
-            rear-view mirror.
-        </p>
-        <p>You will now begin the hazard perception section.</p>
-        <p>
-            This section consists of 25 questions, of which you must answer at least
-            13 correctly.
-        </p>
-        <h4>Good luck!</h4>
-    </div>
-
-    <div id="buttonContainer">
-        <button id="startButton" onclick="showProceedButton()">
-            START THE THEORY EXAM
-        </button>
-        <button id="proceedButton" onclick="startQuiz()">PROCEED</button>
-    </div>
-
-    <!-- Yeni eklenti -->
-    <!-- <button id="lock-quiz-button" class="hidden">
-    Quiz'i Kitle ve İşaretleri Ekle
-  </button> -->
-
-    <!-- Quiz alanını içeren bir div oluşturalım -->
-    <div id="quizAlani" style="display: none">
-        <!-- Soru alanı -->
-        <div id="soruAlani">
-            <!-- Zamanlayıcı alanı -->
-            <div id="timerDiv">
-                <div id="app"></div>
-            </div>
-            <div id="cevaplarContainer" class="questionContainer">
-                <div id="soruResmi"></div>
-                <!-- Soru resmi alanı -->
-                <div id="cevaplar"></div>
-            </div>
-
-            <div id="buttonDiv">
-                <button id="previousButton" class="navigateButton hidden" onclick="prevQuestion()">
-                    Previous
-                </button>
-                <!--Bu kismi kapatiyorum ki Sorubashligi-->
-                <div class="flex-grow">
-                    <h2 id="soruBasligi"></h2>
-                </div>
-                <button id="nextButton" class="navigateButton" onclick="nextQuestion()">
-                    Next
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Gri dikdörtgen -->
-    <div id="grayRectangle" class="hidden"></div>
-
-    <!-- Sonuç gösterme alanı -->
-    <div id="sonucAlani" style="display: none">
-        <h2>Quiz Sonucu</h2>
-        <div id="sonuc"></div>
-    </div>
-
-    <!-- Section 2 -->
-    <!-- <div id="quiz-header"></div> -->
-    <!-- Boş alan -->
-
-    <div id="countdown" class="base-timer hidden">
-        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g class="base-timer__circle">
-                <!-- Yarıçapı 17 olarak değiştiriyoruz -->
-                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="17"></circle>
-                <path id="base-timer-path-remaining-s2" stroke-dasharray="107" class="base-timer__path-remaining green"
-                    d="
-                    M 50, 50
-                    m -17, 0
-                    a 17,17 0 1,0 34,0
-                    a 17,17 0 1,0 -34,0" />
-            </g>
-        </svg>
-        <span id="base-timer-label-s2" class="base-timer__label"></span>
-    </div>
-
-    <div class="quiz-container">
-        <!-- Quiz içeriği buraya eklenecek -->
-    </div>
-    <div id="button-container">
-        <!-- <button id="start-button" class="hidden" onclick="startQuizS2()">Section2</button> -->
-        <button id="previous-button" class="hidden" onclick="previousQuestion()">
-            Previous
-        </button>
-        <button id="next-button" class="hidden" onclick="nextQuestionS2()">
-            Next
-        </button>
-    </div>
-    <!-- <button id="lock-quiz-button-s-2" class="hidden">
-    Quiz'i Kitle ve İşaretleri Ekle
-  </button> -->
-    <div id="proceedSection3" class="center-button hidden" style="flex-direction: column; gap: 10px">
-        <h4>END KNOWLEDGE</h4>
-        <p id="answeredQuestionsS2End" class="knowledge-explanation"></p>
-        <p id="unAnsweredQuestionsS2End" class="knowledge-explanation"></p>
-        <h4>OVERVIEW</h4>
-        <p class="knowledge-explanation">
-            Use this overview to quickly go to a question. By selecting a box you go
-            directly to the question.
-        </p>
-
-        <div id="endMessage" style="display: flex; flex-wrap: wrap"></div>
-        <button id="proceedToSecction3Button" onclick="startSection3Questions()">
-            PROCEED
-        </button>
-    </div>
-
-    <!-- 3. Bölümü Başlatan Mesaj ve Yeni Düğme -->
-    <div id="startMessage" style="display: none">
-      <h4>THEORIE EXAMEN VOERTUIG VOOR PASSAGIERS</h4>
-      <p class="start-insight">
-        Je kunt door de vragen vooruit en achteruit bladeren. Je hebt 30 minuten
-        voor deze sectie. Zolang de tijdsbalk loopt, kun je door de vragen
-        bladeren, overslaan, beantwoorden of corrigeren.
-      </p>
-      <p class="start-insight">
-        Als je een verlengd of individueel examen doet, heb je zelfs 45 minuten.
-        Wanneer een lesauto op het scherm verschijnt, ben jij de bestuurder.
-      </p>
-      <p class="start-insight">
-        In deze sectie krijg je 50 vragen, waarvan je er minimaal 44 correct
-        moet beantwoorden. Vragen die niet (volledig) beantwoord worden, zijn
-        altijd fout.
-      </p>
-      <h4 class="start-insight">Veel succes!</h4>
-      <div class="button-container">
-        <button id="startSection3Button" onclick="startQuizS3()">
-          GA DOOR NAAR DE EERSTE VRAAG
-        </button>
-      </div>
-    </div>
-
-    <!-- Section 3 -->
-    <!-- <div id="quiz-header"></div> -->
-
-    <!-- Zamanlayıcı başlangıçta gizli -->
-    <div id="app-s3" class="hidden"></div>
-    <!-- Zamanlayıcı başlangıçta gizli -->
-    <div class="quiz-container-s3"></div>
-    <div id="button-container">
-        <button
-        id="previous-button-s3"
-        class="hidden"
-        onclick="previousQuestionS3()"
-      >
-        Vorige
-      </button>
-
-        <div class="flex-grow">
-            <h2 id="soruNumarasiS3"></h2>
-            <!-- Yeni ID: soruNumarasiS3 -->
-
-            <span class="map-buttons">
-                <!-- Soru haritası (zaten var) -->
-                <button id="btnQuestionMap" type="button" class="grid-button hidden" title="Soru Haritası"
-                    aria-label="Soru Haritası">
-                    <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <rect x="0" y="0" width="6" height="6" rx="1" />
-                        <rect x="8" y="0" width="6" height="6" rx="1" />
-                        <rect x="16" y="0" width="6" height="6" rx="1" />
-                        <rect x="0" y="8" width="6" height="6" rx="1" />
-                        <rect x="8" y="8" width="6" height="6" rx="1" />
-                        <rect x="16" y="8" width="6" height="6" rx="1" />
-                        <rect x="0" y="16" width="6" height="6" rx="1" />
-                        <rect x="8" y="16" width="6" height="6" rx="1" />
-                        <rect x="16" y="16" width="6" height="6" rx="1" />
-                    </svg>
-                </button>
-
-                <!-- 🔹 Yeni: Sonuç haritası butonu -->
-                <button id="btnResultMap" type="button" class="grid-button hidden" title="Sonuç Haritası"
-                    aria-label="Sonuç Haritası">
-                    <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <rect x="0" y="0" width="6" height="6" rx="1" />
-                        <rect x="8" y="0" width="6" height="6" rx="1" />
-                        <rect x="16" y="0" width="6" height="6" rx="1" />
-                        <rect x="0" y="8" width="6" height="6" rx="1" />
-                        <rect x="8" y="8" width="6" height="6" rx="1" />
-                        <rect x="16" y="8" width="6" height="6" rx="1" />
-                        <rect x="0" y="16" width="6" height="6" rx="1" />
-                        <rect x="8" y="16" width="6" height="6" rx="1" />
-                        <rect x="16" y="16" width="6" height="6" rx="1" />
-                    </svg>
-                </button>
-
-
-                <!-- 🔹 Yeni: Dış bağlantı butonu -->
-                <button id="btnExternalLink" type="button" class="grid-button hidden" title="İlerle" aria-label="İlerle"
-                    onclick="window.open('https://examtheorie.nl/', '_blank')">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
-                        <path
-                            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
-                    </svg>
-                </button>
-            </span>
-        </div>
-
-        <button id="next-button-s3" class="hidden" onclick="nextQuestionS3()">
-        Volgende
-      </button>
-    </div>
-
-
-
-    <div
-      id="proceedSection3End"
-      class="center-button hidden"
-      style="flex-direction: column; gap: 10px"
-    >
-      <div class="button-container">
-        <h2>Laatste Fase van het Examen</h2>
-      </div>
-      <p id="answeredQuestionsS3End"></p>
-      <p id="unAnsweredQuestionsS3End"></p>
-      <div id="endMessage3-S3" style="display: flex; flex-wrap: wrap"></div>
-      <div class="button-container">
-        <button id="proceedToResultDivBtn" onclick="proceedToResultDiv()">
-          DOORGAAN
-        </button>
-      </div>
-    </div>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="noButtonClicked('section2')">&times;</span>
-            <h2>Proceed?</h2>
-            <p>You can not go back after this.</p>
-            <button class="popup-btn" onclick="yesButtonClicked('section2')" id="yesBtn">
-                Yes
-            </button>
-            <button class="popup-btn" onclick="noButtonClicked('section2')" id="noBtn">
-                No
-            </button>
-        </div>
-    </div>
-
-    <div id="myModalS3" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="noButtonClicked('section3')">&times;</span>
-        <h2>Doorgaan?</h2>
-        <p>Je kunt hierna niet meer teruggaan.</p>
-        <button
-          class="popup-btn"
-          onclick="yesButtonClicked('section3')"
-          id="yesBtn"
-        >
-          Ja
-        </button>
-        <button
-          class="popup-btn"
-          onclick="noButtonClicked('section3')"
-          id="noBtn"
-        >
-          Nee
-        </button>
-      </div>
-    </div>
-
-    <div id="viewResultContainerId" class="viewResultContainer hidden">
-      <p>Dank je wel voor het indienen van het examen!</p>
-      <hr />
-      <h2 id="failOrPass"></h2>
-      <div>
-        <img id="failOrPassIcon" alt="failOrPass" src="" />
-      </div>
-      <h3 id="endResult"></h3>
-      <button id="viewResult" onclick="finalResultShow()">
-        Bekijk mijn resultaat!
-      </button>
-    </div>
-
-    <div id="finalResultContainerId" class="finalResultContainer hidden">
-      <h2>ANTWOORDEN BEKIJKEN</h2>
-      <p>
-        Hieronder kun je de resultaten van het examen vinden. Je kunt op een vak
-        klikken om naar de betreffende vraag te gaan en je resultaten te
-        bekijken.
-      </p>
-      <div id="resultS3">
-        <h2>Controleer Je Antwoorden</h2>
-        <img
-          id="failOrPassEndS3"
-          alt="failOrPassEnd"
-          style="height: 50px"
-          src=""
-        />
-      </div>
-    </div>
-
-    <!-- HTTP -->
-    <script src="http://js.moatads.com/triplelift879988051105/moatad.js"></script>
-
-    <!-- HTTPS -->
-    <script src="https://js.moatads.com/triplelift879988051105/moatad.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/Draggable.min.js"></script>
-
-    <script>
+<script src="http://js.moatads.com/triplelift879988051105/moatad.js"></script>
+<script src="https://js.moatads.com/triplelift879988051105/moatad.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/Draggable.min.js"></script>
+<script>
         var viewResult = false;
         var soruBankasi = []; // Soru bankası
         var soruIndex = 0; // Şu anki soru index'i
@@ -6818,7 +4107,6 @@ if (viewBtn) {
         }
     </script>
 <script src="https://examtheorie.nl/auth-guard.js"></script>
-
 <script>
 function notifyNewSystem() {
     var urlParts = window.location.pathname.match(/test-(\d+)-(\w+)/);
@@ -6840,7 +4128,168 @@ function notifyNewSystem() {
     }
 }
 </script>
+<script id="presentation-adapter">
+/* UI adapter: does not replace any quiz engine function or answer state. */
+(() => {
+  const byId = id => document.getElementById(id);
+  const shell = byId('exam-shell');
+  const container = document.querySelector('.quiz-container-s3');
+  const welcome = byId('welcome-screen');
+  const toolbar = byId('toolbar-context');
+  const progress = byId('progress-group');
+  const actions = byId('exam-actions');
+  const placeholder = byId('previous-placeholder');
+  const content = shell.querySelector('.exam-content');
+  const mobileLayout = matchMedia('(max-width: 720px), (pointer: coarse) and (max-width: 1100px)');
+  let lastView = '';
+  // Fit the presentation to the visible fullscreen viewport, including when
+  // a phone keyboard opens. The quiz engine still owns fullscreen and answers.
+  function updateViewport() {
+    const root = document.documentElement;
+    const fullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+    const pinned = !!fullscreen && mobileLayout.matches;
+    root.classList.toggle('mobile-fullscreen', pinned);
+    if (pinned) {
+      const viewport = window.visualViewport;
+      root.style.setProperty('--exam-viewport-height', (viewport ? viewport.height : innerHeight) + 'px');
+      root.style.setProperty('--exam-viewport-top', (viewport ? viewport.offsetTop : 0) + 'px');
+    } else {
+      root.style.removeProperty('--exam-viewport-height');
+      root.style.removeProperty('--exam-viewport-top');
+    }
+  }
+  const decorated = new WeakSet();
+  const visible = el => el && !el.classList.contains('hidden') && el.style.display !== 'none';
+  function setHidden(el, value) { if (el.hidden !== value) el.hidden = value; }
+  function setText(el, value) { if (el.textContent !== value) el.textContent = value; }
+  function fitImageChoices(question) {
+    const grid = question.querySelector(':scope > .image-container');
+    if (!grid) return;
+    const isMobile = mobileLayout.matches;
+    const contentStyle = getComputedStyle(content);
+    const gridStyle = getComputedStyle(grid);
+    const gap = parseFloat(gridStyle.columnGap) || 0;
+    const rows = Math.ceil(grid.children.length / 2);
+    let room;
+    if (contentStyle.overflowY === 'auto') {
+      room = content.clientHeight - parseFloat(contentStyle.paddingTop) - parseFloat(contentStyle.paddingBottom);
+    } else {
+      const app = shell.parentElement;
+      const appStyle = getComputedStyle(app);
+      const header = app.querySelector('.page-header');
+      const headerStyle = getComputedStyle(header);
+      room = (window.visualViewport ? visualViewport.height : innerHeight)
+        - parseFloat(appStyle.paddingTop) - parseFloat(appStyle.paddingBottom)
+        - header.offsetHeight - parseFloat(headerStyle.marginBottom)
+        - shell.querySelector('.exam-toolbar').offsetHeight - actions.offsetHeight
+        - parseFloat(contentStyle.paddingTop) - parseFloat(contentStyle.paddingBottom);
+    }
+    if (isMobile) {
+      room -= (question.querySelector(':scope > p')?.offsetHeight || 0)
+        + (question.querySelector(':scope > .answers')?.offsetHeight || 0)
+        + (parseFloat(gridStyle.marginBottom) || 0);
+    }
+    // Preserve a readable minimum; short screens can scroll instead of hiding details.
+    const height = Math.max(isMobile ? 90 : 120, Math.min(isMobile ? 136 : 180, (room - (rows - 1) * gap) / rows));
+    const width = Math.floor(2 * height * 1.5 + gap) + 'px';
+    if (grid.style.getPropertyValue('--choice-width') !== width) grid.style.setProperty('--choice-width', width);
+  }
+  function sync() {
+    document.querySelectorAll('.image-wrapper').forEach(wrapper => wrapper.classList.toggle('review-choice', !!wrapper.querySelector('.disabled3')));
+    document.querySelectorAll('.questionS3').forEach(question => {
+      if (decorated.has(question)) return;
+      decorated.add(question);
+      const heading = question.querySelector(':scope > p');
+      if (heading) {
+        const number = question.id.split('-').pop();
+        heading.dataset.number = number;
+        const firstText = [...heading.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+        if (firstText) firstText.textContent = firstText.textContent.replace(/^\d+\.\s*/, '');
+      }
+      const media = question.querySelector(':scope > .question-image, :scope > .question-video, :scope > .image-container, :scope > .drag-drop-container');
+      question.classList.toggle('no-media', !media);
+      question.classList.toggle('has-video', !!question.querySelector(':scope > video'));
+      question.classList.toggle('has-image', !!question.querySelector(':scope > .question-image'));
+      question.classList.toggle('has-image-choices', !!question.querySelector(':scope > .image-container'));
+    });
+    const timer = byId('app-s3');
+    const timerBox = timer.querySelector('.base-timer_S3');
+    if (timerBox && !timerBox.querySelector('.countdown-caption')) {
+      const caption = document.createElement('span');
+      caption.className = 'countdown-caption';
+      caption.textContent = 'Resterende tijd';
+      timerBox.prepend(caption);
+      timer.querySelector('svg').setAttribute('aria-hidden', 'true');
+      byId('base-timer-label-s3').setAttribute('role', 'timer');
+    }
+    const timerPath = byId('base-timer-path-remaining_S3');
+    const timerLabel = byId('base-timer-label-s3');
+    if (timerLabel && /^\d:\d{2}$/.test(timerLabel.textContent)) setText(timerLabel, '0' + timerLabel.textContent);
+    // Mirror the engine's existing 07:30 / 03:00 states; do not run another timer.
+    timer.classList.toggle('timer-warning', !!timerPath?.classList.contains('orange'));
+    timer.classList.toggle('timer-alert', !!timerPath?.classList.contains('red'));
+    shell.classList.toggle('has-timer', !!visible(timer));
+    const current = container.querySelector('.questionS3:not(.hidden)');
+    const onQuestion = visible(container) && !!current;
+    const onInstructions = byId('startMessage').style.display === 'block';
+    const onOverview = visible(byId('proceedSection3End'));
+    const onScore = visible(byId('viewResultContainerId'));
+    const onResults = visible(byId('finalResultContainerId'));
+    const currentView = onQuestion ? current.id : onOverview ? 'overview' : onScore ? 'score' : onResults ? 'results' : onInstructions ? 'instructions' : 'welcome';
+    if (currentView !== lastView) {
+      content.scrollTop = 0;
+      lastView = currentView;
+    }
+    const entered = byId('quizButton1').style.display === 'none';
+    setHidden(welcome, entered);
+    setHidden(byId('loading-screen'), !(entered && !onInstructions && !onQuestion && !onOverview && !onScore && !onResults));
+    setHidden(progress, !onQuestion);
+    setHidden(toolbar, onQuestion);
+    setText(toolbar, onResults || onScore ? 'Uw resultaten' : onOverview ? 'Vragenoverzicht' : onInstructions ? 'Voordat u begint' : 'Oefenexamen 41');
+    const anyMap = ['btnQuestionMap','btnResultMap','btnExternalLink'].some(id => visible(byId(id)));
+    setHidden(actions, !(onQuestion || anyMap));
+    setHidden(placeholder, !(onQuestion && byId('previous-button-s3').classList.contains('hidden')));
+    setHidden(byId('answer-hint'), anyMap || !onQuestion);
+    if (onQuestion) {
+      const number = Number(current.id.split('-').pop());
+      const total = container.querySelectorAll('.questionS3').length;
+      const pct = Math.round(number / total * 100);
+      const fill = byId('progress-fill');
+      if (fill.style.width !== pct + '%') fill.style.width = pct + '%';
+      setText(byId('progress-percent'), pct + '%');
+      const track = document.querySelector('.progress-track');
+      if (track.getAttribute('aria-valuenow') !== String(pct)) track.setAttribute('aria-valuenow', pct);
+      const hint = current.querySelector('.drag-drop-container') ? 'Sleep elk item naar de juiste plaats' : current.querySelector('input[type="checkbox"]') || current.querySelector('.image-container') ? 'Selecteer alle juiste antwoorden' : current.querySelector('input[type="number"]') ? 'Vul uw antwoord in' : 'Kies uw antwoord om verder te gaan';
+      setText(byId('answer-hint'), hint);
+      fitImageChoices(current);
+    }
+    document.querySelectorAll('.question-block-s3').forEach(cell => {
+      if (!cell.hasAttribute('tabindex')) {cell.tabIndex = 0;cell.setAttribute('role','button');cell.setAttribute('aria-label','Question ' + cell.textContent.trim());}
+    });
+  }
+  let pending = false;
+  const schedule = () => {if (!pending) {pending = true;requestAnimationFrame(() => {pending = false;sync();});}};
+  new MutationObserver(schedule).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
+  document.addEventListener('keydown', e => {const cell = e.target.closest('.question-block-s3');if(cell && (e.key === 'Enter' || e.key === ' ')){e.preventDefault();cell.click();}});
+  document.addEventListener('click', schedule);
+  document.addEventListener('fullscreenchange', updateViewport);
+  document.addEventListener('webkitfullscreenchange', updateViewport);
+  window.addEventListener('resize', updateViewport);
+  window.addEventListener('resize', schedule);
+  window.addEventListener('orientationchange', updateViewport);
+  if (mobileLayout.addEventListener) mobileLayout.addEventListener('change', updateViewport);
+  else mobileLayout.addListener(updateViewport);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateViewport);
+    window.visualViewport.addEventListener('resize', schedule);
+    window.visualViewport.addEventListener('scroll', updateViewport);
+  }
+  if (window.ResizeObserver) new ResizeObserver(schedule).observe(content);
+  document.fonts?.ready.then(schedule);
+  updateViewport();
+  sync();
+})();
 
+</script>
 </body>
-
 </html>
