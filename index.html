@@ -3893,7 +3893,7 @@
             const lang = currentLang || 'en';
             if (!currentUser) { openModal('si'); return; }
             if (!canAccess('tests')) { showPaywall('tests'); return; }
-            const dynamicPage = lang === 'en' ? 'test-en.html' : lang === 'tr' ? 'test-tr.html' : null;
+            const dynamicPage = lang === 'en' ? 'test-en.html' : lang === 'tr' ? 'test-tr.html' : lang === 'nl' ? 'test-nl.html' : null;
             const quizUrl = dynamicPage
                 ? new URL(`${dynamicPage}?test=${testNum}`, window.location.href).href
                 : `${QUIZ_BASE}/test-${testNum}-${lang}.html`;

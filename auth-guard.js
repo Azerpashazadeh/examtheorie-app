@@ -21,7 +21,7 @@
     // Sayfa bilgilerini URL'den ayrıştır
     const path = window.location.pathname;
     const testMatch = path.match(/\/test-(\d+)-(en|tr|nl|ar)\.html/);
-    const dynamicTestMatch = path.match(/\/test-(en|tr)\.html$/);
+    const dynamicTestMatch = path.match(/\/test-(en|tr|nl)\.html$/);
     const dynamicTestPath = !!dynamicTestMatch;
     const dynamicLang = dynamicTestMatch ? dynamicTestMatch[1] : null;
     const dynamicParam = new URLSearchParams(window.location.search).get('test');
