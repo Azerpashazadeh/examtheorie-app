@@ -107,15 +107,30 @@
 
             // 4. Test Tamamlanma Kontrolü (B-kodu Entegrasyonu)
             if (isTest && testNum) {
+                // The homepage stores completion locally as soon as the result
+                // is submitted. Use it as an immediate fallback to prevent a
+                // repeat if the progress query is delayed or temporarily fails.
+                try {
+                    const locallyCompleted = JSON.parse(localStorage.getItem(`et_completed_${lang}`) || '[]');
+                    if (Array.isArray(locallyCompleted) && locallyCompleted.some(value => Number(value) === testNum)) {
+                        redirectHome('completed');
+                        return;
+                    }
+                } catch (storageError) {
+                    console.warn('Could not read local completed-test state:', storageError);
+                }
+
                 const { data: testData, error: testError } = await client
                     .from('user_progress')
                     .select('test_number')
                     .eq('user_id', session.user.id)
                     .eq('language', lang)
                     .eq('test_number', testNum)
-                    .maybeSingle(); // Daha performanslı kontrol
+                    .limit(1);
 
-                if (!testError && testData) {
+                if (testError) {
+                    console.error('Could not verify completed-test state:', testError);
+                } else if (testData?.length) {
                     // Test zaten çözülmüşse ana sayfaya gönder
                     redirectHome('completed');
                     return;
