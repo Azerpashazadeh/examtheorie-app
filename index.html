@@ -3887,17 +3887,18 @@
         }
 
         /* ─── TEST AÇ ─── */
-        const dynamicEnglishQuizWindows = new WeakSet();
+        const dynamicQuizWindows = new WeakSet();
 
         function openTest(testNum) {
             const lang = currentLang || 'en';
             if (!currentUser) { openModal('si'); return; }
             if (!canAccess('tests')) { showPaywall('tests'); return; }
-            const quizUrl = lang === 'en'
-                ? new URL(`test-en.html?test=${testNum}`, window.location.href).href
+            const dynamicPage = lang === 'en' ? 'test-en.html' : lang === 'tr' ? 'test-tr.html' : null;
+            const quizUrl = dynamicPage
+                ? new URL(`${dynamicPage}?test=${testNum}`, window.location.href).href
                 : `${QUIZ_BASE}/test-${testNum}-${lang}.html`;
             const quizWindow = window.open(quizUrl, '_blank');
-            if (lang === 'en' && quizWindow) dynamicEnglishQuizWindows.add(quizWindow);
+            if (dynamicPage && quizWindow) dynamicQuizWindows.add(quizWindow);
         }
 
         /* ─── TEORİ LİNKİ ─── */
@@ -3990,7 +3991,7 @@
 
         /* ─── POSTMESSAGE — reset banner kontrolü eklendi ─── */
         window.addEventListener('message', async function (e) {
-            const isAllowed = ['https://azerpashazadeh.github.io', 'https://examtheorie.nl', 'https://www.examtheorie.nl'].includes(e.origin) || e.origin.includes('examtheorie.nl') || (e.source && dynamicEnglishQuizWindows.has(e.source));
+            const isAllowed = ['https://azerpashazadeh.github.io', 'https://examtheorie.nl', 'https://www.examtheorie.nl'].includes(e.origin) || e.origin.includes('examtheorie.nl') || (e.source && dynamicQuizWindows.has(e.source));
             if (!isAllowed) return;
             const d = e.data || {};
             if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;

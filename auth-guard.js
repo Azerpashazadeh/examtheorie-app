@@ -21,14 +21,16 @@
     // Sayfa bilgilerini URL'den ayrıştır
     const path = window.location.pathname;
     const testMatch = path.match(/\/test-(\d+)-(en|tr|nl|ar)\.html/);
-    const dynamicEnglishPath = /\/test-en\.html$/.test(path);
+    const dynamicTestMatch = path.match(/\/test-(en|tr)\.html$/);
+    const dynamicTestPath = !!dynamicTestMatch;
+    const dynamicLang = dynamicTestMatch ? dynamicTestMatch[1] : null;
     const dynamicParam = new URLSearchParams(window.location.search).get('test');
     const dynamicNumber = dynamicParam === null || dynamicParam === '' ? 1 : Number(dynamicParam);
-    const validDynamicEnglishTest = dynamicEnglishPath && Number.isInteger(dynamicNumber) && dynamicNumber >= 1 && dynamicNumber <= 50;
+    const validDynamicTest = dynamicTestPath && Number.isInteger(dynamicNumber) && dynamicNumber >= 1 && dynamicNumber <= 50;
     
-    const isTest = !!testMatch || validDynamicEnglishTest;
-    const testNum = testMatch ? parseInt(testMatch[1], 10) : (validDynamicEnglishTest ? dynamicNumber : null);
-    const lang = testMatch ? testMatch[2] : (validDynamicEnglishTest ? 'en' : null);
+    const isTest = !!testMatch || validDynamicTest;
+    const testNum = testMatch ? parseInt(testMatch[1], 10) : (validDynamicTest ? dynamicNumber : null);
+    const lang = testMatch ? testMatch[2] : (validDynamicTest ? dynamicLang : null);
     const GROUP = isTest ? 'tests' : 'theory';
 
     // Sayfayı kontrol bitene kadar gizle
@@ -62,7 +64,7 @@
     }
 
     async function checkAccess() {
-        if (dynamicEnglishPath && !validDynamicEnglishTest) {
+        if (dynamicTestPath && !validDynamicTest) {
             window.location.replace(HOME_URL);
             return;
         }
