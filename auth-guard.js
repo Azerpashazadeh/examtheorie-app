@@ -19,13 +19,17 @@
     const HOME_URL     = 'https://examtheorie.nl';
 
     // Sayfa bilgilerini URL'den ayrıştır
-    const path      = window.location.pathname;
+    const path = window.location.pathname;
     const testMatch = path.match(/\/test-(\d+)-(en|tr|nl|ar)\.html/);
+    const dynamicEnglishPath = /\/test-en\.html$/.test(path);
+    const dynamicParam = new URLSearchParams(window.location.search).get('test');
+    const dynamicNumber = dynamicParam === null || dynamicParam === '' ? 1 : Number(dynamicParam);
+    const validDynamicEnglishTest = dynamicEnglishPath && Number.isInteger(dynamicNumber) && dynamicNumber >= 1 && dynamicNumber <= 50;
     
-    const isTest   = !!testMatch;
-    const testNum  = isTest ? parseInt(testMatch[1]) : null;
-    const lang     = isTest ? testMatch[2] : null;
-    const GROUP    = isTest ? 'tests' : 'theory';
+    const isTest = !!testMatch || validDynamicEnglishTest;
+    const testNum = testMatch ? parseInt(testMatch[1], 10) : (validDynamicEnglishTest ? dynamicNumber : null);
+    const lang = testMatch ? testMatch[2] : (validDynamicEnglishTest ? 'en' : null);
+    const GROUP = isTest ? 'tests' : 'theory';
 
     // Sayfayı kontrol bitene kadar gizle
     document.documentElement.style.visibility = 'hidden';
@@ -58,6 +62,10 @@
     }
 
     async function checkAccess() {
+        if (dynamicEnglishPath && !validDynamicEnglishTest) {
+            window.location.replace(HOME_URL);
+            return;
+        }
         try {
             // 1. Supabase SDK Yükle
             if (typeof supabase === 'undefined') {
