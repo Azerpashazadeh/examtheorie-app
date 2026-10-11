@@ -2149,6 +2149,10 @@
         .theory-card-copy strong{font-family:'Playfair Display',Georgia,serif;font-size:15.5px;line-height:1.2;color:#fff}
         .theory-card-copy small{font-family:'Source Serif 4',Georgia,serif;font-size:11.5px;line-height:1.35;color:rgba(255,255,255,.5)}
         .theory-arrow{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(217,181,109,.28);color:#d9b56d;font-size:15px;transition:transform .2s,background .2s}
+        .theory-lock{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:rgba(0,0,0,.2);font-size:11px;line-height:1}
+        .theory-lock[hidden],.theory-arrow[hidden]{display:none}
+        .theory-card-gated.is-locked{cursor:pointer}
+        .theory-card-gated.is-locked:after{content:'';position:absolute;inset:0;background:rgba(4,13,35,.14);pointer-events:none}
         .theory-card:hover .theory-arrow{transform:translateX(2px);background:rgba(197,150,69,.13)}
         .theory-card-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
         .theory-card-compact{grid-template-columns:52px minmax(0,1fr) 24px;min-height:98px;padding:13px 12px;gap:10px}
@@ -2520,37 +2524,37 @@
                         </div>
 
                         <div class="theory-chapters">
-                            <a class="theory-card theory-card-featured" href="#" onclick="openTheoryLink('traffic-rules.html');return false;">
+                            <a class="theory-card theory-card-featured" href="theory/en/traffic-rules.html" onclick="openTheoryLink('traffic-rules.html');return false;">
                                 <span class="theory-number">1</span>
                                 <span class="theory-card-copy"><strong data-theory-i18n="c1t">The Traffic Rules</strong><small data-theory-i18n="c1d">Core rules for using the road safely and correctly.</small></span>
                                 <span class="theory-arrow">→</span>
                             </a>
-                            <a class="theory-card" href="#" onclick="openTheoryLink('traffic-signs-theory.html');return false;">
+                            <a class="theory-card theory-card-gated is-locked" href="#" onclick="openTheoryLink('traffic-signs-theory.html');return false;">
                                 <span class="theory-number">2</span>
                                 <span class="theory-card-copy"><strong data-theory-i18n="c2t">Traffic Signs</strong><small data-theory-i18n="c2d">Signs, road markings, signals and their meaning.</small></span>
-                                <span class="theory-arrow">→</span>
+                                <span class="theory-lock" aria-hidden="true">🔒</span><span class="theory-arrow" hidden>→</span>
                             </a>
-                            <a class="theory-card" href="#" onclick="openTheoryLink('traffic-controllers.html');return false;">
+                            <a class="theory-card theory-card-gated is-locked" href="#" onclick="openTheoryLink('traffic-controllers.html');return false;">
                                 <span class="theory-number">3</span>
                                 <span class="theory-card-copy"><strong data-theory-i18n="c3t">Traffic Controllers</strong><small data-theory-i18n="c3d">Instructions, directions and road-user obligations.</small></span>
-                                <span class="theory-arrow">→</span>
+                                <span class="theory-lock" aria-hidden="true">🔒</span><span class="theory-arrow" hidden>→</span>
                             </a>
                             <div class="theory-card-row">
-                                <a class="theory-card theory-card-compact" href="#" onclick="openTheoryLink('speed-environmental-zones.html');return false;">
+                                <a class="theory-card theory-card-gated is-locked theory-card-compact" href="#" onclick="openTheoryLink('speed-environmental-zones.html');return false;">
                                     <span class="theory-number">4</span>
                                     <span class="theory-card-copy"><strong data-theory-i18n="c4t">Speed &amp; Environmental Zones</strong><small data-theory-i18n="c4d">Special speed measures and environmental zones.</small></span>
-                                    <span class="theory-arrow">→</span>
+                                    <span class="theory-lock" aria-hidden="true">🔒</span><span class="theory-arrow" hidden>→</span>
                                 </a>
-                                <a class="theory-card theory-card-compact" href="#" onclick="openTheoryLink('special-provisions.html');return false;">
+                                <a class="theory-card theory-card-gated is-locked theory-card-compact" href="#" onclick="openTheoryLink('special-provisions.html');return false;">
                                     <span class="theory-number">5</span>
                                     <span class="theory-card-copy"><strong data-theory-i18n="c5t">Special Provisions</strong><small data-theory-i18n="c5d">Rules for people with disabilities.</small></span>
-                                    <span class="theory-arrow">→</span>
+                                    <span class="theory-lock" aria-hidden="true">🔒</span><span class="theory-arrow" hidden>→</span>
                                 </a>
                             </div>
-                            <a class="theory-card" href="#" onclick="openTheoryLink('exemptions-waivers.html');return false;">
+                            <a class="theory-card theory-card-gated is-locked" href="#" onclick="openTheoryLink('exemptions-waivers.html');return false;">
                                 <span class="theory-number">6</span>
                                 <span class="theory-card-copy"><strong data-theory-i18n="c6t">Exemptions &amp; Waivers</strong><small data-theory-i18n="c6d">When exceptions apply and what they permit.</small></span>
-                                <span class="theory-arrow">→</span>
+                                <span class="theory-lock" aria-hidden="true">🔒</span><span class="theory-arrow" hidden>→</span>
                             </a>
                         </div>
 
@@ -3636,6 +3640,7 @@
                 if (mobSignin) { mobSignin.textContent = I18N[currentLang]?.nav_signin || 'Sign In'; mobSignin.onclick = () => { openModal('si'); closeMob(); }; mobSignin.style.display = ''; mobSignin.disabled = false; }
                 if (mobSignup) { mobSignup.style.display = ''; }
             }
+            updateTheoryCardLocks();
         }
 
         /* ─── AUTH MESAJ YARDIMCILARI ─── */
@@ -3841,7 +3846,7 @@
         async function checkAuth() {
             try {
                 const { data: { session }, error } = await _supabase.auth.getSession();
-                if (error) { console.error('❌ Session alınamadı:', error); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); return; }
+                if (error) { console.error('❌ Session alınamadı:', error); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); updateTheoryCardLocks(); buildTestButtons(); return; }
                 if (session?.user) {
                     currentUser = session.user;
                     // Promise.all yerine sırayla çalıştır
@@ -3849,7 +3854,7 @@
                     await fetchUserAccess();
                     buildTestButtons();
                 }
-                else { currentUser = null; currentPlanId = null; accessibleGroups = []; buildTestButtons(); }
+                else { currentUser = null; currentPlanId = null; accessibleGroups = []; updateTheoryCardLocks(); buildTestButtons(); }
                 updateNavbarUser();
             } catch (err) { console.error('❌ Auth kontrolü hatası:', err); currentUser = null; currentPlanId = null; accessibleGroups = []; updateNavbarUser(); buildTestButtons(); }
         }
@@ -3859,7 +3864,7 @@
             if (!currentUser) {
                 const { data: { session } } = await _supabase.auth.getSession();
                 if (session?.user) { currentUser = session.user; }
-                else { currentPlanId = null; accessibleGroups = []; return; }
+                else { currentPlanId = null; accessibleGroups = []; updateTheoryCardLocks(); return; }
             }
             try {
                 const res = await fetch(
@@ -3875,15 +3880,28 @@
                 }
                 // fetchResetUsed'i ayrı bir microtask'te çalıştır
                 setTimeout(() => fetchResetUsed(), 0);
+                updateTheoryCardLocks();
             } catch (err) {
                 console.error('❌ Erişim bilgisi alınırken hata:', err.message);
                 currentPlanId = null; accessibleGroups = [];
+                updateTheoryCardLocks();
             }
         }
 
         function canAccess(groupId) {
             if (accessibleGroups.includes('all')) return true;
             return accessibleGroups.includes(groupId);
+        }
+
+        function updateTheoryCardLocks() {
+            const hasTheoryAccess = Boolean(currentUser && canAccess('theory'));
+            document.querySelectorAll('.theory-card-gated').forEach(card => {
+                const lock = card.querySelector('.theory-lock');
+                const arrow = card.querySelector('.theory-arrow');
+                card.classList.toggle('is-locked', !hasTheoryAccess);
+                if (lock) lock.hidden = hasTheoryAccess;
+                if (arrow) arrow.hidden = !hasTheoryAccess;
+            });
         }
 
         /* ─── TEST AÇ ─── */
@@ -3903,11 +3921,12 @@
 
         /* ─── TEORİ LİNKİ ─── */
         function openTheoryLink(fileName) {
-            if (!currentUser) { openModal('si'); return; }
-            if (!canAccess('theory')) { showPaywall('theory'); return; }
             const lang = currentLang || localStorage.getItem('et_lang') || 'en';
             const supportedLangs = ['en', 'tr', 'nl', 'ar'];
             const theoryLang = supportedLangs.includes(lang) ? lang : 'en';
+            const isFreeChapter = fileName === 'traffic-rules.html';
+            if (!isFreeChapter && !currentUser) { openModal('si'); return; }
+            if (!isFreeChapter && !canAccess('theory')) { showPaywall('theory'); return; }
             window.open('theory/' + theoryLang + '/' + fileName, '_blank');
         }
 
