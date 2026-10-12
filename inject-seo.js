@@ -134,11 +134,13 @@ function getDescription(slug, langCode) {
 
   if (!entry) return '';
 
-  return (
-    (entry[langCode] && entry[langCode].description)
-    || entry.description
-    || ''
-  );
+  const localized = typeof entry === 'string'
+    ? entry
+    : entry[langCode] || entry.description || entry.en || '';
+
+  return typeof localized === 'string'
+    ? localized
+    : localized.description || '';
 }
 
 /** SEO bloğunu oluşturur */
@@ -180,7 +182,7 @@ ${alternateTags}    <meta property="og:title" content="${ogTitle}" />
     <meta property="og:description" content="${desc}" />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:site_name" content="${SITE_NAME}" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="${slug === 'index' ? 'website' : 'article'}" />
     <!-- ═══ /SEO ═══ -->`;
 }
 
