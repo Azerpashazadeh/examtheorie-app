@@ -2150,9 +2150,12 @@
         .theory-card-copy small{font-family:'Source Serif 4',Georgia,serif;font-size:11.5px;line-height:1.35;color:rgba(255,255,255,.5)}
         .theory-arrow{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(217,181,109,.28);color:#d9b56d;font-size:15px;transition:transform .2s,background .2s}
         .theory-lock{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:rgba(0,0,0,.2);font-size:11px;line-height:1}
-        .theory-lock[hidden],.theory-arrow[hidden]{display:none}
-        .theory-card-gated.is-locked{cursor:pointer}
-        .theory-card-gated.is-locked:after{content:'';position:absolute;inset:0;background:rgba(4,13,35,.14);pointer-events:none}
+        .theory-lock[hidden],.theory-arrow[hidden],.reference-lock[hidden],.reference-open[hidden]{display:none}
+        .theory-card-gated.is-locked,.reference-card-gated.is-locked{cursor:pointer}
+        .theory-card-gated.is-locked:after,.reference-card-gated.is-locked:after{content:'';position:absolute;inset:0;background:rgba(4,13,35,.14);pointer-events:none}
+        .reference-card-gated{padding-right:48px}
+        .reference-lock{position:absolute;top:12px;right:14px;z-index:1;display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:rgba(0,0,0,.2);font-size:12px;line-height:1}
+        .reference-open{position:relative;z-index:1}
         .theory-card:hover .theory-arrow{transform:translateX(2px);background:rgba(197,150,69,.13)}
         .theory-card-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
         .theory-card-compact{grid-template-columns:52px minmax(0,1fr) 24px;min-height:98px;padding:13px 12px;gap:10px}
@@ -2563,14 +2566,14 @@
                             <i></i>
                         </div>
                         <div class="theory-reference-grid">
-                            <a class="reference-card" href="#" onclick="openTheoryLink('traffic-sign-catalogue.html');return false;">
-                                <span class="reference-icon">◇</span><strong data-theory-i18n="r1t">Traffic Sign Catalogue</strong><small data-theory-i18n="r1d">Visual RVV traffic-sign reference</small><b data-theory-i18n="open">OPEN →</b>
+                            <a class="reference-card reference-card-gated is-locked" href="#" onclick="openTheoryLink('traffic-sign-catalogue.html');return false;">
+                                <span class="reference-icon">◇</span><strong data-theory-i18n="r1t">Traffic Sign Catalogue</strong><small data-theory-i18n="r1d">Visual RVV traffic-sign reference</small><span class="reference-lock" aria-hidden="true">🔒</span><b class="reference-open" hidden data-theory-i18n="open">OPEN →</b>
                             </a>
-                            <a class="reference-card" href="#" onclick="openTheoryLink('road-traffic-act.html');return false;">
-                                <span class="reference-icon">A</span><strong data-theory-i18n="r2t">Road Traffic Act 1994</strong><small data-theory-i18n="r2d">Supplement A · key legal provisions</small><b data-theory-i18n="open">OPEN →</b>
+                            <a class="reference-card reference-card-gated is-locked" href="#" onclick="openTheoryLink('road-traffic-act.html');return false;">
+                                <span class="reference-icon">A</span><strong data-theory-i18n="r2t">Road Traffic Act 1994</strong><small data-theory-i18n="r2d">Supplement A · key legal provisions</small><span class="reference-lock" aria-hidden="true">🔒</span><b class="reference-open" hidden data-theory-i18n="open">OPEN →</b>
                             </a>
-                            <a class="reference-card reference-wide" href="#" onclick="openTheoryLink('driving-skills-road-safety.html');return false;">
-                                <span class="reference-icon">B</span><strong data-theory-i18n="r3t">Driving Skills &amp; Road Safety</strong><small data-theory-i18n="r3d">Supplement B · practical knowledge and safe driving</small><b data-theory-i18n="open">OPEN →</b>
+                            <a class="reference-card reference-card-gated is-locked reference-wide" href="#" onclick="openTheoryLink('driving-skills-road-safety.html');return false;">
+                                <span class="reference-icon">B</span><strong data-theory-i18n="r3t">Driving Skills &amp; Road Safety</strong><small data-theory-i18n="r3d">Supplement B · practical knowledge and safe driving</small><span class="reference-lock" aria-hidden="true">🔒</span><b class="reference-open" hidden data-theory-i18n="open">OPEN →</b>
                             </a>
                         </div>
                     </section>
@@ -3895,9 +3898,9 @@
 
         function updateTheoryCardLocks() {
             const hasTheoryAccess = Boolean(currentUser && canAccess('theory'));
-            document.querySelectorAll('.theory-card-gated').forEach(card => {
-                const lock = card.querySelector('.theory-lock');
-                const arrow = card.querySelector('.theory-arrow');
+            document.querySelectorAll('.theory-card-gated, .reference-card-gated').forEach(card => {
+                const lock = card.querySelector('.theory-lock, .reference-lock');
+                const arrow = card.querySelector('.theory-arrow, .reference-open');
                 card.classList.toggle('is-locked', !hasTheoryAccess);
                 if (lock) lock.hidden = hasTheoryAccess;
                 if (arrow) arrow.hidden = !hasTheoryAccess;
