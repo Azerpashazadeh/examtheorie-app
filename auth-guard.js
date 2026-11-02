@@ -8,7 +8,8 @@
  * 1. Kullanıcı oturum açmış mı? → Hayır → Ana siteye yönlendir
  * 2. Aktif planı var mı?         → Hayır → Ana siteye yönlendir (paywall açılır)
  * 3. Planı bu sayfaya erişebilir mi? → Hayır → Ana siteye yönlendir
- * 4. Her şey OK → Sayfa gösterilir
+ * 4. Test tamamlanmış mı veya önceki testler eksik mi? → Evet → Ana siteye yönlendir
+ * 5. Her şey OK → Sayfa gösterilir
  */
 
 (function() {
@@ -58,7 +59,7 @@
     function redirectHome(reason) {
         const params = new URLSearchParams({
             redirect: window.location.href,
-            reason: reason // 'login' | 'plan' | 'completed'
+            reason: reason // 'login' | 'plan' | 'completed' | 'locked' | 'progress-error'
         });
         window.location.replace(`${HOME_URL}?${params.toString()}`);
     }
@@ -107,14 +108,23 @@
                 return;
             }
 
-            // 4. Test Tamamlanma Kontrolü (B-kodu Entegrasyonu)
+            // 4. Test tamamlanma ve sıra kontrolü
             if (isTest && testNum) {
+                const completedTests = new Set();
                 // The homepage stores completion locally as soon as the result
-                // is submitted. Use it as an immediate fallback to prevent a
-                // repeat if the progress query is delayed or temporarily fails.
+                // is submitted. Preserve those entries while the server save
+                // is pending, but never grant access before the server check.
                 try {
                     const locallyCompleted = JSON.parse(localStorage.getItem(`et_completed_${lang}`) || '[]');
-                    if (Array.isArray(locallyCompleted) && locallyCompleted.some(value => Number(value) === testNum)) {
+                    if (Array.isArray(locallyCompleted)) {
+                        locallyCompleted.forEach(value => {
+                            const number = Number(value);
+                            if (Number.isInteger(number) && number >= 1 && number <= 50) {
+                                completedTests.add(number);
+                            }
+                        });
+                    }
+                    if (completedTests.has(testNum)) {
                         redirectHome('completed');
                         return;
                     }
@@ -127,15 +137,28 @@
                     .select('test_number')
                     .eq('user_id', session.user.id)
                     .eq('language', lang)
-                    .eq('test_number', testNum)
-                    .limit(1);
+                    .lte('test_number', testNum);
 
-                if (testError) {
-                    console.error('Could not verify completed-test state:', testError);
-                } else if (testData?.length) {
+                if (testError || !Array.isArray(testData)) {
+                    console.error('Could not verify test progress:', testError);
+                    redirectHome('progress-error');
+                    return;
+                }
+                testData.forEach(row => completedTests.add(Number(row.test_number)));
+
+                if (completedTests.has(testNum)) {
                     // Test zaten çözülmüşse ana sayfaya gönder
                     redirectHome('completed');
                     return;
+                }
+
+                // Require every earlier test, not just the immediately previous
+                // one: older progress may contain gaps from direct URL access.
+                for (let previous = 1; previous < testNum; previous++) {
+                    if (!completedTests.has(previous)) {
+                        redirectHome('locked');
+                        return;
+                    }
                 }
             }
 
