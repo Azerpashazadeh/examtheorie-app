@@ -4044,22 +4044,29 @@
                 if (!Number.isInteger(d.testNumber) || d.testNumber < 1 || d.testNumber > 50) return;
                 if (!['en', 'ar', 'nl', 'tr'].includes(d.lang)) return;
                 if (alertSession.testNumber !== d.testNumber || alertSession.lang !== d.lang) return;
-                fastTestAlertSessions.delete(d.alertSession);
                 if (!Number.isInteger(d.elapsedSeconds) || d.elapsedSeconds < 480 || d.elapsedSeconds > 900) return;
                 if (!currentUser || !_supabase?.functions) return;
 
-                try {
-                    const { error } = await _supabase.functions.invoke('telegram-fast-test-alert', {
-                        body: {
-                            testNumber: d.testNumber,
-                            language: d.lang,
-                            elapsedSeconds: d.elapsedSeconds
-                        }
-                    });
-                    if (error) throw error;
-                } catch (err) {
-                    console.error('Fast-test Telegram alert failed:', err);
+                let lastAlertError;
+                for (let attempt = 0; attempt < 3; attempt++) {
+                    try {
+                        const { error } = await _supabase.functions.invoke('telegram-fast-test-alert', {
+                            body: {
+                                testNumber: d.testNumber,
+                                language: d.lang,
+                                elapsedSeconds: d.elapsedSeconds,
+                                alertSession: d.alertSession
+                            }
+                        });
+                        if (error) throw error;
+                        fastTestAlertSessions.delete(d.alertSession);
+                        return;
+                    } catch (err) {
+                        lastAlertError = err;
+                        if (attempt < 2) await new Promise(resolve => setTimeout(resolve, 1000 * (2 ** attempt)));
+                    }
                 }
+                console.error('Fast-test Telegram alert failed after retries:', lastAlertError);
                 return;
             }
 
