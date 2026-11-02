@@ -4016,6 +4016,29 @@
             const isAllowed = ['https://azerpashazadeh.github.io', 'https://examtheorie.nl', 'https://www.examtheorie.nl'].includes(e.origin) || e.origin.includes('examtheorie.nl') || (e.source && dynamicQuizWindows.has(e.source));
             if (!isAllowed) return;
             const d = e.data || {};
+
+            if (d.action === 'fastTestResultClick') {
+                if (!e.source || !dynamicQuizWindows.has(e.source)) return;
+                if (!Number.isInteger(d.testNumber) || d.testNumber < 1 || d.testNumber > 50) return;
+                if (!['en', 'ar', 'nl', 'tr'].includes(d.lang)) return;
+                if (!Number.isInteger(d.elapsedSeconds) || d.elapsedSeconds < 480 || d.elapsedSeconds > 900) return;
+                if (!currentUser || !_supabase?.functions) return;
+
+                try {
+                    const { error } = await _supabase.functions.invoke('telegram-fast-test-alert', {
+                        body: {
+                            testNumber: d.testNumber,
+                            language: d.lang,
+                            elapsedSeconds: d.elapsedSeconds
+                        }
+                    });
+                    if (error) throw error;
+                } catch (err) {
+                    console.error('Fast-test Telegram alert failed:', err);
+                }
+                return;
+            }
+
             if (d.action !== 'testCompleted' || !d.testNumber || !d.lang) return;
 
             const userId = currentUser?.id;
