@@ -2318,7 +2318,6 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
         let isYesClickedS3 = false; // Section 3 için bayrak
         const MIN_RESULT_TIME_S3 = 8 * 60;
         let resultAccessAllowedS3 = false;
-        let section3StartedAtMsS3 = 0;
 
         function yesButtonClicked(type, timesUp = false) {
         if (type == "section2") {
@@ -3458,7 +3457,6 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
             timeLeft_S3 = TIME_LIMIT_S3;
             isYesClickedS3 = false;
             resultAccessAllowedS3 = false;
-            section3StartedAtMsS3 = Date.now();
             const resultButton = document.getElementById("viewResult");
             resultButton.disabled = true;
             resultButton.setAttribute("aria-disabled", "true");
@@ -4155,9 +4153,7 @@ function notifyNewSystem() {
     if (!resultAccessAllowedS3) return;
     const testNumber = window.DYNAMIC_TEST_NUMBER;
     const lang = 'en';
-    const elapsedSeconds = section3StartedAtMsS3
-        ? Math.floor((Date.now() - section3StartedAtMsS3) / 1000)
-        : null;
+    const elapsedSeconds = TIME_LIMIT_S3 - timeLeft_S3;
     if (window.opener && !window.opener.closed) {
         try {
             let targetOrigin = 'https://examtheorie.nl';
