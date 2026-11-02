@@ -295,7 +295,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 <img alt="failOrPass" id="failOrPassIcon" src=""/>
 </div>
 <h3 id="endResult"></h3>
-<button id="viewResult" onclick="finalResultShow()">
+<button id="viewResult" onclick="finalResultShow()" disabled aria-disabled="true">
         View My Result!
       </button>
 </div>
@@ -655,6 +655,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
         // Yeni onclick olayını tanımlayın
         document.getElementById("viewResult").onclick = function (event) {
+            if (!resultAccessAllowedS3) return;
             // Mevcut işlevselliği çağırın (finalResultShow fonksiyonu)
             if (oldOnClick) {
                 oldOnClick(event);
@@ -2315,6 +2316,8 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
         let isYesClickedS2 = false; // Section 2 için bayrak
         let isYesClickedS3 = false; // Section 3 için bayrak
+        const MIN_RESULT_TIME_S3 = 8 * 60;
+        let resultAccessAllowedS3 = false;
 
         function yesButtonClicked(type, timesUp = false) {
         if (type == "section2") {
@@ -2340,14 +2343,20 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
           document.getElementById("countdown").style.display = "none";
           document.getElementById("startMessage").style.display = "block";
         } else if (type == "section3") {
-          if (timesUp && isYesClickedS3) {
-            return; // YES düğmesine tıklanmışsa, Section 3 için timesUp işlemini durdur.
+          if (isYesClickedS3) {
+            return; // Keep the first submission decision for this attempt.
           }
 
           isYesClickedS3 = true; // Section 3 için YES düğmesine tıklanıldığında bayrağı set ediyoruz.
 
           // YES düğmesine tıklandığında Section 3 zamanlayıcısını durdur
           clearInterval(timerInterval_S3);
+
+          // Decide once from the existing countdown; waiting here cannot unlock results.
+          resultAccessAllowedS3 = TIME_LIMIT_S3 - timeLeft_S3 >= MIN_RESULT_TIME_S3;
+          const resultButton = document.getElementById("viewResult");
+          resultButton.disabled = !resultAccessAllowedS3;
+          resultButton.setAttribute("aria-disabled", String(!resultAccessAllowedS3));
 
           if (timesUp) {
             const totalQuestions =
@@ -2392,6 +2401,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
       }
 
         function finalResultShow() {
+            if (!resultAccessAllowedS3) return;
             viewResult = true;
             lockQuizQuestionsS3();
 
@@ -3441,6 +3451,16 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
         }
 
         function startQuizS3() {
+            // A new attempt gets a fresh countdown and submission decision.
+            clearInterval(timerInterval_S3);
+            timePassed_S3 = 0;
+            timeLeft_S3 = TIME_LIMIT_S3;
+            isYesClickedS3 = false;
+            resultAccessAllowedS3 = false;
+            const resultButton = document.getElementById("viewResult");
+            resultButton.disabled = true;
+            resultButton.setAttribute("aria-disabled", "true");
+            document.getElementById("base-timer-label-s3").innerHTML = formatTimeS3(timeLeft_S3);
             // Start message ve START 3 SECTION düğmesini gizle
             document.getElementById("startMessage").style.display = "none"; // Start Message gizle
             document.getElementById("startSection3Button").style.display = "none"; // START 3 SECTION düğmesini gizle
@@ -3857,6 +3877,7 @@ function lockQuizQuestionsS3() {
 if (viewBtn) {
     var old = viewBtn.onclick;
     viewBtn.onclick = function (ev) {
+        if (!resultAccessAllowedS3) return;
         if (old) old(ev);
         setCompleted();
         notifyNewSystem();
@@ -4129,6 +4150,7 @@ if (viewBtn) {
 <script src="auth-guard.js?v=dynamic-english-2"></script>
 <script>
 function notifyNewSystem() {
+    if (!resultAccessAllowedS3) return;
     const testNumber = window.DYNAMIC_TEST_NUMBER;
     const lang = 'en';
     if (window.opener && !window.opener.closed) {
