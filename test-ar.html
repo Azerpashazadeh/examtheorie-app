@@ -4144,6 +4144,7 @@ function notifyNewSystem() {
     if (!resultAccessAllowedS3) return;
     const testNumber = window.DYNAMIC_TEST_NUMBER;
     const lang = 'ar';
+    const alertSession = new URLSearchParams(window.location.search).get('alertSession');
     const elapsedSeconds = TIME_LIMIT_S3 - timeLeft_S3;
     if (!window.opener || window.opener.closed) return;
     try {
@@ -4154,8 +4155,8 @@ function notifyNewSystem() {
             targetOrigin = '*';
         }
         window.opener.postMessage({ action: 'testCompleted', testNumber, lang }, targetOrigin);
-            if (Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 900) {
-                window.opener.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds }, targetOrigin);
+            if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 900) {
+                window.opener.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
             }
         console.log('Test ' + testNumber + ' (' + lang + ') completion reported');
     } catch (e) {

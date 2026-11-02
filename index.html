@@ -3909,17 +3909,36 @@
 
         /* ─── TEST AÇ ─── */
         const dynamicQuizWindows = new WeakSet();
+        const fastTestAlertSessions = new Map();
 
         function openTest(testNum) {
             const lang = currentLang || 'en';
             if (!currentUser) { openModal('si'); return; }
             if (!canAccess('tests')) { showPaywall('tests'); return; }
             const dynamicPage = lang === 'en' ? 'test-en.html' : lang === 'tr' ? 'test-tr.html' : lang === 'nl' ? 'test-nl.html' : lang === 'ar' ? 'test-ar.html' : null;
-            const quizUrl = dynamicPage
-                ? new URL(`${dynamicPage}?test=${testNum}`, window.location.href).href
+            const alertSession = dynamicPage ? crypto.randomUUID() : null;
+            const quizUrlObject = dynamicPage
+                ? new URL(`${dynamicPage}?test=${testNum}`, window.location.href)
+                : null;
+            if (quizUrlObject && alertSession) {
+                quizUrlObject.searchParams.set('alertSession', alertSession);
+            }
+            const quizUrl = quizUrlObject
+                ? quizUrlObject.href
                 : `${QUIZ_BASE}/test-${testNum}-${lang}.html`;
             const quizWindow = window.open(quizUrl, '_blank');
-            if (dynamicPage && quizWindow) dynamicQuizWindows.add(quizWindow);
+            if (dynamicPage && quizWindow && alertSession) {
+                dynamicQuizWindows.add(quizWindow);
+                const now = Date.now();
+                for (const [token, session] of fastTestAlertSessions) {
+                    if (now - session.createdAt > 60 * 60 * 1000) fastTestAlertSessions.delete(token);
+                }
+                fastTestAlertSessions.set(alertSession, {
+                    testNumber: Number(testNum),
+                    lang,
+                    createdAt: now
+                });
+            }
         }
 
         /* ─── TEORİ LİNKİ ─── */
@@ -4018,9 +4037,14 @@
             const d = e.data || {};
 
             if (d.action === 'fastTestResultClick') {
-                if (!e.source || !dynamicQuizWindows.has(e.source)) return;
+                const alertSession = typeof d.alertSession === 'string'
+                    ? fastTestAlertSessions.get(d.alertSession)
+                    : null;
+                if (!alertSession || Date.now() - alertSession.createdAt > 60 * 60 * 1000) return;
                 if (!Number.isInteger(d.testNumber) || d.testNumber < 1 || d.testNumber > 50) return;
                 if (!['en', 'ar', 'nl', 'tr'].includes(d.lang)) return;
+                if (alertSession.testNumber !== d.testNumber || alertSession.lang !== d.lang) return;
+                fastTestAlertSessions.delete(d.alertSession);
                 if (!Number.isInteger(d.elapsedSeconds) || d.elapsedSeconds < 480 || d.elapsedSeconds > 900) return;
                 if (!currentUser || !_supabase?.functions) return;
 
