@@ -2371,7 +2371,9 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
                   clearInterval(timerInterval_S3);
                   resultUnlockTimeoutS3 = null;
               }, remainingMs);
-          }if (timesUp) {
+          }
+
+          if (timesUp) {
             const totalQuestions =
               document.querySelectorAll(".questionS3").length;
             currentQuestionIndexS3 = totalQuestions - 1;
