@@ -4038,7 +4038,7 @@
                 if (!Number.isInteger(d.testNumber) || d.testNumber < 1 || d.testNumber > 50) return;
                 if (!['en', 'ar', 'nl', 'tr'].includes(d.lang)) return;
                 if (alertSession.testNumber !== d.testNumber || alertSession.lang !== d.lang) return;
-                if (!Number.isInteger(d.elapsedSeconds) || d.elapsedSeconds < 1500 || d.elapsedSeconds > 1800) return;
+                if (!Number.isInteger(d.elapsedSeconds) || d.elapsedSeconds < 480 || d.elapsedSeconds > 1080) return;
                 if (!currentUser || !_supabase?.functions) return;
 
                 let lastAlertError;

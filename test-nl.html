@@ -2317,8 +2317,9 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
         let isYesClickedS2 = false; // Section 2 için bayrak
         let isYesClickedS3 = false; // Section 3 için bayrak
-        const MIN_RESULT_TIME_S3 = 25 * 60;
+        const MIN_RESULT_TIME_S3 = 8 * 60;
         let resultAccessAllowedS3 = false;
+        let resultUnlockTimeoutS3 = null;
 
         function yesButtonClicked(type, timesUp = false) {
         if (type == "section2") {
@@ -2348,16 +2349,30 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
             return; // Keep the first submission decision for this attempt.
           }
 
-          isYesClickedS3 = true; // Section 3 için YES düğmesine tıklanıldığında bayrağı set ediyoruz.
-
-          // YES düğmesine tıklandığında Section 3 zamanlayıcısını durdur
-          clearInterval(timerInterval_S3);
-
-          // Decide once from the existing countdown; waiting here cannot unlock results.
-          resultAccessAllowedS3 = TIME_LIMIT_S3 - timeLeft_S3 >= MIN_RESULT_TIME_S3;
+          isYesClickedS3 = true; // Section 3 finished; preserve the first submission.
+          const elapsedAtFinishS3 = TIME_LIMIT_S3 - timeLeft_S3;
+          resultAccessAllowedS3 = elapsedAtFinishS3 >= MIN_RESULT_TIME_S3;
           const resultButton = document.getElementById("viewResult");
           resultButton.disabled = !resultAccessAllowedS3;
           resultButton.setAttribute("aria-disabled", String(!resultAccessAllowedS3));
+          if (resultUnlockTimeoutS3 !== null) {
+              clearTimeout(resultUnlockTimeoutS3);
+              resultUnlockTimeoutS3 = null;
+          }
+          if (resultAccessAllowedS3) {
+              clearInterval(timerInterval_S3);
+          } else {
+              const remainingMs = Math.max(0, (MIN_RESULT_TIME_S3 - elapsedAtFinishS3) * 1000);
+              resultUnlockTimeoutS3 = setTimeout(() => {
+                  timeLeft_S3 = Math.min(timeLeft_S3, TIME_LIMIT_S3 - MIN_RESULT_TIME_S3);
+                  timePassed_S3 = Math.max(timePassed_S3, MIN_RESULT_TIME_S3);
+                  resultAccessAllowedS3 = true;
+                  resultButton.disabled = false;
+                  resultButton.setAttribute("aria-disabled", "false");
+                  clearInterval(timerInterval_S3);
+                  resultUnlockTimeoutS3 = null;
+              }, remainingMs);
+          }
 
           if (timesUp) {
             const totalQuestions =
@@ -3453,6 +3468,8 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
         function startQuizS3() {
             // A new attempt gets a fresh countdown and submission decision.
+            clearTimeout(resultUnlockTimeoutS3);
+            resultUnlockTimeoutS3 = null;
             clearInterval(timerInterval_S3);
             timePassed_S3 = 0;
             timeLeft_S3 = TIME_LIMIT_S3;
@@ -4170,7 +4187,7 @@ function notifyNewSystem() {
             targetOrigin = '*';
         }
         window.opener.postMessage({ action: 'testCompleted', testNumber, lang }, targetOrigin);
-            if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 1500 && elapsedSeconds <= 1800) {
+            if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 1080) {
                 window.opener.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
             }
         console.log('Test ' + testNumber + ' (' + lang + ') completion reported');
