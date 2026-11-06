@@ -80,7 +80,7 @@ Deno.serve(async (req: Request) => {
   if (typeof alertSession !== "string" || !UUID_PATTERN.test(alertSession) ||
       !Number.isInteger(testNumber) || (testNumber as number) < 1 || (testNumber as number) > 50 ||
       !["en", "ar", "nl", "tr"].includes(String(language)) ||
-      !Number.isInteger(elapsedSeconds) || (elapsedSeconds as number) < 480 || (elapsedSeconds as number) > 900) {
+      !Number.isInteger(elapsedSeconds) || (elapsedSeconds as number) < 1500 || (elapsedSeconds as number) > 1800) {
     return response({ error: "Invalid alert data" }, 400, origin);
   }
 
@@ -148,7 +148,7 @@ Deno.serve(async (req: Request) => {
   const mins = Math.floor((elapsedSeconds as number) / 60);
   const secs = (elapsedSeconds as number) % 60;
   const message = [
-    "⚠️ Fast test result click (8–15 min)",
+    "⚠️ Test result completed (25–30 min)",
     `Test: ${testNumber} | Language: ${String(language).toUpperCase()}`,
     `Elapsed: ${mins}m ${String(secs).padStart(2, "0")}s`,
     `Supabase User ID: ${authData.user.id}`,
