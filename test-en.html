@@ -2871,8 +2871,9 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
         async function loadQuizS3() {
         const testNumber = window.DYNAMIC_TEST_NUMBER;
         const countsByTest = {"1":[37,3,1,2,7],"2":[35,0,4,6,5],"3":[38,0,3,4,5],"4":[34,2,6,3,5],"5":[40,2,1,1,6],"6":[35,1,1,5,8],"7":[41,2,1,1,5],"8":[41,2,0,2,5],"9":[42,1,1,2,4],"10":[41,1,2,1,5],"11":[40,3,1,2,4],"12":[41,3,1,1,4],"13":[40,0,1,1,8],"14":[35,1,0,5,9],"15":[37,2,3,2,6],"16":[42,0,1,3,4],"17":[42,1,1,2,4],"18":[41,1,2,2,4],"19":[38,5,1,2,4],"20":[34,1,1,6,8],"21":[39,0,2,1,8],"22":[41,3,1,1,4],"23":[38,2,1,2,7],"24":[39,3,0,1,7],"25":[45,0,1,0,4],"26":[42,2,0,2,4],"27":[43,0,1,2,4],"28":[43,0,1,1,5],"29":[35,1,1,5,8],"30":[37,2,2,1,8],"31":[41,0,2,2,5],"32":[39,1,2,0,8],"33":[40,0,1,1,8],"34":[40,1,0,2,7],"35":[37,4,0,2,7],"36":[40,1,2,2,5],"37":[42,1,1,2,4],"38":[41,1,2,0,6],"39":[37,2,2,1,8],"40":[38,2,2,3,5],"41":[35,1,0,5,9],"42":[39,2,2,3,4],"43":[36,1,3,5,5],"44":[38,3,1,1,7],"45":[37,2,3,2,6],"46":[40,2,0,3,5],"47":[37,1,2,3,7],"48":[39,3,0,1,7],"49":[42,0,1,3,4],"50":[40,0,2,4,4]};
-        const questionCounts = countsByTest[testNumber];
-        const sourceBase = `https://azerpashazadeh.github.io/sorularveresimler/test${testNumber}/englishjsons/test${testNumber}-`;
+        const contentTestNumber = ((testNumber - 1) % 5) + 1;
+        const questionCounts = countsByTest[contentTestNumber];
+        const sourceBase = `https://azerpashazadeh.github.io/sorularveresimler/test${contentTestNumber}/englishjsons/test${contentTestNumber}-`;
         const fetchType = async (fileSuffix, index) => questionCounts[index]
           ? await fetchQuestionsS3(`${sourceBase}${fileSuffix}en.json`, questionCounts[index])
           : [];
