@@ -1,49 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://examtheorie.nl/</loc>
-  <lastmod>2026-03-25T18:16:36+00:00</lastmod>
-</url>
-
-
-<url>
-  <loc>https://examtheorie.nl/deneme-en.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/deneme-nl.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/deneme-tr.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/deneme-ar.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/theory/en/traffic-rules.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/theory/tr/traffic-rules.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/theory/nl/traffic-rules.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-<url>
-  <loc>https://examtheorie.nl/theory/ar/traffic-rules.html</loc>
-  <lastmod>2026-10-12</lastmod>
-</url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://examtheorie.nl/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/tr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/nl/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/tr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/tr/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/tr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/ar/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/nl/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/tr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/deneme-en</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/deneme-en" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/deneme-nl" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/deneme-tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/deneme-ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/deneme-en" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/deneme-nl</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/deneme-en" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/deneme-nl" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/deneme-tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/deneme-ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/deneme-en" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/deneme-tr</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/deneme-en" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/deneme-nl" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/deneme-tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/deneme-ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/deneme-en" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/deneme-ar</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/deneme-en" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/deneme-nl" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/deneme-tr" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/deneme-ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/deneme-en" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/theory/en/traffic-rules</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/theory/en/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/theory/nl/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/theory/tr/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/theory/ar/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/theory/en/traffic-rules" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/theory/nl/traffic-rules</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/theory/en/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/theory/nl/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/theory/tr/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/theory/ar/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/theory/en/traffic-rules" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/theory/tr/traffic-rules</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/theory/en/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/theory/nl/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/theory/tr/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/theory/ar/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/theory/en/traffic-rules" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/theory/ar/traffic-rules</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://examtheorie.nl/theory/en/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://examtheorie.nl/theory/nl/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://examtheorie.nl/theory/tr/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://examtheorie.nl/theory/ar/traffic-rules" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://examtheorie.nl/theory/en/traffic-rules" />
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/privacy-policy/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://examtheorie.nl/terms-conditions/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
