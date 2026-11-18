@@ -32,15 +32,17 @@
     <meta name="twitter:title" content="Dutch CBR Driving Theory Exam 2026 — Free 50-Question Practice Test | ExamTheorie" />
     <meta name="twitter:description" content="Pass your 2026 Netherlands CBR car theory exam (Rijbewijs B) in English, Dutch, Turkish or Arabic. Try a free 50-question CBR mock test + Chapter 1 traffic rules today." />
     <meta name="twitter:image" content="https://examtheorie.nl/og-image.jpg" />
+    <link rel="preload" as="image" href="/hero-bg.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="preconnect" href="https://azerpashazadeh.github.io" crossorigin />
     <!-- ═══ /SEO ═══ -->
     <script type="application/ld+json" id="et-jsonld">{"@context":"https://schema.org","@graph":[{"@type":"EducationalOrganization","@id":"https://examtheorie.nl/#organization","name":"ExamTheorie","url":"https://examtheorie.nl/","logo":"https://examtheorie.nl/web-app-manifest-512x512.png","image":"https://examtheorie.nl/og-image.jpg"},{"@type":"WebSite","@id":"https://examtheorie.nl/#website","url":"https://examtheorie.nl/","name":"ExamTheorie","inLanguage":["nl","en","tr","ar"],"publisher":{"@id":"https://examtheorie.nl/#organization"}},{"@type":"Course","@id":"https://examtheorie.nl/#course","name":"Dutch CBR Car Driving Theory Course & 50 Practice Exams (Rijbewijs B)","description":"Pass your 2026 Netherlands CBR car theory exam (Rijbewijs B) in English, Dutch, Turkish or Arabic. Try a free 50-question CBR mock test + Chapter 1 traffic rules today.","url":"https://examtheorie.nl/","inLanguage":"en","provider":{"@id":"https://examtheorie.nl/#organization"},"availableLanguage":["nl","en","tr","ar"],"offers":[{"@type":"Offer","name":"Free CBR Practice Exam & Chapter 1","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://examtheorie.nl/deneme-en"},{"@type":"Offer","name":"Daily CBR Access (from 1 day)","price":"3.00","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://examtheorie.nl/"},{"@type":"Offer","name":"30-Day Premium CBR Pass","price":"24.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://examtheorie.nl/"}]},{"@type":"FAQPage","@id":"https://examtheorie.nl/#faq","mainEntity":[{"@type":"Question","name":"How does the 2026 Dutch CBR car theory exam (Rijbewijs B) work?","acceptedAnswer":{"@type":"Answer","text":"The updated CBR car theory exam consists of 50 integrated questions covering traffic rules (RVV 1990), traffic insight, and dynamic hazard perception within a 30-minute time limit. You need at least 44 correct answers out of 50 to pass."}},{"@type":"Question","name":"Can I try a free CBR driving theory practice test before buying?","acceptedAnswer":{"@type":"Answer","text":"Yes! ExamTheorie offers a full 50-question timed CBR mock exam plus the complete Chapter 1 (Dutch Traffic Rules) with a 15-question chapter quiz completely free in English, Dutch, Turkish, and Arabic."}},{"@type":"Question","name":"In which languages can I study for the Netherlands driving theory exam?","acceptedAnswer":{"@type":"Answer","text":"All 50 CBR practice exams, answer explanations, and theory chapters on ExamTheorie are available in 4 languages: Dutch (Nederlands), English, Turkish (Türkçe), and Arabic (العربية)."}},{"@type":"Question","name":"Are ExamTheorie packages a one-time payment or a recurring subscription?","acceptedAnswer":{"@type":"Answer","text":"Every ExamTheorie package (1–10 Day Flexible Access, 14 Days, 30 Days, 60 Days, or 1 Year) is strictly a one-time payment via iDEAL or card — there is never an automatic renewal or hidden subscription."}},{"@type":"Question","name":"What is included in Premium access?","acceptedAnswer":{"@type":"Answer","text":"Premium packages unlock all 50 realistic CBR mock exams with smart error analysis, all 6 RVV theory chapters, the visual Dutch Traffic Sign Catalogue, the Road Traffic Act 1994 guide, and Driving Skills & Road Safety across all 4 languages."}}]}]}</script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700;900&display=swap" rel="stylesheet"></noscript>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
     <script>
         if (typeof supabase === 'undefined') {
@@ -93,7 +95,8 @@
             /* lvh: large viewport height — toolbar dahil, değişmez */
             height: 100lvh;
             z-index: -2;
-            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center;
+            background: #040d24 url('/hero-bg.jpg') no-repeat center center;
+            background-image: image-set(url('/hero-bg.webp') type('image/webp'), url('/hero-bg.jpg') type('image/jpeg'));
             background-size: cover;
             transform: translateZ(0);
             will-change: transform;
@@ -1105,7 +1108,8 @@
             width: 100%;
             height: 100lvh;
             z-index: 0;
-            background: url('https://azerpashazadeh.github.io/sorularveresimler/2151021132.jpg') no-repeat center center;
+            background: #040d24 url('/hero-bg.jpg') no-repeat center center;
+            background-image: image-set(url('/hero-bg.webp') type('image/webp'), url('/hero-bg.jpg') type('image/jpeg'));
             background-size: cover;
             transform: translateZ(0);
             will-change: transform;
@@ -2506,6 +2510,37 @@
             </a>
         </div>
 
+        <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px;">
+            <h2 class="sec-head" data-seo-i18n="guides_head" style="margin:0;text-align:left;">2026 Netherlands CBR Exam Guides</h2>
+            <a id="seoGuidesHubLink" href="/guides/en/" data-seo-i18n="guides_all" style="color:var(--cyan);font-size:14px;font-weight:700;text-decoration:none;">View All Guides →</a>
+        </div>
+        <div class="seo-free-grid" style="margin-bottom:48px;">
+            <a class="seo-free-card glass" id="seoGuide1Link" href="/guides/en/cbr-theory-exam-2026">
+                <span class="seo-free-tag">CBR 2026</span>
+                <h3 data-seo-i18n="g1_t">2026 CBR Car Theory Exam Guide: Costs, 50 Questions &amp; Passing Score</h3>
+                <p data-seo-i18n="g1_d">Everything about the new integrated 50-question format (44/50 to pass), €50.50 / €57.00 CBR fees, and 1.5-year validity.</p>
+                <span class="seo-free-cta" data-seo-i18n="g_read">Read Guide →</span>
+            </a>
+            <a class="seo-free-card glass" id="seoGuide2Link" href="/guides/en/dutch-traffic-signs-rvv">
+                <span class="seo-free-tag">RVV 1990</span>
+                <h3 data-seo-i18n="g2_t">Dutch Traffic Signs &amp; Meanings: Top CBR Road Signs Visual Guide</h3>
+                <p data-seo-i18n="g2_d">Learn Dutch RVV sign series A–L, priority signs (B1, B6), C1 vs C2 entry bans, E1 vs E2 parking rules, and Erf/Autoweg signs.</p>
+                <span class="seo-free-cta" data-seo-i18n="g_read">Read Guide →</span>
+            </a>
+            <a class="seo-free-card glass" id="seoGuide3Link" href="/guides/en/cbr-hazard-perception-priority">
+                <span class="seo-free-tag">VOORRANG</span>
+                <h3 data-seo-i18n="g3_t">CBR Hazard Perception &amp; Dutch Priority Rules Explained</h3>
+                <p data-seo-i18n="g3_d">Master animated hazard perception, equal intersections, trams, cyclists, shark teeth (haaientanden), and exit (uitrit) rules.</p>
+                <span class="seo-free-cta" data-seo-i18n="g_read">Read Guide →</span>
+            </a>
+            <a class="seo-free-card glass" id="seoGuide4Link" href="/guides/en/exchange-foreign-driving-licence-netherlands">
+                <span class="seo-free-tag">RDW · 185 DAYS</span>
+                <h3 data-seo-i18n="g4_t">Exchanging a Foreign Driving Licence in NL (RDW) vs Taking CBR Exam</h3>
+                <p data-seo-i18n="g4_d">How the 185-day rule and 30% ruling work at RDW, who can exchange directly, and how to get a Dutch Rijbewijs B via CBR.</p>
+                <span class="seo-free-cta" data-seo-i18n="g_read">Read Guide →</span>
+            </a>
+        </div>
+
         <h2 class="sec-head" data-seo-i18n="faq_head" style="margin-bottom:26px;">Frequently Asked Questions — CBR Theory Exam</h2>
         <div class="faq-wrap">
             <details class="faq-item glass" open>
@@ -3613,7 +3648,18 @@
                 faq4_q: "Are ExamTheorie packages a one-time payment or a recurring subscription?",
                 faq4_a: "Every ExamTheorie package (1–10 Day Flexible Access, 14 Days, 30 Days, 60 Days, or 1 Year) is strictly a one-time payment via iDEAL or card — there is never an automatic renewal or hidden subscription.",
                 faq5_q: "What is included in Premium access?",
-                faq5_a: "Premium packages unlock all 50 realistic CBR mock exams with smart error analysis, all 6 RVV theory chapters, the visual Dutch Traffic Sign Catalogue, the Road Traffic Act 1994 guide, and Driving Skills & Road Safety across all 4 languages."
+                faq5_a: "Premium packages unlock all 50 realistic CBR mock exams with smart error analysis, all 6 RVV theory chapters, the visual Dutch Traffic Sign Catalogue, the Road Traffic Act 1994 guide, and Driving Skills & Road Safety across all 4 languages.",
+                guides_head: "2026 Netherlands CBR Exam Guides",
+                guides_all: "View All Guides →",
+                g_read: "Read Guide →",
+                g1_t: "2026 CBR Car Theory Exam Guide: Costs, 50 Questions & Passing Score",
+                g1_d: "Everything about the new integrated 50-question format (44/50 to pass), €50.50 / €57.00 CBR fees, and 1.5-year validity.",
+                g2_t: "Dutch Traffic Signs & Meanings: Top CBR Road Signs Visual Guide",
+                g2_d: "Learn Dutch RVV sign series A–L, priority signs (B1, B6), C1 vs C2 entry bans, E1 vs E2 parking rules, and Erf/Autoweg signs.",
+                g3_t: "CBR Hazard Perception & Dutch Priority Rules Explained",
+                g3_d: "Master animated hazard perception, equal intersections, trams, cyclists, shark teeth (haaientanden), and exit (uitrit) rules.",
+                g4_t: "Exchanging a Foreign Driving Licence in NL (RDW) vs Taking CBR Exam",
+                g4_d: "How the 185-day rule and 30% ruling work at RDW, who can exchange directly, and how to get a Dutch Rijbewijs B via CBR."
             },
             nl: {
                 free_head: "Start Gratis met CBR Auto Theorie Oefenen",
@@ -3635,7 +3681,18 @@
                 faq4_q: "Zit ik vast aan een abonnement bij ExamTheorie?",
                 faq4_a: "Nee. Alle pakketten op ExamTheorie (1 t/m 10 dagen flexibel, 14 dagen, 30 dagen, 60 dagen of 1 jaar) werken met een eenmalige betaling via o.a. iDEAL — zonder automatische verlenging.",
                 faq5_q: "Wat krijg ik bij een betaald pakket?",
-                faq5_a: "Je krijgt direct toegang tot alle 50 CBR oefenexamens op volgorde met slimme foutanalyse, alle 6 RVV-theoriehoofdstukken, de visuele verkeersbordencatalogus, de Wegenverkeerswet 1994 en Rijvaardigheid & Verkeersveiligheid."
+                faq5_a: "Je krijgt direct toegang tot alle 50 CBR oefenexamens op volgorde met slimme foutanalyse, alle 6 RVV-theoriehoofdstukken, de visuele verkeersbordencatalogus, de Wegenverkeerswet 1994 en Rijvaardigheid & Verkeersveiligheid.",
+                guides_head: "CBR Auto Theorie Gidsen 2026",
+                guides_all: "Alle Gidsen Bekijken →",
+                g_read: "Lees Gids →",
+                g1_t: "CBR Auto Theorie-examen 2026: Kosten, 50 Vragen & Slaaggrens",
+                g1_d: "Alles over de nieuwe opzet van 50 vragen (44 goed om te slagen), CBR-tarieven (€50,50 / €57,00) en 1,5 jaar geldigheid.",
+                g2_t: "Nederlandse Verkeersborden Betekenis (RVV 1990) Overzicht",
+                g2_d: "Leer alle CBR verkeersborden A t/m L, voorrangsborden (B1, B6), C1 vs C2, parkeerverbod E1 vs E2 en Erf/Autoweg.",
+                g3_t: "CBR Gevaarherkenning & Voorrangsregels Uitgelegd",
+                g3_d: "Beheers dynamische gevaarherkenning, gelijkwaardige kruispunten, trams, fietsers, haaientanden en uitritconstructies.",
+                g4_t: "Buitenlands Rijbewijs Omwisselen (RDW 185 Dagen) of CBR Examen",
+                g4_d: "Hoe werkt de 185-dagenregeling en de 30%-regeling bij de RDW, en wanneer moet je CBR theorie- en praktijkexamen doen?"
             },
             tr: {
                 free_head: "Hollanda CBR Ehliyet Sınavına Ücretsiz Başlayın",
@@ -3657,7 +3714,18 @@
                 faq4_q: "Paketler aylık abonelik mi yoksa tek seferlik ödeme mi?",
                 faq4_a: "Tüm paketlerimiz (1–10 Günlük Esnek Erişim, 14 Gün, 30 Gün, 60 Gün ve 1 Yıl) iDEAL veya kart ile tek seferlik ödemedir; otomatik yenileme veya gizli abonelik kesinlikle yoktur.",
                 faq5_q: "Premium pakete neler dahildir?",
-                faq5_a: "50 adet gerçek formatlı CBR deneme sınavı, her soruda akıllı hata analizi, 6 kapsamlı RVV teori bölümü, görsel Hollanda Trafik Levhaları Kataloğu ve Karayolu Trafik Kanunu ekleri 4 dilde açılır."
+                faq5_a: "50 adet gerçek formatlı CBR deneme sınavı, her soruda akıllı hata analizi, 6 kapsamlı RVV teori bölümü, görsel Hollanda Trafik Levhaları Kataloğu ve Karayolu Trafik Kanunu ekleri 4 dilde açılır.",
+                guides_head: "2026 Hollanda CBR Ehliyet Rehberleri",
+                guides_all: "Tüm Rehberleri Gör →",
+                g_read: "Rehberi Oku →",
+                g1_t: "2026 Hollanda CBR Ehliyet Teori Sınavı Rehberi: Ücret, 50 Soru ve Baraj",
+                g1_d: "Yeni 50 soruluk birleşik CBR sistemi (geçme barajı 44 doğru), €50,50 / €57,00 sınav ücretleri, tercüman ve 1,5 yıl geçerlilik.",
+                g2_t: "Hollanda Trafik Levhaları ve Anlamları (RVV 1990 Görselli Rehber)",
+                g2_d: "CBR sınavında en çok çıkan A–L serisi levhalar, B1/B6 öncelik, C1–C2 giriş yasağı, E1–E2 park/duraklama ve Erf levhaları.",
+                g3_t: "CBR Tehlike Algılama (Gevaarherkenning) ve Kavşak Öncelik Kuralları",
+                g3_d: "Yeni animasyonlu tehlike soruları, eşit kavşakta tramvay, bisikletli kör nokta, haaientanden ve uitrit çıkış kuralları.",
+                g4_t: "Hollanda'da Yabancı / Türk Ehliyeti Değişimi (RDW 185 Gün) ve CBR Süreci",
+                g4_d: "185 gün kuralı, %30 vergi avantajı (30% ruling) ile ehliyet çevirme şartları ve CBR ile sıfırdan Hollanda ehliyeti alma adımları."
             },
             ar: {
                 free_head: "ابدأ التحضير مجاناً لامتحان التيوري الهولندي CBR",
@@ -3679,7 +3747,18 @@
                 faq4_q: "هل الباقات دفعة واحدة أم اشتراك شهري متجدد؟",
                 faq4_a: "جميع باقات ExamTheorie (من يوم إلى 10 أيام مرنة، 14 يوماً، 30 يوماً، 60 يوماً، أو سنة كاملة) تُدفع لمرة واحدة فقط عبر iDEAL أو البطاقة بدون أي تجديد تلقائي.",
                 faq5_q: "ماذا تتضمن الباقات المدفوعة؟",
-                faq5_a: "تفتح الباقات جميع اختبارات CBR الـ 50 مع تحليل فوري للأخطاء، وجميع فصول النظرية الستة، ودليل إشارات المرور الهولندية المرئي، وملخص قانون المرور الهولندي بجميع اللغات الأربع."
+                faq5_a: "تفتح الباقات جميع اختبارات CBR الـ 50 مع تحليل فوري للأخطاء، وجميع فصول النظرية الستة، ودليل إشارات المرور الهولندية المرئي، وملخص قانون المرور الهولندي بجميع اللغات الأربع.",
+                guides_head: "أدلة امتحان التيوري الهولندي CBR لعام 2026",
+                guides_all: "عرض جميع الأدلة ←",
+                g_read: "اقرأ الدليل ←",
+                g1_t: "دليل امتحان التيوري الهولندي CBR 2026: الرسوم، 50 سؤالاً ودرجة النجاح",
+                g1_d: "كل ما تحتاج معرفته عن النظام المدمج الجديد (44 من 50 للنجاح)، رسوم الامتحان (50.50€ / 57.00€)، المترجم وصلاحية الشهادة.",
+                g2_t: "إشارات المرور في هولندا ومعانيها (دليل RVV 1990 المصوّر)",
+                g2_d: "أهم شواخص المرور في امتحان CBR من الفئات A إلى L، لوحات الأولوية B1 وB6، الفرق بين C1 وC2 وبين E1 وE2 ومناطق Erf.",
+                g3_t: "تمييز المخاطر وقواعد الأولوية في هولندا (Voorrang) لامتحان CBR",
+                g3_d: "إتقان أسئلة تمييز المخاطر المتحركة، التقاطعات المتكافئة، أولوية الترام والدراجات، أسنان القرش (haaientanden) ومخارج الطرق.",
+                g4_t: "استبدال رخصة القيادة الأجنبية في هولندا (RDW قاعدة 185 يوماً) وامتحان CBR",
+                g4_d: "متى يحق لك استبدال رخصتك عبر قاعدة 30% الضريبية، متى تنتهي مهلة 185 يوماً، وكيف تحصل على رخصة القيادة الهولندية عبر CBR."
             }
         };
 
@@ -3721,6 +3800,16 @@
             if (seoExamEl) seoExamEl.setAttribute('href', freeExamHref);
             if (seoChEl) seoChEl.setAttribute('href', freeChapterHref);
             if (featChEl) featChEl.setAttribute('href', freeChapterHref);
+            const gHubEl = document.getElementById('seoGuidesHubLink');
+            const g1El = document.getElementById('seoGuide1Link');
+            const g2El = document.getElementById('seoGuide2Link');
+            const g3El = document.getElementById('seoGuide3Link');
+            const g4El = document.getElementById('seoGuide4Link');
+            if (gHubEl) gHubEl.setAttribute('href', '/guides/' + lang + '/');
+            if (g1El) g1El.setAttribute('href', '/guides/' + lang + '/cbr-theory-exam-2026');
+            if (g2El) g2El.setAttribute('href', '/guides/' + lang + '/dutch-traffic-signs-rvv');
+            if (g3El) g3El.setAttribute('href', '/guides/' + lang + '/cbr-hazard-perception-priority');
+            if (g4El) g4El.setAttribute('href', '/guides/' + lang + '/exchange-foreign-driving-licence-netherlands');
             document.querySelectorAll('.lang-opt').forEach(o =>
                 o.classList.toggle('active', o.getAttribute('data-lang') === lang)
             );
@@ -3804,6 +3893,10 @@
         }
         function openTheoryMenuFromQuery() {
             const params = new URLSearchParams(window.location.search);
+            if (params.get('open') === 'pricing') {
+                openPricing();
+                return;
+            }
             if (params.get('open') !== 'theory') return;
             openPassengerCar();
             const chapter = params.get('chapter');

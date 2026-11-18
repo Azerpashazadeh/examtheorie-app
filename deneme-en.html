@@ -702,7 +702,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
       // Soru resmini göster
       document.getElementById("soruResmi").innerHTML =
-        '<img src="' + soru.resim + '" alt="Soru Resmi">';
+        '<img src="' + soru.resim + '" alt="CBR Practice Question ' + (soruIndex + 1) + '" decoding="async">';
 
       let cevaplarHTML = "";
       soru.cevaplar.forEach(function (cevap, index) {
@@ -1654,7 +1654,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
         html += `<div class="question hidden" id="${questionId}">
         <p>${index + 1}. ${question.soru}</p>`;
         if (question.resim) {
-          html += `<img src="${question.resim}" alt="Resim" class="question-image"><br>`;
+          html += `<img src="${question.resim}" alt="CBR Practice Question ${index + 1}: ${(question.soru || '').replace(/"/g, '&quot;').slice(0, 90)}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async" class="question-image"><br>`;
         } else if (question.type === "image") {
           const imageContainerClass =
             question.secenekler.length === 4
@@ -2895,7 +2895,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
         } else {
           if (question.resim) {
             console.log("Adding image:", question.resim); // Debug log
-            html += `<img src="${question.resim}" alt="Resim" class="question-image"><br>`;
+            html += `<img src="${question.resim}" alt="CBR Practice Question ${index + 1}: ${(question.soru || '').replace(/"/g, '&quot;').slice(0, 90)}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async" class="question-image"><br>`;
           }
           if (question.video) {
             console.log("Adding video:", question.video); // Debug log

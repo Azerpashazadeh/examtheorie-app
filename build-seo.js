@@ -315,6 +315,26 @@ function prerenderMarkup(markup, lang, dicts) {
     /(id="featuredChapterCard"\s+href=")[^"]+(")/,
     `$1${freeChHref}$2`
   );
+  out = out.replace(
+    /(id="seoGuidesHubLink"\s+href=")[^"]+(")/,
+    `$1/guides/${lang}/$2`
+  );
+  out = out.replace(
+    /(id="seoGuide1Link"\s+href=")[^"]+(")/,
+    `$1/guides/${lang}/cbr-theory-exam-2026$2`
+  );
+  out = out.replace(
+    /(id="seoGuide2Link"\s+href=")[^"]+(")/,
+    `$1/guides/${lang}/dutch-traffic-signs-rvv$2`
+  );
+  out = out.replace(
+    /(id="seoGuide3Link"\s+href=")[^"]+(")/,
+    `$1/guides/${lang}/cbr-hazard-perception-priority$2`
+  );
+  out = out.replace(
+    /(id="seoGuide4Link"\s+href=")[^"]+(")/,
+    `$1/guides/${lang}/exchange-foreign-driving-licence-netherlands$2`
+  );
 
   // Localize Sign In buttons in static HTML
   out = out.replace(
@@ -435,10 +455,10 @@ ${hreflangs}
     <meta name="twitter:title" content="${escapeAttr(meta.title)}" />
     <meta name="twitter:description" content="${escapeAttr(meta.description)}" />
     <meta name="twitter:image" content="${OG_IMAGE}" />
+    <link rel="preload" as="image" href="/hero-bg.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="preconnect" href="https://azerpashazadeh.github.io" crossorigin />
     <!-- ═══ /SEO ═══ -->`;
 }
 
@@ -583,6 +603,27 @@ ${hreflangs}
     html = html.replace(
       /<head>[\s\S]*?(?=<style id="exam-design">)/,
       newHeadStart
+    );
+
+    // Upgrade generic alt="Resim" / alt="Soru Resmi" & add lazy loading for hidden questions (2..50)
+    const qPrefixMap = {
+      en: 'CBR Practice Question',
+      nl: 'CBR Oefenvraag',
+      tr: 'CBR Deneme Sorusu',
+      ar: 'سؤال CBR التدريبي',
+    };
+    const qPrefix = qPrefixMap[lang] || 'CBR Question';
+
+    html = html.replace(
+      /'<img src="' \+ soru\.resim \+ '" alt="[^"]*">'/g,
+      `'<img src="' + soru.resim + '" alt="${qPrefix} ' + (soruIndex + 1) + '" decoding="async">'`
+    );
+
+    html = html.replace(
+      /`<img src="\$\{question\.resim\}" alt="(?:Resim|CBR[^"]*)"[^>`]*><br>`/g,
+      '`<img src="${question.resim}" alt="' +
+        qPrefix +
+        ' ${index + 1}: ${(question.soru || \'\').replace(/"/g, \'&quot;\').slice(0, 90)}" loading="${index === 0 ? \'eager\' : \'lazy\'}" decoding="async" class="question-image"><br>`'
     );
 
     fs.writeFileSync(fp, html, 'utf8');
@@ -789,7 +830,7 @@ function cleanRootGatedAndTestPages() {
 
 // ── 5. Generate Multilingual sitemap.xml & robots.txt ────────────────────────
 
-function generateSitemapAndRobots() {
+function generateSitemapAndRobots(extraClusters = []) {
   const clusters = [
     {
       priority: '1.0',
@@ -824,6 +865,7 @@ function generateSitemapAndRobots() {
       },
       xDefault: `${BASE_URL}/theory/en/traffic-rules`,
     },
+    ...extraClusters,
   ];
 
   const entries = [];
@@ -875,10 +917,13 @@ Sitemap: ${BASE_URL}/sitemap.xml
 
 // ── Run All Steps ────────────────────────────────────────────────────────────
 
+const { buildGuidePages } = require('./build-guides.js');
+
 buildHomepages();
 updateDenemePages();
 updateTheoryDirectory();
 updateLegalPages();
 cleanRootGatedAndTestPages();
-generateSitemapAndRobots();
+const guideClusters = buildGuidePages();
+generateSitemapAndRobots(guideClusters);
 console.log('\n🎯 ExamTheorie SEO build completed successfully!');
