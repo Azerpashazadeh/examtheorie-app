@@ -26,3 +26,8 @@
 
 /theory/assets/*
   Cache-Control: public, max-age=604800
+
+/.well-known/assetlinks.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+

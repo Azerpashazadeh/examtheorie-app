@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "nl.examtheorie.app",
+      "sha256_cert_fingerprints": [
+        "18:E6:90:09:64:84:1A:73:73:A2:C7:09:3F:44:88:63:D0:79:45:3C:A6:0F:1B:77:3C:D6:7D:66:62:C8:39:A5"
+      ]
+    }
+  }
+]

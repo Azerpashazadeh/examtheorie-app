@@ -4150,29 +4150,109 @@ if (viewBtn) {
     </script>
 <script src="auth-guard.js?v=dynamic-arabic-1"></script>
 <script>
+function resolveExamParentOrigin() {
+    let targetOrigin = 'https://examtheorie.nl';
+    if (document.referrer) {
+        try { targetOrigin = new URL(document.referrer).origin; } catch (_) {}
+    } else if (window.location.origin && window.location.origin !== 'null' && !window.location.hostname.includes('github.io')) {
+        targetOrigin = window.location.origin;
+    } else if (window.location.protocol === 'file:') {
+        targetOrigin = '*';
+    }
+    return targetOrigin;
+}
+function getExamParentWindow() {
+    if (window.opener && !window.opener.closed) return window.opener;
+    if (window.parent && window.parent !== window) return window.parent;
+    return null;
+}
 function notifyNewSystem() {
     if (!resultAccessAllowedS3) return;
     const testNumber = window.DYNAMIC_TEST_NUMBER;
     const lang = 'ar';
     const alertSession = new URLSearchParams(window.location.search).get('alertSession');
     const elapsedSeconds = TIME_LIMIT_S3 - timeLeft_S3;
-    if (!window.opener || window.opener.closed) return;
+    const parentWin = getExamParentWindow();
+    if (!parentWin) return;
     try {
-        let targetOrigin = 'https://examtheorie.nl';
-        if (document.referrer) {
-            try { targetOrigin = new URL(document.referrer).origin; } catch (_) {}
-        } else if (window.location.protocol === 'file:') {
-            targetOrigin = '*';
+        const targetOrigin = resolveExamParentOrigin();
+        parentWin.postMessage({ action: 'testCompleted', testNumber, lang }, targetOrigin);
+        if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 1080) {
+            parentWin.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
         }
-        window.opener.postMessage({ action: 'testCompleted', testNumber, lang }, targetOrigin);
-            if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 1080) {
-                window.opener.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
-            }
         console.log('Test ' + testNumber + ' (' + lang + ') completion reported');
     } catch (e) {
         console.error('Completion notification failed:', e);
     }
 }
+(function setupMobileExamOverlaySupport() {
+    const isOverlay = Boolean(window.parent && window.parent !== window);
+    let isNative = false;
+    try {
+        isNative =
+            /ExamTheorieAndroid/i.test(navigator.userAgent || '') ||
+            Boolean(window.Capacitor?.isNativePlatform?.()) ||
+            new URLSearchParams(window.location.search).get('app') === 'android' ||
+            sessionStorage.getItem('et_native_app') === '1';
+    } catch (_) {}
+    if (!isOverlay && !isNative) return;
+
+    function requestExamExit(force) {
+        if (!force) {
+            const quizBtn = document.getElementById('quizButton1');
+            const started = quizBtn ? (quizBtn.style.display === 'none' || quizBtn.classList.contains('hidden')) : false;
+            const isVis = (el) => el && !el.classList.contains('hidden') && el.style.display !== 'none';
+            const finished = isVis(document.getElementById('viewResultContainerId')) || isVis(document.getElementById('finalResultContainerId'));
+            if (started && !finished && !window.confirm('هل تريد الخروج من هذا الاختبار؟ لن يتم حفظ إجاباتك الحالية.')) {
+                return;
+            }
+        }
+        try {
+            if (document.fullscreenElement) document.exitFullscreen?.().catch?.(() => {});
+            else if (document.webkitFullscreenElement) document.webkitCancelFullScreen?.();
+        } catch (_) {}
+        if (window.parent && window.parent !== window) {
+            try {
+                window.parent.postMessage({ action: 'closeExamOverlay', force: true }, resolveExamParentOrigin());
+                return;
+            } catch (_) {}
+        }
+        window.location.href = '/ar/';
+    }
+
+    const origClose = window.close ? window.close.bind(window) : null;
+    window.close = function () {
+        if (window.parent && window.parent !== window) {
+            requestExamExit(true);
+            return;
+        }
+        if (origClose) origClose();
+    };
+
+    function mountControls() {
+        const extBtn = document.getElementById('btnExternalLink');
+        if (extBtn) {
+            extBtn.onclick = function (e) {
+                e.preventDefault();
+                requestExamExit(true);
+            };
+        }
+        const tools = document.querySelector('.page-header .page-tools');
+        if (tools && !tools.querySelector('.et-mobile-exit-btn')) {
+            const st = document.createElement('style');
+            st.textContent = '.page-header .page-tools{gap:8px!important}.et-mobile-exit-btn{height:36px;padding:0 12px;border-radius:10px;border:1px solid #ffffff45;background:#040f2a59;color:#fff;font-size:12.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;cursor:pointer;direction:rtl}';
+            document.head.appendChild(st);
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'et-mobile-exit-btn';
+            btn.textContent = 'خروج →';
+            btn.addEventListener('click', () => requestExamExit(false));
+            tools.appendChild(btn);
+        }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountControls);
+    else mountControls();
+})();
 </script>
 <script id="presentation-adapter">
 /* UI adapter: does not replace any quiz engine function or answer state. */
