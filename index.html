@@ -2137,20 +2137,36 @@
 
         .user-chip {
             display: none;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 13px;
-            background: rgba(0, 212, 255, 0.15);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--cyan);
-            white-space: nowrap;
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            max-width: 34px;
+            padding: 0;
+            margin: 0;
+            gap: 0;
+            border-radius: 50%;
+            place-items: center;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.24), rgba(0, 102, 255, 0.34));
+            border: 1px solid rgba(0, 212, 255, 0.45);
+            flex-shrink: 0;
         }
 
         .user-chip.visible {
-            display: flex;
+            display: inline-grid;
+        }
+
+        #userName {
+            display: block;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-indent: 0;
+            text-align: center;
+            color: #ffffff;
+            line-height: 1;
         }
             /* ── THEORY LIBRARY (Passenger Car / left column only) ── */
         .theory-library{--book-paper:#faf7f2;--book-ink:#18120e;--book-gold:#c59645;--book-red:#c84b43;position:relative;display:flex;flex-direction:column;gap:16px}
@@ -2368,9 +2384,7 @@
                 <a class="lang-opt" href="/nl/" data-lang="nl">NL</a>
                 <a class="lang-opt" href="/ar/" data-lang="ar">AR</a>
             </div>
-            <div class="user-chip" id="userChip">
-                👤 <span id="userName"></span>
-            </div>
+            <div class="user-chip" id="userChip"><span id="userName"></span></div>
             <button class="btn-signin" id="signinBtn" onclick="openModal('si')">Sign In</button>
             <button class="btn-signup" id="signupBtn" data-i18n="nav_signup" onclick="openModal('su')">Sign Up</button>
             <div class="hamburger" id="hbg" onclick="toggleMenu()">
@@ -3986,10 +4000,16 @@
             const mobUserName = document.getElementById('mobUserName');
 
             if (currentUser) {
+                const rawIdentity = String(currentUser.user_metadata?.full_name || currentUser.user_metadata?.name || (currentUser.email || '').split('@')[0] || '').trim();
+                const idParts = rawIdentity.split(/[\s._-]+/).filter(Boolean);
+                const initials = idParts.length >= 2
+                    ? (idParts[0][0] + idParts[idParts.length - 1][0]).toUpperCase()
+                    : (idParts[0] ? idParts[0].slice(0, 2).toUpperCase() : 'U');
                 const fullName = (currentUser.user_metadata?.full_name || currentUser.email || '').split('@')[0];
                 const firstName = fullName.split(' ')[0];
                 const name = firstName.length > 12 ? firstName.substring(0, 12) + '…' : firstName;
-                nameSpan.textContent = name;
+                nameSpan.textContent = initials;
+                chip.title = currentUser.user_metadata?.full_name || currentUser.email || '';
                 chip.classList.add('visible');
                 signinBtn.textContent = I18N[currentLang]?.nav_signout || 'Sign Out';
                 signinBtn.onclick = signOut;
