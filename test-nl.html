@@ -2174,7 +2174,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
                         (Array.isArray(questionData.userAnswer) &&
                             questionData.userAnswer.length === 0)
                     ) {
-                        feedbackImageUrl = feedback.cevaplanmamisResim;
+                        feedbackImageUrl = feedback.cevaplanmamisResim || feedback.cevaplanmamis || "cevaplanmamish.png"; feedbackDiv.classList.add("fb-unanswered");
                     } else if (
                         Array.isArray(questionData.dogruCevap) &&
                         Array.isArray(questionData.userAnswer)
@@ -2191,9 +2191,9 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
                             ? feedback.dogruCevapResim
                             : feedback.yanlisCevapResim;
                     } else if (questionData.userAnswer[0] === questionData.dogruCevap) {
-                        feedbackImageUrl = feedback.dogruCevapResim;
+                        feedbackImageUrl = feedback.dogruCevapResim || feedback.dogru || "dogrucevap.png"; feedbackDiv.classList.add("fb-correct");
                     } else {
-                        feedbackImageUrl = feedback.yanlisCevapResim;
+                        feedbackImageUrl = feedback.yanlisCevapResim || feedback.yanlis || "yanlishcevap.png"; feedbackDiv.classList.add("fb-wrong");
                     }
 
                     feedbackImage.src = feedbackImageUrl;
@@ -3694,16 +3694,16 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
                         // CSS class'larını kontrol et (gradient background kullanıldığı için)
                         if (endMessage4Block.classList.contains('correct-block')) {
                             // Doğru cevap (yeşil)
-                            feedbackImageUrl = feedback.dogruCevapResim;
+                            feedbackImageUrl = feedback.dogruCevapResim || feedback.dogru || "dogrucevap.png"; feedbackDiv.classList.add("fb-correct");
                         } else if (endMessage4Block.classList.contains('incorrect-block')) {
                             // Yanlış cevap (kırmızı)
-                            feedbackImageUrl = feedback.yanlisCevapResim;
+                            feedbackImageUrl = feedback.yanlisCevapResim || feedback.yanlis || "yanlishcevap.png"; feedbackDiv.classList.add("fb-wrong");
                         } else {
                             // Cevaplanmamış
-                            feedbackImageUrl = feedback.cevaplanmamisResim;
+                            feedbackImageUrl = feedback.cevaplanmamisResim || feedback.cevaplanmamis || "cevaplanmamish.png"; feedbackDiv.classList.add("fb-unanswered");
                         }
                     } else {
-                        feedbackImageUrl = feedback.cevaplanmamisResim;
+                        feedbackImageUrl = feedback.cevaplanmamisResim || feedback.cevaplanmamis || "cevaplanmamish.png"; feedbackDiv.classList.add("fb-unanswered");
                     }
 
                     feedbackImage.src = feedbackImageUrl;
