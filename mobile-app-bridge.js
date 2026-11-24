@@ -311,31 +311,31 @@
                 border: none;
                 cursor: pointer;
                 color: #fff;
-                background: linear-gradient(135deg, #00d4ff, #0066ff);
-                box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);
+                background: linear-gradient(135deg, #0061ff, #0095ff);
+                box-shadow: 0 10px 24px rgba(0, 97, 255, 0.28);
             }
             .et-reader-btn-secondary {
                 width: 100%;
                 padding: 12px 16px;
                 font-size: 13.5px;
-                font-weight: 600;
+                font-weight: 700;
                 font-family: inherit;
                 border-radius: 13px;
-                border: 1px solid rgba(0, 212, 255, 0.32);
-                background: rgba(0, 212, 255, 0.1);
-                color: #ccf4ff;
+                border: 1.5px solid rgba(255, 107, 0, 0.35);
+                background: #fff7ed;
+                color: #ea580c;
                 cursor: pointer;
             }
             .et-reader-btn-ghost {
                 width: 100%;
                 padding: 11px 16px;
                 font-size: 13px;
-                font-weight: 500;
+                font-weight: 600;
                 font-family: inherit;
                 border-radius: 12px;
-                border: 1px solid rgba(255, 255, 255, 0.16);
-                background: rgba(255, 255, 255, 0.05);
-                color: rgba(255, 255, 255, 0.85);
+                border: 1.5px solid #e2e8f0;
+                background: #f8fafc;
+                color: #334155;
                 cursor: pointer;
             }
         `;
@@ -827,12 +827,12 @@
         iconEl.textContent = user ? '👤' : '🔐';
 
         const titleEl = document.createElement('h2');
-        titleEl.style.cssText = 'font-size:21px;font-weight:800;margin-bottom:10px;color:#fff;';
+        titleEl.style.cssText = 'font-size:21px;font-weight:800;margin-bottom:10px;color:#0f172a;';
         titleEl.textContent = user ? strings.memberTitle : strings.guestTitle;
 
         const descEl = document.createElement('p');
         descEl.id = 'paywall-group-msg';
-        descEl.style.cssText = 'color:rgba(255,255,255,0.74);font-size:13.8px;line-height:1.6;margin-bottom:24px;';
+        descEl.style.cssText = 'color:#475569;font-size:13.8px;line-height:1.6;margin-bottom:24px;';
         descEl.textContent = user
             ? (isTests ? strings.memberDescTests : strings.memberDescTheory)
             : (isTests ? strings.guestDescTests : strings.guestDescTheory);
@@ -874,7 +874,7 @@
         actionsWrap.appendChild(freeChapterBtn);
 
         const noteEl = document.createElement('p');
-        noteEl.style.cssText = 'margin-top:16px;font-size:11.5px;color:rgba(255,255,255,0.42);';
+        noteEl.style.cssText = 'margin-top:16px;font-size:11.5px;color:#64748b;';
         noteEl.textContent = strings.syncNote;
 
         box.appendChild(closeEl);

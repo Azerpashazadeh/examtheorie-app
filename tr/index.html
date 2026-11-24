@@ -2397,15 +2397,6 @@
             display: none !important;
         }
 
-        /* Keep dark overlays/modals 100% crisp white-on-navy */
-        .pricing-overlay,
-        .pc-overlay,
-        .modal-bg,
-        .reset-banner-overlay {
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-        }
-
         /* Light Floating Frosted Navbar */
         .navbar.glass {
             background: rgba(255, 255, 255, 0.86);
@@ -2634,22 +2625,16 @@
             text-align: right;
         }
         .et-stage-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border: 1px solid rgba(15, 23, 42, 0.08);
             border-radius: 26px;
             padding: 22px;
             box-shadow: 0 24px 55px rgba(15, 23, 42, 0.07);
-            cursor: pointer;
-            transition: transform .25s, box-shadow .25s, border-color .25s;
+            cursor: default;
             display: flex;
             flex-direction: column;
-        }
-        .et-stage-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 97, 255, 0.25);
-            box-shadow: 0 28px 60px rgba(0, 97, 255, 0.12);
         }
         .et-stage-kicker {
             font-size: 11px;
@@ -2715,12 +2700,7 @@
             border: 1px solid rgba(15, 23, 42, 0.09);
             box-shadow: 0 30px 70px rgba(0, 97, 255, 0.13);
             overflow: hidden;
-            cursor: pointer;
-            transition: transform .25s, box-shadow .25s;
-        }
-        .et-center-win:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 34px 76px rgba(0, 97, 255, 0.18);
+            cursor: default;
         }
         .et-win-bar {
             background: #f8fafc;
@@ -2848,7 +2828,7 @@
         }
         .pricing-overlay .sec-head,
         .pc-overlay .sec-head {
-            color: #ffffff;
+            color: #0b132b;
         }
         .feat-card.glass,
         .how-card.glass,
@@ -2905,6 +2885,527 @@
         }
         .footer {
             color: #64748b;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════
+           LIGHT APPLE & HOLLANDA OVERLAYS & MODALS (#pricing-ol, #pc-ol, auth)
+           ══════════════════════════════════════════════════════════════════ */
+        .pricing-overlay {
+            background:
+                radial-gradient(circle at 12% 10%, rgba(0, 97, 255, 0.11), transparent 42%),
+                radial-gradient(circle at 88% 14%, rgba(255, 107, 0, 0.12), transparent 40%),
+                radial-gradient(circle at 50% 88%, rgba(16, 185, 129, 0.08), transparent 48%),
+                rgba(248, 250, 252, 0.98);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .overlay-close,
+        .pc-close {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            color: #0f172a;
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+        }
+        .overlay-close:hover,
+        .pc-close:hover {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.3);
+            color: #0061ff;
+        }
+        .daily-picker-wrap {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.07);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .daily-picker-title {
+            color: #0f172a;
+            font-weight: 800;
+        }
+        .daily-new-badge {
+            background: linear-gradient(135deg, #ff6b00, #ff8800);
+            color: #ffffff;
+        }
+        .daily-picker-sub {
+            color: #475569;
+        }
+        .day-btn {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            color: #334155;
+        }
+        .day-btn:hover {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.35);
+            color: #0061ff;
+        }
+        .day-btn .day-tag {
+            color: #64748b;
+        }
+        .day-btn.active {
+            background: linear-gradient(135deg, #0061ff, #0095ff);
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 97, 255, 0.28);
+        }
+        .day-btn.active .day-tag {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .daily-bottom {
+            border-top: 1px solid #e2e8f0;
+        }
+        .daily-price-main {
+            color: #0f172a;
+        }
+        .daily-price-per {
+            color: #475569;
+        }
+        .daily-price-per strong {
+            color: #0061ff;
+        }
+        .btn-daily-buy {
+            background: linear-gradient(135deg, #ff6b00, #ff8800);
+            color: #ffffff;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            box-shadow: 0 12px 28px rgba(255, 107, 0, 0.3);
+        }
+        .btn-daily-buy:hover {
+            box-shadow: 0 16px 34px rgba(255, 107, 0, 0.42);
+        }
+        .daily-divider::before,
+        .daily-divider::after {
+            background: #e2e8f0;
+        }
+        .daily-divider-text {
+            color: #64748b;
+            font-weight: 600;
+        }
+        .p-card {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+            color: #0f172a;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .p-card:hover {
+            border-color: rgba(0, 97, 255, 0.32);
+            box-shadow: 0 24px 55px rgba(0, 97, 255, 0.12);
+        }
+        .p-card.popular {
+            border: 2px solid #0061ff;
+            box-shadow: 0 24px 56px rgba(0, 97, 255, 0.16);
+        }
+        .pop-badge {
+            background: linear-gradient(135deg, #ff6b00, #ff8800);
+            color: #ffffff;
+            box-shadow: 0 6px 14px rgba(255, 107, 0, 0.28);
+        }
+        .p-name,
+        .p-amount {
+            color: #0f172a;
+        }
+        .p-sub,
+        .p-valid {
+            color: #64748b;
+        }
+        .btn-buy {
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .btn-buy:hover {
+            background: #0061ff;
+            border-color: #0061ff;
+            color: #ffffff;
+        }
+        .p-card.popular .btn-buy {
+            background: linear-gradient(135deg, #0061ff, #0095ff);
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 10px 24px rgba(0, 97, 255, 0.28);
+        }
+        .p-card.popular .btn-buy:hover {
+            box-shadow: 0 14px 30px rgba(0, 97, 255, 0.4);
+        }
+        .ideal {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+        }
+        .p-divider {
+            background: #e2e8f0;
+        }
+        .p-features li {
+            color: #334155;
+        }
+        .p-features li::before {
+            color: #10b981;
+        }
+        .terms-consent-text {
+            color: #64748b;
+        }
+        .terms-consent-text a {
+            color: #0061ff;
+        }
+        .terms-consent-text a:hover {
+            color: #004ecc;
+        }
+
+        /* Passenger Car Overlay (#pc-ol) — Light Apple & Hollanda */
+        .pc-overlay {
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .pc-overlay-bg {
+            background:
+                radial-gradient(circle at 12% 10%, rgba(0, 97, 255, 0.11), transparent 42%),
+                radial-gradient(circle at 88% 14%, rgba(255, 107, 0, 0.12), transparent 40%),
+                radial-gradient(circle at 50% 88%, rgba(16, 185, 129, 0.08), transparent 48%),
+                #f8fafc !important;
+            background-image:
+                radial-gradient(circle at 12% 10%, rgba(0, 97, 255, 0.11), transparent 42%),
+                radial-gradient(circle at 88% 14%, rgba(255, 107, 0, 0.12), transparent 40%),
+                radial-gradient(circle at 50% 88%, rgba(16, 185, 129, 0.08), transparent 48%) !important;
+        }
+        .pc-overlay-bg::after {
+            display: none !important;
+        }
+        .pc-header h2 {
+            font-family: 'Outfit', sans-serif;
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: #0b132b;
+            letter-spacing: -1px;
+        }
+        body.ar .pc-header h2 {
+            font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+            letter-spacing: 0;
+        }
+        .pc-header p {
+            color: #475569;
+            font-size: 15px;
+        }
+        .theory-library-head {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .theory-library-head:before {
+            background: linear-gradient(#0061ff, #ff6b00);
+            width: 4px;
+        }
+        .theory-kicker {
+            color: #0061ff;
+        }
+        .theory-library-head h3 {
+            color: #0f172a;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+        .theory-library-head p {
+            color: #475569;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .theory-book-mark {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.22);
+            color: #0061ff;
+            font-family: 'Outfit', sans-serif;
+        }
+        .theory-card,
+        .theory-card-featured {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+            color: #0f172a;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .theory-card-featured {
+            background: linear-gradient(110deg, #eff6ff 0%, #ffffff 65%);
+            border-color: rgba(0, 97, 255, 0.24);
+        }
+        .theory-card:before {
+            background: #0061ff;
+        }
+        .theory-card:hover,
+        .theory-card-featured:hover {
+            background: #ffffff;
+            border-color: rgba(0, 97, 255, 0.36);
+            box-shadow: 0 16px 36px rgba(0, 97, 255, 0.12);
+        }
+        .theory-return-target {
+            border-color: #0061ff !important;
+            box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.18), 0 14px 32px rgba(0, 97, 255, 0.14) !important;
+        }
+        .theory-number {
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.07);
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .theory-chapters > .theory-card:nth-child(1) .theory-number { background: #fee2e2; color: #dc2626; }
+        .theory-chapters > .theory-card:nth-child(2) .theory-number { background: #fef3c7; color: #d97706; }
+        .theory-chapters > .theory-card:nth-child(3) .theory-number { background: #ecfccb; color: #4d7c0f; }
+        .theory-card-row .theory-card:nth-child(1) .theory-number { background: #d1fae5; color: #047857; }
+        .theory-card-row .theory-card:nth-child(2) .theory-number { background: #e0f2fe; color: #0369a1; }
+        .theory-chapters > .theory-card:nth-child(5) .theory-number { background: #dbeafe; color: #1d4ed8; }
+        .theory-card-copy strong {
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .theory-card-copy small {
+            color: #475569;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            font-size: 11.5px;
+        }
+        .theory-arrow {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.22);
+            color: #0061ff;
+        }
+        .theory-card:hover .theory-arrow {
+            background: #0061ff;
+            color: #ffffff;
+        }
+        .theory-lock,
+        .reference-lock {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+        .theory-card-gated.is-locked:after,
+        .reference-card-gated.is-locked:after {
+            background: rgba(248, 250, 252, 0.28);
+        }
+        .theory-reference-head {
+            color: #64748b;
+        }
+        .theory-reference-head i {
+            background: #e2e8f0;
+        }
+        .reference-card {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .reference-card:hover {
+            background: #ffffff;
+            border-color: rgba(0, 97, 255, 0.34);
+            box-shadow: 0 14px 30px rgba(0, 97, 255, 0.11);
+        }
+        .reference-icon {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.2);
+            color: #0061ff;
+            font-family: 'Outfit', sans-serif;
+        }
+        .reference-card strong {
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        .reference-card small {
+            color: #475569;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .reference-card b {
+            color: #ff6b00;
+            font-weight: 800;
+        }
+        .test-panel {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .test-panel-title {
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            font-size: 15.5px;
+            font-weight: 800;
+        }
+        .test-panel-sub {
+            color: #475569;
+        }
+        .test-progress-bar {
+            background: #e2e8f0;
+        }
+        .test-progress-fill {
+            background: linear-gradient(90deg, #0061ff, #00b4d8);
+        }
+        .test-progress-label {
+            color: #64748b;
+            font-weight: 600;
+        }
+        .test-btn.locked {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #94a3b8;
+        }
+        .test-btn.active-test {
+            background: linear-gradient(135deg, #ff6b00, #ff8800);
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(255, 107, 0, 0.35);
+            animation: none;
+        }
+        .test-btn.active-test:hover {
+            box-shadow: 0 8px 22px rgba(255, 107, 0, 0.48);
+        }
+        .test-btn.completed {
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #15803d;
+        }
+        .test-btn.completed::after {
+            color: #16a34a;
+        }
+
+        /* Auth Modals, Paywall & Reset Banner — Light Apple & Hollanda */
+        .modal-bg,
+        .reset-banner-overlay {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .auth-box,
+        .auth-box.glass-strong,
+        .reset-banner-box {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.09);
+            box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
+            color: #0f172a;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .m-title,
+        .reset-banner-title {
+            font-family: 'Outfit', sans-serif;
+            color: #0b132b;
+            background: none;
+            -webkit-text-fill-color: initial;
+            letter-spacing: -0.6px;
+        }
+        body.ar .m-title,
+        body.ar .reset-banner-title {
+            font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+            letter-spacing: 0;
+        }
+        .m-close {
+            color: #64748b;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .m-close:hover {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.25);
+            color: #0061ff;
+        }
+        .f-lbl {
+            color: #334155;
+        }
+        .f-inp {
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            color: #0f172a;
+        }
+        .f-inp:focus {
+            background: #ffffff;
+            border-color: #0061ff;
+            box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.14);
+        }
+        .f-inp::placeholder {
+            color: #94a3b8;
+        }
+        .btn-submit,
+        .btn-reset-now {
+            background: linear-gradient(135deg, #0061ff, #0095ff);
+            box-shadow: 0 10px 24px rgba(0, 97, 255, 0.28);
+            font-family: 'Outfit', 'Poppins', sans-serif;
+        }
+        .btn-submit:hover,
+        .btn-reset-now:hover {
+            box-shadow: 0 14px 30px rgba(0, 97, 255, 0.4);
+        }
+        .m-div {
+            color: #64748b;
+        }
+        .m-div::before,
+        .m-div::after {
+            background: #e2e8f0;
+        }
+        .soc-btn {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #0f172a;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+        }
+        .soc-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+        .m-foot {
+            color: #475569;
+        }
+        .m-foot a {
+            color: #0061ff;
+        }
+        .auth-msg.error {
+            background: #fef2f2;
+            border-color: #fecaca;
+            color: #dc2626;
+        }
+        .auth-msg.success {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #15803d;
+        }
+        .auth-msg.info {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #0369a1;
+        }
+        .reset-banner-sub {
+            color: #475569;
+            font-weight: 400;
+        }
+        .rb-stat {
+            background: #eff6ff;
+            border-color: rgba(0, 97, 255, 0.18);
+        }
+        .rb-stat-num {
+            background: linear-gradient(135deg, #0061ff, #0095ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .rb-stat-label {
+            color: #475569;
+        }
+        .btn-reset-close {
+            color: #64748b;
+        }
+        .btn-reset-close:hover {
+            color: #0f172a;
+        }
+        .reset-warning {
+            background: #fffbeb;
+            border-color: #fde68a;
+            color: #92400e;
+        }
+        .reset-warning strong {
+            color: #b45309;
         }
 
         @media (max-width: 1060px) {
@@ -3025,7 +3526,7 @@
         </div>
 
         <div class="et-stage-grid">
-            <div class="et-stage-card" onclick="openPassengerCar()" role="button" tabindex="0">
+            <div class="et-stage-card">
                 <div class="et-stage-kicker" data-i18n="st_lk">GÖRSEL TEORİ KÜTÜPHANESİ</div>
                 <h3 data-i18n="st_lt">RVV 1990 Trafik Levhaları &amp; Kurallar</h3>
                 <div class="et-sign-row" aria-hidden="true">
@@ -3040,7 +3541,7 @@
                 </div>
             </div>
 
-            <div class="et-center-win" onclick="openDenemeTest()" role="button" tabindex="0">
+            <div class="et-center-win">
                 <div class="et-win-bar">
                     <div class="et-win-dots" aria-hidden="true"><i></i><i></i><i></i></div>
                     <span class="et-win-pill" data-i18n="st_wpill">⏱ 28:45 · SORU 12 / 50</span>
@@ -3059,7 +3560,7 @@
                 </div>
             </div>
 
-            <div class="et-stage-card" onclick="openPassengerCar()" role="button" tabindex="0">
+            <div class="et-stage-card">
                 <div class="et-stage-kicker" data-i18n="st_rk">WEB + ANDROID UYGULAMA</div>
                 <h3 data-i18n="st_rt">Kaldığınız Yerden Kesintisiz Devam</h3>
                 <p data-i18n="st_rd">Bilgisayarda başladığınız sınava otobüste telefon uygulamasından aynı hesapla devam edin.</p>
@@ -3461,7 +3962,7 @@
                         class="f-inp" placeholder="••••••••" autocomplete="current-password"></div>
                 <div style="text-align:right;margin-top:-8px;margin-bottom:12px;">
                     <a onclick="showForgotPassword()"
-                        style="font-size:12px;color:rgba(255,255,255,0.6);cursor:pointer;text-decoration:underline;"
+                        style="font-size:12.5px;color:#0061ff;font-weight:600;cursor:pointer;text-decoration:underline;"
                         data-i18n="forgot_pass">Şifremi unuttum</a>
                 </div>
                 <button type="submit" class="btn-submit" id="si-btn" data-i18n="si_title">Giriş Yap</button>
@@ -3585,12 +4086,12 @@
         <div class="auth-box glass-strong" style="max-width:460px;text-align:center;padding:40px 32px;">
             <div class="m-close" onclick="closePaywall()">×</div>
             <div style="font-size:48px;margin-bottom:16px;">🔒</div>
-            <h2 style="font-size:22px;font-weight:800;margin-bottom:10px;" data-i18n="paywall_title">Premium Erişim Gerekli</h2>
-            <p id="paywall-group-msg" style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:28px;"
+            <h2 style="font-size:22px;font-weight:800;margin-bottom:10px;color:#0f172a;" data-i18n="paywall_title">Premium Erişim Gerekli</h2>
+            <p id="paywall-group-msg" style="color:#475569;font-size:14px;line-height:1.6;margin-bottom:28px;"
                 data-i18n="paywall_desc">Bu içeriğe erişmek için aktif bir planınız olması gerekiyor.</p>
-            <button class="btn-signup" style="width:100%;padding:14px;font-size:15px;border-radius:14px;"
+            <button class="btn-signup" style="width:100%;padding:14px;font-size:15px;border-radius:14px;background:linear-gradient(135deg,#ff6b00,#ff8800);box-shadow:0 12px 26px rgba(255,107,0,0.3);"
                 onclick="closePaywall();closePassengerCar();openPricing();" data-i18n="paywall_btn">Paketleri Gör</button>
-            <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.4);" data-i18n="paywall_note">Tek seferlik ödeme • Abonelik yok</p>
+            <p style="margin-top:16px;font-size:12px;color:#64748b;" data-i18n="paywall_note">Tek seferlik ödeme • Abonelik yok</p>
         </div>
     </div>
 
@@ -5393,7 +5894,7 @@
         </div><!-- /#scroll-container -->
 
     <script src="/consent-manager.js?v=1" defer></script>
-    <script src="/mobile-app-bridge.js?v=6" defer></script>
+    <script src="/mobile-app-bridge.js?v=7" defer></script>
 </body>
 
 </html>
