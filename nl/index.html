@@ -3430,6 +3430,217 @@
             color: #b45309;
         }
 
+        /* ══ REFER FRIENDS MODAL (#refer-modal) — Light Apple & Hollanda ══ */
+        .refer-box {
+            max-width: 500px !important;
+            padding: 32px 28px 28px !important;
+            text-align: center;
+        }
+        .refer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 13px;
+            border-radius: 999px;
+            background: #fff7ed;
+            border: 1px solid rgba(255, 107, 0, 0.25);
+            color: #ea580c;
+            font-size: 11.5px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .refer-sub {
+            color: #475569;
+            font-size: 13.8px;
+            line-height: 1.58;
+            margin: -10px auto 18px;
+            max-width: 420px;
+        }
+        .refer-link-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8fafc;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 6px 6px 6px 13px;
+            margin-bottom: 12px;
+            direction: ltr;
+        }
+        .refer-link-inp {
+            flex: 1;
+            min-width: 0;
+            border: 0;
+            background: transparent;
+            color: #0f172a;
+            font-family: 'Outfit', 'Poppins', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            outline: none;
+        }
+        .refer-copy-btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 9px 15px;
+            background: linear-gradient(135deg, #0061ff, #0095ff);
+            color: #ffffff;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            font-size: 12.5px;
+            font-weight: 800;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform .15s, box-shadow .15s;
+            box-shadow: 0 6px 16px rgba(0, 97, 255, 0.25);
+        }
+        .refer-copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0, 97, 255, 0.35);
+        }
+        .refer-share-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .refer-share-btn {
+            border: 0;
+            border-radius: 13px;
+            padding: 11px 14px;
+            font-family: 'Outfit', 'Poppins', sans-serif;
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            transition: transform .15s, opacity .15s;
+        }
+        .refer-share-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.95;
+        }
+        .refer-wa {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+        }
+        .refer-tg {
+            background: linear-gradient(135deg, #0284c7, #0ea5e9);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.24);
+        }
+        .refer-stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .refer-stat-card {
+            background: #eff6ff;
+            border: 1px solid rgba(0, 97, 255, 0.16);
+            border-radius: 14px;
+            padding: 10px 12px;
+        }
+        .refer-stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 21px;
+            font-weight: 900;
+            color: #0061ff;
+            line-height: 1.1;
+        }
+        .refer-stat-lbl {
+            font-size: 11.5px;
+            color: #475569;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+        .refer-tiers-wrap {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 12px 14px;
+            text-align: left;
+        }
+        body.ar .refer-tiers-wrap {
+            text-align: right;
+        }
+        .refer-tiers-head {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .refer-tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+        @media (max-width: 460px) {
+            .refer-tiers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .refer-share-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .refer-tier-pill {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 7px 8px;
+            text-align: center;
+        }
+        .refer-tier-pack {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+        }
+        .refer-tier-bonus {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: #ea580c;
+            margin-top: 1px;
+        }
+        .refer-note {
+            margin-top: 10px;
+            font-size: 11.2px;
+            color: #64748b;
+            line-height: 1.45;
+        }
+        .pricing-ref-banner {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 16px;
+            padding: 12px 18px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+            border: 1.5px solid #86efac;
+            color: #166534;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 8px 22px rgba(22, 163, 74, 0.08);
+        }
+        .pricing-ref-banner.visible {
+            display: block;
+        }
+        html.et-native-app .refer-web-only,
+        html.et-native-app .refer-tiers-wrap,
+        html.et-native-app .pricing-ref-banner {
+            display: none !important;
+        }
+
         @media (max-width: 1060px) {
             .et-stage-grid {
                 grid-template-columns: 1fr;
@@ -3764,6 +3975,7 @@
         <div class="pricing-scroll">
         <div class="overlay-close" onclick="closePricing()">×</div>
         <h2 class="sec-head" data-i18n="price_head" style="margin-bottom:28px;">Pakketprijzen</h2>
+        <div class="pricing-ref-banner" id="pricingRefBanner"></div>
         <div class="daily-picker-wrap">
             <div class="daily-picker-top">
                 <div>
@@ -4113,6 +4325,49 @@
             <button class="btn-signup" style="width:100%;padding:14px;font-size:15px;border-radius:14px;background:linear-gradient(135deg,#ff6b00,#ff8800);box-shadow:0 12px 26px rgba(255,107,0,0.3);"
                 onclick="closePaywall();closePassengerCar();openPricing();" data-i18n="paywall_btn">Bekijk Pakketten</button>
             <p style="margin-top:16px;font-size:12px;color:#64748b;" data-i18n="paywall_note">Eenmalige betaling • Geen abonnement</p>
+        </div>
+    </div>
+
+    <!-- ═══════════ REFER FRIENDS MODAL ═══════════ -->
+    <div class="modal-bg" id="refer-modal">
+        <div class="auth-box glass-strong refer-box">
+            <div class="m-close" onclick="closeModal('refer')">×</div>
+            <div class="refer-badge" id="rfBadge">🎁 BONUS ACCESS</div>
+            <h2 class="m-title" id="rfTitle" style="font-size:24px;margin-bottom:14px;">Invite Friends, Both Get Free Days!</h2>
+            <p class="refer-sub" id="rfSub">Share your personal invite link. When your friend buys their first 3+ day package, both of you automatically receive bonus access days!</p>
+
+            <div id="rfGuestWrap" style="display:none;margin-bottom:16px;">
+                <button type="button" class="btn-submit" id="rfSignInBtn" onclick="closeModal('refer');openModal('si');">Sign In to Get Your Invite Link</button>
+            </div>
+
+            <div id="rfUserWrap" style="display:none;">
+                <div class="refer-link-row">
+                    <input type="text" class="refer-link-inp" id="rfLinkInp" readonly onclick="this.select()" value="https://examtheorie.nl/" />
+                    <button type="button" class="refer-copy-btn" id="rfCopyBtn" onclick="copyReferralLink()">Copy Link</button>
+                </div>
+                <div class="refer-share-grid">
+                    <button type="button" class="refer-share-btn refer-wa" id="rfWaBtn" onclick="shareReferral('wa')">💬 WhatsApp</button>
+                    <button type="button" class="refer-share-btn refer-tg" id="rfTgBtn" onclick="shareReferral('tg')">✈️ Telegram</button>
+                </div>
+                <div class="refer-stats-row refer-web-only">
+                    <div class="refer-stat-card">
+                        <div class="refer-stat-num" id="rfStatFriends">0</div>
+                        <div class="refer-stat-lbl" id="rfStatFriendsLbl">Rewarded Friends</div>
+                    </div>
+                    <div class="refer-stat-card">
+                        <div class="refer-stat-num" id="rfStatDays">+0</div>
+                        <div class="refer-stat-lbl" id="rfStatDaysLbl">Bonus Days Earned</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="refer-tiers-wrap" id="rfTiersWrap">
+                <div class="refer-tiers-head">
+                    <span id="rfTiersTitle">Tiered Bonus Table (Both Sides Win)</span>
+                </div>
+                <div class="refer-tiers-grid" id="rfTiersGrid"></div>
+                <p class="refer-note" id="rfNote">Bonus days are added automatically right after your friend completes their first paid package (min. 3-day pack).</p>
+            </div>
         </div>
     </div>
 
@@ -5075,6 +5330,7 @@
             document.getElementById('pricing-ol').classList.add('active');
             document.body.style.overflow = 'hidden';
             buildDayButtons();
+            if (typeof updatePricingRefBanner === 'function') updatePricingRefBanner();
             // terms_consent gibi data-i18n-html elementlerini yenile
             document.querySelectorAll('#pricing-ol [data-i18n-html]').forEach(el => {
                 const key = el.getAttribute('data-i18n-html');
@@ -5097,7 +5353,7 @@
             btn.textContent = '⏳ Processing...';
             try {
                 localStorage.setItem('et_pending_purchase', JSON.stringify({ planId: String(planId), amount: Number(amount) }));
-                const body = { planId, planName, amount, userId: currentUser.id, userEmail: currentUser.email };
+                const body = { planId, planName, amount, userId: currentUser.id, userEmail: currentUser.email, refCode: typeof getStoredRefCode === 'function' ? getStoredRefCode() : null };
                 if (days) body.days = days;
                 const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
                     method: 'POST',
@@ -5150,7 +5406,11 @@
             document.getElementById('pc-ol').classList.remove('active');
             document.body.style.overflow = '';
         }
-        function openModal(id) { if (id === 'refer') { alert('Refer Friends feature coming soon!'); return; } document.getElementById(id + '-modal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function openModal(id) {
+            if (id === 'refer') { openReferralModal(); return; }
+            document.getElementById(id + '-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
         function closeModal(id) { document.getElementById(id + '-modal').classList.remove('active'); document.body.style.overflow = ''; }
         function switchModal(a, b) { closeModal(a); setTimeout(() => openModal(b), 100); }
 
@@ -5178,7 +5438,7 @@
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 closePricing(); closePassengerCar();
-                closeModal('si'); closeModal('su'); closeModal('fp'); closeModal('np');
+                closeModal('si'); closeModal('su'); closeModal('fp'); closeModal('np'); closeModal('refer');
                 closePaywall();
                 closeResetBanner();
                 document.body.style.overflow = '';
@@ -5420,7 +5680,7 @@
                 const res = await fetch('https://rvbcsakzfadhtlfeigus.supabase.co/functions/v1/mollie-create-payment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${supabaseKey}` },
-                    body: JSON.stringify({ planId: 'daily', planName, amount: p.price, days: selectedDays, userId: currentUser.id, userEmail: currentUser.email })
+                    body: JSON.stringify({ planId: 'daily', planName, amount: p.price, days: selectedDays, userId: currentUser.id, userEmail: currentUser.email, refCode: typeof getStoredRefCode === 'function' ? getStoredRefCode() : null })
                 });
                 const data = await res.json();
                 if (data.paymentUrl) { window.location.href = data.paymentUrl; }
@@ -5447,9 +5707,9 @@
             if (signinBtn) signinBtn.disabled = true;
             if (mobSignin) mobSignin.disabled = true;
             try { await Promise.race([_supabase.auth.signOut(), new Promise(function (resolve) { setTimeout(resolve, 0); })]); } catch (err) { console.error('❌ Çıkış hatası:', err); }
-            currentUser = null; currentPlanId = null; accessibleGroups = [];
+            currentUser = null; currentPlanId = null; accessibleGroups = []; cachedUserRefCode = null;
             clearUnconfirmedCompletions();
-            Object.keys(localStorage).forEach(function (k) { if (k.startsWith('et_') || k.startsWith('sb-')) localStorage.removeItem(k); });
+            Object.keys(localStorage).forEach(function (k) { if ((k.startsWith('et_') && k !== 'et_ref_code') || k.startsWith('sb-')) localStorage.removeItem(k); });
             if (window.location.hash || window.location.search) { window.history.replaceState(null, '', window.location.pathname); }
             updateNavbarUser(); buildTestButtons(); closeMob();
             console.log('✅ Çıkış yapıldı');
@@ -5746,12 +6006,12 @@
                     }
 
                 } else if (event === 'INITIAL_SESSION' && !session) {
-                    currentUser = null; currentPlanId = null; accessibleGroups = [];
+                    currentUser = null; currentPlanId = null; accessibleGroups = []; cachedUserRefCode = null;
                     updateNavbarUser(); buildTestButtons();
 
                 } else if (event === 'SIGNED_OUT') {
                     if (currentUser !== null) {
-                        currentUser = null; currentPlanId = null; accessibleGroups = [];
+                        currentUser = null; currentPlanId = null; accessibleGroups = []; cachedUserRefCode = null;
                         clearUnconfirmedCompletions();
                         Object.keys(localStorage).forEach(k => {
                             if (k.startsWith('et_completed_') || k.startsWith('et_progress_')) {
@@ -5818,8 +6078,316 @@
             }
         }, 1 * 60 * 1000);
 
+        /* ─── REFERANS (ARKADAŞINI DAVET ET) SİSTEMİ ─── */
+        const REFER_I18N = {
+            en: {
+                badge: '🎁 BONUS ACCESS',
+                appBadge: '💬 SHARE EXAMTHEORIE',
+                title: 'Invite Friends, Both Get Free Days!',
+                appTitle: 'Share ExamTheorie With Friends',
+                sub: 'Share your personal invite link. When your friend buys their first 3+ day package, both of you automatically earn bonus access days!',
+                appSub: 'Studying for the Dutch CBR driving theory exam with a friend? Share ExamTheorie in one tap so they can practice in 4 languages!',
+                signInBtn: 'Sign In to Get Your Personal Invite Link',
+                copy: 'Copy Link',
+                copied: '✓ Copied!',
+                friendsLbl: 'Rewarded Friends',
+                daysLbl: 'Bonus Days Earned',
+                tiersTitle: 'Tiered Bonus Table (Both Sides Win)',
+                tiers: [
+                    ['3–6 Days', '+1 Day'],
+                    ['7–10 Days', '+2 Days'],
+                    ['14 Days', '+3 Days'],
+                    ['30 Days', '+7 Days'],
+                    ['60 Days', '+14 Days'],
+                    ['1 Year', '+30 Days']
+                ],
+                note: 'Bonus days are added automatically right after your friend completes their first paid package (min. 3-day pack).',
+                shareMsg: 'Pass your Dutch CBR driving theory exam on the first try in 4 languages! Join with my link for bonus study days: ',
+                appShareMsg: 'Practice for the Dutch CBR driving theory exam in 4 languages (50 realistic exams + RVV theory): ',
+                pricingBanner: '🎁 Invite code active ({code}) — bonus extra days (+1 to +30 days on 3+ day packs) will be added automatically!'
+            },
+            tr: {
+                badge: '🎁 ÇİFT TARAFLI HEDİYE GÜN',
+                appBadge: '💬 ARKADAŞINA ÖNER',
+                title: 'Arkadaşını Davet Et, İkiniz de Ek Gün Kazanın!',
+                appTitle: 'ExamTheorie’yi Arkadaşlarınla Paylaş',
+                sub: 'Sana özel davet linkini paylaş. Arkadaşın ilk 3+ günlük paketini satın aldığında hem ona hem sana otomatik hediye gün tanımlanır!',
+                appSub: 'Hollanda CBR ehliyet sınavına hazırlanan bir arkadaşın mı var? 4 dilde 50 deneme sınavını tek tıkla onunla paylaş!',
+                signInBtn: 'Kişisel Davet Linkini Almak İçin Giriş Yap',
+                copy: 'Linki Kopyala',
+                copied: '✓ Kopyalandı!',
+                friendsLbl: 'Davet Edilen Arkadaş',
+                daysLbl: 'Kazanılan Hediye Gün',
+                tiersTitle: 'Kademeli Ödül Tablosu (İki Tarafa da Eklenir)',
+                tiers: [
+                    ['3–6 Gün', '+1 Gün'],
+                    ['7–10 Gün', '+2 Gün'],
+                    ['14 Gün', '+3 Gün'],
+                    ['30 Gün', '+7 Gün'],
+                    ['60 Gün', '+14 Gün'],
+                    ['1 Yıl', '+30 Gün']
+                ],
+                note: 'Hediye günler, arkadaşın en az 3 günlük ilk paket ödemesini tamamladığı anda ikinizin hesabına otomatik eklenir.',
+                shareMsg: 'Hollanda CBR ehliyet teorisini 4 dilde ilk denemede geç! Davet linkimle katıl, ikimiz de hediye ek gün kazanalım: ',
+                appShareMsg: 'Hollanda CBR ehliyet teori sınavına Türkçe ve 4 dilde 50 gerçek deneme sınavıyla hazırlan: ',
+                pricingBanner: '🎁 Davet kodu aktif ({code}) — 3+ günlük paket alımında kademeli hediye günlerin (+1 ila +30 gün) otomatik eklenecek!'
+            },
+            nl: {
+                badge: '🎁 DUBBELE BONUS DAGEN',
+                appBadge: '💬 DEEL EXAMTHEORIE',
+                title: 'Nodig Vrienden Uit, Beiden Gratis Dagen!',
+                appTitle: 'Deel ExamTheorie met Vrienden',
+                sub: 'Deel je persoonlijke uitnodigingslink. Zodra je vriend een eerste pakket vanaf 3 dagen koopt, krijgen jullie allebei automatisch extra toegangsdagen!',
+                appSub: 'Samen oefenen voor het CBR autotheorie-examen? Deel ExamTheorie met één tik zodat je vrienden direct kunnen oefenen!',
+                signInBtn: 'Log In voor je Persoonlijke Link',
+                copy: 'Kopieer Link',
+                copied: '✓ Gekopieerd!',
+                friendsLbl: 'Uitgenodigde Vrienden',
+                daysLbl: 'Verdiende Bonusdagen',
+                tiersTitle: 'Staffelbeloning (Voor Jullie Allebei)',
+                tiers: [
+                    ['3–6 Dagen', '+1 Dag'],
+                    ['7–10 Dagen', '+2 Dagen'],
+                    ['14 Dagen', '+3 Dagen'],
+                    ['30 Dagen', '+7 Dagen'],
+                    ['60 Dagen', '+14 Dagen'],
+                    ['1 Jaar', '+30 Dagen']
+                ],
+                note: 'Bonusdagen worden direct na de eerste betaling van je vriend (vanaf 3 dagen) automatisch bijgeschreven.',
+                shareMsg: 'Slaag in één keer voor je CBR theorie-examen in 4 talen! Gebruik mijn link voor gratis extra oefendagen: ',
+                appShareMsg: 'Oefen voor het CBR autotheorie-examen met 50 realistische oefenexamens in 4 talen: ',
+                pricingBanner: '🎁 Uitnodigingscode actief ({code}) — je extra bonusdagen (+1 t/m +30 dagen vanaf 3-dagenpakket) worden automatisch toegevoegd!'
+            },
+            ar: {
+                badge: '🎁 أيام إضافية للطرفين',
+                appBadge: '💬 شارك مع أصدقائك',
+                title: 'ادعُ أصدقاءك واكسبوا أياماً مجانية معاً!',
+                appTitle: 'شارك ExamTheorie مع أصدقائك',
+                sub: 'شارك رابط الدعوة الخاص بك. عندما يشتري صديقك أول باقة (3 أيام فأكثر)، يحصل كلٌّ منكما تلقائياً على أيام وصول إضافية مجانية!',
+                appSub: 'هل يستعد صديقك لامتحان التيوري الهولندي CBR؟ شارك المنصة معه بضغطة واحدة ليتدرب بـ 4 لغات!',
+                signInBtn: 'سجّل الدخول للحصول على رابط الدعوة الخاص بك',
+                copy: 'نسخ الرابط',
+                copied: '✓ تم النسخ!',
+                friendsLbl: 'الأصدقاء المدعوون',
+                daysLbl: 'الأيام المجانية المكتسبة',
+                tiersTitle: 'جدول المكافآت المتدرج (للطرفين معاً)',
+                tiers: [
+                    ['3–6 أيام', '+1 يوم'],
+                    ['7–10 أيام', '+2 يوم'],
+                    ['14 يوماً', '+3 أيام'],
+                    ['30 يوماً', '+7 أيام'],
+                    ['60 يوماً', '+14 يوماً'],
+                    ['سنة كاملة', '+30 يوماً']
+                ],
+                note: 'تُضاف الأيام المجانية تلقائياً فور إتمام صديقك لأول عملية شراء مدفوعة (باقة 3 أيام على الأقل).',
+                shareMsg: 'اجتز امتحان التيوري الهولندي CBR من المحاولة الأولى بـ 4 لغات! سجّل عبر رابطي لنحصل معاً على أيام إضافية مجانية: ',
+                appShareMsg: 'تدرّب على امتحان التيوري الهولندي CBR عبر 50 اختباراً حقيقياً بـ 4 لغات: ',
+                pricingBanner: '🎁 كود الدعوة مفعّل ({code}) — ستُضاف أيامك المجانية الإضافية (+1 إلى +30 يوماً لباقات 3 أيام فأكثر) تلقائياً!'
+            }
+        };
+
+        let cachedUserRefCode = null;
+
+        function setRefCookie(code) {
+            try {
+                document.cookie = 'et_ref=' + encodeURIComponent(code) + '; path=/; max-age=2592000; SameSite=Lax';
+            } catch (_) {}
+        }
+
+        function getRefCookie() {
+            try {
+                const m = document.cookie.match(/(?:^|;\s*)et_ref=([^;]+)/);
+                return m ? decodeURIComponent(m[1]) : null;
+            } catch (_) {
+                return null;
+            }
+        }
+
+        function getStoredRefCode() {
+            const raw = localStorage.getItem('et_ref_code') || getRefCookie();
+            if (!raw) return null;
+            const clean = String(raw).trim().toUpperCase();
+            return /^[A-Z0-9]{6,12}$/.test(clean) ? clean : null;
+        }
+
+        function clearStoredRefCode() {
+            try { localStorage.removeItem('et_ref_code'); } catch (_) {}
+            try { document.cookie = 'et_ref=; path=/; max-age=0; SameSite=Lax'; } catch (_) {}
+        }
+
+        function captureRefFromUrl() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const ref = params.get('ref');
+                if (ref && /^[A-Z0-9]{6,12}$/i.test(ref.trim())) {
+                    const clean = ref.trim().toUpperCase();
+                    localStorage.setItem('et_ref_code', clean);
+                    setRefCookie(clean);
+                    params.delete('ref');
+                    const qs = params.toString();
+                    window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+                }
+            } catch (_) {}
+        }
+
+        function updatePricingRefBanner() {
+            const banner = document.getElementById('pricingRefBanner');
+            if (!banner) return;
+            const code = getStoredRefCode();
+            if (!code || (cachedUserRefCode && code === cachedUserRefCode)) {
+                banner.classList.remove('visible');
+                banner.textContent = '';
+                return;
+            }
+            const rt = REFER_I18N[currentLang] || REFER_I18N.en;
+            banner.textContent = rt.pricingBanner.replace('{code}', code);
+            banner.classList.add('visible');
+        }
+
+        function buildCandidateRefCode() {
+            const rawBase = String(currentUser?.user_metadata?.full_name || currentUser?.email?.split('@')[0] || 'ET')
+                .toUpperCase()
+                .replace(/[^A-Z0-9]/g, '');
+            const prefix = (rawBase.slice(0, 4) || 'ETNL').padEnd(4, 'X');
+            const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let suffix = '';
+            for (let i = 0; i < 4; i++) {
+                suffix += alphabet[Math.floor(Math.random() * alphabet.length)];
+            }
+            return prefix + suffix;
+        }
+
+        async function ensureUserReferralCode() {
+            if (!currentUser) return null;
+            if (cachedUserRefCode) return cachedUserRefCode;
+            try {
+                const { data: existing } = await _supabase
+                    .from('referral_codes')
+                    .select('code')
+                    .eq('user_id', currentUser.id)
+                    .maybeSingle();
+                if (existing?.code) {
+                    cachedUserRefCode = existing.code;
+                    return cachedUserRefCode;
+                }
+                for (let attempt = 0; attempt < 4; attempt++) {
+                    const candidate = buildCandidateRefCode();
+                    const { data: inserted, error } = await _supabase
+                        .from('referral_codes')
+                        .insert({ user_id: currentUser.id, code: candidate })
+                        .select('code')
+                        .maybeSingle();
+                    if (!error && inserted?.code) {
+                        cachedUserRefCode = inserted.code;
+                        return cachedUserRefCode;
+                    }
+                }
+            } catch (e) {
+                console.warn('Referral code fetch/create warning:', e);
+            }
+            return null;
+        }
+
+        function buildReferralUrl(code) {
+            const langPrefix = currentLang && currentLang !== 'en' ? '/' + currentLang + '/' : '/';
+            const base = 'https://examtheorie.nl' + langPrefix;
+            return code ? (base + '?ref=' + encodeURIComponent(code)) : base;
+        }
+
+        async function openReferralModal() {
+            const lang = currentLang || 'en';
+            const rt = REFER_I18N[lang] || REFER_I18N.en;
+            const isNative = document.documentElement.classList.contains('et-native-app');
+
+            document.getElementById('rfBadge').textContent = isNative ? rt.appBadge : rt.badge;
+            document.getElementById('rfTitle').textContent = isNative ? rt.appTitle : rt.title;
+            document.getElementById('rfSub').textContent = isNative ? rt.appSub : rt.sub;
+            document.getElementById('rfSignInBtn').textContent = rt.signInBtn;
+            document.getElementById('rfCopyBtn').textContent = rt.copy;
+            document.getElementById('rfStatFriendsLbl').textContent = rt.friendsLbl;
+            document.getElementById('rfStatDaysLbl').textContent = rt.daysLbl;
+            document.getElementById('rfTiersTitle').textContent = rt.tiersTitle;
+            document.getElementById('rfNote').textContent = rt.note;
+
+            const tiersGrid = document.getElementById('rfTiersGrid');
+            if (tiersGrid) {
+                tiersGrid.innerHTML = rt.tiers
+                    .map(([pack, bonus]) => `<div class="refer-tier-pill"><span class="refer-tier-pack">${pack}</span><span class="refer-tier-bonus">${bonus}</span></div>`)
+                    .join('');
+            }
+
+            const guestWrap = document.getElementById('rfGuestWrap');
+            const userWrap = document.getElementById('rfUserWrap');
+            const linkInp = document.getElementById('rfLinkInp');
+
+            if (!currentUser && !isNative) {
+                guestWrap.style.display = 'block';
+                userWrap.style.display = 'none';
+            } else {
+                guestWrap.style.display = 'none';
+                userWrap.style.display = 'block';
+                linkInp.value = buildReferralUrl(cachedUserRefCode);
+            }
+
+            document.getElementById('refer-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            if (currentUser) {
+                const code = await ensureUserReferralCode();
+                if (code) {
+                    linkInp.value = buildReferralUrl(code);
+                }
+                if (!isNative) {
+                    try {
+                        const { data: rewards } = await _supabase
+                            .from('referral_rewards')
+                            .select('bonus_days_referrer')
+                            .eq('referrer_user_id', currentUser.id);
+                        const friendsCount = (rewards || []).length;
+                        const totalBonusDays = (rewards || []).reduce((s, r) => s + (Number(r.bonus_days_referrer) || 0), 0);
+                        document.getElementById('rfStatFriends').textContent = String(friendsCount);
+                        document.getElementById('rfStatDays').textContent = '+' + String(totalBonusDays);
+                    } catch (_) {}
+                }
+            }
+        }
+
+        async function copyReferralLink() {
+            const inp = document.getElementById('rfLinkInp');
+            const btn = document.getElementById('rfCopyBtn');
+            const rt = REFER_I18N[currentLang] || REFER_I18N.en;
+            if (!inp) return;
+            try {
+                await navigator.clipboard.writeText(inp.value);
+            } catch (_) {
+                inp.select();
+                document.execCommand('copy');
+            }
+            if (btn) {
+                btn.textContent = rt.copied;
+                setTimeout(() => { btn.textContent = rt.copy; }, 2200);
+            }
+        }
+
+        function shareReferral(channel) {
+            const inp = document.getElementById('rfLinkInp');
+            const url = inp ? inp.value : buildReferralUrl(cachedUserRefCode);
+            const rt = REFER_I18N[currentLang] || REFER_I18N.en;
+            const isNative = document.documentElement.classList.contains('et-native-app');
+            const msg = isNative ? rt.appShareMsg : rt.shareMsg;
+            const targetUrl = channel === 'tg'
+                ? 'https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(msg)
+                : 'https://wa.me/?text=' + encodeURIComponent(msg + url);
+            if (window.Capacitor?.Plugins?.Browser?.open) {
+                window.Capacitor.Plugins.Browser.open({ url: targetUrl });
+            } else {
+                window.open(targetUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
         /* ─── INIT (SON VERSİYON) ─── */
         window.addEventListener('DOMContentLoaded', async () => {
+            captureRefFromUrl();
             const pageDefaultLang = document.documentElement.getAttribute('data-page-lang');
             const savedLang = pageDefaultLang || localStorage.getItem('et_lang') || 'en';
             applyLang(savedLang);
@@ -5900,6 +6468,9 @@
                         localStorage.removeItem('et_pending_purchase');
                     }
                     localStorage.removeItem('et_payment_pending');
+                    if (currentPlanId) {
+                        clearStoredRefCode();
+                    }
                     if (currentPlanId && !activationNotificationShown) {
                         showNotification('✅ Plan activated! Your tests are ready.', 'success');
                         activationNotificationShown = true;
