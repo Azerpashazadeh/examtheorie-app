@@ -201,6 +201,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
         })();
     </script>
 <style id="et-feedback-border-style">.feedback-container img{display:none!important}.feedback-container:has(img[src*="dogrucevap"]),.feedback-container.fb-correct{border:2px solid #22c55e!important;background:#f4fcf7!important}.feedback-container:has(img[src*="yanlis"]),.feedback-container.fb-wrong{border:2px solid #ef4444!important;background:#fff6f6!important}.feedback-container:has(img[src*="cevaplanmamis"]),.feedback-container.fb-unanswered{border:2px solid #faa60b!important;background:#fffaf0!important}</style>
+<link rel="preconnect" href="https://azerpashazadeh.github.io" crossorigin />
 </head>
 <body>
 <div aria-hidden="true" class="ambient"></div>
@@ -1686,7 +1687,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
                 html += `<div class="question hidden" id="${questionId}">
         <p>${index + 1}. ${question.soru}</p>`;
                 if (question.resim) {
-                    html += `<img src="${question.resim}" alt="Resim" class="question-image"><br>`;
+                    html += `<img src="${question.resim}" alt="Resim" class="question-image" loading="${index < 4 ? 'eager' : 'lazy'}" fetchpriority="${index < 4 ? 'high' : 'low'}" decoding="async"><br>`;
                 } else if (question.type === "image") {
                     const imageContainerClass =
                         question.secenekler.length === 4
@@ -1695,7 +1696,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
                     html += `<div class="${imageContainerClass}">`;
                     question.secenekler.forEach((resim, resimIndex) => {
                         html += `<div class="image-wrapper">
-                <img src="${resim}" alt="Resim ${resimIndex + 1}" class="question-image question-image-t4 selectable" onclick="toggleSelection(this, ${index + 1}, ${resimIndex})">
+                <img src="${resim}" alt="Resim ${resimIndex + 1}" loading="${index < 4 ? 'eager' : 'lazy'}" fetchpriority="${index < 4 ? 'high' : 'low'}" decoding="async" class="question-image question-image-t4 selectable" onclick="toggleSelection(this, ${index + 1}, ${resimIndex})">
              </div>`;
                     });
                     html += `</div><br>`;
@@ -2945,7 +2946,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
           } else {
             if (question.resim) {
               console.log("Adding image:", question.resim); // Debug log
-              html += `<img src="${question.resim}" alt="Resim" class="question-image"><br>`;
+              html += `<img src="${question.resim}" alt="Resim" class="question-image" loading="${index < 4 ? 'eager' : 'lazy'}" fetchpriority="${index < 4 ? 'high' : 'low'}" decoding="async"><br>`;
             }
             if (question.video) {
               console.log("Adding video:", question.video); // Debug log
@@ -2962,7 +2963,7 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
               html += `<div class="${imageContainerClass}">`;
               question.secenekler.forEach((resim, resimIndex) => {
                 html += `<div class="image-wrapper">
-                                <img src="${resim}" alt="Resim ${resimIndex + 1}" class="question-image question-image-t4 selectable" onclick="toggleSelectionS3(this, ${index + 1}, ${resimIndex})">
+                                <img src="${resim}" alt="Resim ${resimIndex + 1}" loading="${index < 4 ? 'eager' : 'lazy'}" fetchpriority="${index < 4 ? 'high' : 'low'}" decoding="async" class="question-image question-image-t4 selectable" onclick="toggleSelectionS3(this, ${index + 1}, ${resimIndex})">
                              </div>`;
               });
               html += `</div><br>`;
@@ -3036,6 +3037,9 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
                 if (question.resim) {
                     const image = document.createElement("img");
+                    image.decoding = "async";
+                    image.loading = index <= 4 ? "eager" : "lazy";
+                    if ("fetchPriority" in image) image.fetchPriority = index <= 4 ? "high" : "low";
                     image.src = question.resim;
                     image.alt = "Question Image";
                     demoDiv.appendChild(image);
@@ -4461,6 +4465,132 @@ if (dynamicExamLabel) dynamicExamLabel.textContent = `CAR THEORY · PRACTICE EXA
     if (document.documentElement) mo.observe(document.documentElement, { childList: true, subtree: true });
   }
   document.addEventListener("DOMContentLoaded", syncFeedbackBorders);
+})();
+</script>
+<script id="et-smart-image-preloader">
+(function(){
+  var hotDecoded = new Map();
+  var warmedUrls = new Set();
+  var bgRunning = 0;
+  var MAX_BG = 2;
+  var HOT_RADIUS_AHEAD = 4;
+  var HOT_RADIUS_BEHIND = 1;
+  var MAX_DECODED_KEEP = 12;
+
+  function getQuestionImages(qEl) {
+    if (!qEl) return [];
+    return Array.prototype.slice.call(qEl.querySelectorAll("img.question-image, .drag-drop-container img, .image-container img, img.selectable"));
+  }
+
+  function decodeAndPin(url, idx, highPriority) {
+    if (!url || url.indexOf("undefined") !== -1) return Promise.resolve();
+    if (hotDecoded.has(url)) {
+      var existing = hotDecoded.get(url);
+      existing.lastIdx = idx;
+      return existing.promise;
+    }
+    var im = new Image();
+    im.decoding = "async";
+    if ("fetchPriority" in im) im.fetchPriority = highPriority ? "high" : "low";
+    var p = new Promise(function(resolve){
+      im.onload = function(){
+        warmedUrls.add(url);
+        if (typeof im.decode === "function") {
+          im.decode().catch(function(){}).finally(resolve);
+        } else {
+          resolve();
+        }
+      };
+      im.onerror = function(){ resolve(); };
+    });
+    im.src = url;
+    hotDecoded.set(url, { img: im, promise: p, lastIdx: idx });
+    return p;
+  }
+
+  function pruneDecoded(centerIdx) {
+    if (hotDecoded.size <= MAX_DECODED_KEEP) return;
+    hotDecoded.forEach(function(entry, key){
+      if (hotDecoded.size <= MAX_DECODED_KEEP) return;
+      if (entry.lastIdx < centerIdx - 2 || entry.lastIdx > centerIdx + HOT_RADIUS_AHEAD + 2) {
+        hotDecoded.delete(key);
+      }
+    });
+  }
+
+  function getCurrentIndex(questions) {
+    for (var i = 0; i < questions.length; i++) {
+      if (!questions[i].classList.contains("hidden")) return i;
+    }
+    return 0;
+  }
+
+  function pumpBackground(questions, startIdx) {
+    if (bgRunning >= MAX_BG) return;
+    for (var i = startIdx; i < questions.length; i++) {
+      var imgs = getQuestionImages(questions[i]);
+      for (var j = 0; j < imgs.length; j++) {
+        var u = imgs[j].currentSrc || imgs[j].src;
+        if (u && !warmedUrls.has(u) && !hotDecoded.has(u)) {
+          warmedUrls.add(u);
+          bgRunning++;
+          (function(targetUrl){
+            var bgIm = new Image();
+            bgIm.decoding = "async";
+            if ("fetchPriority" in bgIm) bgIm.fetchPriority = "low";
+            var done = function(){
+              bgRunning--;
+              pumpBackground(questions, startIdx);
+            };
+            bgIm.onload = done;
+            bgIm.onerror = done;
+            bgIm.src = targetUrl;
+          })(u);
+          if (bgRunning >= MAX_BG) return;
+        }
+      }
+    }
+  }
+
+  function prioritizeAroundCurrent() {
+    var questions = document.querySelectorAll(".questionS3");
+    if (!questions.length) return;
+    var cur = getCurrentIndex(questions);
+    var start = Math.max(0, cur - HOT_RADIUS_BEHIND);
+    var end = Math.min(questions.length - 1, cur + HOT_RADIUS_AHEAD);
+    var hotPromises = [];
+
+    for (var i = start; i <= end; i++) {
+      var isImmediate = (i === cur || i === cur + 1 || i === cur + 2);
+      var imgs = getQuestionImages(questions[i]);
+      for (var j = 0; j < imgs.length; j++) {
+        var domImg = imgs[j];
+        if (domImg.loading !== "eager") domImg.loading = "eager";
+        if ("fetchPriority" in domImg) domImg.fetchPriority = isImmediate ? "high" : "auto";
+        var u = domImg.getAttribute("src") || domImg.src;
+        if (u) {
+          hotPromises.push(decodeAndPin(u, i, isImmediate));
+          if (typeof domImg.decode === "function" && domImg.complete) {
+            domImg.decode().catch(function(){});
+          }
+        }
+      }
+    }
+
+    pruneDecoded(cur);
+
+    Promise.all(hotPromises).then(function(){
+      pumpBackground(questions, end + 1);
+    });
+  }
+
+  var container = document.querySelector(".quiz-container-s3");
+  if (container && typeof MutationObserver !== "undefined") {
+    new MutationObserver(function(){
+      prioritizeAroundCurrent();
+    }).observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+  }
+  document.addEventListener("DOMContentLoaded", prioritizeAroundCurrent);
 })();
 </script>
 </body>
