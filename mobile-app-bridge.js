@@ -198,21 +198,30 @@
                 width: 34px !important;
                 height: 34px !important;
                 min-width: 34px !important;
+                max-width: 34px !important;
                 padding: 0 !important;
+                margin: 0 !important;
+                gap: 0 !important;
                 border-radius: 50% !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                background: linear-gradient(135deg, rgba(0, 212, 255, 0.28), rgba(0, 102, 255, 0.38)) !important;
+                display: inline-grid !important;
+                place-items: center !important;
+                box-sizing: border-box !important;
+                background: linear-gradient(135deg, rgba(0, 212, 255, 0.24), rgba(0, 102, 255, 0.34)) !important;
                 border: 1px solid rgba(0, 212, 255, 0.45) !important;
                 font-size: 0 !important;
+                line-height: 0 !important;
                 cursor: pointer !important;
                 flex-shrink: 0 !important;
             }
             html.et-native-app #userChip.visible #userName {
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
                 font-size: 12px !important;
-                font-weight: 800 !important;
-                letter-spacing: 0.4px !important;
+                font-weight: 500 !important;
+                letter-spacing: 0 !important;
+                text-indent: 0 !important;
+                text-align: center !important;
                 color: #ffffff !important;
                 line-height: 1 !important;
             }
@@ -1123,6 +1132,13 @@
                 const chip = document.getElementById('userChip');
                 const nameSpan = document.getElementById('userName');
                 if (!chip || !nameSpan) return;
+
+                // Remove leading emoji/whitespace text nodes inside #userChip so #userName centers with 0px offset
+                Array.from(chip.childNodes).forEach((node) => {
+                    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
+                        node.textContent = '';
+                    }
+                });
 
                 if (!chip.__etTapBound) {
                     chip.__etTapBound = true;
