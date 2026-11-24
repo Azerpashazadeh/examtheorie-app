@@ -1105,7 +1105,7 @@ ${hreflangTags}
     <p>© 2026 ExamTheorie · <a href="${ui.homeUrl}">${esc(ui.homeLabel)}</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-conditions/">Terms &amp; Conditions</a></p>
   </footer>
   <script src="/consent-manager.js?v=1" defer></script>
-  <script src="/mobile-app-bridge.js?v=7" defer></script>
+  <script src="/mobile-app-bridge.js?v=8" defer></script>
 </body>
 </html>`;
 
@@ -1245,7 +1245,7 @@ ${hubHreflangs}
     <p>© 2026 ExamTheorie · <a href="${ui.homeUrl}">${esc(ui.homeLabel)}</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-conditions/">Terms &amp; Conditions</a></p>
   </footer>
   <script src="/consent-manager.js?v=1" defer></script>
-  <script src="/mobile-app-bridge.js?v=7" defer></script>
+  <script src="/mobile-app-bridge.js?v=8" defer></script>
 </body>
 </html>`;
 

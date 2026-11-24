@@ -229,7 +229,7 @@
                 position: fixed;
                 inset: 0;
                 z-index: 2147483640;
-                background: #04091a;
+                background: #f8fafc;
                 display: flex;
                 flex-direction: column;
                 overflow: hidden;
@@ -239,7 +239,7 @@
                 height: 100%;
                 flex: 1;
                 border: 0;
-                background: #04091a;
+                background: #f8fafc;
             }
             #et-overlay-loader {
                 position: absolute;
@@ -247,7 +247,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: #04091a;
+                background: #f8fafc;
                 z-index: 2;
                 pointer-events: none;
                 transition: opacity 0.2s ease;
@@ -255,8 +255,8 @@
             #et-overlay-loader .et-spin {
                 width: 38px;
                 height: 38px;
-                border: 3px solid rgba(0, 212, 255, 0.2);
-                border-top-color: #00d4ff;
+                border: 3px solid rgba(0, 97, 255, 0.16);
+                border-top-color: #0061ff;
                 border-radius: 50%;
                 animation: etBridgeSpin 0.75s linear infinite;
             }
@@ -271,20 +271,20 @@
                 height: 34px;
                 padding: 0 13px;
                 border-radius: 999px;
-                border: 1px solid rgba(0, 212, 255, 0.42);
-                background: rgba(4, 9, 26, 0.84);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                color: #ffffff;
-                font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+                border: 1px solid rgba(15, 23, 42, 0.14);
+                background: rgba(255, 255, 255, 0.92);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                color: #0f172a;
+                font-family: 'Outfit', 'Poppins', system-ui, -apple-system, sans-serif;
                 font-size: 12.5px;
-                font-weight: 600;
+                font-weight: 700;
                 line-height: 1;
                 display: inline-flex;
                 align-items: center;
                 gap: 5px;
                 cursor: pointer;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+                box-shadow: 0 6px 18px rgba(15, 23, 42, 0.1);
                 -webkit-tap-highlight-color: transparent;
             }
             #et-overlay-back-btn.is-rtl {

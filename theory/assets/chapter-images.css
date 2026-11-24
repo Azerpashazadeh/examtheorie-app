@@ -1,10 +1,305 @@
-/* Shared illustration layout, based on en/traffic-rules.html. */
+/* ═══════════════════════════════════════════════════════════════════════════
+   SHARED THEORY CHAPTER LAYOUT & LIGHT APPLE-HOLLANDA THEME
+   Unifies all 36 theory pages (EN, NL, TR, AR) with the landing page palette
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --ink: #0f172a;
+  --paper: #f8fafc;
+  --warm-mid: #f1f5f9;
+  --card: #ffffff;
+  --accent: #0061ff;
+  --accent-soft: #eff6ff;
+  --gold: #ff6b00;
+  --gold-soft: #fff7ed;
+  --blue: #0284c7;
+  --blue-soft: #e0f2fe;
+  --green: #15803d;
+  --green-soft: #dcfce7;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --shadow: rgba(15, 23, 42, 0.06);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 4%, rgba(0, 97, 255, 0.09), transparent 36%),
+    radial-gradient(circle at 88% 6%, rgba(255, 107, 0, 0.09), transparent 36%),
+    #f8fafc !important;
+  color: #0f172a !important;
+  font-family: 'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, sans-serif !important;
+}
+
+html[lang="ar"] body,
+body[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Outfit', 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Editorial Light Apple & Hollanda Chapter Header */
+.book-header {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(0, 97, 255, 0.12), transparent 46%),
+    radial-gradient(circle at 85% 20%, rgba(255, 107, 0, 0.13), transparent 46%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+  color: #0b132b !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+.book-header::after {
+  display: none !important;
+}
+
+.chapter-eyebrow {
+  display: inline-block;
+  background: #ffffff;
+  border: 1px solid rgba(0, 97, 255, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 97, 255, 0.08);
+  color: #0061ff !important;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: 'Outfit', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+}
+
+.book-header h1 {
+  font-family: 'Outfit', system-ui, sans-serif !important;
+  font-weight: 900 !important;
+  color: #0b132b !important;
+  letter-spacing: -1.1px;
+}
+
+html[lang="ar"] .book-header h1,
+body[dir="rtl"] .book-header h1 {
+  font-family: 'Noto Sans Arabic', 'Outfit', sans-serif !important;
+  letter-spacing: 0;
+}
+
+.book-header .lead {
+  color: #475569 !important;
+  font-style: normal !important;
+  font-weight: 400;
+}
+
+.gold-rule {
+  width: 68px !important;
+  height: 4px !important;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0061ff, #ff6b00) !important;
+}
+
+/* Sticky Frosted Glass Section Navigation */
+.chapter-nav {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05) !important;
+}
+
+.chapter-nav li a {
+  font-family: 'Outfit', system-ui, sans-serif;
+  color: #475569 !important;
+  font-weight: 700 !important;
+}
+
+.chapter-nav li a:hover {
+  color: #0061ff !important;
+  border-bottom-color: #0061ff !important;
+}
+
+/* Typography & Cards */
+.intro-pull {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%) !important;
+  border-color: #0061ff !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+}
+
+.intro-pull p {
+  color: #1e293b !important;
+}
+
+.section-head,
+.rule-title,
+.split-title,
+.marking-name,
+.gesture-title,
+.cat-name,
+.cat-letter,
+.speed-num {
+  font-family: 'Outfit', system-ui, sans-serif !important;
+}
+
+html[lang="ar"] .section-head,
+html[lang="ar"] .rule-title,
+html[lang="ar"] .split-title,
+html[lang="ar"] .marking-name,
+html[lang="ar"] .gesture-title,
+html[lang="ar"] .cat-name {
+  font-family: 'Noto Sans Arabic', 'Outfit', sans-serif !important;
+}
+
+.section-head {
+  color: #0b132b !important;
+  font-weight: 800 !important;
+}
+
+.section-head em {
+  color: #0061ff !important;
+  font-style: normal !important;
+}
+
+.section-sub {
+  color: #64748b !important;
+  font-style: normal !important;
+}
+
+.rule-block,
+.sign-card,
+.gesture-card,
+.marking-card,
+.light-card,
+.scenario-card,
+.penalty-card,
+.factor-card,
+.seatbelt-card,
+.speed-card,
+.split-box,
+.table-wrap {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+}
+
+.rule-block:hover,
+.sign-card:hover,
+.gesture-card:hover {
+  border-color: rgba(0, 97, 255, 0.28) !important;
+  box-shadow: 0 16px 36px rgba(0, 97, 255, 0.09) !important;
+}
+
+.rule-body p,
+.rule-body ul li,
+.marking-info p,
+.scenario-body p,
+.penalty-card p,
+.factor-card p,
+.split-side p,
+.split-side ul li,
+.comp-table td {
+  color: #334155 !important;
+}
+
+.rule-body strong,
+.callout strong,
+.comp-table strong {
+  color: #0f172a;
+}
+
+.badge {
+  font-family: 'Outfit', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  padding: 3px 9px !important;
+}
+
+.inner-note {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0;
+  color: #475569 !important;
+  font-style: normal !important;
+}
+
+/* Callouts */
+.callout.warn {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+.callout.warn .callout-ttl { color: #dc2626 !important; }
+.callout.tip {
+  background: #f0fdf4 !important;
+  border-color: #22c55e !important;
+}
+.callout.tip .callout-ttl { color: #15803d !important; }
+.callout.info {
+  background: #eff6ff !important;
+  border-color: #0061ff !important;
+}
+.callout.info .callout-ttl { color: #0061ff !important; }
+.callout.gold {
+  background: #fff7ed !important;
+  border-color: #ff6b00 !important;
+}
+.callout.gold .callout-ttl { color: #ea580c !important; }
+.callout p { color: #1e293b !important; }
+
+/* Tables */
+.comp-table th {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 800 !important;
+  border-bottom: 2px solid #cbd5e1;
+}
+.comp-table tr:nth-child(even) td {
+  background: #f8fafc !important;
+}
+.comp-table tr:hover td {
+  background: #eff6ff !important;
+}
+
+/* Special Feature Boxes (Priority, Alcohol, Formula, Exemption) */
+.priority-box,
+.alcohol-box,
+.formula-box,
+.pv-box {
+  background: linear-gradient(135deg, #eff6ff 0%, #fff7ed 100%) !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0, 97, 255, 0.2) !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+.alcohol-title,
+.formula-title,
+.pv-box-title {
+  font-family: 'Outfit', system-ui, sans-serif !important;
+  color: #0061ff !important;
+}
+.formula {
+  font-family: 'Outfit', system-ui, sans-serif !important;
+  color: #0b132b !important;
+}
+.formula-note,
+.fx-result,
+.alc-label {
+  color: #475569 !important;
+}
+.priority-item,
+.alc-card,
+.fx-card,
+.pv-item {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+.priority-item.highlight {
+  background: linear-gradient(135deg, #0061ff, #0095ff) !important;
+  border-color: transparent;
+  color: #ffffff !important;
+}
+.priority-arrow,
+.fx-speed,
+.pv-item strong {
+  color: #ff6b00 !important;
+}
+
+/* Shared Illustration Frames */
 .page .rule-block.has-image,
 .page .marking-card {
   flex-direction: column;
 }
 
-/* Keep the frame above the text at every viewport width, including RTL pages. */
 .page .rule-block.has-image .img-slot,
 .page .marking-card .marking-img,
 .page .sign-card .sign-img,
@@ -18,7 +313,7 @@
   justify-content: center;
   align-items: center;
   padding: clamp(12px, 2vw, 20px);
-  background: linear-gradient(135deg, #f6f0e5 0%, #e9dfce 52%, #fbf8f2 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 55%, #ffffff 100%);
   border: 0;
   border-bottom: 1px solid var(--border);
 }
@@ -33,9 +328,22 @@
   object-fit: contain;
   display: block;
   padding: 0;
-  border: 4px solid rgba(255, 255, 255, .9);
-  border-radius: 7px;
-  box-shadow: 0 5px 16px rgba(24, 18, 14, .16), 0 1px 3px rgba(24, 18, 14, .12);
+  border: 4px solid #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.1), 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.page .sign-card .sign-img {
+  height: 112px;
+  padding: 12px;
+}
+
+.page .sign-card .sign-img img {
+  width: auto;
+  max-width: 100%;
+  max-height: 88px;
+  border: 0;
+  box-shadow: none;
 }
 
 .page .rule-block.has-image .img-slot .image-placeholder {
@@ -43,16 +351,25 @@
   max-width: none;
   height: auto;
   min-height: clamp(140px, 25vw, 220px);
-  border: 1px dashed rgba(168, 116, 36, .35);
-  border-radius: 7px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, .5), rgba(240, 234, 216, .65));
+  border: 1px dashed rgba(0, 97, 255, 0.3);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
 }
 
-/* Standalone image blocks keep the separate sizing used in the reference. */
+.page .img-block {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
 .page .img-block img {
   width: 100%;
   max-width: 600px;
   height: auto;
   object-fit: contain;
   display: block;
+}
+
+.page-foot .pg {
+  font-family: 'Outfit', system-ui, sans-serif !important;
+  color: #cbd5e1 !important;
 }
