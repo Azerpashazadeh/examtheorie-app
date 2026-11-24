@@ -3636,16 +3636,20 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
           );
           let feedbackImageUrl;
           if (endMessage4Block) {
-            if (endMessage4Block.classList.contains('correct-block')) {
-              feedbackImageUrl = feedback.dogruCevapResim;
-            } else if (endMessage4Block.classList.contains('incorrect-block')) {
-              feedbackImageUrl = feedback.yanlisCevapResim;
+                if (endMessage4Block.classList.contains('correct-block')) {
+                    feedbackImageUrl = feedback.dogruCevapResim || feedback.dogru || "dogrucevap.png";
+                    feedbackDiv.classList.add("fb-correct");
+                } else if (endMessage4Block.classList.contains('incorrect-block')) {
+                    feedbackImageUrl = feedback.yanlisCevapResim || feedback.yanlis || "yanlishcevap.png";
+                    feedbackDiv.classList.add("fb-wrong");
+                } else {
+                    feedbackImageUrl = feedback.cevaplanmamisResim || feedback.cevaplanmamis || "cevaplanmamish.png";
+                    feedbackDiv.classList.add("fb-unanswered");
+                }
             } else {
-              feedbackImageUrl = feedback.cevaplanmamisResim;
+                feedbackImageUrl = feedback.cevaplanmamisResim || feedback.cevaplanmamis || "cevaplanmamish.png";
+                feedbackDiv.classList.add("fb-unanswered");
             }
-          } else {
-            feedbackImageUrl = feedback.cevaplanmamisResim;
-          }
 
           feedbackImage.src = feedbackImageUrl;
           feedbackDiv.appendChild(feedbackImage);
@@ -4363,5 +4367,31 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 
 </script>
 
+<script id="et-feedback-status-sync">
+(function(){
+  function syncFeedbackBorders(){
+    document.querySelectorAll(".questionS3 .feedback-container, .questionS3 > .feedback-container").forEach(function(fb){
+      if (fb.classList.contains("fb-correct") || fb.classList.contains("fb-wrong") || fb.classList.contains("fb-unanswered")) return;
+      var q = fb.closest(".questionS3");
+      if (!q || !q.id) return;
+      var num = parseInt(q.id.split("-").pop(), 10);
+      if (!num) return;
+      var blk = document.querySelector("#endMessage4-S3 .question-block-s3:nth-child(" + num + ")");
+      if (blk) {
+        if (blk.classList.contains("correct-block")) fb.classList.add("fb-correct");
+        else if (blk.classList.contains("incorrect-block")) fb.classList.add("fb-wrong");
+        else fb.classList.add("fb-unanswered");
+      } else {
+        fb.classList.add("fb-unanswered");
+      }
+    });
+  }
+  if (typeof MutationObserver !== "undefined") {
+    var mo = new MutationObserver(syncFeedbackBorders);
+    if (document.documentElement) mo.observe(document.documentElement, { childList: true, subtree: true });
+  }
+  document.addEventListener("DOMContentLoaded", syncFeedbackBorders);
+})();
+</script>
 </body>
 </html>
