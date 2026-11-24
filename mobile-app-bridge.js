@@ -1102,14 +1102,14 @@
 
         if (typeof window.updateNavbarUser === 'function' && !window.updateNavbarUser.__etNativeWrapped) {
             const origUpdateNav = window.updateNavbarUser;
-            const computeInitials = function (u) {
-                if (!u) return '';
+            const computeInitials = function (u, fallbackText) {
                 const raw = String(
-                    u.user_metadata?.full_name ||
-                    u.user_metadata?.name ||
-                    (u.email || '').split('@')[0] ||
+                    u?.user_metadata?.full_name ||
+                    u?.user_metadata?.name ||
+                    (u?.email || '').split('@')[0] ||
+                    fallbackText ||
                     ''
-                ).trim();
+                ).replace(/…|\.\.\./g, '').trim();
                 if (!raw) return 'U';
                 const parts = raw.split(/[\s._-]+/).filter(Boolean);
                 if (parts.length >= 2) {
@@ -1117,19 +1117,36 @@
                 }
                 return parts[0].slice(0, 2).toUpperCase();
             };
+            let isApplyingInitials = false;
             const applyInitialsChip = function () {
-                const user = getCurrentUser();
+                if (isApplyingInitials) return;
                 const chip = document.getElementById('userChip');
                 const nameSpan = document.getElementById('userName');
-                if (user && chip && nameSpan) {
-                    nameSpan.textContent = computeInitials(user);
-                    if (!chip.__etTapBound) {
-                        chip.__etTapBound = true;
-                        chip.addEventListener('click', (ev) => {
-                            ev.stopPropagation();
-                            if (typeof window.toggleMenu === 'function') window.toggleMenu();
-                        });
-                    }
+                if (!chip || !nameSpan) return;
+
+                if (!chip.__etTapBound) {
+                    chip.__etTapBound = true;
+                    chip.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        if (typeof window.toggleMenu === 'function') window.toggleMenu();
+                    });
+                }
+                if (!chip.__etObserverBound && typeof MutationObserver !== 'undefined') {
+                    chip.__etObserverBound = true;
+                    const obs = new MutationObserver(() => applyInitialsChip());
+                    obs.observe(chip, { attributes: true, childList: true, characterData: true, subtree: true });
+                }
+
+                const user = getCurrentUser();
+                const isVisible = Boolean(user) || chip.classList.contains('visible');
+                if (!isVisible) return;
+
+                const currentText = (nameSpan.textContent || '').trim();
+                const initials = computeInitials(user, currentText);
+                if (currentText !== initials) {
+                    isApplyingInitials = true;
+                    nameSpan.textContent = initials;
+                    isApplyingInitials = false;
                 }
             };
             const wrappedUpdateNav = function () {
