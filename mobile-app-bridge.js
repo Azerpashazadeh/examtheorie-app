@@ -194,6 +194,28 @@
                     max-height: calc(100dvh - 86px) !important;
                 }
             }
+            html.et-native-app #userChip.visible {
+                width: 34px !important;
+                height: 34px !important;
+                min-width: 34px !important;
+                padding: 0 !important;
+                border-radius: 50% !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background: linear-gradient(135deg, rgba(0, 212, 255, 0.28), rgba(0, 102, 255, 0.38)) !important;
+                border: 1px solid rgba(0, 212, 255, 0.45) !important;
+                font-size: 0 !important;
+                cursor: pointer !important;
+                flex-shrink: 0 !important;
+            }
+            html.et-native-app #userChip.visible #userName {
+                font-size: 12px !important;
+                font-weight: 800 !important;
+                letter-spacing: 0.4px !important;
+                color: #ffffff !important;
+                line-height: 1 !important;
+            }
             #et-native-overlay {
                 position: fixed;
                 inset: 0;
@@ -1080,8 +1102,39 @@
 
         if (typeof window.updateNavbarUser === 'function' && !window.updateNavbarUser.__etNativeWrapped) {
             const origUpdateNav = window.updateNavbarUser;
+            const computeInitials = function (u) {
+                if (!u) return '';
+                const raw = String(
+                    u.user_metadata?.full_name ||
+                    u.user_metadata?.name ||
+                    (u.email || '').split('@')[0] ||
+                    ''
+                ).trim();
+                if (!raw) return 'U';
+                const parts = raw.split(/[\s._-]+/).filter(Boolean);
+                if (parts.length >= 2) {
+                    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+                }
+                return parts[0].slice(0, 2).toUpperCase();
+            };
+            const applyInitialsChip = function () {
+                const user = getCurrentUser();
+                const chip = document.getElementById('userChip');
+                const nameSpan = document.getElementById('userName');
+                if (user && chip && nameSpan) {
+                    nameSpan.textContent = computeInitials(user);
+                    if (!chip.__etTapBound) {
+                        chip.__etTapBound = true;
+                        chip.addEventListener('click', (ev) => {
+                            ev.stopPropagation();
+                            if (typeof window.toggleMenu === 'function') window.toggleMenu();
+                        });
+                    }
+                }
+            };
             const wrappedUpdateNav = function () {
                 const res = origUpdateNav.apply(this, arguments);
+                applyInitialsChip();
                 const paywallModal = document.getElementById('paywall-modal');
                 if (paywallModal?.classList.contains('active')) {
                     renderReaderPaywall(lastPaywallGroup);
@@ -1090,6 +1143,7 @@
             };
             wrappedUpdateNav.__etNativeWrapped = true;
             window.updateNavbarUser = wrappedUpdateNav;
+            applyInitialsChip();
         }
 
         applyReaderDOMAdjustments();
