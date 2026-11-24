@@ -206,8 +206,8 @@
                 display: inline-grid !important;
                 place-items: center !important;
                 box-sizing: border-box !important;
-                background: linear-gradient(135deg, rgba(0, 212, 255, 0.24), rgba(0, 102, 255, 0.34)) !important;
-                border: 1px solid rgba(0, 212, 255, 0.45) !important;
+                background: linear-gradient(135deg, #0061ff, #0ea5e9) !important;
+                border: 1px solid rgba(0, 97, 255, 0.25) !important; box-shadow: 0 6px 14px rgba(0, 97, 255, 0.22) !important;
                 font-size: 0 !important;
                 line-height: 0 !important;
                 cursor: pointer !important;
