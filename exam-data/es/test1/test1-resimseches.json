@@ -1,0 +1,44 @@
+{
+    "sorular": [
+        {
+            "numara": 12,
+            "soru": "¿En qué situaciones tiene permitido adelantar por la derecha?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.1.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.2.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.3.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.4.gif"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.1.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.2.gif"
+            ],
+            "feedback": {
+                "metin": "En las dos situaciones superiores está permitido adelantar por la derecha. A un tranvía se le puede adelantar tanto por la izquierda como por la derecha. También puede adelantar por la derecha si el vehículo al que desea adelantar circula a la izquierda de una línea continua (o marca vial de bloques). En las dos situaciones inferiores no está permitido adelantar por la derecha. En la situación inferior izquierda no puede adelantar a un vehículo que circula innecesariamente por el carril izquierdo; debe esperar a que pase al carril derecho. En la situación inferior derecha circula usted por un carril adicional para horas punta (spitsstrook). Este carril se considera un carril normal: adelantar por la derecha no está permitido salvo que haya un atasco, y en esta situación no hay atasco.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 33,
+            "soru": "¿Después de qué señales debe contar con la presencia de peatones en la calzada?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.1.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.3.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.4.jpg"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.4.jpg"
+            ],
+            "feedback": {
+                "metin": "Las respuestas correctas son las señales G-5 (zona residencial / Erf) y J-23. La señal G-5 indica que entra en una zona residencial (Erf), donde los peatones pueden utilizar toda la anchura de la vía. La señal J-23 advierte de que puede haber peatones en la calzada o cruzándola. La señal C-16 prohíbe el acceso a los peatones. La señal G-3 indica una autopista (Autosnelweg), donde no está permitida la circulación de peatones.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

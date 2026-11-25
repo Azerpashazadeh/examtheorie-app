@@ -51,17 +51,21 @@
     en: '← Back to Menu',
     tr: '← Menüye Dön',
     nl: '← Terug naar menu',
-    ar: '← العودة إلى القائمة'
+    ar: '← العودة إلى القائمة',
+    ru: '← Назад в меню',
+    fa: '← بازگشت به منو',
+    es: '← Volver al menú'
   };
   const menuReturn = button(menuLabels[language] || menuLabels.en, () => {
     const chapterFile = window.location.pathname.split('/').pop() || '';
-    const target = `../../index.html?open=theory&chapter=${encodeURIComponent(chapterFile)}`;
+    const homeBase = language === 'en' ? '/' : `/${language}/`;
+    const target = `${homeBase}?open=theory&chapter=${encodeURIComponent(chapterFile)}`;
     window.location.href = target;
   });
   menuReturn.id = 'chapter-menu-return';
   const fullQuizLabel = launcher.textContent;
   const fullMenuLabel = menuReturn.textContent;
-  const compactMenuLabels = {en:'☰ Menu',tr:'☰ Menü',nl:'☰ Menu',ar:'☰ القائمة'};
+  const compactMenuLabels = {en:'☰ Menu',tr:'☰ Menü',nl:'☰ Menu',ar:'☰ القائمة',ru:'☰ Меню',fa:'☰ منو',es:'☰ Menú'};
   const browserWindow = typeof window !== 'undefined' ? window : null;
   const setResponsiveButtonLabels = () => {
     const compact = browserWindow ? browserWindow.innerWidth <= 480 : false;

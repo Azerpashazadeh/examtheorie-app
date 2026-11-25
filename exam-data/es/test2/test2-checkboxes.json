@@ -1,0 +1,99 @@
+{
+    "sorular": [
+        {
+            "numara": 2,
+            "soru": "¿Cuáles de estos vehículos son vehículos prioritarios de emergencia?",
+            "resim": "",
+            "cevaplar": [
+                "Tranvía.",
+                "Vehículo de un convoy militar.",
+                "Vehículos de empresas de auxilio en carretera con luces amarillas intermitentes.",
+                "Ambulancia con señales ópticas y acústicas.",
+                "Vehículo de la Dirección General de Obras Públicas y Gestión del Agua (Rijkswaterstaat) con señales ópticas y acústicas.",
+                "Ambulancia de animales con luces amarillas intermitentes."
+            ],
+            "dogruCevap": [
+                "Ambulancia con señales ópticas y acústicas.",
+                "Vehículo de la Dirección General de Obras Públicas y Gestión del Agua (Rijkswaterstaat) con señales ópticas y acústicas."
+            ],
+            "feedback": {
+                "metin": "Solo los vehículos que utilizan señales ópticas (azules) y acústicas al mismo tiempo son vehículos prioritarios de emergencia. Esto incluye vehículos policiales, camiones de bomberos y ambulancias, así como vehículos autorizados de Rijkswaterstaat (Dirección General de Obras Públicas y Gestión del Agua). Todo vehículo autorizado a usar luces azules intermitentes y sirena bitonal tiene carácter de vehículo prioritario en cuanto lleva activadas ambas señales ópticas y acústicas. Los vehículos con luces amarillas intermitentes no son vehículos prioritarios de emergencia. Tampoco lo son los tranvías ni los vehículos de un convoy militar, pese a contar con normas especiales en materia de prioridad.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 3,
+            "soru": "¿En qué casos se le puede imponer una prohibición de conducir?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/3.jpg",
+            "cevaplar": [
+                "Cuando supervisa a un conductor de 2toDrive estando usted bajo los efectos del alcohol.",
+                "Cuando sube a su coche por el lado del conductor estando bajo los efectos del alcohol.",
+                "Cuando conduce un turismo bajo los efectos del alcohol.",
+                "Cuando camina por la acera bajo los efectos del alcohol."
+            ],
+            "dogruCevap": [
+                "Cuando supervisa a un conductor de 2toDrive estando usted bajo los efectos del alcohol.",
+                "Cuando sube a su coche por el lado del conductor estando bajo los efectos del alcohol.",
+                "Cuando conduce un turismo bajo los efectos del alcohol."
+            ],
+            "feedback": {
+                "metin": "Se le puede imponer una prohibición de conducir cuando tiene intención de conducir o intenta conducir un vehículo, o cuando ya lo está conduciendo, bajo los efectos del alcohol. También está prohibido supervisar a un conductor de 2toDrive estando bajo los efectos del alcohol, ya que al supervisar a un conductor de 2toDrive debe cumplir las mismas normas que un conductor habitual. Simplemente caminar por la acera bajo los efectos del alcohol no conlleva una prohibición de conducir.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 17,
+            "soru": "¿Qué vehículos tienen permitido circular por todos los carriles aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/17.jpg",
+            "cevaplar": [
+                "Motocicletas.",
+                "Turismos.",
+                "Turismos con un remolque de 7 metros de longitud.",
+                "Camiones.",
+                "Autobuses."
+            ],
+            "dogruCevap": [
+                "Motocicletas.",
+                "Turismos.",
+                "Turismos con un remolque de 7 metros de longitud.",
+                "Camiones.",
+                "Autobuses."
+            ],
+            "feedback": {
+                "metin": "Esta autopista está dividida en dos bloques de dos carriles para dos direcciones distintas, ya que está a punto de bifurcarse en dos autopistas diferentes. No debe interpretarse como una única calzada de cuatro carriles en un mismo sentido; puede reconocerlo por la marca vial de bloques y las señales situadas encima de la vía. Aquí no se aplica la norma según la cual con camiones y conjuntos de vehículos más largos solo se pueden utilizar los dos carriles situados más a la derecha. Ambas direcciones constan únicamente de dos carriles, que pueden ser utilizados por los conductores de todos los vehículos enumerados.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 25,
+            "soru": "¿Qué usuarios de la vía deben obedecer las indicaciones de un agente o regulador de tráfico?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/25.jpg",
+            "cevaplar": [
+                "Peatones.",
+                "Conductores de vehículos de motor.",
+                "Conductores de tranvías.",
+                "Conductores de vehículos para personas con discapacidad.",
+                "Ciclistas."
+            ],
+            "dogruCevap": [
+                "Peatones.",
+                "Conductores de vehículos de motor.",
+                "Conductores de tranvías.",
+                "Conductores de vehículos para personas con discapacidad.",
+                "Ciclistas."
+            ],
+            "feedback": {
+                "metin": "La obligación de obedecer las indicaciones de un agente o regulador de tráfico autorizado se aplica a todos los usuarios de la vía. Esto incluye tanto a todo tipo de peatones como a todos los conductores. Por lo tanto, todas las respuestas son correctas.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+{
+    "sorular": [
+        {
+            "numara": 33,
+            "soru": "¿Qué vehículos no tiene permitido conducir cuando su permiso de conducir está suspendido?",
+            "resim": "",
+            "cevaplar": [
+                "Ciclomotor ligero (snorfiets).",
+                "Bicicleta.",
+                "Cuatriciclo ligero (brommobiel).",
+                "Turismo."
+            ],
+            "dogruCevap": [
+                "Ciclomotor ligero (snorfiets).",
+                "Cuatriciclo ligero (brommobiel).",
+                "Turismo."
+            ],
+            "feedback": {
+                "metin": "Cuando su permiso de conducir está suspendido, no tiene permitido conducir ningún vehículo de motor. Por lo tanto, no solo está prohibido conducir un turismo, sino también un cuatriciclo ligero (brommobiel), un ciclomotor o un ciclomotor ligero (snorfiets). Una bicicleta no es un vehículo de motor, por lo que sí puede seguir circulando en bicicleta.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 35,
+            "soru": "¿Con qué conductores debe contar en la calzada aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/35.jpg",
+            "cevaplar": [
+                "Conductores de cuatriciclos ligeros (brommobiel).",
+                "Conductores de speed pedelec.",
+                "Conductores de ciclomotores.",
+                "Ciclistas.",
+                "Conductores de ciclomotores ligeros (snorfiets)."
+            ],
+            "dogruCevap": [
+                "Conductores de cuatriciclos ligeros (brommobiel).",
+                "Conductores de speed pedelec.",
+                "Conductores de ciclomotores."
+            ],
+            "feedback": {
+                "metin": "Junto a la calzada hay un carril bici obligatorio. Esto significa que solo los ciclistas y los conductores de ciclomotores ligeros (snorfiets) están obligados a utilizar el carril bici en lugar de la calzada. Todos los demás conductores tienen prohibido circular por el carril bici, por lo que debe contar con ellos en la calzada.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 39,
+            "soru": "¿Qué alumbrado tiene permitido utilizar?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/39.jpg",
+            "cevaplar": [
+                "Luces de carretera.",
+                "Luces antiniebla delanteras en combinación con las luces de cruce.",
+                "Luces antiniebla delanteras en combinación con las luces de posición.",
+                "Luz antiniebla trasera.",
+                "Luces de cruce."
+            ],
+            "dogruCevap": [
+                "Luces antiniebla delanteras en combinación con las luces de cruce.",
+                "Luces antiniebla delanteras en combinación con las luces de posición.",
+                "Luces de cruce."
+            ],
+            "feedback": {
+                "metin": "La visibilidad está reducida por la niebla. Todavía puede ver al menos a 100 metros, ya que el siguiente poste hectométrico aún es visible. En ese caso, puede utilizar las luces de cruce, con o sin luces antiniebla delanteras. También puede combinar las luces antiniebla delanteras con las luces de posición en lugar de las luces de cruce. Las luces de carretera no están permitidas durante el día. La luz antiniebla trasera tampoco está permitida; solo se permite cuando la visibilidad es inferior a 50 metros.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

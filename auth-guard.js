@@ -21,8 +21,8 @@
 
     // Sayfa bilgilerini URL'den ayrıştır
     const path = window.location.pathname;
-    const testMatch = path.match(/\/test-(\d+)-(en|tr|nl|ar)\.html/);
-    const dynamicTestMatch = path.match(/\/test-(en|tr|nl|ar)\.html$/);
+    const testMatch = path.match(/\/test-(\d+)-(en|tr|nl|ar|ru|fa|es)(?:\.html)?$/);
+    const dynamicTestMatch = path.match(/\/test-(en|tr|nl|ar|ru|fa|es)(?:\.html)?$/);
     const dynamicTestPath = !!dynamicTestMatch;
     const dynamicLang = dynamicTestMatch ? dynamicTestMatch[1] : null;
     const dynamicParam = new URLSearchParams(window.location.search).get('test');
@@ -41,10 +41,10 @@
     const loader = document.createElement('div');
     loader.id = 'et-guard-loader';
     loader.innerHTML = `
-        <div style="position:fixed; inset:0; z-index:99999; background:rgba(0,8,25,0.97); display:flex; align-items:center; justify-content:center; font-family:sans-serif;">
+        <div style="position:fixed; inset:0; z-index:99999; background:#f8fafc; display:flex; align-items:center; justify-content:center; font-family:'Outfit',system-ui,sans-serif;">
             <div style="text-align:center;">
-                <div style="width:40px; height:40px; border:3px solid rgba(0,212,255,0.2); border-top-color:#00d4ff; border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 15px;"></div>
-                <p style="color:#fff; opacity:0.7; font-size:14px;">Kontrol ediliyor...</p>
+                <div style="width:40px; height:40px; border:3px solid rgba(0,97,255,0.16); border-top-color:#0061ff; border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 14px;"></div>
+                <p style="color:#475569; font-weight:600; font-size:14px;">Checking access...</p>
             </div>
             <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
         </div>
@@ -61,7 +61,8 @@
             redirect: window.location.href,
             reason: reason // 'login' | 'plan' | 'completed' | 'locked' | 'progress-error'
         });
-        window.location.replace(`${HOME_URL}?${params.toString()}`);
+        const langPrefix = lang && lang !== 'en' ? `/${lang}/` : '/';
+        window.location.replace(`${HOME_URL}${langPrefix}?${params.toString()}`);
     }
 
     async function checkAccess() {

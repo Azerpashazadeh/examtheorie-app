@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * build-guides.js — Generates 20 High-Intent Multilingual SEO Guide Pages
- * (4 Guide Hubs + 16 Pillar CBR/RVV/RDW Guides across EN, NL, TR, AR)
+ * build-guides.js — Generates 35 High-Intent Multilingual SEO Guide Pages
+ * (7 Guide Hubs + 28 Pillar CBR/RVV/RDW Guides across EN, NL, TR, AR, RU, FA, ES)
  */
 const fs = require('fs');
 const path = require('path');
@@ -71,7 +71,7 @@ const UI_CHROME = {
     freeBtn: 'Free 50-Question Test',
     pkgBtn: 'View Packages',
     ctaHead: 'Ready to Test Your CBR Knowledge?',
-    ctaBody: 'Start with our full 50-question, 30-minute Dutch CBR practice exam or study Chapter 1 (Traffic Rules) completely free — available in English, Dutch, Turkish, and Arabic.',
+    ctaBody: 'Start with our full 50-question, 30-minute Dutch CBR practice exam or study Chapter 1 (Traffic Rules) completely free — available in all 7 languages (EN, NL, TR, AR, RU, FA, ES).',
     ctaPrimary: 'Start Free 50-Question Mock Exam →',
     ctaSecondary: 'Read Free Chapter 1 (RVV Rules) →',
     ctaPackages: 'See All 50 Exam Packages (from €3) →',
@@ -92,7 +92,7 @@ const UI_CHROME = {
     freeBtn: 'Gratis Proefexamen (50 Vragen)',
     pkgBtn: 'Pakketprijzen',
     ctaHead: 'Direct Gratis Oefenen voor je CBR Theorie-examen?',
-    ctaBody: 'Maak nu gratis een volledig CBR oefenexamen van 50 vragen (30 minuten) of bestudeer gratis Hoofdstuk 1 (Verkeersregels) — beschikbaar in het Nederlands, Engels, Turks en Arabisch.',
+    ctaBody: 'Maak nu gratis een volledig CBR oefenexamen van 50 vragen (30 minuten) of bestudeer gratis Hoofdstuk 1 (Verkeersregels) — beschikbaar in alle 7 talen (NL, EN, TR, AR, RU, FA & ES).',
     ctaPrimary: 'Start Gratis CBR Proefexamen →',
     ctaSecondary: 'Lees Gratis Hoofdstuk 1 →',
     ctaPackages: 'Bekijk Alle 50 Oefenexamens (vanaf €3) →',
@@ -142,6 +142,69 @@ const UI_CHROME = {
     faqHead: 'الأسئلة الشائعة',
     readMore: 'اقرأ الدليل الكامل ←',
     updated: 'محدّث وفق قواعد CBR و RVV لعام 2026',
+  },
+  ru: {
+    dir: 'ltr',
+    ogLocale: 'ru_RU',
+    homeUrl: '/ru/',
+    homeLabel: 'Главная',
+    hubTitle: 'Руководства по теоретическому экзамену CBR в Нидерландах (2026)',
+    hubMetaTitle: 'Руководства по экзамену CBR в Нидерландах 2026 — Правила, знаки и RDW | ExamTheorie',
+    hubDesc: 'Бесплатные актуальные руководства 2026 года для сдачи теоретического экзамена CBR на легковой автомобиль (Rijbewijs B): формат из 50 вопросов и стоимость, дорожные знаки RVV, правила приоритета, распознавание опасностей и обмен иностранных прав в RDW.',
+    hubLabel: 'Гайды CBR',
+    freeBtn: 'Бесплатный тест (50 вопросов)',
+    pkgBtn: 'Тарифы и пакеты',
+    ctaHead: 'Готовы проверить свои знания перед экзаменом CBR?',
+    ctaBody: 'Пройдите полный бесплатный пробный экзамен CBR из 50 вопросов за 30 минут или бесплатно изучите Главу 1 (Правила дорожного движения) — на русском, английском, нидерландском, турецком, арабском, персидском и испанском языках.',
+    ctaPrimary: 'Начать бесплатный экзамен из 50 вопросов →',
+    ctaSecondary: 'Читать бесплатно Главу 1 (правила RVV) →',
+    ctaPackages: 'Все пакеты по 50 экзаменов (от €3) →',
+    relatedHead: 'Другие руководства по подготовке к CBR',
+    faqHead: 'Часто задаваемые вопросы',
+    readMore: 'Читать руководство полностью →',
+    updated: 'Обновлено по правилам CBR и RVV 2026 года',
+  },
+  fa: {
+    dir: 'rtl',
+    ogLocale: 'fa_IR',
+    homeUrl: '/fa/',
+    homeLabel: 'صفحه اصلی',
+    hubTitle: 'راهنماهای جامع آزمون تئوری رانندگی هلند CBR (۲۰۲۶)',
+    hubMetaTitle: 'راهنمای آزمون تئوری رانندگی هلند CBR 2026 — قوانین، تابلوها و تعویض گواهینامه RDW | ExamTheorie',
+    hubDesc: 'راهنماهای رایگان و به‌روز ۲۰۲۶ برای قبولی در آزمون تئوری خودرو هلند (CBR Rijbewijs B): ساختار ۵۰ سؤالی و هزینه‌ها، تابلوهای راهنمایی و رانندگی RVV، حق تقدم، تشخیص خطر و تعویض گواهینامه خارجی در RDW.',
+    hubLabel: 'راهنماهای CBR',
+    freeBtn: 'آزمون رایگان ۵۰ سؤالی',
+    pkgBtn: 'مشاهده پکیج‌ها',
+    ctaHead: 'آماده سنجش اطلاعات خود برای آزمون CBR هستید؟',
+    ctaBody: 'همین حالا آزمون آزمایشی کامل ۵۰ سؤالی (۳۰ دقیقه‌ای) CBR هلند را رایگان شروع کنید یا فصل ۱ (قوانین راهنمایی و رانندگی) را کاملاً رایگان مطالعه نمایید — به زبان‌های فارسی، انگلیسی، هلندی، ترکی، عربی، روسی و اسپانیایی.',
+    ctaPrimary: 'شروع آزمون آزمایشی رایگان ۵۰ سؤالی ←',
+    ctaSecondary: 'مطالعه رایگان فصل ۱ (قوانین RVV) ←',
+    ctaPackages: 'مشاهده پکیج‌های ۵۰ آزمونی (از ۳ یورو) ←',
+    relatedHead: 'سایر راهنماهای آمادگی آزمون CBR',
+    faqHead: 'سؤالات متداول',
+    readMore: 'مطالعه کامل راهنما ←',
+    updated: 'به‌روزرسانی‌شده مطابق قوانین ۲۰۲۶ CBR و RVV',
+  },
+  es: {
+    dir: 'ltr',
+    ogLocale: 'es_ES',
+    homeUrl: '/es/',
+    homeLabel: 'Inicio',
+    hubTitle: 'Guías del Examen Teórico de Conducir CBR de Países Bajos (2026)',
+    hubMetaTitle: 'Guías del Examen Teórico CBR Países Bajos 2026 — Normas, Señales y RDW | ExamTheorie',
+    hubDesc: 'Guías gratuitas y actualizadas a 2026 para aprobar el examen teórico de coche del CBR neerlandés (Rijbewijs B): formato de 50 preguntas y tasas, señales de tráfico RVV, normas de prioridad, percepción de peligros y canje de permiso extranjero en RDW.',
+    hubLabel: 'Guías CBR',
+    freeBtn: 'Test Gratis de 50 Preguntas',
+    pkgBtn: 'Ver Paquetes',
+    ctaHead: '¿Listo para poner a prueba tus conocimientos del CBR?',
+    ctaBody: 'Empieza con nuestro simulacro completo del CBR neerlandés de 50 preguntas en 30 minutos o estudia gratis el Capítulo 1 (Normas de tráfico) — disponible en español, inglés, neerlandés, turco, árabe, ruso y persa.',
+    ctaPrimary: 'Empezar simulacro gratis de 50 preguntas →',
+    ctaSecondary: 'Leer gratis el Capítulo 1 (Normas RVV) →',
+    ctaPackages: 'Ver paquetes de 50 exámenes (desde 3 €) →',
+    relatedHead: 'Más guías de preparación para el CBR',
+    faqHead: 'Preguntas frecuentes',
+    readMore: 'Leer guía completa →',
+    updated: 'Actualizado según las normas CBR y RVV 2026',
   },
 };
 
@@ -314,6 +377,138 @@ const GUIDES = [
         ['كم خطأ يُسمح به في امتحان التيوري CBR لعام 2026؟', 'يُسمح بـ 6 أخطاء كحد أقصى؛ إذ يجب تحقيق 44 إجابة صحيحة على الأقل من أصل 50 سؤالاً خلال 30 دقيقة.'],
         ['كم تبلغ تكلفة امتحان التيوري في هولندا لعام 2026؟', 'تبلغ الرسوم الرسمية عبر Mijn CBR نحو 50.50 يورو باللغة الهولندية و57.00 يورو باللغة الإنجليزية.'],
         ['ما هي مدة صلاحية شهادة النظري CBR؟', 'تكون الشهادة صالحة لمدة 18 شهراً (سنة ونصف) من يوم النجاح.'],
+      ],
+    },
+    ru: {
+      title: 'Теоретический экзамен CBR в Нидерландах 2026: 50 вопросов, стоимость и проходной балл',
+      metaTitle: 'Экзамен CBR в Нидерландах 2026 — 50 вопросов, цены (€50,50/€57) и проходной балл | ExamTheorie',
+      description: 'Полное руководство 2026 года по теоретическому экзамену CBR на легковой автомобиль (Rijbewijs B): единый формат из 50 вопросов, проходной балл 44/50, официальные пошлины €50,50 / €57,00, срок действия 1,5 года и советы.',
+      lead: 'Нидерландский институт CBR объединил теоретический экзамен на легковой автомобиль (Rijbewijs B) в единый непрерывный тест из 50 вопросов с анимированными дорожными видеороликами. Разбираем формат 2026 года, официальные тарифы, языки сдачи и стратегию успешной сдачи с первой попытки.',
+      body: `
+        <h2>1. Как устроен новый единый экзамен CBR из 50 вопросов</h2>
+        <p>Раньше теоретический экзамен CBR делился на отдельные блоки (25 статичных фотографий распознавания опасностей с жестким таймером 8 секунд, 12 вопросов на знание и 28 вопросов на понимание), где провал одного блока означал несдачу всего экзамена. В современной интегрированной структуре CBR все темы объединены в <strong>один непрерывный экзамен из 50 оцениваемых вопросов на 30 минут</strong> (плюс 2 неоцениваемых тестовых вопроса, которые CBR использует для проверки качества базы).</p>
+        <div class="callout"><strong>Проходной балл в 2026 году:</strong> Необходимо правильно ответить минимум на <strong>44 из 50 вопросов (88%)</strong>. Это означает, что за весь экзамен допускается не более <strong>6 ошибок</strong>.</div>
+        <ul>
+          <li><strong>Динамичные анимированные видеоролики:</strong> Статичные фотографии опасностей заменены короткими компьютерными видеосюжетами с места водителя, чтобы вы могли реалистично оценивать движущихся велосипедистов, пешеходов, изменение скорости и слепые зоны.</li>
+          <li><strong>Гибкий запас времени:</strong> На весь экзамен дается 30 минут (в среднем ~36 секунд на вопрос), и вы можете спокойно переходить между вопросами без стрессового 8-секундного отсчета.</li>
+          <li><strong>Форматы вопросов:</strong> Одиночный выбор (A/B/C), множественный выбор с несколькими ответами, перетаскивание (drag-and-drop) для очередности проезда, выбор опасной зоны кликом на изображении, вопросы «да/нет» и ввод числа (например, ограничение скорости в км/ч).</li>
+        </ul>
+
+        <h2>2. Официальная стоимость теоретического экзамена CBR в 2026 году (Tarieven)</h2>
+        <p>Бронирование напрямую через портал <strong>Mijn CBR</strong> с помощью личного <strong>DigiD</strong> позволяет избежать наценок посредников. Официальные тарифы CBR на 2026 год для категории B:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Тип экзамена (Rijbewijs B)</th><th>Тариф CBR 2026</th><th>Примечание</th></tr></thead>
+          <tbody>
+            <tr><td>Стандартный экзамен CBR (на нидерландском)</td><td><strong>€ 50,50</strong></td><td>Стандартный экзамен на сенсорном экране в любом центре CBR</td></tr>
+            <tr><td>Теоретический экзамен CBR на английском</td><td><strong>€ 57,00</strong></td><td>Базовый тариф € 50,50 + доплата € 6,50 за английский язык</td></tr>
+            <tr><td>Надбавка за вечер / выходные</td><td><strong>+ € 6,25</strong></td><td>Для слотов с 18:00 или в выходные дни</td></tr>
+            <tr><td>Экзамен с дополнительным временем (напр., дислексия)</td><td><strong>+ € 13,50</strong></td><td>Дает +15 дополнительных минут (всего 45 мин)</td></tr>
+            <tr><td>Индивидуальный экзамен с куратором / переводчиком</td><td><strong>€ 118,50</strong></td><td>Требуется для сдачи с официальным переводчиком (+ услуги переводчика)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>3. Можно ли сдавать экзамен CBR на русском или английском языке?</h2>
+        <p>В экзаменационных центрах CBR стандартные компьютерные экзамены проводятся напрямую на <strong>нидерландском</strong> и <strong>английском</strong> языках. Если ваш родной язык — <strong>русский</strong> (а также турецкий или арабский), у вас есть две проверенные стратегии, которыми пользуются тысячи кандидатов в Нидерландах:</p>
+        <ol>
+          <li><strong>Учить теорию на родном русском + тренироваться на английском/нидерландском в ExamTheorie:</strong> Сначала глубоко разберите все <a href="/theory/ru/traffic-rules">правила дорожного движения RVV 1990</a> и <a href="/deneme-ru">тренировочные тесты CBR на русском</a>, а в последние дни переключите интерфейс наших экзаменов на английский или нидерландский. Так вы сэкономите более €100 на услугах переводчика и уверенно сдадите стандартный экзамен за €50,50 / €57,00.</li>
+          <li><strong>Записаться на индивидуальный экзамен с присяжным переводчиком:</strong> Забронировать индивидуальный слот CBR (€118,50) и заказать сертифицированного переводчика через TolkenNet.</li>
+        </ol>
+
+        <h2>4. Сколько действует сертификат теории CBR?</h2>
+        <p>После успешной сдачи результат автоматически регистрируется в электронной базе CBR и остается действительным <strong>ровно 1,5 года (18 месяцев)</strong> с даты экзамена. Вы обязаны сдать практический экзамен по вождению в течение этих 18 месяцев — продлить истекший сертификат теории в CBR невозможно ни при каких обстоятельствах.</p>
+      `,
+      faqs: [
+        ['Сколько ошибок можно допустить на теоретическом экзамене CBR в 2026 году?', 'Допускается максимум 6 ошибок: необходимо набрать не менее 44 правильных ответов из 50 оцениваемых вопросов (88%) за 30 минут.'],
+        ['Сколько стоит теоретический экзамен CBR на английском языке в 2026 году?', 'В 2026 году официальная стоимость экзамена CBR на английском языке составляет €57,00 (€50,50 базовый тариф + €6,50 надбавка за английский язык) при записи напрямую через Mijn CBR с DigiD.'],
+        ['Каков срок действия сертификата теоретического экзамена в Нидерландах?', 'Сертификат о сдаче теории CBR действителен 1,5 года (18 месяцев). До окончания этого срока необходимо успешно сдать практический экзамен по вождению.'],
+      ],
+    },
+    fa: {
+      title: 'راهنمای جامع آزمون تئوری خودرو CBR هلند ۲۰۲۶: ۵۰ سؤال، هزینه‌ها و نمره قبولی',
+      metaTitle: 'آزمون تئوری رانندگی CBR هلند ۲۰۲۶ — ۵۰ سؤال، هزینه (50.50€ / 57€) و حد نصاب | ExamTheorie',
+      description: 'راهنمای کامل ۲۰۲۶ آزمون تئوری رانندگی خودرو در هلند (CBR Rijbewijs B): فرمت یکپارچه ۵۰ سؤالی، حد نصاب قبولی ۴۴ از ۵۰، هزینه رسمی ۵۰.۵۰ و ۵۷ یورو، اعتبار ۱.۵ ساله و نکات قبولی.',
+      lead: 'سازمان CBR هلند آزمون تئوری خودروی سواری (Rijbewijs B) را به یک آزمون پیوسته ۵۰ سؤالی همراه با ویدیوهای انیمیشنی ترافیکی تبدیل کرده است. در اینجا همه‌چیز درباره ساختار ۲۰۲۶، هزینه‌های رسمی، زبان‌های آزمون و روش قبولی در اولین تلاش را می‌خوانید.',
+      body: `
+        <h2>۱. نحوه کارکرد آزمون یکپارچه جدید ۵۰ سؤالی CBR</h2>
+        <p>پیش‌تر آزمون تئوری خودرو CBR به بخش‌های جداگانه تقسیم می‌شد (۲۵ عکس ثابت تشخیص خطر با تایمر سخت‌گیرانه ۸ ثانیه‌ای، ۱۲ سؤال دانشی و ۲۸ سؤال درک موقعیت) که مردود شدن در یک بخش به معنای مردودی در کل آزمون بود. در ساختار یکپارچه فعلی CBR، تمام مباحث در قالب <strong>یک آزمون پیوسته شامل ۵۰ سؤال نمره‌دار در مدت ۳۰ دقیقه</strong> ترکیب شده‌اند (به‌علاوه ۲ سؤال آزمایشی بدون نمره که CBR برای سنجش کیفیت طراحی می‌کند).</p>
+        <div class="callout"><strong>حد نصاب قبولی ۲۰۲۶:</strong> باید حداقل به <strong>۴۴ سؤال از ۵۰ سؤال پاسخ صحیح بدهید (۸۸٪)</strong>. یعنی در کل آزمون حداکثر مجاز به داشتن <strong>۶ اشتباه</strong> هستید.</div>
+        <ul>
+          <li><strong>ویدیوهای انیمیشنی پویا:</strong> عکس‌های ثابت تشخیص خطر با کلیپ‌های کوتاه انیمیشنی از دید راننده جایگزین شده‌اند تا حرکت دوچرخه‌سواران، عابران پیاده، تغییرات سرعت و نقاط کور را به‌صورت واقعی ارزیابی کنید.</li>
+          <li><strong>مدیریت زمان منعطف:</strong> در مجموع ۳۰ دقیقه برای کل آزمون فرصت دارید (به‌طور میانگین حدود ۳۶ ثانیه برای هر سؤال) و بدون استرس شمارش معکوس ۸ ثانیه‌ای می‌توانید با آرامش به سؤالات پاسخ دهید.</li>
+          <li><strong>انواع سؤالات آزمون:</strong> چندگزینه‌ای تک‌پاسخی (A/B/C)، چندانتخابی (چک‌باکس)، کشیدن و رها کردن (Drag & Drop) برای ترتیب حق تقدم، کلیک روی نقطه خطر در تصویر، سؤالات بله/خیر و ورود عدد (مثلاً حداکثر سرعت به کیلومتر بر ساعت).</li>
+        </ul>
+
+        <h2>۲. هزینه‌های رسمی آزمون تئوری خودرو CBR در سال ۲۰۲۶ (Tarieven)</h2>
+        <p>رزرو مستقیم آزمون از طریق سامانه <strong>Mijn CBR</strong> با حساب شخصی <strong>DigiD</strong> مانع پرداخت کارمزد اضافی به سایت‌های واسطه می‌شود. تعرفه‌های رسمی ۲۰۲۶ CBR برای آزمون تئوری پایه B عبارت‌اند از:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>نوع آزمون (Rijbewijs B)</th><th>تعرفه رسمی ۲۰۲۶ CBR</th><th>توضیحات</th></tr></thead>
+          <tbody>
+            <tr><td>آزمون استاندارد تئوری CBR (هلندی)</td><td><strong>50.50 €</strong></td><td>آزمون صفحه لمسی استاندارد در تمام مراکز CBR</td></tr>
+            <tr><td>آزمون تئوری CBR به زبان انگلیسی</td><td><strong>57.00 €</strong></td><td>۵۰.۵۰ یورو تعرفه پایه + ۶.۵۰ یورو هزینه زبان انگلیسی</td></tr>
+            <tr><td>اضافه‌بهای عصر / آخر هفته</td><td><strong>+ 6.25 €</strong></td><td>برای نوبت‌های از ساعت ۱۸:۰۰ به بعد یا روزهای آخر هفته</td></tr>
+            <tr><td>آزمون با زمان اضافه (مثلاً دیسلکسیا)</td><td><strong>+ 13.50 €</strong></td><td>۱۵ دقیقه زمان بیشتر (مجموعاً ۴۵ دقیقه)</td></tr>
+            <tr><td>آزمون انفرادی با راهنما / مترجم رسمی</td><td><strong>118.50 €</strong></td><td>الزامی در صورت شرکت در آزمون با مترجم رسمی (+ هزینه مترجم)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>۳. آیا می‌توان آزمون CBR را به انگلیسی یا فارسی داد؟</h2>
+        <p>در مراکز آزمون CBR، آزمون‌های کامپیوتری استاندارد مستقیماً به زبان‌های <strong>هلندی</strong> و <strong>انگلیسی</strong> برگزار می‌شوند. اگر زبان اصلی شما <strong>فارسی</strong> (یا ترکی و عربی) است، دو راهکار هوشمندانه پیش روی شماست:</p>
+        <ol>
+          <li><strong>مطالعه عمیق به زبان فارسی + مرور انگلیسی/هلندی در ExamTheorie:</strong> ابتدا تمام <a href="/theory/fa/traffic-rules">قوانین راهنمایی و رانندگی RVV 1990</a> و <a href="/deneme-fa">آزمون‌های آزمایشی ۵۰ سؤالی</a> را به زبان فارسی کاملاً یاد بگیرید، سپس در روزهای پایانی زبان آزمون‌های تمرینی را روی انگلیسی یا هلندی بگذارید تا بیش از ۱۰۰ یورو در هزینه مترجم صرفه‌جویی کرده و با اطمینان در آزمون استاندارد ۵۰.۵۰ یا ۵۷ یورویی شرکت کنید.</li>
+          <li><strong>رزرو آزمون انفرادی با مترجم رسمی:</strong> یک نوبت انفرادی CBR (۱۱۸.۵۰ یورو) رزرو کرده و از طریق TolkenNet مترجم رسمی هماهنگ نمایید.</li>
+        </ol>
+
+        <h2>۴. مدت اعتبار گواهی قبولی تئوری CBR چقدر است؟</h2>
+        <p>پس از قبولی، نتیجه آزمون تئوری شما به‌صورت الکترونیکی ثبت شده و از تاریخ قبولی <strong>دقیقاً به مدت ۱.۵ سال (۱۸ ماه)</strong> معتبر است. شما باید آزمون عملی شهری خود را ظرف همین ۱۸ ماه با موفقیت بگذرانید؛ CBR تحت هیچ شرایطی اعتبار گواهی تئوری منقضی‌شده را تمدید نمی‌کند.</p>
+      `,
+      faqs: [
+        ['در آزمون تئوری خودرو CBR سال ۲۰۲۶ چند غلط مجاز است؟', 'حداکثر ۶ اشتباه مجاز است: باید در مدت ۳۰ دقیقه حداقل به ۴۴ سؤال از ۵۰ سؤال نمره‌دار (۸۸٪) پاسخ صحیح بدهید.'],
+        ['هزینه آزمون تئوری CBR به زبان انگلیسی در سال ۲۰۲۶ چقدر است؟', 'در سال ۲۰۲۶ هزینه رسمی آزمون تئوری CBR به زبان انگلیسی در صورت ثبت‌نام مستقیم در Mijn CBR با DigiD برابر با ۵۷.۰۰ یورو (۵۰.۵۰ یورو تعرفه پایه + ۶.۵۰ یورو هزینه زبان انگلیسی) است.'],
+        ['گواهی قبولی تئوری رانندگی هلند چقدر اعتبار دارد؟', 'گواهی قبولی تئوری CBR به مدت ۱.۵ سال (۱۸ ماه) معتبر است و پیش از پایان این مهلت باید در آزمون عملی رانندگی قبول شوید.'],
+      ],
+    },
+    es: {
+      title: 'Guía del Examen Teórico de Coche CBR 2026: 50 Preguntas, Tasas y Nota de Corte',
+      metaTitle: 'Examen Teórico CBR Países Bajos 2026 — 50 Preguntas, Precio (50,50 €/57 €) y Nota | ExamTheorie',
+      description: 'Guía completa 2026 del examen teórico de conducir en Países Bajos (CBR Rijbewijs B): formato continuo de 50 preguntas, aprobado con 44/50, tasas oficiales de 50,50 € / 57,00 € en inglés y validez de 1,5 años.',
+      lead: 'El CBR neerlandés renovó el examen teórico de turismo (Rijbewijs B) convirtiéndolo en una única prueba continua de 50 preguntas con vídeos animados de tráfico. Aquí tienes todo lo necesario sobre el formato 2026, tasas oficiales, idiomas y cómo aprobar a la primera.',
+      body: `
+        <h2>1. Cómo funciona el nuevo examen integrado del CBR de 50 preguntas</h2>
+        <p>Anteriormente, el examen teórico de coche del CBR se dividía en bloques separados (25 fotos estáticas de percepción de peligros con cuenta atrás estricta de 8 segundos, 12 preguntas de conocimiento y 28 de comprensión), donde suspender un solo bloque implicaba suspender todo el examen. Con la estructura integrada actual del CBR, todos los temas se combinan en <strong>un único examen continuo de 50 preguntas puntuables en 30 minutos</strong> (más 2 preguntas de prueba no puntuables que el CBR usa para control de calidad).</p>
+        <div class="callout"><strong>Nota para aprobar en 2026:</strong> Debes responder correctamente al menos <strong>44 de las 50 preguntas (88 %)</strong>. Eso significa que se permite un máximo de <strong>6 fallos</strong> en todo el examen.</div>
+        <ul>
+          <li><strong>Vídeos animados dinámicos:</strong> Las fotos fijas de peligros se han sustituido por breves secuencias animadas vistas desde el asiento del conductor para evaluar de forma realista ciclistas en movimiento, peatones, cambios de velocidad y ángulos muertos.</li>
+          <li><strong>Tiempo total flexible:</strong> Dispones de 30 minutos para todo el examen (una media de ~36 segundos por pregunta) y puedes avanzar o revisar con calma sin el cronómetro de pánico de 8 segundos.</li>
+          <li><strong>Formatos de pregunta evaluados:</strong> Opción única (A/B/C), respuesta múltiple con casillas, arrastrar y soltar para ordenar la prioridad, clic sobre la imagen/peligro, preguntas de sí/no e introducción numérica (p. ej., límite de velocidad en km/h).</li>
+        </ul>
+
+        <h2>2. Tasas oficiales del examen teórico de coche CBR en 2026 (Tarieven)</h2>
+        <p>Reservar directamente en <strong>Mijn CBR</strong> con tu <strong>DigiD</strong> personal evita comisiones de intermediarios. Las tarifas oficiales del CBR para 2026 en el permiso B son:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Tipo de examen (Rijbewijs B)</th><th>Tasa oficial CBR 2026</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Examen teórico CBR estándar (neerlandés)</td><td><strong>50,50 €</strong></td><td>Examen estándar en pantalla táctil en cualquier centro CBR</td></tr>
+            <tr><td>Examen teórico CBR en inglés</td><td><strong>57,00 €</strong></td><td>50,50 € tarifa base + 6,50 € suplemento por idioma inglés</td></tr>
+            <tr><td>Suplemento de tarde / fin de semana</td><td><strong>+ 6,25 €</strong></td><td>Se aplica a turnos a partir de las 18:00 o en fin de semana</td></tr>
+            <tr><td>Examen con tiempo extra (p. ej., dislexia)</td><td><strong>+ 13,50 €</strong></td><td>Añade 15 minutos adicionales (45 min en total)</td></tr>
+            <tr><td>Examen guiado individual / con intérprete</td><td><strong>118,50 €</strong></td><td>Necesario para examinarse con intérprete oficial (+ tarifa del intérprete)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>3. ¿Se puede hacer el examen CBR en español o en inglés?</h2>
+        <p>En los centros del CBR, los exámenes estándar por ordenador se ofrecen directamente en <strong>neerlandés</strong> e <strong>inglés</strong>. Si tu idioma principal es el <strong>español</strong> (al igual que ocurre con turco o árabe), tienes dos estrategias muy eficaces:</p>
+        <ol>
+          <li><strong>Estudiar en español + practicar en inglés/neerlandés en ExamTheorie:</strong> Domina primero cada regla del <a href="/theory/es/traffic-rules">reglamento neerlandés RVV 1990</a> y realiza nuestro <a href="/deneme-es">simulacro gratuito de 50 preguntas en español</a>; después cambia el idioma de los tests a inglés o neerlandés durante los últimos días para ahorrar más de 100 € en gastos de intérprete y presentarte con total seguridad al examen estándar de 50,50 € / 57,00 €.</li>
+          <li><strong>Reservar un examen individual con intérprete oficial:</strong> Solicitar una cita individual en el CBR (118,50 €) y contratar un intérprete certificado a través de TolkenNet.</li>
+        </ol>
+
+        <h2>4. ¿Cuánto tiempo es válido el certificado teórico del CBR?</h2>
+        <p>Una vez aprobado, tu resultado teórico queda registrado electrónicamente y tiene una validez de <strong>exactamente 1,5 años (18 meses)</strong> desde la fecha del aprobado. Debes aprobar el examen práctico de conducir dentro de esos 18 meses; el CBR no puede prorrogar un certificado teórico caducado bajo ninguna circunstancia.</p>
+      `,
+      faqs: [
+        ['¿Cuántos fallos se pueden cometer en el examen teórico de coche del CBR en 2026?', 'Puedes cometer un máximo de 6 errores: necesitas al menos 44 respuestas correctas de las 50 preguntas puntuables (88 %) en 30 minutos.'],
+        ['¿Cuánto cuesta el examen teórico del CBR en inglés en 2026?', 'En 2026, el examen oficial de coche del CBR en inglés cuesta 57,00 € (50,50 € de tasa base más 6,50 € de suplemento por inglés) reservando directamente en Mijn CBR con DigiD.'],
+        ['¿Cuánto dura la validez del aprobado teórico de conducir en Países Bajos?', 'El certificado teórico aprobado del CBR es válido durante 1,5 años (18 meses). Debes realizar y aprobar el examen práctico antes de que caduque.'],
       ],
     },
   },
@@ -528,6 +723,159 @@ const GUIDES = [
         ['هل تنطبق إشارة E1 على مواقف السيارات المخصصة بجانب الطريق؟', 'لا، إشارة E1 المفردة تنطبق على قارعة الطريق فقط، ويُسمح بالركن في المواقف المحددة بجانبها.'],
       ],
     },
+    ru: {
+      title: 'Дорожные знаки Нидерландов и их значения (RVV 1990): наглядный гид к экзамену CBR',
+      metaTitle: 'Дорожные знаки Нидерландов (RVV 1990) на русском — Визуальный гид CBR | ExamTheorie',
+      description: 'Изучите дорожные знаки Нидерландов (RVV 1990, серии A–L) для теоретического экзамена CBR: знаки приоритета (B1, B6), запрет въезда C1 и C2, парковка E1 и E2, Autoweg и жилая зона Erf.',
+      lead: 'Дорожные знаки в Приложении 1 к нидерландским ПДД (RVV 1990) разделены на серии от A до L. Мгновенное распознавание форм, цветов окантовки и дополнительных табличек (onderborden) принесет вам легкие баллы на экзамене CBR.',
+      body: `
+        <h2>1. 12 самых частых дорожных знаков на экзамене CBR</h2>
+        <p>Запомните эти ключевые знаки RVV — CBR постоянно комбинирует их в вопросах с велосипедистами, трамваями и скоростными режимами:</p>
+        ${renderSignsShowcase({
+          a1: 'Максимальное ограничение скорости (например, 50 км/ч в населенном пункте).',
+          b1: 'Главная дорога (Voorrangsweg): водители на этой дороге имеют преимущество на перекрестках.',
+          b6: 'Уступите дорогу (Verleen voorrang) всем водителям на пересекаемой дороге.',
+          b7: 'STOP: полная обязательная остановка и уступка дороги водителям на пересекаемой дороге.',
+          c1: 'Движение закрыто в ОБОИХ направлениях для всех транспортных средств, всадников и погонщиков животных.',
+          c2: 'Одностороннее движение: въезд с ЭТОГО направления запрещен (внимание на табличку uitgezonderd fietsers).',
+          d2: 'Предписывающее направление: все водители обязаны объезжать знак со стороны, куда указывает стрелка.',
+          e1: 'Стоянка запрещена (Parkeerverbod) на этой стороне проезжей части — краткая посадка/высадка пассажиров разрешена.',
+          e2: 'Остановка и стоянка запрещены (Verbod stil te staan) — нельзя остановиться даже на 5 секунд для высадки пассажира.',
+          g3: 'Автомобильная дорога (Autoweg): макс. скорость по умолчанию 100 км/ч; мин. конструктивная скорость ТС — 50 км/ч.',
+          g5: 'Жилая зона (Erf / woonerf): скорость шага макс. 15 км/ч; пешеходы могут использовать всю ширину дороги.',
+          g11: 'Обязательная велодорожка (Verplicht fietspad): закрыта для механических транспортных средств.',
+        })}
+
+        <h2>2. Обзор категорий знаков RVV 1990 (серии от A до L)</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Серия</th><th>Категория</th><th>Форма и цветовое правило</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>Ограничения скорости</td><td>Круглый белый знак с красной каймой (A1) или синий квадрат рекомендуемой скорости (A4)</td></tr>
+            <tr><td><strong>B</strong></td><td>Приоритет (Voorrang)</td><td>Желтый ромб (B1), перевернутый треугольник (B6), красный восьмиугольник STOP (B7)</td></tr>
+            <tr><td><strong>C</strong></td><td>Запреты движения (Geslotenverklaring)</td><td>Круглый белый знак с красной каймой (или сплошной красный C2), закрывающий проезд</td></tr>
+            <tr><td><strong>D</strong></td><td>Предписывающее направление</td><td>Круглый синий знак с белыми стрелками (круговое движение D1, объезд справа D2)</td></tr>
+            <tr><td><strong>E</strong></td><td>Стоянка и остановка</td><td>Синий круг с красной каймой и полосой/крестом (E1/E2) или синие знаки парковки P (E4–E10)</td></tr>
+            <tr><td><strong>F</strong></td><td>Прочие запреты</td><td>Запрет обгона (F1), преимущество на узком участке (F5/F6), запрет разворота (F7)</td></tr>
+            <tr><td><strong>G</strong></td><td>Дорожные режимы и зоны</td><td>Автомагистраль (G1, 130/100 км/ч), Autoweg (G3, 100 км/ч), жилая зона Erf (G5, 15 км/ч), дорожки</td></tr>
+            <tr><td><strong>H / J / K / L</strong></td><td>Населенный пункт, предупреждения и инфо</td><td>Синий указатель города (H1 = 50 км/ч), красный треугольник (J), навигация и полосы (K/L)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>3. Три классические ловушки со знаками на экзамене CBR</h2>
+        <ul>
+          <li><strong>Ловушка 1 — E1 (стоянка запрещена) против E2 (остановка запрещена):</strong> Под знаком <strong>E1</strong> (одна диагональная черта) <em>разрешено</em> ненадолго остановиться для немедленной посадки/высадки пассажиров или погрузки/разгрузки груза. Под знаком <strong>E2</strong> (красный крест X) добровольная остановка полностью запрещена. Важно: оба знака E1 и E2 действуют только на <em>проезжую часть (rijbaan)</em> с этой стороны, если это не <code>Zone</code> — парковочные карманы при знаке E1 использовать можно! Подробнее см. в <a href="/theory/ru/traffic-rules">Главе 1 (правила RVV)</a>.</li>
+          <li><strong>Ловушка 2 — C1 против C2 + табличка «uitgezonderd fietsers»:</strong> Узкая нидерландская улица со знаком <strong>C2</strong> и белой табличкой с велосипедом означает, что автомобилям въезд с вашей стороны запрещен, <em>и при этом</em> навстречу вам из этой улицы совершенно законно выезжают велосипедисты.</li>
+          <li><strong>Ловушка 3 — Рекомендуемая скорость и электронные табло над трассой:</strong> Круглый белый знак с красной каймой <strong>A1</strong> = обязательный максимум; квадратный синий <strong>A4</strong> = рекомендуемая скорость (adviesnelheid); а скорость на электронном матричном табло над полосой автомагистрали — это немедленный <strong>обязательный по закону максимум</strong>! Проверьте себя в <a href="/deneme-ru">бесплатном тесте CBR</a>.</li>
+        </ul>
+      `,
+      faqs: [
+        ['В чем разница между нидерландскими дорожными знаками E1 и E2?', 'Знак E1 (одна красная диагональная линия) запрещает парковку, но разрешает короткую остановку для посадки/высадки пассажиров или немедленной погрузки/разгрузки. Знак E2 (красный крест X) запрещает как стоянку, так и любую добровольную остановку.'],
+        ['Какое ограничение скорости действует под знаком G5 Erf (жилая зона)?', 'В жилой зоне Erf (знак G5) максимальная разрешенная скорость равна скорости шага — 15 км/ч, а парковка разрешена только на местах, обозначенных буквой P.'],
+        ['Имеют ли дорожные знаки приоритет над обычными правилами проезда перекрестков в Нидерландах?', 'Да. Согласно RVV 1990, дорожные знаки и разметка (например, B6 и «зубы акулы» haaientanden) всегда отменяют стандартные правила равнозначных перекрестков, такие как «помеха справа».'],
+      ],
+    },
+    fa: {
+      title: 'تابلوهای راهنمایی و رانندگی هلند و معانی آن‌ها (RVV 1990): راهنمای تصویری CBR',
+      metaTitle: 'تابلوهای راهنمایی و رانندگی هلند (RVV 1990 به فارسی) — راهنمای آزمون CBR | ExamTheorie',
+      description: 'آموزش تصویری مهم‌ترین تابلوهای راهنمایی و رانندگی هلند (RVV 1990 سری A تا L) برای آزمون تئوری CBR: تابلوهای حق تقدم B1 و B6، تفاوت C1 و C2، پارک و توقف ممنوع E1 و E2، بزرگراه Autoweg و منطقه Erf.',
+      lead: 'تابلوهای راهنمایی و رانندگی در پیوست ۱ آیین‌نامه RVV 1990 هلند در دسته‌های A تا L سازمان‌دهی شده‌اند. تشخیص سریع شکل‌ها، رنگ حاشیه‌ها و تابلوهای مکمل زیرین (onderborden) امتیازهای قطعی و آسانی در آزمون تئوری CBR برایتان به همراه دارد.',
+      body: `
+        <h2>۱. پرتکرارترین ۱۲ تابلوی جاده‌ای هلند در آزمون CBR</h2>
+        <p>این تابلوهای ضروری RVV را به خاطر بسپارید — سازمان CBR مدام آن‌ها را در ترکیب با دوچرخه‌سواران، تراموا و سؤالات سرعت آزمایش می‌کند:</p>
+        ${renderSignsShowcase({
+          a1: 'حداکثر سرعت مجاز (مثلاً ۵۰ کیلومتر بر ساعت در مناطق مسکونی شهری).',
+          b1: 'جاده دارای حق تقدم (Voorrangsweg): رانندگان در این مسیر در تقاطع‌ها حق تقدم دارند.',
+          b6: 'رعایت حق تقدم (Verleen voorrang): به تمام رانندگان در جاده متقاطع راه بدهید.',
+          b7: 'ایست (STOP): توقف کامل الزامی و رعایت حق تقدم رانندگان در جاده متقاطع.',
+          c1: 'مسدود در هر دو جهت برای تمام وسایل نقلیه، سوارکاران و هدایت‌کنندگان حیوانات.',
+          c2: 'خیابان یک‌طرفه: ورود از این جهت ممنوع است (مراقب تابلوی مکمل uitgezonderd fietsers باشید).',
+          d2: 'جهت عبوری اجباری: تمام رانندگان باید از سمتی که پیکان نشان می‌دهد از کنار تابلو عبور کنند.',
+          e1: 'پارک ممنوع (Parkeerverbod) در این سمت سوارهرو — توقف کوتاه برای سوار یا پیاده کردن مسافر مجاز است.',
+          e2: 'توقف و انتظار مطلقاً ممنوع (Verbod stil te staan) — حتی برای ۵ ثانیه جهت پیاده کردن مسافر.',
+          g3: 'بزرگراه (Autoweg): حداکثر سرعت پیش‌فرض ۱۰۰ کیلومتر بر ساعت؛ حداقل توانایی سرعت مجاز ۵۰ کیلومتر بر ساعت.',
+          g5: 'منطقه مسکونی مشترک (Erf / woonerf): حداکثر سرعت گام برداشتن ۱۵ کیلومتر بر ساعت؛ عابران می‌توانند از تمام عرض خیابان استفاده کنند.',
+          g11: 'مسیر اجباری دوچرخه (Verplicht fietspad): ورود وسایل نقلیه موتوری ممنوع است.',
+        })}
+
+        <h2>۲. مرور کلی دسته‌بندی تابلوهای RVV 1990 (سری A تا L)</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>سری</th><th>دسته‌بندی</th><th>قانون شکل ظاهری و رنگ</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>محدودیت‌های سرعت</td><td>تابلوی گرد سفید با حاشیه قرمز (A1) یا مربع آبی سرعت پیشنهادی (A4)</td></tr>
+            <tr><td><strong>B</strong></td><td>حق تقدم (Voorrang)</td><td>لوزی زرد (B1)، مثلث وارونه (B6)، هشت‌ضلعی قرمز STOP (B7)</td></tr>
+            <tr><td><strong>C</strong></td><td>ممنوعیت تردد (Geslotenverklaring)</td><td>تابلوی گرد سفید با حاشیه قرمز (یا قرمز توپر C2) برای ممنوعیت ورود وسایل نقلیه خاص</td></tr>
+            <tr><td><strong>D</strong></td><td>جهت اجباری</td><td>تابلوی گرد آبی با پیکان سفید (مثل میدان D1، عبور از راست D2)</td></tr>
+            <tr><td><strong>E</strong></td><td>پارک و توقف</td><td>دایره آبی با حاشیه قرمز و خط مورب/ضربدر (E1/E2) یا تابلوهای آبی P (E4 تا E10)</td></tr>
+            <tr><td><strong>F</strong></td><td>سایر ممنوعیت‌ها</td><td>سبقت ممنوع (F1)، حق تقدم در باریک‌شدگی مسیر (F5/F6)، دور زدن ممنوع (F7)</td></tr>
+            <tr><td><strong>G</strong></td><td>قوانین ترافیکی و مناطق</td><td>آزادراه (G1، ۱۳۰/۱۰۰ کیلومتر)، بزرگراه Autoweg (G3، ۱۰۰ کیلومتر)، Erf (G5، ۱۵ کیلومتر)، مسیرها</td></tr>
+            <tr><td><strong>H / J / K / L</strong></td><td>منطقه شهری، هشدارها و اطلاعات</td><td>تابلوی آبی نام شهر (H1 = ۵۰ کیلومتر)، مثلث هشدار قرمز (J)، اطلاعات مسیر و خطوط (K/L)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>۳. سه تله کلاسیک تابلوها در آزمون CBR که باید مراقب باشید</h2>
+        <ul>
+          <li><strong>تله ۱ — تفاوت E1 (پارک ممنوع) و E2 (توقف ممنوع):</strong> در تابلوی <strong>E1</strong> (یک خط مورب) <em>می‌توانید</em> برای سوار/پیاده کردن فوری مسافر یا بارگیری/تخلیه بی‌درنگ بار توقف کوتاه کنید. اما در تابلوی <strong>E2</strong> (ضربدر قرمز) هرگونه توقف ارادی کاملاً ممنوع است. همچنین به یاد داشته باشید که E1 و E2 فقط روی <em>سوارهرو (rijbaan)</em> همان سمت اعمال می‌شوند مگر آنکه تابلوی <code>Zone</code> باشند — بنابراین پارک در جاپارک‌های مشخص‌شده کنار خیابان در حضور E1 مجاز است! جزئیات بیشتر را در <a href="/theory/fa/traffic-rules">فصل ۱ (قوانین RVV)</a> بخوانید.</li>
+          <li><strong>تله ۲ — C1 در برابر C2 + زیرتابلوی «uitgezonderd fietsers»:</strong> یک خیابان باریک هلندی با تابلوی <strong>C2</strong> و تابلوی سفید کوچک دوچرخه در زیر آن یعنی خودروها از سمت شما اجازه ورود ندارند، <em>و هم‌زمان</em> دوچرخه‌سواران کاملاً قانونی از جهت مقابل به سمت شما می‌آیند.</li>
+          <li><strong>تله ۳ — سرعت پیشنهادی در برابر سرعت اجباری و تابلوهای الکترونیکی:</strong> دایره سفید با حاشیه قرمز <strong>A1</strong> = حداکثر سرعت قانونی؛ مربع آبی <strong>A4</strong> = سرعت پیشنهادی (adviesnelheid)؛ اما سرعت نمایش‌داده‌شده روی تابلوهای ماتریسی الکترونیکی بالای آزادراه، <strong>حداکثر سرعت قانونی و الزامی فوری</strong> است! مهارت خود را در <a href="/deneme-fa">آزمون آزمایشی رایگان ۵۰ سؤالی</a> بسنجید.</li>
+        </ul>
+      `,
+      faqs: [
+        ['تفاوت تابلوهای E1 و E2 در هلند چیست؟', 'تابلوی E1 (یک خط مورب قرمز) پارک کردن را ممنوع می‌کند اما توقف کوتاه برای سوار/پیاده کردن مسافر یا تخلیه و بارگیری فوری کالا مجاز است. تابلوی E2 (ضربدر قرمز) هم پارک کردن و هم توقف ارادی را ممنوع می‌کند.'],
+        ['حداکثر سرعت مجاز در تابلوی G5 (منطقه Erf / woonerf) چقدر است؟', 'درون منطقه Erf (تابلوی G5)، حداکثر سرعت مجاز برابر با سرعت حرکت پیاده یعنی ۱۵ کیلومتر بر ساعت است و پارک کردن فقط در فضاهای دارای علامت P مجاز می‌باشد.'],
+        ['آیا تابلوهای راهنمایی و رانندگی در هلند بر قوانین عادی حق تقدم اولویت دارند؟', 'بله. طبق آیین‌نامه RVV 1990، تابلوهای راهنمایی و خط‌کشی‌های سطح جاده (مانند B6 و دندانه‌های کوسه haaientanden) همیشه بر قوانین پیش‌فرض تقاطع‌های هم‌ارزش مانند تقدم راست بر چپ مقدم هستند.'],
+      ],
+    },
+    es: {
+      title: 'Señales de Tráfico de Países Bajos y su Significado (RVV 1990): Guía Visual CBR',
+      metaTitle: 'Señales de Tráfico en Países Bajos (RVV 1990) — Guía Visual Examen CBR | ExamTheorie',
+      description: 'Domina las señales de tráfico neerlandesas (RVV 1990 series A–L) para el examen teórico CBR: señales de prioridad (B1, B6), prohibición C1 vs C2, estacionamiento E1 vs E2, Autoweg y Erf.',
+      lead: 'Las señales de tráfico del Anexo 1 del reglamento neerlandés RVV 1990 se organizan en categorías de la A a la L. Reconocer al instante sus formas, colores de borde y paneles complementarios (onderborden) te dará puntos seguros en el examen teórico del CBR.',
+      body: `
+        <h2>1. Las 12 señales neerlandesas más preguntadas en el examen CBR</h2>
+        <p>Memoriza estas señales esenciales del RVV: el CBR las evalúa constantemente combinadas con ciclistas, tranvías y límites de velocidad:</p>
+        ${renderSignsShowcase({
+          a1: 'Velocidad máxima permitida (p. ej., 50 km/h dentro de poblado).',
+          b1: 'Calzada con prioridad (Voorrangsweg): los conductores en esta vía tienen prioridad en las intersecciones.',
+          b6: 'Ceda el paso (Verleen voorrang) a todos los conductores de la vía transversal.',
+          b7: 'STOP: detención completa obligatoria y ceder el paso a los conductores de la vía transversal.',
+          c1: 'Cerrada en AMBOS sentidos para todos los vehículos, jinetes y conductores de animales.',
+          c2: 'Calle de sentido único: entrada prohibida en ESTE sentido (atención al panel uitgezonderd fietsers).',
+          d2: 'Sentido obligatorio: todos los conductores deben pasar la señal por el lado que indica la flecha.',
+          e1: 'Prohibido estacionar (Parkeerverbod) en este lado de la calzada; se permite parar brevemente para subir/bajar pasajeros.',
+          e2: 'Prohibido parar y estacionar (Verbod stil te staan): ni siquiera 5 segundos para dejar a un pasajero.',
+          g3: 'Autoweg (vía rápida): velocidad máxima por defecto 100 km/h; velocidad mínima capaz exigida 50 km/h.',
+          g5: 'Erf (zona residencial / woonerf): velocidad máxima de paso humano 15 km/h; los peatones pueden usar todo el ancho.',
+          g11: 'Carril bici obligatorio (Verplicht fietspad): prohibido para vehículos de motor.',
+        })}
+
+        <h2>2. Resumen de categorías de señales RVV 1990 (Series A a L)</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Serie</th><th>Categoría</th><th>Forma visual y regla de color</th></tr></thead>
+          <tbody>
+            <tr><td><strong>A</strong></td><td>Límites de velocidad</td><td>Círculo blanco con borde rojo (A1) o cuadrado azul de velocidad aconsejada (A4)</td></tr>
+            <tr><td><strong>B</strong></td><td>Prioridad (Voorrang)</td><td>Rombo amarillo (B1), triángulo invertido (B6), octógono rojo STOP (B7)</td></tr>
+            <tr><td><strong>C</strong></td><td>Prohibiciones de entrada (Geslotenverklaring)</td><td>Círculo blanco con borde rojo (o rojo sólido C2) que prohíbe el acceso a vehículos</td></tr>
+            <tr><td><strong>D</strong></td><td>Dirección obligatoria</td><td>Señal circular azul con flechas blancas (p. ej., glorietas D1, pasar por la derecha D2)</td></tr>
+            <tr><td><strong>E</strong></td><td>Estacionamiento y parada</td><td>Círculo azul con borde rojo y franja/aspa (E1/E2) o placas azules P (E4–E10)</td></tr>
+            <tr><td><strong>F</strong></td><td>Otras prohibiciones</td><td>Prohibición de adelantar (F1), prioridad en estrechamientos (F5/F6), prohibido cambio de sentido (F7)</td></tr>
+            <tr><td><strong>G</strong></td><td>Normas de circulación y zonas</td><td>Autopista (G1, 130/100 km/h), Autoweg (G3, 100 km/h), Erf (G5, 15 km/h), sendas</td></tr>
+            <tr><td><strong>H / J / K / L</strong></td><td>Poblado, peligro, dirección e info</td><td>Cartel azul de localidad (H1 = 50 km/h), triángulo rojo de peligro (J), carriles y rutas (K/L)</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>3. Tres trampas clásicas de señales en el examen CBR</h2>
+        <ul>
+          <li><strong>Trampa 1 — E1 (Prohibido estacionar) vs E2 (Prohibido parar):</strong> Con <strong>E1</strong> (una sola barra diagonal), <em>sí puedes</em> detenerte brevemente para que suba o baje un pasajero de inmediato o para cargar/descargar mercancía al instante. Con <strong>E2</strong> (aspa roja X), detenerse voluntariamente está totalmente prohibido. Recuerda además: tanto E1 como E2 se aplican solo a la <em>calzada (rijbaan)</em> de ese lado salvo que sea una <code>Zone</code> — ¡las plazas de aparcamiento delimitadas siguen pudiendo usarse con E1! Repásalo en el <a href="/theory/es/traffic-rules">Capítulo 1 (Normas RVV)</a>.</li>
+          <li><strong>Trampa 2 — C1 vs C2 + subplaca «uitgezonderd fietsers»:</strong> Una calle estrecha neerlandesa con <strong>C2</strong> y una placa blanca debajo con una bicicleta significa que los coches no pueden entrar desde tu lado <em>y</em> que los ciclistas circulan legalmente de frente hacia ti en sentido contrario.</li>
+          <li><strong>Trampa 3 — Velocidad aconsejada frente a velocidad obligatoria y pórticos electrónicos:</strong> El círculo blanco con borde rojo <strong>A1</strong> es velocidad máxima legal; el cuadrado azul <strong>A4</strong> es velocidad aconsejada (adviesnelheid); ¡pero el número mostrado en un panel electrónico matricial sobre la autopista es un <strong>límite máximo legal inmediato</strong>! Practícalo en nuestro <a href="/deneme-es">test gratuito de 50 preguntas</a>.</li>
+        </ul>
+      `,
+      faqs: [
+        ['¿Cuál es la diferencia entre las señales neerlandesas E1 y E2?', 'La señal E1 (una franja diagonal roja) prohíbe estacionar, pero permite parar brevemente para subir/bajar pasajeros o cargar/descargar mercancía de inmediato. La señal E2 (aspa roja X) prohíbe tanto estacionar como parar voluntariamente.'],
+        ['¿Cuál es el límite de velocidad en una señal G5 Erf (woonerf) en Países Bajos?', 'Dentro de un Erf (señal G5), la velocidad máxima es paso de peatón: 15 km/h, y solo se permite estacionar en plazas marcadas con una P.'],
+        ['¿Prevalecen las señales de tráfico sobre las normas generales de prioridad en Países Bajos?', 'Sí. Según el RVV 1990, las señales verticales y marcas viales (como B6 y los dientes de tiburón haaientanden) prevalecen siempre sobre las reglas por defecto de intersecciones sin señalizar, como la prioridad de la derecha.'],
+      ],
+    },
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -710,6 +1058,144 @@ const GUIDES = [
         ['هل للدراجة الهوائية القادمة من اليمين أولوية في تقاطع بدون إشارات؟', 'نعم بالتأكيد، لأن الدراجات الهوائية تُعد قانونياً من فئة السائقين (bestuurders).'],
       ],
     },
+    ru: {
+      title: 'Распознавание опасностей CBR и правила приоритета в Нидерландах (Voorrang)',
+      metaTitle: 'Правила приоритета в Нидерландах (Voorrang) и распознавание опасностей CBR 2026 | ExamTheorie',
+      description: 'Изучите правила проезда перекрестков в Нидерландах (RVV 1990) и анимированные задачи на распознавание опасностей CBR: трамваи, велосипедисты, «зубы акулы» (haaientanden), равнозначные перекрестки, выезды (uitrit) и повороты.',
+      lead: 'Вопросы на очередность проезда (voorrang) и распознавание опасностей составляют примерно половину всех ошибок на теоретическом экзамене CBR. Следуйте этой четкой 4-уровневой правовой иерархии Нидерландов, чтобы безошибочно решать любую задачу на перекрестке.',
+      body: `
+        <h2>1. Четырехуровневая иерархия дорожного движения в Нидерландах</h2>
+        <p>Когда на перекрестке пересекается сразу несколько правил, нидерландское законодательство применяет строгий порядок сверху вниз:</p>
+        <ol>
+          <li><strong>Указания уполномоченных регулировщиков</strong> (полиция, verkeersregelaars) — отменяют всё, даже красный сигнал светофора.</li>
+          <li><strong>Работающие светофоры</strong> — отменяют дорожные знаки приоритета и «зубы акулы» на этом же перекрестке.</li>
+          <li><strong>Дорожные знаки и разметка</strong> (например, B1, B6, STOP, <em>haaientanden</em>) — отменяют стандартные правила равнозначных перекрестков.</li>
+          <li><strong>Общие правила дорожного движения (<a href="/theory/ru/traffic-rules">RVV 1990</a>)</strong> — действуют при отсутствии регулировщиков, работающих светофоров и знаков приоритета.</li>
+        </ol>
+
+        <h2>2. Равнозначные перекрестки (Gelijkwaardige Kruispunten) и трамваи</h2>
+        <p>На асфальтированном перекрестке без знаков приоритета, светофоров и разметки «зубы акулы»:</p>
+        <ul>
+          <li><strong>Водители справа имеют преимущество</strong> (<em>rechts gaat voor</em>) — помните, что <strong>велосипедисты, водители мопедов и всадники ЯВЛЯЮТСЯ водителями (bestuurders)</strong> по закону Нидерландов! Пешеходы водителями <em>не</em> считаются, поэтому на равнозначном перекрестке пешеход, переходящий боковую улицу справа от вас, не получает приоритета по правилу «помехи справа».</li>
+          <li><strong>Исключение для трамвая:</strong> На равнозначном перекрестке <strong>трамвай ВСЕГДА имеет преимущество</strong> — независимо от того, приближается он слева или справа, и даже если трамвай поворачивает! Трамвай уступает дорогу только при красном сигнале светофора, знаках B6, STOP или разметке <em>haaientanden</em>.</li>
+          <li><strong>Грунтовые дороги:</strong> Водители, выезжающие с грунтовой/лесной дороги без покрытия (<em>onverharde weg</em>), обязаны уступить всем водителям на дороге с твердым покрытием.</li>
+        </ul>
+
+        <h2>3. Правила поворота: «Прямо по той же дороге — первым» (Rechtdoor op dezelfde weg gaat voor)</h2>
+        <div class="callout"><strong>Золотое правило поворота (ст. 18 RVV):</strong> Водители, поворачивающие налево или направо, обязаны уступить дорогу <strong>ВСЕМ участникам движения, продолжающим движение прямо по той же дороге</strong> — <em>включая пешеходов и велосипедистов!</em></div>
+        <ul>
+          <li>Если велосипедист едет прямо по велополосе справа от вас, пока вы поворачиваете направо, велосипедист проезжает первым (всегда проверяйте правое зеркало и слепую зону через правое плечо — <em>dode hoek</em>).</li>
+          <li>Если пешеход идет прямо по тротуару вдоль главной дороги, по которой вы сейчас едете, и пересекает боковую улицу, куда вы поворачиваете, <strong>пешеход идет первым</strong>, так как вы оба двигались по одной и той же дороге.</li>
+          <li><strong>Короткий поворот перед длинным (Korte bocht gaat voor lange bocht):</strong> Если вы поворачиваете направо, а встречный автомобиль поворачивает налево на ту же улицу, вы проезжаете первым.</li>
+        </ul>
+
+        <h2>4. Выезды со двора / с непрерывным тротуаром (Uitrit) и особые маневры (ст. 54 RVV)</h2>
+        <p>Выполняя особый маневр (<em>bijzondere verrichting</em>) — выезд с конструкции <strong>uitrit</strong> (выезд через непрерывный приподнятый тротуар и скошенные бордюры), начало движения от обочины, движение задним ходом, разворот или перестроение, — вы обязаны уступить дорогу <strong>ВСЕМ остальным участникам движения, включая пешеходов</strong>.</p>
+
+        <h2>5. Выигрышная стратегия для анимированных видео распознавания опасностей CBR</h2>
+        <ul>
+          <li><strong>Сигналы к немедленному торможению:</strong> Дети или мячи возле припаркованных фургонов, закрытые перекрестки с ограниченной видимостью, велосипедисты, объезжающие препятствия или открывающиеся двери авто, а также стоп-сигналы впереди на мокром или скользком асфальте.</li>
+          <li><strong>Отпускание педали газа (прогнозирование):</strong> Приближение к слепому повороту, автобусной остановке с выходящими пассажирами, желтому сигналу светофора или сужающимся жилым улицам. Потренируйте такие сюжеты в <a href="/deneme-ru">пробном экзамене из 50 вопросов</a>.</li>
+        </ul>
+      `,
+      faqs: [
+        ['Всегда ли трамвай имеет преимущество в Нидерландах?', 'На равнозначном перекрестке без знаков и разметки — да, трамвай всегда пользуется приоритетом и слева, и справа, даже при повороте. Однако если перед трамваем нанесены «зубы акулы» (haaientanden), установлен знак B6/STOP или горит красный свет, трамвай обязан уступить.'],
+        ['Кому нужно уступить дорогу при выезде с прилегающей территории / конструкции uitrit?', 'Согласно статье 54 RVV, при выезде через uitrit (узнаваемому по непрерывному тротуару и скошенному бордюру) вы обязаны уступить дорогу ВСЕМ участникам движения — включая пешеходов на тротуаре.'],
+        ['Имеют ли велосипедисты справа преимущество на нерегулируемом перекрестке в Нидерландах?', 'Да! По нидерландскому закону велосипедисты относятся к категории водителей (bestuurders), поэтому на равнозначном перекрестке велосипедисты, приближающиеся справа, имеют приоритет.'],
+      ],
+    },
+    fa: {
+      title: 'آموزش تشخیص خطر CBR و قوانین حق تقدم در هلند (Voorrang)',
+      metaTitle: 'قوانین حق تقدم در هلند (Voorrang) و تشخیص خطر آزمون CBR ۲۰۲۶ | ExamTheorie',
+      description: 'تسلط کامل بر قوانین حق تقدم تقاطع‌ها در هلند (RVV 1990) و ویدیوهای تشخیص خطر CBR: تراموا، دوچرخه‌سواران، دندانه‌های کوسه (haaientanden)، تقاطع‌های هم‌ارزش، خروجی (uitrit) و قوانین گردش.',
+      lead: 'سؤالات حق تقدم (voorrang) و تشخیص خطر حدود نیمی از اشتباهات داوطلبان در آزمون تئوری خودرو CBR را تشکیل می‌دهند. با دنبال کردن این سلسله‌مراتب قانونی ۴ مرحله‌ای هلند، هر سؤال تقاطع را با دقت کامل حل کنید.',
+      body: `
+        <h2>۱. سلسله‌مراتب ۴ سطحی ترافیک در قانون هلند</h2>
+        <p>هرگاه در یک تقاطع چند قانون در تضاد به نظر برسند، قانون هلند این ترتیب دقیق را از بالا به پایین اعمال می‌کند:</p>
+        <ol>
+          <li><strong>فرمان مأموران مجاز کنترل ترافیک</strong> (پلیس، verkeersregelaars) — بر همه‌چیز حتی چراغ قرمز اولویت دارد.</li>
+          <li><strong>چراغ‌های راهنمایی فعال</strong> — بر تابلوهای حق تقدم و دندانه‌های کوسه در همان تقاطع مقدم هستند.</li>
+          <li><strong>تابلوهای راهنمایی و خط‌کشی‌های سطح راه</strong> (مانند B1، B6، STOP و <em>haaientanden</em>) — بر قوانین پیش‌فرض تقاطع هم‌ارزش اولویت دارند.</li>
+          <li><strong>قوانین عمومی راهنمایی و رانندگی (<a href="/theory/fa/traffic-rules">RVV 1990</a>)</strong> — زمانی اجرا می‌شوند که مأمور، چراغ فعال یا تابلوی حق تقدمی وجود نداشته باشد.</li>
+        </ol>
+
+        <h2>۲. تقاطع‌های هم‌ارزش (Gelijkwaardige Kruispunten) و تراموا</h2>
+        <p>در یک تقاطع آسفالت‌شده بدون تابلوی حق تقدم، چراغ راهنمایی یا دندانه‌های کوسه:</p>
+        <ul>
+          <li><strong>رانندگان از سمت راست حق تقدم دارند</strong> (<em>rechts gaat voor</em>) — به یاد داشته باشید که در قانون هلند، <strong>دوچرخه‌سواران، موتورسواران گازی (moped) و سوارکاران همگی «راننده» (bestuurders) محسوب می‌شوند!</strong> عابران پیاده راننده <em>نیستند</em>؛ بنابراین در تقاطع هم‌ارزش، عابر پیاده‌ای که از خیابان فرعی سمت راست شما عرض خیابان را رد می‌کند تحت قانون «تقدم راست» حق تقدم نمی‌گیرد.</li>
+          <li><strong>استثنای تراموا:</strong> در تقاطع هم‌ارزش، <strong>تراموا همیشه حق تقدم دارد</strong> — چه از چپ بیاید چه از راست، و حتی اگر در حال گردش باشد! تراموا تنها زمانی باید راه بدهد که با چراغ قرمز، تابلوی B6، تابلوی STOP یا <em>haaientanden</em> روبه‌رو باشد.</li>
+          <li><strong>جاده‌های خاکی و غیرآسفالت:</strong> رانندگانی که از جاده خاکی یا جنگلی (<em>onverharde weg</em>) وارد می‌شوند باید به تمام رانندگان در جاده آسفالت راه بدهند.</li>
+        </ul>
+
+        <h2>۳. قوانین گردش: «حرکت مستقیم در همان جاده حق تقدم دارد»</h2>
+        <div class="callout"><strong>قانون طلایی گردش (ماده ۱۸ RVV):</strong> رانندگانی که به چپ یا راست می‌پیچند باید به <strong>تمامی کاربران راه که در همان جاده مستقیم ادامه مسیر می‌دهند</strong> — <em>از جمله عابران پیاده و دوچرخه‌سواران</em> — راه بدهند!</div>
+        <ul>
+          <li>اگر هنگام گردش به راست شما، دوچرخه‌سواری در خط دوچرخه کنارتان مستقیم حرکت کند، دوچرخه‌سوار اول عبور می‌کند (همیشه آینه راست و نقطه کور شانه راست — <em>dode hoek</em> — را چک کنید).</li>
+          <li>اگر عابر پیاده‌ای در پیاده‌روی جاده اصلیِ فعلی شما مستقیم راه برود و از دهانه خیابان فرعی که قصد پیچیدن به آن را دارید عبور کند، <strong>عابر پیاده حق تقدم دارد</strong> چون هر دو در یک مسیر بوده‌اید.</li>
+          <li><strong>گردش کوتاه مقدم بر گردش بلند (Korte bocht gaat voor lange bocht):</strong> اگر شما به راست بپیچید و خودروی روبه‌رو به چپ وارد همان خیابان شود، حق تقدم با شماست.</li>
+        </ul>
+
+        <h2>۴. خروجی‌ها (Uitrit) و مانورهای ویژه (Bijzondere Verrichtingen — ماده ۵۴)</h2>
+        <p>هنگام انجام یک مانور ویژه — خروج از <strong>uitrit</strong> (خروجی پارکینگ یا کوچه با پیاده‌روی ممتد و جدول شیب‌دار)، حرکت از کنار جدول، دنده‌عقب رفتن، دور زدن یا تغییر لاین — باید به <strong>تمام کاربران دیگر راه از جمله عابران پیاده</strong> حق تقدم بدهید.</p>
+
+        <h2>۵. استراتژی برنده برای سؤالات انیمیشنی تشخیص خطر CBR</h2>
+        <ul>
+          <li><strong>موارد نیازمند ترمز فوری:</strong> کودکان یا توپ در کنار ون‌های پارک‌شده، تقاطع‌های کور بدون دید کافی برای توقف، انحراف ناگهانی دوچرخه‌سواران به خاطر مانع یا باز شدن درِ خودرو، و روشن شدن چراغ ترمز خودروهای جلویی در آسفالت خیس یا یخ‌زده.</li>
+          <li><strong>رها کردن پدال گاز (پیش‌بینی خطر):</strong> نزدیک شدن به پیچ کور، ایستگاه شلوغ اتوبوس که احتمال عبور مسافران وجود دارد، چراغ زرد راهنمایی یا خیابان‌های مسکونی باریک‌شونده. این سناریوها را در <a href="/deneme-fa">آزمون رایگان ۵۰ سؤالی CBR</a> تمرین کنید.</li>
+        </ul>
+      `,
+      faqs: [
+        ['آیا تراموا در هلند همیشه حق تقدم دارد؟', 'در یک تقاطع هم‌ارزش بدون تابلو یا خط‌کشی، بله — تراموا چه از چپ و چه از راست بیاید و حتی هنگام پیچیدن همیشه حق تقدم دارد. اما اگر جلوی تراموا دندانه‌های کوسه (haaientanden)، تابلوی B6/STOP یا چراغ قرمز باشد، باید راه بدهد.'],
+        ['هنگام خروج از یک خروجی (uitrit) باید به چه کسانی راه بدهیم؟', 'طبق ماده ۵۴ آیین‌نامه RVV، هنگام خروج از یک uitrit (قابل تشخیص از پیاده‌روی پیوسته و جدول‌های شیب‌دار)، باید به تمامی کاربران راه — از جمله عابران پیاده روی پیاده‌رو — حق تقدم بدهید.'],
+        ['آیا دوچرخه‌سوارانِ سمت راست در تقاطع بدون علامت هلند حق تقدم دارند؟', 'بله! طبق قانون هلند دوچرخه‌سواران جزو رانندگان (bestuurders) دسته‌بندی می‌شوند، بنابراین در تقاطع هم‌ارزش اگر از سمت راست شما بیایند حق تقدم دارند.'],
+      ],
+    },
+    es: {
+      title: 'Percepción de Peligros CBR y Normas de Prioridad en Países Bajos (Voorrang)',
+      metaTitle: 'Normas de Prioridad en Países Bajos (Voorrang) y Percepción de Peligros CBR 2026 | ExamTheorie',
+      description: 'Domina las reglas de prioridad en intersecciones neerlandesas (RVV 1990) y la percepción animada de peligros del CBR: tranvías, ciclistas, dientes de tiburón (haaientanden), cruces iguales, salidas (uitrit) y giros.',
+      lead: 'Las preguntas de prioridad (voorrang) y percepción de peligros concentran cerca de la mitad de los fallos del examen teórico de coche del CBR. Aplica esta jerarquía legal neerlandesa exacta de 4 niveles para resolver sin errores cualquier cruce.',
+      body: `
+        <h2>1. La jerarquía de tráfico neerlandesa de 4 niveles</h2>
+        <p>Siempre que varias normas parezcan entrar en conflicto en una intersección, la legislación neerlandesa aplica este orden estricto de arriba abajo:</p>
+        <ol>
+          <li><strong>Indicaciones de agentes y controladores autorizados</strong> (policía, verkeersregelaars): prevalecen sobre todo, incluso sobre semáforos en rojo.</li>
+          <li><strong>Semáforos funcionando:</strong> prevalecen sobre las señales verticales de prioridad y los dientes de tiburón situados en ese cruce.</li>
+          <li><strong>Señales verticales y marcas viales</strong> (p. ej., B1, B6, STOP, <em>haaientanden</em>): prevalecen sobre las normas generales de cruces sin señalizar.</li>
+          <li><strong>Normas generales de circulación (<a href="/theory/es/traffic-rules">RVV 1990</a>):</strong> se aplican cuando no hay agentes, semáforos operativos ni señales de prioridad.</li>
+        </ol>
+
+        <h2>2. Intersecciones sin señalizar (Gelijkwaardige Kruispunten) y tranvías</h2>
+        <p>En una intersección pavimentada sin señales de prioridad, semáforos ni dientes de tiburón:</p>
+        <ul>
+          <li><strong>Los conductores que vienen por la derecha tienen prioridad</strong> (<em>rechts gaat voor</em>): recuerda que <strong>los ciclistas, conductores de ciclomotor y jinetes SON conductores (bestuurders)</strong> según la ley neerlandesa. Los peatones <em>no</em> son conductores, por lo que en un cruce sin señalizar un peatón que cruza una calle lateral desde tu derecha no tiene prioridad por la regla de la derecha.</li>
+          <li><strong>La excepción del tranvía:</strong> En una intersección equitativa sin señales, <strong>el tranvía SIEMPRE tiene prioridad</strong>, tanto si se acerca por la izquierda como por la derecha, ¡e incluso si el tranvía gira! El tranvía solo cede el paso ante un semáforo en rojo, señal B6, señal de STOP o <em>haaientanden</em>.</li>
+          <li><strong>Caminos sin pavimentar:</strong> Los conductores que salen de un camino de tierra o forestal (<em>onverharde weg</em>) deben ceder el paso a todos los conductores de una vía pavimentada.</li>
+        </ul>
+
+        <h2>3. Reglas de giro: «El que sigue recto en la misma vía tiene prioridad»</h2>
+        <div class="callout"><strong>Regla de oro al girar (Art. 18 RVV):</strong> Los conductores que giran a la izquierda o a la derecha deben ceder el paso a <strong>TODOS los usuarios de la vía que continúan recto por la misma vía</strong>, <em>¡incluidos peatones y ciclistas!</em></div>
+        <ul>
+          <li>Si un ciclista sigue recto por el carril bici a tu derecha mientras tú giras a la derecha, pasa primero el ciclista (comprueba siempre el retrovisor derecho y el ángulo muerto sobre el hombro derecho — <em>dode hoek</em>).</li>
+          <li>Si un peatón camina recto por la acera de la calle principal por la que circulas y cruza la bocacalle hacia la que vas a girar, <strong>el peatón pasa primero</strong> porque ambos vais por la misma vía.</li>
+          <li><strong>Giro corto antes que giro largo (Korte bocht gaat voor lange bocht):</strong> Si giras a la derecha y un vehículo en sentido contrario gira a la izquierda hacia la misma calle, tú pasas primero.</li>
+        </ul>
+
+        <h2>4. Salidas de vado/acera continua (Uitrit) y maniobras especiales (Art. 54 RVV)</h2>
+        <p>Al realizar una maniobra especial (<em>bijzondere verrichting</em>) — salir de un <strong>uitrit</strong> (salida de garaje o calle con acera elevada continua y bordillos rebajados), incorporarse desde el bordillo, dar marcha atrás, cambiar el sentido de la marcha o cambiar de carril — debes ceder el paso a <strong>TODOS los demás usuarios de la vía, incluidos los peatones</strong>.</p>
+
+        <h2>5. Estrategia ganadora para los vídeos animados de percepción de peligros del CBR</h2>
+        <ul>
+          <li><strong>Motivos para frenar de inmediato:</strong> Niños o balones junto a furgonetas aparcadas, cruces sin visibilidad suficiente de detención, ciclistas esquivando obstáculos o puertas de coche que se abren, o luces de freno delante sobre asfalto mojado o helado.</li>
+          <li><strong>Soltar el acelerador (anticipación):</strong> Al acercarte a una curva sin visibilidad, una parada de autobús concurrida donde puedan cruzar pasajeros, un semáforo en ámbar o calles residenciales que se estrechan. Ponlo en práctica en el <a href="/deneme-es">simulacro gratuito del CBR</a>.</li>
+        </ul>
+      `,
+      faqs: [
+        ['¿Tiene siempre prioridad el tranvía en Países Bajos?', 'En una intersección sin señales ni marcas viales, sí: el tranvía tiene prioridad siempre, venga por la izquierda o por la derecha e incluso al girar. Sin embargo, si el tranvía tiene delante dientes de tiburón (haaientanden), una señal B6/STOP o un semáforo en rojo, debe ceder el paso.'],
+        ['¿A quién debes ceder el paso al salir de un uitrit (salida con acera continua)?', 'Según el artículo 54 del RVV, al salir de un uitrit (reconocible por la acera continua y los bordillos inclinados) debes ceder el paso a TODOS los usuarios de la vía, incluidos los peatones que caminan por la acera.'],
+        ['¿Tienen prioridad los ciclistas por la derecha en un cruce sin señalizar en Países Bajos?', '¡Sí! En la legislación neerlandesa los ciclistas están clasificados como conductores (bestuurders), por lo que en una intersección equitativa tienen prioridad cuando se aproximan por tu derecha.'],
+      ],
+    },
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -860,6 +1346,114 @@ const GUIDES = [
         ['ماذا أفعل بعد انتهاء الـ 185 يوماً إذا لم أكن مشمولاً بقاعدة 30%؟', 'يجب التوقف عن القيادة بالرخصة الأجنبية واجتياز امتحان التيوري CBR (50 سؤالاً) ثم الامتحان العملي للحصول على الرخصة الهولندية.'],
       ],
     },
+    ru: {
+      title: 'Обмен иностранных водительских прав в Нидерландах (RDW, 185 дней) или сдача экзамена CBR',
+      metaTitle: 'Обмен иностранных прав в Нидерландах (RDW 185 дней и 30% Ruling) | ExamTheorie',
+      description: 'Переехали в Нидерланды с иностранными водительскими правами? Разбираем правило 185 дней RDW, список стран ЕС и вне ЕС, исключение по налоговому рулингу 30% и пошаговую сдачу экзамена CBR.',
+      lead: 'Сможете ли вы ездить в Нидерландах по своим иностранным правам или обменять их через муниципалитет (RDW) без экзаменов, зависит от страны выдачи удостоверения и наличия налогового статуса 30% ruling. Вот точные правила, чтобы не оказаться за рулем без страховки после истечения 185 дней.',
+      body: `
+        <h2>1. Правило 185 дней RDW для водительских удостоверений стран вне ЕС</h2>
+        <p>Если вы переезжаете в Нидерланды и регистрируетесь в муниципалитете (BRP), имея действующее водительское удостоверение, выданное <strong>за пределами ЕС/ЕАСТ</strong> (например, в Украине, Казахстане, Узбекистане, Грузии, Молдове, Турции, США, Израиле и др.), вы имеете право управлять автомобилем в Нидерландах по этим правам <strong>максимум 185 дней (около 6 месяцев)</strong> с даты муниципальной прописки.</p>
+        <div class="callout"><strong>Критическое предупреждение:</strong> По истечении этих 185 дней вождение по необменянным правам страны вне ЕС является незаконным и лишает вас страхового покрытия. Учтите также: пока RDW рассматривает заявление на обмен, оригинал ваших прав отправляется в RDW, и садиться за руль нельзя до получения нидерландской пластиковой карточки.</div>
+
+        <h2>2. Кто может обменять права напрямую в RDW без сдачи экзаменов CBR?</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Ваша ситуация</th><th>Возможен ли прямой обмен?</th><th>Что необходимо сделать</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Права стран ЕС / ЕАСТ / ЕЭЗ</strong></td><td><strong>Да</strong> (действительны до 15 лет с даты выдачи)</td><td>Ездить до истечения срока или обменять в любое время в Gemeente</td></tr>
+            <tr><td><strong>Обладатель налогового статуса 30% Ruling (Expat Scheme)</strong></td><td><strong>Да — из ЛЮБОЙ страны мира</strong></td><td>Подать заявление в Gemeente с действующим решением <em>Beschikking 30%-regeling</em> + медицинской декларацией CBR <em>Gezondheidsverklaring</em></td></tr>
+            <tr><td><strong>Отдельные страны с двусторонним соглашением RDW</strong> (напр., Великобритания, Канада, Япония, Тайвань, Израиль, Сингапур — проверьте категории на RDW)</td><td><strong>Да</strong> (для определенных категорий)</td><td>Подать заявление в Gemeente + CBR <em>Gezondheidsverklaring</em></td></tr>
+            <tr><td><strong>Все остальные права стран вне ЕС без 30% Ruling</strong> (напр., страны СНГ, Турция, США, Индия и др.)</td><td><strong>Нет прямого обмена</strong></td><td>Необходимо сдать <strong>теоретический экзамен CBR</strong> + <strong>практический экзамен CBR</strong></td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>3. Пошаговый план, если вам нужно сдавать экзамены CBR</h2>
+        <p>Хорошая новость: поскольку вы уже умеете водить автомобиль, получение нидерландских прав <em>Rijbewijs B</em> проходит намного быстрее и дешевле, чем обучение с нуля — обычно достаточно нескольких адаптационных уроков в местной автошколе (<em>rijschool</em>), чтобы отработать нидерландскую технику осмотра зеркал, слепых зон и приоритета велосипедистов!</p>
+        <ol>
+          <li><strong>Начните подготовку к теории CBR сразу же:</strong> Не ждите 180-го дня! Изучите <a href="/theory/ru/traffic-rules">правила приоритета RVV</a> и пройдите <a href="/deneme-ru">реалистичные пробные тесты CBR</a> на ExamTheorie на русском, английском или нидерландском языке.</li>
+          <li><strong>Запишитесь на теоретический экзамен через Mijn CBR (DigiD):</strong> Стандартный нидерландский (€50,50) или английский (€57,00).</li>
+          <li><strong>Подайте декларацию здоровья CBR (Gezondheidsverklaring):</strong> Она обязательна до того, как автошкола сможет забронировать практический экзамен.</li>
+          <li><strong>Авторизуйте автошколу (Rijschool) и сдайте практику:</strong> После успешной сдачи получите нидерландское водительское удостоверение в муниципалитете в течение 5 рабочих дней!</li>
+        </ol>
+      `,
+      faqs: [
+        ['Сколько времени можно ездить в Нидерландах с правами страны вне ЕС?', 'Вы можете управлять автомобилем до 185 дней с даты вашей первой регистрации в качестве резидента в муниципалитете Нидерландов (BRP), при условии что иностранное удостоверение остается действительным.'],
+        ['Могу ли я обменять права страны вне ЕС при наличии 30% ruling?', 'Да. При наличии действующего решения налоговой службы (Belastingdienst) о предоставлении 30% ruling (Beschikking bewijsregel) и медицинской декларации CBR Gezondheidsverklaring, RDW позволяет обменять действующие права любой страны без сдачи экзаменов CBR.'],
+        ['Что делать, если моей страны нет в списке RDW и у меня нет 30% ruling?', 'Прямой обмен невозможен: необходимо сдать стандартный теоретический экзамен CBR на легковой автомобиль (50 вопросов) и практический экзамен по вождению через нидерландскую автошколу.'],
+      ],
+    },
+    fa: {
+      title: 'تعویض گواهینامه رانندگی خارجی در هلند (قانون ۱۸۵ روز RDW) در برابر آزمون CBR',
+      metaTitle: 'تعویض گواهینامه رانندگی خارجی و ایرانی در هلند (RDW 185 روز و قانون 30%) | ExamTheorie',
+      description: 'با گواهینامه خارجی به هلند مهاجرت کرده‌اید؟ آشنایی کامل با قانون ۱۸۵ روز RDW، فهرست کشورهای مجاز تعویض، استثنای قانون مالیاتی ۳۰٪ (30% ruling) و مراحل گام‌به‌گام آزمون CBR.',
+      lead: 'اینکه بتوانید با گواهینامه خارجی خود در هلند رانندگی کنید یا آن را در شهرداری (RDW) بدون آزمون تعویض نمایید، به کشور صادرکننده گواهینامه و داشتن معافیت مالیاتی ۳۰٪ (30% ruling) بستگی دارد. در ادامه قوانین دقیق را می‌خوانید تا پس از مهلت ۱۸۵ روزه هرگز بدون بیمه رانندگی نکنید.',
+      body: `
+        <h2>۱. قانون ۱۸۵ روزه RDW برای گواهینامه‌های خارج از اتحادیه اروپا</h2>
+        <p>اگر به هلند نقل مکان کنید و با در دست داشتن گواهینامه رانندگی معتبر صادرشده از <strong>خارج از اتحادیه اروپا/EFTA</strong> (مانند ایران، افغانستان، ترکیه، آمریکا، کانادا، هند، امارات و غیره) در شهرداری هلند (BRP) ثبت‌نام نمایید، حداکثر به مدت <strong>۱۸۵ روز (حدود ۶ ماه)</strong> از تاریخ ثبت سکونت در شهرداری مجاز به رانندگی با آن گواهینامه در هلند هستید.</p>
+        <div class="callout"><strong>هشدار بسیار مهم:</strong> پس از پایان این ۱۸۵ روز، رانندگی با گواهینامه تعویض‌نشده غیراروپایی غیرقانونی است و پوشش بیمه خودرو را باطل می‌کند. همچنین توجه داشته باشید که در طول بررسی پرونده تعویض در RDW، اصل گواهینامه شما به RDW ارسال می‌شود و تا زمان تحویل گرفتن کارت گواهینامه هلندی اجازه رانندگی ندارید.</div>
+
+        <h2>۲. چه کسانی می‌توانند مستقیماً در RDW بدون آزمون CBR گواهینامه را تعویض کنند؟</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>وضعیت شما</th><th>آیا تعویض مستقیم ممکن است؟</th><th>اقدام لازم</th></tr></thead>
+          <tbody>
+            <tr><td><strong>گواهینامه کشورهای اتحادیه اروپا / EFTA / EEA</strong></td><td><strong>بله</strong> (معتبر تا ۱۵ سال از تاریخ صدور)</td><td>رانندگی تا پایان اعتبار یا تعویض در هر زمان از طریق شهرداری (Gemeente)</td></tr>
+            <tr><td><strong>دارندگان قانون مالیاتی ۳۰٪ (30% Tax Ruling / Expat Scheme)</strong></td><td><strong>بله — از هر کشوری (شامل ایران)</strong></td><td>درخواست در شهرداری با برگه تاییدیه معتبر <em>Beschikking 30%-regeling</em> + فرم سلامت CBR (<em>Gezondheidsverklaring</em>)</td></tr>
+            <tr><td><strong>کشورهای خاص دارای توافق دوجانبه با RDW</strong> (مانند بریتانیا، کانادا، ژاپن، تایوان، اسرائیل، سنگاپور — بسته به پایه گواهینامه)</td><td><strong>بله</strong> (پایه‌های مشخص)</td><td>درخواست در شهرداری + فرم سلامت CBR (<em>Gezondheidsverklaring</em>)</td></tr>
+            <tr><td><strong>سایر گواهینامه‌های غیراروپایی بدون قانون ۳۰٪</strong> (مانند ایران، افغانستان، ترکیه، آمریکا و غیره)</td><td><strong>خیر (بدون تعویض مستقیم)</strong></td><td>الزام به قبولی در <strong>آزمون تئوری خودرو CBR</strong> + <strong>آزمون عملی شهری CBR</strong></td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>۳. نقشه راه گام‌به‌گام در صورت نیاز به شرکت در آزمون‌های CBR</h2>
+        <p>خبر خوب این است که چون از قبل رانندگی بلدید، گرفتن گواهینامه هلندی <em>Rijbewijs B</em> بسیار سریع‌تر و کم‌هزینه‌تر از افراد مبتدی است — اغلب تنها چند جلسه تمرینی کوتاه با یک آموزشگاه رانندگی محلی (<em>rijschool</em>) برای یادگیری عادت‌های نگاه کردن به آینه‌ها، نقطه کور و حق تقدم دوچرخه‌سواران در هلند کافی است!</p>
+        <ol>
+          <li><strong>آمادگی برای آزمون تئوری CBR را فوراً شروع کنید:</strong> منتظر روز ۱۸۰ام نمانید! از ExamTheorie برای یادگیری <a href="/theory/fa/traffic-rules">قوانین حق تقدم RVV</a> و حل <a href="/deneme-fa">آزمون‌های آزمایشی ۵۰ سؤالی CBR</a> به زبان فارسی، انگلیسی یا هلندی استفاده کنید.</li>
+          <li><strong>نوبت آزمون تئوری را از طریق Mijn CBR (با DigiD) رزرو کنید:</strong> آزمون استاندارد هلندی (۵۰.۵۰ یورو) یا انگلیسی (۵۷.۰۰ یورو).</li>
+          <li><strong>اظهارنامه سلامت CBR (Gezondheidsverklaring) را ثبت کنید:</strong> پیش از آنکه آموزشگاه بتواند آزمون عملی شما را رزرو کند الزامی است.</li>
+          <li><strong>معرفی آموزشگاه رانندگی (Rijschool) و قبولی در آزمون عملی:</strong> پس از قبولی، ظرف ۵ روز کاری کارت گواهینامه هلندی خود را از شهرداری تحویل بگیرید!</li>
+        </ol>
+      `,
+      faqs: [
+        ['با گواهینامه غیراروپایی (مثلاً ایرانی) تا چه مدت می‌توانم در هلند رانندگی کنم؟', 'حداکثر تا ۱۸۵ روز از اولین تاریخ ثبت‌نام به‌عنوان مقیم در شهرداری هلند (BRP)، به شرط آنکه گواهینامه خارجی شما همچنان اعتبار داشته باشد.'],
+        ['آیا با داشتن قانون مالیاتی ۳۰٪ (30% ruling) می‌توانم گواهینامه غیراروپایی خود را تعویض کنم؟', 'بله. با داشتن نامه رسمی تاییدیه 30% ruling از اداره مالیات هلند (Belastingdienst) و فرم سلامت CBR (Gezondheidsverklaring)، سازمان RDW اجازه می‌دهد گواهینامه معتبر هر کشوری را بدون نیاز به آزمون CBR تعویض کنید.'],
+        ['اگر کشور من در فهرست RDW نباشد و مشمول قانون ۳۰٪ هم نباشم چه باید بکنم؟', 'امکان تعویض مستقیم گواهینامه وجود ندارد؛ باید در آزمون استاندارد تئوری خودرو CBR (۵۰ سؤال) و آزمون عملی رانندگی CBR از طریق یک آموزشگاه رانندگی هلندی قبول شوید.'],
+      ],
+    },
+    es: {
+      title: 'Canjear un Permiso de Conducir Extranjero en Países Bajos (RDW) vs Hacer el Examen CBR',
+      metaTitle: 'Canje de Permiso de Conducir Extranjero en Países Bajos (RDW 185 Días y 30% Ruling) | ExamTheorie',
+      description: '¿Te mudas a Países Bajos con un carnet de conducir extranjero? Entiende la regla de los 185 días de la RDW, países UE vs no UE, la excepción fiscal del 30% ruling y cómo sacar el carnet en el CBR.',
+      lead: 'Poder conducir en Países Bajos con tu permiso extranjero o canjearlo directamente en el ayuntamiento (RDW) depende del país donde fue expedido y de si cuentas con el régimen fiscal del 30% (30% ruling). Aquí tienes las normas exactas para no circular nunca sin seguro tras el límite de 185 días.',
+      body: `
+        <h2>1. La regla de los 185 días de la RDW para permisos de fuera de la UE</h2>
+        <p>Si te mudas a Países Bajos y te empadronas en un ayuntamiento neerlandés (BRP) con un permiso de conducir vigente expedido <strong>fuera de la UE/AELC</strong> (por ejemplo, de Argentina, Colombia, México, Chile, Perú, Venezuela, EE. UU., Reino Unido, Turquía, etc.), puedes conducir en Países Bajos con ese carnet durante <strong>un máximo de 185 días (aprox. 6 meses)</strong> desde la fecha de registro municipal.</p>
+        <div class="callout"><strong>Aviso crítico:</strong> Una vez transcurridos esos 185 días, conducir con un permiso extracomunitario no canjeado es ilegal y te deja sin cobertura de seguro. Ten en cuenta también que mientras la RDW tramita una solicitud de canje, tu carnet original se envía a la RDW y no puedes conducir hasta recoger tu tarjeta neerlandesa.</div>
+
+        <h2>2. ¿Quién puede canjear directamente en la RDW sin hacer examen del CBR?</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Tu situación</th><th>¿Canje directo posible?</th><th>Qué debes hacer</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Permiso de la UE / AELC / EEE (incluida España)</strong></td><td><strong>Sí</strong> (válido hasta 15 años desde su expedición)</td><td>Conducir hasta su caducidad o canjearlo en cualquier momento en tu Gemeente</td></tr>
+            <tr><td><strong>Titular del régimen fiscal del 30% (30% Ruling / Expat)</strong></td><td><strong>Sí — de CUALQUIER país</strong></td><td>Solicitar en el Gemeente con la resolución vigente <em>Beschikking 30%-regeling</em> + declaración médica CBR <em>Gezondheidsverklaring</em></td></tr>
+            <tr><td><strong>Países con convenio bilateral RDW</strong> (p. ej., Reino Unido, Canadá, Japón, Taiwán, Israel, Singapur — consultar categorías RDW)</td><td><strong>Sí</strong> (categorías específicas)</td><td>Solicitar en el Gemeente + CBR <em>Gezondheidsverklaring</em></td></tr>
+            <tr><td><strong>Resto de permisos no UE sin 30% Ruling</strong> (p. ej., Latinoamérica, EE. UU., Turquía, India, etc.)</td><td><strong>Sin canje directo</strong></td><td>Debes aprobar el <strong>Examen Teórico CBR</strong> + <strong>Examen Práctico CBR</strong></td></tr>
+          </tbody>
+        </table></div>
+
+        <h2>3. Hoja de ruta paso a paso si necesitas examinarte en el CBR</h2>
+        <p>La buena noticia es que, como ya sabes conducir, obtener tu <em>Rijbewijs B</em> neerlandés es mucho más rápido y económico que empezar desde cero: suele bastar con unas pocas clases prácticas de adaptación en una autoescuela local (<em>rijschool</em>) para dominar los hábitos neerlandeses de espejos, ángulos muertos y prioridad a ciclistas.</p>
+        <ol>
+          <li><strong>Empieza a preparar el examen teórico CBR de inmediato:</strong> ¡No esperes al día 180! Usa ExamTheorie para estudiar las <a href="/theory/es/traffic-rules">normas de prioridad RVV</a> y practicar con nuestro <a href="/deneme-es">simulacro realista de 50 preguntas del CBR</a> en español, inglés o neerlandés.</li>
+          <li><strong>Reserva tu examen teórico en Mijn CBR (con DigiD):</strong> Estándar en neerlandés (50,50 €) o en inglés (57,00 €).</li>
+          <li><strong>Presenta la Declaración de Salud del CBR (Gezondheidsverklaring):</strong> Requisito previo indispensable para que tu autoescuela pueda reservar el examen práctico.</li>
+          <li><strong>Autoriza a una Rijschool y aprueba el examen práctico:</strong> Una vez aprobado, recoge tu permiso de conducir neerlandés en tu ayuntamiento en 5 días laborables.</li>
+        </ol>
+      `,
+      faqs: [
+        ['¿Cuánto tiempo puedo conducir en Países Bajos con un permiso de fuera de la UE?', 'Puedes conducir hasta 185 días desde la fecha en que te registras por primera vez como residente en un ayuntamiento neerlandés (BRP), siempre que tu permiso extranjero siga vigente.'],
+        ['¿Puedo canjear mi permiso latinoamericano o extracomunitario si tengo el 30% ruling?', 'Sí. Con una resolución vigente del 30% ruling de la agencia tributaria Belastingdienst (Beschikking bewijsregel) y una Gezondheidsverklaring del CBR, la RDW permite canjear un carnet válido de cualquier país sin examinarse en el CBR.'],
+        ['¿Qué ocurre si mi país no está en la lista de la RDW y no tengo el 30% ruling?', 'No puedes canjear tu permiso directamente; debes aprobar el examen teórico estándar de coche del CBR (50 preguntas) y el examen práctico de conducir a través de una autoescuela neerlandesa.'],
+      ],
+    },
   },
 ];
 
@@ -868,7 +1462,7 @@ const GUIDE_CSS = `
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit','Poppins',system-ui,-apple-system,sans-serif;background:radial-gradient(circle at 12% 8%,rgba(0,97,255,.10),transparent 42%),radial-gradient(circle at 88% 12%,rgba(255,107,0,.11),transparent 40%),var(--bg);color:var(--text);line-height:1.75;min-height:100vh}
-body[dir="rtl"]{font-family:'Noto Sans Arabic','Outfit','Poppins',system-ui,sans-serif}
+body[dir="rtl"]{font-family:'Vazirmatn','Noto Sans Arabic','Outfit','Poppins',system-ui,sans-serif}
 a{color:var(--cyan)}
 html.et-native-app a[href*="open=pricing"]{display:none!important}
 .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(255,255,255,.88);border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(15,23,42,.05);padding:12px 20px}
@@ -876,8 +1470,8 @@ html.et-native-app a[href*="open=pricing"]{display:none!important}
 .logo{font-weight:900;font-size:21px;color:#0f172a;text-decoration:none;letter-spacing:-.03em}
 .logo span{color:var(--cyan)}
 .nav-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.lang-bar{display:inline-flex;gap:3px;padding:3px;border-radius:11px;background:#f1f5f9;border:1px solid rgba(15,23,42,.06)}
-.lang-bar a{text-decoration:none;color:#64748b;font-size:12px;font-weight:700;padding:5px 10px;border-radius:8px;transition:all .15s}
+.lang-bar{display:inline-flex;gap:3px;padding:3px;border-radius:11px;background:#f1f5f9;border:1px solid rgba(15,23,42,.06);flex-wrap:wrap}
+.lang-bar a{text-decoration:none;color:#64748b;font-size:12px;font-weight:700;padding:5px 8px;border-radius:8px;transition:all .15s}
 .lang-bar a:hover{color:#0f172a}
 .lang-bar a.active{background:#ffffff;color:#0f172a;box-shadow:0 2px 6px rgba(15,23,42,.08)}
 .btn-top{text-decoration:none;font-size:12.5px;font-weight:800;padding:8px 15px;border-radius:11px;background:linear-gradient(135deg,#ff6b00,#ff8800);color:#fff;white-space:nowrap;box-shadow:0 6px 16px rgba(255,107,0,.26)}
@@ -930,8 +1524,20 @@ footer a{color:#475569;text-decoration:none;margin:0 8px;font-weight:500}
 footer a:hover{color:var(--cyan)}
 `;
 
+const ALL_LANGS = ['en', 'nl', 'tr', 'ar', 'ru', 'fa', 'es'];
+
+function getFontFamilySuffix(lang) {
+  if (lang === 'fa') {
+    return '&family=Vazirmatn:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700;800';
+  }
+  if (lang === 'ar') {
+    return '&family=Noto+Sans+Arabic:wght@400;600;700;800';
+  }
+  return '';
+}
+
 function renderLangBar(activeLang, pathForLangFn) {
-  return ['en', 'tr', 'nl', 'ar']
+  return ALL_LANGS
     .map(
       (l) =>
         `<a href="${pathForLangFn(l)}" class="${l === activeLang ? 'active' : ''}">${l.toUpperCase()}</a>`
@@ -942,20 +1548,23 @@ function renderLangBar(activeLang, pathForLangFn) {
 function buildGuidePages() {
   const generatedUrls = []; // For sitemap integration
 
-  // 1. Build 16 Guide Articles (4 guides × 4 langs)
+  // 1. Build 28 Guide Articles (4 guides × 7 langs)
   for (const guide of GUIDES) {
     const urlMap = {
       en: `${BASE_URL}/guides/en/${guide.slug}`,
       nl: `${BASE_URL}/guides/nl/${guide.slug}`,
       tr: `${BASE_URL}/guides/tr/${guide.slug}`,
       ar: `${BASE_URL}/guides/ar/${guide.slug}`,
+      ru: `${BASE_URL}/guides/ru/${guide.slug}`,
+      fa: `${BASE_URL}/guides/fa/${guide.slug}`,
+      es: `${BASE_URL}/guides/es/${guide.slug}`,
     };
     const hreflangTags = Object.entries(urlMap)
       .map(([c, u]) => `  <link rel="alternate" hreflang="${c}" href="${u}" />`)
       .concat([`  <link rel="alternate" hreflang="x-default" href="${urlMap.en}" />`])
       .join('\n');
 
-    for (const lang of ['en', 'nl', 'tr', 'ar']) {
+    for (const lang of ALL_LANGS) {
       const ui = UI_CHROME[lang];
       const data = guide[lang];
       const canonical = urlMap[lang];
@@ -1053,7 +1662,7 @@ ${hreflangTags}
   <script type="application/ld+json">${jsonLd}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Poppins:wght@400;600;700;800;900${lang === 'ar' ? '&family=Noto+Sans+Arabic:wght@400;600;700;800' : ''}&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Poppins:wght@400;600;700;800;900${getFontFamilySuffix(lang)}&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <style>${GUIDE_CSS}</style>
 </head>
 <body dir="${ui.dir}">
@@ -1105,7 +1714,7 @@ ${hreflangTags}
     <p>© 2026 ExamTheorie · <a href="${ui.homeUrl}">${esc(ui.homeLabel)}</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-conditions/">Terms &amp; Conditions</a></p>
   </footer>
   <script src="/consent-manager.js?v=1" defer></script>
-  <script src="/mobile-app-bridge.js?v=8" defer></script>
+  <script src="/mobile-app-bridge.js?v=9" defer></script>
 </body>
 </html>`;
 
@@ -1122,19 +1731,22 @@ ${hreflangTags}
     });
   }
 
-  // 2. Build 4 Language Guide Hub Index Pages (/guides/{en,nl,tr,ar}/index.html)
+  // 2. Build 7 Language Guide Hub Index Pages (/guides/{en,nl,tr,ar,ru,fa,es}/index.html)
   const hubUrlMap = {
     en: `${BASE_URL}/guides/en/`,
     nl: `${BASE_URL}/guides/nl/`,
     tr: `${BASE_URL}/guides/tr/`,
     ar: `${BASE_URL}/guides/ar/`,
+    ru: `${BASE_URL}/guides/ru/`,
+    fa: `${BASE_URL}/guides/fa/`,
+    es: `${BASE_URL}/guides/es/`,
   };
   const hubHreflangs = Object.entries(hubUrlMap)
     .map(([c, u]) => `  <link rel="alternate" hreflang="${c}" href="${u}" />`)
     .concat([`  <link rel="alternate" hreflang="x-default" href="${hubUrlMap.en}" />`])
     .join('\n');
 
-  for (const lang of ['en', 'nl', 'tr', 'ar']) {
+  for (const lang of ALL_LANGS) {
     const ui = UI_CHROME[lang];
     const canonical = hubUrlMap[lang];
     const pricingUrl = lang === 'en' ? '/?open=pricing' : `/${lang}/?open=pricing`;
@@ -1203,7 +1815,7 @@ ${hubHreflangs}
   <script type="application/ld+json">${jsonLd}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Poppins:wght@400;600;700;800;900${lang === 'ar' ? '&family=Noto+Sans+Arabic:wght@400;600;700;800' : ''}&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Poppins:wght@400;600;700;800;900${getFontFamilySuffix(lang)}&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <style>${GUIDE_CSS}</style>
 </head>
 <body dir="${ui.dir}">
@@ -1245,7 +1857,7 @@ ${hubHreflangs}
     <p>© 2026 ExamTheorie · <a href="${ui.homeUrl}">${esc(ui.homeLabel)}</a> · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-conditions/">Terms &amp; Conditions</a></p>
   </footer>
   <script src="/consent-manager.js?v=1" defer></script>
-  <script src="/mobile-app-bridge.js?v=8" defer></script>
+  <script src="/mobile-app-bridge.js?v=9" defer></script>
 </body>
 </html>`;
 
@@ -1261,7 +1873,7 @@ ${hubHreflangs}
     xDefault: hubUrlMap.en,
   });
 
-  console.log(`✅ Built 20 multilingual SEO guide pages (4 hubs + 16 pillar guides)`);
+  console.log(`✅ Built 35 multilingual SEO guide pages (7 hubs + 28 pillar guides)`);
   return generatedUrls;
 }
 

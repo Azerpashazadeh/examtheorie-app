@@ -1,0 +1,661 @@
+{
+    "sorular": [
+        {
+            "numara": 1,
+            "soru": "¿Cuál es la forma más económica de conducir?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/1.jpg",
+            "cevaplar": [
+                "A altas revoluciones (RPM) en la marcha más baja posible.",
+                "A bajas revoluciones (RPM) en la marcha más alta posible."
+            ],
+            "dogruCevap": "A bajas revoluciones (RPM) en la marcha más alta posible.",
+            "feedback": {
+                "metin": "Cuantas más revoluciones por minuto realiza un motor, mayor es el consumo de combustible. Por lo tanto, circular a bajas revoluciones en la marcha más alta posible es la forma más económica de conducir.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 2,
+            "soru": "¿Está realizando el adelantamiento correctamente?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/2.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Al adelantar a un jinete, debe mantener la mayor distancia lateral posible y hacerlo de la forma más silenciosa posible. No utilice nunca el claxon, ya que podría asustar al caballo.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 3,
+            "soru": "¿Qué debe hacer si se enciende este testigo mientras conduce?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/3.jpg",
+            "cevaplar": [
+                "Conducir hasta un taller lo antes posible.",
+                "Concertar una cita de mantenimiento en un taller.",
+                "Detenerse inmediatamente en un lugar seguro."
+            ],
+            "dogruCevap": "Detenerse inmediatamente en un lugar seguro.",
+            "feedback": {
+                "metin": "Este testigo advierte de un nivel bajo de líquido de frenos, pastillas desgastadas, fallos en el ABS o el freno de estacionamiento activado. Deténgase inmediatamente en un lugar seguro. Compruebe primero el freno de estacionamiento y el nivel del líquido de frenos. Si el problema no se resuelve, póngase en contacto con el servicio de asistencia en carretera.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 4,
+            "soru": "¿Está permitido dar marcha atrás aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/4.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Esta señal amarilla con flecha negra indica un itinerario de desvío. Usted no está obligado a seguir la dirección indicada en la señal, por lo que también puede dar marcha atrás o cambiar el sentido de la marcha aquí.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 5,
+            "soru": "¿Sale usted de la autopista en este punto?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/5.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "El panel verde con franjas blancas en punta de flecha indica una bifurcación entre vías de igual categoría, como dos autopistas (Autosnelwegen) o autovías (Autowegen). Usted permanece en la autopista y no sale de ella. En una salida de autopista encontrará una señal con la palabra 'UIT'.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 6,
+            "soru": "¿Tiene permitido esperar aquí a un pasajero?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/6.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Está prohibido estacionar o detenerse junto a la marca vial ajedrezada de una parada de autobús. Si no hay marca ajedrezada, está prohibido estacionar o detenerse a menos de 12 metros de la señal de parada de autobús. La única excepción es detenerse brevemente para que suban o bajen pasajeros de inmediato, incluso junto a la marca ajedrezada. Sin embargo, esperar a un pasajero no es lo mismo que subir o bajar pasajeros, por lo que no está permitido esperar aquí.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 7,
+            "soru": "¿En qué situación debe contar con conductores que se aproximen por la izquierda?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/7.jpg",
+            "cevaplar": [
+                "Solo en la situación A.",
+                "Solo en la situación B.",
+                "En ambas situaciones."
+            ],
+            "dogruCevap": "En ambas situaciones.",
+            "feedback": {
+                "metin": "En la situación A se aproxima a una calle de sentido único, donde los conductores solo pueden circular en el sentido de la flecha, por lo que vienen desde su izquierda. La situación B muestra la señal D-5, que le obliga a seguir la dirección indicada, pero no indica nada sobre el sentido de circulación de la vía transversal, a la que se puede acceder desde ambos lados. Por tanto, aquí también debe contar con conductores que vengan por la izquierda.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 8,
+            "soru": "¿A qué distancia de su coche debe colocar el triángulo de preseñalización de peligro?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/8.jpg",
+            "cevaplar": [
+                "A unos 15 metros.",
+                "A unos 30 metros.",
+                "A unos 50 metros."
+            ],
+            "dogruCevap": "A unos 30 metros.",
+            "feedback": {
+                "metin": "El triángulo de emergencia debe ser siempre claramente visible en la calzada. Debe colocarlo a una distancia aproximada de 30 metros del vehículo, orientado hacia el tráfico para el cual el coche supone un peligro.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 9,
+            "soru": "¿Tiene permitido llevar encendidas las luces de carretera (largas) en esta situación?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/9.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Está conduciendo con niebla durante el día. De día no está permitido utilizar las luces de carretera. Además, encender las luces de carretera con niebla es desaconsejable, ya que la niebla refleja la luz y puede deslumbrarle a usted mismo.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 10,
+            "soru": "¿Tiene permitido utilizar aquí la luz antiniebla trasera?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/10.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "En este caso solo puede encender las luces antiniebla delanteras. La luz antiniebla trasera solo está permitida cuando la visibilidad se reduce a un máximo de 50 metros debido a niebla densa o nevada intensa. Aquí la visibilidad supera ligeramente los 100 metros, como se aprecia por los postes hectométricos situados cada 100 metros. Con una visibilidad de entre 100 y 200 metros ya puede encender las luces antiniebla delanteras, pero aún no la trasera, ya que deslumbraría a los conductores que circulan detrás.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 11,
+            "soru": "¿Cuándo debe pasar su primera inspección técnica (APK) un turismo propulsado por gas (GLP)?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/11.jpg",
+            "cevaplar": [
+                "2 años después de la primera matriculación.",
+                "3 años después de la primera matriculación.",
+                "4 años después de la primera matriculación."
+            ],
+            "dogruCevap": "3 años después de la primera matriculación.",
+            "feedback": {
+                "metin": "Los turismos propulsados por diésel, gas o hidrógeno deben pasar la primera inspección técnica (APK) a los 3 años de su primera admisión en circulación, y posteriormente cada año.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 12,
+            "soru": "¿Ayuda beber agua a reducir el nivel de alcohol en sangre?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/12.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Incluso un solo vaso de bebida alcohólica puede empeorar su tiempo de reacción y su capacidad de conducción. El nivel de alcohol en sangre solo disminuye mediante su metabolización en el hígado, lo cual tarda entre 1 y 1,5 horas por consumición estándar. Nada puede acelerar este proceso, ni siquiera beber agua.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 13,
+            "soru": "¿Tiene permitido adelantar al coche azul por la derecha?",
+            "video": "https://azerpashazadeh.github.io/sorularveresimler/test5/13.mp4",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Está permitido adelantar tanto por la izquierda como por la derecha inmediatamente antes de entrar en una rotonda, así como dentro de ella.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 14,
+            "soru": "¿Tiene permitido estacionar aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/14.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Como indica la señal, se encuentra en una zona de estacionamiento prohibido. En esta zona solo puede estacionar en las plazas señalizadas, aparcamientos o bandas de estacionamiento. En el resto de la vía está prohibido estacionar, por lo que no puede aparcar aquí. Sí está permitido detenerse brevemente para cargar o descargar mercancías o para que suban o bajen pasajeros.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 15,
+            "soru": "¿Debe obedecer las indicaciones dadas por la policía?",
+            "resim": "",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Las indicaciones dadas por la policía, la policía militar (Koninklijke Marechaussee), aduanas y los agentes reguladores del tráfico son de obligado cumplimiento.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 16,
+            "soru": "¿A quién debe ceder el paso al incorporarse a la circulación después de haber estado estacionado?",
+            "resim": "",
+            "cevaplar": [
+                "A todos los usuarios de la vía.",
+                "Solo a los conductores.",
+                "Solo a los vehículos de motor."
+            ],
+            "dogruCevap": "A todos los usuarios de la vía.",
+            "feedback": {
+                "metin": "Reanudar la marcha tras estar estacionado es una maniobra especial, por lo que debe ceder el paso a todos los demás usuarios de la vía.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 18,
+            "soru": "¿Cuál es la velocidad máxima permitida para el conductor de un camión en autopista?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/18.jpg",
+            "cevaplar": [
+                "80 km/h.",
+                "90 km/h.",
+                "100 km/h."
+            ],
+            "dogruCevap": "80 km/h.",
+            "feedback": {
+                "metin": "La velocidad máxima permitida para un camión fuera de poblado es de 80 km/h, salvo que la señalización indique un límite inferior. Esto también se aplica en autovías (Autowegen) y autopistas (Autosnelwegen).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 19,
+            "soru": "¿Qué hora debe indicar en el disco de estacionamiento al aparcar en una zona azul?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/19.jpg",
+            "cevaplar": [
+                "El tiempo total que permanecerá estacionado.",
+                "La hora de llegada (inicio del estacionamiento).",
+                "La hora de finalización."
+            ],
+            "dogruCevap": "La hora de llegada (inicio del estacionamiento).",
+            "feedback": {
+                "metin": "Al estacionar en una zona de disco de estacionamiento delimitada con una línea azul, debe utilizar siempre el disco de estacionamiento e indicar únicamente la hora de llegada en que aparcó el vehículo. La señal E-10 muestra el tiempo máximo permitido (en este caso, 2 horas). Está prohibido modificar posteriormente la hora del disco.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 20,
+            "soru": "¿A quién debe ceder el paso aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/20.jpg",
+            "cevaplar": [
+                "Solo a los peatones.",
+                "Solo a los conductores.",
+                "A todos los usuarios de la vía."
+            ],
+            "dogruCevap": "A todos los usuarios de la vía.",
+            "feedback": {
+                "metin": "La entrada y salida de esta zona residencial (Erf) está diseñada como un vado o construcción de entrada/salida. Al cruzar una construcción de entrada o salida debe ceder el paso a todos los usuarios de la vía, incluidos los peatones.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 22,
+            "soru": "¿Cuánto puede sobresalir lateralmente una bicicleta colocada en un portabicicletas respecto a los laterales del coche?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/22.jpg",
+            "cevaplar": [
+                "Nada en absoluto.",
+                "Máximo 10 cm.",
+                "Máximo 20 cm."
+            ],
+            "dogruCevap": "Máximo 20 cm.",
+            "feedback": {
+                "metin": "La carga transportada sobre el coche o en su parte trasera no puede sobresalir más de 20 cm por cada lado, independientemente de si se trata de carga divisible o indivisible.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 23,
+            "soru": "¿Debe ceder el paso al peatón?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/23.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Por regla general, los peatones no tienen prioridad en las intersecciones, salvo determinadas excepciones. Una de ellas es cuando el peatón continúa recto por la misma vía por la que usted circula mientras usted gira para abandonarla. Ese es el caso aquí, por lo que debe ceder el paso al peatón. Otras excepciones son cuando el peatón cruza por un paso de peatones o camina sobre una construcción de entrada o salida.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 24,
+            "soru": "Si sufre una avería dentro de un túnel, ¿es recomendable esperar la ayuda dentro del coche?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/24.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Lo más seguro es salir del coche y caminar en el sentido en el que circulaba. Encienda las luces de emergencia y avise a los servicios de emergencia mediante uno de los postes SOS del túnel. Si es posible, abandone el túnel cuanto antes por una salida de emergencia.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 25,
+            "soru": "¿Circula usted siempre por una vía prioritaria después de ver esta señal cubierta de nieve?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/25.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Por la forma de rombo de la señal se deduce que indica una vía prioritaria o el fin de una vía prioritaria. Al estar cubierta de nieve no se distingue cuál de las dos es, por lo que no necesariamente circula por una vía prioritaria después de esta señal.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 26,
+            "soru": "Tras un accidente, una víctima yace inconsciente en el suelo pero respira. ¿Qué debe hacer?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/26.jpg",
+            "cevaplar": [
+                "Colocar a la persona boca arriba.",
+                "No hacer nada y no mover a la persona.",
+                "Colocar a la persona en posición lateral de seguridad."
+            ],
+            "dogruCevap": "Colocar a la persona en posición lateral de seguridad.",
+            "feedback": {
+                "metin": "La posición lateral de seguridad es una técnica de primeros auxilios utilizada en víctimas inconscientes (o con vómitos) que respiran con normalidad. En toda persona inconsciente existe el riesgo de obstrucción de las vías respiratorias porque la lengua puede caer hacia la faringe.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 27,
+            "soru": "¿Cómo debe actuar en esta situación?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/27.jpg",
+            "cevaplar": [
+                "El vehículo más rápido tiene prioridad de paso.",
+                "Ambos conductores acuerdan quién pasa primero.",
+                "El vehículo policial tiene siempre prioridad de paso."
+            ],
+            "dogruCevap": "Ambos conductores acuerdan quién pasa primero.",
+            "feedback": {
+                "metin": "Al haber un obstáculo en ambos lados de la calzada, ninguna norma fija quién tiene prioridad. Deben ponerse de acuerdo sobre quién pasa primero: habitualmente pasa el que llega antes y, si llegan a la vez, se coordina mediante contacto visual o señales con la mano. Como el coche de policía no lleva activadas las señales luminosas ni acústicas, no actúa como vehículo prioritario y tiene la misma prioridad que usted.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 30,
+            "soru": "¿Puede adelantar al tractor por la derecha?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/30.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Está circulando por una rotonda de varios carriles. Está permitido adelantar por la derecha tanto inmediatamente antes de entrar en una rotonda como dentro de ella, por lo que puede adelantar al tractor.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 31,
+            "soru": "¿Puede aumentar la velocidad en este momento?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/31.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Cuando otro vehículo le está adelantando, está prohibido aumentar la velocidad, ya que pondría en peligro tanto su seguridad como la de los demás conductores.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 32,
+            "soru": "¿Cómo puede evitar esta situación?",
+            "video": "https://azerpashazadeh.github.io/sorularveresimler/test5/32.mp4",
+            "cevaplar": [
+                "Volviendo al carril derecho a tiempo.",
+                "Manteniendo una distancia de seguridad más corta.",
+                "Conduciendo más rápido."
+            ],
+            "dogruCevap": "Volviendo al carril derecho a tiempo.",
+            "feedback": {
+                "metin": "El conductor del coche negro le está adelantando por la derecha porque usted circula innecesariamente por el carril izquierdo. Aunque él no tiene permitido adelantar por la derecha, usted también comete una infracción. Puede evitarlo regresando al carril derecho a tiempo.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 34,
+            "soru": "¿Qué límite de velocidad cabe esperar aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/34.jpg",
+            "cevaplar": [
+                "80 km/h.",
+                "100 km/h.",
+                "120 km/h."
+            ],
+            "dogruCevap": "100 km/h.",
+            "feedback": {
+                "metin": "La línea central verde indica que se trata de una autovía (Autoweg). En las autovías (Autowegen), el límite de velocidad es de 100 km/h, salvo que la señalización indique una velocidad inferior.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 35,
+            "soru": "¿Qué grado mínimo de transmisión luminosa deben tener las ventanillas laterales delanteras?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/35.jpg",
+            "cevaplar": [
+                "Al menos el 55 %.",
+                "Al menos el 65 %.",
+                "Al menos el 75 %."
+            ],
+            "dogruCevap": "Al menos el 55 %.",
+            "feedback": {
+                "metin": "El parabrisas y las ventanillas laterales delanteras deben permitir el paso de al menos el 55 % de la luz. Si coloca una lámina oscura que reduzca la transparencia por debajo de ese porcentaje, está prohibido circular con el vehículo.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 36,
+            "soru": "¿Se ha situado correctamente en la calzada para girar a la izquierda?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/36.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Está circulando por una calle de sentido único parcial, donde sí se permite circular en sentido contrario a bicicletas, ciclomotores, ciclomotores ligeros (snorfietsen) y bicicletas eléctricas rápidas (speed pedelecs). Por ello, debe situarse a la derecha del eje central de la calzada y no pegado al borde izquierdo.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 38,
+            "soru": "¿Tiene permitido el motorista adelantarle?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/38.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "La señal F-1 prohíbe a los vehículos de motor adelantarse entre sí. Un automovilista no puede adelantar a un motorista ni viceversa, y tampoco los motoristas pueden adelantarse entre ellos.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 40,
+            "soru": "¿Tiene permitido seguir circulando?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/40.gif",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Se aproxima a un paso a nivel sin barreras equipado con señalización luminosa automática. Cuando parpadea la luz blanca superior, no se acerca ningún tren y es seguro cruzar. Cuando se aproxima un tren, las dos luces rojas inferiores parpadean alternativamente.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 41,
+            "soru": "Conduce un turismo con remolque. ¿Qué señal se le aplica?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/41.jpg",
+            "cevaplar": [
+                "Solo la señal C-6.",
+                "Solo la señal C-10.",
+                "Ambas señales."
+            ],
+            "dogruCevap": "Ambas señales.",
+            "feedback": {
+                "metin": "Ambas señales se le aplican. La señal C-6 indica entrada prohibida a vehículos de motor de más de dos ruedas, por lo que no puede entrar con un turismo. La señal C-10 indica entrada prohibida a vehículos de motor con remolque.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 42,
+            "soru": "¿En qué situación tiene permitido detenerse aquí?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/42.jpg",
+            "cevaplar": [
+                "Para cargar o descargar mercancías.",
+                "Para que suban o bajen pasajeros.",
+                "En caso de emergencia."
+            ],
+            "dogruCevap": "En caso de emergencia.",
+            "feedback": {
+                "metin": "Los carriles bus están reservados exclusivamente a los conductores de autobuses y cerrados a los demás vehículos. No está permitido detenerse ni estacionar sobre un carril bus ni junto a él, salvo en caso de emergencia.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 43,
+            "soru": "¿Está colocado correctamente si desea girar a la izquierda más adelante?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/43.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Nunca está permitido circular sobre una zona cebreada (marcas viales oblicuas), ni siquiera si desea girar a la izquierda más adelante.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 44,
+            "soru": "¿Puede circular por este carril si su conjunto de vehículos mide 9 metros de longitud?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/44.jpg",
+            "cevaplar": [
+                "No.",
+                "Sí."
+            ],
+            "dogruCevap": "Sí.",
+            "feedback": {
+                "metin": "Cuando conduce un conjunto de vehículos de más de 7 metros de longitud, en principio solo puede utilizar los dos carriles situados más a la derecha. Sin embargo, esta restricción no se aplica cuando necesita situarse en un carril de preselección para seguir una dirección determinada. En este caso sí puede circular por este carril; lo mismo se aplica a los camiones.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 47,
+            "soru": "¿Por qué muchas zonas residenciales están señalizadas como zonas de 30 km/h?",
+            "resim": "",
+            "cevaplar": [
+                "Conducir más rápido genera un exceso de emisiones contaminantes.",
+                "Suele haber niños jugando que pueden irrumpir en la calzada de forma imprevista.",
+                "Las calles suelen ser demasiado estrechas para conducir más rápido."
+            ],
+            "dogruCevap": "Suele haber niños jugando que pueden irrumpir en la calzada de forma imprevista.",
+            "feedback": {
+                "metin": "Muchas zonas residenciales están designadas como zonas de 30 km/h porque en ellas suele haber niños jugando sin prestar atención al tráfico que pueden salir inesperadamente a la calzada. A 30 km/h puede detenerse en unos 15 metros mediante una frenada de emergencia; a 50 km/h la distancia se duplica, lo que puede marcar la diferencia entre la vida y la muerte. Además, estas zonas rara vez superan un kilómetro, por lo que circular a 50 km/h apenas ahorraría un minuto.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 48,
+            "soru": "¿Debe ceder el paso a los pasajeros que bajan del tranvía?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/48.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "No tiene que ceder el paso a los pasajeros del tranvía cuando descienden directamente a un andén o isleta de parada. Solo debe cederles el paso cuando no exista andén ni isleta y deban cruzar la calzada.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 50,
+            "soru": "¿Tiene permitido montar en bicicleta mientras pesa sobre usted una prohibición temporal de conducir (rijverbod)?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/50.jpg",
+            "cevaplar": [
+                "Sí.",
+                "No."
+            ],
+            "dogruCevap": "No.",
+            "feedback": {
+                "metin": "Si se le ha impuesto una prohibición temporal de conducir (rijverbod), no puede conducir ningún tipo de vehículo durante el tiempo establecido, incluidas las bicicletas. Esta prohibición se impone, por ejemplo, al ser sorprendido conduciendo bajo los efectos de drogas o alcohol, entra en vigor de inmediato y dura un máximo de 24 horas. Es distinta de la retirada o suspensión del permiso de conducir, con la cual solo se prohíbe conducir vehículos que requieran permiso, por lo que sí estaría permitido ir en bicicleta.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

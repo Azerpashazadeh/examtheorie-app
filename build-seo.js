@@ -26,7 +26,8 @@ const vm = require('vm');
 const ROOT = process.cwd();
 const BASE_URL = 'https://examtheorie.nl';
 const OG_IMAGE = `${BASE_URL}/og-image.jpg`;
-const TODAY = '2026-11-18';
+const TODAY = '2026-11-25';
+const ALL_LANGS = ['en', 'nl', 'tr', 'ar', 'ru', 'fa', 'es'];
 
 function escapeHtml(str) {
   return String(str)
@@ -48,7 +49,7 @@ const HOME_META = {
     urlPath: '/',
     title: 'Dutch CBR Driving Theory Exam 2026 — Free 50-Question Practice Test | ExamTheorie',
     description:
-      'Pass your 2026 Netherlands CBR car theory exam (Rijbewijs B) in English, Dutch, Turkish or Arabic. Try a free 50-question CBR mock test + Chapter 1 traffic rules today.',
+      'Pass your 2026 Netherlands CBR car theory exam (Rijbewijs B) in 7 languages (EN, NL, TR, AR, RU, FA, ES). Try a free 50-question CBR mock test + Chapter 1 traffic rules today.',
     courseName: 'Dutch CBR Car Driving Theory Course & 50 Practice Exams (Rijbewijs B)',
   },
   nl: {
@@ -58,7 +59,7 @@ const HOME_META = {
     urlPath: '/nl/',
     title: 'CBR Auto Theorie Oefenen 2026 — Gratis Proefexamen (50 Vragen) | ExamTheorie',
     description:
-      'Slaag in één keer voor je CBR auto theorie-examen (Rijbewijs B) in 2026. Oefen gratis een volledig CBR proefexamen van 50 vragen + Hoofdstuk 1 verkeersregels in NL, EN, TR & AR.',
+      'Slaag in één keer voor je CBR auto theorie-examen (Rijbewijs B) in 2026. Oefen gratis een volledig CBR proefexamen van 50 vragen + Hoofdstuk 1 verkeersregels in 7 talen (NL, EN, TR, AR, RU, FA & ES).',
     courseName: 'CBR Auto Theorie Cursus & 50 Oefenexamens (Rijbewijs B)',
   },
   tr: {
@@ -68,7 +69,7 @@ const HOME_META = {
     urlPath: '/tr/',
     title: 'Hollanda Ehliyet Teori Sınavı (CBR) 2026 — Ücretsiz Türkçe Deneme Sınavı | ExamTheorie',
     description:
-      '2026 güncel Hollanda CBR B sınıfı ehliyet teori sınavına Türkçe, Felemenkçe, İngilizce ve Arapça hazırlanın. 50 soruluk ücretsiz CBR deneme sınavını ve 1. bölümü hemen çözün!',
+      '2026 güncel Hollanda CBR B sınıfı ehliyet teori sınavına Türkçe ve 7 dilde (TR, NL, EN, AR, RU, FA, ES) hazırlanın. 50 soruluk ücretsiz CBR deneme sınavını ve 1. bölümü hemen çözün!',
     courseName: 'Hollanda CBR B Ehliyet Teori Eğitimi ve 50 Deneme Sınavı',
   },
   ar: {
@@ -78,8 +79,38 @@ const HOME_META = {
     urlPath: '/ar/',
     title: 'امتحان التيوري في هولندا CBR 2026 — اختبار تجريبي مجاني بالعربي | ExamTheorie',
     description:
-      'استعد لامتحان نظرية القيادة الهولندي CBR (الفئة B) لعام 2026 بالعربية والهولندية والإنجليزية والتركية. ابدأ الآن باختبار CBR تجريبي مجاني من 50 سؤالاً وشرح قواعد المرور.',
+      'استعد لامتحان نظرية القيادة الهولندي CBR (الفئة B) لعام 2026 بـ 7 لغات (العربية، الهولندية، الإنجليزية، التركية، الروسية، الفارسية والإسبانية). ابدأ الآن باختبار CBR تجريبي مجاني من 50 سؤالاً.',
     courseName: 'دورة نظرية القيادة الهولندية CBR و50 اختباراً تجريبياً (الفئة B)',
+  },
+  ru: {
+    lang: 'ru',
+    dir: 'ltr',
+    ogLocale: 'ru_RU',
+    urlPath: '/ru/',
+    title: 'Экзамен ПДД Нидерландов (CBR) 2026 — Бесплатный тест 50 вопросов на русском | ExamTheorie',
+    description:
+      'Сдайте теоретический экзамен по вождению CBR 2026 в Нидерландах (категория B) с первой попытки на русском и 7 языках. Пройдите бесплатный пробный тест CBR из 50 вопросов и Главу 1 ПДД!',
+    courseName: 'Курс теории вождения CBR Нидерландов и 50 пробных экзаменов (Rijbewijs B)',
+  },
+  fa: {
+    lang: 'fa',
+    dir: 'rtl',
+    ogLocale: 'fa_IR',
+    urlPath: '/fa/',
+    title: 'آزمون تئوری رانندگی هلند (CBR) ۲۰۲۶ — آزمون آزمایشی رایگان فارسی | ExamTheorie',
+    description:
+      'قبولی در اولین تلاش در آزمون تئوری گواهینامه رانندگی هلند CBR 2026 (پایه B) به زبان فارسی و ۷ زبان. همین امروز آزمون آزمایشی رایگان ۵۰ سؤالی CBR و فصل ۱ قوانین را شروع کنید!',
+    courseName: 'دوره تئوری رانندگی هلند CBR و ۵۰ آزمون آزمایشی (Rijbewijs B)',
+  },
+  es: {
+    lang: 'es',
+    dir: 'ltr',
+    ogLocale: 'es_ES',
+    urlPath: '/es/',
+    title: 'Examen Teórico de Conducir CBR Países Bajos 2026 — Test Gratis en Español | ExamTheorie',
+    description:
+      'Aprueba tu examen teórico de conducir CBR 2026 en los Países Bajos (Rijbewijs B) a la primera en español y 7 idiomas. Haz gratis un examen de prueba CBR de 50 preguntas + Capítulo 1 hoy.',
+    courseName: 'Curso Teórico de Conducir CBR Países Bajos y 50 Exámenes de Práctica (Rijbewijs B)',
   },
 };
 
@@ -124,6 +155,36 @@ const DENEME_META = {
     description:
       'جرّب مجاناً اختبار نظرية القيادة الهولندي CBR الكامل المكون من 50 سؤالاً خلال 30 دقيقة باللغة العربية مع النتيجة الفورية وشرح مفصل لكل سؤال.',
   },
+  ru: {
+    file: 'deneme-ru.html',
+    url: `${BASE_URL}/deneme-ru`,
+    homeUrl: `${BASE_URL}/ru/`,
+    homeLabel: 'Главная',
+    ogLocale: 'ru_RU',
+    title: 'Бесплатный пробный экзамен ПДД Нидерландов CBR 2026 (50 вопросов на русском) | ExamTheorie',
+    description:
+      'Пройдите реалистичный бесплатный пробный экзамен CBR (Rijbewijs B) из 50 вопросов за 30 минут на русском языке с проходным баллом 44/50 и подробным разбором ответов.',
+  },
+  fa: {
+    file: 'deneme-fa.html',
+    url: `${BASE_URL}/deneme-fa`,
+    homeUrl: `${BASE_URL}/fa/`,
+    homeLabel: 'صفحه اصلی',
+    ogLocale: 'fa_IR',
+    title: 'آزمون آزمایشی رایگان تئوری رانندگی هلند CBR ۲۰۲۶ (۵۰ سؤال فارسی) | ExamTheorie',
+    description:
+      'آزمون آزمایشی رایگان و واقعی ۵۰ سؤالی (۳۰ دقیقه) تئوری خودرو CBR هلند را به زبان فارسی با حد نصاب قبولی ۴۴ از ۵۰ و پاسخ‌نامه تشریحی کامل امتحان کنید.',
+  },
+  es: {
+    file: 'deneme-es.html',
+    url: `${BASE_URL}/deneme-es`,
+    homeUrl: `${BASE_URL}/es/`,
+    homeLabel: 'Inicio',
+    ogLocale: 'es_ES',
+    title: 'Examen Teórico CBR Países Bajos Gratis 2026 (50 Preguntas en Español) | ExamTheorie',
+    description:
+      'Realiza gratis un examen de práctica realista de 50 preguntas y 30 minutos para el teórico de coche CBR neerlandés (Rijbewijs B) en español con nota 44/50 y explicaciones detalladas.',
+  },
 };
 
 const CHAPTER1_META = {
@@ -166,6 +227,36 @@ const CHAPTER1_META = {
     title: 'قواعد المرور والأولوية في هولندا (RVV 1990) — نظري CBR الفصل الأول | ExamTheorie',
     description:
       'دليل شامل ومجاني باللغة العربية لقواعد المرور الهولندية (RVV 1990) لامتحان التيوري CBR: قواعد الأولوية في التقاطعات، الترام والدراجات، حدود السرعة، الطرق السريعة واختبار تدريبي من 15 سؤالاً.',
+  },
+  ru: {
+    file: 'theory/ru/traffic-rules.html',
+    url: `${BASE_URL}/theory/ru/traffic-rules`,
+    homeUrl: `${BASE_URL}/ru/`,
+    homeLabel: 'Главная',
+    ogLocale: 'ru_RU',
+    title: 'Правила дорожного движения и приоритета Нидерландов (RVV 1990) — Теория CBR Глава 1 | ExamTheorie',
+    description:
+      'Бесплатное полное руководство по правилам дорожного движения Нидерландов (RVV 1990) для экзамена CBR на русском: приоритет на перекрестках, трамваи, велосипедисты, скорость, круговое движение и тест из 15 вопросов.',
+  },
+  fa: {
+    file: 'theory/fa/traffic-rules.html',
+    url: `${BASE_URL}/theory/fa/traffic-rules`,
+    homeUrl: `${BASE_URL}/fa/`,
+    homeLabel: 'صفحه اصلی',
+    ogLocale: 'fa_IR',
+    title: 'قوانین راهنمایی و رانندگی و حق تقدم هلند (RVV 1990) — تئوری CBR فصل ۱ | ExamTheorie',
+    description:
+      'راهنمای کامل و رایگان قوانین راهنمایی و رانندگی هلند (RVV 1990) به زبان فارسی برای آزمون تئوری CBR: حق تقدم در تقاطع‌ها، تراموا و دوچرخه‌سواران، محدودیت سرعت، میدان‌ها و آزمون ۱۵ سؤالی.',
+  },
+  es: {
+    file: 'theory/es/traffic-rules.html',
+    url: `${BASE_URL}/theory/es/traffic-rules`,
+    homeUrl: `${BASE_URL}/es/`,
+    homeLabel: 'Inicio',
+    ogLocale: 'es_ES',
+    title: 'Normas de Tráfico y Prioridad en los Países Bajos (RVV 1990) — Teoría CBR Capítulo 1 | ExamTheorie',
+    description:
+      'Guía gratuita y completa de las normas de tráfico neerlandesas (RVV 1990) en español para el examen CBR: posición en la calzada, adelantamientos, prioridad, tranvías, ciclistas, límites de velocidad y test de 15 preguntas.',
   },
 };
 
@@ -376,7 +467,7 @@ function buildHomeJsonLd(lang, meta, seoDict) {
         '@id': `${BASE_URL}/#website`,
         url: `${BASE_URL}/`,
         name: 'ExamTheorie',
-        inLanguage: ['nl', 'en', 'tr', 'ar'],
+        inLanguage: ['nl', 'en', 'tr', 'ar', 'ru', 'fa', 'es'],
         publisher: { '@id': `${BASE_URL}/#organization` },
       },
       {
@@ -387,7 +478,7 @@ function buildHomeJsonLd(lang, meta, seoDict) {
         url: canonical,
         inLanguage: lang,
         provider: { '@id': `${BASE_URL}/#organization` },
-        availableLanguage: ['nl', 'en', 'tr', 'ar'],
+        availableLanguage: ['nl', 'en', 'tr', 'ar', 'ru', 'fa', 'es'],
         offers: [
           {
             '@type': 'Offer',
@@ -434,6 +525,9 @@ function buildHomeSeoHead(lang) {
     nl: `${BASE_URL}/nl/`,
     tr: `${BASE_URL}/tr/`,
     ar: `${BASE_URL}/ar/`,
+    ru: `${BASE_URL}/ru/`,
+    fa: `${BASE_URL}/fa/`,
+    es: `${BASE_URL}/es/`,
   };
   const hreflangs = buildHreflangTags(urlMap, `${BASE_URL}/`, '    ');
 
@@ -484,7 +578,7 @@ function buildHomepages() {
   const htmlBeforeScript = raw.slice(0, splitIdx);
   const scriptAndTail = raw.slice(splitIdx);
 
-  for (const lang of ['en', 'nl', 'tr', 'ar']) {
+  for (const lang of ALL_LANGS) {
     const meta = HOME_META[lang];
     let headAndBody = prerenderMarkup(htmlBeforeScript, lang, dicts);
 
@@ -496,10 +590,10 @@ function buildHomepages() {
       `<html lang="${meta.lang}"${dirAttr}${pageLangAttr}>`
     );
 
-    // Update <body> class for Arabic RTL
+    // Update <body> class for RTL languages (Arabic & Persian)
     headAndBody = headAndBody.replace(
       /<body\b[^>]*>/i,
-      lang === 'ar' ? '<body class="ar">' : '<body>'
+      meta.dir === 'rtl' ? '<body class="ar">' : '<body>'
     );
 
     // Update <title>
@@ -540,6 +634,9 @@ function updateDenemePages() {
     nl: DENEME_META.nl.url,
     tr: DENEME_META.tr.url,
     ar: DENEME_META.ar.url,
+    ru: DENEME_META.ru.url,
+    fa: DENEME_META.fa.url,
+    es: DENEME_META.es.url,
   };
   const hreflangs = buildHreflangTags(urlMap, DENEME_META.en.url, '');
 
@@ -610,6 +707,9 @@ ${hreflangs}
       nl: 'CBR Oefenvraag',
       tr: 'CBR Deneme Sorusu',
       ar: 'سؤال CBR التدريبي',
+      ru: 'Практический вопрос CBR',
+      fa: 'سؤال آزمایشی CBR',
+      es: 'Pregunta de práctica CBR',
     };
     const qPrefix = qPrefixMap[lang] || 'CBR Question';
 
@@ -638,6 +738,9 @@ function updateTheoryDirectory() {
     nl: CHAPTER1_META.nl.url,
     tr: CHAPTER1_META.tr.url,
     ar: CHAPTER1_META.ar.url,
+    ru: CHAPTER1_META.ru.url,
+    fa: CHAPTER1_META.fa.url,
+    es: CHAPTER1_META.es.url,
   };
   const ch1Hreflangs = buildHreflangTags(ch1UrlMap, CHAPTER1_META.en.url, '    ');
 
@@ -706,7 +809,7 @@ ${ch1Hreflangs}
   }
 
   // Mark gated Chapters 2–6 & Reference Supplements as noindex, nofollow
-  for (const lang of ['en', 'nl', 'tr', 'ar']) {
+  for (const lang of ALL_LANGS) {
     const dir = path.join(ROOT, 'theory', lang);
     if (!fs.existsSync(dir)) continue;
     for (const entry of fs.readdirSync(dir)) {
@@ -727,7 +830,7 @@ ${ch1Hreflangs}
       fs.writeFileSync(fp, html, 'utf8');
     }
   }
-  console.log('✅ Marked 32 gated theory/* chapters as noindex, nofollow');
+  console.log('✅ Marked 56 gated theory/* chapters as noindex, nofollow');
 }
 
 // ── 4. Fix Legal Pages & Clean Gated/Test/Inactive Root HTML Pages ───────────
@@ -784,6 +887,9 @@ function cleanRootGatedAndTestPages() {
     'deneme-nl.html',
     'deneme-tr.html',
     'deneme-ar.html',
+    'deneme-ru.html',
+    'deneme-fa.html',
+    'deneme-es.html',
   ]);
 
   let noindexCount = 0;
@@ -839,6 +945,9 @@ function generateSitemapAndRobots(extraClusters = []) {
         nl: `${BASE_URL}/nl/`,
         tr: `${BASE_URL}/tr/`,
         ar: `${BASE_URL}/ar/`,
+        ru: `${BASE_URL}/ru/`,
+        fa: `${BASE_URL}/fa/`,
+        es: `${BASE_URL}/es/`,
       },
       xDefault: `${BASE_URL}/`,
     },
@@ -850,6 +959,9 @@ function generateSitemapAndRobots(extraClusters = []) {
         nl: `${BASE_URL}/deneme-nl`,
         tr: `${BASE_URL}/deneme-tr`,
         ar: `${BASE_URL}/deneme-ar`,
+        ru: `${BASE_URL}/deneme-ru`,
+        fa: `${BASE_URL}/deneme-fa`,
+        es: `${BASE_URL}/deneme-es`,
       },
       xDefault: `${BASE_URL}/deneme-en`,
     },
@@ -861,6 +973,9 @@ function generateSitemapAndRobots(extraClusters = []) {
         nl: `${BASE_URL}/theory/nl/traffic-rules`,
         tr: `${BASE_URL}/theory/tr/traffic-rules`,
         ar: `${BASE_URL}/theory/ar/traffic-rules`,
+        ru: `${BASE_URL}/theory/ru/traffic-rules`,
+        fa: `${BASE_URL}/theory/fa/traffic-rules`,
+        es: `${BASE_URL}/theory/es/traffic-rules`,
       },
       xDefault: `${BASE_URL}/theory/en/traffic-rules`,
     },

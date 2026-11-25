@@ -31,7 +31,7 @@
     document.documentElement.classList.add('et-native-app');
 
     const OAUTH_REDIRECT_URI = 'nl.examtheorie.app://auth-callback';
-    const SUPPORTED_LANGS = ['en', 'nl', 'tr', 'ar'];
+    const SUPPORTED_LANGS = ['en', 'nl', 'tr', 'ar', 'ru', 'fa', 'es'];
 
     const BRIDGE_I18N = {
         en: {
@@ -117,6 +117,69 @@
             howStep1Title: 'سجّل الدخول أو ابدأ مجاناً',
             howStep1Desc: 'سجّل الدخول بحسابك أو ابدأ فوراً بالاختبار التجريبي المجاني.',
             faqFreeQ: 'هل يمكنني تجربة اختبار CBR مجاني باللغة العربية؟'
+        },
+        ru: {
+            back: '← Назад',
+            exitExamConfirm: 'Выйти из экзамена? Ваши текущие ответы не будут сохранены.',
+            guestTitle: 'Требуется вход в аккаунт',
+            guestDescTests: 'Войдите в свой аккаунт ExamTheorie, чтобы открыть все 50 практических экзаменов CBR и синхронизировать прогресс, или попробуйте бесплатные материалы ниже.',
+            guestDescTheory: 'Войдите в свой аккаунт ExamTheorie, чтобы открыть все главы теории CBR и справочники, или попробуйте бесплатные материалы ниже.',
+            signInBtn: 'Войти в аккаунт',
+            memberTitle: 'Требуется активный доступ',
+            memberDescTests: 'Для этой функции необходим активный доступ ExamTheorie на вашем аккаунте. Если доступ был недавно активирован, нажмите «Обновить статус аккаунта» ниже.',
+            memberDescTheory: 'Для доступа ко всем главам теории необходим активный доступ ExamTheorie. Если доступ был недавно активирован, нажмите «Обновить статус аккаунта» ниже.',
+            refreshBtn: '🔄 Обновить статус аккаунта',
+            refreshingBtn: '⏳ Проверка...',
+            refreshUnlocked: '✅ Активный доступ найден! Материалы открыты.',
+            refreshNotFound: 'ℹ️ На этом аккаунте пока не найден активный доступ.',
+            freeExamBtn: 'Пройти бесплатный пробный экзамен (50 вопросов)',
+            freeChapterBtn: 'Читать бесплатную Главу 1 (Правила ПДД)',
+            syncNote: 'Прогресс автоматически синхронизируется между устройствами',
+            howStep1Title: 'Войдите или начните бесплатно',
+            howStep1Desc: 'Войдите в свой аккаунт или сразу начните с бесплатного пробного экзамена.',
+            faqFreeQ: 'Могу ли я пройти бесплатный пробный тест ПДД CBR на русском?'
+        },
+        fa: {
+            back: 'بازگشت →',
+            exitExamConfirm: 'از این آزمون خارج می‌شوید؟ پاسخ‌های فعلی شما ذخیره نخواهد شد.',
+            guestTitle: 'ورود به حساب کاربری الزامی است',
+            guestDescTests: 'برای دسترسی به تمام ۵۰ آزمون آزمایشی CBR و همگام‌سازی پیشرفت خود وارد حساب ExamTheorie شوید، یا از محتوای رایگان زیر استفاده کنید.',
+            guestDescTheory: 'برای باز کردن تمام فصل‌های تئوری CBR و راهنماهای مرجع وارد حساب ExamTheorie شوید، یا محتوای رایگان زیر را امتحان کنید.',
+            signInBtn: 'ورود به حساب کاربری',
+            memberTitle: 'عضویت فعال مورد نیاز است',
+            memberDescTests: 'این بخش نیازمند عضویت فعال ExamTheorie در حساب شماست. اگر عضویت شما به‌تازگی فعال شده است، دکمه بروزرسانی وضعیت حساب را بزنید.',
+            memberDescTheory: 'دسترسی کامل به فصل‌های تئوری نیازمند عضویت فعال ExamTheorie در حساب شماست. اگر عضویت شما به‌تازگی فعال شده است، دکمه زیر را بزنید.',
+            refreshBtn: '🔄 بروزرسانی وضعیت حساب',
+            refreshingBtn: '⏳ در حال بررسی...',
+            refreshUnlocked: '✅ عضویت فعال یافت شد! محتوا باز شد.',
+            refreshNotFound: 'ℹ️ هنوز عضویت فعالی در این حساب یافت نشد.',
+            freeExamBtn: 'آزمون آزمایشی رایگان (۵۰ سؤال)',
+            freeChapterBtn: 'مطالعه رایگان فصل ۱ (قوانین راهنمایی و رانندگی)',
+            syncNote: 'پیشرفت حساب شما به‌طور خودکار در تمام دستگاه‌ها همگام‌سازی می‌شود',
+            howStep1Title: 'ورود یا شروع رایگان',
+            howStep1Desc: 'وارد حساب کاربری خود شوید یا همین حالا با آزمون آزمایشی رایگان شروع کنید.',
+            faqFreeQ: 'آیا می‌توانم یک آزمون تئوری رانندگی CBR رایگان به زبان فارسی بدهم؟'
+        },
+        es: {
+            back: '← Volver',
+            exitExamConfirm: '¿Salir de este examen? Tus respuestas actuales no se guardarán.',
+            guestTitle: 'Inicio de Sesión Requerido',
+            guestDescTests: 'Inicia sesión con tu cuenta de ExamTheorie para acceder a los 50 exámenes de práctica CBR y sincronizar tu progreso, o prueba el contenido gratuito abajo.',
+            guestDescTheory: 'Inicia sesión con tu cuenta de ExamTheorie para desbloquear todos los capítulos teóricos CBR y guías de referencia, o prueba el contenido gratuito abajo.',
+            signInBtn: 'Iniciar Sesión en tu Cuenta',
+            memberTitle: 'Membresía Activa Requerida',
+            memberDescTests: 'Esta función requiere una membresía activa de ExamTheorie en tu cuenta. Si tu membresía fue activada recientemente, pulsa Actualizar Estado de Cuenta abajo.',
+            memberDescTheory: 'Los capítulos teóricos completos requieren una membresía activa de ExamTheorie. Si tu membresía fue activada recientemente, pulsa Actualizar Estado de Cuenta abajo.',
+            refreshBtn: '🔄 Actualizar Estado de Cuenta',
+            refreshingBtn: '⏳ Comprobando...',
+            refreshUnlocked: '✅ ¡Membresía activa encontrada! Contenido desbloqueado.',
+            refreshNotFound: 'ℹ️ Aún no se encontró una membresía activa en esta cuenta.',
+            freeExamBtn: 'Probar Examen de Práctica Gratis (50 Preguntas)',
+            freeChapterBtn: 'Leer Capítulo 1 Gratis (Normas de Tráfico)',
+            syncNote: 'El progreso de tu cuenta se sincroniza automáticamente en todos tus dispositivos',
+            howStep1Title: 'Inicia Sesión o Empieza Gratis',
+            howStep1Desc: 'Inicia sesión con tu cuenta o comienza de inmediato con el examen de prueba gratuito.',
+            faqFreeQ: '¿Puedo hacer un examen teórico CBR gratuito en español?'
         }
     };
 
@@ -363,7 +426,13 @@
             p === '/tr' ||
             p === '/tr/index.html' ||
             p === '/ar' ||
-            p === '/ar/index.html'
+            p === '/ar/index.html' ||
+            p === '/ru' ||
+            p === '/ru/index.html' ||
+            p === '/fa' ||
+            p === '/fa/index.html' ||
+            p === '/es' ||
+            p === '/es/index.html'
         );
     }
 
@@ -533,7 +602,7 @@
         backBtn.id = 'et-overlay-back-btn';
         backBtn.type = 'button';
         backBtn.textContent = t().back;
-        if (lang === 'ar') backBtn.classList.add('is-rtl');
+        if (lang === 'ar' || lang === 'fa') backBtn.classList.add('is-rtl');
         backBtn.addEventListener('click', () => {
             closeOverlay(false);
         });
@@ -703,7 +772,7 @@
             return true;
         }
 
-        for (const id of ['si', 'su', 'fp', 'np']) {
+        for (const id of ['si', 'su', 'fp', 'np', 'refer']) {
             const modal = document.getElementById(id + '-modal');
             if (modal?.classList.contains('active') && typeof closeModal === 'function') {
                 closeModal(id);
@@ -808,7 +877,7 @@
         const user = getCurrentUser();
         const isTests = lastPaywallGroup === 'tests';
 
-        box.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+        box.style.direction = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
         box.innerHTML = '';
 
         const closeEl = document.createElement('div');
@@ -1100,7 +1169,8 @@
                     const backBtn = document.getElementById('et-overlay-back-btn');
                     if (backBtn) {
                         backBtn.textContent = t().back;
-                        backBtn.classList.toggle('is-rtl', getCurrentLang() === 'ar');
+                        const curL = getCurrentLang();
+                        backBtn.classList.toggle('is-rtl', curL === 'ar' || curL === 'fa');
                     }
                 }
                 return res;

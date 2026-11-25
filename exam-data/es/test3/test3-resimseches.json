@@ -1,0 +1,84 @@
+{
+    "sorular": [
+        {
+            "numara": 9,
+            "soru": "¿En qué situación debe ceder el paso al otro usuario de la vía?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/9.1.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/9.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/9.3.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/9.4.jpg"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/9.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/9.3.jpg"
+            ],
+            "feedback": {
+                "metin": "En la situación superior izquierda, usted se aproxima a triángulos de ceda el paso y a la señal B6, lo que significa que debe ceder el paso a los conductores de la vía transversal; como un peatón no es un conductor, no tiene que cederle el paso. En la situación superior derecha, el ciclista se aproxima por su derecha en una intersección equivalente (las marcas de resalto o un pavimento distinto como adoquines no cambian la prioridad), por lo que debe ceder el paso al ciclista. En la situación inferior izquierda, el ciclista también viene por su derecha en una intersección equivalente, así que debe cederle el paso. En la situación inferior derecha, el conductor del ciclomotor tiene triángulos de ceda el paso ante la vía transversal, por lo que usted no tiene que cederle el paso.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 40,
+            "soru": "¿En qué situación está permitido adelantar por la derecha?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.1.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.2.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.3.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.4.gif"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.1.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.3.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/40.4.gif"
+            ],
+            "feedback": {
+                "metin": "Adelantar por la derecha está permitido justo antes de una glorieta y dentro de ella (situación superior izquierda). También está permitido a la derecha de una marca vial de bloques (línea de bloques) para adelantar a los vehículos que circulan a la izquierda de dicha marca (situación inferior izquierda). Asimismo, está permitido adelantar por la derecha cuando el vehículo que precede ha señalizado su giro a la izquierda y se ha situado para realizarlo (situación inferior derecha). En cambio, en la situación superior derecha no está permitido adelantar por la derecha porque no hay retención ni marcas de bloques; allí solo se puede adelantar por la izquierda.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 45,
+            "soru": "¿Qué señal indica un límite de velocidad?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.1.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.3.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.4.jpg"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.1.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/45.4.jpg"
+            ],
+            "feedback": {
+                "metin": "La respuesta correcta son las señales A-1, A-3 y G-5. La señal A-1 indica una velocidad máxima permitida de 50 km/h. La señal A-3 aparece en los paneles de señalización variable (matrices) sobre la calzada e indica igualmente un límite máximo de velocidad y no una velocidad recomendada. La señal A-4 indica una velocidad aconsejada (recomendada), no un límite de velocidad. La señal G-5 indica la entrada a una zona residencial (Erf) y, por tanto, conlleva un límite máximo de velocidad de 15 km/h.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 47,
+            "soru": "¿Después de qué señal tiene permitido realizar un cambio de sentido (media vuelta)?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/47.1.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/47.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/47.3.jpg"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test3/resimdensech/47.3.jpg"
+            ],
+            "feedback": {
+                "metin": "Solo está permitido realizar un cambio de sentido después de la señal H-2, que indica el fin de zona urbana (poblado). La señal G-1 indica una autopista (Autosnelweg) y la señal G-3 indica una autovía (Autoweg); en ambos tipos de vía está prohibido realizar un cambio de sentido.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

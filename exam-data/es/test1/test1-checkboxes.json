@@ -1,0 +1,28 @@
+{
+    "sorular": [
+        {
+            "numara": 18,
+            "soru": "¿Qué conductores tienen permitido adelantar después de esta señal?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/18.jpg",
+            "cevaplar": [
+                "Conductores de ciclomotores.",
+                "Conductores de vehículos agrícolas.",
+                "Ciclistas.",
+                "Motociclistas.",
+                "Conductores de camiones."
+            ],
+            "dogruCevap": [
+                "Conductores de ciclomotores.",
+                "Conductores de vehículos agrícolas.",
+                "Ciclistas.",
+                "Motociclistas."
+            ],
+            "feedback": {
+                "metin": "Respuestas correctas: conductores de ciclomotores, conductores de vehículos agrícolas, ciclistas y motociclistas. Esta señal prohíbe a los conductores de camiones adelantar a otros vehículos de motor. Los conductores de camiones no pueden adelantar en este tramo; los conductores de los demás vehículos indicados sí pueden adelantar si no se aplica ninguna otra prohibición de adelantamiento y es seguro hacerlo.",
+                "dogru": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlis": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamis": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

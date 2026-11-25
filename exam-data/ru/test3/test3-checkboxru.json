@@ -1,0 +1,72 @@
+{
+    "sorular": [
+        {
+            "numara": 33,
+            "soru": "Какими транспортными средствами вам запрещено управлять, если действие вашего водительского удостоверения приостановлено?",
+            "resim": "",
+            "cevaplar": [
+                "Легкомоторным мопедом (snorfiets).",
+                "Велосипедом.",
+                "Микроавтомобилем (brommobiel).",
+                "Легковым автомобилем."
+            ],
+            "dogruCevap": [
+                "Легкомоторным мопедом (snorfiets).",
+                "Микроавтомобилем (brommobiel).",
+                "Легковым автомобилем."
+            ],
+            "feedback": {
+                "metin": "Когда действие вашего водительского удостоверения приостановлено, вам запрещено управлять любыми механическими транспортными средствами. Таким образом, запрещено управлять не только легковым автомобилем, но также микроавтомобилем (brommobiel), мопедом (bromfiets) или легкомоторным мопедом (snorfiets). Велосипед не является механическим транспортным средством, поэтому ездить на велосипеде вам по-прежнему разрешено.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 35,
+            "soru": "Каких водителей вам следует ожидать здесь на проезжей части?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/35.jpg",
+            "cevaplar": [
+                "Водителей микроавтомобилей (brommobiel).",
+                "Водителей скоростных электровелосипедов (speed pedelec).",
+                "Водителей мопедов (bromfiets).",
+                "Велосипедистов.",
+                "Водителей легкомоторных мопедов (snorfiets)."
+            ],
+            "dogruCevap": [
+                "Водителей микроавтомобилей (brommobiel).",
+                "Водителей скоростных электровелосипедов (speed pedelec).",
+                "Водителей мопедов (bromfiets)."
+            ],
+            "feedback": {
+                "metin": "Рядом с проезжей частью проходит обязательная велосипедная дорожка. Это означает, что только велосипедисты и водители легкомоторных мопедов (snorfiets) обязаны использовать велосипедную дорожку вместо проезжей части. Всем остальным водителям движение по этой велосипедной дорожке запрещено, поэтому вам следует ожидать их на проезжей части.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 39,
+            "soru": "Какие световые приборы вам разрешено использовать?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/39.jpg",
+            "cevaplar": [
+                "Дальний свет фар.",
+                "Передние противотуманные фары в сочетании с ближним светом фар.",
+                "Передние противотуманные фары в сочетании с габаритными огнями.",
+                "Задний противотуманный фонарь.",
+                "Ближний свет фар."
+            ],
+            "dogruCevap": [
+                "Передние противотуманные фары в сочетании с ближним светом фар.",
+                "Передние противотуманные фары в сочетании с габаритными огнями.",
+                "Ближний свет фар."
+            ],
+            "feedback": {
+                "metin": "Видимость ухудшена из-за тумана. Вы по-прежнему видите как минимум на 100 метров вперёд, так как следующий гектометровый столбик всё ещё виден. В этом случае вы можете использовать ближний свет фар как с передними противотуманными фарами, так и без них. Вы также можете сочетать передние противотуманные фары с габаритными огнями вместо ближнего света фар. Дальний свет фар запрещён в светлое время суток. Задний противотуманный фонарь также запрещён: его разрешается включать только при видимости менее 50 метров.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "sorular": [
+        {
+            "numara": 37,
+            "soru": "Какие транспортные средства относятся к категории моторных транспортных средств?",
+            "resim": "",
+            "cevaplar": [
+                "Мотоцикл.",
+                "Трактор.",
+                "Легковой автомобиль.",
+                "Мопед.",
+                "Трамвай."
+            ],
+            "dogruCevap": [
+                "Мотоцикл.",
+                "Трактор.",
+                "Легковой автомобиль."
+            ],
+            "feedback": {
+                "metin": "К моторным транспортным средствам относятся все механические транспортные средства, за исключением рельсовых транспортных средств (поезд, метро, трамвай), мопедов (bromfiets) и транспортных средств для инвалидов.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

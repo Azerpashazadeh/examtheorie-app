@@ -1,0 +1,27 @@
+{
+    "sorular": [
+        {
+            "numara": 37,
+            "soru": "¿Qué vehículos entran en la categoría de vehículos de motor?",
+            "resim": "",
+            "cevaplar": [
+                "Motocicleta.",
+                "Tractor.",
+                "Turismo.",
+                "Ciclomotor.",
+                "Tranvía."
+            ],
+            "dogruCevap": [
+                "Motocicleta.",
+                "Tractor.",
+                "Turismo."
+            ],
+            "feedback": {
+                "metin": "Los vehículos de motor son todos los vehículos motorizados, excepto los vehículos sobre raíles (tren, metro, tranvía), los ciclomotores y los vehículos para personas con movilidad reducida.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

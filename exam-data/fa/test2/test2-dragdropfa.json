@@ -1,0 +1,291 @@
+{
+    "sorular": [
+        {
+            "numara": 6,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "13.4884%",
+                        "left": "8.6057%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "11.0479%",
+                        "left": "52.0744%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/6_edited.jpg",
+            "feedback": {
+                "metin": "اگر گذرگاه عابر پیاده یا ساختار خروجی وجود نداشته باشد، ملزم به دادن حق تقدم به عابر پیاده‌ای که قصد عرض جاده را دارد نیستید. عابر پیاده در همان مسیر شما حرکت نمی‌کند بلکه از پهلو قصد عبور از عرض خیابان را دارد. در چنین حالتی عابران پیاده فقط در گذرگاه خط‌کشی‌شده عابر پیاده، در ساختار خروجی، و یا در صورت داشتن معلولیت حرکتی یا نابینایی حق تقدم دارند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 21,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "46.5026%",
+                        "left": "82.4379%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "43.0816%",
+                        "left": "12.6586%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/21_edited.jpg",
+            "feedback": {
+                "metin": "شما باید به دوچرخه‌سواری که از سمت راست نزدیک می‌شود حق تقدم بدهید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 23,
+            "soru": "ترتیب صحیح حق تقدم چگونه است؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger2",
+                    "value": "2",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "14.9857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger3",
+                    "value": "3",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "28.185699999999997%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger4",
+                    "value": "4",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "41.38569999999999%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "3.9918%",
+                        "left": "38.4599%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "48.0124%",
+                        "left": "72.139%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target3",
+                    "value": "",
+                    "position": {
+                        "top": "9.7372%",
+                        "left": "62.856%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target4",
+                    "value": "",
+                    "position": {
+                        "top": "43.6374%",
+                        "left": "7.3779%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                },
+                {
+                    "id": "dragger2",
+                    "target": "target2"
+                },
+                {
+                    "id": "dragger3",
+                    "target": "target3"
+                },
+                {
+                    "id": "dragger4",
+                    "target": "target4"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/23_edited.jpg",
+            "feedback": {
+                "metin": "ترتیب صحیح در اینجا عبارت است از: عابر پیاده، شما، موتورسوار، راکب موتورگازی. عابر پیاده اول عبور می‌کند زیرا در حال عبور از گذرگاه خط‌کشی‌شده عابر پیاده است. پس از آن شما حرکت می‌کنید چون در جاده اصلی (دارای حق تقدم) هستید. سپس موتورسوار عبور می‌کند زیرا گردش کوتاه (به راست) بر گردش بلند (به چپ) راکب موتورگازی حق تقدم دارد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 41,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "3.295%",
+                        "left": "31.8139%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "2.4223%",
+                        "left": "53.6023%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/41_edited.jpg",
+            "feedback": {
+                "metin": "حق تقدم با دوچرخه‌سوار است زیرا در امتداد جاده اصلی انحنادار به مسیر خود ادامه می‌دهد. خودرو در حال خارج شدن (گردش) از جاده اصلی است و بنابراین باید به دوچرخه‌سوار راه بدهد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 48,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "13.2548%",
+                        "left": "12.928%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "59.1686%",
+                        "left": "34.5123%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test2/48_edited.jpg",
+            "feedback": {
+                "metin": "تراموا از روبه‌رو می‌آید و گردش می‌کند. شما همیشه باید به تراموایی که در همان جاده شما قرار دارد حق تقدم بدهید. اینکه در جاده اصلی رانندگی می‌کنید تفاوتی ایجاد نمی‌کند، زیرا تابلوی جاده اصلی فقط حق تقدم نسبت به خیابان‌های متقاطع را مشخص می‌کند و بر قوانین بین کاربرانِ یک جاده واحد اثری ندارد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

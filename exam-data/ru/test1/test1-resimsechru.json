@@ -1,0 +1,44 @@
+{
+    "sorular": [
+        {
+            "numara": 12,
+            "soru": "В каких ситуациях вам разрешён обгон (опережение) справа?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.1.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.2.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.3.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.4.gif"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.1.gif",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/12.2.gif"
+            ],
+            "feedback": {
+                "metin": "В обеих верхних ситуациях вам разрешено опережение справа. Трамвай разрешается обгонять как слева, так и справа. Также разрешено опережать справа, если обгоняемое транспортное средство движется слева от блок-разметки (разделительной разметки полос съезда/разгона). В двух нижних ситуациях обгон справа запрещён. В нижней левой ситуации нельзя опережать справа автомобиль, который без необходимости движется по левой полосе; нужно подождать, пока он перестроится в правую полосу. В нижней правой ситуации вы движетесь по полосе для движения в часы пик (spitsstrook). Эта полоса считается обычной полосой движения, поэтому опережение справа запрещено, если нет затора (пробки). В данной ситуации пробки нет.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 33,
+            "soru": "После каких знаков следует ожидать появления пешеходов на проезжей части?",
+            "secenekler": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.1.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.3.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.4.jpg"
+            ],
+            "dogruCevap": [
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.2.jpg",
+                "https://azerpashazadeh.github.io/sorularveresimler/test1/resimdensech/33.4.jpg"
+            ],
+            "feedback": {
+                "metin": "Правильные ответы — знаки G-5 (жилая зона, Erf) и J-23. Знак G-5 указывает на въезд в жилую зону (Erf), где пешеходам разрешено использовать всю ширину дороги. Знак J-23 предупреждает о возможном появлении пешеходов на дороге или переходе ими проезжей части. Знак C-16 запрещает движение пешеходов. Знак G-3 обозначает дорогу для автомобилей (Autoweg), где движение пешеходов запрещено.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

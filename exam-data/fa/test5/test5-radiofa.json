@@ -1,0 +1,661 @@
+{
+    "sorular": [
+        {
+            "numara": 1,
+            "soru": "کم‌مصرف‌ترین (اقتصادی‌ترین) روش رانندگی کدام است؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/1.jpg",
+            "cevaplar": [
+                "با دور موتور بالا در سنگین‌ترین (پایین‌ترین) دنده ممکن.",
+                "با دور موتور پایین در سبک‌ترین (بالاترین) دنده ممکن."
+            ],
+            "dogruCevap": "با دور موتور پایین در سبک‌ترین (بالاترین) دنده ممکن.",
+            "feedback": {
+                "metin": "هرچه دور موتور (RPM) بالاتر باشد مصرف سوخت بیشتر می‌شود؛ بنابراین رانندگی با دور موتور پایین در بالاترین دنده متناسب با سرعت، اقتصادی‌ترین روش رانندگی است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 2,
+            "soru": "آیا به شکل صحیحی در حال سبقت گرفتن هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/2.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "هنگام سبقت گرفتن از اسب‌سوار باید حداکثر فاصله عرضی ممکن را حفظ کنید، با آرامش و صدای کم عبور کنید و هرگز بوق نزنید تا اسب رم نکند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 3,
+            "soru": "اگر این چراغ هشدار هنگام رانندگی روشن شود چه باید بکنید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/3.jpg",
+            "cevaplar": [
+                "در اسرع وقت به تعمیرگاه برانید.",
+                "وقت بازدید دوره‌ای از تعمیرگاه بگیرید.",
+                "فوراً در مکانی ایمن توقف کنید."
+            ],
+            "dogruCevap": "فوراً در مکانی ایمن توقف کنید.",
+            "feedback": {
+                "metin": "این چراغ قرمز نسبت به کمبود روغن ترمز، فرسودگی شدید لنت‌ها، نقص سیستم ترمز/ABS یا بالا ماندن ترمز دستی هشدار می‌دهد. باید فوراً در مکانی امن توقف کنید، ابتدا ترمز دستی و سطح روغن ترمز را بررسی نمایید و در صورت رفع نشدن مشکل با امداد خودرو تماس بگیرید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 4,
+            "soru": "آیا حرکت با دنده عقب در اینجا مجاز است؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/4.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "این تابلوی زرد با پیکان سیاه تنها نشان‌دهنده مسیر انحرافی پیشنهادی است (نه خیابان یک‌طرفه یا جهت اجباری)؛ بنابراین الزام قانونی به پیروی از آن ندارید و دنده عقب گرفتن یا دور زدن مجاز است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 5,
+            "soru": "آیا در اینجا در حال خروج از آزادراه هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/5.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "تابلوی سبز با خطوط سفید جناغی نشان‌دهنده انشعاب دو جاده هم‌سطح (مانند دو آزادراه یا دو بزرگراه) است، نه خروجی آزادراه؛ بنابراین همچنان در آزادراه باقی می‌مانید (در خروجی آزادراه تابلوی «UIT» نصب می‌شود).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 6,
+            "soru": "آیا مجاز هستید در اینجا منتظر مسافر بمانید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/6.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "در کنار خط‌کشی شطرنجی ایستگاه اتوبوس (یا در فاصله 12 متری تابلوی ایستگاه در صورت نبود خط‌کشی شطرنجی)، تنها توقف فوری برای سوار یا پیاده کردن مسافر مجاز است. منتظر مسافر ماندن حکم پارک کردن را دارد و در اینجا ممنوع است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 7,
+            "soru": "در کدام موقعیت باید انتظار آمدن رانندگان را از سمت چپ داشته باشید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/7.jpg",
+            "cevaplar": [
+                "فقط در موقعیت A.",
+                "فقط در موقعیت B.",
+                "در هر دو موقعیت."
+            ],
+            "dogruCevap": "در هر دو موقعیت.",
+            "feedback": {
+                "metin": "در موقعیت A به یک خیابان یک‌طرفه به سمت راست نزدیک می‌شوید، پس خودروها از سمت چپ شما می‌آیند. در موقعیت B تابلوی D-5 شما را ملزم به گردش به راست می‌کند اما خیابان متقاطع یک‌طرفه نیست و دوطرفه است؛ بنابراین در هر دو موقعیت باید انتظار آمدن رانندگان از سمت چپ را داشته باشید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 8,
+            "soru": "مثلث خطر را باید در چه فاصله‌ای از خودروی متوقف خود قرار دهید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/8.jpg",
+            "cevaplar": [
+                "حدود 15 متر.",
+                "حدود 30 متر.",
+                "حدود 50 متر."
+            ],
+            "dogruCevap": "حدود 30 متر.",
+            "feedback": {
+                "metin": "مثلث خطر باید به وضوح قابل دید باشد و در فاصله حدود 30 متری از خودرو، رو به جریان ترافیکی که خودرو برای آن خطر ایجاد می‌کند قرار داده شود.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 9,
+            "soru": "آیا در این موقعیت مجاز به روشن کردن چراغ نور بالا هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/9.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "شما در طول روز در هوای مه‌آلود رانندگی می‌کنید. روشن کردن چراغ نور بالا در طول روز ممنوع است؛ ضمن اینکه در مه، قطرات آب نور بالا را بازتاب می‌دهند و دید خودتان را بدتر می‌کنند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 10,
+            "soru": "آیا در اینجا مجاز به استفاده از چراغ مه‌شکن عقب هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/10.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "چراغ مه‌شکن عقب فقط زمانی مجاز است که دید بر اثر مه یا بارش برف به کمتر از 50 متر کاهش یابد. در تصویر، تیرک‌های صدمتری (هکتومتر) نشان می‌دهند که دید بیش از 100 متر است؛ بنابراین مه‌شکن جلو مجاز است اما روشن کردن مه‌شکن عقب ممنوع است و چشم رانندگان عقبی را می‌زند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 11,
+            "soru": "خودروی گازسوز (LPG/CNG) چه زمانی برای اولین بار باید معاینه فنی (APK) شود؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/11.jpg",
+            "cevaplar": [
+                "2 سال پس از اولین شماره‌گذاری.",
+                "3 سال پس از اولین شماره‌گذاری.",
+                "4 سال پس از اولین شماره‌گذاری."
+            ],
+            "dogruCevap": "3 سال پس از اولین شماره‌گذاری.",
+            "feedback": {
+                "metin": "خودروهای دیزلی، گازسوز یا هیدروژنی باید برای نخستین بار 3 سال پس از تاریخ اولین پذیرش (شماره‌گذاری) و پس از آن هر سال معاینه فنی APK شوند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 12,
+            "soru": "آیا نوشیدن آب به کاهش سطح الکل خون کمک می‌کند؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/12.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "الکل خون فقط از طریق تجزیه توسط کبد کاهش می‌یابد (حدود 1 تا 1.5 ساعت به ازای هر لیوان استاندارد) و هیچ چیزی از جمله نوشیدن آب، قهوه یا هوای آزاد سرعت دفع آن را افزایش نمی‌دهد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 13,
+            "soru": "آیا مجاز هستید از سمت راست از خودروی آبی سبقت بگیرید؟",
+            "video": "https://azerpashazadeh.github.io/sorularveresimler/test5/13.mp4",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "بلافاصله پیش از ورود به میدان و در داخل میدان، سبقت گرفتن هم از سمت چپ و هم از سمت راست مجاز است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 14,
+            "soru": "آیا مجاز به پارک کردن در اینجا هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/14.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "طبق تابلو، شما وارد «محدوده پارک ممنوع» (Zone) می‌شوید. در این محدوده پارک کردن فقط در محل‌های خط‌کشی‌شده پارک یا دارای تابلوی P مجاز است؛ بنابراین پارک کردن در اینجا روی سوارهرو ممنوع است (هرچند توقف فوری برای بارگیری یا سوار/پیاده کردن مسافر مجاز است).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 15,
+            "soru": "آیا باید از دستورات پلیس پیروی کنید؟",
+            "resim": "",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "پیروی از دستورات مأموران مجاز شامل پلیس، پلیس نظامی، مأموران گمرک/مالیات و مأموران کنترل ترافیک الزامی و بر تابلوها و چراغ‌های راهنمایی مقدم است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 16,
+            "soru": "هنگام شروع حرکت پس از پارک بودن، موظفید به چه کسانی حق تقدم بدهید؟",
+            "resim": "",
+            "cevaplar": [
+                "به تمامی کاربران جاده.",
+                "فقط به رانندگان.",
+                "فقط به وسایل نقلیه موتوری."
+            ],
+            "dogruCevap": "به تمامی کاربران جاده.",
+            "feedback": {
+                "metin": "شروع حرکت از حالت توقف/پارک (wegrijden) یک مانور ویژه است؛ بنابراین باید به تمامی کاربران جاده (از جمله عابران پیاده و دوچرخه‌سواران) حق تقدم بدهید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 18,
+            "soru": "حداکثر سرعت مجاز برای راننده کامیون در آزادراه چقدر است؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/18.jpg",
+            "cevaplar": [
+                "80 کیلومتر در ساعت.",
+                "90 کیلومتر در ساعت.",
+                "100 کیلومتر در ساعت."
+            ],
+            "dogruCevap": "80 کیلومتر در ساعت.",
+            "feedback": {
+                "metin": "حداکثر سرعت مجاز برای کامیون‌ها در خارج از محدوده شهری (از جمله در بزرگراه‌ها و آزادراه‌ها) 80 کیلومتر در ساعت است، مگر اینکه تابلو سرعت کمتری را تعیین کرده باشد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 19,
+            "soru": "هنگام پارک کردن در محدوده صفحه پارک (خط آبی)، چه زمانی را باید روی صفحه پارک (parking disc) تنظیم کنید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/19.jpg",
+            "cevaplar": [
+                "مدت زمانی که پارک خواهید کرد.",
+                "ساعت شروع پارک (زمان ورود).",
+                "ساعت پایان پارک."
+            ],
+            "dogruCevap": "ساعت شروع پارک (زمان ورود).",
+            "feedback": {
+                "metin": "در محدوده پارک با صفحه آبی (تابلوی E-10 و خط آبی کنار جدول)، باید ساعت شروع پارک (زمان ورود به جای پارک، که مجاز است به نیم‌ساعت بعدی گرد شود) را روی صفحه پارک تنظیم کنید. تغییر دادن مجدد ساعت صفحه پارک بدون جابه‌جا کردن خودرو ممنوع است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 20,
+            "soru": "در اینجا باید به چه کسانی حق تقدم بدهید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/20.jpg",
+            "cevaplar": [
+                "فقط به عابران پیاده.",
+                "فقط به رانندگان.",
+                "به تمامی کاربران جاده."
+            ],
+            "dogruCevap": "به تمامی کاربران جاده.",
+            "feedback": {
+                "metin": "ورودی و خروجی این منطقه مسکونی (Erf) به صورت «ساختار خروجی» (uitritconstructie با پیاده‌روی ممتد) ساخته شده است. هنگام عبور از ساختار ورودی/خروجی باید به تمامی کاربران جاده از جمله عابران پیاده حق تقدم بدهید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 22,
+            "soru": "دوچرخه نصب‌شده روی باربند عقب خودرو حداکثر چقدر می‌تواند از طرفین خودرو بیرون بزند؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/22.jpg",
+            "cevaplar": [
+                "اصلاً نباید بیرون بزند.",
+                "حداکثر 10 سانتی‌متر از هر طرف.",
+                "حداکثر 20 سانتی‌متر از هر طرف."
+            ],
+            "dogruCevap": "حداکثر 20 سانتی‌متر از هر طرف.",
+            "feedback": {
+                "metin": "بار روی خودرو یا روی باربند عقب خودرو حداکثر می‌تواند تا 20 سانتی‌متر از هر سمتِ کناری خودرو بیرون بزند (چه بار قابل تقسیم باشد و چه یکپارچه).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 23,
+            "soru": "آیا باید به عابر پیاده حق تقدم بدهید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/23.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "در این موقعیت عابر پیاده در همان جاده‌ای که شما در آن هستید مستقیم ادامه مسیر می‌دهد در حالی که شما قصد گردش و خروج از آن جاده را دارید؛ طبق قانون تقدم حرکت مستقیم بر گردش در یک جاده، باید به عابر پیاده راه بدهید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 24,
+            "soru": "اگر خودروی شما در داخل تونل خراب شود، آیا بهترین کار این است که داخل خودرو منتظر کمک بمانید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/24.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "خیر؛ ماندن داخل خودرو در تونل خطرناک است. چراغ فلاشر را روشن کنید، خودرو را ترک نمایید، از طریق تلفن اضطراری داخل تونل به مرکز کنترل اطلاع دهید و از نزدیک‌ترین خروجی اضطراری تونل خارج شوید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 25,
+            "soru": "آیا پس از دیدن این تابلوی پوشیده از برف، همواره در جاده اصلی (دارای حق تقدم) رانندگی می‌کنید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/25.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "از شکل لوزی تابلو مشخص است که یا تابلوی «شروع جاده اصلی» (B-1) است یا تابلوی «پایان جاده اصلی» (B-2). به دلیل پوشیده بودن با برف مشخص نیست کدام‌یک است؛ بنابراین لزوماً در جاده اصلی قرار ندارید و باید احتیاط کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 26,
+            "soru": "پس از تصادف، مصدومی بی‌هوش روی زمین افتاده اما نفس می‌کشد. چه کاری باید انجام دهید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/26.jpg",
+            "cevaplar": [
+                "او را به پشت بخوابانید.",
+                "هیچ کاری نکنید و به او دست نزنید.",
+                "او را در وضعیت بهبودی به پهلو (پوزیشن ریکاوری / وضعیت پایدار جانبی) قرار دهید."
+            ],
+            "dogruCevap": "او را در وضعیت بهبودی به پهلو (پوزیشن ریکاوری / وضعیت پایدار جانبی) قرار دهید.",
+            "feedback": {
+                "metin": "قرار دادن مصدوم در وضعیت پایدار به پهلو (recovery position) برای افراد بی‌هوشی که تنفس طبیعی دارند ضروری است تا زبان یا ترشحات راه تنفسی او را مسدود نکند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 27,
+            "soru": "در این موقعیت چگونه عمل می‌کنید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/27.jpg",
+            "cevaplar": [
+                "وسیله نقلیه سریع‌تر حق تقدم دارد.",
+                "هر دو با هماهنگی یکدیگر مشخص می‌کنید چه کسی اول عبور کند.",
+                "خودروی پلیس همیشه حق تقدم دارد."
+            ],
+            "dogruCevap": "هر دو با هماهنگی یکدیگر مشخص می‌کنید چه کسی اول عبور کند.",
+            "feedback": {
+                "metin": "از آنجا که در هر دو سمت خیابان مانع وجود دارد و خودروی پلیس چراغ گردان آبی و آژیر روشن ندارد (پس در وضعیت مأموریت اضطراری نیست و با شما برابر است)، قانون خاصی یکی را مقدم نمی‌کند؛ باید با تماس چشمی و هماهنگی دوجانبه ترتیب عبور را مشخص کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 30,
+            "soru": "آیا می‌توانید از سمت راست از تراکتور سبقت بگیرید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/30.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "شما در یک میدان چندخطه رانندگی می‌کنید. بلافاصله پیش از میدان و در داخل میدان سبقت گرفتن از سمت راست مجاز است، پس می‌توانید از تراکتور سبقت بگیرید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 31,
+            "soru": "آیا اکنون مجاز هستید سرعت خود را افزایش دهید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/31.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "هنگامی که وسیله نقلیه دیگری در حال سبقت گرفتن از شماست، افزایش سرعت ممنوع است زیرا باعث به خطر افتادن خودتان و سایر رانندگان می‌شود.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 32,
+            "soru": "چگونه می‌توانید از بروز چنین وضعیتی جلوگیری کنید؟",
+            "video": "https://azerpashazadeh.github.io/sorularveresimler/test5/32.mp4",
+            "cevaplar": [
+                "با بازگشت به‌موقع به خط سمت راست.",
+                "با حفظ فاصله طولی کمتر.",
+                "با رانندگی سریع‌تر."
+            ],
+            "dogruCevap": "با بازگشت به‌موقع به خط سمت راست.",
+            "feedback": {
+                "metin": "راننده خودروی مشکی به این دلیل از سمت راست از شما سبقت می‌گیرد که شما بی‌جهت در خط چپ مانده‌اید. هرچند کار او غیرقانونی است، اما شما نیز مقصرید و می‌توانید با بازگشت به‌موقع به خط راست از این وضعیت پیشگیری کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 34,
+            "soru": "در این جاده باید انتظار چه محدودیت سرعتی را داشته باشید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/34.jpg",
+            "cevaplar": [
+                "80 کیلومتر در ساعت.",
+                "100 کیلومتر در ساعت.",
+                "120 کیلومتر در ساعت."
+            ],
+            "dogruCevap": "100 کیلومتر در ساعت.",
+            "feedback": {
+                "metin": "خط محوری سبز رنگ در وسط سوارهرو نشان‌دهنده بزرگراه (Autoweg) است. حداکثر سرعت مجاز در بزرگراه‌ها 100 کیلومتر در ساعت است، مگر اینکه تابلو سرعت کمتری را نشان دهد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 35,
+            "soru": "شیشه‌های جانبی جلو حداقل باید چند درصد عبوردهی نور (شفافیت) داشته باشند؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/35.jpg",
+            "cevaplar": [
+                "حداقل 55 درصد.",
+                "حداقل 65 درصد.",
+                "حداقل 75 درصد."
+            ],
+            "dogruCevap": "حداقل 55 درصد.",
+            "feedback": {
+                "metin": "شیشه جلو و شیشه‌های جانبی جلو باید حداقل 55 درصد نور را عبور دهند. چسباندن برچسب دودی تیره که عبوردهی نور را به کمتر از 55 درصد برساند، رانندگی با خودرو را غیرمجاز می‌کند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 36,
+            "soru": "آیا برای گردش به چپ در محل درستی مستقر شده‌اید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/36.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "این خیابان فقط به‌طور جزئی یک‌طرفه است و دوچرخه‌سواران، موتورگازی‌ها و راکبان snorfiets و speed pedelec از روبه‌رو تردد می‌کنند؛ بنابراین برای گردش به چپ نباید کاملاً به سمت چپ خیابان بچسبید، بلکه باید درست در سمت راستِ خط فرضی وسط خیابان مستقر شوید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 38,
+            "soru": "آیا موتورسوار مجاز است از شما سبقت بگیرد؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/38.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "تابلوی F-1 سبقت گرفتن تمامی وسایل نقلیه موتوری از یکدیگر را ممنوع می‌کند؛ بنابراین نه خودروی سواری مجاز به سبقت از موتورسیکلت است و نه موتورسوار مجاز است از شما یا موتورسوار دیگری سبقت بگیرد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 40,
+            "soru": "آیا مجاز به ادامه حرکت هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/40.gif",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "این گذرگاه راه‌آهن بدون راهبند و مجهز به چراغ چشمک‌زن خودکار است. چشمک زدن چراغ سفید بالایی به این معناست که قطاری نزدیک نمی‌شود و می‌توانید با احتیاط عبور کنید (هنگام آمدن قطار دو چراغ قرمز پایینی به تناوب چشمک می‌زنند).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 41,
+            "soru": "با خودروی سواری به همراه یدک (تریلر) رانندگی می‌کنید. کدام تابلو شامل شما می‌شود؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/41.jpg",
+            "cevaplar": [
+                "فقط تابلوی C-6.",
+                "فقط تابلوی C-10.",
+                "هر دو تابلو."
+            ],
+            "dogruCevap": "هر دو تابلو.",
+            "feedback": {
+                "metin": "هر دو تابلو شامل شما می‌شوند: تابلوی C-6 ورود وسایل نقلیه موتوری با بیش از دو چرخ (از جمله خودروی سواری شما) را ممنوع می‌کند و تابلوی C-10 ورود وسایل نقلیه موتوری که تریلر می‌کشند را ممنوع می‌نماید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 42,
+            "soru": "در چه شرایطی مجاز به توقف در اینجا هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/42.jpg",
+            "cevaplar": [
+                "برای بارگیری یا تخلیه بار.",
+                "برای سوار یا پیاده کردن مسافر.",
+                "در شرایط اضطراری."
+            ],
+            "dogruCevap": "در شرایط اضطراری.",
+            "feedback": {
+                "metin": "استفاده از خط ویژه اتوبوس برای سایر رانندگان ممنوع است و توقف یا پارک کردن روی آن یا در حاشیه آن به‌جز در موارد اضطراری مجاز نیست.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 43,
+            "soru": "اگر بخواهید کمی جلوتر به چپ بپیچید، آیا در موقعیت درستی قرار گرفته‌اید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/43.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "رانندگی روی بخش هاشورزده (خطوط مورب سفید روی آسفالت) در هر شرایطی ممنوع است، حتی اگر قصد داشته باشید جلوتر به سمت چپ بپیچید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 44,
+            "soru": "اگر طول مجموع خودرو و یدک شما 9 متر باشد، آیا مجاز به حرکت در این خط هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/44.jpg",
+            "cevaplar": [
+                "خیر.",
+                "بله."
+            ],
+            "dogruCevap": "بله.",
+            "feedback": {
+                "metin": "در حالت عادی ترکیب وسایل نقلیه با طول بیش از 7 متر (و کامیون‌ها) در آزادراه سه خطه یا بیشتر فقط مجاز به استفاده از دو خط سمت راست هستند؛ اما زمانی که خطوط به تفکیک مسیر (pre-sorting) برای انشعاب آزادراه تبدیل می‌شوند، برای انتخاب مسیر مورد نظر استفاده از سایر خطوط نیز مجاز است.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 47,
+            "soru": "چرا بسیاری از محله‌های مسکونی به عنوان «محدوده 30 کیلومتر در ساعت» تعیین می‌شوند؟",
+            "resim": "",
+            "cevaplar": [
+                "رانندگی سریع‌تر باعث افزایش شدید آلایندگی می‌شود.",
+                "در این مناطق اغلب کودکان مشغول بازی هستند و ممکن است ناگهان وارد خیابان شوند.",
+                "خیابان‌ها معمولاً برای سرعت بیشتر بیش از حد باریک هستند."
+            ],
+            "dogruCevap": "در این مناطق اغلب کودکان مشغول بازی هستند و ممکن است ناگهان وارد خیابان شوند.",
+            "feedback": {
+                "metin": "در محله‌های مسکونی کودکان در حال بازی توجه کمتری به ترافیک دارند و ممکن است ناگهان به وسط خیابان بدوند. در سرعت 30 کیلومتر در ساعت مسافت توقف اضطراری حدود 15 متر است در حالی که در سرعت 50 کیلومتر در ساعت به دو برابر می‌رسد و تفاوت بین مرگ و زندگی را رقم می‌زند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 48,
+            "soru": "آیا باید به مسافرانی که از تراموا پیاده می‌شوند حق تقدم بدهید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/48.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "در اینجا یک سکوی ویژه سوار و پیاده شدن (جزیره ایستگاه) وجود دارد؛ وقتی مسافران روی سکوی ایستگاه پیاده می‌شوند نیازی نیست به آن‌ها حق تقدم بدهید (فقط زمانی که سکو وجود نداشته باشد و مسافران مستقیم از سوارهرو رد شوند حق تقدم دارند).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 50,
+            "soru": "هنگامی که مشمول «ممنوعیت رانندگی» (rijverbod) شده‌اید، آیا مجاز به دوچرخه‌سواری هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test5/50.jpg",
+            "cevaplar": [
+                "بله.",
+                "خیر."
+            ],
+            "dogruCevap": "خیر.",
+            "feedback": {
+                "metin": "اگر از سوی پلیس مشمول «ممنوعیت فوری رانندگی» (rijverbod، حداکثر تا 24 ساعت مثلاً به علت مصرف الکل یا مواد مخدر) شوید، در آن مدت مجاز به هدایت هیچ‌گونه وسیله نقلیه‌ای حتی دوچرخه نیستید. (این با تعلیق گواهینامه / rijontzegging تفاوت دارد که در آن دوچرخه‌سواری مجاز است).",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

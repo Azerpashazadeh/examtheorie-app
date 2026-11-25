@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="ExamTheorie" />
     <meta property="og:type" content="website" />
     <!-- ═══ /SEO ═══ -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Vazirmatn:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --cyan: #00d4ff; --blue: #0066ff; --glass-blur: blur(22px) saturate(180%); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,7 +64,7 @@
             contain: strict;
         }
         
-        body.ar { font-family: 'Noto Sans Arabic', 'Poppins', sans-serif; direction: rtl; }
+        body.ar { font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Poppins', sans-serif; direction: rtl; }
         
         /* Navbar - fully responsive with no overlap */
         .navbar { 
@@ -117,7 +117,7 @@
             backdrop-filter: blur(4px);
         }
         .lang-opt { 
-            padding: 6px 12px; 
+            padding: 6px 10px; 
             border-radius: 30px; 
             cursor: pointer; 
             color: rgba(255,255,255,0.6); 
@@ -126,7 +126,7 @@
             transition: all .2s; 
             user-select: none; 
             text-align: center;
-            min-width: 38px;
+            min-width: 34px;
         }
         .lang-opt:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); }
         .lang-opt.active { 
@@ -325,17 +325,18 @@
         /* perfect mobile refinement */
         @media(max-width: 680px) {
             .navbar { 
-                padding: 10px 16px; 
-                gap: 10px; 
+                padding: 10px 14px; 
+                gap: 8px; 
                 border-radius: 28px;
                 flex-wrap: wrap;
                 height: auto;
                 min-height: 64px;
             }
-            .logo { font-size: 18px; white-space: normal; line-height: 1.2; }
-            .navbar-right { gap: 8px; }
-            .lang-opt { padding: 5px 8px; min-width: 34px; font-size: 11px; }
-            .nav-back { padding: 5px 12px; font-size: 14px; }
+            .logo { font-size: 17px; white-space: nowrap; line-height: 1.2; }
+            .navbar-right { gap: 6px; }
+            .lang-switcher { gap: 2px; padding: 3px; }
+            .lang-opt { padding: 5px 6px; min-width: 28px; font-size: 11px; }
+            .nav-back { padding: 5px 10px; font-size: 14px; }
             .page-wrap { padding: 100px 16px 50px; }
             .article-card { padding: 20px 18px; }
             .intro-card { padding: 20px 18px; }
@@ -343,11 +344,12 @@
             .contact-btn { padding: 10px 26px; font-size: 14px; }
         }
         @media(max-width: 480px) {
-            .navbar { flex-direction: row; justify-content: space-between; flex-wrap: nowrap; }
-            .logo { font-size: 16px; white-space: nowrap; }
-            .navbar-right { gap: 6px; }
-            .lang-opt { padding: 4px 7px; min-width: 32px; font-size: 10px; }
-            .nav-back { padding: 4px 10px; font-size: 13px; }
+            .navbar { width: calc(100% - 20px); padding: 8px 10px; gap: 6px; flex-direction: row; justify-content: space-between; flex-wrap: nowrap; }
+            .logo { font-size: 15px; white-space: nowrap; }
+            .navbar-right { gap: 5px; }
+            .lang-switcher { gap: 1px; padding: 2px; }
+            .lang-opt { padding: 4px 4.5px; min-width: 23px; font-size: 9.5px; }
+            .nav-back { padding: 4px 8px; font-size: 12px; }
             .page-title { font-size: 32px; }
         }
         
@@ -364,7 +366,7 @@
             color: #0f172a;
         }
         body.ar {
-            font-family: 'Noto Sans Arabic', 'Outfit', 'Poppins', sans-serif;
+            font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Outfit', 'Poppins', sans-serif;
         }
         .bg-fixed {
             background:
@@ -433,7 +435,7 @@
             letter-spacing: -1px;
         }
         body.ar .page-title {
-            font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+            font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Outfit', sans-serif;
             letter-spacing: 0;
         }
         .page-meta {
@@ -474,7 +476,7 @@
             border-bottom: 1px solid #e2e8f0;
         }
         body.ar .article-card h2 {
-            font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+            font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Outfit', sans-serif;
         }
         .article-card p,
         .article-card ul li {
@@ -500,7 +502,7 @@
             color: #0b132b;
         }
         body.ar .contact-box h3 {
-            font-family: 'Noto Sans Arabic', 'Outfit', sans-serif;
+            font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Outfit', sans-serif;
         }
         .contact-box p {
             color: #475569;
@@ -538,6 +540,9 @@
             <span class="lang-opt" data-lang="tr">TR</span>
             <span class="lang-opt" data-lang="nl">NL</span>
             <span class="lang-opt" data-lang="ar">AR</span>
+            <span class="lang-opt" data-lang="ru">RU</span>
+            <span class="lang-opt" data-lang="fa">FA</span>
+            <span class="lang-opt" data-lang="es">ES</span>
         </div>
         <a href="https://www.examtheorie.nl" class="nav-back" aria-label="Home">←</a>
     </div>
@@ -789,6 +794,189 @@
 <div class="contact-box"><h3>أسئلة أو استفسارات؟</h3><p>ExamTheorie · KvK 42011186<br>Voorsterallee 1, 7203 DN Zutphen, هولندا</p><a href="mailto:info@examtheorie.nl" class="contact-btn">✉️ info@examtheorie.nl</a></div>
 </div><!-- /ar -->
 
+<!-- ══ РУССКИЙ ══ -->
+<div class="lang-section" id="lang-ru">
+<div class="page-header"><div class="page-badge">📄 Правовая информация</div><h1 class="page-title">Политика конфиденциальности</h1><p class="page-meta">ExamTheorie · Последнее обновление: январь 2026 г.</p></div>
+<div class="intro-card">
+    <p>Компания ExamTheorie зарегистрирована в Торговой палате Нидерландов (KvK) под номером <strong>42011186</strong> по адресу: Voorsterallee 1, 7203 DN Zutphen, Нидерланды. Идентификационный номер НДС (BTW-id): <strong>NL005432083B05</strong>.</p>
+    <p>Настоящая политика конфиденциальности применяется ко всей обработке персональных данных наших клиентов и пользователей нашего веб-сайта и сервисов на examtheorie.nl. Мы бережно обращаемся с вашими персональными данными и гарантируем, что вся обработка осуществляется в соответствии с применимым законодательством и нормативными актами, включая Общий регламент по защите данных (GDPR).</p>
+    <p>ExamTheorie оставляет за собой право изменять настоящую политику в любое время. Самая актуальная версия всегда публикуется на этой странице. По вопросам, связанным с конфиденциальностью, свяжитесь с нами по адресу <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 1</div><h2>Уведомление о политике конфиденциальности</h2>
+    <p>1.1 ExamTheorie предоставляет настоящую политику конфиденциальности, чтобы проинформировать вас о том, как мы обрабатываем персональные данные, а также о выборе, который вы можете сделать в отношении сбора и использования вашей информации.</p>
+    <p>1.2 ExamTheorie уважает и защищает вашу конфиденциальность. Мы прилагаем разумные усилия для обеспечения конфиденциальности персональных данных и их обработки в соответствии с GDPR. Наш веб-сайт устроен таким образом, что во многих случаях вы можете посещать его без идентификации личности. Однако для использования наших платных и учебных сервисов обычно требуется учетная запись, что предполагает обработку персональных данных.</p>
+    <p>1.3 Как субъект данных, в соответствии с GDPR вы обладаете следующими правами:</p>
+    <ul><li>Право на доступ к данным (ст. 15 GDPR)</li><li>Право на исправление неточных данных (ст. 16 GDPR)</li><li>Право на удаление данных («право быть забытым», ст. 17 GDPR)</li><li>Право на ограничение обработки (ст. 18 GDPR)</li><li>Право на переносимость данных (ст. 20 GDPR)</li><li>Право на возражение против обработки (ст. 21 GDPR)</li><li>Право подать жалобу в Управление по защите данных Нидерландов (ст. 77 GDPR)</li></ul>
+    <p>1.4 ExamTheorie хранит договоры и данные, необходимые для финансовой отчетности, не менее 7 лет в соответствии с установленными законом обязательствами. Прочие данные мы не храним дольше, чем это необходимо для целей, указанных в настоящей политике.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 2</div><h2>Цели сбора данных</h2>
+    <p>2.1 ExamTheorie обрабатывает персональные данные для поддержания отношений с клиентами и предоставления наших услуг.</p>
+    <p>2.2 Мы используем персональные данные, в частности, для:</p>
+    <ul><li>Создания учетной записи и управления ею</li><li>Предоставления онлайн-среды обучения и сопутствующих функций</li><li>Обработки покупок и платежей</li><li>Поддержки клиентов и коммуникации, включая сервисные уведомления</li><li>Обеспечения безопасности наших систем и предотвращения мошенничества и злоупотреблений</li><li>Анализа и улучшения работы нашего веб-сайта и сервисов</li></ul>
+    <p>2.3 <strong>Результаты обучения и учебные данные.</strong> В рамках нашей учебной платформы мы обрабатываем данные о прогрессе и результатах обучения, такие как пройденные тренировочные экзамены, ответы, набранные баллы и статистика использования. Мы используем эти данные для обеспечения работы учебной среды, отображения вашего прогресса и улучшения процесса обучения.</p>
+    <p>2.4 <strong>Платежные данные.</strong> Реквизиты банковского счета и платежные данные используются исключительно для обработки платежей. ExamTheorie не хранит полные данные банковских карт.</p>
+    <p>2.5 <strong>Правовые основания.</strong> ExamTheorie обрабатывает персональные данные на основании одного или нескольких из следующих оснований:</p>
+    <ul><li>Исполнение договора (например, предоставление курса или услуги)</li><li>Юридическое обязательство (например, установленные законом налоговые сроки хранения документов)</li><li>Законные интересы (например, безопасность, предотвращение мошенничества, улучшение сервисов)</li><li>Согласие, когда это требуется по закону (например, определенные файлы cookie или маркетинг)</li></ul>
+    <p>2.6 <strong>Маркетинг.</strong> Если мы информируем вас об услугах и предложениях, мы делаем это в соответствии с законом. В случаях, предусмотренных законом, мы запрашиваем ваше предварительное согласие, и вы можете отписаться в любое время, написав на <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 3</div><h2>Ссылки на третьих лиц и передача данных</h2>
+    <p>3.1 Ссылки на сторонние веб-сайты размещаются исключительно для вашего удобства. ExamTheorie не управляет этими сайтами и не несет ответственности за их содержание или политику конфиденциальности.</p>
+    <p>3.2 ExamTheorie не продает и не сдает в аренду персональные данные третьим лицам. Мы можем передавать персональные данные третьим лицам, когда это необходимо для оказания наших услуг, выполнения юридического обязательства или при наличии вашего согласия.</p>
+    <p>3.3 Мы можем передавать персональные данные следующим категориям поставщиков услуг:</p>
+    <ul><li>Провайдеры хостинга и облачных сервисов</li><li>Поставщики платежных услуг</li><li>Поставщики ИТ-услуг и систем информационной безопасности</li><li>Поставщики аналитических и статистических сервисов</li></ul>
+    <p>3.4 В случаях, когда третьи лица выступают в качестве обработчиков данных от имени ExamTheorie, мы заключаем соглашение об обработке данных там, где это требуется, и согласовываем меры по обеспечению безопасности и конфиденциальности.</p>
+    <p>3.5 При использовании поставщиков услуг, обрабатывающих данные за пределами Европейской экономической зоны (ЕЭЗ), мы обеспечиваем наличие надлежащих гарантий, таких как Стандартные договорные положения (SCC) или иные разрешенные законом механизмы.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 4</div><h2>Безопасность</h2>
+    <p>4.1 ExamTheorie принимает надлежащие технические и организационные меры для защиты персональных данных от утраты, неправомерного использования, несанкционированного доступа, раскрытия и изменения. Такие меры включают шифрование, контроль доступа, журналирование, мониторинг и защищенные соединения (TLS).</p>
+    <p>4.2 При сборе или передаче важных данных мы используем шифрование и защищенные соединения там, где это применимо.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 5</div><h2>Подозрение в злоупотреблении</h2>
+    <p>5.1 ExamTheorie оставляет за собой право действовать проактивно и принимать корректирующие меры при подозрении в злоупотреблении сервисом. Это может включать временную фиксацию соответствующих данных и системных журналов в качестве возможных доказательств в той мере, в какой это необходимо для обеспечения безопасности и предотвращения мошенничества. При наличии достаточных доказательств ExamTheorie вправе принять соответствующие меры, включая отстранение от пользования сервисом или обращение в компетентные органы.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 6</div><h2>Файлы Cookie, аналитика и сроки хранения</h2>
+    <p>6.1 ExamTheorie может собирать информацию с помощью файлов cookie и аналогичных технологий, а также технические данные, такие как IP-адрес, сведения о браузере, характеристики устройства и данные журналов. Мы делаем это для корректной работы сайта, поддержания безопасности и улучшения наших услуг.</p>
+    <p>6.2 Файлы cookie могут быть функциональными, аналитическими и, где это применимо, маркетинговыми. Когда этого требует закон, мы запрашиваем согласие заранее. Вы также можете удалить или заблокировать файлы cookie в настройках вашего браузера, однако это может повлиять на функциональность веб-сайта.</p>
+    <p>6.2a Если вы даете согласие на использование рекламных файлов cookie, мы используем Meta Pixel для измерения просмотров страниц и подтвержденных активаций тарифов, а также для оптимизации показа рекламы. Meta может получать техническую информацию о браузере, URL страницы, а также сумму и валюту покупки. Мы не передаем намеренно через Pixel адрес электронной почты вашей учетной записи, номер телефона или реквизиты банковской карты. Вы можете отказаться от этого выбора или изменить его через настройки Cookie на сайте.</p>
+    <p>6.3 ExamTheorie применяет следующие сроки хранения данных:</p>
+    <ul><li>Финансовые данные и счета-фактуры: не менее 7 лет (установленные законом налоговые обязательства)</li><li>Данные учетной записи: в течение всего срока активности аккаунта плюс до 12 месяцев после удаления</li><li>Учебный прогресс и результаты экзаменов: в течение всего срока активности аккаунта плюс до 12 месяцев</li><li>Технические журналы и данные безопасности: до 6 месяцев, если более длительное хранение не требуется для расследования инцидентов</li><li>Аналитические данные об использовании: до 14 месяцев</li><li>Переписка со службой поддержки клиентов: до 24 месяцев</li></ul>
+    <p>6.4 Если данные были полностью анонимизированы и больше не могут быть связаны с конкретным физическим лицом, они могут использоваться для статистического анализа и улучшения наших сервисов.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 7</div><h2>Изменения настоящей политики</h2>
+    <p>7.1 ExamTheorie оставляет за собой право вносить изменения в настоящую политику конфиденциальности. Самая актуальная версия всегда публикуется на этой странице. В случае существенных изменений мы можем уведомить вас через веб-сайт или по электронной почте, где это уместно.</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 8</div><h2>Жалобы</h2>
+    <p>8.1 Если вы считаете, что настоящая политика конфиденциальности не соблюдается, или у вас есть вопросы либо жалобы относительно обработки персональных данных, свяжитесь с нами по адресу <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>. Вы также имеете право подать жалобу в Управление по защите данных Нидерландов (Autoriteit Persoonsgegevens).</p>
+</div>
+<div class="article-card"><div class="article-num">Статья 9</div><h2>Переходные и заключительные положения</h2>
+    <p>9.1 Без ущерба для каких-либо положений законодательства настоящая политика действует в течение всего срока регистрации пользователей и до тех пор, пока мы обрабатываем персональные данные в связи с оказанием наших услуг.</p>
+    <p>9.2 <strong>Несовершеннолетние.</strong> Нашими услугами могут пользоваться несовершеннолетние лица. Если вам меньше 16 лет, для отдельных видов обработки данных может потребоваться согласие родителя или законного представителя. В таком случае свяжитесь с нами по адресу <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>.</p>
+</div>
+<div class="contact-box"><h3>Вопросы или обращения?</h3><p>ExamTheorie · KvK 42011186<br>Voorsterallee 1, 7203 DN Zutphen, Нидерланды</p><a href="mailto:info@examtheorie.nl" class="contact-btn">✉️ info@examtheorie.nl</a></div>
+</div><!-- /ru -->
+
+<!-- ══ فارسی ══ -->
+<div class="lang-section" id="lang-fa">
+<div class="page-header"><div class="page-badge">📄 حقوقی</div><h1 class="page-title">سیاست حفظ حریم خصوصی</h1><p class="page-meta">ExamTheorie · آخرین به‌روزرسانی: ژانویه ۲۰۲۶</p></div>
+<div class="intro-card">
+    <p>مجموعه ExamTheorie در اتاق بازرگانی هلند (KvK) با شماره <strong>42011186</strong> به نشانی Voorsterallee 1, 7203 DN Zutphen، هلند ثبت شده است. شناسه مالیات بر ارزش افزوده (BTW-id): <strong>NL005432083B05</strong>.</p>
+    <p>این سیاست حفظ حریم خصوصی بر تمامی پردازش‌های داده‌های شخصی مشتریان و کاربران وب‌سایت و خدمات ما در examtheorie.nl اعمال می‌شود. ما با داده‌های شخصی شما با دقت رفتار می‌کنیم و اطمینان می‌دهیم که کلیه پردازش‌ها مطابق قوانین و مقررات جاری، از جمله مقررات عمومی حفاظت از داده‌های اتحادیه اروپا (GDPR)، انجام می‌گیرد.</p>
+    <p>ExamTheorie حق اصلاح این سیاست را در هر زمان برای خود محفوظ می‌دارد. جدیدترین نسخه همواره در همین صفحه منتشر خواهد شد. برای پرسش‌های مرتبط با حریم خصوصی لطفاً از طریق <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a> با ما در تماس باشید.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۱</div><h2>اطلاعیه سیاست حفظ حریم خصوصی</h2>
+    <p>۱.۱ ExamTheorie این سیاست حفظ حریم خصوصی را ارائه می‌دهد تا شما را از نحوه مدیریت داده‌های شخصی و انتخاب‌هایی که در خصوص جمع‌آوری و استفاده از اطلاعات خود دارید آگاه سازد.</p>
+    <p>۱.۲ ExamTheorie به حریم خصوصی شما احترام می‌گذارد و از آن محافظت می‌کند. ما تلاش‌های معقولی انجام می‌دهیم تا اطمینان حاصل شود داده‌های شخصی به‌طور محرمانه و مطابق با GDPR پردازش می‌شوند. ساختار وب‌سایت ما به‌گونه‌ای است که در بسیاری از موارد می‌توانید بدون معرفی هویت خود از آن بازدید کنید؛ با این حال، برای استفاده از خدمات ما معمولاً به یک حساب کاربری نیاز دارید که مستلزم پردازش داده‌های شخصی است.</p>
+    <p>۱.۳ به‌عنوان موضوع داده، طبق مقررات GDPR دارای حقوق زیر هستید:</p>
+    <ul><li>حق دسترسی به داده‌ها (ماده ۱۵ GDPR)</li><li>حق اصلاح داده‌ها (ماده ۱۶ GDPR)</li><li>حق حذف داده‌ها (ماده ۱۷ GDPR)</li><li>حق محدودسازی پردازش (ماده ۱۸ GDPR)</li><li>حق قابلیت انتقال داده‌ها (ماده ۲۰ GDPR)</li><li>حق اعتراض به پردازش (ماده ۲۱ GDPR)</li><li>حق ثبت شکایت نزد سازمان حفاظت از داده‌های هلند (ماده ۷۷ GDPR)</li></ul>
+    <p>۱.۴ ExamTheorie قراردادها و داده‌های لازم برای امور مالی و حسابداری را مطابق الزامات قانونی حداقل به مدت ۷ سال نگهداری می‌کند. سایر داده‌ها را بیش از زمان لازم برای اهداف ذکرشده در این سیاست نگهداری نمی‌کنیم.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۲</div><h2>هدف از جمع‌آوری داده‌ها</h2>
+    <p>۲.۱ ExamTheorie داده‌های شخصی را به‌منظور حفظ ارتباط با مشتریان و ارائه خدمات خود پردازش می‌کند.</p>
+    <p>۲.۲ ما داده‌های شخصی را به‌ویژه برای موارد زیر به کار می‌بریم:</p>
+    <ul><li>ایجاد و مدیریت حساب کاربری</li><li>ارائه محیط آموزشی آنلاین و امکانات مرتبط با آن</li><li>پردازش خریدها و پرداخت‌ها</li><li>پشتیبانی مشتریان و اطلاع‌رسانی، از جمله پیام‌های خدماتی</li><li>تأمین امنیت سامانه‌ها و جلوگیری از تقلب و سوءاستفاده</li><li>تحلیل و بهبود وب‌سایت و خدمات ما</li></ul>
+    <p>۲.۳ <strong>نتایج مطالعه و داده‌های آموزشی.</strong> در محیط آموزشی ما، داده‌های مربوط به پیشرفت تحصیلی و نتایج مانند آزمون‌های آزمایشی تکمیل‌شده، پاسخ‌ها، نمرات و آمار استفاده پردازش می‌شوند. ما از این داده‌ها برای تضمین عملکرد صحیح محیط یادگیری، نمایش پیشرفت شما و ارتقای تجربه آموزشی‌تان استفاده می‌کنیم.</p>
+    <p>۲.۴ <strong>داده‌های پرداخت.</strong> مشخصات حساب بانکی و اطلاعات پرداخت صرفاً برای پردازش تراکنش‌های مالی استفاده می‌شوند. ExamTheorie اطلاعات کامل کارت بانکی را ذخیره نمی‌کند.</p>
+    <p>۲.۵ <strong>مبنای قانونی.</strong> ExamTheorie داده‌های شخصی را بر اساس یک یا چند مورد از مبانی قانونی زیر پردازش می‌کند:</p>
+    <ul><li>اجرای قرارداد (مانند ارائه دوره آموزشی یا سرویس)</li><li>الزام قانونی (مانند تعهدات قانونی نگهداری اسناد مالیاتی)</li><li>منافع مشروع (مانند امنیت، پیشگیری از تقلب و بهبود خدمات)</li><li>رضایت کاربر، در مواردی که قانون الزامی کرده است (مانند برخی کوکی‌ها یا بازاریابی)</li></ul>
+    <p>۲.۶ <strong>بازاریابی.</strong> چنانچه شما را از خدمات و پیشنهادها مطلع کنیم، این کار مطابق قانون انجام می‌شود. در صورت لزوم، پیشاپیش رضایت شما را دریافت می‌کنیم و هر زمان بخواهید می‌توانید از طریق <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a> لغو اشتراک نمایید.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۳</div><h2>پیوندها به اشخاص ثالث و اشتراک‌گذاری داده‌ها</h2>
+    <p>۳.۱ پیوند به وب‌سایت‌های اشخاص ثالث صرفاً جهت سهولت شما نمایش داده می‌شود. ExamTheorie مدیریتی بر این وب‌سایت‌ها ندارد و هیچ مسئولیتی در قبال محتوا یا سیاست حریم خصوصی آن‌ها نمی‌پذیرد.</p>
+    <p>۳.۲ ExamTheorie داده‌های شخصی را به اشخاص ثالث نمی‌فروشد و اجاره نمی‌دهد. ما ممکن است داده‌های شخصی را در مواقع ضروری برای ارائه خدمات، رعایت تعهدات قانونی یا در صورت رضایت شما با اشخاص ثالث به اشتراک بگذاریم.</p>
+    <p>۳.۳ ممکن است داده‌های شخصی را با دسته‌های زیر از ارائه‌دهندگان خدمات به اشتراک بگذاریم:</p>
+    <ul><li>ارائه‌دهندگان میزبانی وب (هاستینگ) و خدمات ابری</li><li>ارائه‌دهندگان خدمات پرداخت</li><li>ارائه‌دهندگان خدمات فناوری اطلاعات و امنیت</li><li>ارائه‌دهندگان خدمات تحلیلی و آماری</li></ul>
+    <p>۳.۴ زمانی که اشخاص ثالث از طرف ExamTheorie به‌عنوان پردازشگر داده فعالیت می‌کنند، در موارد مقتضی قرارداد پردازش داده منعقد کرده و ترتیبات لازم در خصوص امنیت و محرمانگی را برقرار می‌کنیم.</p>
+    <p>۳.۵ در صورت استفاده از ارائه‌دهندگانی که داده‌ها را خارج از منطقه اقتصادی اروپا (EEA) پردازش می‌کنند، وجود تضمین‌های مناسب مانند شروط قراردادی استاندارد (SCC) یا سایر سازوکارهای مجاز قانونی را تضمین می‌کنیم.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۴</div><h2>امنیت</h2>
+    <p>۴.۱ ExamTheorie تدابیر فنی و سازمانی مناسبی برای حفاظت از داده‌های شخصی در برابر فقدان، سوءاستفاده، دسترسی غیرمجاز، افشا و تغییر اتخاذ می‌کند. این تدابیر شامل رمزنگاری، کنترل دسترسی، ثبت وقایع (لاگ)، پایش و اتصالات امن (TLS) است.</p>
+    <p>۴.۲ هنگام جمع‌آوری یا انتقال داده‌های مهم، در موارد مقتضی از رمزنگاری و اتصالات امن استفاده می‌کنیم.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۵</div><h2>ظن به سوءاستفاده</h2>
+    <p>۵.۱ ExamTheorie این حق را برای خود محفوظ می‌دارد که در صورت ظن به سوءاستفاده، به‌صورت پیشگیرانه و اصلاحی اقدام نماید. این امر ممکن است شامل ثبت موقت داده‌ها و گزارش‌های مرتبط به‌عنوان مدرک احتمالی، تا حد لازم برای امنیت و پیشگیری از تقلب باشد. در صورت وجود شواهد کافی، ExamTheorie می‌تواند اقدامات مقتضی از جمله محرومیت از سرویس یا گزارش به مراجع ذی‌صلاح را انجام دهد.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۶</div><h2>کوکی‌ها، تحلیل آماری و دوره‌های نگهداری داده</h2>
+    <p>۶.۱ ExamTheorie ممکن است اطلاعاتی را از طریق کوکی‌ها و فناوری‌های مشابه، و نیز داده‌های فنی مانند نشانی IP، اطلاعات مرورگر، ویژگی‌های دستگاه و داده‌های لاگ جمع‌آوری کند. هدف ما از این کار تضمین عملکرد صحیح وب‌سایت، حفظ امنیت و بهبود خدمات است.</p>
+    <p>۶.۲ کوکی‌ها ممکن است عملکردی، تحلیلی و در صورت اقتضا بازاریابی باشند. هرجا که قانون الزام کند، پیشاپیش رضایت شما را دریافت می‌کنیم. همچنین می‌توانید از طریق تنظیمات مرورگر خود کوکی‌ها را حذف یا مسدود نمایید، هرچند این کار ممکن است بر کارکرد وب‌سایت تأثیر بگذارد.</p>
+    <p>۶.۲ الف. در صورت موافقت شما با کوکی‌های تبلیغاتی، ما از Meta Pixel برای سنجش بازدید صفحات و فعال‌سازی‌های تاییدشده پکیج‌ها و بهبود نمایش تبلیغات استفاده می‌کنیم. شرکت Meta ممکن است اطلاعات فنی/مرورگر، نشانی صفحه (URL) و مبلغ و واحد پول خرید را دریافت کند. ما عمداً نشانی ایمیل حساب کاربری، شماره تلفن یا اطلاعات کارت بانکی شما را از طریق Pixel ارسال نمی‌کنیم. می‌توانید این انتخاب را از بخش تنظیمات کوکی در وب‌سایت رد یا تغییر دهید.</p>
+    <p>۶.۳ ExamTheorie دوره‌های نگهداری زیر را اعمال می‌کند:</p>
+    <ul><li>داده‌های مالی و صورت‌حساب‌ها: حداقل ۷ سال (تعهدات قانونی مالیاتی)</li><li>داده‌های حساب کاربری: تا زمانی که حساب فعال است به‌علاوه حداکثر ۱۲ ماه پس از حذف حساب</li><li>پیشرفت مطالعه و نتایج آزمون‌ها: تا زمانی که حساب فعال است به‌علاوه حداکثر ۱۲ ماه</li><li>لاگ‌های فنی و داده‌های امنیتی: حداکثر تا ۶ ماه، مگر آنکه نگهداری طولانی‌تر برای بررسی رخدادهای امنیتی لازم باشد</li><li>داده‌های تحلیلی استفاده: حداکثر تا ۱۴ ماه</li><li>مکاتبات پشتیبانی مشتریان: حداکثر تا ۲۴ ماه</li></ul>
+    <p>۶.۴ چنانچه داده‌ها به‌طور کامل ناشناس‌سازی شوند و دیگر قابل ارتباط با هیچ شخص حقیقی نباشند، ممکن است برای تحلیل‌های آماری و ارتقای خدمات ما مورد استفاده قرار گیرند.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۷</div><h2>تغییرات در این سیاست</h2>
+    <p>۷.۱ ExamTheorie حق اصلاح این سیاست حفظ حریم خصوصی را برای خود محفوظ می‌دارد. جدیدترین نسخه همیشه در همین صفحه منتشر می‌شود. در صورت ایجاد تغییرات اساسی، در موارد مقتضی از طریق وب‌سایت یا ایمیل به شما اطلاع خواهیم داد.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۸</div><h2>شکایات</h2>
+    <p>۸.۱ اگر معتقدید مفاد این سیاست حفظ حریم خصوصی رعایت نمی‌شود یا پرسش یا شکایتی درباره پردازش داده‌های شخصی دارید، لطفاً از طریق <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a> با ما تماس بگیرید. همچنین حق دارید شکایت خود را نزد سازمان حفاظت از داده‌های هلند (Autoriteit Persoonsgegevens) ثبت کنید.</p>
+</div>
+<div class="article-card"><div class="article-num">ماده ۹</div><h2>مقررات انتقالی و پایانی</h2>
+    <p>۹.۱ بدون خدشه به هرگونه مقررات قانونی، این سیاست در تمام طول مدت ثبت‌نام‌ها و تا زمانی که داده‌های شخصی را در ارتباط با خدمات خود پردازش می‌کنیم معتبر است.</p>
+    <p>۹.۲ <strong>افراد زیر سن قانونی.</strong> خدمات ما ممکن است توسط افراد زیر سن قانونی نیز استفاده شود. اگر کمتر از ۱۶ سال سن دارید، ممکن است برای برخی فعالیت‌های پردازش داده رضایت والدین یا قیم قانونی الزامی باشد. در این صورت لطفاً از طریق <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a> با ما تماس بگیرید.</p>
+</div>
+<div class="contact-box"><h3>سؤال یا ابهامی دارید؟</h3><p>ExamTheorie · KvK 42011186<br>Voorsterallee 1, 7203 DN Zutphen، هلند</p><a href="mailto:info@examtheorie.nl" class="contact-btn">✉️ info@examtheorie.nl</a></div>
+</div><!-- /fa -->
+
+<!-- ══ ESPAÑOL ══ -->
+<div class="lang-section" id="lang-es">
+<div class="page-header"><div class="page-badge">📄 Legal</div><h1 class="page-title">Política de Privacidad</h1><p class="page-meta">ExamTheorie · Última actualización: enero de 2026</p></div>
+<div class="intro-card">
+    <p>ExamTheorie está inscrita en la Cámara de Comercio de los Países Bajos (KvK) con el número <strong>42011186</strong>, con domicilio en Voorsterallee 1, 7203 DN Zutphen, Países Bajos. Número de IVA (BTW-id): <strong>NL005432083B05</strong>.</p>
+    <p>Esta política de privacidad se aplica a todo el tratamiento de datos personales de nuestros clientes y usuarios de nuestro sitio web y servicios en examtheorie.nl. Tratamos sus datos personales con el máximo cuidado y garantizamos que todo tratamiento cumpla con la legislación y normativa aplicables, incluido el Reglamento General de Protección de Datos (RGPD / GDPR).</p>
+    <p>ExamTheorie se reserva el derecho de modificar esta política en cualquier momento. La versión más actualizada estará siempre publicada en esta página. Para consultas relacionadas con la privacidad, contáctenos en <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 1</div><h2>Aviso sobre la Política de Privacidad</h2>
+    <p>1.1 ExamTheorie pone a su disposición esta política de privacidad para informarle sobre cómo tratamos los datos personales y sobre las opciones que tiene respecto a la recogida y el uso de su información.</p>
+    <p>1.2 ExamTheorie respeta y protege su privacidad. Realizamos esfuerzos razonables para garantizar que los datos personales se traten de forma confidencial y conforme al RGPD. Nuestro sitio web está estructurado para que, en muchos casos, pueda visitarlo sin identificarse. Sin embargo, para utilizar nuestros servicios generalmente necesitará una cuenta, lo que conlleva el tratamiento de datos personales.</p>
+    <p>1.3 Como interesado, en virtud del RGPD usted dispone de los siguientes derechos:</p>
+    <ul><li>Derecho de acceso (Art. 15 RGPD)</li><li>Derecho de rectificación (Art. 16 RGPD)</li><li>Derecho de supresión (Art. 17 RGPD)</li><li>Derecho a la limitación del tratamiento (Art. 18 RGPD)</li><li>Derecho a la portabilidad de los datos (Art. 20 RGPD)</li><li>Derecho de oposición (Art. 21 RGPD)</li><li>Derecho a presentar una reclamación ante la Autoridad Neerlandesa de Protección de Datos (Art. 77 RGPD)</li></ul>
+    <p>1.4 ExamTheorie conserva los contratos y los datos necesarios para la administración financiera durante al menos 7 años de conformidad con las obligaciones legales. No conservamos otros datos durante más tiempo del necesario para los fines indicados en esta política.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 2</div><h2>Finalidad de la Recogida de Datos</h2>
+    <p>2.1 ExamTheorie trata datos personales con el fin de mantener la relación con los clientes y prestar nuestros servicios.</p>
+    <p>2.2 Utilizamos los datos personales en particular para:</p>
+    <ul><li>Crear y gestionar una cuenta de usuario</li><li>Proporcionar el entorno de aprendizaje en línea y las funcionalidades asociadas</li><li>Procesar compras y pagos</li><li>Atención al cliente y comunicación, incluidos los mensajes de servicio</li><li>Proteger nuestros sistemas y prevenir el fraude y el uso indebido</li><li>Analizar y mejorar nuestro sitio web y nuestros servicios</li></ul>
+    <p>2.3 <strong>Resultados de estudio y datos de aprendizaje.</strong> Dentro de nuestro entorno de aprendizaje tratamos datos sobre el progreso y los resultados de estudio, tales como exámenes de práctica completados, respuestas, puntuaciones y estadísticas de uso. Utilizamos estos datos para garantizar el funcionamiento del entorno de estudio, mostrar su progreso y mejorar su experiencia de aprendizaje.</p>
+    <p>2.4 <strong>Datos de pago.</strong> Los datos bancarios y de pago se utilizan exclusivamente para procesar los pagos. ExamTheorie no almacena los datos completos de las tarjetas de pago.</p>
+    <p>2.5 <strong>Base jurídica.</strong> ExamTheorie trata los datos personales sobre la base de uno o varios de los siguientes fundamentos:</p>
+    <ul><li>Ejecución de un contrato (p. ej., proporcionar un curso o servicio)</li><li>Obligación legal (p. ej., obligaciones legales fiscales de conservación)</li><li>Intereses legítimos (p. ej., seguridad, prevención del fraude, mejora de los servicios)</li><li>Consentimiento, cuando así lo exija la ley (p. ej., determinadas cookies o marketing)</li></ul>
+    <p>2.6 <strong>Marketing.</strong> Si le informamos sobre servicios y ofertas, lo hacemos conforme a la ley. Cuando sea preceptivo, solicitamos su consentimiento previo y puede darse de baja en cualquier momento escribiendo a <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 3</div><h2>Enlaces a Terceros y Cesión de Datos</h2>
+    <p>3.1 Los enlaces a sitios web de terceros se muestran únicamente para su comodidad. ExamTheorie no gestiona dichos sitios y no asume responsabilidad alguna por su contenido ni por sus políticas de privacidad.</p>
+    <p>3.2 ExamTheorie no vende ni alquila datos personales a terceros. Podemos compartir datos personales con terceros cuando sea necesario para prestar nuestros servicios, cumplir una obligación legal o cuando usted haya otorgado su consentimiento.</p>
+    <p>3.3 Podemos compartir datos personales con las siguientes categorías de proveedores de servicios:</p>
+    <ul><li>Proveedores de alojamiento web (hosting) y servicios en la nube</li><li>Proveedores de servicios de pago</li><li>Proveedores de servicios informáticos y de seguridad</li><li>Proveedores de servicios de analítica y estadística</li></ul>
+    <p>3.4 Cuando terceros actúen como encargados del tratamiento en nombre de ExamTheorie, suscribimos un contrato de encargo de tratamiento cuando resulta exigible y establecemos acuerdos en materia de seguridad y confidencialidad.</p>
+    <p>3.5 Cuando recurrimos a proveedores de servicios que tratan datos fuera del Espacio Económico Europeo (EEE), nos aseguramos de que existan garantías adecuadas, tales como Cláusulas Contractuales Tipo u otros mecanismos legalmente permitidos.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 4</div><h2>Seguridad</h2>
+    <p>4.1 ExamTheorie adopta medidas técnicas y organizativas apropiadas para proteger los datos personales frente a pérdida, uso indebido, acceso no autorizado, divulgación y alteración. Dichas medidas incluyen cifrado, control de accesos, registro de eventos (logs), supervisión y conexiones seguras (TLS).</p>
+    <p>4.2 Al recopilar o transmitir datos importantes, utilizamos cifrado y conexiones seguras cuando procede.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 5</div><h2>Sospecha de Uso Indebido</h2>
+    <p>5.1 ExamTheorie se reserva el derecho de actuar de forma proactiva y correctiva en caso de sospecha de uso indebido. Esto puede incluir el registro temporal de datos y registros pertinentes como posible prueba, en la medida necesaria para la seguridad y la prevención del fraude. Cuando existan pruebas suficientes, ExamTheorie podrá adoptar las medidas oportunas, incluida la exclusión del servicio o la denuncia ante las autoridades competentes.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 6</div><h2>Cookies, Analítica y Plazos de Conservación</h2>
+    <p>6.1 ExamTheorie puede recopilar información mediante cookies y tecnologías similares, así como datos técnicos tales como dirección IP, información del navegador, características del dispositivo y datos de registro. Hacemos esto para garantizar el correcto funcionamiento del sitio web, mantener la seguridad y mejorar nuestros servicios.</p>
+    <p>6.2 Las cookies pueden ser funcionales, analíticas y, en su caso, de marketing. Cuando la ley lo exige, solicitamos el consentimiento por adelantado. También puede eliminar o bloquear las cookies desde la configuración de su navegador, aunque ello puede afectar a la funcionalidad del sitio web.</p>
+    <p>6.2a Si acepta las cookies publicitarias, utilizamos Meta Pixel para medir las vistas de página y las activaciones confirmadas de planes, así como para mejorar la entrega de anuncios. Meta puede recibir información técnica y del navegador, la URL de la página y el importe y la moneda de la compra. No enviamos intencionadamente a través del Pixel el correo electrónico de su cuenta, su número de teléfono ni los datos de su tarjeta de pago. Puede rechazar o modificar esta elección desde la configuración de Cookies en el sitio web.</p>
+    <p>6.3 ExamTheorie aplica los siguientes plazos de conservación:</p>
+    <ul><li>Datos financieros y de facturación: al menos 7 años (obligaciones legales fiscales)</li><li>Datos de la cuenta: mientras la cuenta permanezca activa, más un máximo de 12 meses tras su eliminación</li><li>Progreso de estudio y resultados de exámenes: mientras la cuenta permanezca activa, más un máximo de 12 meses</li><li>Registros técnicos y datos de seguridad: hasta 6 meses, salvo que se requiera una conservación superior para investigar incidentes</li><li>Datos analíticos de uso: hasta 14 meses</li><li>Comunicaciones de atención al cliente: hasta 24 meses</li></ul>
+    <p>6.4 Cuando los datos hayan sido completamente anonimizados y ya no puedan vincularse a una persona física, podrán utilizarse para análisis estadísticos y para la mejora de nuestros servicios.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 7</div><h2>Modificaciones de Esta Política</h2>
+    <p>7.1 ExamTheorie se reserva el derecho de modificar esta política de privacidad. La versión más reciente estará siempre publicada en esta página. En caso de cambios sustanciales, podremos informarle a través del sitio web o por correo electrónico cuando corresponda.</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 8</div><h2>Reclamaciones</h2>
+    <p>8.1 Si considera que no se está cumpliendo esta política de privacidad, o si tiene preguntas o reclamaciones sobre el tratamiento de datos personales, póngase en contacto con nosotros en <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>. Asimismo, tiene derecho a presentar una reclamación ante la Autoridad Neerlandesa de Protección de Datos (Autoriteit Persoonsgegevens).</p>
+</div>
+<div class="article-card"><div class="article-num">Artículo 9</div><h2>Disposiciones Transitorias y Finales</h2>
+    <p>9.1 Sin perjuicio de las disposiciones legales aplicables, esta política rige durante toda la vigencia de los registros y mientras tratemos datos personales en relación con nuestros servicios.</p>
+    <p>9.2 <strong>Menores de edad.</strong> Nuestros servicios pueden ser utilizados por menores de edad. Si tiene menos de 16 años, puede requerirse el consentimiento de uno de sus padres o de su tutor legal para determinadas actividades de tratamiento. En tal caso, póngase en contacto con nosotros en <a href="mailto:info@examtheorie.nl">info@examtheorie.nl</a>.</p>
+</div>
+<div class="contact-box"><h3>¿Preguntas o dudas?</h3><p>ExamTheorie · KvK 42011186<br>Voorsterallee 1, 7203 DN Zutphen, Países Bajos</p><a href="mailto:info@examtheorie.nl" class="contact-btn">✉️ info@examtheorie.nl</a></div>
+</div><!-- /es -->
+
 </div><!-- /page-wrap -->
 
 <footer>
@@ -801,18 +989,19 @@
 </footer>
 
 <script>
-const LANGS = ['en','tr','nl','ar'];
+const supportedLangs = ['en','tr','nl','ar','ru','fa','es'];
 
 function applyLang(lang) {
-    if (!LANGS.includes(lang)) lang = 'en';
-    LANGS.forEach(function(l) {
+    if (!supportedLangs.includes(lang)) lang = 'en';
+    supportedLangs.forEach(function(l) {
         var sec = document.getElementById('lang-' + l);
         if (sec) sec.classList.toggle('active', l === lang);
     });
     document.querySelectorAll('.lang-opt').forEach(function(el) {
         el.classList.toggle('active', el.dataset.lang === lang);
     });
-    document.body.classList.toggle('ar', lang === 'ar');
+    document.body.classList.toggle('ar', lang === 'ar' || lang === 'fa');
+    document.documentElement.dir = (lang === 'ar' || lang === 'fa') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
     localStorage.setItem('et_lang', lang);
 }
@@ -824,7 +1013,8 @@ document.querySelectorAll('.lang-opt').forEach(function(el) {
     });
 });
 
-var savedLang = localStorage.getItem('et_lang') || 'en';
+var urlLang = new URLSearchParams(window.location.search).get('lang');
+var savedLang = (urlLang && supportedLangs.includes(urlLang)) ? urlLang : (localStorage.getItem('et_lang') || 'en');
 applyLang(savedLang);
 </script>
     <script src="/consent-manager.js?v=1" defer></script>

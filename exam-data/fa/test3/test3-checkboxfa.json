@@ -1,0 +1,72 @@
+{
+    "sorular": [
+        {
+            "numara": 33,
+            "soru": "هنگامی که گواهینامه رانندگی شما تعلیق (توقیف) شده است، مجاز به رانندگی با کدام وسایل نقلیه نیستید؟",
+            "resim": "",
+            "cevaplar": [
+                "موتورگازی سبک (snorfiets).",
+                "دوچرخه.",
+                "بروم‌موبیل (brommobiel).",
+                "خودروی سواری."
+            ],
+            "dogruCevap": [
+                "موتورگازی سبک (snorfiets).",
+                "بروم‌موبیل (brommobiel).",
+                "خودروی سواری."
+            ],
+            "feedback": {
+                "metin": "زمانی که گواهینامه رانندگی شما تعلیق شده است، مجاز به راندن هیچ‌گونه وسیله نقلیه موتوری (motorrijtuig) نیستید؛ بنابراین نه تنها رانندگی با خودروی سواری، بلکه راندن بروم‌موبیل، موتورگازی (bromfiets) و موتورگازی سبک (snorfiets) نیز ممنوع است. دوچرخه وسیله نقلیه موتوری نیست، پس همچنان مجاز به دوچرخه‌سواری هستید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 35,
+            "soru": "در اینجا باید انتظار حضور کدام رانندگان را روی سوارهرو داشته باشید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/35.jpg",
+            "cevaplar": [
+                "رانندگان بروم‌موبیل (brommobiel).",
+                "راکبان دوچرخه برقی سریع (speed pedelec).",
+                "راکبان موتورگازی (bromfiets).",
+                "دوچرخه‌سواران.",
+                "راکبان موتورگازی سبک (snorfiets)."
+            ],
+            "dogruCevap": [
+                "رانندگان بروم‌موبیل (brommobiel).",
+                "راکبان دوچرخه برقی سریع (speed pedelec).",
+                "راکبان موتورگازی (bromfiets)."
+            ],
+            "feedback": {
+                "metin": "در کنار سوارهرو یک مسیر اجباری دوچرخه (تابلوی G-11) قرار دارد. این یعنی فقط دوچرخه‌سواران و راکبان موتورگازی سبک (snorfiets) موظف به استفاده از مسیر دوچرخه هستند. سایر رانندگان مجاز به ورود به مسیر دوچرخه نیستند، بنابراین باید انتظار حضور رانندگان بروم‌موبیل، راکبان speed pedelec و راکبان موتورگازی (bromfiets) را روی سوارهرو داشته باشید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 39,
+            "soru": "مجاز به استفاده از کدام چراغ‌ها هستید؟",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/39.jpg",
+            "cevaplar": [
+                "چراغ نور بالا.",
+                "چراغ مه‌شکن جلو به همراه چراغ نور پایین.",
+                "چراغ مه‌شکن جلو به همراه چراغ‌های کوچک (پارک).",
+                "چراغ مه‌شکن عقب.",
+                "چراغ نور پایین."
+            ],
+            "dogruCevap": [
+                "چراغ مه‌شکن جلو به همراه چراغ نور پایین.",
+                "چراغ مه‌شکن جلو به همراه چراغ‌های کوچک (پارک).",
+                "چراغ نور پایین."
+            ],
+            "feedback": {
+                "metin": "دید به دلیل مه کاهش یافته است، اما از آنجا که تابلوی صدمترشمار (هکتومتر) بعدی هنوز دیده می‌شود، دید حداقل 100 متر است. در این شرایط می‌توانید از چراغ نور پایین (با یا بدون مه‌شکن جلو) استفاده کنید و یا مه‌شکن جلو را به همراه چراغ کوچک روشن کنید. استفاده از نور بالا در روز مجاز نیست. چراغ مه‌شکن عقب نیز مجاز نیست، زیرا فقط زمانی مجاز است که دید بر اثر مه یا برف شدید به کمتر از 50 متر برسد.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

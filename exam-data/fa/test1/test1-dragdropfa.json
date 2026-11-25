@@ -1,0 +1,466 @@
+{
+    "sorular": [
+        {
+            "numara": 6,
+            "soru": "ترتیب صحیح حق تقدم چگونه است؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger2",
+                    "value": "2",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "14.9857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger3",
+                    "value": "3",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "28.185699999999997%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "19.4761%",
+                        "left": "49.0214%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "35.9757%",
+                        "left": "0%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target3",
+                    "value": "",
+                    "position": {
+                        "top": "55.1266%",
+                        "left": "81.1367%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                },
+                {
+                    "id": "dragger2",
+                    "target": "target2"
+                },
+                {
+                    "id": "dragger3",
+                    "target": "target3"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/6.gif",
+            "feedback": {
+                "metin": "خودروی پلیس از چراغ گردان آبی و آژیر دوصدایی استفاده می‌کند تا نشان دهد در حال اعزام به مأموریت فوری است. سایر کاربران جاده نباید مانع عبور آن شوند. تراموا نیز در تقاطع حق تقدم دارد، بنابراین پس از خودروی پلیس و پیش از شما حرکت می‌کند. ترتیب عبور عبارت است از: خودروی پلیس، تراموا، شما.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 14,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "12.412%",
+                        "left": "19.6311%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "11.3381%",
+                        "left": "67.0081%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/14.jpg",
+            "feedback": {
+                "metin": "در این تقاطع چراغ راهنمایی یا تابلوی حق تقدم وجود ندارد، بنابراین قانون دادن حق تقدم به ترافیک سمت راست اعمال می‌شود. وسیله نقلیه دیگر در سمت چپ شما قرار دارد، به این معنی که شما می‌توانید اول حرکت کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 19,
+            "soru": "ترتیب صحیح حق تقدم چگونه است؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger2",
+                    "value": "2",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "14.9857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger3",
+                    "value": "3",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "28.185699999999997%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "27.4751%",
+                        "left": "82.3683%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "58.2718%",
+                        "left": "73.9726%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target3",
+                    "value": "",
+                    "position": {
+                        "top": "26.6763%",
+                        "left": "5.0798%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                },
+                {
+                    "id": "dragger2",
+                    "target": "target2"
+                },
+                {
+                    "id": "dragger3",
+                    "target": "target3"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/19.jpg",
+            "feedback": {
+                "metin": "دوچرخه‌سوار مستقیم به مسیر خود ادامه می‌دهد در حالی که شما و موتورسوار در تقاطع در حال گردش هستید. ترافیکی که گردش می‌کند باید به ترافیکی که در همان جاده مستقیم حرکت می‌کند حق تقدم بدهد، بنابراین دوچرخه‌سوار اول عبور می‌کند. پس از آن موتورسوار که گردش کوتاه (به راست) دارد حرکت می‌کند و شما که گردش بلند (به چپ) انجام می‌دهید در آخر عبور می‌کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 22,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "11.3797%",
+                        "left": "71.651%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "13.0222%",
+                        "left": "20.3378%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/22.jpg",
+            "feedback": {
+                "metin": "مسیر دوچرخه و موتورگازی به‌صورت جداگانه از سوارهروِ میدان تنظیم شده است. تابلوی B-6 و خط‌کشی مثلث‌های واژگون (دندانه‌کوسه‌ای) در محل گذرگاه نشان می‌دهد که راکب موتورگازی باید به ترافیک جاده متقاطع حق تقدم بدهد. بنابراین شما مجاز هستید اول حرکت کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 35,
+            "soru": "چه کسی مجاز است اول عبور کند؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "43.795%",
+                        "left": "67.6594%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "17.3723%",
+                        "left": "3.4943%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/35.jpg",
+            "feedback": {
+                "metin": "سرعت‌گیر برای کاهش سرعت ترافیک تعبیه شده است و به‌خودی‌خود حق تقدم را در تقاطع تعیین نمی‌کند. در تصویر هیچ تابلو یا ساختار خروجی (خروجی ملک/خیابان فرعی با جدول عبوری) که قانون حق تقدم را تغییر دهد دیده نمی‌شود. بنابراین ترافیک سمت راست حق تقدم دارد و در این موقعیت شما از سمت راست نزدیک می‌شوید، پس شما اول عبور می‌کنید.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 40,
+            "soru": "ترتیب صحیح حق تقدم چگونه است؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger2",
+                    "value": "2",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "14.9857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger3",
+                    "value": "3",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "28.185699999999997%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "7.7508%",
+                        "left": "74.9987%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "48.0333%",
+                        "left": "9.0337%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target3",
+                    "value": "",
+                    "position": {
+                        "top": "35.2578%",
+                        "left": "73.8041%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                },
+                {
+                    "id": "dragger2",
+                    "target": "target2"
+                },
+                {
+                    "id": "dragger3",
+                    "target": "target3"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/40.jpg",
+            "feedback": {
+                "metin": "رانندگان باید به عابران پیاده‌ای که از گذرگاه خط‌کشی‌شده عابر پیاده عبور می‌کنند حق تقدم بدهند. پس از عبور عابر پیاده، موتورگازی که در جاده اصلی (دارای حق تقدم) حرکت می‌کند پیش از خودرویی که از خیابان فرعی نزدیک می‌شود عبور می‌کند. ترتیب صحیح عبارت است از: عابر پیاده، موتورگازی، خودرو.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 49,
+            "soru": "ترتیب صحیح حق تقدم چگونه است؟",
+            "elements": [
+                {
+                    "type": "box",
+                    "class": "dragger1",
+                    "value": "1",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "1.7857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger2",
+                    "value": "2",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "14.9857%"
+                    }
+                },
+                {
+                    "type": "box",
+                    "class": "dragger3",
+                    "value": "3",
+                    "position": {
+                        "top": "84.4444%",
+                        "left": "28.185699999999997%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target1",
+                    "value": "",
+                    "position": {
+                        "top": "49.9071%",
+                        "left": "21.9857%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target2",
+                    "value": "",
+                    "position": {
+                        "top": "12.1794%",
+                        "left": "81.0447%"
+                    }
+                },
+                {
+                    "type": "target",
+                    "id": "target3",
+                    "value": "",
+                    "position": {
+                        "top": "34.5655%",
+                        "left": "56.3073%"
+                    }
+                }
+            ],
+            "dogruCevap": [
+                {
+                    "id": "dragger1",
+                    "target": "target1"
+                },
+                {
+                    "id": "dragger2",
+                    "target": "target2"
+                },
+                {
+                    "id": "dragger3",
+                    "target": "target3"
+                }
+            ],
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/49.jpg",
+            "feedback": {
+                "metin": "تابلوی لوزی زرد نشان می‌دهد که جاده شما جاده اصلی (دارای حق تقدم) است، بنابراین موتورسواری که از جاده فرعی نزدیک می‌شود باید به شما حق تقدم بدهد. در تصویر، عابر پیاده روی پیاده‌رو است و در حال عبور از گذرگاه خط‌کشی‌شده عابر پیاده نیست. ازاین‌رو موقعیت عابر پیاده ترتیب حق تقدم بین وسایل نقلیه را تغییر نمی‌دهد و شما اول عبور می‌کنید. اگر عابر پیاده در حال عبور از گذرگاه عابر پیاده بود یا آشکارا قصد عبور از آن را داشت، رانندگان موظف بودند به او راه بدهند.",
+                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

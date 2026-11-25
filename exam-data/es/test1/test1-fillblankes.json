@@ -1,0 +1,40 @@
+{
+    "sorular": [
+        {
+            "numara": 7,
+            "soru": "Al adelantar a este camión, ¿cuál es la velocidad máxima a la que puede circular con su vehículo arrastrando un remolque?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/7.jpg",
+            "dogruCevap": "90",
+            "feedback": {
+                "metin": "Respuesta correcta: 90 km/h. La imagen muestra que usted circula por una autopista con un turismo que arrastra un remolque. Un turismo que arrastra un remolque con una masa máxima autorizada no superior a 3.500 kg tiene una velocidad máxima de 90 km/h en una autopista. No puede superar este límite mientras adelanta al camión.",
+                "dogru": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlis": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamis": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 28,
+            "soru": "¿Cuál es la altura total máxima permitida de este vehículo, incluidas las bicicletas?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/28.jpg",
+            "dogruCevap": "4",
+            "feedback": {
+                "metin": "Respuesta correcta: 4 metros. La altura total del vehículo, incluida su carga y las bicicletas sobre el techo, no puede superar los 4 metros.",
+                "dogru": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlis": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamis": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        },
+        {
+            "numara": 32,
+            "soru": "¿Cuál es la velocidad máxima permitida después de esta señal?",
+            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test1/32.jpg",
+            "dogruCevap": "70",
+            "feedback": {
+                "metin": "Respuesta correcta: 70 km/h. La señal de límite de velocidad indica 70 km/h. Por lo tanto, después de esta señal, no puede circular a más de 70 km/h.",
+                "dogru": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+                "yanlis": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+                "cevaplanmamis": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+            }
+        }
+    ]
+}

@@ -5,7 +5,7 @@ const vm=require('node:vm');
 const {sample}=require('./assets/chapter-quiz.js');
 const source=fs.readFileSync(path.join(__dirname,'assets/chapter-quiz.js'),'utf8');
 let pages=0,total=0;
-for(const lang of ['en','tr','nl','ar'])for(const file of fs.readdirSync(path.join(__dirname,lang)).filter(f=>f.endsWith('.html'))){
+for(const lang of ['en','tr','nl','ar','ru','fa','es'])for(const file of fs.readdirSync(path.join(__dirname,lang)).filter(f=>f.endsWith('.html'))){
   const html=fs.readFileSync(path.join(__dirname,lang,file),'utf8');
   const match=html.match(/<script type="application\/json" id="chapter-quiz-data">([\s\S]*?)<\/script>/);
   assert(match,`${lang}/${file} bank missing`);
@@ -63,7 +63,7 @@ for(const lang of ['en','tr','nl','ar'])for(const file of fs.readdirSync(path.jo
   byText(data.labels.retry).click();assert(dialog.find(e=>e.className==='cq-question'));
   dialog.close();assert.equal(document.body.style.overflow,'auto');assert.equal(document.activeElement,launcher);
 }
-assert.equal(pages,36);
+assert.equal(pages,63);
 console.log(`PASS: ${pages} pages, ${total} localized questions; sampling, remapping, no repeats, answer locking, scores, review, retry and close.`);
 for(const n of [1,9,10,14,15,20,50]){
  const pool=Array.from({length:n},(_,i)=>({q:String(i),opts:['a','b','c','d'],ans:2}));
