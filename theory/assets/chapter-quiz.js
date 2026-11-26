@@ -98,9 +98,9 @@
       document.head.append(s);
     };
     if (browserWindow.ExamTheorieTTS) {
-      loadScript('../assets/theory-tts.js?v=20261126d');
+      loadScript('../assets/theory-tts.js?v=20261126f');
     } else {
-      loadScript('/tts-core.js?v=20261126d', () => loadScript('../assets/theory-tts.js?v=20261126d'));
+      loadScript('/tts-core.js?v=20261126f', () => loadScript('../assets/theory-tts.js?v=20261126f'));
     }
   }
   let session=[], index=0, answers=[], locked=false, previousOverflow='';

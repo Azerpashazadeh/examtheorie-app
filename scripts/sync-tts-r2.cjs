@@ -60,6 +60,7 @@ function parseArgs(argv) {
     if (arg === '--dry-run') opts.dryRun = true;
     else if (arg === '--upload-r2') opts.uploadR2 = true;
     else if (arg === '--upload-only') { opts.uploadR2 = true; opts.synthesize = false; }
+    else if (arg === '--watch-upload') { opts.uploadR2 = true; opts.synthesize = false; opts.watchUpload = true; }
     else if (arg.startsWith('--scope=')) opts.scope = arg.split('=')[1].trim();
     else if (arg.startsWith('--langs=')) opts.langs = arg.split('=')[1].split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
     else if (arg.startsWith('--voices=')) opts.voices = arg.split('=')[1].split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
@@ -381,14 +382,21 @@ async function main() {
   }
 
   if (opts.uploadR2) {
+    const syncConfigPath = path.join(DEFAULT_STUDIO_DIR, '.r2-sync.json');
+    let workerSync = null;
+    if (fs.existsSync(syncConfigPath)) {
+      try { workerSync = JSON.parse(fs.readFileSync(syncConfigPath, 'utf8')); } catch (_) {}
+    }
+
     const r2Cfg = {
       accountId: process.env.R2_ACCOUNT_ID || '',
       bucket: process.env.R2_BUCKET_NAME || 'examtheorie-tts',
       accessKeyId: process.env.R2_ACCESS_KEY_ID || '',
       secretAccessKey: process.env.R2_SECRET_ACCESS_KEY || ''
     };
-    if (!r2Cfg.accountId || !r2Cfg.accessKeyId || !r2Cfg.secretAccessKey) {
-      throw new Error('Missing R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, or R2_SECRET_ACCESS_KEY environment variables.');
+
+    if ((!workerSync || !workerSync.workerUrl || !workerSync.syncToken) && (!r2Cfg.accountId || !r2Cfg.accessKeyId || !r2Cfg.secretAccessKey)) {
+      throw new Error('Missing .r2-sync.json or R2 S3 environment variables.');
     }
 
     let manifest = {};
@@ -396,24 +404,79 @@ async function main() {
       try { manifest = JSON.parse(fs.readFileSync(R2_MANIFEST_PATH, 'utf8')); } catch (_) {}
     }
 
-    let uploaded = 0;
-    for (const item of items) {
-      const { objectKey } = item.keyInfo;
-      if (manifest[objectKey]) continue;
-      const localPath = path.join(CACHE_DIR, objectKey);
-      if (!fs.existsSync(localPath)) continue;
-      const buf = fs.readFileSync(localPath);
-      await putObjectToR2(r2Cfg, objectKey, buf);
-      manifest[objectKey] = buf.length;
-      uploaded++;
-      if (uploaded % 25 === 0) {
-        fs.writeFileSync(R2_MANIFEST_PATH, JSON.stringify(manifest));
-        console.log(`  [R2 Upload] Uploaded ${uploaded} objects...`);
+    async function flushBatch(batch) {
+      if (!batch.length) return;
+      if (workerSync && workerSync.workerUrl && workerSync.syncToken) {
+        const res = await fetch(`${workerSync.workerUrl.replace(/\/+$/, '')}/batch-put`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${workerSync.syncToken}`
+          },
+          body: JSON.stringify({
+            items: batch.map((b) => ({ key: b.objectKey, b64: b.buf.toString('base64') }))
+          })
+        });
+        if (!res.ok) {
+          const errTxt = await res.text().catch(() => '');
+          throw new Error(`Worker batch-put HTTP ${res.status}: ${errTxt.slice(0, 200)}`);
+        }
+      } else {
+        for (const b of batch) {
+          await putObjectToR2(r2Cfg, b.objectKey, b.buf);
+        }
+      }
+      for (const b of batch) {
+        manifest[b.objectKey] = b.buf.length;
       }
     }
-    fs.mkdirSync(path.dirname(R2_MANIFEST_PATH), { recursive: true });
-    fs.writeFileSync(R2_MANIFEST_PATH, JSON.stringify(manifest));
-    console.log(`[TTS Sync] R2 sync complete (${uploaded} newly uploaded, ${Object.keys(manifest).length} total in R2).`);
+
+    async function runUploadPass() {
+      let uploaded = 0;
+      let batch = [];
+      let batchBytes = 0;
+
+      for (const item of items) {
+        const { objectKey } = item.keyInfo;
+        if (manifest[objectKey]) continue;
+        const localPath = path.join(CACHE_DIR, objectKey);
+        if (!fs.existsSync(localPath)) continue;
+        const buf = fs.readFileSync(localPath);
+        if (buf.length < 512) continue;
+
+        if (batch.length >= 20 || (batchBytes + buf.length) > 2_800_000) {
+          await flushBatch(batch);
+          uploaded += batch.length;
+          batch = [];
+          batchBytes = 0;
+          fs.mkdirSync(path.dirname(R2_MANIFEST_PATH), { recursive: true });
+          fs.writeFileSync(R2_MANIFEST_PATH, JSON.stringify(manifest));
+          if (uploaded % 100 === 0) {
+            console.log(`  [R2 Upload] Uploaded ${uploaded} new objects (${Object.keys(manifest).length}/${items.length} total in R2)...`);
+          }
+        }
+        batch.push({ objectKey, buf });
+        batchBytes += buf.length;
+      }
+
+      if (batch.length > 0) {
+        await flushBatch(batch);
+        uploaded += batch.length;
+        fs.mkdirSync(path.dirname(R2_MANIFEST_PATH), { recursive: true });
+        fs.writeFileSync(R2_MANIFEST_PATH, JSON.stringify(manifest));
+      }
+      return uploaded;
+    }
+
+    do {
+      const newlyUploaded = await runUploadPass();
+      const totalInR2 = Object.keys(manifest).length;
+      if (newlyUploaded > 0 || !opts.watchUpload) {
+        console.log(`[TTS Sync] R2 sync pass (+${newlyUploaded} uploaded, ${totalInR2}/${items.length} total in R2).`);
+      }
+      if (!opts.watchUpload || totalInR2 >= items.length) break;
+      await sleep(15000);
+    } while (true);
   }
 }
 

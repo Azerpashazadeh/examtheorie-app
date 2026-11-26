@@ -11,7 +11,7 @@
 
   var DEFAULT_CONFIG = {
     enabled: true, // Master kill-switch: set false to disable TTS everywhere instantly
-    cdnBaseUrl: '/tts-audio',
+    cdnBaseUrl: 'https://audio.examtheorie.nl',
     localStudioUrl: 'http://127.0.0.1:3456',
     allowLocalStudioOnLocalhost: true,
     maxMemoryBlobs: 260
