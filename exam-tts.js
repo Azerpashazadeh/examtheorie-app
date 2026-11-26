@@ -65,6 +65,7 @@
       '.et-tts-opt-btn.is-paused{background:#eff6ff!important;border-color:#0061ff!important;color:#0061ff!important}',
       '.cevapSecenegi-s3.et-tts-speaking-opt{outline:2px solid #0061ff!important;outline-offset:1px}',
       '.feedback-container{flex-wrap:wrap}',
+      '.answers>.feedback-container{margin-top:4px!important}',
       '.et-tts-fb-wrap{width:100%;display:flex;justify-content:flex-end;margin-top:6px;pointer-events:auto!important}',
       '.et-tts-fb-btn{height:32px;padding:0 12px;font-size:12px}',
       '.et-tts-eq{display:inline-flex;align-items:flex-end;gap:2px;height:13px;width:13px;justify-content:center}',
@@ -476,6 +477,13 @@
   function enhanceFeedbackBoxes(root) {
     var boxes = (root || document).querySelectorAll('.feedback-container');
     boxes.forEach(function (fb) {
+      var hostQuestion = fb.closest('.questionS3');
+      if (hostQuestion && fb.parentElement === hostQuestion) {
+        var hostAnswers = hostQuestion.querySelector(':scope > .answers');
+        if (hostAnswers) {
+          hostAnswers.appendChild(fb);
+        }
+      }
       if (fb.querySelector('.et-tts-fb-btn')) return;
       var textEl = fb.querySelector('.feedback-text');
       var txt = textEl ? String(textEl.textContent || '').trim() : String(fb.textContent || '').trim();
@@ -512,12 +520,12 @@
         qEl.dataset.etTtsEnhanced = '1';
         var bar = buildQuestionBar(qEl, idx);
         var answersDiv = qEl.querySelector(':scope > .answers');
-        if (answersDiv) {
-          answersDiv.insertBefore(bar, answersDiv.firstChild);
-        } else {
-          bar.classList.add('et-tts-dd-bar');
-          qEl.appendChild(bar);
+        if (!answersDiv) {
+          answersDiv = document.createElement('div');
+          answersDiv.className = 'answers';
+          qEl.appendChild(answersDiv);
         }
+        answersDiv.insertBefore(bar, answersDiv.firstChild);
         enhanceOptionLabels(qEl, idx);
       }
       enhanceFeedbackBoxes(qEl);
