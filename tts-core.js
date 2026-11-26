@@ -1,6 +1,6 @@
 /*!
  * ExamTheorie Shared TTS Core Engine (v1)
- * Supports 7 languages (en, nl, tr, ar, ru, fa, es) & 2 voices (ursa, orion).
+ * Supports 7 languages (en, nl, tr, ar, ru, fa, es) & 2 voices (capella, orion).
  * Non-invasive plug-and-play module with 1-line kill switch & 3-tier cache:
  *   1. Browser Memory Blob Cache (0 ms)
  *   2. Cloudflare R2 CDN (/tts-audio/v1/{lang}/{voice}/{hash32}.mp3)
@@ -218,13 +218,15 @@
   })();
 
   function loadPrefs() {
-    var base = { voice: 'ursa', rate: 1, autoRead: false };
+    var base = { voice: 'capella', rate: 1, autoRead: false };
     try {
       var raw = localStorage.getItem(PREFS_STORAGE_KEY);
       if (!raw) return base;
       var parsed = JSON.parse(raw);
-      if (parsed && (parsed.voice === 'ursa' || parsed.voice === 'orion')) {
+      if (parsed && (parsed.voice === 'capella' || parsed.voice === 'orion')) {
         base.voice = parsed.voice;
+      } else if (parsed && parsed.voice === 'ursa') {
+        base.voice = 'capella';
       }
       var r = Number(parsed && parsed.rate);
       if ([0.9, 1, 1.15, 1.25].indexOf(r) !== -1) {
@@ -239,7 +241,7 @@
 
   function savePrefs(patch) {
     var changed = false;
-    if (patch.voice && (patch.voice === 'ursa' || patch.voice === 'orion') && patch.voice !== prefs.voice) {
+    if (patch.voice && (patch.voice === 'capella' || patch.voice === 'orion') && patch.voice !== prefs.voice) {
       prefs.voice = patch.voice;
       changed = true;
     }
@@ -364,7 +366,7 @@
     var opts = options || {};
     var canonicalText = canonicalizeTtsKeyText(rawText);
     var loc = resolveLocale(opts.language);
-    var voice = opts.voice === 'orion' ? 'orion' : (opts.voice === 'ursa' ? 'ursa' : prefs.voice);
+    var voice = opts.voice === 'orion' ? 'orion' : (opts.voice === 'capella' ? 'capella' : prefs.voice);
     var mode = 'bard';
     var ext = 'mp3';
     var payload = 'v1|' + loc.locale + '|' + voice + '|' + mode + '|' + ext + '|' + canonicalText;

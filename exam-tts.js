@@ -262,7 +262,7 @@
     seg.setAttribute('aria-label', t.voiceLabel);
 
     [
-      { id: 'ursa', label: '👩 ' + t.female },
+      { id: 'capella', label: '👩 ' + t.female },
       { id: 'orion', label: '👨 ' + t.male }
     ].forEach(function (v) {
       var vb = document.createElement('button');

@@ -33,7 +33,7 @@ const CACHE_DIR = path.resolve(process.env.TTS_CACHE_DIR || path.join(DEFAULT_ST
 const R2_MANIFEST_PATH = path.join(CACHE_DIR, '.r2-uploaded-manifest.json');
 
 const ALL_LANGS = ['en', 'nl', 'tr', 'ar', 'ru', 'fa', 'es'];
-const ALL_VOICES = ['ursa', 'orion'];
+const ALL_VOICES = ['capella', 'orion'];
 const EXAM_FILE_TYPES = ['radio', 'fillblank', 'checkbox', 'resimsech', 'dragdrop'];
 const REMOTE_EXAM_FOLDERS = {
   en: 'englishjsons',

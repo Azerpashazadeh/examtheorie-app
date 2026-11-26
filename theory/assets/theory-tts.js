@@ -232,7 +232,7 @@
     var vseg = document.createElement('div');
     vseg.className = 'et-th-vseg';
     [
-      { id: 'ursa', label: '👩 ' + t.female },
+      { id: 'capella', label: '👩 ' + t.female },
       { id: 'orion', label: '👨 ' + t.male }
     ].forEach(function (v) {
       var b = document.createElement('button');
