@@ -39,12 +39,18 @@
       '.et-tts-vbtn{border:0;background:transparent;color:#475569;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:12px;font-weight:700;padding:0 10px;height:30px;border-radius:999px;cursor:pointer;transition:all .15s ease;pointer-events:auto!important;white-space:nowrap}',
       '.et-tts-vbtn.is-selected{background:#ffffff;color:#0061ff;box-shadow:0 2px 6px rgba(15,23,42,.08)}',
       '.et-tts-gear-wrap{position:relative;display:inline-flex}',
-      '.et-tts-gear-btn{width:36px;height:36px;border-radius:999px;border:1.5px solid #d5e2f0;background:#ffffff;color:#475569;display:grid;place-items:center;cursor:pointer;pointer-events:auto!important}',
+      '.et-tts-gear-btn{width:36px;height:36px;border-radius:999px;border:1.5px solid #d5e2f0;background:#ffffff;color:#475569;display:inline-flex;align-items:center;justify-content:center;gap:5px;cursor:pointer;pointer-events:auto!important;padding:0}',
       '.et-tts-gear-btn:hover,.et-tts-gear-btn.is-open{border-color:#0061ff;color:#0061ff;background:#eff6ff}',
-      '.et-tts-gear-btn svg{width:15px;height:15px}',
-      '.et-tts-popover{position:absolute;top:calc(100% + 8px);inset-inline-end:0;min-width:230px;background:#ffffff;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;box-shadow:0 18px 42px rgba(15,23,42,.16);z-index:50;display:none;flex-direction:column;gap:11px;text-align:start}',
+      '.et-tts-gear-btn svg{width:15px;height:15px;flex-shrink:0}',
+      '.et-tts-gear-summary{display:none;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:11.5px;font-weight:700;color:#1e293b;line-height:1;white-space:nowrap}',
+      '.et-tts-lbl-short{display:none}',
+      '.et-tts-popover{position:absolute;top:calc(100% + 8px);inset-inline-end:0;min-width:236px;max-width:calc(100vw - 34px);background:#ffffff;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;box-shadow:0 18px 42px rgba(15,23,42,.16);z-index:50;display:none;flex-direction:column;gap:11px;text-align:start}',
       '.et-tts-popover.is-open{display:flex}',
       '.et-tts-pop-row{display:flex;flex-direction:column;gap:6px}',
+      '.et-tts-pop-voice{display:none}',
+      '.et-tts-pop-voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}',
+      '.et-tts-pvbtn{height:32px;border-radius:9px;border:1px solid #cbd5e1;background:#f8fafc;color:#334155;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:12px;font-weight:700;cursor:pointer}',
+      '.et-tts-pvbtn.is-selected{background:#0061ff;border-color:#0061ff;color:#ffffff}',
       '.et-tts-pop-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b}',
       '.et-tts-rate-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}',
       '.et-tts-rbtn{height:30px;border-radius:8px;border:1px solid #cbd5e1;background:#f8fafc;color:#334155;font-size:12px;font-weight:700;cursor:pointer}',
@@ -71,7 +77,22 @@
       '@keyframes etTtsSpin{to{transform:rotate(360deg)}}',
       '.et-tts-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;box-shadow:0 12px 30px rgba(15,23,42,.28);z-index:9999;pointer-events:none;opacity:0;transition:opacity .2s}',
       '.et-tts-toast.is-visible{opacity:1}',
-      '@media(max-width:720px),(pointer:coarse) and (max-width:1100px){.et-tts-qbar.et-tts-dd-bar{order:2;padding:0 0 12px;width:100%}.et-tts-pill{height:34px;padding:0 11px;font-size:12px}.et-tts-voice-seg{height:34px}.et-tts-vbtn{height:28px;padding:0 8px;font-size:11.5px}.et-tts-gear-btn{width:34px;height:34px}}'
+      '@media(max-width:720px),(pointer:coarse) and (max-width:1100px){' +
+        '.et-tts-qbar{flex-wrap:nowrap;gap:6px;margin:0 0 2px}' +
+        '.et-tts-qbar.et-tts-dd-bar{order:2;padding:0 0 8px;width:100%}' +
+        '.et-tts-pill{height:30px;padding:0 10px;font-size:11.5px;gap:5px}' +
+        '.et-tts-pill svg{width:13.5px;height:13.5px}' +
+        '.et-tts-lbl-full{display:none}' +
+        '.et-tts-lbl-short{display:inline}' +
+        '.et-tts-voice-seg{display:none}' +
+        '.et-tts-gear-wrap{margin-inline-start:auto;flex-shrink:0}' +
+        '.et-tts-gear-btn{width:auto;height:30px;padding:0 9px;gap:5px}' +
+        '.et-tts-gear-btn svg{width:13.5px;height:13.5px}' +
+        '.et-tts-gear-summary{display:inline-flex;align-items:center;gap:3px}' +
+        '.et-tts-pop-voice{display:flex}' +
+        '.et-tts-opt-btn{width:29px;height:29px}' +
+        '.et-tts-opt-btn svg{width:13px;height:13px}' +
+      '}'
     ].join('\n');
     document.head.appendChild(style);
   }
@@ -111,14 +132,26 @@
     return String(clone.textContent || '').replace(/\s+/g, ' ').trim();
   }
 
-  var buttonRegistry = new Map(); // ownerId -> { btn, kind, defaultHtml, defaultLabel }
+  function makeDualLabelHtml(fullText, shortText) {
+    if (!shortText || shortText === fullText) {
+      return '<span>' + fullText + '</span>';
+    }
+    return '<span class="et-tts-lbl-full">' + fullText + '</span><span class="et-tts-lbl-short">' + shortText + '</span>';
+  }
 
-  function registerButton(ownerId, btn, kind, defaultIconHtml, defaultText) {
+  function formatGearSummary(prefs) {
+    var icon = prefs.voice === 'orion' ? '👨' : '👩';
+    return icon + ' ' + prefs.rate + 'x';
+  }
+
+  var buttonRegistry = new Map(); // ownerId -> { btn, kind, defaultIconHtml, defaultLabelHtml }
+
+  function registerButton(ownerId, btn, kind, defaultIconHtml, defaultText, shortText) {
     buttonRegistry.set(ownerId, {
       btn: btn,
       kind: kind,
       defaultIconHtml: defaultIconHtml,
-      defaultText: defaultText || ''
+      defaultLabelHtml: makeDualLabelHtml(defaultText || '', shortText || defaultText || '')
     });
   }
 
@@ -154,9 +187,9 @@
       btn.innerHTML = SVG_PLAY + '<span>' + t.resume + '</span>';
     } else if (status === 'error') {
       btn.classList.add('is-error');
-      btn.innerHTML = entry.defaultIconHtml + '<span>' + entry.defaultText + '</span>';
+      btn.innerHTML = entry.defaultIconHtml + entry.defaultLabelHtml;
     } else {
-      btn.innerHTML = entry.defaultIconHtml + '<span>' + entry.defaultText + '</span>';
+      btn.innerHTML = entry.defaultIconHtml + entry.defaultLabelHtml;
     }
   }
 
@@ -175,8 +208,11 @@
 
   function syncAllPreferenceWidgets() {
     var prefs = TTS.getPrefs();
-    document.querySelectorAll('.et-tts-vbtn').forEach(function (b) {
+    document.querySelectorAll('.et-tts-vbtn, .et-tts-pvbtn').forEach(function (b) {
       b.classList.toggle('is-selected', b.getAttribute('data-voice') === prefs.voice);
+    });
+    document.querySelectorAll('.et-tts-gear-summary').forEach(function (s) {
+      s.textContent = formatGearSummary(prefs);
     });
     document.querySelectorAll('.et-tts-rbtn').forEach(function (b) {
       b.classList.toggle('is-selected', Number(b.getAttribute('data-rate')) === prefs.rate);
@@ -244,8 +280,8 @@
     qBtn.type = 'button';
     qBtn.className = 'et-tts-pill' + (effectiveScope === 'question' ? ' is-preferred' : '');
     qBtn.setAttribute('data-read-scope', 'question');
-    qBtn.innerHTML = SVG_SPEAKER + '<span>' + t.readQuestion + '</span>';
-    registerButton(qOwnerId, qBtn, 'pill', SVG_SPEAKER, t.readQuestion);
+    qBtn.innerHTML = SVG_SPEAKER + makeDualLabelHtml(t.readQuestion, t.readQuestionShort);
+    registerButton(qOwnerId, qBtn, 'pill', SVG_SPEAKER, t.readQuestion, t.readQuestionShort);
 
     qBtn.addEventListener('click', function (e) {
       e.preventDefault();
@@ -262,8 +298,8 @@
       qoBtn.type = 'button';
       qoBtn.className = 'et-tts-pill' + (effectiveScope === 'question_options' ? ' is-preferred' : '');
       qoBtn.setAttribute('data-read-scope', 'question_options');
-      qoBtn.innerHTML = SVG_LIST + '<span>' + t.readWithOptions + '</span>';
-      registerButton(qoOwnerId, qoBtn, 'pill', SVG_LIST, t.readWithOptions);
+      qoBtn.innerHTML = SVG_LIST + makeDualLabelHtml(t.readWithOptions, t.readWithOptionsShort);
+      registerButton(qoOwnerId, qoBtn, 'pill', SVG_LIST, t.readWithOptions, t.readWithOptionsShort);
 
       qoBtn.addEventListener('click', function (e) {
         e.preventDefault();
@@ -301,7 +337,7 @@
     });
     bar.appendChild(seg);
 
-    // Compact speed + auto-read settings popover
+    // Compact voice (mobile) + speed + auto-read settings popover
     var gearWrap = document.createElement('div');
     gearWrap.className = 'et-tts-gear-wrap';
     var gearBtn = document.createElement('button');
@@ -309,11 +345,42 @@
     gearBtn.className = 'et-tts-gear-btn';
     gearBtn.title = t.settingsTitle;
     gearBtn.setAttribute('aria-label', t.settingsTitle);
-    gearBtn.innerHTML = SVG_SLIDERS;
+    gearBtn.innerHTML = '<span class="et-tts-gear-summary">' + formatGearSummary(prefs) + '</span>' + SVG_SLIDERS;
 
     var pop = document.createElement('div');
     pop.className = 'et-tts-popover';
     if (rtl) pop.dir = 'rtl';
+
+    var voiceRowWrap = document.createElement('div');
+    voiceRowWrap.className = 'et-tts-pop-row et-tts-pop-voice';
+    var voiceLbl = document.createElement('span');
+    voiceLbl.className = 'et-tts-pop-lbl';
+    voiceLbl.textContent = t.voiceLabel;
+    var voiceGrid = document.createElement('div');
+    voiceGrid.className = 'et-tts-pop-voice-grid';
+    [
+      { id: 'capella', label: '👩 ' + t.female },
+      { id: 'orion', label: '👨 ' + t.male }
+    ].forEach(function (v) {
+      var pvb = document.createElement('button');
+      pvb.type = 'button';
+      pvb.className = 'et-tts-pvbtn' + (prefs.voice === v.id ? ' is-selected' : '');
+      pvb.setAttribute('data-voice', v.id);
+      pvb.textContent = v.label;
+      pvb.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var prevState = TTS.getState();
+        TTS.setPrefs({ voice: v.id });
+        if (prevState.status === 'playing' || prevState.status === 'paused') {
+          TTS.stop();
+        }
+      });
+      voiceGrid.appendChild(pvb);
+    });
+    voiceRowWrap.appendChild(voiceLbl);
+    voiceRowWrap.appendChild(voiceGrid);
+    pop.appendChild(voiceRowWrap);
 
     var rateRowWrap = document.createElement('div');
     rateRowWrap.className = 'et-tts-pop-row';

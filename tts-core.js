@@ -36,7 +36,9 @@
   var I18N = {
     en: {
       readQuestion: 'Read Question',
+      readQuestionShort: 'Question',
       readWithOptions: 'Read + Options',
+      readWithOptionsShort: '+ Options',
       readExplanation: 'Listen Explanation',
       readOptionTitle: 'Listen to this option',
       stop: 'Stop',
@@ -60,7 +62,9 @@
     },
     nl: {
       readQuestion: 'Lees vraag voor',
+      readQuestionShort: 'Vraag',
       readWithOptions: 'Vraag + opties',
+      readWithOptionsShort: '+ Opties',
       readExplanation: 'Beluister uitleg',
       readOptionTitle: 'Beluister dit antwoord',
       stop: 'Stop',
@@ -84,7 +88,9 @@
     },
     tr: {
       readQuestion: 'Soruyu Oku',
+      readQuestionShort: 'Soru',
       readWithOptions: 'Soru + Şıklar',
+      readWithOptionsShort: '+ Şıklar',
       readExplanation: 'Açıklamayı Dinle',
       readOptionTitle: 'Bu şıkkı dinle',
       stop: 'Durdur',
@@ -108,7 +114,9 @@
     },
     ar: {
       readQuestion: 'اقرأ السؤال',
+      readQuestionShort: 'السؤال',
       readWithOptions: 'السؤال + الخيارات',
+      readWithOptionsShort: '+ الخيارات',
       readExplanation: 'استمع إلى الشرح',
       readOptionTitle: 'استمع إلى هذا الخيار',
       stop: 'إيقاف',
@@ -132,7 +140,9 @@
     },
     ru: {
       readQuestion: 'Озвучить вопрос',
+      readQuestionShort: 'Вопрос',
       readWithOptions: 'Вопрос + ответы',
+      readWithOptionsShort: '+ Ответы',
       readExplanation: 'Прослушать разбор',
       readOptionTitle: 'Прослушать этот вариант',
       stop: 'Стоп',
@@ -156,7 +166,9 @@
     },
     fa: {
       readQuestion: 'خواندن سؤال',
+      readQuestionShort: 'سؤال',
       readWithOptions: 'سؤال + گزینه‌ها',
+      readWithOptionsShort: '+ گزینه‌ها',
       readExplanation: 'شنیدن توضیح',
       readOptionTitle: 'شنیدن این گزینه',
       stop: 'توقف',
@@ -180,7 +192,9 @@
     },
     es: {
       readQuestion: 'Leer pregunta',
+      readQuestionShort: 'Pregunta',
       readWithOptions: 'Pregunta + opciones',
+      readWithOptionsShort: '+ Opciones',
       readExplanation: 'Escuchar explicación',
       readOptionTitle: 'Escuchar esta opción',
       stop: 'Detener',
