@@ -62,8 +62,9 @@
       '.et-th-dock-pos{font-size:12px;font-weight:700;padding:0 6px;color:#cbd5e1;white-space:nowrap}',
       /* Chapter Quiz Modal TTS */
       '.et-cq-ttsbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 14px}',
-      '.et-cq-pill{display:inline-flex;align-items:center;gap:6px;height:33px;padding:0 12px;border-radius:999px;border:1.5px solid rgba(0,97,255,.24);background:#f5f9ff;color:#0b3b8c;font-family:Outfit,system-ui,sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap}',
+      '.et-cq-pill{display:inline-flex;align-items:center;gap:6px;height:33px;padding:0 12px;border-radius:999px;border:1.5px solid #cbd5e1;background:#ffffff;color:#334155;font-family:Outfit,system-ui,sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap}',
       '.et-cq-pill:hover{background:#e6f0ff;border-color:#0061ff;color:#0061ff}',
+      '.et-cq-pill.is-preferred{background:#eef5ff;border-color:rgba(0,97,255,.45);color:#0055e5}',
       '.et-cq-pill.is-active{background:#0061ff!important;border-color:#0061ff!important;color:#ffffff!important}',
       '.et-cq-pill.is-paused{background:#eff6ff!important;border-color:#0061ff!important;color:#0061ff!important}',
       '.et-cq-pill svg{width:14px;height:14px}',
@@ -200,6 +201,9 @@
     });
     document.querySelectorAll('[data-et-th-rate]').forEach(function (b) {
       b.classList.toggle('is-selected', Number(b.getAttribute('data-et-th-rate')) === p.rate);
+    });
+    document.querySelectorAll('[data-cq-read-scope]').forEach(function (b) {
+      b.classList.toggle('is-preferred', b.getAttribute('data-cq-read-scope') === p.readScope);
     });
   }
   TTS.onPrefsChange(syncPrefButtons);
@@ -419,23 +423,28 @@
           bar.className = 'et-cq-ttsbar';
           if (rtl) bar.dir = 'rtl';
 
+          var prefs = TTS.getPrefs();
           var qOwner = 'cq-q';
           var qBtn = document.createElement('button');
           qBtn.type = 'button';
-          qBtn.className = 'et-cq-pill';
+          qBtn.className = 'et-cq-pill' + (prefs.readScope !== 'question_options' ? ' is-preferred' : '');
+          qBtn.setAttribute('data-cq-read-scope', 'question');
           qBtn.innerHTML = SVG_SPEAKER + '<span>' + t.readQuestion + '</span>';
           regBtn(qOwner, qBtn, 'pill', SVG_SPEAKER, t.readQuestion);
           qBtn.addEventListener('click', function () {
+            TTS.setPrefs({ readScope: 'question' });
             TTS.toggleOrPlayQueue(qOwner, [qTxt], { language: pageLang });
           });
 
           var qoOwner = 'cq-qo';
           var qoBtn = document.createElement('button');
           qoBtn.type = 'button';
-          qoBtn.className = 'et-cq-pill';
+          qoBtn.className = 'et-cq-pill' + (prefs.readScope === 'question_options' ? ' is-preferred' : '');
+          qoBtn.setAttribute('data-cq-read-scope', 'question_options');
           qoBtn.innerHTML = SVG_LIST + '<span>' + t.readWithOptions + '</span>';
           regBtn(qoOwner, qoBtn, 'pill', SVG_LIST, t.readWithOptions);
           qoBtn.addEventListener('click', function () {
+            TTS.setPrefs({ readScope: 'question_options' });
             var queue = [{ text: qTxt, language: pageLang }];
             cqBody.querySelectorAll('.cq-option').forEach(function (optBtn) {
               var spanTxt = optBtn.children[1] ? String(optBtn.children[1].textContent || '').trim() : '';
@@ -451,11 +460,10 @@
             TTS.toggleOrPlayQueue(qoOwner, queue, { language: pageLang });
           });
 
-          var prefs = TTS.getPrefs();
           var vseg = document.createElement('div');
           vseg.className = 'et-cq-vseg';
           [
-            { id: 'ursa', label: '👩 ' + t.female },
+            { id: 'capella', label: '👩 ' + t.female },
             { id: 'orion', label: '👨 ' + t.male }
           ].forEach(function (v) {
             var vb = document.createElement('button');

@@ -28,11 +28,10 @@
       '.et-tts-qbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 6px;position:relative;z-index:8;pointer-events:auto!important}',
       '.et-tts-qbar.et-tts-dd-bar{grid-column:2;grid-row:2;padding:0 22px 16px;align-self:start}',
       '.questionS3.no-media>.et-tts-qbar.et-tts-dd-bar{grid-column:1}',
-      '.et-tts-pill{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border-radius:999px;border:1.5px solid rgba(0,97,255,.22);background:#f5f9ff;color:#0b3b8c;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:13px;font-weight:700;line-height:1;cursor:pointer;transition:all .16s ease;pointer-events:auto!important;user-select:none;white-space:nowrap}',
-      '.et-tts-pill:hover{background:#e8f2ff;border-color:#0061ff;color:#0061ff;transform:translateY(-1px)}',
+      '.et-tts-pill{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border-radius:999px;border:1.5px solid #d5e2f0;background:#ffffff;color:#334155;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:13px;font-weight:700;line-height:1;cursor:pointer;transition:all .16s ease;pointer-events:auto!important;user-select:none;white-space:nowrap}',
+      '.et-tts-pill:hover{background:#f0f7ff;border-color:#0061ff;color:#0061ff;transform:translateY(-1px)}',
       '.et-tts-pill svg{width:15px;height:15px;flex-shrink:0}',
-      '.et-tts-pill.et-tts-secondary{background:#ffffff;border-color:#d5e2f0;color:#334155}',
-      '.et-tts-pill.et-tts-secondary:hover{background:#f8fafc;border-color:#0061ff;color:#0061ff}',
+      '.et-tts-pill.is-preferred{background:#eef5ff;border-color:rgba(0,97,255,.45);color:#0055e5;box-shadow:0 2px 8px rgba(0,97,255,.08)}',
       '.et-tts-pill.is-active{background:linear-gradient(135deg,#0061ff,#0095ff)!important;border-color:#0061ff!important;color:#ffffff!important;box-shadow:0 6px 18px rgba(0,97,255,.28)}',
       '.et-tts-pill.is-paused{background:#eff6ff!important;border-color:#0061ff!important;color:#0061ff!important}',
       '.et-tts-pill.is-error{background:#fef2f2!important;border-color:#ef4444!important;color:#b91c1c!important}',
@@ -185,6 +184,32 @@
     document.querySelectorAll('.et-tts-autoread-chk').forEach(function (chk) {
       chk.checked = Boolean(prefs.autoRead);
     });
+    document.querySelectorAll('.et-tts-qbar').forEach(function (bar) {
+      var hasOpts = Boolean(bar.querySelector('[data-read-scope="question_options"]'));
+      var effectiveScope = (prefs.readScope === 'question_options' && hasOpts) ? 'question_options' : 'question';
+      bar.querySelectorAll('[data-read-scope]').forEach(function (btn) {
+        btn.classList.toggle('is-preferred', btn.getAttribute('data-read-scope') === effectiveScope);
+      });
+    });
+  }
+
+  function buildQuestionWithOptionsQueue(qEl, qIdx) {
+    var stem = getCleanQuestionStem(qEl, qIdx);
+    var queue = [];
+    if (stem) queue.push({ text: stem, language: pageLang });
+    var currentLabels = qEl.querySelectorAll('.cevapSecenegi-s3');
+    currentLabels.forEach(function (lbl) {
+      var optText = getOptionCleanText(lbl);
+      if (optText) {
+        queue.push({
+          text: optText,
+          language: pageLang,
+          onStart: function () { lbl.classList.add('et-tts-speaking-opt'); },
+          onEnd: function () { lbl.classList.remove('et-tts-speaking-opt'); }
+        });
+      }
+    });
+    return queue;
   }
 
   TTS.onPrefsChange(syncAllPreferenceWidgets);
@@ -209,53 +234,46 @@
     bar.className = 'et-tts-qbar';
     if (rtl) bar.dir = 'rtl';
 
+    var prefs = TTS.getPrefs();
+    var optionLabels = qEl.querySelectorAll('.cevapSecenegi-s3');
+    var hasOptions = optionLabels.length > 0;
+    var effectiveScope = (prefs.readScope === 'question_options' && hasOptions) ? 'question_options' : 'question';
+
     var qOwnerId = 'exam-q-' + qIdx;
     var qBtn = document.createElement('button');
     qBtn.type = 'button';
-    qBtn.className = 'et-tts-pill';
+    qBtn.className = 'et-tts-pill' + (effectiveScope === 'question' ? ' is-preferred' : '');
+    qBtn.setAttribute('data-read-scope', 'question');
     qBtn.innerHTML = SVG_SPEAKER + '<span>' + t.readQuestion + '</span>';
     registerButton(qOwnerId, qBtn, 'pill', SVG_SPEAKER, t.readQuestion);
 
     qBtn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
+      TTS.setPrefs({ readScope: 'question' });
       var stem = getCleanQuestionStem(qEl, qIdx);
       TTS.toggleOrPlayQueue(qOwnerId, [stem], { language: pageLang });
     });
     bar.appendChild(qBtn);
 
-    var optionLabels = qEl.querySelectorAll('.cevapSecenegi-s3');
-    if (optionLabels.length > 0) {
+    if (hasOptions) {
       var qoOwnerId = 'exam-qo-' + qIdx;
       var qoBtn = document.createElement('button');
       qoBtn.type = 'button';
-      qoBtn.className = 'et-tts-pill et-tts-secondary';
+      qoBtn.className = 'et-tts-pill' + (effectiveScope === 'question_options' ? ' is-preferred' : '');
+      qoBtn.setAttribute('data-read-scope', 'question_options');
       qoBtn.innerHTML = SVG_LIST + '<span>' + t.readWithOptions + '</span>';
       registerButton(qoOwnerId, qoBtn, 'pill', SVG_LIST, t.readWithOptions);
 
       qoBtn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        var stem = getCleanQuestionStem(qEl, qIdx);
-        var queue = [{ text: stem, language: pageLang }];
-        var currentLabels = qEl.querySelectorAll('.cevapSecenegi-s3');
-        currentLabels.forEach(function (lbl) {
-          var optText = getOptionCleanText(lbl);
-          if (optText) {
-            queue.push({
-              text: optText,
-              language: pageLang,
-              onStart: function () { lbl.classList.add('et-tts-speaking-opt'); },
-              onEnd: function () { lbl.classList.remove('et-tts-speaking-opt'); }
-            });
-          }
-        });
+        TTS.setPrefs({ readScope: 'question_options' });
+        var queue = buildQuestionWithOptionsQueue(qEl, qIdx);
         TTS.toggleOrPlayQueue(qoOwnerId, queue, { language: pageLang });
       });
       bar.appendChild(qoBtn);
     }
-
-    var prefs = TTS.getPrefs();
     var seg = document.createElement('div');
     seg.className = 'et-tts-voice-seg';
     seg.setAttribute('role', 'group');
@@ -403,7 +421,7 @@
 
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'et-tts-pill et-tts-fb-btn';
+      btn.className = 'et-tts-pill is-preferred et-tts-fb-btn';
       btn.innerHTML = SVG_SPEAKER + '<span>' + t.readExplanation + '</span>';
       registerButton(ownerId, btn, 'pill', SVG_SPEAKER, t.readExplanation);
 
@@ -471,9 +489,16 @@
 
     if (!activeEl || activeIdx < 0) return;
 
+    var prefs = TTS.getPrefs();
     var curStem = getCleanQuestionStem(activeEl, activeIdx);
     if (curStem) {
       TTS.prefetchAudio(curStem, { language: pageLang });
+    }
+    if (prefs.readScope === 'question_options') {
+      activeEl.querySelectorAll('.cevapSecenegi-s3').forEach(function (lbl) {
+        var optTxt = getOptionCleanText(lbl);
+        if (optTxt) TTS.prefetchAudio(optTxt, { language: pageLang });
+      });
     }
     if (activeIdx + 1 < questions.length) {
       var nextStem = getCleanQuestionStem(questions[activeIdx + 1], activeIdx + 1);
@@ -482,10 +507,15 @@
       }
     }
 
-    var prefs = TTS.getPrefs();
     var inReviewMode = Boolean(window.viewResult);
     if (prefs.autoRead && !inReviewMode && curStem) {
-      TTS.toggleOrPlayQueue('exam-q-' + activeIdx, [curStem], { language: pageLang });
+      var activeOptions = activeEl.querySelectorAll('.cevapSecenegi-s3');
+      if (prefs.readScope === 'question_options' && activeOptions.length > 0) {
+        var autoQueue = buildQuestionWithOptionsQueue(activeEl, activeIdx);
+        TTS.toggleOrPlayQueue('exam-qo-' + activeIdx, autoQueue, { language: pageLang });
+      } else {
+        TTS.toggleOrPlayQueue('exam-q-' + activeIdx, [curStem], { language: pageLang });
+      }
     }
   }
 

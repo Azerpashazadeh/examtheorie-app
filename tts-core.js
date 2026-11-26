@@ -218,7 +218,7 @@
   })();
 
   function loadPrefs() {
-    var base = { voice: 'capella', rate: 1, autoRead: false };
+    var base = { voice: 'capella', rate: 1, autoRead: false, readScope: 'question' };
     try {
       var raw = localStorage.getItem(PREFS_STORAGE_KEY);
       if (!raw) return base;
@@ -234,6 +234,9 @@
       }
       if (parsed && typeof parsed.autoRead === 'boolean') {
         base.autoRead = parsed.autoRead;
+      }
+      if (parsed && (parsed.readScope === 'question' || parsed.readScope === 'question_options')) {
+        base.readScope = parsed.readScope;
       }
     } catch (_) {}
     return base;
@@ -257,6 +260,10 @@
     }
     if (typeof patch.autoRead === 'boolean' && patch.autoRead !== prefs.autoRead) {
       prefs.autoRead = patch.autoRead;
+      changed = true;
+    }
+    if (patch.readScope && (patch.readScope === 'question' || patch.readScope === 'question_options') && patch.readScope !== prefs.readScope) {
+      prefs.readScope = patch.readScope;
       changed = true;
     }
     try {
