@@ -89,6 +89,20 @@
   const body = el('div','cq-body');
   panel.append(header,progress,body); dialog.append(panel);
   document.body.append(menuReturn,launcher,dialog);
+  if (browserWindow && document.head) {
+    const loadScript = (src, next) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      if (next) s.addEventListener('load', next, {once:true});
+      document.head.append(s);
+    };
+    if (browserWindow.ExamTheorieTTS) {
+      loadScript('../assets/theory-tts.js?v=20261126f');
+    } else {
+      loadScript('/tts-core.js?v=20261126f', () => loadScript('../assets/theory-tts.js?v=20261126f'));
+    }
+  }
   let session=[], index=0, answers=[], locked=false, previousOverflow='';
   dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;launcher.focus();});
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
