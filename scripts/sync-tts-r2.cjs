@@ -52,8 +52,9 @@ function parseArgs(argv) {
     voices: ALL_VOICES.slice(),
     maxTest: 5,
     limit: Infinity,
-    delayMs: 1350,
-    jitterMs: 550
+    concurrency: 2,
+    delayMs: 700,
+    jitterMs: 350
   };
   for (const arg of argv.slice(2)) {
     if (arg === '--dry-run') opts.dryRun = true;
@@ -64,7 +65,8 @@ function parseArgs(argv) {
     else if (arg.startsWith('--voices=')) opts.voices = arg.split('=')[1].split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
     else if (arg.startsWith('--max-test=')) opts.maxTest = Math.max(1, parseInt(arg.split('=')[1], 10) || 5);
     else if (arg.startsWith('--limit=')) opts.limit = Math.max(1, parseInt(arg.split('=')[1], 10) || 1);
-    else if (arg.startsWith('--delay-ms=')) opts.delayMs = Math.max(250, parseInt(arg.split('=')[1], 10) || 1350);
+    else if (arg.startsWith('--concurrency=')) opts.concurrency = Math.max(1, Math.min(4, parseInt(arg.split('=')[1], 10) || 2));
+    else if (arg.startsWith('--delay-ms=')) opts.delayMs = Math.max(200, parseInt(arg.split('=')[1], 10) || 700);
   }
   return opts;
 }
@@ -224,7 +226,17 @@ async function collectCorpus(opts) {
     }
   }
 
-  return { items: Array.from(itemsByKey.values()), stats };
+  const catOrder = { exams: 1, quizzes: 2, theory: 3 };
+  const ordered = Array.from(itemsByKey.values()).sort((a, b) => {
+    const ca = catOrder[a.category] || 9;
+    const cb = catOrder[b.category] || 9;
+    if (ca !== cb) return ca - cb;
+    const va = a.keyInfo.voice === 'capella' ? 0 : 1;
+    const vb = b.keyInfo.voice === 'capella' ? 0 : 1;
+    return va - vb;
+  });
+
+  return { items: ordered, stats };
 }
 
 // Minimal AWS SigV4 PUT uploader for Cloudflare R2 S3-compatible API
@@ -325,35 +337,46 @@ async function main() {
       sessionFile: path.join(DEFAULT_STUDIO_DIR, '.gemini-session.json')
     });
     const toGenerate = missingLocal.slice(0, opts.limit);
-    console.log(`[TTS Sync] Synthesizing ${toGenerate.length} clip(s) safely into ${CACHE_DIR}...`);
+    console.log(`[TTS Sync] Synthesizing ${toGenerate.length} clip(s) safely (concurrency=${opts.concurrency}) into ${CACHE_DIR}...`);
 
     let generated = 0;
-    for (const item of toGenerate) {
-      const { keyInfo, category } = item;
-      const outPath = path.join(CACHE_DIR, keyInfo.objectKey);
-      try {
-        const res = await client.synthesizeSpeech(keyInfo.canonicalText, {
-          voice: keyInfo.voice,
-          language: keyInfo.locale,
-          mode: keyInfo.mode,
-          audioFormat: 1
-        });
-        fs.mkdirSync(path.dirname(outPath), { recursive: true });
-        const tmp = `${outPath}.${process.pid}.tmp`;
-        fs.writeFileSync(tmp, res.audioBuffer);
-        fs.renameSync(tmp, outPath);
-        generated++;
-        if (generated % 10 === 0 || generated === toGenerate.length) {
-          console.log(`  [${generated}/${toGenerate.length}] OK (${category} · ${keyInfo.shortLang}/${keyInfo.voice} · ${res.sizeBytes}B)`);
+    let cursor = 0;
+    let aborted = false;
+
+    async function worker() {
+      while (!aborted) {
+        const idx = cursor++;
+        if (idx >= toGenerate.length) return;
+        const { keyInfo, category } = toGenerate[idx];
+        const outPath = path.join(CACHE_DIR, keyInfo.objectKey);
+        if (fs.existsSync(outPath)) continue;
+        try {
+          const res = await client.synthesizeSpeech(keyInfo.canonicalText, {
+            voice: keyInfo.voice,
+            language: keyInfo.locale,
+            mode: keyInfo.mode,
+            audioFormat: 1
+          });
+          fs.mkdirSync(path.dirname(outPath), { recursive: true });
+          const tmp = `${outPath}.${process.pid}.${idx}.tmp`;
+          fs.writeFileSync(tmp, res.audioBuffer);
+          fs.renameSync(tmp, outPath);
+          generated++;
+          if (generated % 25 === 0 || generated === toGenerate.length) {
+            console.log(`  [${generated}/${toGenerate.length}] OK (${category} · ${keyInfo.shortLang}/${keyInfo.voice} · ${res.sizeBytes}B)`);
+          }
+          const waitMs = opts.delayMs + Math.floor(Math.random() * opts.jitterMs);
+          await sleep(waitMs);
+        } catch (err) {
+          aborted = true;
+          const msg = String((err && err.message) || err);
+          console.error(`\n[TTS Sync] Stopped safely on error (${keyInfo.objectKey}): ${msg}`);
+          return;
         }
-        const waitMs = opts.delayMs + Math.floor(Math.random() * opts.jitterMs);
-        await sleep(waitMs);
-      } catch (err) {
-        const msg = String(err && err.message || err);
-        console.error(`\n[TTS Sync] Stopped safely on error (${keyInfo.objectKey}): ${msg}`);
-        break;
       }
     }
+
+    await Promise.all(Array.from({ length: opts.concurrency }, () => worker()));
     console.log(`[TTS Sync] Local synthesis finished (${generated} new clips saved).`);
   }
 
