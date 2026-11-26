@@ -145,33 +145,34 @@ async function collectCorpus(opts) {
   const itemsByKey = new Map(); // objectKey -> { keyInfo, category }
   const stats = { exams: 0, quizzes: 0, theory: 0 };
 
-  function addText(lang, text, category) {
+  function addText(lang, text, category, tier = 2) {
     const trimmed = String(text || '').trim();
     if (!trimmed) return;
     for (const voice of opts.voices) {
       const keyInfo = computeTtsCacheKey(trimmed, { language: lang, voice, mode: 'bard', audioFormat: 1 });
       if (!keyInfo.canonicalText) continue;
       if (!itemsByKey.has(keyInfo.objectKey)) {
-        itemsByKey.set(keyInfo.objectKey, { keyInfo, category });
+        itemsByKey.set(keyInfo.objectKey, { keyInfo, category, tier });
         stats[category] = (stats[category] || 0) + 1;
       }
     }
   }
 
-  // Priority 1: Exams (test1..maxTest)
+  // Priority 1: Exams — loop testNum OUTER, lang INNER so Test 1 (deneme-*) finishes across ALL 7 languages first!
   if (opts.scope === 'all' || opts.scope === 'exams') {
-    for (const lang of opts.langs) {
-      for (let tNum = 1; tNum <= opts.maxTest; tNum++) {
+    for (let tNum = 1; tNum <= opts.maxTest; tNum++) {
+      const tier = tNum === 1 ? 0 : 1;
+      for (const lang of opts.langs) {
         for (const fType of EXAM_FILE_TYPES) {
           const data = await loadExamJson(lang, tNum, fType);
           if (!data || !Array.isArray(data.sorular)) continue;
           for (const q of data.sorular) {
-            if (q.soru) addText(lang, q.soru, 'exams');
+            if (q.soru) addText(lang, q.soru, 'exams', tier);
             if (Array.isArray(q.cevaplar)) {
-              for (const c of q.cevaplar) addText(lang, c, 'exams');
+              for (const c of q.cevaplar) addText(lang, c, 'exams', tier);
             }
             if (q.feedback && q.feedback.metin) {
-              addText(lang, q.feedback.metin, 'exams');
+              addText(lang, q.feedback.metin, 'exams', tier);
             }
           }
         }
@@ -227,14 +228,17 @@ async function collectCorpus(opts) {
     }
   }
 
-  const catOrder = { exams: 1, quizzes: 2, theory: 3 };
+  const catOrder = { exams: 1, theory: 2, quizzes: 3 };
   const ordered = Array.from(itemsByKey.values()).sort((a, b) => {
-    const ca = catOrder[a.category] || 9;
-    const cb = catOrder[b.category] || 9;
-    if (ca !== cb) return ca - cb;
+    const ta = a.tier ?? 2;
+    const tb = b.tier ?? 2;
+    if (ta !== tb) return ta - tb;
     const va = a.keyInfo.voice === 'capella' ? 0 : 1;
     const vb = b.keyInfo.voice === 'capella' ? 0 : 1;
-    return va - vb;
+    if (va !== vb) return va - vb;
+    const ca = catOrder[a.category] || 9;
+    const cb = catOrder[b.category] || 9;
+    return ca - cb;
   });
 
   return { items: ordered, stats };
@@ -369,8 +373,14 @@ async function main() {
           const waitMs = opts.delayMs + Math.floor(Math.random() * opts.jitterMs);
           await sleep(waitMs);
         } catch (err) {
-          aborted = true;
           const msg = String((err && err.message) || err);
+          if (/fetch failed|ENOTFOUND|ECONNRESET|ETIMEDOUT|bağlanılamadı/i.test(msg)) {
+            console.warn(`\n[TTS Sync] Network/sleep hiccup (${keyInfo.objectKey}), waiting 12s and retrying...`);
+            await sleep(12000);
+            cursor = Math.max(0, idx);
+            continue;
+          }
+          aborted = true;
           console.error(`\n[TTS Sync] Stopped safely on error (${keyInfo.objectKey}): ${msg}`);
           return;
         }
@@ -407,20 +417,31 @@ async function main() {
     async function flushBatch(batch) {
       if (!batch.length) return;
       if (workerSync && workerSync.workerUrl && workerSync.syncToken) {
-        const res = await fetch(`${workerSync.workerUrl.replace(/\/+$/, '')}/batch-put`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${workerSync.syncToken}`
-          },
-          body: JSON.stringify({
-            items: batch.map((b) => ({ key: b.objectKey, b64: b.buf.toString('base64') }))
-          })
-        });
-        if (!res.ok) {
-          const errTxt = await res.text().catch(() => '');
-          throw new Error(`Worker batch-put HTTP ${res.status}: ${errTxt.slice(0, 200)}`);
+        let lastErr = null;
+        for (let attempt = 1; attempt <= 4; attempt++) {
+          try {
+            const res = await fetch(`${workerSync.workerUrl.replace(/\/+$/, '')}/batch-put`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${workerSync.syncToken}`
+              },
+              body: JSON.stringify({
+                items: batch.map((b) => ({ key: b.objectKey, b64: b.buf.toString('base64') }))
+              })
+            });
+            if (!res.ok) {
+              const errTxt = await res.text().catch(() => '');
+              throw new Error(`Worker batch-put HTTP ${res.status}: ${errTxt.slice(0, 200)}`);
+            }
+            lastErr = null;
+            break;
+          } catch (err) {
+            lastErr = err;
+            await sleep(1500 * attempt);
+          }
         }
+        if (lastErr) throw lastErr;
       } else {
         for (const b of batch) {
           await putObjectToR2(r2Cfg, b.objectKey, b.buf);
@@ -469,12 +490,17 @@ async function main() {
     }
 
     do {
-      const newlyUploaded = await runUploadPass();
-      const totalInR2 = Object.keys(manifest).length;
-      if (newlyUploaded > 0 || !opts.watchUpload) {
-        console.log(`[TTS Sync] R2 sync pass (+${newlyUploaded} uploaded, ${totalInR2}/${items.length} total in R2).`);
+      try {
+        const newlyUploaded = await runUploadPass();
+        const totalInR2 = Object.keys(manifest).length;
+        if (newlyUploaded > 0 || !opts.watchUpload) {
+          console.log(`[TTS Sync] R2 sync pass (+${newlyUploaded} uploaded, ${totalInR2}/${items.length} total in R2).`);
+        }
+        if (!opts.watchUpload || totalInR2 >= items.length) break;
+      } catch (err) {
+        if (!opts.watchUpload) throw err;
+        console.warn(`[TTS Sync] Watch-upload network hiccup (${err.message || err}), retrying in 15s...`);
       }
-      if (!opts.watchUpload || totalInR2 >= items.length) break;
       await sleep(15000);
     } while (true);
   }
