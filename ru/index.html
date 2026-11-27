@@ -6329,6 +6329,23 @@
                     error = retry.error;
                 }
                 if (error) { console.error('❌ Progress kaydedilemedi:', error); showNotification('Progress could not be saved.', 'error'); return false; }
+                if (hasMetrics) {
+                    const attemptRow = {
+                        user_id: currentUser.id,
+                        test_number: testNum,
+                        language: lang,
+                        answered_count: Number.isInteger(metrics.answeredCount) ? metrics.answeredCount : null,
+                        correct_count: Number.isInteger(metrics.correctCount) ? metrics.correctCount : null,
+                        total_questions: Number.isInteger(metrics.totalQuestions) ? metrics.totalQuestions : 50,
+                        duration_seconds: Number.isInteger(metrics.durationSeconds) ? metrics.durationSeconds : null
+                    };
+                    const { error: attemptErr } = await _supabase
+                        .from('user_exam_attempts')
+                        .insert(attemptRow);
+                    if (attemptErr) {
+                        console.warn('⚠️ Attempt history log skipped:', attemptErr.message || attemptErr);
+                    }
+                }
                 return true;
             } catch (err) { console.error('❌ Unexpected error saving progress:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
         }
