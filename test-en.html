@@ -171,6 +171,20 @@ html.mobile-fullscreen,html.mobile-fullscreen body{height:100%;min-height:0;over
 .progress-group,.toolbar-context{grid-column:3}
 .exam-shell:not(.has-timer) .timer-slot{display:none}
 .questionS3.has-image-choices{min-height:0}
+.questionS3.has-drag-drop{min-height:0}
+html .questionS3.has-drag-drop>.drag-drop-container{width:100%!important;max-width:var(--dd-width,100%);justify-self:center;align-self:start}
+html .questionS3.has-drag-drop>.drag-drop-container .box,html .questionS3.has-drag-drop>.drag-drop-container .target{font-size:clamp(14px,min(2vw,2.5vh),26px)}
+@media(min-width:721px) and (max-height:1090px){
+  .exam-app{padding-top:clamp(10px,1.8vh,28px)!important;padding-bottom:clamp(8px,1.2vh,18px)!important}
+  .page-header{margin-bottom:clamp(8px,1.4vh,20px)!important}
+  .page-footer{margin-top:clamp(6px,1vh,16px)!important}
+  .exam-toolbar{min-height:clamp(48px,6vh,60px)!important;padding-top:clamp(6px,1vh,11px)!important;padding-bottom:clamp(6px,1vh,11px)!important}
+  .exam-content{padding-top:clamp(12px,1.8vh,22px)!important;padding-bottom:clamp(12px,1.8vh,22px)!important}
+  .exam-actions{padding-top:clamp(10px,1.5vh,18px)!important;padding-bottom:clamp(10px,1.5vh,18px)!important}
+}
+@media(max-width:720px),(pointer:coarse) and (max-width:1100px){
+  html .questionS3.has-drag-drop>.drag-drop-container{max-width:none}
+}
 .questionS3>.image-container{width:100%;max-width:var(--choice-width,554px);justify-self:center;align-self:start}
 .questionS3>.image-container .image-wrapper{aspect-ratio:auto;align-self:start}
 .questionS3>.image-container .image-wrapper img{height:auto;object-fit:contain}
@@ -4436,6 +4450,61 @@ function notifyNewSystem() {
     const width = Math.floor(2 * height * 1.5 + gap) + 'px';
     if (grid.style.getPropertyValue('--choice-width') !== width) grid.style.setProperty('--choice-width', width);
   }
+  function fitDragDrop(question) {
+    const dd = question.querySelector(':scope > .drag-drop-container');
+    if (!dd) return;
+    if (mobileLayout.matches) {
+      if (dd.style.getPropertyValue('--dd-width')) dd.style.removeProperty('--dd-width');
+      return;
+    }
+    const img = dd.querySelector('img');
+    if (img && !img.complete && !img.dataset.ddFitBound) {
+      img.dataset.ddFitBound = '1';
+      img.addEventListener('load', schedule, { once: true });
+    }
+    const ratio = (img && img.naturalWidth > 0 && img.naturalHeight > 0)
+      ? (img.naturalWidth / img.naturalHeight)
+      : (1400 / 1125);
+    let bottomFactor = 1;
+    dd.querySelectorAll('.box, .target').forEach(el => {
+      const topPct = parseFloat(el.style.top);
+      if (Number.isFinite(topPct)) {
+        bottomFactor = Math.max(bottomFactor, (topPct + 15.4) / 100);
+      }
+    });
+    const contentStyle = getComputedStyle(content);
+    let room;
+    if (contentStyle.overflowY === 'auto' && content.clientHeight > 0) {
+      room = content.clientHeight - parseFloat(contentStyle.paddingTop) - parseFloat(contentStyle.paddingBottom);
+    } else {
+      const app = shell.parentElement;
+      const appStyle = getComputedStyle(app);
+      const header = app.querySelector('.page-header');
+      const headerStyle = getComputedStyle(header);
+      const footer = app.querySelector('.page-footer');
+      const footerStyle = footer ? getComputedStyle(footer) : null;
+      const footerH = (footer && visible(footer)) ? (footer.offsetHeight + (parseFloat(footerStyle.marginTop) || 0)) : 0;
+      room = (window.visualViewport ? visualViewport.height : innerHeight)
+        - parseFloat(appStyle.paddingTop) - parseFloat(appStyle.paddingBottom)
+        - header.offsetHeight - parseFloat(headerStyle.marginBottom)
+        - shell.querySelector('.exam-toolbar').offsetHeight - actions.offsetHeight
+        - footerH
+        - parseFloat(contentStyle.paddingTop) - parseFloat(contentStyle.paddingBottom);
+    }
+    const maxH = Math.max(240, (room - 10) / bottomFactor);
+    const maxW = Math.floor(maxH * ratio) + 'px';
+    if (dd.style.getPropertyValue('--dd-width') !== maxW) {
+      dd.style.setProperty('--dd-width', maxW);
+      if (typeof window.Draggable !== 'undefined') {
+        requestAnimationFrame(() => {
+          dd.querySelectorAll('.box').forEach(box => {
+            const inst = window.Draggable.get(box);
+            if (inst && typeof inst.applyBounds === 'function') inst.applyBounds(dd);
+          });
+        });
+      }
+    }
+  }
   function sync() {
     document.querySelectorAll('.image-wrapper').forEach(wrapper => wrapper.classList.toggle('review-choice', !!wrapper.querySelector('.disabled3')));
     document.querySelectorAll('.questionS3').forEach(question => {
@@ -4453,6 +4522,7 @@ function notifyNewSystem() {
       question.classList.toggle('has-video', !!question.querySelector(':scope > video'));
       question.classList.toggle('has-image', !!question.querySelector(':scope > .question-image'));
       question.classList.toggle('has-image-choices', !!question.querySelector(':scope > .image-container'));
+      question.classList.toggle('has-drag-drop', !!question.querySelector(':scope > .drag-drop-container'));
     });
     const timer = byId('app-s3');
     const timerBox = timer.querySelector('.base-timer_S3');
@@ -4504,6 +4574,7 @@ function notifyNewSystem() {
       const hint = current.querySelector('.drag-drop-container') ? 'Drag each item to its position' : current.querySelector('input[type="checkbox"]') || current.querySelector('.image-container') ? 'Select all answers that apply' : current.querySelector('input[type="number"]') ? 'Enter your answer' : 'Select your answer to continue';
       setText(byId('answer-hint'), hint);
       fitImageChoices(current);
+      fitDragDrop(current);
     }
     document.querySelectorAll('.question-block-s3').forEach(cell => {
       if (!cell.hasAttribute('tabindex')) {cell.tabIndex = 0;cell.setAttribute('role','button');cell.setAttribute('aria-label','Question ' + cell.textContent.trim());}
