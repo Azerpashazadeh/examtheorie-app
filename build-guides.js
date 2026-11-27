@@ -5,11 +5,18 @@
  */
 const fs = require('fs');
 const path = require('path');
+const {
+  EXTRA_GUIDES,
+  EXTRA_CSS,
+  renderMiniQuizHtml,
+  buildMiniQuizSchema,
+  renderCurriculumOverviewHtml,
+} = require('./guides-extra.js');
 
 const ROOT = process.cwd();
 const BASE_URL = 'https://examtheorie.nl';
 const OG_IMAGE = `${BASE_URL}/og-image.jpg`;
-const TODAY = '2026-11-18';
+const TODAY = '2026-11-27';
 
 function esc(s) {
   return String(s)
@@ -1455,9 +1462,10 @@ const GUIDES = [
       ],
     },
   },
+  ...EXTRA_GUIDES,
 ];
 
-const GUIDE_CSS = `
+const GUIDE_CSS = EXTRA_CSS + `
 :root{--bg:#f8fafc;--card:#ffffff;--border:rgba(15,23,42,.09);--cyan:#0061ff;--orange:#ff6b00;--text:#0f172a;--muted:#475569}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -1571,43 +1579,47 @@ function buildGuidePages() {
       const hubUrl = `/guides/${lang}/`;
       const pricingUrl = lang === 'en' ? '/?open=pricing' : `/${lang}/?open=pricing`;
 
+      const quizSchema = buildMiniQuizSchema(guide.slug, lang, canonical, data.title);
+      const graphNodes = [
+        {
+          '@type': 'Article',
+          headline: data.title,
+          description: data.description,
+          url: canonical,
+          inLanguage: lang,
+          datePublished: '2026-11-18',
+          dateModified: TODAY,
+          isAccessibleForFree: true,
+          image: OG_IMAGE,
+          author: { '@type': 'Organization', name: 'ExamTheorie', url: `${BASE_URL}/` },
+          publisher: {
+            '@type': 'Organization',
+            name: 'ExamTheorie',
+            logo: { '@type': 'ImageObject', url: `${BASE_URL}/web-app-manifest-512x512.png` },
+          },
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: data.faqs.map(([q, a]) => ({
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a },
+          })),
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: ui.homeLabel, item: `${BASE_URL}${ui.homeUrl}` },
+            { '@type': 'ListItem', position: 2, name: ui.hubLabel, item: `${BASE_URL}${hubUrl}` },
+            { '@type': 'ListItem', position: 3, name: data.title, item: canonical },
+          ],
+        },
+      ];
+      if (quizSchema) graphNodes.push(quizSchema);
+
       const jsonLd = JSON.stringify({
         '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'Article',
-            headline: data.title,
-            description: data.description,
-            url: canonical,
-            inLanguage: lang,
-            datePublished: TODAY,
-            dateModified: TODAY,
-            isAccessibleForFree: true,
-            image: OG_IMAGE,
-            author: { '@type': 'Organization', name: 'ExamTheorie', url: `${BASE_URL}/` },
-            publisher: {
-              '@type': 'Organization',
-              name: 'ExamTheorie',
-              logo: { '@type': 'ImageObject', url: `${BASE_URL}/web-app-manifest-512x512.png` },
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: data.faqs.map(([q, a]) => ({
-              '@type': 'Question',
-              name: q,
-              acceptedAnswer: { '@type': 'Answer', text: a },
-            })),
-          },
-          {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: ui.homeLabel, item: `${BASE_URL}${ui.homeUrl}` },
-              { '@type': 'ListItem', position: 2, name: ui.hubLabel, item: `${BASE_URL}${hubUrl}` },
-              { '@type': 'ListItem', position: 3, name: data.title, item: canonical },
-            ],
-          },
-        ],
+        '@graph': graphNodes,
       });
 
       const otherGuides = GUIDES.filter((g) => g.slug !== guide.slug);
@@ -1691,6 +1703,8 @@ ${hreflangTags}
       <p class="lead">${esc(data.lead)}</p>
 
       ${data.body}
+
+      ${renderMiniQuizHtml(guide.slug, lang)}
 
       <div class="cta-box">
         <h2>${esc(ui.ctaHead)}</h2>
@@ -1842,6 +1856,8 @@ ${hubHreflangs}
 
     <div class="cards-grid">${cards}</div>
 
+    ${renderCurriculumOverviewHtml(lang)}
+
     <div class="cta-box">
       <h2>${esc(ui.ctaHead)}</h2>
       <p>${esc(ui.ctaBody)}</p>
@@ -1873,11 +1889,11 @@ ${hubHreflangs}
     xDefault: hubUrlMap.en,
   });
 
-  console.log(`✅ Built 35 multilingual SEO guide pages (7 hubs + 28 pillar guides)`);
+  console.log(`✅ Built ${ALL_LANGS.length * (GUIDES.length + 1)} multilingual SEO guide pages (${ALL_LANGS.length} hubs + ${ALL_LANGS.length * GUIDES.length} pillar guides)`);
   return generatedUrls;
 }
 
-module.exports = { buildGuidePages };
+module.exports = { buildGuidePages, GUIDES };
 
 if (require.main === module) {
   buildGuidePages();

@@ -26,7 +26,7 @@ const vm = require('vm');
 const ROOT = process.cwd();
 const BASE_URL = 'https://examtheorie.nl';
 const OG_IMAGE = `${BASE_URL}/og-image.jpg`;
-const TODAY = '2026-11-25';
+const TODAY = '2026-11-27';
 const ALL_LANGS = ['en', 'nl', 'tr', 'ar', 'ru', 'fa', 'es'];
 
 function escapeHtml(str) {
@@ -1032,7 +1032,8 @@ Sitemap: ${BASE_URL}/sitemap.xml
 
 // ── Run All Steps ────────────────────────────────────────────────────────────
 
-const { buildGuidePages } = require('./build-guides.js');
+const { buildGuidePages, GUIDES } = require('./build-guides.js');
+const { buildLlmsFiles } = require('./build-llms.js');
 
 buildHomepages();
 updateDenemePages();
@@ -1041,4 +1042,5 @@ updateLegalPages();
 cleanRootGatedAndTestPages();
 const guideClusters = buildGuidePages();
 generateSitemapAndRobots(guideClusters);
+buildLlmsFiles(GUIDES);
 console.log('\n🎯 ExamTheorie SEO build completed successfully!');
