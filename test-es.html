@@ -4293,7 +4293,7 @@ function notifyNewSystem() {
             durationSeconds
         }, targetOrigin);
         if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 1080) {
-            parentWin.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
+            parentWin.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession, answeredCount, correctCount, totalQuestions }, targetOrigin);
         }
         console.log('Test ' + testNumber + ' (' + lang + ') completion reported (' + answeredCount + '/' + totalQuestions + ' answered, ' + correctCount + ' correct)');
     } catch (e) {

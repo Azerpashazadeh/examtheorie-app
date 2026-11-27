@@ -32,6 +32,12 @@ function response(body: unknown, status: number, origin: string | null) {
   });
 }
 
+function parseOptionalBoundedInt(val: unknown, min: number, max: number): number | null {
+  if (typeof val !== "number" || !Number.isInteger(val)) return null;
+  if (val < min || val > max) return null;
+  return val;
+}
+
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin");
   if (req.method === "OPTIONS") {
@@ -79,21 +85,28 @@ Deno.serve(async (req: Request) => {
   const alertSession = payload.alertSession === undefined ? crypto.randomUUID() : payload.alertSession;
   if (typeof alertSession !== "string" || !UUID_PATTERN.test(alertSession) ||
       !Number.isInteger(testNumber) || (testNumber as number) < 1 || (testNumber as number) > 50 ||
-      !["en", "ar", "nl", "tr"].includes(String(language)) ||
+      !["en", "ar", "nl", "tr", "ru", "fa", "es"].includes(String(language)) ||
       !Number.isInteger(elapsedSeconds) || (elapsedSeconds as number) < 480 || (elapsedSeconds as number) > 1080) {
     return response({ error: "Invalid alert data" }, 400, origin);
   }
 
+  const answeredCount = parseOptionalBoundedInt(payload.answeredCount, 0, 100);
+  const correctCount = parseOptionalBoundedInt(payload.correctCount, 0, 100);
+  const totalQuestions = parseOptionalBoundedInt(payload.totalQuestions, 1, 100) ?? 50;
+
   const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
-  const row = {
+  const row: Record<string, unknown> = {
     user_id: authData.user.id,
     test_number: testNumber,
     language,
     alert_session: alertSession,
     elapsed_seconds: elapsedSeconds,
+    total_questions: totalQuestions,
   };
+  if (answeredCount !== null) row.answered_count = answeredCount;
+  if (correctCount !== null) row.correct_count = correctCount;
 
   let alertId: string;
   let sentMessageIds: Array<string | null> = TELEGRAM_CHAT_IDS.map(() => null);
@@ -129,9 +142,17 @@ Deno.serve(async (req: Request) => {
     } catch {
       // A failed record without a saved delivery list is retried for every recipient.
     }
+    const retryUpdate: Record<string, unknown> = {
+      elapsed_seconds: elapsedSeconds,
+      total_questions: totalQuestions,
+      notification_status: "pending",
+    };
+    if (answeredCount !== null) retryUpdate.answered_count = answeredCount;
+    if (correctCount !== null) retryUpdate.correct_count = correctCount;
+
     const { data: retry } = await admin
       .from("telegram_fast_test_alerts")
-      .update({ elapsed_seconds: elapsedSeconds, notification_status: "pending" })
+      .update(retryUpdate)
       .eq("id", existing.id)
       .eq("notification_status", "failed")
       .select("id")
@@ -147,12 +168,20 @@ Deno.serve(async (req: Request) => {
 
   const mins = Math.floor((elapsedSeconds as number) / 60);
   const secs = (elapsedSeconds as number) % 60;
-  const message = [
-    "⚠️ Test result completed (8–18 min)",
-    `Test: ${testNumber} | Language: ${String(language).toUpperCase()}`,
-    `Elapsed: ${mins}m ${String(secs).padStart(2, "0")}s`,
-    `Supabase User ID: ${authData.user.id}`,
-  ].join("\n");
+  const userEmail = authData.user.email ?? "-";
+  const messageLines = [
+    "⚠️ Hızlı Test Uyarısı (8–18 dk)",
+    `Test: ${testNumber} | Dil: ${String(language).toUpperCase()}`,
+  ];
+  if (answeredCount !== null) {
+    const blankCount = Math.max(totalQuestions - answeredCount, 0);
+    const correctPart = correctCount !== null ? `Doğru: ${correctCount} | ` : "";
+    messageLines.push(`Yanıtlanan: ${answeredCount}/${totalQuestions} (${correctPart}Boş: ${blankCount})`);
+  }
+  messageLines.push(`Süre: ${mins} dk ${String(secs).padStart(2, "0")} sn`);
+  messageLines.push(`E-posta: ${userEmail}`);
+  messageLines.push(`Supabase User ID: ${authData.user.id}`);
+  const message = messageLines.join("\n");
 
   try {
     for (let index = 0; index < TELEGRAM_CHAT_IDS.length; index++) {

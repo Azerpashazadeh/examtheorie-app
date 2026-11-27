@@ -6375,7 +6375,10 @@
                                 testNumber: d.testNumber,
                                 language: d.lang,
                                 elapsedSeconds: d.elapsedSeconds,
-                                alertSession: d.alertSession
+                                alertSession: d.alertSession,
+                                answeredCount: Number.isInteger(d.answeredCount) ? d.answeredCount : undefined,
+                                correctCount: Number.isInteger(d.correctCount) ? d.correctCount : undefined,
+                                totalQuestions: Number.isInteger(d.totalQuestions) ? d.totalQuestions : undefined
                             }
                         });
                         if (error) throw error;
