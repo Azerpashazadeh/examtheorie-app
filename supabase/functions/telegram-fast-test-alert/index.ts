@@ -90,13 +90,37 @@ Deno.serve(async (req: Request) => {
     return response({ error: "Invalid alert data" }, 400, origin);
   }
 
-  const answeredCount = parseOptionalBoundedInt(payload.answeredCount, 0, 100);
-  const correctCount = parseOptionalBoundedInt(payload.correctCount, 0, 100);
-  const totalQuestions = parseOptionalBoundedInt(payload.totalQuestions, 1, 100) ?? 50;
+  let answeredCount = parseOptionalBoundedInt(payload.answeredCount, 0, 100);
+  let correctCount = parseOptionalBoundedInt(payload.correctCount, 0, 100);
+  let totalQuestions = parseOptionalBoundedInt(payload.totalQuestions, 1, 100) ?? 50;
 
   const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
+
+  // Server-side fallback: if an older unrefreshed homepage tab didn't pass answeredCount in the
+  // request body, read the freshly saved metrics from user_progress / user_exam_attempts.
+  if (answeredCount === null) {
+    for (let waitAttempt = 0; waitAttempt < 4; waitAttempt++) {
+      await new Promise((r) => setTimeout(r, waitAttempt === 0 ? 350 : 450));
+      const { data: prog } = await admin
+        .from("user_progress")
+        .select("answered_count, correct_count, total_questions")
+        .eq("user_id", authData.user.id)
+        .eq("test_number", testNumber)
+        .eq("language", language)
+        .maybeSingle();
+      if (prog && typeof prog.answered_count === "number") {
+        answeredCount = prog.answered_count;
+        if (typeof prog.correct_count === "number") correctCount = prog.correct_count;
+        if (typeof prog.total_questions === "number" && prog.total_questions > 0) {
+          totalQuestions = prog.total_questions;
+        }
+        break;
+      }
+    }
+  }
+
   const row: Record<string, unknown> = {
     user_id: authData.user.id,
     test_number: testNumber,
