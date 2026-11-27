@@ -6293,13 +6293,41 @@
         document.head.appendChild(notifStyle);
 
         /* ─── PROGRESS — SUPABASE'E KAYDET ─── */
-        async function saveProgressToSupabase(testNum, lang) {
+        async function saveProgressToSupabase(testNum, lang, metrics) {
             if (!currentUser) return false;
             lang = lang || currentLang || 'en';
+            const baseRow = { user_id: currentUser.id, test_number: testNum, language: lang };
+            const extendedRow = { ...baseRow };
+            let hasMetrics = false;
+            if (metrics && typeof metrics === 'object') {
+                if (Number.isInteger(metrics.answeredCount) && metrics.answeredCount >= 0 && metrics.answeredCount <= 100) {
+                    extendedRow.answered_count = metrics.answeredCount;
+                    hasMetrics = true;
+                }
+                if (Number.isInteger(metrics.correctCount) && metrics.correctCount >= 0 && metrics.correctCount <= 100) {
+                    extendedRow.correct_count = metrics.correctCount;
+                    hasMetrics = true;
+                }
+                if (Number.isInteger(metrics.totalQuestions) && metrics.totalQuestions > 0 && metrics.totalQuestions <= 100) {
+                    extendedRow.total_questions = metrics.totalQuestions;
+                    hasMetrics = true;
+                }
+                if (Number.isInteger(metrics.durationSeconds) && metrics.durationSeconds >= 0 && metrics.durationSeconds <= 7200) {
+                    extendedRow.duration_seconds = metrics.durationSeconds;
+                    hasMetrics = true;
+                }
+            }
             try {
-                const { error } = await _supabase
+                let { error } = await _supabase
                     .from('user_progress')
-                    .upsert({ user_id: currentUser.id, test_number: testNum, language: lang }, { onConflict: 'user_id,test_number,language' });
+                    .upsert(extendedRow, { onConflict: 'user_id,test_number,language' });
+                if (error && hasMetrics) {
+                    console.warn('⚠️ Extended progress columns unavailable, falling back to base row:', error.message || error);
+                    const retry = await _supabase
+                        .from('user_progress')
+                        .upsert(baseRow, { onConflict: 'user_id,test_number,language' });
+                    error = retry.error;
+                }
                 if (error) { console.error('❌ Progress kaydedilemedi:', error); showNotification('Progress could not be saved.', 'error'); return false; }
                 return true;
             } catch (err) { console.error('❌ Unexpected error saving progress:', err); showNotification('Unexpected error occurred. Please try again.', 'error'); return false; }
@@ -6360,7 +6388,12 @@
                 showNotification('Please sign in to save your progress.', 'info');
                 setTimeout(() => openModal('si'), 2000);
             } else {
-                const saved = await saveProgressToSupabase(d.testNumber, d.lang);
+                const saved = await saveProgressToSupabase(d.testNumber, d.lang, {
+                    answeredCount: d.answeredCount,
+                    correctCount: d.correctCount,
+                    totalQuestions: d.totalQuestions,
+                    durationSeconds: d.durationSeconds
+                });
                 if (unconfirmedCompletions.get(key) === completion) {
                     completion.saved = saved;
                     progressRevision++;

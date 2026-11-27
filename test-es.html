@@ -4248,24 +4248,56 @@ function getExamParentWindow() {
     if (window.parent && window.parent !== window) return window.parent;
     return null;
 }
+function hasNonEmptyUserAnswerS3(ua) {
+    if (!ua) return false;
+    if (Array.isArray(ua)) {
+        return ua.some(item => {
+            if (item === null || item === undefined) return false;
+            if (typeof item === 'object') return Boolean(item.id && item.target);
+            return String(item).trim().length > 0;
+        });
+    }
+    if (typeof ua === 'object') return Boolean(ua.id && ua.target);
+    return String(ua).trim().length > 0;
+}
 function notifyNewSystem() {
     if (!resultAccessAllowedS3) return;
     const testNumber = window.DYNAMIC_TEST_NUMBER;
     const lang = 'es';
     const alertSession = new URLSearchParams(window.location.search).get('alertSession');
     const elapsedSeconds = TIME_LIMIT_S3 - timeLeft_S3;
+    if (typeof checkAnswersAndUpdateBlocks === 'function') {
+        try { checkAnswersAndUpdateBlocks(); } catch (_) {}
+    }
+    const totalQuestions = Array.isArray(allQuestionsS3) && allQuestionsS3.length > 0 ? allQuestionsS3.length : 50;
+    const answeredCount = Array.isArray(quizAnswersS3) && quizAnswersS3.length > 0
+        ? quizAnswersS3.filter(q => q && hasNonEmptyUserAnswerS3(q.userAnswer)).length
+        : (Number.isInteger(correctAnswerS3?.answer) ? correctAnswerS3.answer : 0);
+    const correctCount = Array.isArray(correctAnswerS3?.questions)
+        ? correctAnswerS3.questions.filter(x => x && x.isCorrect === true).length
+        : (Number.isInteger(correctAnswerS3?.correct) ? correctAnswerS3.correct : 0);
+    const durationSeconds = Number.isFinite(elapsedSeconds)
+        ? Math.max(0, Math.min(TIME_LIMIT_S3, Math.round(elapsedSeconds)))
+        : null;
     const parentWin = getExamParentWindow();
-    if (parentWin) {
-        try {
-            const targetOrigin = resolveExamParentOrigin();
-            parentWin.postMessage({ action: 'testCompleted', testNumber, lang }, targetOrigin);
-            if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 1080) {
-                parentWin.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
-            }
-            console.log('Test ' + testNumber + ' (' + lang + ') completion reported');
-        } catch (e) {
-            console.error('Completion notification failed:', e);
+    if (!parentWin) return;
+    try {
+        const targetOrigin = resolveExamParentOrigin();
+        parentWin.postMessage({
+            action: 'testCompleted',
+            testNumber,
+            lang,
+            answeredCount,
+            correctCount,
+            totalQuestions,
+            durationSeconds
+        }, targetOrigin);
+        if (alertSession && Number.isInteger(elapsedSeconds) && elapsedSeconds >= 480 && elapsedSeconds <= 1080) {
+            parentWin.postMessage({ action: 'fastTestResultClick', testNumber, lang, elapsedSeconds, alertSession }, targetOrigin);
         }
+        console.log('Test ' + testNumber + ' (' + lang + ') completion reported (' + answeredCount + '/' + totalQuestions + ' answered, ' + correctCount + ' correct)');
+    } catch (e) {
+        console.error('Completion notification failed:', e);
     }
 }
 (function setupMobileExamOverlaySupport() {
