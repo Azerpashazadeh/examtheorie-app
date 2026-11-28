@@ -1,8 +1,8 @@
 /*!
  * ExamTheorie — Saved Difficult Questions ("Zorlandığım Sorular") Exam Bookmark Add-on
- * Mounts a single #etToolbarSaveBtn in .exam-toolbar (replacing "Time Left" next to the timer,
- * and remaining available in the top toolbar during post-exam Result Review).
- * Zero crowding in .et-tts-qbar and zero vertical space taken from questions.
+ * Works on BOTH paid test-{lang}.html AND free deneme-{lang}.html!
+ * - Signed-in users: saves lightweight pointers directly to public.user_saved_questions
+ * - Guests on free demo exams: saves to localStorage and auto-syncs to Supabase upon sign-in
  */
 (function () {
   'use strict';
@@ -15,6 +15,7 @@
     var rawLang = String(document.documentElement.lang || 'en').toLowerCase().split('-')[0];
     var lang = SUPPORTED.indexOf(rawLang) >= 0 ? rawLang : 'en';
     var isRtl = lang === 'ar' || lang === 'fa';
+    var GUEST_STORAGE_KEY = 'et_guest_saved_q_' + lang;
 
     var STRINGS = {
       tr: {
@@ -23,6 +24,7 @@
         titleAdd: 'Bu soruyu Zorlandığım Sorulara ekle',
         titleSaved: 'Zorlandığım Sorularda kayıtlı (Çıkarmak için dokunun)',
         toastAdd: '⭐ Soru "Zorlandığım Sorular" havuzuna eklendi',
+        toastGuestAdd: '⭐ Kaydedildi! Kalıcı olması ve alıştırma testi için giriş yapın',
         toastRem: 'Soru havuzdan çıkarıldı'
       },
       nl: {
@@ -31,6 +33,7 @@
         titleAdd: 'Deze vraag opslaan bij lastige vragen',
         titleSaved: 'Opgeslagen bij lastige vragen (tik om te verwijderen)',
         toastAdd: '⭐ Toegevoegd aan je lastige vragen',
+        toastGuestAdd: '⭐ Opgeslagen! Log in om je oefentoets te openen',
         toastRem: 'Verwijderd uit lastige vragen'
       },
       en: {
@@ -39,6 +42,7 @@
         titleAdd: 'Save this question to Difficult Questions',
         titleSaved: 'Saved in Difficult Questions (tap to remove)',
         toastAdd: '⭐ Added to Difficult Questions',
+        toastGuestAdd: '⭐ Saved! Sign in to unlock your personal practice quiz',
         toastRem: 'Removed from Difficult Questions'
       },
       ar: {
@@ -47,6 +51,7 @@
         titleAdd: 'حفظ هذا السؤال في الأسئلة الصعبة',
         titleSaved: 'محفوظ في الأسئلة الصعبة (اضغط للإزالة)',
         toastAdd: '⭐ تمت الإضافة إلى الأسئلة الصعبة',
+        toastGuestAdd: '⭐ تم الحفظ! سجّل الدخول لفتح الاختبار التدريبي',
         toastRem: 'تمت الإزالة من الأسئلة الصعبة'
       },
       ru: {
@@ -55,6 +60,7 @@
         titleAdd: 'Сохранить вопрос в сложные',
         titleSaved: 'Сохранено в сложных вопросах (нажмите, чтобы убрать)',
         toastAdd: '⭐ Добавлено в «Сложные вопросы»',
+        toastGuestAdd: '⭐ Сохранено! Войдите в аккаунт для запуска тренировки',
         toastRem: 'Удалено из «Сложных вопросов»'
       },
       fa: {
@@ -63,6 +69,7 @@
         titleAdd: 'ذخیره این سؤال در سؤالات دشوار',
         titleSaved: 'ذخیره‌شده در سؤالات دشوار (برای حذف بزنید)',
         toastAdd: '⭐ به سؤالات دشوار اضافه شد',
+        toastGuestAdd: '⭐ ذخیره شد! برای باز کردن آزمون تمرینی وارد شوید',
         toastRem: 'از سؤالات دشوار حذف شد'
       },
       es: {
@@ -71,6 +78,7 @@
         titleAdd: 'Guardar pregunta en difíciles',
         titleSaved: 'Guardada en preguntas difíciles (pulsa para quitar)',
         toastAdd: '⭐ Añadida a Preguntas Difíciles',
+        toastGuestAdd: '⭐ ¡Guardada! Inicia sesión para abrir tu práctica',
         toastRem: 'Eliminada de Preguntas Difíciles'
       }
     };
@@ -86,6 +94,21 @@
     var toolbarBtn = null;
     var activePointer = null;
 
+    function readGuestList() {
+      try {
+        var raw = JSON.parse(localStorage.getItem(GUEST_STORAGE_KEY) || '[]');
+        return Array.isArray(raw) ? raw : [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function writeGuestList(arr) {
+      try {
+        localStorage.setItem(GUEST_STORAGE_KEY, JSON.stringify(arr));
+      } catch (_) {}
+    }
+
     function injectStyles() {
       if (document.getElementById('et-saveq-styles')) return;
       var st = document.createElement('style');
@@ -94,11 +117,15 @@
         /* Hide "Time Left" / "Kalan süre" caption next to countdown timer — replaced by star button */
         '.exam-toolbar .countdown-caption{display:none!important}',
         '.exam-toolbar .timer-slot{display:flex;align-items:center;gap:9px}',
-        /* Keep .timer-slot visible during post-exam question review when a question is active */
         '.exam-shell.et-on-question:not(.has-timer) .timer-slot{display:flex!important}',
         '@media(max-width:720px),(pointer:coarse) and (max-width:1100px){' +
           '.exam-shell.et-on-question:not(.has-timer) .progress-group{grid-column:2!important}' +
         '}',
+        /* Smooth vertical touch-scrolling directly over all question images */
+        '.question-image,.image-wrapper img,.drag-drop-container img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none;touch-action:pan-y pinch-zoom!important}',
+        '.drag-drop-container img{pointer-events:none}',
+        '.questionS3>.drag-drop-container{touch-action:pan-y pinch-zoom!important}',
+        '.drag-drop-container .box{touch-action:none!important}',
         '.et-toolbar-savebtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;padding:0 12px;border-radius:999px;border:1.5px solid #cbd5e1;background:#ffffff;color:#334155;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:12.5px;font-weight:700;line-height:1;cursor:pointer;transition:all .16s ease;pointer-events:auto!important;user-select:none;white-space:nowrap;flex-shrink:0;box-shadow:0 2px 6px rgba(15,23,42,.05)}',
         '.et-toolbar-savebtn[hidden]{display:none!important}',
         '.et-toolbar-savebtn:hover{border-color:#f59e0b;background:#fffbeb;color:#b45309;transform:translateY(-1px)}',
@@ -111,7 +138,7 @@
           '.et-toolbar-savebtn .et-saveq-lbl{display:none}' +
           '.exam-toolbar .timer-slot{gap:7px}' +
         '}',
-        '.et-saveq-toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;box-shadow:0 12px 30px rgba(15,23,42,.28);z-index:10000;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis}',
+        '.et-saveq-toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;box-shadow:0 12px 30px rgba(15,23,42,.28);z-index:10000;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis}',
         '.et-saveq-toast.is-visible{opacity:1}'
       ].join('\n');
       document.head.appendChild(st);
@@ -132,7 +159,7 @@
       clearTimeout(toastTimer);
       toastTimer = setTimeout(function () {
         if (toastEl) toastEl.classList.remove('is-visible');
-      }, 2200);
+      }, 2500);
     }
 
     function getAllQuestionsRef() {
@@ -210,9 +237,44 @@
     }
 
     async function loadSavedSet() {
+      // Populate guest bookmarks immediately
+      var guestItems = readGuestList();
+      guestItems.forEach(function (g) {
+        if (g && g.contentTest && g.fileType && g.numara) {
+          savedKeys.add(g.contentTest + ':' + g.fileType + ':' + g.numara);
+        }
+      });
+      syncToolbarButton();
+
       try {
         var ok = await ensureSupabase();
         if (!ok) return;
+
+        // Migrate any guest bookmarks into user's Supabase account seamlessly
+        if (guestItems.length > 0) {
+          var toUpsert = guestItems
+            .filter(function (g) { return g && g.contentTest && g.fileType && g.numara; })
+            .map(function (g) {
+              return {
+                user_id: currentUserId,
+                language: lang,
+                content_test: Number(g.contentTest),
+                file_type: String(g.fileType),
+                question_numara: Number(g.numara),
+                source_test: Number(g.sourceTest) || 1
+              };
+            });
+          if (toUpsert.length > 0) {
+            var mig = await sbClient
+              .from('user_saved_questions')
+              .upsert(toUpsert, { onConflict: 'user_id,language,content_test,file_type,question_numara' });
+            if (!mig.error) {
+              writeGuestList([]);
+              notifyParentWindow();
+            }
+          }
+        }
+
         var res = await sbClient
           .from('user_saved_questions')
           .select('content_test,file_type,question_numara')
@@ -236,9 +298,37 @@
       busyKeys.add(ptr.key);
       syncToolbarButton();
       try {
-        var ok = await ensureSupabase();
-        if (!ok) return;
+        var ok = false;
+        try { ok = await ensureSupabase(); } catch (_) { ok = false; }
+
         var currentlySaved = savedKeys.has(ptr.key);
+
+        if (!ok) {
+          // Guest fallback on free demo exam (deneme-*)
+          var list = readGuestList();
+          if (currentlySaved) {
+            list = list.filter(function (g) {
+              return (g.contentTest + ':' + g.fileType + ':' + g.numara) !== ptr.key;
+            });
+            writeGuestList(list);
+            savedKeys.delete(ptr.key);
+            showToast(T.toastRem);
+            notifyParentWindow();
+          } else {
+            list.push({
+              contentTest: ptr.contentTest,
+              fileType: ptr.fileType,
+              numara: ptr.numara,
+              sourceTest: ptr.sourceTest
+            });
+            writeGuestList(list);
+            savedKeys.add(ptr.key);
+            showToast(T.toastGuestAdd);
+            notifyParentWindow();
+          }
+          return;
+        }
+
         if (currentlySaved) {
           var del = await sbClient
             .from('user_saved_questions')
@@ -335,6 +425,13 @@
 
     function init() {
       injectStyles();
+      // Prevent native HTML5 image drag from hijacking vertical scroll gestures
+      document.addEventListener('dragstart', function (ev) {
+        if (ev.target && ev.target.tagName === 'IMG') {
+          ev.preventDefault();
+        }
+      });
+
       ensureToolbarButton();
       loadSavedSet();
       syncToolbarButton();

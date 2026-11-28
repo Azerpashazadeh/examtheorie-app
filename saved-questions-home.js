@@ -1,6 +1,7 @@
 /*!
  * ExamTheorie — Saved Difficult Questions ("Zorlandığım Sorular") Homepage Card
  * Non-invasive modular widget for index.html & {nl,tr,ar,ru,fa,es}/index.html.
+ * Supports guest-bookmarked questions (from free demo tests) and auto-syncs them to Supabase upon sign-in!
  */
 (function () {
   'use strict';
@@ -12,49 +13,49 @@
       tr: {
         title: 'Zorlandığım Sorular',
         countBadge: '{n} Soru',
-        emptyHint: 'Sınav çözerken zorlandığınız sorularda "⭐ Zorlandıklarıma Ekle"ye basın; burada özel testiniz oluşsun.',
+        emptyHint: 'Sınav çözerken zorlandığınız sorularda üst bardaki "☆" yıldız düğmesine basın; burada özel testiniz oluşsun.',
         readyHint: 'Kaydettiğiniz zor sorulardan oluşan süresiz, anında açıklamalı özel alıştırma testiniz hazır.',
         startBtn: '🎯 Alıştırma Testini Başlat →'
       },
       nl: {
         title: 'Mijn Lastige Vragen',
         countBadge: '{n} vragen',
-        emptyHint: 'Klik tijdens een examen op "⭐ Opslaan als lastige vraag" om hier je eigen oefentoets op te bouwen.',
+        emptyHint: 'Tik tijdens een examen op de ster "☆" in de bovenbalk om hier je eigen oefentoets op te bouwen.',
         readyHint: 'Je persoonlijke oefentoets zonder tijdslimiet met directe uitleg staat klaar.',
         startBtn: '🎯 Oefentoets starten →'
       },
       en: {
         title: 'My Difficult Questions',
         countBadge: '{n} Saved',
-        emptyHint: 'Click "⭐ Save to Difficult Questions" inside any exam to build your personal practice quiz here.',
+        emptyHint: 'Tap the star "☆" in the top bar during any exam to build your personal practice quiz here.',
         readyHint: 'Practice your bookmarked questions untimed with instant answer checks and explanations.',
         startBtn: '🎯 Start Practice Quiz →'
       },
       ar: {
         title: 'أسئلتي الصعبة',
         countBadge: '{n} سؤال',
-        emptyHint: 'اضغط على "⭐ حفظ في الأسئلة الصعبة" داخل أي اختبار لتكوين اختبارك التدريبي الخاص هنا.',
+        emptyHint: 'اضغط على النجمة "☆" في الشريط العلوي داخل أي اختبار لتكوين اختبارك التدريبي الخاص هنا.',
         readyHint: 'تدرّب على أسئلتك المحفوظة بدون وقت مع التحقق الفوري والشرح المفصل.',
         startBtn: '🎯 ابدأ الاختبار التدريبي ←'
       },
       ru: {
         title: 'Мои сложные вопросы',
         countBadge: '{n} вопр.',
-        emptyHint: 'Нажимайте «⭐ В сложные вопросы» в экзамене, чтобы собрать здесь персональную тренировку.',
+        emptyHint: 'Нажимайте звёздочку «☆» на верхней панели в экзамене, чтобы собрать здесь персональную тренировку.',
         readyHint: 'Персональный тест без таймера с мгновенной проверкой и разбором готов.',
         startBtn: '🎯 Начать тренировку →'
       },
       fa: {
         title: 'سؤالات دشوار من',
         countBadge: '{n} سؤال',
-        emptyHint: 'در حین آزمون روی «⭐ ذخیره در سؤالات دشوار» بزنید تا آزمون تمرینی شخصی شما اینجا ساخته شود.',
+        emptyHint: 'در حین آزمون روی ستاره «☆» در نوار بالا بزنید تا آزمون تمرینی شخصی شما اینجا ساخته شود.',
         readyHint: 'آزمون تمرینی بدون زمان با بررسی فوری پاسخ و توضیحات آماده است.',
         startBtn: '🎯 شروع آزمون تمرینی ←'
       },
       es: {
         title: 'Mis Preguntas Difíciles',
         countBadge: '{n} guardadas',
-        emptyHint: 'Pulsa "⭐ Guardar en preguntas difíciles" en cualquier examen para crear tu test personalizado aquí.',
+        emptyHint: 'Pulsa la estrella "☆" en la barra superior en cualquier examen para crear tu test personalizado aquí.',
         readyHint: 'Practica tus preguntas guardadas sin límite de tiempo y con explicación instantánea.',
         startBtn: '🎯 Iniciar práctica →'
       }
@@ -82,6 +83,21 @@
       return null;
     }
 
+    function readGuestList(lang) {
+      try {
+        var raw = JSON.parse(localStorage.getItem('et_guest_saved_q_' + lang) || '[]');
+        return Array.isArray(raw) ? raw : [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function clearGuestList(lang) {
+      try {
+        localStorage.removeItem('et_guest_saved_q_' + lang);
+      } catch (_) {}
+    }
+
     function injectStyles() {
       if (document.getElementById('et-savedq-home-styles')) return;
       var st = document.createElement('style');
@@ -101,7 +117,7 @@
     }
 
     var cardEl = null;
-    var countCache = new Map(); // userId:lang -> number
+    var countCache = new Map();
     var fetchToken = 0;
 
     function ensureCardMounted() {
@@ -175,9 +191,10 @@
       var usr = getCurrentUserObj();
       var sb = getSupabaseClient();
       var lang = getActiveLang();
+      var guestItems = readGuestList(lang);
 
       if (!usr || !sb) {
-        renderCard(0);
+        renderCard(guestItems.length);
         return;
       }
 
@@ -188,6 +205,27 @@
 
       var myToken = ++fetchToken;
       try {
+        if (guestItems.length > 0) {
+          var toUpsert = guestItems
+            .filter(function (g) { return g && g.contentTest && g.fileType && g.numara; })
+            .map(function (g) {
+              return {
+                user_id: usr.id,
+                language: lang,
+                content_test: Number(g.contentTest),
+                file_type: String(g.fileType),
+                question_numara: Number(g.numara),
+                source_test: Number(g.sourceTest) || 1
+              };
+            });
+          if (toUpsert.length > 0) {
+            var mig = await sb
+              .from('user_saved_questions')
+              .upsert(toUpsert, { onConflict: 'user_id,language,content_test,file_type,question_numara' });
+            if (!mig.error) clearGuestList(lang);
+          }
+        }
+
         var res = await sb
           .from('user_saved_questions')
           .select('id', { count: 'exact', head: true })
@@ -198,7 +236,7 @@
         countCache.set(cacheKey, n);
         renderCard(n);
       } catch (e) {
-        renderCard(countCache.get(cacheKey) || 0);
+        renderCard(countCache.get(cacheKey) || guestItems.length || 0);
       }
     }
 
@@ -234,7 +272,6 @@
         }
       });
 
-      // Re-render immediately whenever buildTestButtons() rebuilds #testBtnGrid (e.g. language switch)
       var grid = document.getElementById('testBtnGrid');
       if (grid && typeof MutationObserver !== 'undefined') {
         var pending = false;

@@ -103,6 +103,21 @@
       box-shadow: 0 3px 10px rgba(15,23,42,.05);
     }
     .close-top-btn:hover { border-color: #94a3b8; background: #f8fafc; }
+    .fs-top-btn {
+      height: 38px; width: 38px; border-radius: 11px; border: 1px solid #cbd5e1;
+      background: #ffffff; color: #334155; display: inline-grid; place-items: center;
+      box-shadow: 0 3px 10px rgba(15,23,42,.05); padding: 0;
+    }
+    .fs-top-btn:hover { border-color: #0061ff; color: #0061ff; background: #f8fbff; }
+    .fs-top-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .fs-top-btn:not(.on) .icon-fs-leave, .fs-top-btn.on .icon-fs-enter { display: none; }
+    .question-image, .image-wrapper img, .drag-drop-container img {
+      -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none;
+      touch-action: pan-y pinch-zoom !important;
+    }
+    .drag-drop-container img { pointer-events: none; }
+    html .questionS3.has-drag-drop > .drag-drop-container { touch-action: pan-y pinch-zoom !important; }
+    .drag-drop-container .box { touch-action: none !important; }
 
     .exam-shell {
       background: #ffffff;
@@ -650,6 +665,12 @@
       </a>
       <div class="page-tools">
         <span class="exam-label" id="topBadge"></span>
+        <button type="button" class="fs-top-btn" id="fsToggleBtn" aria-label="Fullscreen">
+          <svg viewBox="-2 -2 28 28" aria-hidden="true">
+            <g class="icon-fs-enter"><path d="M 2 9 v -7 h 7"></path><path d="M 22 9 v -7 h -7"></path><path d="M 22 15 v 7 h -7"></path><path d="M 2 15 v 7 h 7"></path></g>
+            <g class="icon-fs-leave"><path d="M 24 17 h -7 v 7"></path><path d="M 0 17 h 7 v 7"></path><path d="M 0 7 h 7 v -7"></path><path d="M 24 7 h -7 v -7"></path></g>
+          </svg>
+        </button>
         <button type="button" class="close-top-btn" id="closeTopBtn"></button>
       </div>
     </header>
@@ -972,6 +993,34 @@
         window.location.href = homeHref;
       }
     }
+    function requestAppFullscreen() {
+      var el = document.documentElement;
+      try {
+        if (document.fullscreenElement || document.webkitFullscreenElement) return;
+        if (el.requestFullscreen) el.requestFullscreen().catch(function () {});
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+      } catch (_) {}
+    }
+    function toggleAppFullscreen() {
+      try {
+        if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+        else if (document.webkitFullscreenElement) document.webkitCancelFullScreen();
+        else requestAppFullscreen();
+      } catch (_) {}
+    }
+    function syncFsBtn() {
+      var on = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+      var b = byId('fsToggleBtn');
+      if (b) b.classList.toggle('on', on);
+      syncSpViewport();
+    }
+    byId('fsToggleBtn').onclick = toggleAppFullscreen;
+    document.addEventListener('fullscreenchange', syncFsBtn);
+    document.addEventListener('webkitfullscreenchange', syncFsBtn);
+    document.addEventListener('dragstart', function (ev) {
+      if (ev.target && ev.target.tagName === 'IMG') ev.preventDefault();
+    });
     byId('closeTopBtn').onclick = goBackOrClose;
     byId('emptyBackBtn').onclick = goBackOrClose;
     byId('finishBackBtn').onclick = goBackOrClose;
@@ -1693,19 +1742,26 @@
         return;
       }
 
-      if (fullPool.length > 15) {
-        byId('loadingState').classList.add('hidden');
-        byId('chooserBadge').textContent = '⭐ ' + fullPool.length;
-        byId('chooserTitle').textContent = T.chooseT;
-        byId('chooserDesc').textContent = T.chooseD.replace('{n}', String(fullPool.length));
-        byId('startAllBtn').textContent = T.startAll.replace('{n}', String(fullPool.length));
-        byId('start15Btn').textContent = T.start15;
-        byId('startAllBtn').onclick = function () { renderSessionQuestions(fullPool); };
-        byId('start15Btn').onclick = function () { renderSessionQuestions(shuffleCopy(fullPool).slice(0, 15)); };
-        byId('chooserState').classList.remove('hidden');
-      } else {
+      byId('loadingState').classList.add('hidden');
+      byId('chooserBadge').textContent = '⭐ ' + fullPool.length;
+      byId('chooserTitle').textContent = T.chooseT;
+      byId('chooserDesc').textContent = T.chooseD.replace('{n}', String(fullPool.length));
+      byId('startAllBtn').textContent = T.startAll.replace('{n}', String(fullPool.length));
+      byId('startAllBtn').onclick = function () {
+        requestAppFullscreen();
         renderSessionQuestions(fullPool);
+      };
+      if (fullPool.length > 15) {
+        byId('start15Btn').classList.remove('hidden');
+        byId('start15Btn').textContent = T.start15;
+        byId('start15Btn').onclick = function () {
+          requestAppFullscreen();
+          renderSessionQuestions(shuffleCopy(fullPool).slice(0, 15));
+        };
+      } else {
+        byId('start15Btn').classList.add('hidden');
       }
+      byId('chooserState').classList.remove('hidden');
     }
 
     bootstrap().catch(function (e) {
@@ -1715,7 +1771,7 @@
     });
   })();
   </script>
-  <script src="/tts-core.js?v=20261128c" defer></script>
-  <script src="/exam-tts.js?v=20261128c" defer></script>
+  <script src="/tts-core.js?v=20261128d" defer></script>
+  <script src="/exam-tts.js?v=20261128d" defer></script>
 </body>
 </html>
