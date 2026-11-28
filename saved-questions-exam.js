@@ -1,6 +1,6 @@
 /*!
  * ExamTheorie — Saved Difficult Questions ("Zorlandığım Sorular") Exam Bookmark Add-on
- * Non-invasive modular script for test-{en,nl,tr,ar,ru,fa,es}.html.
+ * Mounts inline inside .et-tts-qbar (0px extra vertical height on mobile & desktop).
  * Stores lightweight question pointers (~50 bytes, zero images/blobs) in public.user_saved_questions.
  */
 (function () {
@@ -17,78 +17,93 @@
 
     var STRINGS = {
       tr: {
-        add: 'Zorlandıklarıma Ekle',
-        saved: 'Zorlandıklarıma Kaydedildi',
-        toastAdd: '⭐ "Zorlandığım Sorular" listesine eklendi',
-        toastRem: 'Listeden çıkarıldı'
+        shortAdd: 'Zor Soru',
+        shortSaved: 'Kaydedildi',
+        titleAdd: 'Zorlandığım Sorulara Ekle',
+        titleSaved: 'Zorlandığım Sorulara Kaydedildi (Çıkarmak için tıklayın)',
+        toastAdd: '⭐ "Zorlandığım Sorular" havuzuna eklendi',
+        toastRem: 'Soru havuzdan çıkarıldı'
       },
       nl: {
-        add: 'Opslaan als lastige vraag',
-        saved: 'Opgeslagen bij lastige vragen',
+        shortAdd: 'Opslaan',
+        shortSaved: 'Opgeslagen',
+        titleAdd: 'Opslaan bij mijn lastige vragen',
+        titleSaved: 'Opgeslagen bij lastige vragen (klik om te verwijderen)',
         toastAdd: '⭐ Toegevoegd aan je lastige vragen',
         toastRem: 'Verwijderd uit lastige vragen'
       },
       en: {
-        add: 'Save to Difficult Questions',
-        saved: 'Saved in Difficult Questions',
+        shortAdd: 'Save',
+        shortSaved: 'Saved',
+        titleAdd: 'Save to Difficult Questions',
+        titleSaved: 'Saved in Difficult Questions (click to remove)',
         toastAdd: '⭐ Added to Difficult Questions',
         toastRem: 'Removed from Difficult Questions'
       },
       ar: {
-        add: 'حفظ في الأسئلة الصعبة',
-        saved: 'محفوظ في الأسئلة الصعبة',
+        shortAdd: 'حفظ',
+        shortSaved: 'محفوظ',
+        titleAdd: 'حفظ في الأسئلة الصعبة',
+        titleSaved: 'محفوظ في الأسئلة الصعبة (اضغط للإزالة)',
         toastAdd: '⭐ تمت الإضافة إلى الأسئلة الصعبة',
         toastRem: 'تمت الإزالة من الأسئلة الصعبة'
       },
       ru: {
-        add: 'В сложные вопросы',
-        saved: 'Сохранено в сложных',
+        shortAdd: 'В сложные',
+        shortSaved: 'Сохранено',
+        titleAdd: 'Сохранить в сложные вопросы',
+        titleSaved: 'Сохранено в сложных вопросах (нажмите, чтобы убрать)',
         toastAdd: '⭐ Добавлено в «Сложные вопросы»',
         toastRem: 'Удалено из «Сложных вопросов»'
       },
       fa: {
-        add: 'ذخیره در سؤالات دشوار',
-        saved: 'ذخیره‌شده در سؤالات دشوار',
+        shortAdd: 'ذخیره',
+        shortSaved: 'ذخیره شد',
+        titleAdd: 'ذخیره در سؤالات دشوار',
+        titleSaved: 'ذخیره‌شده در سؤالات دشوار (برای حذف بزنید)',
         toastAdd: '⭐ به سؤالات دشوار اضافه شد',
         toastRem: 'از سؤالات دشوار حذف شد'
       },
       es: {
-        add: 'Guardar en preguntas difíciles',
-        saved: 'Guardada en difíciles',
+        shortAdd: 'Guardar',
+        shortSaved: 'Guardada',
+        titleAdd: 'Guardar en preguntas difíciles',
+        titleSaved: 'Guardada en preguntas difíciles (pulsa para quitar)',
         toastAdd: '⭐ Añadida a Preguntas Difíciles',
         toastRem: 'Eliminada de Preguntas Difíciles'
       }
     };
     var T = STRINGS[lang] || STRINGS.en;
 
-    var STAR_OUTLINE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
+    var STAR_OUTLINE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
     var STAR_FILLED = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
 
     var sbClient = null;
     var currentUserId = null;
     var savedKeys = new Set();
     var busyKeys = new Set();
-    var buttonByKey = new Map(); // key -> Set<HTMLButtonElement>
+    var buttonByKey = new Map();
 
     function injectStyles() {
       if (document.getElementById('et-saveq-styles')) return;
       var st = document.createElement('style');
       st.id = 'et-saveq-styles';
       st.textContent = [
-        '.et-saveq-bar{display:flex;align-items:center;margin:0 0 4px;position:relative;z-index:7;pointer-events:auto!important}',
-        '.et-saveq-btn{display:inline-flex;align-items:center;gap:6px;height:33px;padding:0 13px;border-radius:999px;border:1.5px dashed #cbd5e1;background:#f8fafc;color:#475569;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:12.5px;font-weight:700;line-height:1;cursor:pointer;transition:all .16s ease;pointer-events:auto!important;user-select:none;white-space:nowrap}',
-        '.et-saveq-btn:hover{border-style:solid;border-color:#f59e0b;background:#fffbeb;color:#b45309;transform:translateY(-1px)}',
-        '.et-saveq-btn svg{width:14.5px;height:14.5px;flex-shrink:0;color:#f59e0b}',
-        '.et-saveq-btn.is-saved{border-style:solid;border-color:#f59e0b!important;background:linear-gradient(135deg,#fffbeb,#fef3c7)!important;color:#92400e!important;box-shadow:0 3px 10px rgba(245,158,11,.18)}',
+        '.et-saveq-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;border:1.5px solid #cbd5e1;background:#ffffff;color:#475569;font-family:Outfit,Inter,"Segoe UI",sans-serif;font-size:12.5px;font-weight:700;line-height:1;cursor:pointer;transition:all .16s ease;pointer-events:auto!important;user-select:none;white-space:nowrap;flex-shrink:0}',
+        '.et-saveq-btn:hover{border-color:#f59e0b;background:#fffbeb;color:#b45309;transform:translateY(-1px)}',
+        '.et-saveq-btn svg{width:15px;height:15px;flex-shrink:0;color:#f59e0b}',
+        '.et-saveq-btn.is-saved{border-color:#f59e0b!important;background:linear-gradient(135deg,#fffbeb,#fef3c7)!important;color:#92400e!important;box-shadow:0 3px 10px rgba(245,158,11,.2)}',
         '.et-saveq-btn.is-saved svg{color:#d97706}',
-        '.et-saveq-btn.is-busy{opacity:.65;pointer-events:none!important}',
-        '.et-saveq-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;box-shadow:0 12px 30px rgba(15,23,42,.28);z-index:10000;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis}',
-        '.et-saveq-toast.is-visible{opacity:1}',
+        '.et-saveq-btn.is-busy{opacity:.6;pointer-events:none!important}',
+        '@media(max-width:1360px){.et-saveq-btn{width:36px;padding:0}.et-saveq-lbl{display:none}}',
         '@media(max-width:720px),(pointer:coarse) and (max-width:1100px){' +
-          '.et-saveq-bar{margin:0 0 2px}' +
-          '.et-saveq-btn{height:29px;padding:0 10px;font-size:11.5px;gap:5px}' +
-          '.et-saveq-btn svg{width:13.5px;height:13.5px}' +
-        '}'
+          '.et-saveq-btn{width:30px;height:30px;padding:0;gap:0}' +
+          '.et-saveq-btn svg{width:14.5px;height:14.5px}' +
+          '.et-saveq-lbl{display:none}' +
+        '}',
+        '.et-saveq-fallback-wrap{display:flex;align-items:center;margin:0 0 4px;pointer-events:auto!important}',
+        '.et-saveq-toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;box-shadow:0 12px 30px rgba(15,23,42,.28);z-index:10000;pointer-events:none;opacity:0;transition:opacity .2s;white-space:nowrap;max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis}',
+        '.et-saveq-toast.is-visible{opacity:1}'
       ].join('\n');
       document.head.appendChild(st);
     }
@@ -146,7 +161,10 @@
     function renderBtnState(btn, isSaved) {
       btn.classList.toggle('is-saved', isSaved);
       btn.setAttribute('aria-pressed', String(isSaved));
-      btn.innerHTML = (isSaved ? STAR_FILLED : STAR_OUTLINE) + '<span>' + (isSaved ? T.saved : T.add) + '</span>';
+      var fullTitle = isSaved ? T.titleSaved : T.titleAdd;
+      btn.title = fullTitle;
+      btn.setAttribute('aria-label', fullTitle);
+      btn.innerHTML = (isSaved ? STAR_FILLED : STAR_OUTLINE) + '<span class="et-saveq-lbl">' + (isSaved ? T.shortSaved : T.shortAdd) + '</span>';
     }
 
     function syncAllButtonsForKey(key) {
@@ -270,6 +288,22 @@
       }
     }
 
+    function placeInsideTtsBar(qEl, btn) {
+      var ttsBar = qEl.querySelector('.et-tts-qbar');
+      if (!ttsBar) return false;
+      var fallback = btn.parentElement && btn.parentElement.classList.contains('et-saveq-fallback-wrap')
+        ? btn.parentElement
+        : null;
+      var anchor = ttsBar.querySelector('.et-tts-voice-seg') || ttsBar.querySelector('.et-tts-gear-wrap');
+      if (anchor) {
+        ttsBar.insertBefore(btn, anchor);
+      } else {
+        ttsBar.appendChild(btn);
+      }
+      if (fallback) fallback.remove();
+      return true;
+    }
+
     function enhanceQuestions() {
       var container = document.querySelector('.quiz-container-s3');
       if (!container) return;
@@ -277,21 +311,17 @@
       if (!questions.length) return;
 
       questions.forEach(function (qEl, idx) {
-        if (qEl.dataset.etSaveqEnhanced === '1') return;
-        var ptr = extractPointer(idx);
-        if (!ptr) return;
-        qEl.dataset.etSaveqEnhanced = '1';
-
-        var answersDiv = qEl.querySelector(':scope > .answers');
-        if (!answersDiv) {
-          answersDiv = document.createElement('div');
-          answersDiv.className = 'answers';
-          qEl.appendChild(answersDiv);
+        var existingBtn = qEl.querySelector('.et-saveq-btn');
+        if (existingBtn) {
+          // If exam-tts.js created .et-tts-qbar after our fallback, dock inline into .et-tts-qbar!
+          if (!existingBtn.closest('.et-tts-qbar')) {
+            placeInsideTtsBar(qEl, existingBtn);
+          }
+          return;
         }
 
-        var bar = document.createElement('div');
-        bar.className = 'et-saveq-bar';
-        if (isRtl) bar.dir = 'rtl';
+        var ptr = extractPointer(idx);
+        if (!ptr) return;
 
         var btn = document.createElement('button');
         btn.type = 'button';
@@ -304,15 +334,17 @@
           toggleSave(ptr);
         });
 
-        bar.appendChild(btn);
-
-        var ttsBar = answersDiv.querySelector(':scope > .et-tts-qbar');
-        if (ttsBar && ttsBar.nextSibling) {
-          answersDiv.insertBefore(bar, ttsBar.nextSibling);
-        } else if (ttsBar) {
-          answersDiv.appendChild(bar);
-        } else {
-          answersDiv.insertBefore(bar, answersDiv.firstChild);
+        if (!placeInsideTtsBar(qEl, btn)) {
+          var answersDiv = qEl.querySelector(':scope > .answers');
+          if (!answersDiv) {
+            answersDiv = document.createElement('div');
+            answersDiv.className = 'answers';
+            qEl.appendChild(answersDiv);
+          }
+          var wrap = document.createElement('div');
+          wrap.className = 'et-saveq-fallback-wrap';
+          wrap.appendChild(btn);
+          answersDiv.insertBefore(wrap, answersDiv.firstChild);
         }
 
         if (!buttonByKey.has(ptr.key)) buttonByKey.set(ptr.key, new Set());

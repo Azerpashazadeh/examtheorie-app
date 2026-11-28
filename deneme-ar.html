@@ -200,6 +200,11 @@ html .questionS3.has-drag-drop>.drag-drop-container .box,html .questionS3.has-dr
 }
 @media(max-width:720px),(pointer:coarse) and (max-width:1100px){
   html .questionS3.has-drag-drop>.drag-drop-container{max-width:none}
+  #answer-hint{display:none!important}
+  .map-actions:not(:has(>button:not(.hidden):not([hidden]))){display:none!important}
+  .exam-actions{padding:10px 14px max(12px,env(safe-area-inset-bottom))!important;gap:8px!important}
+  .mobile-fullscreen .exam-actions:not(:has(.map-actions>button:not(.hidden):not([hidden]))){grid-template-rows:47px!important;gap:0!important}
+  .mobile-fullscreen .exam-actions:not(:has(.map-actions>button:not(.hidden):not([hidden]))) .question-navigation{grid-row:1!important}
 }
 .questionS3>.image-container{width:100%;max-width:var(--choice-width,554px);justify-self:center;align-self:start}
 @media(max-width:720px),(pointer:coarse) and (max-width:1100px){
@@ -4650,7 +4655,7 @@ function notifyNewSystem() {
   document.addEventListener("DOMContentLoaded", prioritizeAroundCurrent);
 })();
 </script>
-<script src="/tts-core.js?v=20261126f" defer></script>
-<script src="/exam-tts.js?v=20261126f" defer></script>
+<script src="/tts-core.js?v=20261128b" defer></script>
+<script src="/exam-tts.js?v=20261128b" defer></script>
 </body>
 </html>

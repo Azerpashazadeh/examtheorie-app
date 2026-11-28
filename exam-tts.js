@@ -594,8 +594,184 @@
     }
   }
 
+
+  var GUIDE_I18N = {
+    tr: {
+      heading: '✨ Akıllı Sınav Araçları — Kullanım Kılavuzu',
+      c1Title: 'Sesli Okuma (Soru & Şıklar)',
+      c1Pills: ['🔊 Soruyu Oku', '📋 + Şıklar'],
+      c1Body: 'Soruyu dinlemek için "Soruyu Oku"ya, soruyu ve tüm şıkları sırayla dinlemek için "+ Şıklar"a dokunun. Her şıkkın sağındaki küçük 🔊 simgesiyle tek bir şıkkı, sınav sonunda ise çözüm açıklamasını sesli dinleyebilirsiniz.',
+      c2Title: 'Kadın / Erkek Sesi, Hız & Otomatik Oku',
+      c2Pills: ['👩 Kadın', '👨 Erkek', '🎛️ Ayarlar'],
+      c2Body: 'Sağdaki seçiciden (mobilde 🎛️ düğmesinden) dilediğiniz an Kadın veya Erkek sesini seçebilir, okuma hızını (0.9x – 1.25x) değiştirebilir ve yeni soruya geçince "Otomatik Oku" özelliğini açabilirsiniz.',
+      c3Title: 'Zorlandığım Sorular & Özel Alıştırma',
+      c3Pills: ['☆ Kaydet', '⭐ Havuzum'],
+      c3Body: 'Çözerken karıştırdığınız veya sınav sonu incelemede yanlış yaptığınız sorularda ☆ yıldız düğmesine basarak soruyu kaydedin (⭐). Ana sayfadaki "⭐ Zorlandığım Sorular" kutusundan sadece bu sorulardan oluşan süresiz, anında cevap ve açıklama kontrollü özel testinizi istediğiniz zaman çözebilirsiniz.'
+    },
+    nl: {
+      heading: '✨ Slimme Examentools — Korte Handleiding',
+      c1Title: 'Voorlezen (Vraag & Antwoorden)',
+      c1Pills: ['🔊 Lees vraag', '📋 + Opties'],
+      c1Body: 'Klik op "Lees vraag" om de vraag te beluisteren, of op "+ Opties" om de vraag én alle antwoordopties achter elkaar te horen. Na afloop kun je bij het nakijken ook de uitleg laten voorlezen.',
+      c2Title: 'Vrouwen- / Mannenstem, Snelheid & Auto-lees',
+      c2Pills: ['👩 Vrouw', '👨 Man', '🎛️ Instellingen'],
+      c2Body: 'Kies rechts (op mobiel via 🎛️) eenvoudig tussen een vrouwen- of mannenstem, pas de voorleessnelheid aan (0.9x – 1.25x) en schakel automatisch voorlezen bij elke nieuwe vraag in.',
+      c3Title: 'Mijn Lastige Vragen & Oefentoets',
+      c3Pills: ['☆ Opslaan', '⭐ Mijn lijst'],
+      c3Body: 'Twijfel je bij een vraag of maakte je een fout? Klik op de ster ☆ om deze op te slaan (⭐). Op de startpagina start je via "⭐ Mijn Lastige Vragen" op elk moment een tijdloze oefentoets met directe antwoordcontrole en uitleg.'
+    },
+    en: {
+      heading: '✨ Smart Exam Tools — Quick Guide',
+      c1Title: 'Audio Read-Aloud (Question & Options)',
+      c1Pills: ['🔊 Read Question', '📋 + Options'],
+      c1Body: 'Tap "Read Question" to hear the question, or "+ Options" to hear the question followed by every answer choice. Tap the small 🔊 icon on any choice to hear it alone, or listen to explanations when reviewing results.',
+      c2Title: 'Female / Male Voice, Speed & Auto-Read',
+      c2Pills: ['👩 Female', '👨 Male', '🎛️ Settings'],
+      c2Body: 'Switch anytime between Female and Male voices (on mobile, tap 🎛️), adjust playback speed (0.9x – 1.25x), and turn on Auto-Read so each new question plays automatically.',
+      c3Title: 'Difficult Questions Pool & Practice Quiz',
+      c3Pills: ['☆ Save', '⭐ My Pool'],
+      c3Body: 'Stuck on a tricky question during the exam or result review? Tap the star ☆ to bookmark it (⭐). From the "⭐ My Difficult Questions" card on your homepage, launch an untimed custom practice quiz with instant answer checks and explanations anytime.'
+    },
+    ar: {
+      heading: '✨ أدوات الاختبار الذكية — دليل الاستخدام السريع',
+      c1Title: 'القراءة الصوتية (السؤال والخيارات)',
+      c1Pills: ['🔊 قراءة السؤال', '📋 + الخيارات'],
+      c1Body: 'اضغط على "قراءة السؤال" لسماع السؤال، أو "+ الخيارات" لسماع السؤال مع جميع الخيارات بالترتيب. يمكنك أيضاً سماع خيار منفرد عبر رمز 🔊 أو سماع الشرح عند مراجعة النتيجة.',
+      c2Title: 'صوت أنثى / ذكر، السرعة والقراءة التلقائية',
+      c2Pills: ['👩 أنثى', '👨 ذكر', '🎛️ الإعدادات'],
+      c2Body: 'بدّل في أي وقت بين صوت الأنثى والذكر (في الهاتف عبر زر 🎛️)، وتحكم في سرعة القراءة (0.9x – 1.25x)، وفعّل القراءة التلقائية عند الانتقال لسؤال جديد.',
+      c3Title: 'الأسئلة الصعبة والاختبار التدريبي الخاص',
+      c3Pills: ['☆ حفظ', '⭐ قائمتي'],
+      c3Body: 'هل واجهت سؤالاً صعباً أثناء الحل أو المراجعة؟ اضغط على النجمة ☆ لحفظه (⭐). ومن بطاقة "⭐ أسئلتي الصعبة" في الصفحة الرئيسية يمكنك بدء اختبار تدريبي بدون وقت مع تحقق فوري وشرح مفصل.'
+    },
+    ru: {
+      heading: '✨ Умные функции экзамена — краткая инструкция',
+      c1Title: 'Озвучка вопросов и ответов',
+      c1Pills: ['🔊 Вопрос', '📋 + Варианты'],
+      c1Body: 'Нажмите «Вопрос», чтобы прослушать вопрос, или «+ Варианты», чтобы прослушать вопрос и все варианты ответа подряд. Значок 🔊 у варианта читает только его, а после экзамена доступна озвучка объяснений.',
+      c2Title: 'Женский / мужской голос и скорость',
+      c2Pills: ['👩 Жен.', '👨 Муж.', '🎛️ Настройки'],
+      c2Body: 'Переключайтесь между женским и мужским голосом (на телефоне через кнопку 🎛️), выбирайте скорость (0.9x – 1.25x) и включайте авточтение при переходе к следующему вопросу.',
+      c3Title: 'Сложные вопросы и личная тренировка',
+      c3Pills: ['☆ В сложные', '⭐ Мой список'],
+      c3Body: 'Трудный вопрос? Нажмите звёздочку ☆ во время теста или разбора ошибок (⭐). На главной странице в блоке «⭐ Мои сложные вопросы» вы сможете в любой момент запустить тренировку без таймера с мгновенной проверкой.'
+    },
+    fa: {
+      heading: '✨ راهنمای ابزارهای هوشمند آزمون',
+      c1Title: 'خوانش صوتی (سؤال و گزینه‌ها)',
+      c1Pills: ['🔊 خوانش سؤال', '📋 + گزینه‌ها'],
+      c1Body: 'برای شنیدن متن سؤال روی «خوانش سؤال» و برای شنیدن سؤال به‌همراه تمام گزینه‌ها روی «+ گزینه‌ها» بزنید. در پایان آزمون نیز می‌توانید توضیح پاسخ‌ها را صوتی بشنوید.',
+      c2Title: 'صدای زن / مرد، سرعت و خوانش خودکار',
+      c2Pills: ['👩 زن', '👨 مرد', '🎛️ تنظیمات'],
+      c2Body: 'از بخش سمت راست (در موبایل دکمه 🎛️) صدای زن یا مرد را انتخاب کنید، سرعت خوانش (0.9x تا 1.25x) را تنظیم نمایید و خوانش خودکار سؤالات را فعال کنید.',
+      c3Title: 'سؤالات دشوار و آزمون تمرینی شخصی',
+      c3Pills: ['☆ ذخیره', '⭐ فهرست من'],
+      c3Body: 'هنگام آزمون یا مرور نتایج، سؤالات چالش‌برانگیز را با دکمه ستاره ☆ ذخیره کنید (⭐). سپس از کارت «⭐ سؤالات دشوار من» در صفحه اصلی، آزمون تمرینی بدون زمان با بررسی فوری پاسخ را اجرا کنید.'
+    },
+    es: {
+      heading: '✨ Herramientas Inteligentes — Guía Rápida',
+      c1Title: 'Lectura por Voz (Pregunta y Opciones)',
+      c1Pills: ['🔊 Leer pregunta', '📋 + Opciones'],
+      c1Body: 'Pulsa "Leer pregunta" para escuchar el enunciado o "+ Opciones" para escuchar la pregunta seguida de todas las respuestas. Al finalizar también podrás escuchar las explicaciones.',
+      c2Title: 'Voz Femenina / Masculina y Velocidad',
+      c2Pills: ['👩 Mujer', '👨 Hombre', '🎛️ Ajustes'],
+      c2Body: 'Elige en cualquier momento entre voz femenina o masculina (en móvil pulsa 🎛️), ajusta la velocidad (0.9x – 1.25x) y activa la lectura automática al pasar de pregunta.',
+      c3Title: 'Preguntas Difíciles y Práctica Personal',
+      c3Pills: ['☆ Guardar', '⭐ Mi lista'],
+      c3Body: '¿Dudas en una pregunta durante el test o la revisión? Pulsa la estrella ☆ para guardarla (⭐). Desde la tarjeta "⭐ Mis Preguntas Difíciles" en la página principal podrás practicar solo esas preguntas sin límite de tiempo y con corrección instantánea.'
+    }
+  };
+
+  function mountStartMessageGuide() {
+    var startEl = document.getElementById('startMessage');
+    if (!startEl || startEl.querySelector('.et-start-guide')) return;
+
+    var g = GUIDE_I18N[pageLang] || GUIDE_I18N.en;
+    var hasSavedFeature = Boolean(document.querySelector('script[src*="saved-questions-exam"]'));
+
+    if (!document.getElementById('et-start-guide-styles')) {
+      var st = document.createElement('style');
+      st.id = 'et-start-guide-styles';
+      st.textContent = [
+        '#startMessage{max-width:860px!important}',
+        '.et-start-guide{margin:18px 0 20px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#f8fbff 0%,#f1f6fd 100%);border:1.5px solid #cfe0f5;text-align:start;box-shadow:0 8px 24px rgba(15,23,42,.05)}',
+        '.et-start-guide-head{font-family:Outfit,Inter,sans-serif;font-size:15px;font-weight:800;color:#0f172a;margin:0 0 12px;display:flex;align-items:center;gap:6px}',
+        '.et-start-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px}',
+        '.et-sg-card{background:#ffffff;border:1px solid #dbe7f4;border-radius:13px;padding:12px 13px;display:flex;flex-direction:column;gap:7px}',
+        '.et-sg-card.is-star{border-color:#fde68a;background:linear-gradient(180deg,#ffffff 0%,#fffdf5 100%)}',
+        '.et-sg-pills{display:flex;flex-wrap:wrap;gap:5px}',
+        '.et-sg-pill{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;font-family:Outfit,Inter,sans-serif;font-size:11px;font-weight:700;background:#eff6ff;color:#0061ff;border:1px solid rgba(0,97,255,.2);white-space:nowrap}',
+        '.et-sg-card.is-star .et-sg-pill{background:#fffbeb;color:#b45309;border-color:#fcd34d}',
+        '.et-sg-title{font-family:Outfit,Inter,sans-serif;font-size:13.5px;font-weight:800;color:#0f172a;margin:0;line-height:1.3}',
+        '.et-sg-body{font-size:12.5px!important;line-height:1.52!important;color:#475569!important;margin:0!important}',
+        '@media(max-width:720px){.et-start-guide{padding:13px 12px;margin:14px 0 16px}.et-start-guide-grid{grid-template-columns:1fr;gap:9px}}'
+      ].join('\n');
+      document.head.appendChild(st);
+    }
+
+    var box = document.createElement('div');
+    box.className = 'et-start-guide';
+    if (rtl) box.dir = 'rtl';
+
+    var head = document.createElement('div');
+    head.className = 'et-start-guide-head';
+    head.textContent = g.heading;
+    box.appendChild(head);
+
+    var grid = document.createElement('div');
+    grid.className = 'et-start-guide-grid';
+
+    var cards = [
+      { title: g.c1Title, pills: g.c1Pills, body: g.c1Body, star: false },
+      { title: g.c2Title, pills: g.c2Pills, body: g.c2Body, star: false }
+    ];
+    if (hasSavedFeature) {
+      cards.push({ title: g.c3Title, pills: g.c3Pills, body: g.c3Body, star: true });
+    }
+
+    cards.forEach(function (c) {
+      var card = document.createElement('div');
+      card.className = 'et-sg-card' + (c.star ? ' is-star' : '');
+
+      var pillsRow = document.createElement('div');
+      pillsRow.className = 'et-sg-pills';
+      c.pills.forEach(function (pTxt) {
+        var sp = document.createElement('span');
+        sp.className = 'et-sg-pill';
+        sp.textContent = pTxt;
+        pillsRow.appendChild(sp);
+      });
+      card.appendChild(pillsRow);
+
+      var ttl = document.createElement('div');
+      ttl.className = 'et-sg-title';
+      ttl.textContent = c.title;
+      card.appendChild(ttl);
+
+      var bd = document.createElement('p');
+      bd.className = 'et-sg-body';
+      bd.textContent = c.body;
+      card.appendChild(bd);
+
+      grid.appendChild(card);
+    });
+
+    box.appendChild(grid);
+
+    var btnContainer = startEl.querySelector('.button-container');
+    var lastH4 = startEl.querySelector('h4:last-of-type');
+    if (lastH4 && lastH4 !== startEl.querySelector('h4:first-of-type')) {
+      startEl.insertBefore(box, lastH4);
+    } else if (btnContainer) {
+      startEl.insertBefore(box, btnContainer);
+    } else {
+      startEl.appendChild(box);
+    }
+  }
+
   function init() {
     injectStyles();
+    mountStartMessageGuide();
     enhanceAllQuestions();
     checkActiveQuestionTransition();
 

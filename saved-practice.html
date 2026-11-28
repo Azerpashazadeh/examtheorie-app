@@ -637,7 +637,7 @@
       }
       .questionS3 > .answers { order: 2; padding: 0; width: 100%; }
       .exam-actions { flex-wrap: wrap; padding: 12px 14px; }
-      .nav-hint { width: 100%; text-align: center; order: 1; }
+      .nav-hint { display: none !important; }
       .question-navigation { width: 100%; display: grid; grid-template-columns: 1fr 1fr; order: 0; }
       .nav-btn { min-width: 0; width: 100%; }
     }
@@ -1296,23 +1296,38 @@
           },
           onDragEnd: function () {
             var dragger = this.target;
-            var snapped = false;
             var self = this;
+            var dRect = dragger.getBoundingClientRect();
+            var dCx = dRect.left + dRect.width / 2;
+            var dCy = dRect.top + dRect.height / 2;
+            var bestTarget = null;
+            var bestDist = Infinity;
             targets.forEach(function (target) {
-              if (!snapped && self.hitTest(target, '70%')) {
-                if (!target.classList.contains('occupied') || dragger.targetAttachedTo === target) {
-                  target.classList.add('occupied');
-                  window.gsap.to(dragger, { duration: 0.35, left: target.style.left, top: target.style.top, x: 0, y: 0, overwrite: 'auto' });
-                  if (dragger.targetAttachedTo && dragger.targetAttachedTo !== target) {
-                    dragger.targetAttachedTo.classList.remove('occupied');
-                  }
-                  dragger.targetAttachedTo = target;
-                  dragger.dataset.placedTarget = target.dataset.logicalTarget || '';
-                  snapped = true;
-                }
-              }
               target.classList.remove('highlight');
+              if (target.classList.contains('occupied') && dragger.targetAttachedTo !== target) return;
+              var tRect = target.getBoundingClientRect();
+              var tCx = tRect.left + tRect.width / 2;
+              var tCy = tRect.top + tRect.height / 2;
+              var dist = Math.hypot(dCx - tCx, dCy - tCy);
+              var magnetRadius = Math.max(dRect.width, tRect.width) * 0.95;
+              var touched = self.hitTest(target, 1) || dist <= magnetRadius;
+              if (touched && dist < bestDist) {
+                bestDist = dist;
+                bestTarget = target;
+              }
             });
+            var snapped = false;
+            if (bestTarget) {
+              bestTarget.classList.add('occupied');
+              window.gsap.killTweensOf(dragger);
+              window.gsap.to(dragger, { duration: 0.26, ease: 'power2.out', left: bestTarget.style.left, top: bestTarget.style.top, x: 0, y: 0, overwrite: 'auto' });
+              if (dragger.targetAttachedTo && dragger.targetAttachedTo !== bestTarget) {
+                dragger.targetAttachedTo.classList.remove('occupied');
+              }
+              dragger.targetAttachedTo = bestTarget;
+              dragger.dataset.placedTarget = bestTarget.dataset.logicalTarget || '';
+              snapped = true;
+            }
             if (!snapped) {
               if (dragger.targetAttachedTo) {
                 dragger.targetAttachedTo.classList.remove('occupied');
@@ -1694,7 +1709,7 @@
     });
   })();
   </script>
-  <script src="/tts-core.js?v=20261126f" defer></script>
-  <script src="/exam-tts.js?v=20261126f" defer></script>
+  <script src="/tts-core.js?v=20261128b" defer></script>
+  <script src="/exam-tts.js?v=20261128b" defer></script>
 </body>
 </html>
