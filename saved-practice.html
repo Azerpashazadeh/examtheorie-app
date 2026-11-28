@@ -601,14 +601,12 @@
     .sum-cell.bad { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
 
     /* Stable desktop viewport fit (including 52x29 16:9 widescreen) */
-    @media (min-width: 721px) and (pointer: fine), (min-width: 1101px) {
-      html, body { height: 100%; overflow: hidden; }
-      .exam-app { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
-      .page-header { flex: none; }
-      .exam-shell { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
-      .exam-toolbar, .exam-actions { flex: none; }
-      .exam-content { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
-    }
+    html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+    .exam-app { height: 100vh; height: var(--sp-vh, 100dvh); display: flex; flex-direction: column; overflow: hidden; }
+    .page-header { flex: none; }
+    .exam-shell { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+    .exam-toolbar, .exam-actions { flex: none; }
+    .exam-content { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; scrollbar-gutter: stable; }
     @media (min-width: 721px) and (max-height: 1090px) {
       .exam-app { padding-top: clamp(8px, 1.5vh, 22px); padding-bottom: clamp(8px, 1.2vh, 16px); }
       .page-header { margin-bottom: clamp(6px, 1.2vh, 16px); }
@@ -1065,10 +1063,18 @@
       }
     }
 
-    window.addEventListener('resize', function () {
+    function syncSpViewport() {
+      var vv = window.visualViewport;
+      document.documentElement.style.setProperty('--sp-vh', Math.round(vv ? vv.height : window.innerHeight) + 'px');
       var cur = document.querySelector('.quiz-container-s3 .questionS3:not(.hidden)');
       if (cur) { fitImageChoices(cur); fitDragDrop(cur); }
-    });
+    }
+    window.addEventListener('resize', syncSpViewport);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', syncSpViewport);
+      window.visualViewport.addEventListener('scroll', syncSpViewport);
+    }
+    syncSpViewport();
 
     function evaluateItem(item, qEl) {
       var q = item.q;
@@ -1709,7 +1715,7 @@
     });
   })();
   </script>
-  <script src="/tts-core.js?v=20261128b" defer></script>
-  <script src="/exam-tts.js?v=20261128b" defer></script>
+  <script src="/tts-core.js?v=20261128c" defer></script>
+  <script src="/exam-tts.js?v=20261128c" defer></script>
 </body>
 </html>

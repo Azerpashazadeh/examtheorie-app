@@ -605,8 +605,8 @@
       c2Pills: ['👩 Kadın', '👨 Erkek', '🎛️ Ayarlar'],
       c2Body: 'Sağdaki seçiciden (mobilde 🎛️ düğmesinden) dilediğiniz an Kadın veya Erkek sesini seçebilir, okuma hızını (0.9x – 1.25x) değiştirebilir ve yeni soruya geçince "Otomatik Oku" özelliğini açabilirsiniz.',
       c3Title: 'Zorlandığım Sorular & Özel Alıştırma',
-      c3Pills: ['☆ Kaydet', '⭐ Havuzum'],
-      c3Body: 'Çözerken karıştırdığınız veya sınav sonu incelemede yanlış yaptığınız sorularda ☆ yıldız düğmesine basarak soruyu kaydedin (⭐). Ana sayfadaki "⭐ Zorlandığım Sorular" kutusundan sadece bu sorulardan oluşan süresiz, anında cevap ve açıklama kontrollü özel testinizi istediğiniz zaman çözebilirsiniz.'
+      c3Pills: ['☆ 28:30 (Üst Bar)', '⭐ Havuzum'],
+      c3Body: 'Sınav sırasında üst barda geri sayım saatinin solundaki (sınav sonu incelemede de üst bardaki) ☆ yıldız düğmesine basarak zorlandığınız soruyu kaydedin (⭐). Ana sayfadaki "⭐ Zorlandığım Sorular" kutusundan sadece bu sorulardan oluşan süresiz, anında cevap ve açıklama kontrollü özel testinizi istediğiniz zaman çözebilirsiniz.'
     },
     nl: {
       heading: '✨ Slimme Examentools — Korte Handleiding',
@@ -617,8 +617,8 @@
       c2Pills: ['👩 Vrouw', '👨 Man', '🎛️ Instellingen'],
       c2Body: 'Kies rechts (op mobiel via 🎛️) eenvoudig tussen een vrouwen- of mannenstem, pas de voorleessnelheid aan (0.9x – 1.25x) en schakel automatisch voorlezen bij elke nieuwe vraag in.',
       c3Title: 'Mijn Lastige Vragen & Oefentoets',
-      c3Pills: ['☆ Opslaan', '⭐ Mijn lijst'],
-      c3Body: 'Twijfel je bij een vraag of maakte je een fout? Klik op de ster ☆ om deze op te slaan (⭐). Op de startpagina start je via "⭐ Mijn Lastige Vragen" op elk moment een tijdloze oefentoets met directe antwoordcontrole en uitleg.'
+      c3Pills: ['☆ 28:30 (Bovenbalk)', '⭐ Mijn lijst'],
+      c3Body: 'Twijfel je bij een vraag of maakte je een fout? Tik in de bovenbalk links naast de klok op de ster ☆ om de vraag op te slaan (⭐). Op de startpagina start je via "⭐ Mijn Lastige Vragen" op elk moment een tijdloze oefentoets met directe uitleg.'
     },
     en: {
       heading: '✨ Smart Exam Tools — Quick Guide',
@@ -629,8 +629,8 @@
       c2Pills: ['👩 Female', '👨 Male', '🎛️ Settings'],
       c2Body: 'Switch anytime between Female and Male voices (on mobile, tap 🎛️), adjust playback speed (0.9x – 1.25x), and turn on Auto-Read so each new question plays automatically.',
       c3Title: 'Difficult Questions Pool & Practice Quiz',
-      c3Pills: ['☆ Save', '⭐ My Pool'],
-      c3Body: 'Stuck on a tricky question during the exam or result review? Tap the star ☆ to bookmark it (⭐). From the "⭐ My Difficult Questions" card on your homepage, launch an untimed custom practice quiz with instant answer checks and explanations anytime.'
+      c3Pills: ['☆ 28:30 (Top Bar)', '⭐ My Pool'],
+      c3Body: 'Stuck on a tricky question during the exam or result review? Tap the star ☆ next to the timer in the top bar to bookmark it (⭐). From the "⭐ My Difficult Questions" card on your homepage, launch an untimed custom practice quiz with instant answer checks anytime.'
     },
     ar: {
       heading: '✨ أدوات الاختبار الذكية — دليل الاستخدام السريع',
@@ -641,8 +641,8 @@
       c2Pills: ['👩 أنثى', '👨 ذكر', '🎛️ الإعدادات'],
       c2Body: 'بدّل في أي وقت بين صوت الأنثى والذكر (في الهاتف عبر زر 🎛️)، وتحكم في سرعة القراءة (0.9x – 1.25x)، وفعّل القراءة التلقائية عند الانتقال لسؤال جديد.',
       c3Title: 'الأسئلة الصعبة والاختبار التدريبي الخاص',
-      c3Pills: ['☆ حفظ', '⭐ قائمتي'],
-      c3Body: 'هل واجهت سؤالاً صعباً أثناء الحل أو المراجعة؟ اضغط على النجمة ☆ لحفظه (⭐). ومن بطاقة "⭐ أسئلتي الصعبة" في الصفحة الرئيسية يمكنك بدء اختبار تدريبي بدون وقت مع تحقق فوري وشرح مفصل.'
+      c3Pills: ['☆ 28:30 (الشريط العلوي)', '⭐ قائمتي'],
+      c3Body: 'هل واجهت سؤالاً صعباً أثناء الحل أو المراجعة؟ اضغط على النجمة ☆ بجانب مؤقت العد التنازلي في الشريط العلوي لحفظه (⭐). ومن بطاقة "⭐ أسئلتي الصعبة" في الصفحة الرئيسية يمكنك بدء اختبار تدريبي بدون وقت مع تحقق فوري.'
     },
     ru: {
       heading: '✨ Умные функции экзамена — краткая инструкция',
@@ -653,8 +653,8 @@
       c2Pills: ['👩 Жен.', '👨 Муж.', '🎛️ Настройки'],
       c2Body: 'Переключайтесь между женским и мужским голосом (на телефоне через кнопку 🎛️), выбирайте скорость (0.9x – 1.25x) и включайте авточтение при переходе к следующему вопросу.',
       c3Title: 'Сложные вопросы и личная тренировка',
-      c3Pills: ['☆ В сложные', '⭐ Мой список'],
-      c3Body: 'Трудный вопрос? Нажмите звёздочку ☆ во время теста или разбора ошибок (⭐). На главной странице в блоке «⭐ Мои сложные вопросы» вы сможете в любой момент запустить тренировку без таймера с мгновенной проверкой.'
+      c3Pills: ['☆ 28:30 (Вверху)', '⭐ Мой список'],
+      c3Body: 'Трудный вопрос? Нажмите звёздочку ☆ слева от таймера на верхней панели во время теста или разбора ошибок (⭐). На главной странице в блоке «⭐ Мои сложные вопросы» вы сможете в любой момент запустить тренировку без таймера.'
     },
     fa: {
       heading: '✨ راهنمای ابزارهای هوشمند آزمون',
@@ -665,8 +665,8 @@
       c2Pills: ['👩 زن', '👨 مرد', '🎛️ تنظیمات'],
       c2Body: 'از بخش سمت راست (در موبایل دکمه 🎛️) صدای زن یا مرد را انتخاب کنید، سرعت خوانش (0.9x تا 1.25x) را تنظیم نمایید و خوانش خودکار سؤالات را فعال کنید.',
       c3Title: 'سؤالات دشوار و آزمون تمرینی شخصی',
-      c3Pills: ['☆ ذخیره', '⭐ فهرست من'],
-      c3Body: 'هنگام آزمون یا مرور نتایج، سؤالات چالش‌برانگیز را با دکمه ستاره ☆ ذخیره کنید (⭐). سپس از کارت «⭐ سؤالات دشوار من» در صفحه اصلی، آزمون تمرینی بدون زمان با بررسی فوری پاسخ را اجرا کنید.'
+      c3Pills: ['☆ 28:30 (نوار بالا)', '⭐ فهرست من'],
+      c3Body: 'هنگام آزمون یا مرور نتایج، با دکمه ستاره ☆ در کنار زمان‌سنج نوار بالا سؤال دشوار را ذخیره کنید (⭐). سپس از کارت «⭐ سؤالات دشوار من» در صفحه اصلی، آزمون تمرینی بدون زمان با بررسی فوری پاسخ را اجرا کنید.'
     },
     es: {
       heading: '✨ Herramientas Inteligentes — Guía Rápida',
@@ -677,8 +677,8 @@
       c2Pills: ['👩 Mujer', '👨 Hombre', '🎛️ Ajustes'],
       c2Body: 'Elige en cualquier momento entre voz femenina o masculina (en móvil pulsa 🎛️), ajusta la velocidad (0.9x – 1.25x) y activa la lectura automática al pasar de pregunta.',
       c3Title: 'Preguntas Difíciles y Práctica Personal',
-      c3Pills: ['☆ Guardar', '⭐ Mi lista'],
-      c3Body: '¿Dudas en una pregunta durante el test o la revisión? Pulsa la estrella ☆ para guardarla (⭐). Desde la tarjeta "⭐ Mis Preguntas Difíciles" en la página principal podrás practicar solo esas preguntas sin límite de tiempo y con corrección instantánea.'
+      c3Pills: ['☆ 28:30 (Barra sup.)', '⭐ Mi lista'],
+      c3Body: '¿Dudas en una pregunta durante el test o la revisión? Pulsa la estrella ☆ junto al temporizador en la barra superior para guardarla (⭐). Desde "⭐ Mis Preguntas Difíciles" en la página principal podrás practicar sin límite de tiempo y con corrección instantánea.'
     }
   };
 

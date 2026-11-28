@@ -4407,7 +4407,7 @@ function notifyNewSystem() {
   function updateViewport() {
     const root = document.documentElement;
     const fullscreen = document.fullscreenElement || document.webkitFullscreenElement;
-    const pinned = !!fullscreen && mobileLayout.matches;
+    const pinned = mobileLayout.matches;
     root.classList.toggle('mobile-fullscreen', pinned);
     if (pinned) {
       const viewport = window.visualViewport;
@@ -4765,8 +4765,8 @@ if (dynamicExamLabel) dynamicExamLabel.textContent = `TEORÍA DE COCHE · EXAMEN
   document.addEventListener("DOMContentLoaded", prioritizeAroundCurrent);
 })();
 </script>
-<script src="/tts-core.js?v=20261128b" defer></script>
-<script src="/exam-tts.js?v=20261128b" defer></script>
-<script src="/saved-questions-exam.js?v=20261128b" defer></script>
+<script src="/tts-core.js?v=20261128c" defer></script>
+<script src="/exam-tts.js?v=20261128c" defer></script>
+<script src="/saved-questions-exam.js?v=20261128c" defer></script>
 </body>
 </html>

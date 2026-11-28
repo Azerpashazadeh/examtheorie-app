@@ -4307,7 +4307,7 @@ body{background:radial-gradient(circle at 12% 10%,rgba(0,97,255,.11),transparent
   function updateViewport() {
     const root = document.documentElement;
     const fullscreen = document.fullscreenElement || document.webkitFullscreenElement;
-    const pinned = !!fullscreen && mobileLayout.matches;
+    const pinned = mobileLayout.matches;
     root.classList.toggle('mobile-fullscreen', pinned);
     if (pinned) {
       const viewport = window.visualViewport;
@@ -4661,7 +4661,7 @@ body{background:radial-gradient(circle at 12% 10%,rgba(0,97,255,.11),transparent
   document.addEventListener("DOMContentLoaded", prioritizeAroundCurrent);
 })();
 </script>
-<script src="/tts-core.js?v=20261128b" defer></script>
-<script src="/exam-tts.js?v=20261128b" defer></script>
+<script src="/tts-core.js?v=20261128c" defer></script>
+<script src="/exam-tts.js?v=20261128c" defer></script>
 </body>
 </html>
