@@ -1,335 +1,335 @@
 {
-    "sorular": [
+  "sorular": [
+    {
+      "numara": 6,
+      "soru": "¿Quién tiene permitido pasar primero?",
+      "elements": [
         {
-            "numara": 6,
-            "soru": "¿Quién tiene permitido pasar primero?",
-            "elements": [
-                {
-                    "type": "box",
-                    "class": "dragger1",
-                    "value": "1",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "1.7857%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target1",
-                    "value": "",
-                    "position": {
-                        "top": "15.44%",
-                        "left": "24.55%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target2",
-                    "value": "",
-                    "position": {
-                        "top": "57.67%",
-                        "left": "16.16%"
-                    }
-                }
-            ],
-            "dogruCevap": [
-                {
-                    "id": "dragger1",
-                    "target": "target1"
-                }
-            ],
-            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/6_edited.jpg",
-            "feedback": {
-                "metin": "Este conductor tiene que esperar a que pasen todos los vehículos que siguen. No está permitido cortar un cortejo fúnebre.",
-                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
-                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
-                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
-            }
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
         },
         {
-            "numara": 28,
-            "soru": "¿Quién tiene permitido pasar primero?",
-            "elements": [
-                {
-                    "type": "box",
-                    "class": "dragger1",
-                    "value": "1",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "1.7857%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target1",
-                    "value": "",
-                    "position": {
-                        "top": "28.11%",
-                        "left": "11.70%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target2",
-                    "value": "",
-                    "position": {
-                        "top": "4.11%",
-                        "left": "45.63%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target3",
-                    "value": "",
-                    "position": {
-                        "top": "59.22%",
-                        "left": "38.30%"
-                    }
-                }
-            ],
-            "dogruCevap": [
-                {
-                    "id": "dragger1",
-                    "target": "target1"
-                }
-            ],
-            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/28_edited.jpg",
-            "feedback": {
-                "metin": "Si sale de una vía sin pavimentar, debe ceder el paso a todos los conductores que circulen por la vía pavimentada transversal. También debe ceder el paso al peatón que continúa recto, ya que sigue por la misma vía que usted desea abandonar. El peatón debe ceder el paso al jinete, puesto que este se considera conductor.",
-                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
-                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
-                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
-            }
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "19.8978%",
+            "left": "41.1876%"
+          }
         },
         {
-            "numara": 29,
-            "soru": "¿Cuál es el orden correcto de prioridad de paso?",
-            "elements": [
-                {
-                    "type": "box",
-                    "class": "dragger1",
-                    "value": "1",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "1.7857%"
-                    }
-                },
-                {
-                    "type": "box",
-                    "class": "dragger2",
-                    "value": "2",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "14.9857%"
-                    }
-                },
-                {
-                    "type": "box",
-                    "class": "dragger3",
-                    "value": "3",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "28.185699999999997%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target1",
-                    "value": "",
-                    "position": {
-                        "top": "21.00%",
-                        "left": "61.88%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target2",
-                    "value": "",
-                    "position": {
-                        "top": "60.78%",
-                        "left": "69.20%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target3",
-                    "value": "",
-                    "position": {
-                        "top": "57.22%",
-                        "left": "25.09%"
-                    }
-                }
-            ],
-            "dogruCevap": [
-                {
-                    "id": "dragger1",
-                    "target": "target1"
-                },
-                {
-                    "id": "dragger2",
-                    "target": "target2"
-                },
-                {
-                    "id": "dragger3",
-                    "target": "target3"
-                }
-            ],
-            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/29_edited.jpg",
-            "feedback": {
-                "metin": "Se trata de una intersección sin señalizar (equivalente) y debe ceder el paso a los conductores que se aproximan por la derecha. Un peatón no es un conductor, razón por la cual el turismo tiene prioridad de paso, seguido por el ciclomotor y, finalmente, el peatón.",
-                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
-                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
-                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
-            }
-        },
-        {
-            "numara": 37,
-            "soru": "¿Quién tiene permitido pasar primero?",
-            "elements": [
-                {
-                    "type": "box",
-                    "class": "dragger1",
-                    "value": "1",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "1.7857%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target1",
-                    "value": "",
-                    "position": {
-                        "top": "5.67%",
-                        "left": "41.70%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target2",
-                    "value": "",
-                    "position": {
-                        "top": "61.00%",
-                        "left": "45.80%"
-                    }
-                }
-            ],
-            "dogruCevap": [
-                {
-                    "id": "dragger1",
-                    "target": "target1"
-                }
-            ],
-            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/37_edited.jpg",
-            "feedback": {
-                "metin": "El conductor que gira a la derecha tiene prioridad de paso sobre los conductores que giran a la izquierda. En otras palabras, el giro corto tiene preferencia sobre el giro largo.",
-                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
-                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
-                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
-            }
-        },
-        {
-            "numara": 50,
-            "soru": "¿Cuál es el orden correcto de prioridad de paso?",
-            "elements": [
-                {
-                    "type": "box",
-                    "class": "dragger1",
-                    "value": "1",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "1.7857%"
-                    }
-                },
-                {
-                    "type": "box",
-                    "class": "dragger2",
-                    "value": "2",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "14.9857%"
-                    }
-                },
-                {
-                    "type": "box",
-                    "class": "dragger3",
-                    "value": "3",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "28.185699999999997%"
-                    }
-                },
-                {
-                    "type": "box",
-                    "class": "dragger4",
-                    "value": "4",
-                    "position": {
-                        "top": "84.4444%",
-                        "left": "41.38569999999999%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target1",
-                    "value": "",
-                    "position": {
-                        "top": "10.11%",
-                        "left": "67.23%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target2",
-                    "value": "",
-                    "position": {
-                        "top": "40.11%",
-                        "left": "68.13%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target3",
-                    "value": "",
-                    "position": {
-                        "top": "60.33%",
-                        "left": "51.70%"
-                    }
-                },
-                {
-                    "type": "target",
-                    "id": "target4",
-                    "value": "",
-                    "position": {
-                        "top": "7.44%",
-                        "left": "14.20%"
-                    }
-                }
-            ],
-            "dogruCevap": [
-                {
-                    "id": "dragger1",
-                    "target": "target1"
-                },
-                {
-                    "id": "dragger2",
-                    "target": "target2"
-                },
-                {
-                    "id": "dragger3",
-                    "target": "target3"
-                },
-                {
-                    "id": "dragger4",
-                    "target": "target4"
-                }
-            ],
-            "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/50_edited.jpg",
-            "feedback": {
-                "metin": "Usted tiene triángulos de ceda el paso (\"dientes de tiburón\") y debe ceder el paso al motorista en la vía transversal. El peatón continúa recto por la misma vía que usted y el ciclista. El tráfico que sigue recto tiene prioridad de paso sobre el tráfico que gira, por lo que el peatón pasa en segundo lugar. El ciclista debe dejarle pasar a usted primero porque él realiza un giro largo y usted un giro corto. El orden correcto es: motorista, peatón, usted y ciclista.",
-                "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
-                "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
-                "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
-            }
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "44.0751%",
+            "left": "10.0163%"
+          }
         }
-    ]
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/6_edited.jpg",
+      "feedback": {
+        "metin": "Este conductor tiene que esperar a que pasen todos los vehículos que siguen. No está permitido cortar un cortejo fúnebre.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 28,
+      "soru": "¿Quién tiene permitido pasar primero?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "8.6736%",
+            "left": "73.8148%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "40.5357%",
+            "left": "69.0086%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target3",
+          "value": "",
+          "position": {
+            "top": "20.9863%",
+            "left": "18.334%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/28_edited.jpg",
+      "feedback": {
+        "metin": "Si sale de una vía sin pavimentar, debe ceder el paso a todos los conductores que circulen por la vía pavimentada transversal. También debe ceder el paso al peatón que continúa recto, ya que sigue por la misma vía que usted desea abandonar. El peatón debe ceder el paso al jinete, puesto que este se considera conductor.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 29,
+      "soru": "¿Cuál es el orden correcto de prioridad de paso?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger2",
+          "value": "2",
+          "position": {
+            "top": "84.4444%",
+            "left": "14.9857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger3",
+          "value": "3",
+          "position": {
+            "top": "84.4444%",
+            "left": "28.185699999999997%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "43.8329%",
+            "left": "81.8446%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "49.8399%",
+            "left": "2.1344%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target3",
+          "value": "",
+          "position": {
+            "top": "19.4116%",
+            "left": "17.0688%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        },
+        {
+          "id": "dragger2",
+          "target": "target2"
+        },
+        {
+          "id": "dragger3",
+          "target": "target3"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/29_edited.jpg",
+      "feedback": {
+        "metin": "Se trata de una intersección sin señalizar (equivalente) y debe ceder el paso a los conductores que se aproximan por la derecha. Un peatón no es un conductor, razón por la cual el turismo tiene prioridad de paso, seguido por el ciclomotor y, finalmente, el peatón.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 37,
+      "soru": "¿Quién tiene permitido pasar primero?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "7.0491%",
+            "left": "47.5869%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "54.4148%",
+            "left": "49.2121%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/37_edited.jpg",
+      "feedback": {
+        "metin": "El conductor que gira a la derecha tiene prioridad de paso sobre los conductores que giran a la izquierda. En otras palabras, el giro corto tiene preferencia sobre el giro largo.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 50,
+      "soru": "¿Cuál es el orden correcto de prioridad de paso?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger2",
+          "value": "2",
+          "position": {
+            "top": "84.4444%",
+            "left": "14.9857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger3",
+          "value": "3",
+          "position": {
+            "top": "84.4444%",
+            "left": "28.185699999999997%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger4",
+          "value": "4",
+          "position": {
+            "top": "84.4444%",
+            "left": "41.38569999999999%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "31.8803%",
+            "left": "81.8193%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "45.8441%",
+            "left": "53.453%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target3",
+          "value": "",
+          "position": {
+            "top": "53.3196%",
+            "left": "11.4268%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target4",
+          "value": "",
+          "position": {
+            "top": "4.8902%",
+            "left": "52.8517%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        },
+        {
+          "id": "dragger2",
+          "target": "target2"
+        },
+        {
+          "id": "dragger3",
+          "target": "target3"
+        },
+        {
+          "id": "dragger4",
+          "target": "target4"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/50_edited.jpg",
+      "feedback": {
+        "metin": "Usted tiene triángulos de ceda el paso (\"dientes de tiburón\") y debe ceder el paso al motorista en la vía transversal. El peatón continúa recto por la misma vía que usted y el ciclista. El tráfico que sigue recto tiene prioridad de paso sobre el tráfico que gira, por lo que el peatón pasa en segundo lugar. El ciclista debe dejarle pasar a usted primero porque él realiza un giro largo y usted un giro corto. El orden correcto es: motorista, peatón, usted y ciclista.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    }
+  ]
 }

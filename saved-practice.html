@@ -1064,6 +1064,9 @@
     }
 
     function buildBankUrl(contentTest, fileType) {
+      if (lang === 'en' && Number(contentTest) === 3 && fileType === 'dragdrop') {
+        return '/exam-data/en/test3/test3-dragdropen.json';
+      }
       var folderMap = { en: 'englishjsons', nl: 'dutchjsons', tr: 'turkishjsons', ar: 'arabicjsons' };
       if (folderMap[lang]) {
         return 'https://azerpashazadeh.github.io/sorularveresimler/test' + contentTest + '/' + folderMap[lang] + '/test' + contentTest + '-' + fileType + lang + '.json';

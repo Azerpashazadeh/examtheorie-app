@@ -2952,9 +2952,13 @@ body{background:radial-gradient(circle at 12% 10%,rgba(0,97,255,.11),transparent
         const contentTestNumber = ((testNumber - 1) % 5) + 1;
         const questionCounts = countsByTest[contentTestNumber];
         const sourceBase = `https://azerpashazadeh.github.io/sorularveresimler/test${contentTestNumber}/englishjsons/test${contentTestNumber}-`;
-        const fetchType = async (fileSuffix, index) => questionCounts[index]
-          ? await fetchQuestionsS3(`${sourceBase}${fileSuffix}en.json`, questionCounts[index])
-          : [];
+        const fetchType = async (fileSuffix, index) => {
+          if (!questionCounts[index]) return [];
+          const url = (contentTestNumber === 3 && fileSuffix === 'dragdrop')
+            ? '/exam-data/en/test3/test3-dragdropen.json'
+            : `${sourceBase}${fileSuffix}en.json`;
+          return await fetchQuestionsS3(url, questionCounts[index]);
+        };
         const t1Questions = await fetchType('radio', 0);
         const t2Questions = await fetchType('fillblank', 1);
         const t3Questions = await fetchType('checkbox', 2);

@@ -1,0 +1,335 @@
+{
+  "sorular": [
+    {
+      "numara": 6,
+      "soru": "Who is allowed to go first?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "19.8978%",
+            "left": "41.1876%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "44.0751%",
+            "left": "10.0163%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/6_edited.jpg",
+      "feedback": {
+        "metin": "This driver has to wait for all following vehicles to pass. You are not allowed to intersect a funeral procession.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 28,
+      "soru": "Who is allowed to go first?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "8.6736%",
+            "left": "73.8148%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "40.5357%",
+            "left": "69.0086%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target3",
+          "value": "",
+          "position": {
+            "top": "20.9863%",
+            "left": "18.334%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/28_edited.jpg",
+      "feedback": {
+        "metin": "If you leave an unpaved road, then you must give right of way to all drivers on the intersecting paved road. You must also give way to the pedestrian continuing straight on as they are continuing on the same road that you want to leave. The pedestrian must give way to the horse rider as this qualifies as a driver.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 29,
+      "soru": "What is the correct order of priority?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger2",
+          "value": "2",
+          "position": {
+            "top": "84.4444%",
+            "left": "14.9857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger3",
+          "value": "3",
+          "position": {
+            "top": "84.4444%",
+            "left": "28.185699999999997%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "43.8329%",
+            "left": "81.8446%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "49.8399%",
+            "left": "2.1344%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target3",
+          "value": "",
+          "position": {
+            "top": "19.4116%",
+            "left": "17.0688%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        },
+        {
+          "id": "dragger2",
+          "target": "target2"
+        },
+        {
+          "id": "dragger3",
+          "target": "target3"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/29_edited.jpg",
+      "feedback": {
+        "metin": "This is an equivalent intersection and you must give right of way to drivers from the right. A pedestrian is not a driver, which is why the car has right of way followed by the moped and finally the pedestrian.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 37,
+      "soru": "Who is allowed to go first?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "7.0491%",
+            "left": "47.5869%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "54.4148%",
+            "left": "49.2121%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/37_edited.jpg",
+      "feedback": {
+        "metin": "The driver turning right has priority over drivers turning left. In other words, the short turn goes before the long turn.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    },
+    {
+      "numara": 50,
+      "soru": "What is the correct order of priority?",
+      "elements": [
+        {
+          "type": "box",
+          "class": "dragger1",
+          "value": "1",
+          "position": {
+            "top": "84.4444%",
+            "left": "1.7857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger2",
+          "value": "2",
+          "position": {
+            "top": "84.4444%",
+            "left": "14.9857%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger3",
+          "value": "3",
+          "position": {
+            "top": "84.4444%",
+            "left": "28.185699999999997%"
+          }
+        },
+        {
+          "type": "box",
+          "class": "dragger4",
+          "value": "4",
+          "position": {
+            "top": "84.4444%",
+            "left": "41.38569999999999%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target1",
+          "value": "",
+          "position": {
+            "top": "31.8803%",
+            "left": "81.8193%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target2",
+          "value": "",
+          "position": {
+            "top": "45.8441%",
+            "left": "53.453%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target3",
+          "value": "",
+          "position": {
+            "top": "53.3196%",
+            "left": "11.4268%"
+          }
+        },
+        {
+          "type": "target",
+          "id": "target4",
+          "value": "",
+          "position": {
+            "top": "4.8902%",
+            "left": "52.8517%"
+          }
+        }
+      ],
+      "dogruCevap": [
+        {
+          "id": "dragger1",
+          "target": "target1"
+        },
+        {
+          "id": "dragger2",
+          "target": "target2"
+        },
+        {
+          "id": "dragger3",
+          "target": "target3"
+        },
+        {
+          "id": "dragger4",
+          "target": "target4"
+        }
+      ],
+      "resim": "https://azerpashazadeh.github.io/sorularveresimler/test3/50_edited.jpg",
+      "feedback": {
+        "metin": "You have priority triangles and must give way to the motorcyclist on the intersecting road. The pedestrian is continuing traffic on the same road as you and the cyclist. Continuing traffic has right of way over traffic turning off, and therefore the pedestrian is allowed second. The cyclist should let you go first because they have a long turn and you have the short turn. The correct order is motorcyclist, pedestrian, you, cyclist.",
+        "dogruCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/dogrucevap.png",
+        "yanlisCevapResim": "https://azerpashazadeh.github.io/sorularveresimler/yanlishcevap.png",
+        "cevaplanmamisResim": "https://azerpashazadeh.github.io/sorularveresimler/cevaplanmamish.png"
+      }
+    }
+  ]
+}
